@@ -1,25 +1,25 @@
 ---
 title: "The price impacts of informed investors"
-date: 2026-01-01
+date: 2026-02-14
 tags: ["informed investing", "Kyle model", "price discovery"]
 author: ["Corey Garriott", "Ryan Riodan"]
-description: "A model of queueing applied to limit-order market data finds depth losses of up to 8% attributable to queueing. Published in the Journal of Financial Markets, 2025."
-summary: "Traders who actually know something about future earnings look almost invisible to the market, while the flashy, high‑impact traders seem to be just reacting to public signals."
+description: "Investors who appear to be informed about earnings nevertheless have zero price impact. Published in the Journal of Financial Markets, 2026."
+summary: "Theory predicts informed traders should move prices when they trade. However, a group of Toronto Stock Exchange trader accounts, selected because they anticipate 11 years of earnings surprises, look almost invisible to the market. While they behave like classic privately informed traders (being patient, directional, and users of limit orders), their trades have zero or even negative price impact."
 cover:
     image: "paper6.jpg"
     alt: "The chess game of trading."
     relative: true
 editPost:
-    URL: "https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4866008"
+    URL: "https://www.sciencedirect.com/science/article/pii/S1386418126000133"
     Text: "Journal of Financial Markets"
 
 ---
 
-### The traders who move prices don't know much. The traders who know something don't move prices.
+### We find that the traders who move prices don't seem deeply informed... whereas the traders who have deep information don't move prices.
 
-A standard assumption in microsructure is that when a trade pushes prices, it's because the trader has private information. Theory often calls these traders "insiders."
+A standard assumption in microstructure is that when a trade moves prices, it's because the trader has private information. In the shorthand of theory, these traders are often called "insiders."
 
-Ryan and I argue the reverse: Most of the trades that move stock prices are not motivated by deep knowledge about a company's value but merely by public information.
+Ryan and I argue the reverse: Most of the trades that move stock prices are not motivated by deep, "inside" knowledge about a company's value but merely by public information.
 
 Our evidence comes from 11 years of trades with account codes from the Toronto Stock Exchange. Among the accounts, we identify a group that appears to have private information, but it barely leaves a footprint in prices. Instead, a completely different group of traders generates the classic price-impact effects predicted of privately informed trading.
 

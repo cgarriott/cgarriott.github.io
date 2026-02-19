@@ -105,3 +105,15 @@
     color: var(--secondary);
     box-shadow: 0 1px 0 var(--primary);
 }
+
+.post-list {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: var(--gap);
+}
+
+@media (min-width: 768px) {
+    .post-list {
+        grid-template-columns: 1fr 1fr;
+    }
+}
