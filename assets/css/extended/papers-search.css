@@ -1,0 +1,60 @@
+#papers-search-wrap {
+    margin-bottom: var(--gap);
+}
+
+#papers-search {
+    width: 100%;
+    padding: 8px 12px;
+    border-radius: var(--radius);
+    background: var(--entry);
+    color: var(--primary);
+    border: 1px solid var(--border);
+    font-size: 15px;
+    outline: none;
+    box-sizing: border-box;
+}
+
+#papers-search:focus {
+    border-color: var(--primary);
+}
+
+#papers-search::placeholder {
+    color: var(--secondary);
+}
+
+#papers-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: calc(var(--gap) * 1.5);
+}
+
+.filter-pill {
+    padding: 4px 14px;
+    border-radius: 999px;
+    border: 1px solid var(--border);
+    background: var(--entry);
+    color: var(--secondary);
+    cursor: pointer;
+    font-size: 13px;
+    font-family: inherit;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+}
+
+.filter-pill:hover {
+    border-color: var(--primary);
+    color: var(--primary);
+}
+
+.filter-pill.active {
+    background: var(--primary);
+    color: var(--theme);
+    border-color: var(--primary);
+}
+
+#papers-no-results {
+    color: var(--secondary);
+    font-size: 15px;
+    padding: var(--gap) 0;
+    display: none;
+}

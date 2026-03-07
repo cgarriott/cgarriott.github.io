@@ -1,14 +1,14 @@
 ---
 title: "High-frequency trading and institutional trading costs"
 date: 2020-03-01
-tags: ["HFT", "liquidity", "order management"]
+tags: ["HFT", "liquidity", "order management","bond markets"]
 author: ["Marie Chen", "Corey Garriott"]
 description: "High-frequency traders in Canadian bond futures mainly act as tiny, fast liquidity buffers for big institutions. Published in the Journal of Empirical Finance, 2020."
 summary: "High-frequency traders in Canadian bond futures mainly act as tiny, fast liquidity buffers for big institutions, not as predators pushing their costs up."
-cover:
-    image: "paper7.jpg"
-    alt: "Machines helping humans."
-    relative: true
+#cover:
+#    image: "paper7.jpg"
+#    alt: "Machines helping humans."
+#    relative: true
 editPost:
     URL: "https://www.sciencedirect.com/science/article/abs/pii/S0927539819301069"
     Text: "Journal of Empirical Finance"

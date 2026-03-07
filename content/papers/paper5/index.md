@@ -5,10 +5,10 @@ tags: ["repo", "market structure"]
 author: ["Corey Garriott", "Kyle Gray"]
 description: "A guide to Canada's repo market."
 summary: "The Canadian repo market is presented as an ecosystem, in which banks and buy‑side institutions are linked through collateralized funding on the rails of clearing, settlement, and central banking infrastructure. This guide is old but is apparently still used to train new employees at the dealers. Hmm, the Bank of Canada really should issue an update..."
-cover:
-    image: "paper5.jpg"
-    alt: "An ecosystem grows from money."
-    relative: true
+#cover:
+#    image: "paper5.jpg"
+#    alt: "An ecosystem grows from money."
+#    relative: true
 editPost:
     URL: "https://www.bankofcanada.ca/2016/03/staff-discussion-paper-2016-8/"
     Text: "Bank of Canada Staff Discussion Paper"

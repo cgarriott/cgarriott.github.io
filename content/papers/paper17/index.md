@@ -1,7 +1,7 @@
 ---
 title: "Will exchange-traded funds shape the future of bond dealing?"
 date: 2020-07-01
-tags: ["exchange-traded funds", "bond broker-dealing", "bond market liquidity"]
+tags: ["exchange-traded funds", "bond broker-dealing", "bond market liquidity","ETFs"]
 author: ["Rohan Arora", "Jean-Sébastien Fontaine", "Corey Garriott", "Guillaume Ouellet Leblanc"]
 description: "A speculation on how ETFs might change bond-market broker-dealing."
 summary: "Bond ETFs are could turn into balance‑sheet infrastructure for bond markets. Dealers could warehouse large, tradable portfolios of bonds at ETFs, giving them an additional way to lay off risk and source inventory. This would add new layers of intermediation that could reshape how stress propagates through the system."

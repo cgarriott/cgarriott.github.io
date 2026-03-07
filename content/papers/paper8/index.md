@@ -1,14 +1,14 @@
 ---
 title: "Retail order flow segmentation"
 date: 2018-06-01
-tags: ["market segmentation", "exchange internalization", "Retail Liquidity Program"]
+tags: ["market segmentation", "exchange internalization", "Retail Liquidity Program","market making"]
 author: ["Corey Garriott", "Adrian Walton"]
 description: "The NYSE’s Retail Liquidity Program segmented its retail flow from the main venue. Published in the Journal of Trading, 2018."
 summary: "NYSE’s Retail Liquidity Program segmented its retail flow from the main venue. This is a theoretical worry but, for NYSE, a modest win. The program separated retail trades into a special dark segment makes prices easier to read and trading slightly cheaper for everyone."
-cover:
-    image: "paper8.jpg"
-    alt: "Segmenting the market."
-    relative: true
+#cover:
+#    image: "paper8.jpg"
+#    alt: "Segmenting the market."
+#    relative: true
 editPost:
     URL: "https://www.bankofcanada.ca/2016/04/staff-working-paper-2016-20/"
     Text: "Journal of Trading"

@@ -1,14 +1,14 @@
 ---
 title: "Alternative futures for Government of Canada debt management"
 date: 2020-01-31
-tags: ["government debt management", "debt management", "bond buybacks", "bond switches", "bond re-openings", "perpetuities", "perpetual bonds"]
+tags: ["government debt management", "debt management", "bond buybacks", "bond switches", "bond re-openings", "perpetuities", "perpetual bonds","market structure","bond markets"]
 author: ["Corey Garriott","Sophie Lefebvre","Guillaume Nolin","Francisco Rivadeneyra","Adrian Walton"]
 description: "Four blue-sky ideas on ways to improve government debt management, including bond buybacks, zero-coupon issuance, and perpetuities."
 summary: "This is my favorite paper. We propose to redesign the government's debt program to better harvest liquidity premia, such as via bond buybacks, zero-coupon issuance, and perpetuities. The paper presents four blue-sky ideas for lowering the cost of the Government of Canada’s debt without increasing the debt’s risk profile."
-cover:
-    image: "paper13.jpg"
-    alt: "Alternative futures."
-    relative: true
+#cover:
+#    image: "paper13.jpg"
+#    alt: "Alternative futures."
+#    relative: true
 editPost:
     URL: "https://www.emerald.com/jfep/article-abstract/12/4/659/225796/Alternative-futures-for-Government-of-Canada-debt?redirectedFrom=fulltext"
     Text: "Journal of Financial and Economic Policy"

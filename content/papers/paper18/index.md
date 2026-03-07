@@ -1,14 +1,14 @@
 ---
 title: "How the Treasury clearing rule for repo might affect SOFR"
 date: 2025-04-22
-tags: ["repo markets", "SOFR", "non-cleared bilateral repo"]
+tags: ["repo markets", "SOFR", "non-cleared bilateral repo","repo"]
 author: ["Ashlyn Cenicola", "Corey Garriott"]
 description: "A speculation on how ETFs might change bond-market broker-dealing."
 summary: "At least for now, moving a big slice of bilateral Treasury repo into central clearing doesn't budge SOFR itself. It does shift the tails of the SOFR distribution a bit, hinting that the benchmark could get a bit more vol once these trades are pulled into the official rate fix."
-cover:
-    image: "paper18.jpg"
-    alt: "Centralization."
-    relative: true
+#cover:
+#    image: "paper18.jpg"
+#    alt: "Centralization."
+#    relative: true
 editPost:
     URL: "https://www.financialresearch.gov/the-ofr-blog/2025/04/22/how-the-treasury-clearing-rule-for-repo-might-affect-sofr/"
     Text: "The OFR Blog"

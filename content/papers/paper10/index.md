@@ -1,14 +1,14 @@
 ---
 title: "Government of Canada fixed income market ecology"
 date: 2018-09-01
-tags: ["Government of Canada bonds", "bond market structure"]
+tags: ["Government of Canada bonds", "market structure","bond markets"]
 author: ["Léanne Berger-Soucy", "Corey Garriott", "André Usche"]
 description: "An overview of the market structure of the Government of Canada bond market."
 summary: "Government of Canada bonds, bills, and real‑return bonds form a tightly interconnected ecology: they fund the federal government, anchor Canadian yield curves and pricing, and sit at the core of trading, collateral, and risk management across the financial system."
-cover:
-    image: "paper10.jpg"
-    alt: "The market as an ecosystem."
-    relative: true
+#cover:
+#    image: "paper10.jpg"
+#    alt: "The market as an ecosystem."
+#    relative: true
 editPost:
     URL: "https://www.bankofcanada.ca/2018/09/staff-discussion-paper-2018-10/"
     Text: "Bank of Canada Staff Discussion Papers"

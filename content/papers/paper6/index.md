@@ -5,10 +5,10 @@ tags: ["informed investing", "Kyle model", "price discovery"]
 author: ["Corey Garriott", "Ryan Riodan"]
 description: "Investors who appear to be informed about earnings nevertheless have zero price impact. Published in the Journal of Financial Markets, 2026."
 summary: "Theory predicts informed traders should move prices when they trade. However, a group of Toronto Stock Exchange trader accounts, selected because they anticipate 11 years of earnings surprises, look almost invisible to the market. While they behave like classic privately informed traders (being patient, directional, and users of limit orders), their trades have zero or even negative price impact."
-cover:
-    image: "paper6.jpg"
-    alt: "The chess game of trading."
-    relative: true
+#cover:
+#    image: "paper6.jpg"
+#    alt: "The chess game of trading."
+#    relative: true
 editPost:
     URL: "https://www.sciencedirect.com/science/article/pii/S1386418126000133"
     Text: "Journal of Financial Markets"

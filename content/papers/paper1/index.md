@@ -1,14 +1,14 @@
 ---
 title: "High-frequency trading competition" 
 date: 2018-09-18
-tags: ["HFT", "financial markets", "liquidity"]
+tags: ["HFT", "financial markets", "liquidity","market making"]
 author: ["Jonathan Brogaard","Corey Garriott"]
 description: "This paper estimates the benefits to liquidity of competition among high-frequency traders. Published in the Journal of Financial and Quantitative Analysis, 2018." 
 summary: "High-frequency traders on Canada’s Alpha exchange end up looking more like Cournot quantity competitors than razor‑thin price undercutters. Their rivalry makes markets smoother and cheaper for everyone else, as expected in Cournot competition."
-cover:
-    image: "paper1.jpeg"
-    alt: "A robot replaces human traders on the trading floor."
-    relative: true
+#cover:
+#    image: "paper1.jpeg"
+#    alt: "A robot replaces human traders on the trading floor."
+#    relative: true
 editPost:
     URL: "https://www.cambridge.org/core/journals/journal-of-financial-and-quantitative-analysis/article/highfrequency-trading-competition/C6F1849FCA91D1B52AABA10F2A952D7B"
     Text: "Journal of Financial and Quantitative Analysis"
