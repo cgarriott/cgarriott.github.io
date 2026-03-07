@@ -8,3 +8,21 @@ filter_tags:
   - financial markets
   - market making
   - securities financing
+
+paper_categories:
+  - Academic
+  - Policy
+
+paper_venues:
+  - JFQA
+  - JFM
+  - JBF
+  - JEF
+  - JoT
+  - JoD
+  - JFEP
+  - BoC SDP
+  - BoC SAN
+  - BoC FSR
+  - BoC Review
+  - OFR Blog

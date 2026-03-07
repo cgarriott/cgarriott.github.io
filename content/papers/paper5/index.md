@@ -2,6 +2,8 @@
 title: "Canadian repo market ecology" 
 date: 2016-03-01
 tags: ["repo", "market structure"]
+category: "Policy"
+venue: "BoC SDP"
 author: ["Corey Garriott", "Kyle Gray"]
 description: "A guide to Canada's repo market."
 summary: "The Canadian repo market is presented as an ecosystem, in which banks and buy‑side institutions are linked through collateralized funding on the rails of clearing, settlement, and central banking infrastructure. This guide is old but is apparently still used to train new employees at the dealers. Hmm, the Bank of Canada really should issue an update..."

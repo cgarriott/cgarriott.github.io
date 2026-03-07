@@ -2,6 +2,8 @@
 title: "Customer liquidity provision in Canadian bond markets"
 date: 2018-05-01
 tags: ["bond market liquidity", "client trading", "client liquidity provision","bond markets","liquidity"]
+category: "Policy"
+venue: "BoC SAN"
 author: ["Corey Garriott", "Jesse Johal"]
 description: "The degree to which customers supply bond market liquidity in Canada."
 summary: "Institutional investors do sometimes make markets in Canadian bonds, but only at the margin, and mainly when dealers are stretched. Customer liquidity is small, expensive, and used as a back‑up source rather than a primary one."

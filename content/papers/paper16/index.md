@@ -2,6 +2,8 @@
 title: "Options market decimalization"
 date: 2016-12-14
 tags: ["market liquidity", "decimalization", "options markets","liquidity"]
+category: "Academic"
+venue: "JoD"
 author: ["Faith Chin", "Corey Garriott"]
 description: "Effects of the options penny pilot on options liquidity."
 summary: "Decimalizing options on the Montréal Exchange (moving sub‑$3 options from 5‑cent to 1‑cent ticks) tightened spreads, improved depth near the top of book, and made prices more efficient, with the biggest gains in out‑of‑the‑money names."

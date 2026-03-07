@@ -2,6 +2,8 @@
 title: "COVID-19 crisis: Lessons learned for future policy research" 
 date: 2021-02-01
 tags: ["dash for cash", "COVID-19", "balance sheet","bond markets"]
+category: "Policy"
+venue: "BoC SDP"
 author: ["Jean-Sébastien Fontaine", "Corey Garriott", "Jesse Johal", "Jessica Lee", "Andreas Uthemann"]
 description: "An overview of what happened to Canadian financial markets after COVID-19."
 summary: "The COVID 'dash for cash' turned fixed‑income markets into a stress test of a system where asset managers demand liquidity but banks manufacture money. The bottleneck became the dealer balance sheet, not bank solvency. It recommends connecting up asset managers with the clearing, settlement and central banking systems."

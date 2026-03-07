@@ -2,6 +2,8 @@
 title: "Queueing and inventories on the limit order book"
 date: 2025-09-01
 tags: ["limit order markets", "financial markets", "liquidity","bond markets","HFT","market making"]
+category: "Academic"
+venue: "JFM"
 author: ["Corey Garriott", "Vincent van Kervel", "Marius Zoican"]
 description: "A model of queueing applied to limit-order market data finds depth losses of up to 8% attributable to queueing. Published in the Journal of Financial Markets, 2025."
 summary: "Queue position is a form of risk, not just a time delay, and that market makers react to that risk by withholding liquidity. A queueing model applied to a price-time priority market finds losses to depth of as much as 8%. This inefficiency does not exist in pro-rata systems (though they have their own problems)."

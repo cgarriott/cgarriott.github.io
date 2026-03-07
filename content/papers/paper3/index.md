@@ -2,6 +2,8 @@
 title: "Banking regulation and market making"
 date: 2019-12-01
 tags: ["Basel III", "balance sheet", "market making","bond markets","repo"]
+category: "Academic"
+venue: "JBF"
 author: ["David Cimon","Corey Garriott"]
 description: "Basel III regulation can have unintended consequences on broker-dealers. Published in the Journal of Banking and Finance, 2019."
 summary: "Post‑crisis capital and liquidity rules can unintentionally drain dealer risk‑bearing capacity and make markets thinner and more fragile, especially in stress. A model of securities dealers subject to leverage, position, and liquidity constraints inspired by Basel III–style regulation shows these constraints change dealers’ willingness to intermediate trades and hold inventory, which feeds through to bid–ask spreads and market depth."

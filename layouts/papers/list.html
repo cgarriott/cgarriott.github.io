@@ -33,6 +33,18 @@
   <button class="filter-pill" data-tag="{{ . }}">{{ . }}</button>
   {{- end }}
 </div>
+<div id="papers-categories">
+  <button class="category-pill active" data-category="all">All</button>
+  {{- range site.Data.papers_filters.paper_categories }}
+  <button class="category-pill" data-category="{{ . | lower }}">{{ . }}</button>
+  {{- end }}
+</div>
+<div id="papers-venues">
+  <button class="venue-pill active" data-venue="all">All</button>
+  {{- range site.Data.papers_filters.paper_venues }}
+  <button class="venue-pill" data-venue="{{ . | lower }}">{{ . }}</button>
+  {{- end }}
+</div>
 <p id="papers-no-results">No papers match your search.</p>
 {{- end }}
 
@@ -64,6 +76,8 @@
 
 <article class="{{ $class }}"
   data-tags="{{ delimit .Params.tags "," | lower }}"
+  data-category="{{ .Params.category | lower }}"
+  data-venue="{{ .Params.venue | lower }}"
   data-text="{{ .Title | lower }} {{ .Description | lower }} {{ .Summary | plainify | lower }}">
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
@@ -123,9 +137,13 @@
 (function () {
   var searchInput = document.getElementById('papers-search');
   var pills = document.querySelectorAll('.filter-pill');
+  var categoryPills = document.querySelectorAll('.category-pill');
+  var venuePills = document.querySelectorAll('.venue-pill');
   var noResults = document.getElementById('papers-no-results');
   var articles = document.querySelectorAll('#papers-list article');
   var activeTag = 'all';
+  var activeCategory = 'all';
+  var activeVenue = 'all';
 
   function applyFilters() {
     var query = searchInput.value.trim().toLowerCase();
@@ -134,13 +152,17 @@
     articles.forEach(function (article) {
       var text = article.getAttribute('data-text') || '';
       var tags = article.getAttribute('data-tags') || '';
+      var category = article.getAttribute('data-category') || '';
+      var venue = article.getAttribute('data-venue') || '';
 
       var textMatch = query === '' || text.indexOf(query) !== -1;
       var tagMatch = activeTag === 'all' || tags.split(',').some(function (t) {
         return t.trim() === activeTag;
       });
+      var categoryMatch = activeCategory === 'all' || category === activeCategory;
+      var venueMatch = activeVenue === 'all' || venue === activeVenue;
 
-      if (textMatch && tagMatch) {
+      if (textMatch && tagMatch && categoryMatch && venueMatch) {
         article.style.display = '';
         visible++;
       } else {
@@ -158,6 +180,24 @@
       pills.forEach(function (p) { p.classList.remove('active'); });
       pill.classList.add('active');
       activeTag = pill.getAttribute('data-tag').toLowerCase();
+      applyFilters();
+    });
+  });
+
+  categoryPills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      categoryPills.forEach(function (p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      activeCategory = pill.getAttribute('data-category').toLowerCase();
+      applyFilters();
+    });
+  });
+
+  venuePills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      venuePills.forEach(function (p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      activeVenue = pill.getAttribute('data-venue').toLowerCase();
       applyFilters();
     });
   });

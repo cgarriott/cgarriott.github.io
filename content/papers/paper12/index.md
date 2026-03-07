@@ -2,6 +2,8 @@
 title: "Do Canadian broker-dealers act as agents or principals in bond trading?"
 date: 2017-11-01
 tags: ["bond markets","broker dealers","agency trading"]
+category: "Policy"
+venue: "BoC SAN"
 author: ["Daniel Hyun", "Jesse Johal", "Corey Garriott"]
 description: "How Bank of Canada policy statements move markets."
 summary: "At the time, Canadian bond dealers were still mostly principal traders, using their own balance sheets to take the other side of client trades, with pure agency 'riskless principal' activity remaining relatively small and concentrated among smaller firms."

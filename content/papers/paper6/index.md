@@ -2,6 +2,8 @@
 title: "The price impacts of informed investors"
 date: 2026-02-14
 tags: ["informed investing", "Kyle model", "price discovery"]
+category: "Academic"
+venue: "JFM"
 author: ["Corey Garriott", "Ryan Riodan"]
 description: "Investors who appear to be informed about earnings nevertheless have zero price impact. Published in the Journal of Financial Markets, 2026."
 summary: "Theory predicts informed traders should move prices when they trade. However, a group of Toronto Stock Exchange trader accounts, selected because they anticipate 11 years of earnings surprises, look almost invisible to the market. While they behave like classic privately informed traders (being patient, directional, and users of limit orders), their trades have zero or even negative price impact."
