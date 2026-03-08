@@ -19,13 +19,13 @@ menu:
           url: codes/
           weight: 20
         - name: Media
-          url: books/
+          url: media/
           weight: 30
         - name: Lists of things
           url: lists/
           weight: 40
         - name: CV
-          url: CV/
+          url: cv/
           weight: 40
 
 params:
@@ -73,11 +73,11 @@ params:
             - name: Lists of things
               url: lists/
             - name: CV
-              url: CV/
+              url: cv/
 
     socialIcons:
         - name: CV
-          url: cv.pdf
+          url: /CV/coreyGarriottCV.pdf
         - name: Email
           url: mailto:garriott@gmail.com
         - name: Location

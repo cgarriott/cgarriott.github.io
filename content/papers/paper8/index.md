@@ -1,7 +1,7 @@
 ---
 title: "Retail order flow segmentation"
 date: 2018-06-01
-tags: ["market segmentation", "exchange internalization", "Retail Liquidity Program","market making"]
+tags: ["market segmentation", "exchange internalization", "Retail Liquidity Program","market making","financial markets"]
 category: "Academic"
 venue: "JoT"
 author: ["Corey Garriott", "Adrian Walton"]

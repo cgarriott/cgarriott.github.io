@@ -1,7 +1,7 @@
 ---
 title: "High-frequency trading and institutional trading costs"
 date: 2020-03-01
-tags: ["HFT", "liquidity", "order management","bond markets"]
+tags: ["HFT", "liquidity", "order management","bond markets","financial markets"]
 category: "Academic"
 venue: "JEF"
 author: ["Marie Chen", "Corey Garriott"]

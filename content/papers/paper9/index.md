@@ -1,7 +1,7 @@
 ---
 title: "Securities financing and bond-market liquidity"
 date: 2018-06-01
-tags: ["securities financing", "liquidity", "repo","bond markets"]
+tags: ["securities financing", "liquidity", "repo","bond markets","financial markets"]
 category: "Policy"
 venue: "BoC FSR"
 author: ["Jean-Sebastien Fontaine", "Corey Garriott", "Kyle Gray"]

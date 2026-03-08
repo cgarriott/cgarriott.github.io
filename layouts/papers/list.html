@@ -24,6 +24,7 @@
 {{- end }}
 
 {{- if not .IsHome }}
+{{- if .Params.sectionHeading }}<h2 class="media-section-heading">{{ .Params.sectionHeading }}</h2>{{- end }}
 <div id="papers-search-wrap">
   <input id="papers-search" type="search" placeholder="Search papers..." autocomplete="off" aria-label="Search papers">
 </div>

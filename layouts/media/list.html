@@ -23,8 +23,16 @@
 </div>
 {{- end }}
 
-{{- if and (not .IsHome) (.Params.sectionHeading) }}
-<h2 class="media-section-heading">{{ .Params.sectionHeading }}</h2>
+{{- if not .IsHome }}
+{{- if .Params.sectionHeading }}<h2 class="media-section-heading">{{ .Params.sectionHeading }}</h2>{{- end }}
+<div id="media-filters">
+  <button class="filter-pill active" data-tag="all">All</button>
+  <button class="filter-pill" data-tag="press">Press</button>
+  <button class="filter-pill" data-tag="video">Video</button>
+  <button class="filter-pill" data-tag="podcast">Podcast</button>
+  <button class="filter-pill" data-tag="panel">Panel</button>
+</div>
+<p id="media-no-results">No items match your filter.</p>
 {{- end }}
 
 {{- $pages := union .RegularPages .Sections }}
@@ -41,7 +49,7 @@
 {{- end }}
 
 {{- $term := .Data.Term }}
-{{- if not .IsHome }}<div class="post-list">{{- end }}
+{{- if not .IsHome }}<div class="post-list" id="media-list">{{- end }}
 {{- range $index, $page := $paginator.Pages }}
 
 {{- $class := "post-entry" }}
@@ -53,7 +61,9 @@
 {{- $class = "post-entry tag-entry" }}
 {{- end }}
 
-<article class="{{ $class }}">
+<article class="{{ $class }}"
+  data-tags="{{ delimit .Params.tags "," | lower }}"
+  data-text="{{ .Title | lower }} {{ .Description | lower }} {{ .Summary | plainify | lower }}">
   {{- $isHidden := (.Param "cover.hiddenInList") | default (.Param "cover.hidden") | default false }}
   {{- partial "cover.html" (dict "cxt" . "IsSingle" false "isHidden" $isHidden) }}
   <header class="entry-header">
@@ -79,7 +89,7 @@
     {{- partial "post_meta.html" . -}}
   </footer>
   {{- end }}
-  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Permalink }}"></a>
+  <a class="entry-link" aria-label="post link to {{ .Title | plainify }}" href="{{ .Params.editPost.URL }}" target="_blank" rel="noopener noreferrer"></a>
 </article>
 {{- end }}
 {{- if not .IsHome }}</div>{{- end }}
@@ -105,6 +115,43 @@
     {{- end }}
   </nav>
 </footer>
+{{- end }}
+
+{{- if not .IsHome }}
+<script>
+(function () {
+  var pills = document.querySelectorAll('#media-filters .filter-pill');
+  var noResults = document.getElementById('media-no-results');
+  var articles = document.querySelectorAll('#media-list article');
+  var activeTag = 'all';
+
+  function applyFilters() {
+    var visible = 0;
+    articles.forEach(function (article) {
+      var tags = article.getAttribute('data-tags') || '';
+      var tagMatch = activeTag === 'all' || tags.split(',').some(function (t) {
+        return t.trim() === activeTag;
+      });
+      if (tagMatch) {
+        article.style.display = '';
+        visible++;
+      } else {
+        article.style.display = 'none';
+      }
+    });
+    noResults.style.display = visible === 0 ? 'block' : 'none';
+  }
+
+  pills.forEach(function (pill) {
+    pill.addEventListener('click', function () {
+      pills.forEach(function (p) { p.classList.remove('active'); });
+      pill.classList.add('active');
+      activeTag = pill.getAttribute('data-tag').toLowerCase();
+      applyFilters();
+    });
+  });
+})();
+</script>
 {{- end }}
 
 {{- end }}{{/* end profileMode */}}

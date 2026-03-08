@@ -98,3 +98,21 @@
     padding: var(--gap) 0;
     display: none;
 }
+
+.media-section-heading {
+    margin-bottom: var(--gap);
+}
+
+#media-filters {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: calc(var(--gap) * 1.5);
+}
+
+#media-no-results {
+    color: var(--secondary);
+    font-size: 15px;
+    padding: var(--gap) 0;
+    display: none;
+}

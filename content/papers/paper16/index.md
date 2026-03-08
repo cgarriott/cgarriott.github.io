@@ -1,7 +1,7 @@
 ---
 title: "Options market decimalization"
 date: 2016-12-14
-tags: ["market liquidity", "decimalization", "options markets","liquidity"]
+tags: ["market liquidity", "decimalization", "options markets","liquidity","financial markets"]
 category: "Academic"
 venue: "JoD"
 author: ["Faith Chin", "Corey Garriott"]
