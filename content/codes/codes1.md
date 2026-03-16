@@ -1,5 +1,5 @@
 ---
-title: "U.S. Treasury CUSIP Panel Metadata" 
+title: "U.S. Treasury CUSIP panel metadata" 
 date: 2026-01-19
 tags: ["Treasury","CUSIP","panel data","bonds","notes","bills","auctions","python","polars","financial data"]
 author: ["Corey Garriott"]
@@ -15,14 +15,16 @@ disableAnchoredHeadings: false
 
 ## Overview
 
-The **ustCusipPanel** code is a simple Python code to create a merge dataset for work on US Treasury data. It uses public data from US Treasury to create a complete, `CUSIP-date` level panel dataset of US Treasury bonds outstanding. If you are working with `CUSIP-date` UST data, or with `(maturity date x coupon)-date` data, this will give you a nice daily record of Treasury securities characteristics. The public data that it uses spans November 1979 to now.
+The **ustCusipPanel** code is a simple Python code to create a merge dataset for work with US Treasury data. It uses public data from US Treasury to create a complete, `CUSIP-date` level panel dataset of US Treasury bonds outstanding. If you are working with `CUSIP-date` UST data, or with `(maturity date x coupon)-date` data, this will give you a nice daily merge table with Treasury securities characteristics. The public data that it uses spans November 1979 to now.
 
 Features:
 
-- **Time series completion** ideal for merging: every bond listed on every day
+- **Time series completion** ideal for merging: every bond listed on every day (weekends excepted)
 - **Tenor classifications** giving the tenor of bills, notes, and bonds
 - **Vintage tracking** or "runness." This is neat. Vintage is an ordinal ranking by issue date within date-tenor groups (on-the-run securities have vintage 0, the first off-the-run is vintage 1, and so on). That way you can tell where a bond sits in the "run" stack within its tenor class. Bonds that have been announced by ODM (i.e., "when-issued") have vintage -1.
 - **Auction data** marking openings, re-openings, unscheduled re-openings, and issuance
+- **Smart caching** with partial date range merging
+- **Incremental updates** via `updateUstCusipPanel()` to update an existing panel without re-downloading everything
 
 ---
 
@@ -45,14 +47,14 @@ The raw data is pulled from **U.S. Treasury Fiscal Data API**, specifically the 
 
 1. **Fetches all auction records** including issuance metadata (CUSIP, tenor, coupon, maturity date, issuance type)
 2. **Classifies securities** by tenor type using term-to-maturity calculations that account for market conventions
-3. **Caches results locally** to minimize API calls on repeated requests
+3. **Caches results locally** with smart partial range merging — if you request a range that overlaps with cached data, only the missing portion is fetched
 4. **Creates a time series fill** for each CUSIP from announcement through maturity, completing the data with forward and backward filling of static characteristics and forward filling of dynamic characteristics
 
-Special handling is included for "when issued" securities (vintage = -1) and for unscheduled reopenings where a security was announced with one CUSIP but reopened under a different CUSIP.
+Special handling is included for "when issued" securities (vintage = -1) and for unscheduled reopenings where an issuance was announced under one CUSIP but instead reopened under a different, pre-existing CUSIP. Consistent with FICC press releases as well as with futures-delivery methodology, the CUSIP will use the old tenor until the unscheduled reopening, then it will switch to the new tenor.
 
 ---
 
-## Output Data Schema
+## Output data schema
 
 The returned Polars DataFrame contains the following 16 columns:
 
@@ -65,7 +67,7 @@ The returned Polars DataFrame contains the following 16 columns:
 | `vintage` | Int64 | Ordinal ranking by firstIssueDate (0 = on-the-run) |
 | `coupon` | Float64 | Interest rate as a percentage |
 | `maturityDate` | Date | Security maturity date |
-| `TIPS` | Boolean | True for TIPS (Treasury Inflation-Protected Securities) |
+| `TIPS` | Boolean | True for TIPS |
 | `floatingRate` | Boolean | True for FRNs (Floating Rate Notes) |
 | `firstIssueDate` | Date | Original issue date of the security |
 | `issuanceType` | String | "Opening", "Re-opening", or None |
@@ -74,22 +76,22 @@ The returned Polars DataFrame contains the following 16 columns:
 | `totalIssued` | Float64 | Cumulative issuance in dollars |
 | `announcementDate` | Date | Announcement date of most recent auction |
 
-### Security Classifications
+### Security classifications
 
-**Bills** (measured in weeks):
+**Bills** tenors are measured in weeks:
 - 1, 2, 4, 8, 13, 17, 22, 26, 52-week bills
 
-**Notes and Bonds** (measured in years):
+**Notes and bonds** tenors are measured in years:
 - 2, 3, 4, 5, 7, 10-year notes
 - 20, 30-year bonds
 
-**Special Securities**:
-- TIPS (Treasury Inflation-Protected Securities) marked with `inflation_index_security = True`
-- FRNs (Floating Rate Notes) marked with `floating_rate = True`
+**Special securities**:
+- TIPS (Treasury Inflation-Protected Securities) marked with `TIPS = True`
+- FRNs (Floating Rate Notes) marked with `floatingRate = True`
 
 ---
 
-## Using the Package with Python
+## Using the package with Python
 
 ### Installation
 
@@ -105,7 +107,7 @@ cd ustCusipPanel
 pip install -e .
 ```
 
-### Quick Start
+### Quick start
 
 ```python
 import ustCusipPanel
@@ -124,11 +126,17 @@ df = ustCusipPanel.ustCusipPanel(silent=True)
 
 # Force fresh download (ignore cache)
 df = ustCusipPanel.ustCusipPanel(forceDownload=True)
+
+# Incrementally update a saved panel parquet file
+ustCusipPanel.updateUstCusipPanel("treasuryPanel.parquet")
+
+# Or update a DataFrame in memory and get the result
+dfUpdate = ustCusipPanel.updateUstCusipPanel(df)
 ```
 
-### Common Usage Examples
+### Common usage examples
 
-#### Get On-The-Run Securities
+#### Get on-the-run securities
 
 ```python
 import polars as pl
@@ -142,7 +150,7 @@ otr_10y = df.filter(
 )
 ```
 
-#### Analyze Auction Activity
+#### Analyze auction activity
 
 ```python
 # Get all auction dates for 5-year notes
@@ -152,59 +160,72 @@ auctions_5y = df.filter(
 )
 
 # Count auctions by type
-auction_summary = auctions_5y.group_by('issuanceType').agg(
+auctionSummary = auctions_5y.group_by('issuanceType').agg(
     pl.count().alias('count')
 )
 ```
 
-#### Track Issuance Over Time
+#### Track issuance over time
 
 ```python
 # Get cumulative issuance for a specific CUSIP
-cusip_history = df.filter(
+cusipHistory = df.filter(
     pl.col('cusip') == '912828Z29'
 ).select(['date', 'totalIssued', 'issuanceType']).sort('date')
 ```
 
-#### Compare Treasury Tenors
+#### Compare Treasury tenors
 
 ```python
 # Average number of active securities by tenor
-tenor_summary = df.group_by(['date', 'tenor']).agg(
-    pl.col('cusip').n_unique().alias('n_securities')
+tenorSummary = df.group_by(['date', 'tenor']).agg(
+    pl.col('cusip').n_unique().alias('nSecurities')
 ).group_by('tenor').agg(
-    pl.col('n_securities').mean().alias('avg_securities')
+    pl.col('nSecurities').mean().alias('avgSecurities')
 )
 
 # Track how many vintages exist for each tenor on each date
 vintage_distribution = df.filter(
     pl.col('date') == '2024-01-15'
 ).group_by('tenor').agg(
-    pl.col('vintage').max().alias('max_vintage'),
-    pl.col('cusip').n_unique().alias('n_cusips')
+    pl.col('vintage').max().alias('maxVintage'),
+    pl.col('cusip').n_unique().alias('nCusips')
 )
 ```
 
-#### Identify Special Security Types
+#### Incrementally update an existing panel
+
+```python
+# If you've previously saved a panel to parquet, update it in place
+ustCusipPanel.updateUstCusipPanel("treasuryPanel.parquet")
+
+# Or update a DataFrame and get the result back
+df = ustCusipPanel.ustCusipPanel(startDate="2020-01-01")
+df = ustCusipPanel.updateUstCusipPanel(df)
+```
+
+`updateUstCusipPanel` figures out where to start the update automatically. If there are any Notes or Bonds in the data with a missing coupon (e.g., a recently announced security whose coupon wasn't set yet), it refreshes from that date forward. Otherwise it picks up from the day after the latest date in the panel. Only new data is fetched from the API.
+
+#### Identify special security types
 
 ```python
 # Get all TIPS in the dataset
-tips = df.filter(pl.col('inflation_index_security') == True)
+tips = df.filter(pl.col('TIPS') == True)
 
 # Get all Floating Rate Notes
-frns = df.filter(pl.col('floating_rate') == True)
+frns = df.filter(pl.col('floatingRate') == True)
 
 # Count TIPS by tenor over time
-tips_by_tenor = tips.group_by(['date', 'tenor']).agg(
+tipsByTenor = tips.group_by(['date', 'tenor']).agg(
     pl.col('cusip').n_unique()
 ).group_by('tenor').agg(
-    pl.col('cusip').mean().alias('avg_daily_count')
+    pl.col('cusip').mean().alias('avgDailyCount')
 )
 ```
 
 ---
 
-## Technical Details
+## Technical details
 
 ### Why Polars?
 
@@ -222,7 +243,18 @@ Cache files include:
 - `auctions.csv`: Downloaded auction data
 - `auctions.txt`: Date range metadata
 
-The cache is automatically used when the requested date range matches. Use `forceDownload=True` to bypass the cache.
+The cache handles six overlap scenarios intelligently — only missing date ranges are fetched from the API:
+
+| Scenario | Behavior |
+|----------|----------|
+| Exact match | Use cache as-is |
+| Subset (requested ⊂ cache) | Filter cached data |
+| Superset (cache ⊂ requested) | Fetch both ends, merge |
+| Left extension | Fetch earlier range, merge |
+| Right extension | Fetch later range, merge |
+| No overlap | Full download |
+
+Use `forceDownload=True` to bypass the cache entirely.
 
 ### Requirements
 
@@ -233,20 +265,7 @@ The cache is automatically used when the requested date range matches. Use `forc
 
 ---
 
-## Use Cases
-
-This dataset is useful for:
-
-- **Academic research**: Studies of Treasury market structure, auction dynamics, and term structure
-- **Financial analysis**: Analyzing time series of specific securities, tracking cumulative issuance
-- **Policy analysis**: Understanding Treasury supply and issuance patterns over time
-- **Risk management**: Creating time series of key Treasury benchmarks and their vintages
-- **Market microstructure**: Studying on-the-run vs off-the-run spreads and security lifecycles
-- **Data journalism**: Creating visualizations of Treasury supply and issuance trends
-
----
-
-## Contributing and Support
+## Contributing and support
 
 This project is in the public domain (Unlicense), and contributions are welcome.
 
