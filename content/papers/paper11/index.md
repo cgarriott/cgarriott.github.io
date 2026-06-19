@@ -2,7 +2,7 @@
 title: "The impacts of monetary policy statements"
 date: 2017-11-01
 tags: ["forward guidance", "central bank communications", "monetary policy","bond markets"]
-category: "Policy"
+category: "Popular"
 venue: "BoC SAN"
 author: ["Bruno Feunou", "Corey Garriott", "James Kyeong", "Raisa Leiderman"]
 description: "How Bank of Canada policy statements move markets."

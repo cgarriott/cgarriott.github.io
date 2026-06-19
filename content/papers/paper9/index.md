@@ -1,8 +1,8 @@
 ---
 title: "Securities financing and bond-market liquidity"
 date: 2018-06-01
-tags: ["securities financing", "liquidity", "repo","bond markets","financial markets"]
-category: "Policy"
+tags: ["securities financing", "liquidity", "repo","bond markets"]
+category: "Popular"
 venue: "BoC FSR"
 author: ["Jean-Sebastien Fontaine", "Corey Garriott", "Kyle Gray"]
 description: "Securities‑financing markets in Canada (repos and securities lending) are the plumbing that lets a relatively small stock of government bonds support ever‑rising trading volumes."

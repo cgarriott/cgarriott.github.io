@@ -1,8 +1,8 @@
 ---
 title: "Options market decimalization"
 date: 2016-12-14
-tags: ["market liquidity", "decimalization", "options markets","liquidity","financial markets"]
-category: "Academic"
+tags: ["market liquidity", "decimalization", "options markets","liquidity","microstructure"]
+category: "Peer-reviewed"
 venue: "JoD"
 author: ["Faith Chin", "Corey Garriott"]
 description: "Effects of the options penny pilot on options liquidity."

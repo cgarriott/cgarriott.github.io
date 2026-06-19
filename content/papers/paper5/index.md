@@ -2,7 +2,7 @@
 title: "Canadian repo market ecology" 
 date: 2016-03-01
 tags: ["repo", "market structure"]
-category: "Policy"
+category: "Popular"
 venue: "BoC SDP"
 author: ["Corey Garriott", "Kyle Gray"]
 description: "A guide to Canada's repo market."

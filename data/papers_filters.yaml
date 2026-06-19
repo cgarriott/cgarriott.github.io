@@ -5,13 +5,12 @@ filter_tags:
   - bond markets
   - monetary policy
   - market structure
-  - financial markets
+  - microstructure
   - market making
-  - securities financing
 
 paper_categories:
-  - Academic
-  - Policy
+  - Peer-reviewed
+  - Popular
 
 paper_venues:
   - JFQA
@@ -21,8 +20,5 @@ paper_venues:
   - JoT
   - JoD
   - JFEP
-  - BoC SDP
-  - BoC SAN
-  - BoC FSR
-  - BoC Review
+  - BoC
   - OFR Blog

@@ -29,19 +29,19 @@
   <input id="papers-search" type="search" placeholder="Search papers..." autocomplete="off" aria-label="Search papers">
 </div>
 <div id="papers-filters">
-  <button class="filter-pill active" data-tag="all">All</button>
+  <button class="filter-pill active" data-tag="all">All topics</button>
   {{- range site.Data.papers_filters.filter_tags }}
   <button class="filter-pill" data-tag="{{ . }}">{{ . }}</button>
   {{- end }}
 </div>
 <div id="papers-categories">
-  <button class="category-pill active" data-category="all">All</button>
+  <button class="category-pill active" data-category="all">All types</button>
   {{- range site.Data.papers_filters.paper_categories }}
   <button class="category-pill" data-category="{{ . | lower }}">{{ . }}</button>
   {{- end }}
 </div>
 <div id="papers-venues">
-  <button class="venue-pill active" data-venue="all">All</button>
+  <button class="venue-pill active" data-venue="all">All venues</button>
   {{- range site.Data.papers_filters.paper_venues }}
   <button class="venue-pill" data-venue="{{ . | lower }}">{{ . }}</button>
   {{- end }}
@@ -161,7 +161,7 @@
         return t.trim() === activeTag;
       });
       var categoryMatch = activeCategory === 'all' || category === activeCategory;
-      var venueMatch = activeVenue === 'all' || venue === activeVenue;
+      var venueMatch = activeVenue === 'all' || venue === activeVenue || (activeVenue === 'boc' && venue.indexOf('boc') === 0);
 
       if (textMatch && tagMatch && categoryMatch && venueMatch) {
         article.style.display = '';
@@ -203,6 +203,25 @@
     });
   });
 })();
+
+  (function () {
+    document.querySelectorAll('#papers-list article').forEach(function (article) {
+      var h2 = article.querySelector('h2');
+      if (!h2) return;
+      var btn = document.createElement('button');
+      btn.className = 'paper-chevron';
+      btn.type = 'button';
+      btn.setAttribute('aria-label', 'Toggle summary');
+      btn.innerHTML = '<svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>';
+      btn.addEventListener('click', function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+        article.classList.toggle('is-open');
+        btn.setAttribute('aria-expanded', article.classList.contains('is-open'));
+      });
+      h2.appendChild(btn);
+    });
+  })();
 </script>
 {{- end }}
 

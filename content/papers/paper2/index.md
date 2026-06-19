@@ -1,8 +1,8 @@
 ---
 title: "Queueing and inventories on the limit order book"
 date: 2025-09-01
-tags: ["limit order markets", "financial markets", "liquidity","bond markets","HFT","market making"]
-category: "Academic"
+tags: ["limit order markets", "microstructure", "liquidity","bond markets","HFT","market making"]
+category: "Peer-reviewed"
 venue: "JFM"
 author: ["Corey Garriott", "Vincent van Kervel", "Marius Zoican"]
 description: "A model of queueing applied to limit-order market data finds depth losses of up to 8% attributable to queueing. Published in the Journal of Financial Markets, 2025."

@@ -2,7 +2,7 @@
 title: "Alternative futures for Government of Canada debt management"
 date: 2020-01-31
 tags: ["government debt management", "debt management", "bond buybacks", "bond switches", "bond re-openings", "perpetuities", "perpetual bonds","market structure","bond markets"]
-category: "Academic"
+category: "Peer-reviewed"
 venue: "JFEP"
 author: ["Corey Garriott","Sophie Lefebvre","Guillaume Nolin","Francisco Rivadeneyra","Adrian Walton"]
 description: "Four blue-sky ideas on ways to improve government debt management, including bond buybacks, zero-coupon issuance, and perpetuities."

@@ -2,7 +2,7 @@
 title: "How the Treasury clearing rule for repo might affect SOFR"
 date: 2025-04-22
 tags: ["repo markets", "SOFR", "non-cleared bilateral repo","repo"]
-category: "Policy"
+category: "Popular"
 venue: "OFR Blog"
 author: ["Ashlyn Cenicola", "Corey Garriott"]
 description: "A speculation on how ETFs might change bond-market broker-dealing."

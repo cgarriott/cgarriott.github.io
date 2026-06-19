@@ -2,7 +2,7 @@
 title: "The price impacts of informed investors"
 date: 2026-02-14
 tags: ["informed investing", "Kyle model", "price discovery"]
-category: "Academic"
+category: "Peer-reviewed"
 venue: "JFM"
 author: ["Corey Garriott", "Ryan Riodan"]
 description: "Investors who appear to be informed about earnings nevertheless have zero price impact. Published in the Journal of Financial Markets, 2026."

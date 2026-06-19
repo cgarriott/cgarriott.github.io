@@ -1,8 +1,8 @@
 ---
 title: "Retail order flow segmentation"
 date: 2018-06-01
-tags: ["market segmentation", "exchange internalization", "Retail Liquidity Program","market making","financial markets"]
-category: "Academic"
+tags: ["market segmentation", "exchange internalization", "Retail Liquidity Program","market making","microstructure","market structure"]
+category: "Peer-reviewed"
 venue: "JoT"
 author: ["Corey Garriott", "Adrian Walton"]
 description: "The NYSE’s Retail Liquidity Program segmented its retail flow from the main venue. Published in the Journal of Trading, 2018."

@@ -2,7 +2,7 @@
 title: "Will exchange-traded funds shape the future of bond dealing?"
 date: 2020-07-01
 tags: ["exchange-traded funds", "bond broker-dealing", "bond market liquidity","ETFs"]
-category: "Policy"
+category: "Popular"
 venue: "BoC SAN"
 author: ["Rohan Arora", "Jean-Sébastien Fontaine", "Corey Garriott", "Guillaume Ouellet Leblanc"]
 description: "A speculation on how ETFs might change bond-market broker-dealing."

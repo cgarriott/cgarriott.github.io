@@ -2,7 +2,7 @@
 title: "Customer liquidity provision in Canadian bond markets"
 date: 2018-05-01
 tags: ["bond market liquidity", "client trading", "client liquidity provision","bond markets","liquidity"]
-category: "Policy"
+category: "Popular"
 venue: "BoC SAN"
 author: ["Corey Garriott", "Jesse Johal"]
 description: "The degree to which customers supply bond market liquidity in Canada."

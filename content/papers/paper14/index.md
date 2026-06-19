@@ -1,8 +1,8 @@
 ---
 title: "Fragmentation in Canadian equity markets"
 date: 2013-10-01
-tags: ["market fragmentation", "market liquidity", "equity markets","financial markets"]
-category: "Policy"
+tags: ["market fragmentation", "market liquidity", "equity markets","microstructure"]
+category: "Popular"
 venue: "BoC Review"
 author: ["Corey Garriott", "Anna Pomeranets", "Joshua Slive", "Thomas Thorn"]
 description: "The effects of equity market fragmentation in Canada."

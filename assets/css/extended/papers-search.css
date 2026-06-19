@@ -116,3 +116,40 @@
     padding: var(--gap) 0;
     display: none;
 }
+
+.paper-chevron {
+    display: none;
+    background: none;
+    border: none;
+    cursor: pointer;
+    color: var(--secondary);
+    padding: 2px 0 2px 8px;
+    flex-shrink: 0;
+    position: relative;
+    z-index: 2;
+    transition: transform 0.25s ease;
+    line-height: 1;
+}
+
+@media (max-width: 767px) {
+    .paper-chevron {
+        display: flex;
+        align-items: center;
+    }
+
+    #papers-list .entry-content {
+        max-height: 0;
+        overflow: hidden;
+        margin: 0;
+        transition: max-height 0.3s ease, margin 0.3s ease;
+    }
+
+    #papers-list .post-entry.is-open .entry-content {
+        max-height: 600px;
+        margin: 20px 10px;
+    }
+
+    #papers-list .post-entry.is-open .paper-chevron {
+        transform: rotate(180deg);
+    }
+}

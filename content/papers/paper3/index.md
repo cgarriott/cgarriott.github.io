@@ -2,7 +2,7 @@
 title: "Banking regulation and market making"
 date: 2019-12-01
 tags: ["Basel III", "balance sheet", "market making","bond markets","repo"]
-category: "Academic"
+category: "Peer-reviewed"
 venue: "JBF"
 author: ["David Cimon","Corey Garriott"]
 description: "Basel III regulation can have unintended consequences on broker-dealers. Published in the Journal of Banking and Finance, 2019."

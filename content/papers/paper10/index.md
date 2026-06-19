@@ -1,8 +1,8 @@
 ---
 title: "Government of Canada fixed income market ecology"
 date: 2018-09-01
-tags: ["Government of Canada bonds", "market structure","bond markets","financial markets"]
-category: "Policy"
+tags: ["Government of Canada bonds", "market structure","bond markets"]
+category: "Popular"
 venue: "BoC SDP"
 author: ["Léanne Berger-Soucy", "Corey Garriott", "André Usche"]
 description: "An overview of the market structure of the Government of Canada bond market."

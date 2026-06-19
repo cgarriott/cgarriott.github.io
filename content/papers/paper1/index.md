@@ -1,8 +1,8 @@
 ---
 title: "High-frequency trading competition" 
 date: 2018-09-18
-tags: ["HFT", "financial markets", "liquidity","market making"]
-category: "Academic"
+tags: ["HFT", "microstructure", "liquidity","market making"]
+category: "Peer-reviewed"
 venue: "JFQA"
 author: ["Jonathan Brogaard","Corey Garriott"]
 description: "This paper estimates the benefits to liquidity of competition among high-frequency traders. Published in the Journal of Financial and Quantitative Analysis, 2018." 

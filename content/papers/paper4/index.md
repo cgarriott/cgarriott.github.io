@@ -1,8 +1,8 @@
 ---
 title: "COVID-19 crisis: Lessons learned for future policy research" 
 date: 2021-02-01
-tags: ["dash for cash", "COVID-19", "balance sheet","bond markets","financial markets"]
-category: "Policy"
+tags: ["dash for cash", "COVID-19", "balance sheet","bond markets","monetary policy"]
+category: "Popular"
 venue: "BoC SDP"
 author: ["Jean-Sébastien Fontaine", "Corey Garriott", "Jesse Johal", "Jessica Lee", "Andreas Uthemann"]
 description: "An overview of what happened to Canadian financial markets after COVID-19."
