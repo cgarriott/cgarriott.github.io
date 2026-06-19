@@ -1,6 +1,7 @@
 ---
-title: "U.S. Treasury CUSIP panel metadata" 
+title: "U.S. Treasury CUSIP panel metadata"
 date: 2026-01-19
+url: /codes/ustCusipPanel/
 tags: ["Treasury","CUSIP","panel data","bonds","notes","bills","auctions","python","polars","financial data"]
 author: ["Corey Garriott"]
 description: "A complete CUSIP-date level panel dataset of US Treasury bond metadata from 1990 to present, generated from public Treasury auction data."

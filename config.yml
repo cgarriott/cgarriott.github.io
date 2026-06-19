@@ -88,7 +88,7 @@ params:
           url: https://github.com/cgarriott
         - name: LinkedIn
           url: https://www.linkedin.com/in/corey-garriott/          
-        - name: Other
+        - name: SSRN
           url: https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1751574
 
     assets:
