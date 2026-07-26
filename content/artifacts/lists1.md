@@ -41,9 +41,11 @@ disableAnchoredHeadings: false
 - So slides should be text-light.
 - Bullets just tell people where you are in the talk. Consider single words.
 
-## fhjfahsdjk
+## Industry is different
 
-##### Finance or consulting presentations follow different rules. They are full of text because they are meant to be read later. Notice they do not even go through much of the presentation.
+- Finance or consulting presentations follow different rules.
+- They are full of text because they are meant to be read later.
+- If you sit for one of these, notice they do not even go through much of the presentation.
 
 ---
 

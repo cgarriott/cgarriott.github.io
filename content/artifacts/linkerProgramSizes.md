@@ -5,6 +5,10 @@ tags: ["Treasury", "TIPS", "inflation-linked bonds", "sovereign debt", "linkers"
 author: ["Corey Garriott"]
 description: "How big are inflation-linked bond programs, as a share of total marketable government debt, across 22 countries?"
 summary: "An interactive chart of inflation-linked bonds (TIPS, OATi, Bunds, RRBs, and more) as a share of sovereign debt outstanding, by country, from official public sources."
+cover:
+    image: "cover.svg"
+    alt: "Stylized rising line chart with country-code callouts, evoking the linker program size chart below."
+    relative: true
 editPost:
     URL: "../"
     Text: "Corey's artifacts"
@@ -115,13 +119,13 @@ disableAnchoredHeadings: false
 .viz-root svg { display: block; width: 100%; height: auto; overflow: visible; }
 .viz-root .gridline { stroke: var(--gridline); stroke-width: 1; }
 .viz-root .baseline { stroke: var(--baseline); stroke-width: 1; }
-.viz-root .axis-label { fill: var(--text-muted); font-size: 11px; }
+.viz-root .axis-label { fill: var(--text-muted); font-size: 15px; }
 .viz-root .line-path { fill: none; stroke-width: 2; stroke-linejoin: round; stroke-linecap: round; transition: opacity 0.15s ease; }
 .viz-root .line-path.dimmed { opacity: 0.15; }
 .viz-root .line-path.highlighted { stroke-width: 3; }
 .viz-root .end-dot { stroke: var(--surface-1); stroke-width: 2; transition: opacity 0.15s ease; }
 .viz-root .end-dot.dimmed { opacity: 0.15; }
-.viz-root .end-label { font-size: 12px; font-weight: 600; transition: opacity 0.15s ease; }
+.viz-root .end-label { font-size: 16px; font-weight: 600; transition: opacity 0.15s ease; }
 .viz-root .end-label.dimmed { opacity: 0.25; }
 .viz-root .crosshair { stroke: var(--baseline); stroke-width: 1; pointer-events: none; }
 .viz-root .hover-dot { stroke: var(--surface-1); stroke-width: 2; pointer-events: none; }
@@ -309,7 +313,7 @@ const endItems = COUNTRY_ORDER.map(c => {
   const last = pts[pts.length - 1];
   return { c, x: xScale(parseDate(last.date)), y: yScale(last.pct), rawY: yScale(last.pct) };
 });
-declutterY(endItems, 14, M.top, M.top + plotH);
+declutterY(endItems, 18, M.top, M.top + plotH);
 const endByCountry = Object.fromEntries(endItems.map(it => [it.c, it]));
 
 // Hit-test rect for the crosshair/tooltip system below -- created here, BEFORE
@@ -475,36 +479,42 @@ function onMove(evt) {
   crosshair.setAttribute('x1', refX);
   crosshair.setAttribute('x2', refX);
 
-  tooltip.innerHTML = '';
-  const dateEl = document.createElement('div');
-  dateEl.className = 'tooltip-date';
-  dateEl.textContent = fmtDate(closest.p.date);
-  tooltip.appendChild(dateEl);
-  for (const { c, p } of rows) {
+  // Only show the tooltip when a single line is actually highlighted (same
+  // condition passed to setHighlight above) -- otherwise it stays hidden so
+  // the crosshair alone tracks the pointer without a stat readout.
+  const hoveredRow = nearest && nearestDy <= LINE_HOVER_PX ? nearest : null;
+  if (!hoveredRow) {
+    tooltip.classList.remove('visible');
+  } else {
+    tooltip.innerHTML = '';
+    const dateEl = document.createElement('div');
+    dateEl.className = 'tooltip-date';
+    dateEl.textContent = fmtDate(hoveredRow.p.date);
+    tooltip.appendChild(dateEl);
     const row = document.createElement('div');
-    row.className = 'tooltip-row' + (c === highlightedCountry ? ' highlighted' : '');
+    row.className = 'tooltip-row highlighted';
     const key = document.createElement('span');
     key.className = 'tooltip-key';
-    key.style.background = `var(${DATA[c].slot})`;
+    key.style.background = `var(${DATA[hoveredRow.c].slot})`;
     const name = document.createElement('span');
     name.className = 'tooltip-name';
-    name.textContent = DATA[c].name;
+    name.textContent = DATA[hoveredRow.c].name;
     const val = document.createElement('span');
     val.className = 'tooltip-value';
-    val.textContent = p.pct.toFixed(2) + '%';
+    val.textContent = hoveredRow.p.pct.toFixed(2) + '%';
     row.appendChild(key);
     row.appendChild(name);
     row.appendChild(val);
     tooltip.appendChild(row);
+    tooltip.classList.add('visible');
+    const wrapRect = wrap.getBoundingClientRect();
+    const svgRect = svg.getBoundingClientRect();
+    const relX = (refX / W) * svgRect.width;
+    let left = relX + 16;
+    if (left + 170 > wrapRect.width) left = relX - 170 - 16;
+    tooltip.style.left = left + 'px';
+    tooltip.style.top = '8px';
   }
-  tooltip.classList.add('visible');
-  const wrapRect = wrap.getBoundingClientRect();
-  const svgRect = svg.getBoundingClientRect();
-  const relX = (refX / W) * svgRect.width;
-  let left = relX + 16;
-  if (left + 170 > wrapRect.width) left = relX - 170 - 16;
-  tooltip.style.left = left + 'px';
-  tooltip.style.top = '8px';
 }
 
 svg.addEventListener('pointermove', onMove);
