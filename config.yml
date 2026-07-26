@@ -21,8 +21,8 @@ menu:
         - name: Media
           url: media/
           weight: 30
-        - name: Lists of things
-          url: lists/
+        - name: Artifacts
+          url: artifacts/
           weight: 40
         - name: CV
           url: cv/
@@ -70,8 +70,8 @@ params:
               url: codes/
             - name: Media
               url: media/
-            - name: Lists of things
-              url: lists/
+            - name: Artifacts
+              url: artifacts/
             - name: CV
               url: cv/
 

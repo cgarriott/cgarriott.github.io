@@ -11,7 +11,7 @@ cover:
     relative: true
 editPost:
     URL: "../"
-    Text: "Corey's lists"
+    Text: "Corey's artifacts"
 showToc: true
 disableAnchoredHeadings: false
 
