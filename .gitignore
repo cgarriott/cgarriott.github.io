@@ -2,3 +2,7 @@
 public/
 resources/
 .hugo_build.lock
+
+# macOS metadata inside the mirrored /cnt/ tree
+static/cnt/**/.DS_Store
+static/cnt/.DS_Store

@@ -20,6 +20,10 @@ echo "Pulling ${REMOTE} -> static/cnt/"
 mkdir -p static/cnt
 rsync -a --delete --exclude='.DS_Store' "$REMOTE" static/cnt/
 
+# openrsync (macOS /usr/bin/rsync) does not reliably honour --exclude,
+# so drop any .DS_Store that came across regardless.
+find static/cnt -name .DS_Store -delete
+
 python3 scripts/prepare-cnt.py static/cnt
 
 echo "Done. Preview with ./launchLocal.sh, publish with ./updateWebsite.sh"
