@@ -1,0 +1,1188 @@
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+Single-verse page template. This is THE format for one verse -- see
+../PLAN.md's "Page architecture" section: the verse is the atomic unit,
+this template is not used for multi-verse (chapter/pericope) pages, which
+get their own template later, assembled from the same per-verse data.
+
+Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
+  verse_ref        -- display string, e.g. "Matthew 1:1"
+  greek_segments    -- list of {type:"text", text} or
+                        {type:"word", class, greek, translit, gloss, note}
+  translation_segments -- same shape as greek_segments, plus note_letter
+                        (the reader-facing letter label, see note_label() --
+                        ids/hrefs stay numeric via note; only the visible
+                        text uses letters, so they never look like verse
+                        numbers)
+  endnotes          -- list of {number, letter, word, class, text, sources:
+                        [{label, position}]} -- "letter" is the display
+                        label (a, b, ..., z, aa, ab, ...); "number" is
+                        still the plain int used for ids/hrefs
+  nav               -- {prev, next, up}: relative hrefs (same directory)
+                        for the second toggle-dock row below, or None for
+                        prev/next when there's no neighboring drafted verse
+                        to link to (see render.py's build_nav_context)
+  apparatus         -- {books, chapters, verses}: the masthead's Book/
+                        Chapter/Verse dropdowns, each a list of {name or
+                        num, current, enabled, href} covering the FULL
+                        canonical NT structure, not just what's drafted
+                        (see render.py's build_apparatus)
+
+Do not hand-edit generated output HTML -- edit this template (or
+render.py's query logic) and regenerate instead.
+-->
+<title>CNT — Matthew 2:4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
+
+<style>
+  /* ONE KNOB SCALES THE WHOLE PAGE. Every dimension in this stylesheet --
+     column width, type scale, gutters, the dock -- is in rem or em, and the
+     only px left are hairline borders, a shadow, and the 640px viewport
+     query. So the root font-size is the single control for how large the
+     design renders, and changing it moves text and column TOGETHER, leaving
+     the line's character count exactly where it was.
+
+     That distinction is the whole point. The column was 41rem at a 16px
+     root = 656px, holding ~72-76 characters at 1.15rem body text -- already
+     the top of the classic 45-75 range. Widening the column alone would
+     have stretched the line past comfortable; on a wide display the fix for
+     "the margins are bigger than the text" is a bigger design, not a longer
+     line.
+
+     A PERCENTAGE, not 19px, so a reader who has raised their browser's
+     default font size still gets it scaled up from there.
+
+     Retuning: raise or lower this one number. 112.5% (18px) is noticeably
+     more restrained, 125% (20px) fills a 27" display and is too large on a
+     13" laptop. */
+  html { font-size: 125%; }
+
+  /* Phones have no spare margin to reclaim -- the column is already the
+     full width of the screen there -- so the scale-up applies to roomy
+     viewports only, and mobile keeps the browser's own 16px root. */
+  @media (max-width: 640px) {
+    html { font-size: 100%; }
+  }
+
+  :root {
+    --ink: #1c1b18;
+    --ink-soft: #4a463d;
+    --paper: #e7e2d3;
+    --paper-raised: #efeadb;
+    --rule: #b7ad98;
+    /* Light-mode accents pushed further apart in hue/saturation than a
+       literal lightening of the dark-mode values would give -- at the
+       dark-mode lightness level, red and gold read as near-identical
+       muted browns against the pale paper background, and the blue
+       doesn't read as blue at all. Dark mode (below) is untouched. */
+    --rubric: #a3241b;
+    --rubric-soft: #f8ddd7;
+    --gold: #9c6b00;
+    --gold-soft: #f6e7c6;
+    --slate: #1f5c86;
+    --slate-soft: #d7e8f3;
+    --focus: #1c6b9e;
+
+    /* THE READING TYPE, defined once. Every line of running text on either
+       page -- the chapter page's paragraphs, the verse page's English, and
+       the verse page's Greek above it -- resolves its size and leading from
+       these two, so the three cannot drift apart the way .translation's own
+       size once did between the two templates. Scale the PAGE with the root
+       font-size at the top of this file, not with these. */
+    --reading-size: 1.2rem;
+    --reading-leading: 1.8;
+  }
+
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e9e3d2;
+      --ink-soft: #b9b19c;
+      --paper: #17140f;
+      --paper-raised: #1e1a13;
+      --rule: #4a4437;
+      --rubric: #d9756d;
+      --rubric-soft: #3a2320;
+      --gold: #d9ac52;
+      --gold-soft: #362c17;
+      --slate: #8fb2d1;
+      --slate-soft: #1c2b38;
+      --focus: #8fb2d1;
+    }
+  }
+
+  :root[data-theme="dark"] {
+    --ink: #e9e3d2;
+    --ink-soft: #b9b19c;
+    --paper: #17140f;
+    --paper-raised: #1e1a13;
+    --rule: #4a4437;
+    --rubric: #d9756d;
+    --rubric-soft: #3a2320;
+    --gold: #d9ac52;
+    --gold-soft: #362c17;
+    --slate: #8fb2d1;
+    --slate-soft: #1c2b38;
+    --focus: #8fb2d1;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    background: var(--paper);
+    color: var(--ink);
+    font-family: 'Cardo', 'Times New Roman', serif;
+    margin: 0;
+    padding: 4.5rem 1.5rem 3rem;
+    line-height: 1.6;
+  }
+
+  /* Below this width, the desktop-reading side padding (1.5rem, a
+     deliberate margin against a wide window) just eats into an already-
+     narrow phone screen instead of doing anything useful -- collapse it
+     to a small fixed gutter and pull in the top padding too, since the
+     4.5rem of breathing room above the masthead reads as dead space on
+     a phone's much shorter viewport. */
+  @media (max-width: 640px) {
+    body { padding: 1.75rem 0.9rem 2rem; }
+  }
+
+  .page {
+    max-width: 41rem;
+    margin: 0 auto;
+    position: relative;
+  }
+
+  .header {
+    border-bottom: 1px solid var(--rule);
+    padding-bottom: 0.85rem;
+    margin-bottom: 3rem;
+  }
+
+  .masthead {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.14em;
+    font-size: 0.72rem;
+    color: var(--ink-soft);
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+  }
+  .masthead strong {
+    color: var(--ink);
+    font-weight: 600;
+    letter-spacing: 0.1em;
+  }
+
+  /* Book/Chapter/Verse navigation, presented as a PILL matching the two docks at
+     the foot of the page -- same background, border, radius and shadow, and
+     the same Source Sans 3 they use. The page's rule is that pill-shaped
+     means clickable, and this control was the one interactive thing that did
+     not look interactive: it was styled as plain running text, which read as
+     a citation rather than as something to operate.
+
+     IT IS CHROME, NOT TEXT, and the type says so. An earlier pass kept the
+     reading face here on the argument that the control names the passage;
+     seen against the finished pill that reading was wrong -- at reading size
+     the control competed with the verse directly beneath it. The UI face,
+     smaller and in --ink-soft, settles it back into the furniture. That also
+     retires a small collision: the apparatus used to be --slate, which is
+     the colour .variant flagged words carry a few lines below.
+
+     THE DIVIDERS DO THE WORK A CARET USED TO. Each level had its own hand-
+     drawn caret; three of them crowded a small pill, and the pill shape had
+     by then taken over the job of saying "clickable". What a caret was still
+     needed for was showing that this is THREE controls and not one label --
+     so a hairline rule between segments says it instead, the same mark
+     .toggle-divider already makes between the mode buttons and the theme
+     button. Chapter and Verse need no rule between them; .apparatus-colon
+     already separates those.
+
+     Underneath it is still a native <select> per level, chrome stripped
+     (appearance:none, no border/background) -- real selects, so keyboard
+     support, screen readers and the native OS picker all come free. A
+     <select>'s closed box sizes to its widest OPTION rather than its current
+     value (the book select would sit at "2 Thessalonians" width forever),
+     which resizeApparatusSelect at the foot of this page corrects by
+     measuring the selected option and setting the width explicitly -- twice,
+     see its own comment.
+
+     Both templates carry this block identically, per the shared-style rule
+     above; change one, change the other. */
+  .apparatus {
+    display: inline-flex;
+    align-items: center;
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    text-transform: none;
+    color: var(--ink-soft);
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 0.3rem 0.5rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  }
+  .apparatus-colon { opacity: 0.5; margin: 0 0.05rem 0 -0.05rem; }
+  .apparatus-select-wrap { display: inline-flex; align-items: center; }
+  /* Segment rule between Book and Chapter -- the only two selects directly
+     adjacent with nothing between them. Chapter/Verse are already separated
+     by .apparatus-colon, so this deliberately doesn't apply there. */
+  .apparatus-select-wrap + .apparatus-select-wrap {
+    margin-left: 0;
+    border-left: 1px solid var(--rule);
+  }
+  .apparatus-select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    border: none;
+    background: transparent;
+    font: inherit;
+    letter-spacing: inherit;
+    text-transform: inherit;
+    color: inherit;
+    cursor: pointer;
+    /* Even padding: each level is its own hit area inside the pill, and
+       nothing has to be left clear for a caret any more. */
+    padding: 0.3rem 0.8rem;
+    margin: 0;
+    border-radius: 999px;
+  }
+  .apparatus-select:hover { color: var(--ink); background: var(--paper); }
+  .apparatus-select:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+  .apparatus-select option:disabled { color: var(--rule); }
+
+  /* Only ever wraps .apparatus now (the plain verse_ref label it used to
+     hold moved back to the masthead) -- kept just for the layout spacing;
+     text/color styling lives on .apparatus itself instead. */
+  .ref { margin: 0 0 1.6rem; }
+
+  /* Set in the same type as the English below it -- same size, same
+     leading, off the same two custom properties -- so the two lines read as
+     one block rather than as a specimen and a caption. It carries no
+     type styling of its own; only its colour and the gap beneath it are
+     its own. */
+  .greek-line {
+    font-size: var(--reading-size);
+    line-height: var(--reading-leading);
+    color: var(--ink-soft);
+    margin: 0 0 1.6rem;
+    text-wrap: pretty;
+  }
+
+  /* SHARED READING STYLE. The chapter page and the verse page must render
+     identical type -- same size, same leading, same measure -- so moving
+     between them reads as one document at two zoom levels rather than two
+     designs. This block and .ref/.endnote-num below are byte-identical in
+     both templates; change one, change the other.
+
+     margin-bottom is what separates consecutive paragraphs on the chapter
+     page. The verse page has exactly one .translation, which is therefore
+     also :last-of-type, so the reset below zeroes it there and the shared
+     rule costs that page nothing. */
+  .translation {
+    font-size: var(--reading-size);
+    line-height: var(--reading-leading);
+    margin: 0 0 1.5rem;
+    text-wrap: pretty;
+  }
+  .translation:last-of-type { margin-bottom: 0; }
+
+  .flagword {
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 1.5px solid currentColor;
+    padding-bottom: 0.03em;
+    transition: background-color 0.15s ease;
+    border-radius: 2px;
+    scroll-margin-top: 2rem;
+  }
+  .flagword, .flagword:visited { color: inherit; }
+  .flagword.always { color: var(--rubric); }
+  .flagword.crux    { color: var(--gold); }
+  .flagword.variant { color: var(--slate); }
+  .flagword.always:hover { background: var(--rubric-soft); }
+  .flagword.crux:hover    { background: var(--gold-soft); }
+  .flagword.variant:hover { background: var(--slate-soft); }
+
+  /* Same treatment applied to the Greek line's own corresponding words,
+     so a reader can see which Greek word underlies which English one. */
+  .greek-word {
+    cursor: pointer;
+    text-decoration: none;
+    border-bottom: 1.5px solid currentColor;
+    padding-bottom: 0.03em;
+    border-radius: 2px;
+  }
+  .greek-word, .greek-word:visited { color: inherit; }
+  .greek-word.always { color: var(--rubric); }
+  .greek-word.crux    { color: var(--gold); }
+  .greek-word.variant { color: var(--slate); }
+  .greek-word.always:hover { background: var(--rubric-soft); }
+  .greek-word.crux:hover    { background: var(--gold-soft); }
+  .greek-word.variant:hover { background: var(--slate-soft); }
+
+  .note-ref {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.62rem;
+    vertical-align: super;
+    text-decoration: none;
+    color: var(--ink-soft);
+    margin-left: 0.06em;
+    font-weight: 600;
+  }
+  .note-ref:hover { color: var(--focus); }
+
+  .endnotes {
+    margin-top: 2.4rem;
+    padding-top: 1.4rem;
+    border-top: 1px dotted var(--rule);
+  }
+  .endnotes-label {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    margin: 0 0 0.9rem;
+  }
+  .endnote {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.88rem;
+    line-height: 1.55;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 0.6rem;
+    padding: 0.55rem 0;
+    scroll-margin-top: 5rem;
+  }
+  .endnote:not(:last-child) { border-bottom: 1px solid color-mix(in srgb, var(--rule) 55%, transparent); }
+  .endnote-num {
+    flex: 0 0 auto;
+    font-weight: 600;
+    color: var(--ink);
+    min-width: 1.6rem;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .endnote-num, .endnote-num:visited { color: var(--ink); }
+  .endnote-num:hover { color: var(--focus); text-decoration: underline; }
+  .endnote-body { flex: 1 1 auto; }
+  .endnote-word {
+    display: inline-block;
+    font-family: 'Cardo', serif;
+    font-style: italic;
+    color: var(--ink);
+    margin-right: 0.15em;
+    scroll-margin-top: 5rem;
+    text-decoration: none;
+    cursor: pointer;
+    border-radius: 2px;
+  }
+  .endnote-word, .endnote-word:visited { color: var(--ink); }
+  .endnote-word:hover { text-decoration: underline; }
+  .endnote-word.always { color: var(--rubric); }
+  .endnote-word.crux    { color: var(--gold); }
+  .endnote-word.variant { color: var(--slate); }
+
+  /* Return-to-text link after an endnote's own prose -- same #ref-N target,
+     same jumped-box behavior as .endnote-num/.endnote-word above, just
+     placed where a reader who scrolled through the note's text actually
+     is, instead of making them scroll back up to the number or lead word. */
+  .endnote-back {
+    display: inline-block;
+    margin-left: 0.3em;
+    color: var(--ink-soft);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .endnote-back:hover { color: var(--focus); text-decoration: underline; }
+
+  /* The same "jumped-to" box in both directions: clicking a flagged word
+     (or its note-ref number) lands on the endnote's lead word; clicking
+     the endnote number lands on the flagged word. Driven by an explicit
+     JS-managed class (below), not :target -- history.replaceState does
+     not reliably re-trigger :target matching, and the box needs to
+     disappear on any click elsewhere, not just on the next #-link click. */
+  .jumped {
+    outline: 2px solid var(--focus);
+    outline-offset: 3px;
+    border-radius: 3px;
+    transition: outline-color 0.5s ease;
+  }
+  /* Added by JS ~1.5s after .jumped lands, so the box holds still long
+     enough to actually find, then dissolves on its own rather than
+     sitting there until the reader clicks something else. */
+  .jumped.jumped-fade { outline-color: transparent; }
+
+  /* The sense tip: the three commonest English renderings of a flagged word's
+     lemma, pooled from the Berean interlinear and the KJV's own concordance
+     counts. Shown on hover so a reader who does not know the Greek can still
+     read the page -- deliberately three competing words rather than one
+     definition, since a definition would answer the question the untranslated
+     word exists to keep open.
+
+     It is a SINGLE element parked on <body> and moved, not a child of the word.
+     Two reasons, both load-bearing: the reading-mode toggle rewrites flagged
+     words with `textContent`, which would delete any child node; and a tip
+     nested inside the paragraph cannot escape an ancestor's overflow or reach
+     past the viewport edge. */
+  .sense-tip {
+    position: absolute;
+    z-index: 200;
+    max-width: 22rem;
+    padding: 0.5rem 0.7rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 8px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 0.12s ease;
+  }
+  .sense-tip[hidden] { display: none; }
+  .sense-tip.is-visible { opacity: 1; }
+  .sense-tip .sense-tip-head {
+    font-size: 0.75rem;
+    color: var(--ink-soft);
+    margin-bottom: 0.15rem;
+  }
+  .sense-tip .sense-tip-lemma {
+    font-family: 'Cardo', Georgia, serif;
+    font-size: 0.95rem;
+    color: var(--ink);
+  }
+  .sense-tip .sense-tip-senses {
+    font-size: 0.95rem;
+    color: var(--ink);
+    line-height: 1.35;
+  }
+  /* Small, muted, and always present: these counts are two translations'
+     choices, not a census, and the tip should not read as an authority. */
+  .sense-tip .sense-tip-credit {
+    font-size: 0.65rem;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    color: var(--ink-soft);
+    opacity: 0.75;
+    margin-top: 0.3rem;
+  }
+  /* The same three words, repeated in the endnote where they need no hover.
+     Touch devices have no hover at all, and a tap gesture here would fight the
+     endnote link the flagged word already carries. */
+  .endnote-senses {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.8rem;
+    color: var(--ink-soft);
+    margin-top: 0.2rem;
+  }
+  .endnote-senses b {
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    font-size: 0.72rem;
+    opacity: 0.8;
+  }
+
+  details.sources {
+    margin-top: 0.4rem;
+  }
+  details.sources summary {
+    cursor: pointer;
+    font-size: 0.9rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    color: var(--focus);
+    list-style: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  details.sources summary::-webkit-details-marker { display: none; }
+  details.sources summary::before {
+    content: '▸';
+    display: inline-block;
+    transition: transform 0.15s ease;
+    font-size: 1.05em;
+  }
+  details.sources[open] summary::before { transform: rotate(90deg); }
+  details.sources ul {
+    margin: 0.6rem 0 0.2rem;
+    padding-left: 1.1rem;
+    font-size: 0.92rem;
+  }
+  details.sources li { margin-bottom: 0.4rem; }
+
+  /* Fixed, full-width strip mirroring .page's own max-width/centering/
+     padding, so the dock it holds tracks the column's right edge instead
+     of drifting into the empty margin on a wide viewport. Pointer events
+     pass through the empty part of the strip so it never blocks clicks
+     on the page underneath. */
+  /* Lives as the last child inside .page (normal document flow), not a
+     fixed overlay -- so on a short page it just sits in place right after
+     the content, and position:sticky only pins it near the viewport
+     bottom once scrolling would otherwise carry it below that point (a
+     long page). Being an ordinary in-flow child of .page, it already
+     inherits the column's own width/alignment for free -- no separate
+     viewport-spanning wrapper needed the way a `position: fixed` version
+     required. */
+  /* Nav (prev/up/next) pill and mode/theme pill share one row, pinned to
+     opposite ends of the column -- not stacked -- via space-between on a
+     full-width flex row (the wrap already spans .page's width as a block-
+     level flex container). */
+  .toggle-dock-wrap {
+    position: sticky;
+    bottom: 1.6rem;
+    display: flex;
+    flex-direction: row;
+    /* Wraps rather than overflowing. The two pills together need ~370px and
+       a phone column is narrower than that, so without this the toggle pill
+       pushed past the viewport and the whole page scrolled sideways. No
+       breakpoint: on any width that fits, space-between keeps them on one
+       line and wrap never engages. */
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 0.5rem;
+    margin-top: 2rem;
+  }
+
+  /* Second pill, single-verse pages only: prev/up/next verse navigation.
+     Same pill styling as .toggle-dock (background/border/shadow) so the
+     two read as one family of controls stacked in the same dock. */
+  .nav-dock {
+    display: flex;
+    align-items: center;
+    gap: 0.15rem;
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 0.3rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  }
+  .nav-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.2rem;
+    height: 2.2rem;
+    border-radius: 999px;
+    color: var(--ink-soft);
+    text-decoration: none;
+    cursor: pointer;
+  }
+  .nav-btn svg { width: 1.15rem; height: 1.15rem; }
+  a.nav-btn:hover { color: var(--ink); background: var(--paper); }
+  .nav-btn.disabled { color: var(--rule); cursor: default; }
+  .toggle-dock {
+    background: var(--paper-raised);
+    border: 1px solid var(--rule);
+    border-radius: 999px;
+    padding: 0.3rem;
+    display: flex;
+    gap: 0.15rem;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+  }
+  .toggle-dock button {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--ink-soft);
+    font-size: 0.74rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.45rem 0.85rem;
+    border-radius: 999px;
+    cursor: pointer;
+    font-family: inherit;
+  }
+  .toggle-dock button:hover { color: var(--ink); }
+  .toggle-dock button.active {
+    background: var(--focus);
+    color: var(--paper);
+  }
+  .toggle-dock button:focus-visible,
+  a:focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  .toggle-divider {
+    width: 1px;
+    align-self: stretch;
+    background: var(--rule);
+    margin: 0.3rem 0.15rem;
+  }
+  .theme-toggle {
+    appearance: none;
+    border: none;
+    background: transparent;
+    color: var(--ink-soft);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.6rem;
+    height: 2.4rem;
+    border-radius: 999px;
+    cursor: pointer;
+  }
+  .theme-toggle:hover { color: var(--ink); }
+  .theme-toggle svg { width: 1.5rem; height: 1.5rem; }
+  .icon-sun { display: block; }
+  .icon-moon { display: none; }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) .icon-sun { display: none; }
+    :root:not([data-theme="light"]) .icon-moon { display: block; }
+  }
+  :root[data-theme="dark"] .icon-sun { display: none; }
+  :root[data-theme="dark"] .icon-moon { display: block; }
+  :root[data-theme="light"] .icon-sun { display: block; }
+  :root[data-theme="light"] .icon-moon { display: none; }
+
+  .legend {
+    font-family: 'Source Sans 3', system-ui, sans-serif;
+    font-size: 0.66rem;
+    color: var(--ink-soft);
+    display: flex;
+    gap: 0.3rem 1.3rem;
+    margin: 0.6rem 0 0;
+    flex-wrap: wrap;
+  }
+  .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
+  .legend .legend-label { display: inline; }
+  .legend b {
+    font-weight: 600;
+    color: var(--ink);
+  }
+  .legend i {
+    width: 0.55rem; height: 0.55rem; border-radius: 50%; display: inline-block;
+    flex: 0 0 auto;
+  }
+  .legend .always i { background: var(--rubric); }
+  .legend .crux i { background: var(--gold); }
+  .legend .variant i { background: var(--slate); }
+
+  /* Narrow: drop the description, keep just the colored term label, so all
+     three still fit on one line instead of each wrapping to its own row. */
+  /* The legend must drop its explanatory text BEFORE it is narrow enough to
+     wrap onto a second row -- two rows of legend under the masthead reads as
+     a mistake. So this breakpoint is NOT the 640px one the body padding and
+     the root scale use; it is measured from the legend's own content.
+
+     With the descriptions showing, the three items total ~511px plus two
+     1.3rem gaps, needing ~563px, against a viewport less 60px of body
+     padding and a ~15px scrollbar. That alone would allow ~640px, but the
+     root scale resets to 100% AT 640px, so the legend abruptly narrows by a
+     fifth there and the tightest fit is just ABOVE that line: at 645px the
+     margin is 7px, at 660px it is 22px, at 680px it is 42px. These numbers
+     were measured in Chromium and read in Safari, so the breakpoint takes
+     the 7% of headroom rather than the last available pixel.
+
+     IT IS TIED TO THE ROOT SCALE. A media query's px are viewport px and do
+     not track `html { font-size }`, so raising that 125% widens the legend
+     while leaving this number behind -- which is exactly how a two-row band
+     opened up between 641px and 672px when the root went from 100% to 125%.
+     Re-measure this if the root scale or the legend's wording changes. */
+  @media (max-width: 680px) {
+    .legend .legend-desc { display: none; }
+  }
+  /* Even narrower: the short labels themselves no longer fit one line --
+     let them wrap, but with a much tighter gap between the stacked rows. */
+  @media (max-width: 420px) {
+    .legend { gap: 0.1rem 1rem; }
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    * { transition: none !important; }
+  }
+</style>
+
+<div class="page">
+
+  <div class="header">
+    <div class="masthead">
+      <span><strong>CNT</strong> — Corey's Non-Translation</span>
+      <span>Matthew 2:4</span>
+    </div>
+    <div class="legend">
+      <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
+      <span class="crux"><i></i><span class="legend-label"><b>Crux</b><span class="legend-desc">: untranslated here</span></span></span>
+      <span class="variant"><i></i><span class="legend-label"><b>Variant</b><span class="legend-desc">: editions disagree</span></span></span>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <p class="ref">
+      <span class="apparatus">
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Book" onchange="if(this.value){location.href=this.value;}">
+            <option value="" selected>Matthew</option>
+            <option value="../../Mark/1/index.html" disabled>Mark</option>
+            <option value="../../Luke/1/index.html" disabled>Luke</option>
+            <option value="../../John/1/index.html" disabled>John</option>
+            <option value="../../Acts/1/index.html" disabled>Acts</option>
+            <option value="../../Romans/1/index.html" disabled>Romans</option>
+            <option value="../../1 Corinthians/1/index.html" disabled>1 Corinthians</option>
+            <option value="../../2 Corinthians/1/index.html" disabled>2 Corinthians</option>
+            <option value="../../Galatians/1/index.html" disabled>Galatians</option>
+            <option value="../../Ephesians/1/index.html" disabled>Ephesians</option>
+            <option value="../../Philippians/1/index.html" disabled>Philippians</option>
+            <option value="../../Colossians/1/index.html" disabled>Colossians</option>
+            <option value="../../1 Thessalonians/1/index.html" disabled>1 Thessalonians</option>
+            <option value="../../2 Thessalonians/1/index.html" disabled>2 Thessalonians</option>
+            <option value="../../1 Timothy/1/index.html" disabled>1 Timothy</option>
+            <option value="../../2 Timothy/1/index.html" disabled>2 Timothy</option>
+            <option value="../../Titus/1/index.html" disabled>Titus</option>
+            <option value="../../Philemon/1/index.html" disabled>Philemon</option>
+            <option value="../../Hebrews/1/index.html" disabled>Hebrews</option>
+            <option value="../../James/1/index.html" disabled>James</option>
+            <option value="../../1 Peter/1/index.html" disabled>1 Peter</option>
+            <option value="../../2 Peter/1/index.html" disabled>2 Peter</option>
+            <option value="../../1 John/1/index.html" disabled>1 John</option>
+            <option value="../../2 John/1/index.html" disabled>2 John</option>
+            <option value="../../3 John/1/index.html" disabled>3 John</option>
+            <option value="../../Jude/1/index.html" disabled>Jude</option>
+            <option value="../../Revelation/1/index.html" disabled>Revelation</option>
+          </select>
+        </span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
+            <option value="../1/index.html">1</option>
+            <option value="" selected>2</option>
+            <option value="../3/index.html" disabled>3</option>
+            <option value="../4/index.html" disabled>4</option>
+            <option value="../5/index.html" disabled>5</option>
+            <option value="../6/index.html" disabled>6</option>
+            <option value="../7/index.html" disabled>7</option>
+            <option value="../8/index.html" disabled>8</option>
+            <option value="../9/index.html" disabled>9</option>
+            <option value="../10/index.html" disabled>10</option>
+            <option value="../11/index.html" disabled>11</option>
+            <option value="../12/index.html" disabled>12</option>
+            <option value="../13/index.html" disabled>13</option>
+            <option value="../14/index.html" disabled>14</option>
+            <option value="../15/index.html" disabled>15</option>
+            <option value="../16/index.html" disabled>16</option>
+            <option value="../17/index.html" disabled>17</option>
+            <option value="../18/index.html" disabled>18</option>
+            <option value="../19/index.html" disabled>19</option>
+            <option value="../20/index.html" disabled>20</option>
+            <option value="../21/index.html" disabled>21</option>
+            <option value="../22/index.html" disabled>22</option>
+            <option value="../23/index.html" disabled>23</option>
+            <option value="../24/index.html" disabled>24</option>
+            <option value="../25/index.html" disabled>25</option>
+            <option value="../26/index.html" disabled>26</option>
+            <option value="../27/index.html" disabled>27</option>
+            <option value="../28/index.html" disabled>28</option>
+          </select>
+        </span>
+        <span class="apparatus-colon">:</span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Verse" onchange="if(this.value){location.href=this.value;}">
+            <option value="1.html">1</option>
+            <option value="2.html">2</option>
+            <option value="3.html">3</option>
+            <option value="" selected>4</option>
+            <option value="5.html">5</option>
+            <option value="6.html">6</option>
+            <option value="7.html">7</option>
+            <option value="8.html">8</option>
+            <option value="9.html">9</option>
+            <option value="10.html">10</option>
+            <option value="11.html">11</option>
+            <option value="12.html">12</option>
+            <option value="13.html">13</option>
+            <option value="14.html">14</option>
+            <option value="15.html">15</option>
+            <option value="16.html">16</option>
+            <option value="17.html">17</option>
+            <option value="18.html">18</option>
+            <option value="19.html">19</option>
+            <option value="20.html">20</option>
+            <option value="21.html">21</option>
+            <option value="22.html">22</option>
+            <option value="23.html">23</option>
+          </select>
+        </span>
+      </span>
+    </p>
+    <p class="greek-line">καὶ <a class="greek-word crux" href="#note-1" data-greek="συναγαγὼν" data-translit="sunagagōn" data-gloss="synagance" data-senses="gathered together, gathered, gather">συναγαγὼν</a> πάντας τοὺς ἀρχιερεῖς καὶ γραμματεῖς τοῦ λαοῦ ἐπυνθάνετο παρ’ αὐτῶν ποῦ ὁ <a class="greek-word crux" href="#note-2" data-greek="χριστὸς" data-translit="christos" data-gloss="Anointed" data-senses="christ, jesus">χριστὸς</a> <a class="greek-word crux" href="#note-3" data-greek="γεννᾶται" data-translit="gennatai" data-gloss="gennied" data-senses="begat, born, begotten">γεννᾶται</a></p>
+    <p class="translation">And, <a id="ref-1" class="flagword crux" href="#note-1" data-greek="συναγαγὼν" data-translit="sunagagōn" data-gloss="synagance" data-senses="gathered together, gathered, gather">synagance</a><a class="note-ref" href="#note-1">a</a> all the chief priests and scribes of the people, he inquired from them where the <a id="ref-2" class="flagword crux" href="#note-2" data-greek="χριστὸς" data-translit="christos" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-2">b</a> is <a id="ref-3" class="flagword crux" href="#note-3" data-greek="γεννᾶται" data-translit="gennatai" data-gloss="gennied" data-senses="begat, born, begotten">gennied</a><a class="note-ref" href="#note-3">c</a>.</p>
+  </div>
+
+  <div class="endnotes">
+    <p class="endnotes-label">Notes</p>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">sunagagōn</a>
+        This verb recurs at several points in the Passion narrative for the same leadership assembling against Jesus (26:3, 57; 27:1, 17, 27, 62), and shares a root with the Septuagint&#x27;s wording at Psalm 2:2 for rulers assembling against the Lord&#x27;s anointed. Here the verb is active, with Herod as the one gathering others. In the Passion-narrative recurrences and in the Psalm, the verb is passive, with no gathering agent named. Some readers also hear an echo of &quot;synagogue,&quot; the cognate noun for the leadership&#x27;s own institution; others judge that echo an over-reading of an otherwise ordinary word for gathering.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> gathered together, gathered, gather</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Curtis Mitch &amp; Edward Sri (CCSS) — reads the verb as echoing Psalm 2:2&#x27;s rulers &quot;assembl[ing] against the Lord and his anointed&quot;</li>
+            <li>Raymond E. Brown (<i>The Birth of the Messiah</i>) — independently confirms the same Psalm 2:2 echo, noting the verb&#x27;s frequent Passion-narrative use for assembling against Jesus</li>
+            <li>Robert H. Gundry (<i>Matthew: A Commentary</i>) — reads the verb as also punning on &quot;synagogue,&quot; the institution dominated by the chief priests and scribes</li>
+            <li>Donald A. Hagner (WBC) — rejects the synagogue wordplay as reading too much into an otherwise neutral word</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">christos</a>
+        Herod&#x27;s question uses this word where the magi&#x27;s earlier question used &quot;king of the Jews.&quot; Within Matthew, &quot;king of the Jews&quot; occurs only in the mouths of non-Jewish speakers, both here in the birth narrative and later at the trial and crucifixion; &quot;the Christ&quot; is the term a Jewish-context speaker reaches for instead. This is also the first point in the Gospel where the bare title is spoken by a character rather than by the narrator, and the speaker is a king hostile to the child he is asking about.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>R.T. France (NICNT) — &quot;the Gentile way of saying what a Jew would mean by &#x27;Messiah&#x27; (the term which Herod, who could hardly refer to someone else as &#x27;king of the Jews,&#x27; substitutes in v. 4)&quot;</li>
+            <li>W.D. Davies &amp; D.C. Allison (ICC) — corroborates the same Gentile-only use of &quot;king of the Jews&quot; elsewhere in the Gospel with first-century non-Christian attestations of the title (Josephus, <i>Ant.</i> 14.36; 15.373; 16.311)</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">gennatai</a>
+        Herod&#x27;s question retains the present tense for a birth already narrated two verses earlier in the aorist. Grammars distinguish a futuristic present, used for a certain future event, from a gnomic present, stating a general timeless truth, though neither category is a precise fit for a verb of this kind with a definite subject. Several commentators nonetheless read the retained present as marking a settled fact of prophecy rather than a request for news of a recent event.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> begat, born, begotten</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>R.T. France (NICNT) — reads the present tense as indicating &quot;a standing truth of prophecy,&quot; Herod asking for a theological ruling rather than news</li>
+            <li>Meyer (<i>Critical and Exegetical Hand-Book to the Gospel of Matthew</i>) — reads the verb as &quot;purely present,&quot; not future in sense</li>
+            <li>Bengel (<i>Gnomon</i>) — reads the present tense as according with the general expectation of the Messiah&#x27;s coming</li>
+            <li>Daniel Wallace (<i>Greek Grammar Beyond the Basics</i>) — defines the futuristic and gnomic present categories, neither of which cleanly matches this verb on his own stated criteria</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+  </div>
+
+  <div class="toggle-dock-wrap">
+    <div class="nav-dock">
+      <a class="nav-btn" data-nav="prev" href="3.html" aria-label="Previous verse" title="Previous verse (←)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <a class="nav-btn" href="index.html" aria-label="Up to chapter" title="Up to chapter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+      </a>
+      <a class="nav-btn" data-nav="next" href="5.html" aria-label="Next verse" title="Next verse (→)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+    <div class="toggle-dock">
+      <span role="group" aria-label="Display mode for untranslated words" style="display:flex;">
+        <button data-mode="greek">Greek</button>
+        <button data-mode="translit">Translit</button>
+        <button data-mode="gloss" class="active">Gloss</button>
+      </span>
+      <span class="toggle-divider"></span>
+      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+          <circle cx="12" cy="12" r="4"/>
+          <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+          <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+          <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+          <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+        </svg>
+        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+</div>
+
+<script>
+  (function () {
+    // Left/Right arrow keys mirror the nav-dock's prev/next buttons
+    // (data-nav="prev"/"next" -- absent entirely when the button is
+    // disabled, e.g. no prev at the first drafted verse of the first
+    // drafted chapter, so the querySelector below just finds nothing and
+    // silently no-ops). Identical to chapter.html.jinja's copy of this
+    // handler, where the same two keys step chapter to chapter.
+    //
+    // THE UP BUTTON IS DELIBERATELY NOT BOUND TO A KEY. It was bound to
+    // ArrowUp briefly, and that cost the reader vertical scrolling -- the
+    // thing an arrow key is most expected to do on a page of text. The
+    // horizontal arrows are free because the page never scrolls sideways;
+    // the vertical ones are not, and stay with the browser.
+    //
+    // Skipped with any modifier held (so Cmd/Alt+Arrow browser-history
+    // shortcuts and shift-selection still work normally) and skipped
+    // whenever focus is on a form control -- most importantly the
+    // Book/Chapter/Verse <select>s just above, where arrow keys are how
+    // you move between options and must not also navigate the page.
+    var NAV_KEYS = { ArrowLeft: 'prev', ArrowRight: 'next' };
+    document.addEventListener('keydown', function (e) {
+      var which = NAV_KEYS[e.key];
+      if (!which) { return; }
+      if (e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) { return; }
+      var active = document.activeElement;
+      if (active) {
+        var tag = active.tagName;
+        if (tag === 'SELECT' || tag === 'INPUT' || tag === 'TEXTAREA' || active.isContentEditable) {
+          return;
+        }
+      }
+      var link = document.querySelector('[data-nav="' + which + '"]');
+      if (link) {
+        e.preventDefault();
+        window.location.href = link.getAttribute('href');
+      }
+    });
+  })();
+
+  (function () {
+    // A native <select>'s closed-state box sizes to its widest OPTION, not
+    // its current value -- e.g. the book select would stay as wide as
+    // "2 Thessalonians" even while showing "Matthew". Measured against a
+    // hidden span mirroring the select's own computed font, so the box
+    // instead tracks whichever option is actually selected right now.
+    var measurer = document.createElement('span');
+    measurer.style.position = 'absolute';
+    measurer.style.visibility = 'hidden';
+    measurer.style.whiteSpace = 'pre';
+    document.body.appendChild(measurer);
+
+    function resizeApparatusSelect(select) {
+      var cs = getComputedStyle(select);
+      measurer.style.fontFamily = cs.fontFamily;
+      measurer.style.fontSize = cs.fontSize;
+      measurer.style.fontWeight = cs.fontWeight;
+      measurer.style.fontStyle = cs.fontStyle;
+      measurer.style.letterSpacing = cs.letterSpacing;
+      measurer.style.textTransform = cs.textTransform;
+      var opt = select.options[select.selectedIndex];
+      measurer.textContent = opt ? opt.textContent : '';
+      var padding = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
+      select.style.width = (measurer.offsetWidth + padding + 2) + 'px';
+    }
+
+    function resizeAllApparatusSelects() {
+      document.querySelectorAll('.apparatus-select').forEach(function (select) {
+        resizeApparatusSelect(select);
+      });
+    }
+
+    // TWO passes, and both are needed. The measurement reads the select's
+    // COMPUTED font, so whatever font is actually in force when it runs is
+    // what the width ends up fitting -- and the stylesheet requests Cardo
+    // from Google Fonts with `display=swap`, which renders the fallback
+    // (Times New Roman) first and swaps the real face in later. A single
+    // pass at parse time therefore sizes every box to fallback metrics on a
+    // cold load and never corrects itself; the boxes end up a few px off
+    // for the rest of the session, and more than a few if a bigger font
+    // change lands on them.
+    //
+    // So: size once immediately, because the alternative -- waiting -- is
+    // worse (until the first pass runs, a <select> is as wide as its widest
+    // option, which is the whole bug this code exists to fix, and the book
+    // select would visibly jump in from "2 Thessalonians" width). Then size
+    // again once the real faces have loaded. `document.fonts` is guarded
+    // because the second pass is a correction, not a requirement.
+    resizeAllApparatusSelects();
+    if (document.fonts && document.fonts.ready) {
+      document.fonts.ready.then(resizeAllApparatusSelects);
+    }
+
+    document.querySelectorAll('.apparatus-select').forEach(function (select) {
+      select.addEventListener('change', function () { resizeApparatusSelect(select); });
+    });
+  })();
+
+  (function () {
+    // Explicit JS-managed box (see .jumped in the stylesheet), not :target --
+    // gives full, predictable control over exactly when it appears and
+    // disappears, independent of any browser-specific :target/focus quirks.
+    // Also self-clears after a hold + fade, rather than sitting there
+    // until the reader clicks something else -- see the two timers below.
+    var FADE_DELAY_MS = 1500;
+    var FADE_DURATION_MS = 500; // must match .jumped's CSS transition time
+    var fadeTimer = null;
+    var removeTimer = null;
+
+    function clearJumped() {
+      if (fadeTimer) { clearTimeout(fadeTimer); fadeTimer = null; }
+      if (removeTimer) { clearTimeout(removeTimer); removeTimer = null; }
+      document.querySelectorAll('.jumped').forEach(function (el) {
+        el.classList.remove('jumped', 'jumped-fade');
+      });
+    }
+    document.querySelectorAll('.flagword, .note-ref, .endnote-num, .endnote-word, .endnote-back').forEach(function (link) {
+      link.addEventListener('click', function () {
+        clearJumped();
+        var href = link.getAttribute('href') || '';
+        if (href.charAt(0) !== '#') { return; }
+        var target = document.getElementById(href.slice(1));
+        if (!target) { return; }
+        target.classList.add('jumped');
+        // Following an #id link makes the browser move keyboard focus onto
+        // the target (per the HTML "scroll to the fragment" steps), which
+        // paints its own separate a:focus-visible outline underneath ours,
+        // identical in appearance -- invisible while .jumped is solid, but
+        // exposed the instant .jumped fades, looking like the box "comes
+        // back." Deferred one tick so it runs after that native focus step
+        // (which happens right after this click handler, not during it).
+        setTimeout(function () {
+          if (document.activeElement === target) { target.blur(); }
+        }, 0);
+        fadeTimer = setTimeout(function () {
+          target.classList.add('jumped-fade');
+          removeTimer = setTimeout(function () {
+            target.classList.remove('jumped', 'jumped-fade');
+          }, FADE_DURATION_MS);
+        }, FADE_DELAY_MS);
+      });
+    });
+    document.addEventListener('click', function (e) {
+      if (e.target.closest('.flagword, .note-ref, .endnote-num, .endnote-word, .endnote-back')) { return; }
+      clearJumped();
+    });
+  })();
+
+  (function () {
+    var STORAGE_KEY = 'cnt-toggle-mode';
+    var buttons = document.querySelectorAll('.toggle-dock button[data-mode]');
+    // Only .flagword (the English translation's inline words) responds to the
+    // toggle -- .greek-word (in the Greek block) always shows Greek, by design;
+    // it's colored only to visually link it to its English counterpart.
+    var words = document.querySelectorAll('.flagword');
+
+    function applyMode(mode) {
+      words.forEach(function (w) {
+        var text = w.getAttribute('data-' + mode);
+        if (text) { w.textContent = text; }
+      });
+      buttons.forEach(function (b) {
+        b.classList.toggle('active', b.getAttribute('data-mode') === mode);
+      });
+      try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) {}
+    }
+
+    buttons.forEach(function (b) {
+      b.addEventListener('click', function () { applyMode(b.getAttribute('data-mode')); });
+    });
+
+    var saved = null;
+    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
+    if (saved) { applyMode(saved); }
+
+    // Light/dark override -- independent of the reading-mode toggle above.
+    var THEME_KEY = 'cnt-theme';
+    var root = document.documentElement;
+    var themeBtn = document.getElementById('theme-toggle');
+
+    function effectiveTheme() {
+      var explicit = root.getAttribute('data-theme');
+      if (explicit === 'light' || explicit === 'dark') { return explicit; }
+      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ? 'dark' : 'light';
+    }
+
+    if (themeBtn) {
+      themeBtn.addEventListener('click', function () {
+        var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
+        root.setAttribute('data-theme', next);
+        try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
+      });
+    }
+
+    var savedTheme = null;
+    try { savedTheme = localStorage.getItem(THEME_KEY); } catch (e) {}
+    if (savedTheme === 'light' || savedTheme === 'dark') { root.setAttribute('data-theme', savedTheme); }
+  })();
+
+  /* Sense tip. One shared element, moved to whichever flagged word is hovered.
+     It is created here rather than emitted per word so the reading-mode toggle,
+     which rewrites flagged words via textContent, cannot destroy it. */
+  (function () {
+    var words = document.querySelectorAll('[data-senses]');
+    if (!words.length) { return; }
+
+    var tip = document.createElement('div');
+    tip.className = 'sense-tip';
+    tip.hidden = true;
+    tip.innerHTML = '<div class="sense-tip-head">'
+      + '<span class="sense-tip-lemma"></span></div>'
+      + '<div class="sense-tip-senses"></div>'
+      + '<div class="sense-tip-credit">Berean &middot; KJV</div>';
+    document.body.appendChild(tip);
+
+    var lemmaEl = tip.querySelector('.sense-tip-lemma');
+    var sensesEl = tip.querySelector('.sense-tip-senses');
+    var active = null;
+
+    function hide() {
+      active = null;
+      tip.classList.remove('is-visible');
+      tip.hidden = true;
+    }
+
+    function show(word) {
+      var senses = word.getAttribute('data-senses');
+      if (!senses) { return; }
+      active = word;
+      lemmaEl.textContent = word.getAttribute('data-greek') || '';
+      sensesEl.textContent = senses;
+
+      tip.hidden = false;
+      /* Measure before placing: the width is content-dependent, and the tip has
+         to know its own size to stay inside the window. */
+      var box = word.getBoundingClientRect();
+      var size = tip.getBoundingClientRect();
+      var margin = 8;
+
+      var left = window.scrollX + box.left + (box.width - size.width) / 2;
+      var maxLeft = window.scrollX + document.documentElement.clientWidth - size.width - margin;
+      left = Math.max(window.scrollX + margin, Math.min(left, maxLeft));
+
+      /* Above the word by default, so it never covers the line being read;
+         below only when there is no room above. */
+      var top = window.scrollY + box.top - size.height - margin;
+      if (box.top - size.height - margin < 0) {
+        top = window.scrollY + box.bottom + margin;
+      }
+
+      tip.style.left = left + 'px';
+      tip.style.top = top + 'px';
+      tip.classList.add('is-visible');
+    }
+
+    for (var i = 0; i < words.length; i++) {
+      words[i].addEventListener('mouseenter', function (e) { show(e.currentTarget); });
+      words[i].addEventListener('mouseleave', hide);
+      /* Keyboard reaches these: they are already links to their endnote. */
+      words[i].addEventListener('focus', function (e) { show(e.currentTarget); });
+      words[i].addEventListener('blur', hide);
+    }
+
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && active) { hide(); }
+    });
+    /* A tip positioned in page coordinates would drift away from its word on
+       scroll, so it is dismissed instead of chased. */
+    window.addEventListener('scroll', function () { if (active) { hide(); } }, true);
+  })();
+
+</script>
