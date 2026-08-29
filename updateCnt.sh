@@ -16,9 +16,15 @@ cd "$(dirname "$0")"
 
 REMOTE="mypi:Code/greek-nt-data/website/webapp/output/"
 
+# macOS /usr/bin/rsync is openrsync (protocol 29). It deadlocks against
+# the Pi's rsync 3.x (protocol 32) on large trees and silently ignores
+# --exclude, so prefer the Homebrew GNU rsync when it is installed.
+RSYNC=/opt/homebrew/bin/rsync
+[ -x "$RSYNC" ] || RSYNC=rsync
+
 echo "Pulling ${REMOTE} -> static/cnt/"
 mkdir -p static/cnt
-rsync -a --delete --exclude='.DS_Store' "$REMOTE" static/cnt/
+"$RSYNC" -a --delete --exclude='.DS_Store' "$REMOTE" static/cnt/
 
 # openrsync (macOS /usr/bin/rsync) does not reliably honour --exclude,
 # so drop any .DS_Store that came across regardless.
