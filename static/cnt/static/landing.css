@@ -1,0 +1,185 @@
+/* CNT -- the landing page only. Requires cnt.css.
+ *
+ * The book grid, the legend, the palette and the masthead all come from
+ * cnt.css; what is left here is the editorial furniture no other page has.
+ */
+
+/* The top margin separates two REGISTERS -- the uppercase masthead chrome above
+   from the editorial content below -- so it has to be larger than the gaps
+   inside the content block (title to standfirst, standfirst to quick start),
+   not smaller. It was 0.6rem, which made it the tightest space in the header
+   and read as though the title belonged to the masthead. */
+h1 {
+  font-size: 2rem;
+  font-weight: 400;
+  margin: 1.9rem 0 0;
+  letter-spacing: 0.01em;
+}
+
+.standfirst {
+  font-size: var(--reading-size);
+  line-height: 1.7;
+  color: var(--ink-soft);
+  margin: 0.9rem 0 0;
+}
+
+.lede {
+  border-bottom: 1px solid var(--rule);
+  padding-bottom: 2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* The only continuous prose on the page, so it gets reading size and full ink
+   and no ornament at all. It replaced a .stub rule that was tinted, italic and
+   left-ruled on purpose, so that placeholder copy would read as unfinished on
+   the page rather than only in the source. Real copy must not inherit that
+   look, so the class changed name along with the styling. */
+.intro {
+  font-size: var(--reading-size);
+  line-height: 1.7;
+  margin: 0 0 2.5rem;
+}
+.intro p { margin: 0 0 0.9rem; }
+.intro p:last-child { margin-bottom: 0; }
+
+/* The top margin is what separates one section from the block above it, and it
+   lives HERE rather than on each preceding block so a new section added later
+   is spaced correctly without touching anything else.
+
+   It matters most after the legend: cnt.css gives .legend `margin: 0.6rem 0 0`,
+   correct on a reading page where it sits directly above the header's rule, but
+   leaving nothing beneath it here. Overriding the shared .legend for this one
+   page would fix the pairing and not the pattern.
+
+   Adjacent-sibling margins collapse, so a preceding block with its own 2.5rem
+   bottom margin (the stub, the book grid) yields one 2.5rem gap, not two. */
+.section-label {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  color: var(--ink-soft);
+  margin: 2.5rem 0 1rem;
+}
+
+/* Inside .lede, whose padding-bottom already sets the gap to the rule below
+   the pills -- a margin here would double it. */
+.landing-books { margin-bottom: 0; }
+
+.colophon {
+  border-top: 1px solid var(--rule);
+  padding-top: 1.2rem;
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.72rem;
+  color: var(--ink-soft);
+}
+
+/* ---- the three marks, landing-page size -------------------------------- */
+
+/* On a reading page the legend is chrome sitting above the text, and cnt.css
+   keeps it small and one-line, shedding its descriptions below 680px. Here it
+   is teaching content with a column to itself and nothing above it, so it gets
+   real reading size and is allowed to wrap. Wrapping is what frees it from the
+   one-line width budget that kept it at 0.66rem.
+   The swatches switch to `em` so they grow with the text instead of staying
+   tiny beside it. */
+.legend-lg {
+  font-size: 0.85rem;
+  gap: 0.5rem 1.5rem;
+}
+.legend-lg i {
+  width: 0.6em;
+  height: 0.6em;
+}
+/* Defeat cnt.css's narrow-screen rule: on this page the descriptions ARE the
+   content, so they stay at every width and the legend wraps instead. */
+@media (max-width: 680px) {
+  .legend-lg .legend-desc { display: inline; }
+}
+
+/* ---- quick start ------------------------------------------------------- */
+
+/* Marked off by a rule in the CRUX gold -- the colour the legend assigns that
+   category and the colour those words are printed in on a verse page. The mark
+   therefore says what the block is showing rather than merely fencing it, and
+   it teaches the colour before the reader reaches the legend.
+
+   An edge, not a shape. The page is otherwise white space and a single
+   horizontal rule, so a panel would have been the loudest object on it; this
+   adds no new shape at all. It echoes the placeholder stub's left rule one
+   register brighter, which is why the two read as related without being
+   confusable. Other treatments were built and are catalogued in ../PLAN.md
+   under "Region treatments". */
+.quickstart {
+  margin: 1.5rem 0 0;
+  border-left: 3px solid var(--gold);
+  padding: 0.15rem 0 0.2rem 1rem;
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  color: var(--ink-soft);
+}
+.quickstart-lead {
+  display: block;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 0.72rem;
+  font-weight: 600;
+  margin-bottom: 0.35rem;
+}
+
+/* ALL ITEMS OCCUPY ONE GRID CELL. This is what stops the page twitching every
+   few seconds: the verses differ in length, so a plain show/hide would resize
+   the block on every rotation. Stacked in a single cell the container sizes
+   itself to the tallest one and never moves again -- no JS measurement, no
+   hard-coded height that would go stale when the verse list changes. */
+.carousel {
+  display: grid;
+  min-height: 1.5em;
+}
+.carousel-item {
+  grid-area: 1 / 1;
+  align-self: start;
+  text-decoration: none;
+  color: var(--ink-soft);
+  opacity: 0;
+  transition: opacity 0.45s ease;
+  /* The hidden items sit directly on top of the visible one, so without this
+     they would swallow its clicks and its hover. */
+  pointer-events: none;
+}
+.carousel-item.is-active {
+  opacity: 1;
+  pointer-events: auto;
+}
+.carousel-item:hover .carousel-text { color: var(--ink); }
+.carousel-ref {
+  font-weight: 600;
+  color: var(--focus);
+  margin-right: 0.4rem;
+  white-space: nowrap;
+}
+.carousel-text { font-family: 'Cardo', Georgia, serif; font-size: 1.02rem; }
+
+/* The dots do two jobs beyond decoration: they show that there are five of
+   these rather than one that keeps changing, and they hand the reader a
+   control, so the line is not purely on a timer. */
+.carousel-dots { display: flex; gap: 0.3rem; margin-top: 0.45rem; }
+.carousel-dots button {
+  appearance: none;
+  border: none;
+  padding: 0;
+  width: 0.42rem;
+  height: 0.42rem;
+  border-radius: 999px;
+  background: var(--rule);
+  cursor: pointer;
+}
+.carousel-dots button.is-active { background: var(--focus); }
+
+/* Motion is the whole mechanism here, so reduced-motion does not merely soften
+   it -- rotation stops entirely and the first verse simply stays put. */
+@media (prefers-reduced-motion: reduce) {
+  .carousel-item { transition: none; }
+}

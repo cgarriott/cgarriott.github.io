@@ -1,32 +1,203 @@
-<!doctype html>
-<html lang="en">
-<head>
+<meta name="robots" content="noindex, nofollow">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<meta name="robots" content="noindex, nofollow">
-<title>/cnt/</title>
-<style>
-  :root { --fg: #1a1a1a; --bg: #fff; --dim: #666; --line: #e8e8e8; --link: #0645ad; }
-  @media (prefers-color-scheme: dark) {
-    :root { --fg: #e8e8e8; --bg: #1c1c1c; --dim: #999; --line: #333; --link: #7aa6e0; }
-  }
-  body { font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
-          max-width: 46rem; margin: 3rem auto; padding: 0 1.5rem; line-height: 1.6;
-          color: var(--fg); background: var(--bg); }
-  h1 { font-size: 1.15rem; font-weight: 600; margin: 0 0 .2rem; }
-  .crumb { color: var(--dim); font-size: .85rem; margin-bottom: 1.5rem; }
-  ul { list-style: none; padding: 0; margin: 0; }
-  li { padding: .3rem 0; border-bottom: 1px solid var(--line); }
-  a { color: var(--link); text-decoration: none; }
-  a:hover { text-decoration: underline; }
-  small { color: var(--dim); }
-</style>
-</head>
-<body>
-<h1>/cnt/</h1>
-<div class="crumb"><a href="./">cnt</a></div>
-<ul>
-<li><a href="Matthew/">Matthew/</a></li>
-</ul>
-</body>
-</html>
+<!--
+The site's root landing page -- what the masthead "CNT — Corey's Non-Translation"
+links to from every verse and chapter page.
+
+The title, standfirst and .intro prose are settled copy. What is still lorem is
+the .colophon line. The three-marks legend below the intro is still the compact
+one-line legend the reading pages use, and the intro's last sentence hands off
+to it, so it is the next thing to write out properly (see ../PLAN.md's open
+question on landing-page copy).
+
+Rendered by ../render.py, which supplies:
+  root    -- relative prefix to webapp/output/, "" here since this page IS the
+             root; the reading pages pass "../../". Every asset and book link
+             is written against it.
+  books   -- all 27, canonical order, each {name, enabled, href}. `enabled`
+             marks a book whose chapter 1 has a drafted verse; the rest render
+             as inert dashed pills, the same full-canonical-scope policy the
+             apparatus dropdowns follow (see render.py's buildIndexContext)
+
+Styles and behaviour are SHARED, not inline: static/cnt.css and static/cnt.js
+carry the palette, the masthead, the theme toggle, the site map and the book
+pills, so this page and the reading pages cannot drift apart. Only the editorial
+furniture unique to a landing page lives in static/landing.css.
+
+Do not hand-edit generated output HTML -- edit this template and regenerate.
+-->
+<title>CNT — Corey's Non-Translation</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="static/cnt.css">
+<link rel="stylesheet" href="static/landing.css">
+<!-- Runs before first paint, so a reader who chose light does not see a dark
+     flash first. It has to be inline for that reason -- an external file is
+     fetched too late. Everything else lives in static/cnt.js. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('cnt-theme');
+      if (t === 'light' || t === 'dark') { document.documentElement.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
+
+<div class="page">
+  <header class="lede">
+    <div class="masthead">
+      <span><strong>CNT</strong> — Corey's Non-Translation</span>
+      <span class="masthead-tools">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+            <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+          </svg>
+        </button>
+        <button id="sitemap-toggle" aria-label="Open site map" title="Site map" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </span>
+    </div>
+    <h1>Contested words stay in Greek.</h1>
+    <p class="standfirst">Corey's Non-Translation is a literal translation of the New
+      Testament in which words whose rendering is disputed are left untranslated.</p>
+    <p class="quickstart">
+      <span class="quickstart-lead">Quick start &mdash; famous crux verses:</span>
+      <span class="carousel" id="quickstart">
+        <a class="carousel-item is-active" href="Matthew/1/23.html">
+          <span class="carousel-ref">Matthew 1:23</span>
+          <span class="carousel-text">&ldquo;Behold, the parthenos will be pregnant and will bear a son,…&rdquo;</span>
+        </a>
+        <a class="carousel-item" href="Matthew/2/6.html">
+          <span class="carousel-ref">Matthew 2:6</span>
+          <span class="carousel-text">&ldquo;And you, Bethlehem, land of Judah, are by no means least…&rdquo;</span>
+        </a>
+        <a class="carousel-item" href="Matthew/1/11.html">
+          <span class="carousel-ref">Matthew 1:11</span>
+          <span class="carousel-text">&ldquo;Josiah fathered Iechonias and his adelphoi at the time of the…&rdquo;</span>
+        </a>
+        <a class="carousel-item" href="Matthew/1/22.html">
+          <span class="carousel-ref">Matthew 1:22</span>
+          <span class="carousel-text">&ldquo;Now this holon has come to pass, so that what was spoken by…&rdquo;</span>
+        </a>
+        <a class="carousel-item" href="Matthew/2/4.html">
+          <span class="carousel-ref">Matthew 2:4</span>
+          <span class="carousel-text">&ldquo;And, synagance all the chief priests and scribes of the…&rdquo;</span>
+        </a>
+      </span>
+    </p>
+
+    <p class="section-label">Books</p>
+    <ul class="booklist landing-books">
+      <li><a href="Matthew/1/index.html">Matthew</a></li>
+      <li><span title="Not yet drafted">Mark</span></li>
+      <li><span title="Not yet drafted">Luke</span></li>
+      <li><span title="Not yet drafted">John</span></li>
+      <li><span title="Not yet drafted">Acts</span></li>
+      <li><span title="Not yet drafted">Romans</span></li>
+      <li><span title="Not yet drafted">1 Corinthians</span></li>
+      <li><span title="Not yet drafted">2 Corinthians</span></li>
+      <li><span title="Not yet drafted">Galatians</span></li>
+      <li><span title="Not yet drafted">Ephesians</span></li>
+      <li><span title="Not yet drafted">Philippians</span></li>
+      <li><span title="Not yet drafted">Colossians</span></li>
+      <li><span title="Not yet drafted">1 Thessalonians</span></li>
+      <li><span title="Not yet drafted">2 Thessalonians</span></li>
+      <li><span title="Not yet drafted">1 Timothy</span></li>
+      <li><span title="Not yet drafted">2 Timothy</span></li>
+      <li><span title="Not yet drafted">Titus</span></li>
+      <li><span title="Not yet drafted">Philemon</span></li>
+      <li><span title="Not yet drafted">Hebrews</span></li>
+      <li><span title="Not yet drafted">James</span></li>
+      <li><span title="Not yet drafted">1 Peter</span></li>
+      <li><span title="Not yet drafted">2 Peter</span></li>
+      <li><span title="Not yet drafted">1 John</span></li>
+      <li><span title="Not yet drafted">2 John</span></li>
+      <li><span title="Not yet drafted">3 John</span></li>
+      <li><span title="Not yet drafted">Jude</span></li>
+      <li><span title="Not yet drafted">Revelation</span></li>
+    </ul>
+  </header>
+
+  <div class="intro">
+    <p>In this translation about seven percent of the words are left untranslated. The
+      untranslated words are those that have aroused dispute among past interpreters.
+      The point of leaving them untranslated is to make the reader sensitive to the
+      passages where interpreters have felt they must appeal to grammar, history, or
+      philosophy. Many theologies depend in part on how a
+      particular word has been rendered, and this translation shows which words those
+      are. The untranslated words are marked by type, and each can be read in Greek, in
+      transliteration, and in gloss.</p>
+    <p>Every untranslated word carries an endnote with references to the secondary
+      literature. The selection of the untranslated words and the drafting of the
+      endnotes were both done with artificial intelligence. A language model read
+      commentaries and academic articles to locate disputes over meaning. It sorted
+      them into three types.</p>
+  </div>
+
+  <p class="section-label">The three marks</p>
+  <div class="legend legend-lg">
+    <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
+    <span class="crux"><i></i><span class="legend-label"><b>Crux</b><span class="legend-desc">: untranslated here</span></span></span>
+    <span class="variant"><i></i><span class="legend-label"><b>Variant</b><span class="legend-desc">: editions disagree</span></span></span>
+  </div>
+
+  <div class="colophon">Lorem ipsum dolor sit amet.</div>
+</div>
+
+<dialog class="sitemap" id="sitemap" aria-label="Site map">
+  <div class="sitemap-head">
+    <span class="sitemap-title">Site map</span>
+    <button class="sitemap-close masthead-tools" aria-label="Close">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.1rem;height:1.1rem;">
+        <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+      </svg>
+    </button>
+  </div>
+  <div class="sitemap-body">
+    <h3>Books</h3>
+    <ul class="booklist">
+      <li><a href="Matthew/1/index.html">Matthew</a></li>
+      <li><span title="Not yet drafted">Mark</span></li>
+      <li><span title="Not yet drafted">Luke</span></li>
+      <li><span title="Not yet drafted">John</span></li>
+      <li><span title="Not yet drafted">Acts</span></li>
+      <li><span title="Not yet drafted">Romans</span></li>
+      <li><span title="Not yet drafted">1 Corinthians</span></li>
+      <li><span title="Not yet drafted">2 Corinthians</span></li>
+      <li><span title="Not yet drafted">Galatians</span></li>
+      <li><span title="Not yet drafted">Ephesians</span></li>
+      <li><span title="Not yet drafted">Philippians</span></li>
+      <li><span title="Not yet drafted">Colossians</span></li>
+      <li><span title="Not yet drafted">1 Thessalonians</span></li>
+      <li><span title="Not yet drafted">2 Thessalonians</span></li>
+      <li><span title="Not yet drafted">1 Timothy</span></li>
+      <li><span title="Not yet drafted">2 Timothy</span></li>
+      <li><span title="Not yet drafted">Titus</span></li>
+      <li><span title="Not yet drafted">Philemon</span></li>
+      <li><span title="Not yet drafted">Hebrews</span></li>
+      <li><span title="Not yet drafted">James</span></li>
+      <li><span title="Not yet drafted">1 Peter</span></li>
+      <li><span title="Not yet drafted">2 Peter</span></li>
+      <li><span title="Not yet drafted">1 John</span></li>
+      <li><span title="Not yet drafted">2 John</span></li>
+      <li><span title="Not yet drafted">3 John</span></li>
+      <li><span title="Not yet drafted">Jude</span></li>
+      <li><span title="Not yet drafted">Revelation</span></li>
+    </ul>
+  </div>
+</dialog>
+
+<script src="static/cnt.js"></script>
+<script src="static/landing.js"></script>

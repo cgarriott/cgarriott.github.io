@@ -19,9 +19,13 @@ supplies:
                  render.py) -- no source text carries this data.
   endnotes    -- ALL verses' endnotes flattened into one continuously-
                  numbered list (per PLAN.md's Endnotes section)
-  apparatus   -- {books, chapters}: the masthead's Book/Chapter dropdowns
-                 (no verse dropdown at this level) -- see
-                 render.py's build_apparatus
+  apparatus   -- {books, chapters, verses, verse_range}: the masthead's
+                 Book/Chapter/Verse dropdowns. The verse select is headed by
+                 `verse_range` ("1-25", the whole chapter), which here is the
+                 CURRENT entry -- a chapter page has no verse to be at, so the
+                 select opens on the range instead of on a value. From a verse
+                 page the same option is the way back out to the chapter.
+                 See render.py's build_apparatus
   nav         -- {prev, next, up}: the dock's chapter-to-chapter arrows.
                  `up` is always None here (there is no book-level page),
                  so this dock is two buttons where the verse page's is
@@ -34,672 +38,44 @@ render.py's query logic) and regenerate instead.
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
-
-<style>
-  /* ONE KNOB SCALES THE WHOLE PAGE. Every dimension in this stylesheet --
-     column width, type scale, gutters, the dock -- is in rem or em, and the
-     only px left are hairline borders, a shadow, and the 640px viewport
-     query. So the root font-size is the single control for how large the
-     design renders, and changing it moves text and column TOGETHER, leaving
-     the line's character count exactly where it was.
-
-     That distinction is the whole point. The column was 41rem at a 16px
-     root = 656px, holding ~72-76 characters at 1.15rem body text -- already
-     the top of the classic 45-75 range. Widening the column alone would
-     have stretched the line past comfortable; on a wide display the fix for
-     "the margins are bigger than the text" is a bigger design, not a longer
-     line.
-
-     A PERCENTAGE, not 19px, so a reader who has raised their browser's
-     default font size still gets it scaled up from there.
-
-     Retuning: raise or lower this one number. 112.5% (18px) is noticeably
-     more restrained, 125% (20px) fills a 27" display and is too large on a
-     13" laptop. */
-  html { font-size: 125%; }
-
-  /* Phones have no spare margin to reclaim -- the column is already the
-     full width of the screen there -- so the scale-up applies to roomy
-     viewports only, and mobile keeps the browser's own 16px root. */
-  @media (max-width: 640px) {
-    html { font-size: 100%; }
-  }
-
-  :root {
-    --ink: #1c1b18;
-    --ink-soft: #4a463d;
-    --paper: #e7e2d3;
-    --paper-raised: #efeadb;
-    --rule: #b7ad98;
-    /* Light-mode accents pushed further apart in hue/saturation than a
-       literal lightening of the dark-mode values would give -- at the
-       dark-mode lightness level, red and gold read as near-identical
-       muted browns against the pale paper background, and the blue
-       doesn't read as blue at all. Dark mode (below) is untouched. */
-    --rubric: #a3241b;
-    --rubric-soft: #f8ddd7;
-    --gold: #9c6b00;
-    --gold-soft: #f6e7c6;
-    --slate: #1f5c86;
-    --slate-soft: #d7e8f3;
-    --focus: #1c6b9e;
-
-    /* THE READING TYPE, defined once. Every line of running text on either
-       page -- the chapter page's paragraphs, the verse page's English, and
-       the verse page's Greek above it -- resolves its size and leading from
-       these two, so the three cannot drift apart the way .translation's own
-       size once did between the two templates. Scale the PAGE with the root
-       font-size at the top of this file, not with these. */
-    --reading-size: 1.2rem;
-    --reading-leading: 1.8;
-  }
-
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) {
-      --ink: #e9e3d2;
-      --ink-soft: #b9b19c;
-      --paper: #17140f;
-      --paper-raised: #1e1a13;
-      --rule: #4a4437;
-      --rubric: #d9756d;
-      --rubric-soft: #3a2320;
-      --gold: #d9ac52;
-      --gold-soft: #362c17;
-      --slate: #8fb2d1;
-      --slate-soft: #1c2b38;
-      --focus: #8fb2d1;
-    }
-  }
-
-  :root[data-theme="dark"] {
-    --ink: #e9e3d2;
-    --ink-soft: #b9b19c;
-    --paper: #17140f;
-    --paper-raised: #1e1a13;
-    --rule: #4a4437;
-    --rubric: #d9756d;
-    --rubric-soft: #3a2320;
-    --gold: #d9ac52;
-    --gold-soft: #362c17;
-    --slate: #8fb2d1;
-    --slate-soft: #1c2b38;
-    --focus: #8fb2d1;
-  }
-
-  * { box-sizing: border-box; }
-
-  body {
-    background: var(--paper);
-    color: var(--ink);
-    font-family: 'Cardo', 'Times New Roman', serif;
-    margin: 0;
-    padding: 4.5rem 1.5rem 3rem;
-    line-height: 1.6;
-  }
-
-  /* Same mobile-gutter collapse as verse.html.jinja -- see that
-     template's own comment for the reasoning. */
-  @media (max-width: 640px) {
-    body { padding: 1.75rem 0.9rem 2rem; }
-  }
-
-  .page {
-    max-width: 41rem;
-    margin: 0 auto;
-    position: relative;
-  }
-
-  .header {
-    border-bottom: 1px solid var(--rule);
-    padding-bottom: 0.85rem;
-    margin-bottom: 3rem;
-  }
-
-  .masthead {
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    text-transform: uppercase;
-    letter-spacing: 0.14em;
-    font-size: 0.72rem;
-    color: var(--ink-soft);
-    display: flex;
-    justify-content: space-between;
-    align-items: baseline;
-  }
-  .masthead strong {
-    color: var(--ink);
-    font-weight: 600;
-    letter-spacing: 0.1em;
-  }
-
-  /* Book/Chapter navigation, presented as a PILL matching the two docks at
-     the foot of the page -- same background, border, radius and shadow, and
-     the same Source Sans 3 they use. The page's rule is that pill-shaped
-     means clickable, and this control was the one interactive thing that did
-     not look interactive: it was styled as plain running text, which read as
-     a citation rather than as something to operate.
-
-     IT IS CHROME, NOT TEXT, and the type says so. An earlier pass kept the
-     reading face here on the argument that the control names the passage;
-     seen against the finished pill that reading was wrong -- at reading size
-     the control competed with the verse directly beneath it. The UI face,
-     smaller and in --ink-soft, settles it back into the furniture. That also
-     retires a small collision: the apparatus used to be --slate, which is
-     the colour .variant flagged words carry a few lines below.
-
-     THE DIVIDERS DO THE WORK A CARET USED TO. Each level had its own hand-
-     drawn caret; three of them crowded a small pill, and the pill shape had
-     by then taken over the job of saying "clickable". What a caret was still
-     needed for was showing that this is THREE controls and not one label --
-     so a hairline rule between segments says it instead, the same mark
-     .toggle-divider already makes between the mode buttons and the theme
-     button. Chapter and Verse need no rule between them; .apparatus-colon
-     already separates those.
-
-     Underneath it is still a native <select> per level, chrome stripped
-     (appearance:none, no border/background) -- real selects, so keyboard
-     support, screen readers and the native OS picker all come free. A
-     <select>'s closed box sizes to its widest OPTION rather than its current
-     value (the book select would sit at "2 Thessalonians" width forever),
-     which resizeApparatusSelect at the foot of this page corrects by
-     measuring the selected option and setting the width explicitly -- twice,
-     see its own comment.
-
-     Both templates carry this block identically, per the shared-style rule
-     above; change one, change the other. */
-  .apparatus {
-    display: inline-flex;
-    align-items: center;
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    font-size: 0.8rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    text-transform: none;
-    color: var(--ink-soft);
-    background: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-radius: 999px;
-    padding: 0.3rem 0.5rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-  }
-  .apparatus-colon { opacity: 0.5; margin: 0 0.05rem 0 -0.05rem; }
-  .apparatus-select-wrap { display: inline-flex; align-items: center; }
-  /* Segment rule between Book and Chapter -- the only two selects directly
-     adjacent with nothing between them. Chapter/Verse are already separated
-     by .apparatus-colon, so this deliberately doesn't apply there. */
-  .apparatus-select-wrap + .apparatus-select-wrap {
-    margin-left: 0;
-    border-left: 1px solid var(--rule);
-  }
-  .apparatus-select {
-    appearance: none;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    border: none;
-    background: transparent;
-    font: inherit;
-    letter-spacing: inherit;
-    text-transform: inherit;
-    color: inherit;
-    cursor: pointer;
-    /* Even padding: each level is its own hit area inside the pill, and
-       nothing has to be left clear for a caret any more. */
-    padding: 0.3rem 0.8rem;
-    margin: 0;
-    border-radius: 999px;
-  }
-  .apparatus-select:hover { color: var(--ink); background: var(--paper); }
-  .apparatus-select:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
-  .apparatus-select option:disabled { color: var(--rule); }
-
-  .ref { margin: 0 0 1.6rem; }
-
-  /* SHARED READING STYLE. The chapter page and the verse page must render
-     identical type -- same size, same leading, same measure -- so moving
-     between them reads as one document at two zoom levels rather than two
-     designs. This block and .ref/.endnote-num below are byte-identical in
-     both templates; change one, change the other.
-
-     margin-bottom is what separates consecutive paragraphs on the chapter
-     page. The verse page has exactly one .translation, which is therefore
-     also :last-of-type, so the reset below zeroes it there and the shared
-     rule costs that page nothing. */
-  .translation {
-    font-size: var(--reading-size);
-    line-height: var(--reading-leading);
-    margin: 0 0 1.5rem;
-    text-wrap: pretty;
-  }
-  .translation:last-of-type { margin-bottom: 0; }
-
-  .vnum {
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    font-size: 0.66rem;
-    font-weight: 700;
-    vertical-align: super;
-    color: var(--slate);
-    margin-right: 0.2em;
-    scroll-margin-top: 5rem;
-  }
-
-  /* Hovering a verse's plain text (not one of its flagged/untranslated
-     words, which already have their own hover treatment and their own
-     click target -- the endnote, not this verse's page) shows a light
-     underline and makes the whole verse clickable through to its own
-     single-verse page. :has() suppresses the effect while the cursor is
-     actually over a .flagword/.note-ref child. */
-  .vspan:hover:not(:has(.flagword:hover, .note-ref:hover)) {
-    cursor: pointer;
-    text-decoration: underline;
-    text-decoration-color: var(--rule);
-    text-decoration-thickness: 1px;
-    text-underline-offset: 4px;
-  }
-
-  .flagword {
-    cursor: pointer;
-    text-decoration: none;
-    border-bottom: 1.5px solid currentColor;
-    padding-bottom: 0.03em;
-    transition: background-color 0.15s ease;
-    border-radius: 2px;
-    scroll-margin-top: 2rem;
-  }
-  .flagword, .flagword:visited { color: inherit; }
-  .flagword.always { color: var(--rubric); }
-  .flagword.crux    { color: var(--gold); }
-  .flagword.variant { color: var(--slate); }
-  .flagword.always:hover { background: var(--rubric-soft); }
-  .flagword.crux:hover    { background: var(--gold-soft); }
-  .flagword.variant:hover { background: var(--slate-soft); }
-
-  .greek-word {
-    cursor: pointer;
-    text-decoration: none;
-    border-bottom: 1.5px solid currentColor;
-    padding-bottom: 0.03em;
-    border-radius: 2px;
-  }
-  .greek-word, .greek-word:visited { color: inherit; }
-  .greek-word.always { color: var(--rubric); }
-  .greek-word.crux    { color: var(--gold); }
-  .greek-word.variant { color: var(--slate); }
-  .greek-word.always:hover { background: var(--rubric-soft); }
-  .greek-word.crux:hover    { background: var(--gold-soft); }
-  .greek-word.variant:hover { background: var(--slate-soft); }
-
-  .note-ref {
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    font-size: 0.62rem;
-    vertical-align: super;
-    text-decoration: none;
-    color: var(--ink-soft);
-    margin-left: 0.06em;
-    font-weight: 600;
-  }
-  .note-ref:hover { color: var(--focus); }
-
-  .endnotes {
-    margin-top: 2.4rem;
-    padding-top: 1.4rem;
-    border-top: 1px dotted var(--rule);
-  }
-  .endnotes-label {
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    font-size: 0.68rem;
-    font-weight: 600;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    margin: 0 0 0.9rem;
-  }
-  .endnote {
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    font-size: 0.88rem;
-    line-height: 1.55;
-    color: var(--ink-soft);
-    display: flex;
-    gap: 0.6rem;
-    padding: 0.55rem 0;
-    scroll-margin-top: 5rem;
-  }
-  .endnote:not(:last-child) { border-bottom: 1px solid color-mix(in srgb, var(--rule) 55%, transparent); }
-  .endnote-num {
-    flex: 0 0 auto;
-    font-weight: 600;
-    color: var(--ink);
-    min-width: 1.6rem;
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .endnote-num, .endnote-num:visited { color: var(--ink); }
-  .endnote-num:hover { color: var(--focus); text-decoration: underline; }
-  .endnote-body { flex: 1 1 auto; }
-  .endnote-word {
-    display: inline-block;
-    font-family: 'Cardo', serif;
-    font-style: italic;
-    color: var(--ink);
-    margin-right: 0.15em;
-    scroll-margin-top: 5rem;
-    text-decoration: none;
-    cursor: pointer;
-    border-radius: 2px;
-  }
-  .endnote-word, .endnote-word:visited { color: var(--ink); }
-  .endnote-word:hover { text-decoration: underline; }
-  .endnote-word.always { color: var(--rubric); }
-  .endnote-word.crux    { color: var(--gold); }
-  .endnote-word.variant { color: var(--slate); }
-
-  /* Return-to-text link after an endnote's own prose -- see verse.html.jinja's
-     identical rule for the reasoning. */
-  .endnote-back {
-    display: inline-block;
-    margin-left: 0.3em;
-    color: var(--ink-soft);
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .endnote-back:hover { color: var(--focus); text-decoration: underline; }
-
-  /* The same "jumped-to" box in both directions: clicking a flagged word
-     (or its note-ref number) lands on the endnote's lead word; clicking
-     the endnote number lands on the flagged word. Driven by an explicit
-     JS-managed class (below), not :target -- history.replaceState does
-     not reliably re-trigger :target matching, and the box needs to
-     disappear on any click elsewhere, not just on the next #-link click. */
-  .jumped {
-    outline: 2px solid var(--focus);
-    outline-offset: 3px;
-    border-radius: 3px;
-    transition: outline-color 0.5s ease;
-  }
-  /* Added by JS ~1.5s after .jumped lands -- see verse.html.jinja's
-     identical rule for the reasoning. */
-  .jumped.jumped-fade { outline-color: transparent; }
-
-  /* The sense tip: the three commonest English renderings of a flagged word's
-     lemma, pooled from the Berean interlinear and the KJV's own concordance
-     counts. Shown on hover so a reader who does not know the Greek can still
-     read the page -- deliberately three competing words rather than one
-     definition, since a definition would answer the question the untranslated
-     word exists to keep open.
-
-     It is a SINGLE element parked on <body> and moved, not a child of the word.
-     Two reasons, both load-bearing: the reading-mode toggle rewrites flagged
-     words with `textContent`, which would delete any child node; and a tip
-     nested inside the paragraph cannot escape an ancestor's overflow or reach
-     past the viewport edge. */
-  .sense-tip {
-    position: absolute;
-    z-index: 200;
-    max-width: 22rem;
-    padding: 0.5rem 0.7rem;
-    background: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-radius: 8px;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    pointer-events: none;
-    opacity: 0;
-    transition: opacity 0.12s ease;
-  }
-  .sense-tip[hidden] { display: none; }
-  .sense-tip.is-visible { opacity: 1; }
-  .sense-tip .sense-tip-head {
-    font-size: 0.75rem;
-    color: var(--ink-soft);
-    margin-bottom: 0.15rem;
-  }
-  .sense-tip .sense-tip-lemma {
-    font-family: 'Cardo', Georgia, serif;
-    font-size: 0.95rem;
-    color: var(--ink);
-  }
-  .sense-tip .sense-tip-senses {
-    font-size: 0.95rem;
-    color: var(--ink);
-    line-height: 1.35;
-  }
-  /* Small, muted, and always present: these counts are two translations'
-     choices, not a census, and the tip should not read as an authority. */
-  .sense-tip .sense-tip-credit {
-    font-size: 0.65rem;
-    letter-spacing: 0.04em;
-    text-transform: uppercase;
-    color: var(--ink-soft);
-    opacity: 0.75;
-    margin-top: 0.3rem;
-  }
-  /* The same three words, repeated in the endnote where they need no hover.
-     Touch devices have no hover at all, and a tap gesture here would fight the
-     endnote link the flagged word already carries. */
-  .endnote-senses {
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    font-size: 0.8rem;
-    color: var(--ink-soft);
-    margin-top: 0.2rem;
-  }
-  .endnote-senses b {
-    font-weight: 600;
-    text-transform: uppercase;
-    letter-spacing: 0.04em;
-    font-size: 0.72rem;
-    opacity: 0.8;
-  }
-
-  details.sources {
-    margin-top: 0.4rem;
-  }
-  details.sources summary {
-    cursor: pointer;
-    font-size: 0.9rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    color: var(--focus);
-    list-style: none;
-    display: inline-flex;
-    align-items: center;
-    gap: 0.4rem;
-  }
-  details.sources summary::-webkit-details-marker { display: none; }
-  details.sources summary::before {
-    content: '▸';
-    display: inline-block;
-    transition: transform 0.15s ease;
-    font-size: 1.05em;
-  }
-  details.sources[open] summary::before { transform: rotate(90deg); }
-  details.sources ul {
-    margin: 0.6rem 0 0.2rem;
-    padding-left: 1.1rem;
-    font-size: 0.92rem;
-  }
-  details.sources li { margin-bottom: 0.4rem; }
-
-  /* Lives as the last child inside .page (normal document flow), not a
-     fixed overlay -- so on a short page it just sits in place right after
-     the content, and position:sticky only pins it near the viewport
-     bottom once scrolling would otherwise carry it below that point (a
-     long page). Being an ordinary in-flow child of .page, it already
-     inherits the column's own width/alignment for free -- no separate
-     viewport-spanning wrapper needed the way a `position: fixed` version
-     required. */
-  /* Nav (prev/next) pill and mode/theme pill share one row, pinned to
-     opposite ends of the column -- not stacked -- via space-between on a
-     full-width flex row (the wrap already spans .page's width as a block-
-     level flex container). Matches verse.html.jinja's own dock exactly. */
-  .toggle-dock-wrap {
-    position: sticky;
-    bottom: 1.6rem;
-    display: flex;
-    flex-direction: row;
-    /* Wraps rather than overflowing. The two pills together need ~370px and
-       a phone column is narrower than that, so without this the toggle pill
-       pushed past the viewport and the whole page scrolled sideways. No
-       breakpoint: on any width that fits, space-between keeps them on one
-       line and wrap never engages. */
-    flex-wrap: wrap;
-    justify-content: space-between;
-    align-items: center;
-    gap: 0.5rem;
-    margin-top: 2rem;
-  }
-
-  /* Second pill: prev/next CHAPTER navigation (the verse page's identical
-     pill steps verse to verse instead, and carries a third "up" button).
-     Same pill styling as .toggle-dock (background/border/shadow) so the
-     two read as one family of controls in the same dock. */
-  .nav-dock {
-    display: flex;
-    align-items: center;
-    gap: 0.15rem;
-    background: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-radius: 999px;
-    padding: 0.3rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-  }
-  .nav-btn {
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.2rem;
-    height: 2.2rem;
-    border-radius: 999px;
-    color: var(--ink-soft);
-    text-decoration: none;
-    cursor: pointer;
-  }
-  .nav-btn svg { width: 1.15rem; height: 1.15rem; }
-  a.nav-btn:hover { color: var(--ink); background: var(--paper); }
-  .nav-btn.disabled { color: var(--rule); cursor: default; }
-  .toggle-dock {
-    background: var(--paper-raised);
-    border: 1px solid var(--rule);
-    border-radius: 999px;
-    padding: 0.3rem;
-    display: flex;
-    gap: 0.15rem;
-    box-shadow: 0 6px 20px rgba(0,0,0,0.18);
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-  }
-  .toggle-dock button {
-    appearance: none;
-    border: none;
-    background: transparent;
-    color: var(--ink-soft);
-    font-size: 0.74rem;
-    font-weight: 600;
-    letter-spacing: 0.03em;
-    padding: 0.45rem 0.85rem;
-    border-radius: 999px;
-    cursor: pointer;
-    font-family: inherit;
-  }
-  .toggle-dock button:hover { color: var(--ink); }
-  .toggle-dock button.active {
-    background: var(--focus);
-    color: var(--paper);
-  }
-  .toggle-dock button:focus-visible,
-  a:focus-visible {
-    outline: 2px solid var(--focus);
-    outline-offset: 2px;
-  }
-
-  .toggle-divider {
-    width: 1px;
-    align-self: stretch;
-    background: var(--rule);
-    margin: 0.3rem 0.15rem;
-  }
-  .theme-toggle {
-    appearance: none;
-    border: none;
-    background: transparent;
-    color: var(--ink-soft);
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 2.6rem;
-    height: 2.4rem;
-    border-radius: 999px;
-    cursor: pointer;
-  }
-  .theme-toggle:hover { color: var(--ink); }
-  .theme-toggle svg { width: 1.5rem; height: 1.5rem; }
-  .icon-sun { display: block; }
-  .icon-moon { display: none; }
-  @media (prefers-color-scheme: dark) {
-    :root:not([data-theme="light"]) .icon-sun { display: none; }
-    :root:not([data-theme="light"]) .icon-moon { display: block; }
-  }
-  :root[data-theme="dark"] .icon-sun { display: none; }
-  :root[data-theme="dark"] .icon-moon { display: block; }
-  :root[data-theme="light"] .icon-sun { display: block; }
-  :root[data-theme="light"] .icon-moon { display: none; }
-
-  .legend {
-    font-family: 'Source Sans 3', system-ui, sans-serif;
-    font-size: 0.66rem;
-    color: var(--ink-soft);
-    display: flex;
-    gap: 0.3rem 1.3rem;
-    margin: 0.6rem 0 0;
-    flex-wrap: wrap;
-  }
-  .legend span { display: inline-flex; align-items: center; gap: 0.4rem; }
-  .legend .legend-label { display: inline; }
-  .legend b {
-    font-weight: 600;
-    color: var(--ink);
-  }
-  .legend i {
-    width: 0.55rem; height: 0.55rem; border-radius: 50%; display: inline-block;
-    flex: 0 0 auto;
-  }
-  .legend .always i { background: var(--rubric); }
-  .legend .crux i { background: var(--gold); }
-  .legend .variant i { background: var(--slate); }
-
-  /* The legend must drop its explanatory text BEFORE it is narrow enough to
-     wrap onto a second row -- two rows of legend under the masthead reads as
-     a mistake. So this breakpoint is NOT the 640px one the body padding and
-     the root scale use; it is measured from the legend's own content.
-
-     With the descriptions showing, the three items total ~511px plus two
-     1.3rem gaps, needing ~563px, against a viewport less 60px of body
-     padding and a ~15px scrollbar. That alone would allow ~640px, but the
-     root scale resets to 100% AT 640px, so the legend abruptly narrows by a
-     fifth there and the tightest fit is just ABOVE that line: at 645px the
-     margin is 7px, at 660px it is 22px, at 680px it is 42px. These numbers
-     were measured in Chromium and read in Safari, so the breakpoint takes
-     the 7% of headroom rather than the last available pixel.
-
-     IT IS TIED TO THE ROOT SCALE. A media query's px are viewport px and do
-     not track `html { font-size }`, so raising that 125% widens the legend
-     while leaving this number behind -- which is exactly how a two-row band
-     opened up between 641px and 672px when the root went from 100% to 125%.
-     Re-measure this if the root scale or the legend's wording changes. */
-  @media (max-width: 680px) {
-    .legend .legend-desc { display: none; }
-  }
-  @media (max-width: 420px) {
-    .legend { gap: 0.1rem 1rem; }
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    * { transition: none !important; }
-  }
-</style>
+<link rel="stylesheet" href="../../static/cnt.css">
+<link rel="stylesheet" href="../../static/reading.css">
+<!-- Runs before first paint, so a reader who chose light does not see a dark
+     flash first. It has to be inline for that reason -- an external file is
+     fetched too late. Everything else lives in static/cnt.js. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('cnt-theme');
+      if (t === 'light' || t === 'dark') { document.documentElement.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
 
 <div class="page">
 
   <div class="header">
     <div class="masthead">
-      <span><strong>CNT</strong> — Corey's Non-Translation</span>
-      <span>Matthew 1</span>
+      <span><a class="masthead-home" href="../../index.html"><strong>CNT</strong> — Corey's Non-Translation</a></span>
+      <span class="masthead-tools">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+            <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+          </svg>
+        </button>
+        <button id="sitemap-toggle" aria-label="Open site map" title="Site map" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </span>
     </div>
     <div class="legend">
       <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
@@ -773,13 +149,44 @@ render.py's query logic) and regenerate instead.
           <option value="../28/index.html" disabled>28</option>
         </select>
       </span>
+      <span class="apparatus-colon">:</span>
+      <span class="apparatus-select-wrap">
+        <select class="apparatus-select is-unset" aria-label="Verse" onchange="if(this.value){location.href=this.value;}">
+          <option value="" selected>1–25</option>
+          <option value="1.html">1</option>
+          <option value="2.html">2</option>
+          <option value="3.html">3</option>
+          <option value="4.html">4</option>
+          <option value="5.html">5</option>
+          <option value="6.html">6</option>
+          <option value="7.html">7</option>
+          <option value="8.html">8</option>
+          <option value="9.html">9</option>
+          <option value="10.html">10</option>
+          <option value="11.html">11</option>
+          <option value="12.html">12</option>
+          <option value="13.html">13</option>
+          <option value="14.html">14</option>
+          <option value="15.html">15</option>
+          <option value="16.html">16</option>
+          <option value="17.html">17</option>
+          <option value="18.html">18</option>
+          <option value="19.html">19</option>
+          <option value="20.html">20</option>
+          <option value="21.html">21</option>
+          <option value="22.html">22</option>
+          <option value="23.html">23</option>
+          <option value="24.html">24</option>
+          <option value="25.html">25</option>
+        </select>
+      </span>
     </span>
   </p>
 
   
-  <p class="translation"><span class="vspan" data-href="1.html"><sup class="vnum" id="Matthew-1-1">1</sup>Book of <a id="ref-1" class="flagword crux" href="#note-1" data-greek="γενέσεως" data-translit="geneseōs" data-gloss="genesis" data-senses="birth">genesis</a><a class="note-ref" href="#note-1">a</a> of Jesus <a id="ref-2" class="flagword always" href="#note-2" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-2">b</a>, son of David, son of Abraham.</span><span class="vspan" data-href="2.html"><sup class="vnum" id="Matthew-1-2">2</sup>Abraham fathered Isaac, and Isaac fathered Jacob, and Jacob fathered Judah and his <a id="ref-3" class="flagword crux" href="#note-3" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">adelphoi</a><a class="note-ref" href="#note-3">c</a>.</span><span class="vspan" data-href="3.html"><sup class="vnum" id="Matthew-1-3">3</sup>Judah fathered Perez and Zerah by Tamar, and Perez fathered Hezron, and Hezron fathered <a id="ref-4" class="flagword crux" href="#note-4" data-greek="Ἀράμ" data-translit="Aram" data-gloss="Aram" data-senses="ram">Aram</a><a class="note-ref" href="#note-4">d</a>.</span><span class="vspan" data-href="4.html"><sup class="vnum" id="Matthew-1-4">4</sup>Aram fathered Amminadab, and Amminadab fathered Nahshon, and Nahshon fathered Salmon.</span><span class="vspan" data-href="5.html"><sup class="vnum" id="Matthew-1-5">5</sup>Salmon fathered Boaz by Rahab, and Boaz fathered Obed by Ruth, and Obed fathered Jesse.</span><span class="vspan" data-href="6.html"><sup class="vnum" id="Matthew-1-6">6</sup>Jesse fathered David the <a id="ref-5" class="flagword crux" href="#note-5" data-greek="βασιλέα" data-translit="basilea" data-gloss="basileus" data-senses="king">basileus</a><a class="note-ref" href="#note-5">e</a>. And David fathered Solomon by her of Uriah.</span><span class="vspan" data-href="7.html"><sup class="vnum" id="Matthew-1-7">7</sup>Solomon fathered Rehoboam, and Rehoboam fathered Abijah, and Abijah fathered <a id="ref-6" class="flagword variant" href="#note-6" data-greek="Ἀσάφ" data-translit="Asaph" data-gloss="Asaph" data-senses="">Asaph</a><a class="note-ref" href="#note-6">f</a>.</span><span class="vspan" data-href="8.html"><sup class="vnum" id="Matthew-1-8">8</sup>Asaph fathered Jehoshaphat, and Jehoshaphat fathered Joram, and Joram fathered Uzziah.</span><span class="vspan" data-href="9.html"><sup class="vnum" id="Matthew-1-9">9</sup>Uzziah fathered Jotham, and Jotham fathered Ahaz, and Ahaz fathered Hezekiah.</span><span class="vspan" data-href="10.html"><sup class="vnum" id="Matthew-1-10">10</sup>Hezekiah fathered Manasseh, and Manasseh fathered <a id="ref-7" class="flagword variant" href="#note-7" data-greek="Ἀμώς" data-translit="Amōs" data-gloss="Amos" data-senses="">Amos</a><a class="note-ref" href="#note-7">g</a>, and <a id="ref-8" class="flagword variant" href="#note-8" data-greek="Ἀμὼς" data-translit="Amōs" data-gloss="Amos" data-senses="">Amos</a><a class="note-ref" href="#note-8">h</a> fathered Josiah.</span><span class="vspan" data-href="11.html"><sup class="vnum" id="Matthew-1-11">11</sup>Josiah fathered <a id="ref-9" class="flagword crux" href="#note-9" data-greek="Ἰεχονίαν" data-translit="Iechonian" data-gloss="Iechonias" data-senses="jechonias, jeconiah">Iechonias</a><a class="note-ref" href="#note-9">i</a> and his <a id="ref-10" class="flagword crux" href="#note-10" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">adelphoi</a><a class="note-ref" href="#note-10">j</a> at the time of the <a id="ref-11" class="flagword crux" href="#note-11" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">metoikesia</a><a class="note-ref" href="#note-11">k</a> to Babylon.</span><span class="vspan" data-href="12.html"><sup class="vnum" id="Matthew-1-12">12</sup>After the deportation to Babylon, Iechonias fathered <a id="ref-12" class="flagword crux" href="#note-12" data-greek="Σαλαθιήλ" data-translit="Salathiēl" data-gloss="Salathiel" data-senses="shealtiel">Salathiel</a><a class="note-ref" href="#note-12">l</a>, and Salathiel fathered Zerubbabel.</span><span class="vspan" data-href="13.html"><sup class="vnum" id="Matthew-1-13">13</sup>Zerubbabel fathered Abiud, and Abiud fathered Eliakim, and Eliakim fathered Azor.</span><span class="vspan" data-href="14.html"><sup class="vnum" id="Matthew-1-14">14</sup>Azor fathered Zadok, and Zadok fathered Achim, and Achim fathered Eliud.</span><span class="vspan" data-href="15.html"><sup class="vnum" id="Matthew-1-15">15</sup>Eliud fathered Eleazar, and Eleazar fathered Matthan, and Matthan fathered Jacob.</span><span class="vspan" data-href="16.html"><sup class="vnum" id="Matthew-1-16">16</sup>Jacob fathered Joseph, the husband of Mary, from whom Jesus, who is called the <a id="ref-13" class="flagword always" href="#note-13" data-greek="χριστός" data-translit="christos" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-13">m</a>, was <a id="ref-14" class="flagword crux" href="#note-14" data-greek="ἐγεννήθη" data-translit="egennēthē" data-gloss="gennied" data-senses="begat, born, begotten">gennied</a><a class="note-ref" href="#note-14">n</a>.</span><span class="vspan" data-href="17.html"><sup class="vnum" id="Matthew-1-17">17</sup>So all the generations from Abraham to David are fourteen generations, and from David to the deportation to Babylon are fourteen generations, and from the deportation to Babylon to the <a id="ref-15" class="flagword always" href="#note-15" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-15">o</a> are fourteen generations.</span></p>
+  <p class="translation"><span class="vspan" data-href="1.html"><sup class="vnum" id="Matthew-1-1">1</sup>Book of <a id="ref-1" class="flagword crux" href="#note-1" data-greek="γενέσεως" data-translit="geneseōs" data-gloss="genesis" data-senses="birth, natural">genesis</a><a class="note-ref" href="#note-1">a</a> of Jesus <a id="ref-2" class="flagword always" href="#note-2" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-2">b</a>, son of David, son of Abraham.</span><span class="vspan" data-href="2.html"><sup class="vnum" id="Matthew-1-2">2</sup>Abraham fathered Isaac, and Isaac fathered Jacob, and Jacob fathered Judah and his <a id="ref-3" class="flagword crux" href="#note-3" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">adelphoi</a><a class="note-ref" href="#note-3">c</a>.</span><span class="vspan" data-href="3.html"><sup class="vnum" id="Matthew-1-3">3</sup>Judah fathered Perez and Zerah by Tamar, and Perez fathered Hezron, and Hezron fathered <a id="ref-4" class="flagword crux" href="#note-4" data-greek="Ἀράμ" data-translit="Aram" data-gloss="Aram" data-senses="ram">Aram</a><a class="note-ref" href="#note-4">d</a>.</span><span class="vspan" data-href="4.html"><sup class="vnum" id="Matthew-1-4">4</sup>Aram fathered Amminadab, and Amminadab fathered Nahshon, and Nahshon fathered Salmon.</span><span class="vspan" data-href="5.html"><sup class="vnum" id="Matthew-1-5">5</sup>Salmon fathered Boaz by Rahab, and Boaz fathered Obed by Ruth, and Obed fathered Jesse.</span><span class="vspan" data-href="6.html"><sup class="vnum" id="Matthew-1-6">6</sup>Jesse fathered David the <a id="ref-5" class="flagword crux" href="#note-5" data-greek="βασιλέα" data-translit="basilea" data-gloss="basileus" data-senses="king">basileus</a><a class="note-ref" href="#note-5">e</a>. And David fathered Solomon by her of Uriah.</span><span class="vspan" data-href="7.html"><sup class="vnum" id="Matthew-1-7">7</sup>Solomon fathered Rehoboam, and Rehoboam fathered Abijah, and Abijah fathered <a id="ref-6" class="flagword variant" href="#note-6" data-greek="Ἀσάφ" data-translit="Asaph" data-gloss="Asaph" data-senses="">Asaph</a><a class="note-ref" href="#note-6">f</a>.</span><span class="vspan" data-href="8.html"><sup class="vnum" id="Matthew-1-8">8</sup>Asaph fathered Jehoshaphat, and Jehoshaphat fathered Joram, and Joram fathered Uzziah.</span><span class="vspan" data-href="9.html"><sup class="vnum" id="Matthew-1-9">9</sup>Uzziah fathered Jotham, and Jotham fathered Ahaz, and Ahaz fathered Hezekiah.</span><span class="vspan" data-href="10.html"><sup class="vnum" id="Matthew-1-10">10</sup>Hezekiah fathered Manasseh, and Manasseh fathered <a id="ref-7" class="flagword variant" href="#note-7" data-greek="Ἀμώς" data-translit="Amōs" data-gloss="Amos" data-senses="">Amos</a><a class="note-ref" href="#note-7">g</a>, and <a id="ref-8" class="flagword variant" href="#note-8" data-greek="Ἀμὼς" data-translit="Amōs" data-gloss="Amos" data-senses="">Amos</a><a class="note-ref" href="#note-8">h</a> fathered Josiah.</span><span class="vspan" data-href="11.html"><sup class="vnum" id="Matthew-1-11">11</sup>Josiah fathered <a id="ref-9" class="flagword crux" href="#note-9" data-greek="Ἰεχονίαν" data-translit="Iechonian" data-gloss="Iechonias" data-senses="jeconiah, jechonias">Iechonias</a><a class="note-ref" href="#note-9">i</a> and his <a id="ref-10" class="flagword crux" href="#note-10" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">adelphoi</a><a class="note-ref" href="#note-10">j</a> at the time of the <a id="ref-11" class="flagword crux" href="#note-11" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">metoikesia</a><a class="note-ref" href="#note-11">k</a> to Babylon.</span><span class="vspan" data-href="12.html"><sup class="vnum" id="Matthew-1-12">12</sup>After the deportation to Babylon, Iechonias fathered <a id="ref-12" class="flagword crux" href="#note-12" data-greek="Σαλαθιήλ" data-translit="Salathiēl" data-gloss="Salathiel" data-senses="shealtiel">Salathiel</a><a class="note-ref" href="#note-12">l</a>, and Salathiel fathered Zerubbabel.</span><span class="vspan" data-href="13.html"><sup class="vnum" id="Matthew-1-13">13</sup>Zerubbabel fathered Abiud, and Abiud fathered Eliakim, and Eliakim fathered Azor.</span><span class="vspan" data-href="14.html"><sup class="vnum" id="Matthew-1-14">14</sup>Azor fathered Zadok, and Zadok fathered Achim, and Achim fathered Eliud.</span><span class="vspan" data-href="15.html"><sup class="vnum" id="Matthew-1-15">15</sup>Eliud fathered Eleazar, and Eleazar fathered Matthan, and Matthan fathered Jacob.</span><span class="vspan" data-href="16.html"><sup class="vnum" id="Matthew-1-16">16</sup>Jacob fathered Joseph, the husband of Mary, from whom Jesus, who is called the <a id="ref-13" class="flagword always" href="#note-13" data-greek="χριστός" data-translit="christos" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-13">m</a>, was <a id="ref-14" class="flagword crux" href="#note-14" data-greek="ἐγεννήθη" data-translit="egennēthē" data-gloss="gennied" data-senses="begat, born, brought forth">gennied</a><a class="note-ref" href="#note-14">n</a>.</span><span class="vspan" data-href="17.html"><sup class="vnum" id="Matthew-1-17">17</sup>So all the generations from Abraham to David are fourteen generations, and from David to the deportation to Babylon are fourteen generations, and from the deportation to Babylon to the <a id="ref-15" class="flagword always" href="#note-15" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-15">o</a> are fourteen generations.</span></p>
   
-  <p class="translation"><span class="vspan" data-href="18.html"><sup class="vnum" id="Matthew-1-18">18</sup>Now the <a id="ref-16" class="flagword crux" href="#note-16" data-greek="γένεσις" data-translit="genesis" data-gloss="genesis" data-senses="birth">genesis</a><a class="note-ref" href="#note-16">p</a> of <a id="ref-17" class="flagword variant" href="#note-17" data-greek="Ἰησοῦ" data-translit="Iēsou" data-gloss="Jesus" data-senses="">Jesus</a><a class="note-ref" href="#note-17">q</a> <a id="ref-18" class="flagword always" href="#note-18" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-18">r</a> was like this. His mother Mary having entered <a id="ref-19" class="flagword crux" href="#note-19" data-greek="μνηστευθείσης" data-translit="mnēsteutheisēs" data-gloss="mnesteia" data-senses="espoused, betrothed">mnesteia</a><a class="note-ref" href="#note-19">s</a> with Joseph, before they came together, she was found to be pregnant from holy <a id="ref-20" class="flagword always" href="#note-20" data-greek="πνεύματος" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-20">t</a>.</span><span class="vspan" data-href="19.html"><sup class="vnum" id="Matthew-1-19">19</sup>Joseph, her husband, being <a id="ref-21" class="flagword always" href="#note-21" data-greek="δίκαιος" data-translit="dikaios" data-gloss="rectic" data-senses="righteous, right, righteous one">rectic</a><a class="note-ref" href="#note-21">u</a> <a id="ref-22" class="flagword crux" href="#note-22" data-greek="καὶ" data-translit="kai" data-gloss="kai" data-senses="both, neither, likewise">kai</a><a class="note-ref" href="#note-22">v</a> not wanting to <a id="ref-23" class="flagword variant" href="#note-23" data-greek="δειγματίσαι" data-translit="deigmatisai" data-gloss="expose" data-senses="">expose</a><a class="note-ref" href="#note-23">w</a> her, resolved to divorce her secretly.</span><span class="vspan" data-href="20.html"><sup class="vnum" id="Matthew-1-20">20</sup>But as he was pondering these things, behold, angel of <a id="ref-24" class="flagword always" href="#note-24" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-24">x</a> appeared to him in a dream, saying, &quot;Joseph, son of David, do not be afraid to <a id="ref-25" class="flagword crux" href="#note-25" data-greek="παραλαβεῖν" data-translit="paralabein" data-gloss="paralambance" data-senses="received, taken, took">paralambance</a><a class="note-ref" href="#note-25">y</a> Mary your wife, for that which was <a id="ref-26" class="flagword crux" href="#note-26" data-greek="γεννηθὲν" data-translit="gennēthen" data-gloss="gennied" data-senses="begat, born, begotten">gennied</a><a class="note-ref" href="#note-26">z</a> in her is from holy <a id="ref-27" class="flagword always" href="#note-27" data-greek="πνεύματός" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-27">aa</a>.&quot;</span><span class="vspan" data-href="21.html"><sup class="vnum" id="Matthew-1-21">21</sup>And she will bear a son, and you shall call his name Jesus, for he will save his <a id="ref-28" class="flagword crux" href="#note-28" data-greek="λαὸν" data-translit="laon" data-gloss="laos" data-senses="people">laos</a><a class="note-ref" href="#note-28">ab</a> from their <a id="ref-29" class="flagword always" href="#note-29" data-greek="ἁμαρτιῶν" data-translit="hamartiōn" data-gloss="peccancies" data-senses="sin">peccancies</a><a class="note-ref" href="#note-29">ac</a>.</span><span class="vspan" data-href="22.html"><sup class="vnum" id="Matthew-1-22">22</sup>Now this <a id="ref-30" class="flagword crux" href="#note-30" data-greek="ὅλον" data-translit="holon" data-gloss="holon" data-senses="all, whole, entirely">holon</a><a class="note-ref" href="#note-30">ad</a> has come to pass, so that what was spoken by <a id="ref-31" class="flagword crux" href="#note-31" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-31">ae</a> through the prophet might reach its <a id="ref-32" class="flagword crux" href="#note-32" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleroma" data-senses="fulfilled, filled, full">pleroma</a><a class="note-ref" href="#note-32">af</a>, saying:</span><span class="vspan" data-href="23.html"><sup class="vnum" id="Matthew-1-23">23</sup>Behold, the <a id="ref-33" class="flagword crux" href="#note-33" data-greek="παρθένος" data-translit="parthenos" data-gloss="parthenos" data-senses="virgin">parthenos</a><a class="note-ref" href="#note-33">ag</a> will be pregnant and will bear a son, and they will <a id="ref-34" class="flagword crux" href="#note-34" data-greek="καλέσουσιν" data-translit="kalesousin" data-gloss="kalesance" data-senses="called, call, invited">kalesance</a><a class="note-ref" href="#note-34">ah</a> his name <a id="ref-35" class="flagword crux" href="#note-35" data-greek="Ἐμμανουήλ" data-translit="Emmanouēl" data-gloss="Emmanouēl" data-senses="immanuel">Emmanouēl</a><a class="note-ref" href="#note-35">ai</a>, which is translated, &quot;with us the <a id="ref-36" class="flagword crux" href="#note-36" data-greek="θεός" data-translit="theos" data-gloss="theos" data-senses="god">theos</a><a class="note-ref" href="#note-36">aj</a>.&quot;</span><span class="vspan" data-href="24.html"><sup class="vnum" id="Matthew-1-24">24</sup>And Joseph, having awakened from sleep, did as the angel of <a id="ref-37" class="flagword always" href="#note-37" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-37">ak</a> commanded him, and took his wife.</span><span class="vspan" data-href="25.html"><sup class="vnum" id="Matthew-1-25">25</sup>And he did not <a id="ref-38" class="flagword crux" href="#note-38" data-greek="ἐγίνωσκεν" data-translit="eginōsken" data-gloss="gnōsance" data-senses="know, known, knew">gnōsance</a><a class="note-ref" href="#note-38">al</a> her <a id="ref-39" class="flagword crux" href="#note-39" data-greek="ἕως οὗ" data-translit="heōs hou" data-gloss="heōs hou" data-senses="">heōs hou</a><a class="note-ref" href="#note-39">am</a> she bore a son, and he called his name Jesus.</span></p>
+  <p class="translation"><span class="vspan" data-href="18.html"><sup class="vnum" id="Matthew-1-18">18</sup>Now the <a id="ref-16" class="flagword crux" href="#note-16" data-greek="γένεσις" data-translit="genesis" data-gloss="genesis" data-senses="birth, natural">genesis</a><a class="note-ref" href="#note-16">p</a> of <a id="ref-17" class="flagword variant" href="#note-17" data-greek="Ἰησοῦ" data-translit="Iēsou" data-gloss="Jesus" data-senses="">Jesus</a><a class="note-ref" href="#note-17">q</a> <a id="ref-18" class="flagword always" href="#note-18" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-18">r</a> was like this. His mother Mary having entered <a id="ref-19" class="flagword crux" href="#note-19" data-greek="μνηστευθείσης" data-translit="mnēsteutheisēs" data-gloss="mnesteia" data-senses="espoused, betrothed">mnesteia</a><a class="note-ref" href="#note-19">s</a> with Joseph, before they came together, she was found to be pregnant from holy <a id="ref-20" class="flagword always" href="#note-20" data-greek="πνεύματος" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-20">t</a>.</span><span class="vspan" data-href="19.html"><sup class="vnum" id="Matthew-1-19">19</sup>Joseph, her husband, being <a id="ref-21" class="flagword always" href="#note-21" data-greek="δίκαιος" data-translit="dikaios" data-gloss="rectic" data-senses="righteous, right, righteous one">rectic</a><a class="note-ref" href="#note-21">u</a> <a id="ref-22" class="flagword crux" href="#note-22" data-greek="καὶ" data-translit="kai" data-gloss="kai" data-senses="both, neither, indeed">kai</a><a class="note-ref" href="#note-22">v</a> not wanting to <a id="ref-23" class="flagword variant" href="#note-23" data-greek="δειγματίσαι" data-translit="deigmatisai" data-gloss="expose" data-senses="">expose</a><a class="note-ref" href="#note-23">w</a> her, resolved to divorce her secretly.</span><span class="vspan" data-href="20.html"><sup class="vnum" id="Matthew-1-20">20</sup>But as he was pondering these things, behold, angel of <a id="ref-24" class="flagword always" href="#note-24" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-24">x</a> appeared to him in a dream, saying, &quot;Joseph, son of David, do not be afraid to <a id="ref-25" class="flagword crux" href="#note-25" data-greek="παραλαβεῖν" data-translit="paralabein" data-gloss="paralambance" data-senses="taken, received, took unto">paralambance</a><a class="note-ref" href="#note-25">y</a> Mary your wife, for that which was <a id="ref-26" class="flagword crux" href="#note-26" data-greek="γεννηθὲν" data-translit="gennēthen" data-gloss="gennied" data-senses="begat, born, brought forth">gennied</a><a class="note-ref" href="#note-26">z</a> in her is from holy <a id="ref-27" class="flagword always" href="#note-27" data-greek="πνεύματός" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-27">aa</a>.&quot;</span><span class="vspan" data-href="21.html"><sup class="vnum" id="Matthew-1-21">21</sup>And she will bear a son, and you shall call his name Jesus, for he will save his <a id="ref-28" class="flagword crux" href="#note-28" data-greek="λαὸν" data-translit="laon" data-gloss="laos" data-senses="people">laos</a><a class="note-ref" href="#note-28">ab</a> from their <a id="ref-29" class="flagword always" href="#note-29" data-greek="ἁμαρτιῶν" data-translit="hamartiōn" data-gloss="peccancies" data-senses="sin">peccancies</a><a class="note-ref" href="#note-29">ac</a>.</span><span class="vspan" data-href="22.html"><sup class="vnum" id="Matthew-1-22">22</sup>Now this <a id="ref-30" class="flagword crux" href="#note-30" data-greek="ὅλον" data-translit="holon" data-gloss="holon" data-senses="all, whole, every whit">holon</a><a class="note-ref" href="#note-30">ad</a> has come to pass, so that what was spoken by <a id="ref-31" class="flagword crux" href="#note-31" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-31">ae</a> through the prophet might reach its <a id="ref-32" class="flagword crux" href="#note-32" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleroma" data-senses="fulfilled, filled, full">pleroma</a><a class="note-ref" href="#note-32">af</a>, saying:</span><span class="vspan" data-href="23.html"><sup class="vnum" id="Matthew-1-23">23</sup>Behold, the <a id="ref-33" class="flagword crux" href="#note-33" data-greek="παρθένος" data-translit="parthenos" data-gloss="parthenos" data-senses="virgin, virginity">parthenos</a><a class="note-ref" href="#note-33">ag</a> will be pregnant and will bear a son, and they will <a id="ref-34" class="flagword crux" href="#note-34" data-greek="καλέσουσιν" data-translit="kalesousin" data-gloss="kalesance" data-senses="called, call, invited">kalesance</a><a class="note-ref" href="#note-34">ah</a> his name <a id="ref-35" class="flagword crux" href="#note-35" data-greek="Ἐμμανουήλ" data-translit="Emmanouēl" data-gloss="Emmanouēl" data-senses="emmanuel">Emmanouēl</a><a class="note-ref" href="#note-35">ai</a>, which is translated, &quot;with us the <a id="ref-36" class="flagword crux" href="#note-36" data-greek="θεός" data-translit="theos" data-gloss="theos" data-senses="god">theos</a><a class="note-ref" href="#note-36">aj</a>.&quot;</span><span class="vspan" data-href="24.html"><sup class="vnum" id="Matthew-1-24">24</sup>And Joseph, having awakened from sleep, did as the angel of <a id="ref-37" class="flagword always" href="#note-37" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-37">ak</a> commanded him, and took his wife.</span><span class="vspan" data-href="25.html"><sup class="vnum" id="Matthew-1-25">25</sup>And he did not <a id="ref-38" class="flagword crux" href="#note-38" data-greek="ἐγίνωσκεν" data-translit="eginōsken" data-gloss="gnōsance" data-senses="know, knew not, perceived">gnōsance</a><a class="note-ref" href="#note-38">al</a> her <a id="ref-39" class="flagword crux" href="#note-39" data-greek="ἕως οὗ" data-translit="heōs hou" data-gloss="heōs hou" data-senses="">heōs hou</a><a class="note-ref" href="#note-39">am</a> she bore a son, and he called his name Jesus.</span></p>
   
 
   <div class="endnotes">
@@ -790,15 +197,15 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">geneseōs</a>
         Βίβλος γενέσεως repeats a rare phrase from the Greek Septuagint&#x27;s own Genesis 2:4 and 5:1, both introducing accounts of a beginning. Commentators disagree on how much weight that echo carries, from a light stylistic flourish to a claim that the Gospel opens as a new act of creation. They also disagree on how far the resulting title reaches, from the seventeen-verse genealogy alone to the entire Gospel.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> birth</div>
+        <div class="endnote-senses"><b>Usually</b> birth, natural</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Davies &amp; Allison (ICC) — reads the phrase as a deliberate &quot;new Genesis,&quot; extending the title to the whole Gospel</li>
-            <li>John Nolland (NIGTC) — reads the echo as real but rhetorically modest, and confines the title to the genealogy alone</li>
-            <li>Donald A. Hagner (WBC) — treats the echo as carrying near-maximal theological weight while still limiting the title&#x27;s reach to the genealogy</li>
-            <li>M. Eugene Boring (<i>New Interpreter&#x27;s Bible</i>) — argues from the Septuagint&#x27;s own frequent use of &quot;book&quot; that the title covers the whole Gospel</li>
-            <li>M.D. Goulder (<i>Midrash and Lection in Matthew</i>) — reads the echo as a lectionary marker, tying the Gospel&#x27;s opening to Genesis&#x27;s place in the synagogue reading cycle</li>
+            <li>Davies and Allison (ICC) — reads the phrase as a deliberate &quot;new Genesis,&quot; extending the title to the whole Gospel</li>
+            <li>Nolland (NIGTC) — reads the echo as real but rhetorically modest, and confines the title to the genealogy alone</li>
+            <li>Hagner (WBC) — treats the echo as carrying near-maximal theological weight while still limiting the title&#x27;s reach to the genealogy</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — argues from the Septuagint&#x27;s own frequent use of &quot;book&quot; that the title covers the whole Gospel</li>
+            <li>Goulder (<i>Midrash and Lection in Matthew</i>) — reads the echo as a lectionary marker, tying the Gospel&#x27;s opening to Genesis&#x27;s place in the synagogue reading cycle</li>
           </ul>
         </details>
       </div>
@@ -808,16 +215,13 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
         <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">christou</a>
-        Χριστός is ambiguous between a title -- the Anointed One, the Messiah -- and a fixed second name for Jesus. SBLGNT prints the word lowercase throughout, and STEPBible&#x27;s TAGNT apparatus classifies it as titular rather than as a personal name, like kyrios. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. CNT renders it &quot;the Anointed&quot; so the title stays audible. The whole family follows from it. χρίω is the verb it is built on, so an anointing anywhere in the New Testament is the same word as the name; χρῖσμα is the substance. Χριστιανός, rendered here &quot;Anointedian&quot;, is the partisan noun -- the -ιανός suffix is a Latin formation meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs only three times, and what it meant at Antioch is disputed: an outsiders&#x27; nickname, a Roman administrative label, or something the group called itself. &quot;Christian&quot; now carries two thousand years the word did not have then, and it also hides that the word is built on Χριστός at all.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        This occurrence opens a chiasm with the same word at 1:17, bounding the genealogy between two uses of the title. Most readings treat every occurrence in the surrounding chapters as titular, but one holds that this first occurrence, alone among roughly eighteen uses in the Gospel, already carries more than titular force. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>BDAG (Bauer/Danker) — s.v. Χριστός, two senses: titular &quot;Anointed One/Messiah&quot; vs. a personal name; names Matthew 11:2 as roughly the hinge point where sense shifts</li>
-            <li>M. Jack Suggs (<i>Wisdom, Christology, and Law in Matthew&#x27;s Gospel</i>, Harvard University Press, 1970) — argues against a bare-name reading at Matthew 11:2</li>
-            <li>John Nolland (NIGTC) — the chiasm between Matthew 1:1 and 1:17 favors a titular reading across the whole genealogy</li>
-            <li>R.T. France (NICNT) — &quot;the colorless translation &#x27;Jesus Christ&#x27;&quot; loses Matthew&#x27;s intended title; ὁ λεγόμενος χριστός recurs verbatim at 27:17 and 27:22</li>
-            <li>D.A. Carson (EBC) — the outlier, reads the word as already shifting toward fixed-name use by Matthew 1:16</li>
+            <li>Carson (EBC) — names 1:1 itself, alongside 1:16 and 1:18, as one of the rare places where &quot;Christ&quot; is not purely titular</li>
+            <li>Hagner (WBC) — the word&#x27;s proximity to &quot;son of David&quot; in the same verse keeps titular meaning close at hand even where the term functions as a name</li>
           </ul>
         </details>
       </div>
@@ -832,8 +236,8 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Turner (BECNT) — reads the phrase as an allusion to the twelve tribes, the locus of the people of God and the pattern for the twelve apostles</li>
-            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — reads it instead as expressing an interest in the people of God as a brotherhood, prefiguring the church</li>
+            <li>Turner (BECNT) — reads the phrase as &quot;an allusion to the twelve tribes who form the locus of the people of God and the pattern for the twelve apostles&quot;</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — traces it instead to an interest in the people of God as a brotherhood, where &quot;Judah and his brothers prefigure the brotherhood of the church&quot;</li>
             <li>Hagner (WBC) — reads it as pointing to the twelve tribes of Israel, whose theological fullness comes to bear on Jesus as their culmination</li>
             <li>Hood (<i>The Messiah, His Brothers, and the Nations</i>) — reads it as foreshadowing Jesus&#x27;s own self-sacrifice on behalf of his brothers</li>
           </ul>
@@ -850,10 +254,10 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Strong&#x27;s Greek Dictionary (G0689) — glosses Ἀράμ as &quot;of Hebrew origin; Aram (i.e. Ram)&quot;</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — glosses Ἀράμ as &quot;of Hebrew origin; Aram (i.e. Ram)&quot;</li>
             <li>Nolland (NIGTC) — traces the double spelling to an internal doublet in the Septuagint&#x27;s own text of 1 Chronicles 2:9–10</li>
-            <li>Davies &amp; Allison (ICC) — independently confirm the same Septuagint-internal mechanism from the primary texts</li>
-            <li>Wasserman (Evangelical Textual Criticism blog) — notes that confidence in the parallel reading at Luke 3:33 has since weakened in a later UBS edition</li>
+            <li>Davies and Allison (ICC) — independently confirm the same Septuagint-internal mechanism from the primary texts</li>
+            <li>Wasserman (<a href="https://evangelicaltextualcriticism.blogspot.com/" target="_blank" rel="noopener noreferrer">Evangelical Textual Criticism</a>) — notes that confidence in the parallel reading at Luke 3:33 has since weakened in a later critical edition</li>
           </ul>
         </details>
       </div>
@@ -869,9 +273,9 @@ render.py's query logic) and regenerate instead.
           <summary>Sources</summary>
           <ul>
             <li>Turner (BECNT) — reads the title as a deliberate addition beyond Matthew&#x27;s source text, anticipating Jesus&#x27;s own royal title</li>
-            <li>Hagner (WBC) — reads it as strengthening the link between David and Jesus as the Davidic, messianic king</li>
-            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — reads it as marking the close of the genealogy&#x27;s first section and casting David as a prototype of Jesus</li>
-            <li>Albright &amp; Mann (Anchor) — dissents, calling the climax-decline-climax structural reading unconvincing</li>
+            <li>Hagner (WBC) — reads the addition as strengthening the link between David and Jesus as &quot;the Davidic, messianic king, an important motif in Matthew&quot;</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — reads Matthew&#x27;s adoption of the Old Testament designation as putting David forward as &quot;a prototype of Jesus&quot; and closing the genealogy&#x27;s first section</li>
+            <li>Albright and Mann (Anchor) — dissents, calling the climax-decline-climax structural reading unconvincing</li>
           </ul>
         </details>
       </div>
@@ -885,9 +289,9 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Metzger (<i>Textual Commentary on the Greek New Testament</i>) — rates the Asaph reading &quot;almost certain&quot;</li>
-            <li>Nolland (NIGTC) — reads it as a deliberate allusion to the psalmist, not a scribal error</li>
-            <li>Carson (EBC) — rejects the deliberate-allusion theory, citing looser ancient naming conventions</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — rates the Asaph reading &quot;almost certain&quot;</li>
+            <li>Nolland (NIGTC) — calls it &quot;a deliberate ploy to evoke yet more of the history of the people of God&quot;</li>
+            <li>Carson (EBC) — rejects the deliberate-allusion theory as &quot;too cryptic to be believable,&quot; pointing to looser ancient orthography</li>
             <li>Keener (<i>A Commentary on the Gospel of Matthew</i>) — treats the allusion as a known Jewish exegetical technique, not an idiosyncratic move</li>
           </ul>
         </details>
@@ -902,9 +306,9 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Metzger (<i>Textual Commentary on the Greek New Testament</i>) — rates the Amos reading &quot;almost certain,&quot; calling the evidence &quot;nearly the same&quot; as the parallel Asaph case</li>
-            <li>Nolland (NIGTC) — less confident this reflects deliberate allusion than the parallel Asaph case, since &quot;Amos&quot; already circulates as a plain LXX spelling confusion for Amon</li>
-            <li>France (NICNT) — suggests manuscripts of Chronicles reading &quot;Amos&quot; for the king reflect the Gospel&#x27;s own later influence on copyists</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — rates the Amos reading &quot;almost certain,&quot; calling the evidence &quot;nearly the same&quot; as the parallel Asaph case</li>
+            <li>Nolland (NIGTC) — finds a deliberate allusion &quot;much less certain&quot; here than at the parallel Asaph case, since Amos is &quot;well attested as an LXX reading for Amon&quot;</li>
+            <li>France (NICNT) — reads the manuscripts of Chronicles that name the king Amos as &quot;likely to be due to the influence of Matthew&quot;</li>
             <li>Turner (BECNT) — treats the same manuscript evidence as a source the genealogy inherited, not a consequence of it</li>
           </ul>
         </details>
@@ -924,13 +328,13 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-9" href="#ref-9" title="Back to text">Iechonian</a>
         Matthew&#x27;s clause moves directly from Josiah to Jeconiah, omitting Jehoiakim, the king named as the intervening generation in 1 Chronicles 3:15-16. Greek manuscripts of the Old Testament sometimes spell Jehoiakim and Jehoiachin (Jeconiah) identically, a documented confusion that may account for the compression. Whether the missing generation is an inherited textual accident or a deliberate compositional device remains disputed.<a class="endnote-back" href="#ref-9" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> jechonias, jeconiah</div>
+        <div class="endnote-senses"><b>Usually</b> jeconiah, jechonias</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Willker (A Textual Commentary on the Greek Gospels) — rates the shorter reading, without an added &quot;Jehoiakim&quot; clause, as clearly original</li>
-            <li>Turner (BECNT) — judges the manuscript insertion of Jehoiakim a later harmonization with 1 Chronicles, producing an extra, fifteenth generation</li>
-            <li>Albright &amp; Mann (Anchor) — reads &quot;Jechoniah&quot; here as standing for Jehoiakim himself</li>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — rates the shorter reading, without an added &quot;Jehoiakim&quot; clause, as clearly original</li>
+            <li>Turner (BECNT) — judges the insertion of Jehoiakim a later variant &quot;motivated by the desire to conform Matthew&#x27;s genealogy&quot; to 1 Chronicles, producing a fifteenth generation</li>
+            <li>Albright and Mann (Anchor) — presume that &quot;Jechoniah (1 Chron 3:16) is here an alternative for king Jehoiakim&quot;</li>
             <li>Hagner (WBC) — derives the missing generation from 1 Chronicles 3:15&#x27;s naming of Jehoiakim&#x27;s own brothers</li>
           </ul>
         </details>
@@ -946,10 +350,10 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Gundry (Matthew) — reads &quot;his brothers&quot; as the fellow Jewish exiles deported with Jeconiah</li>
-            <li>Brown (The Birth of the Messiah) — reads the phrase as carried over from Jehoiakim&#x27;s own brothers, named at 1 Chronicles 3:15</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — reads the brothers &quot;not as members of his immediate family, but as his fellow Jews&quot;</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — reads the phrase as carried over from Jehoiakim&#x27;s own brothers, named at 1 Chronicles 3:15</li>
             <li>Blomberg (NAC) — reads the brothers as standing for the nation of Israel at the deportation</li>
-            <li>Boring (The New Interpreter&#x27;s Bible) — reads the plural as a deliberate theological gesture rather than a claim about specific people</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — says Matthew &quot;inserts &#x27;brothers&#x27; for theological reasons&quot; since Jehoiachin had only one brother</li>
           </ul>
         </details>
       </div>
@@ -964,9 +368,9 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Levine &amp; Brettler (The Jewish Annotated New Testament) — dates the deportation to 597 BCE, a decade before the Temple&#x27;s destruction</li>
-            <li>Nolland (NIGTC) — reads the phrase as marking a structural hinge in the genealogy rather than a precise date</li>
-            <li>Gundry (Matthew) — connects the term to the Septuagint&#x27;s account of the 597 BC deportation in 2 Kings 24:10-16</li>
+            <li>Levine and Brettler (<i>The Jewish Annotated New Testament</i>) — dates the deportation to 597 BCE, a decade before the Temple&#x27;s destruction</li>
+            <li>Nolland (NIGTC) — takes the phrase to mean &quot;in the period in which the deportation to Babylon took place&quot; rather than a date within a reign</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — connects the term to the Septuagint&#x27;s account of the 597 BC deportation in 2 Kings 24:10-16</li>
           </ul>
         </details>
       </div>
@@ -981,10 +385,10 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Gundry (Matthew) — proposes that the curse on Jeconiah&#x27;s immediate offspring drove a substitution of Shealtiel for the disqualified Pedaiah</li>
-            <li>Turner (BECNT) — suggests a levirate marriage, with Pedaiah raising an heir for a childless Shealtiel</li>
-            <li>Albright &amp; Mann (Anchor) — reads the discrepancy as a confusion already present in the Greek textual tradition, with Zerubbabel&#x27;s identity merged with a cousin&#x27;s</li>
-            <li>Gill (Exposition of the Old and New Testament) — reports an alternate reading, attributed to the medieval exegete Kimchi, in which Zerubbabel counts as Shealtiel&#x27;s grandson rather than his son</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — proposes that the curse on Jeconiah&#x27;s line led to &quot;replacement of his son Pedaiah with Salathiel, who came from another branch of David&#x27;s family&quot;</li>
+            <li>Turner (BECNT) — suggests Pedaiah &quot;entered a levirate marriage with Shealtiel&#x27;s widow to raise up children for his brother&quot;</li>
+            <li>Albright and Mann (Anchor) — reads the discrepancy as a confusion already present in the Greek textual tradition, with Zerubbabel&#x27;s identity merged with a cousin&#x27;s</li>
+            <li>Gill (<i>Exposition of the Old and New Testament</i>) — reports an alternate reading, attributed to the medieval exegete Kimchi, in which Zerubbabel counts as Shealtiel&#x27;s grandson rather than his son</li>
           </ul>
         </details>
       </div>
@@ -994,16 +398,14 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-13" title="Back to text">m</a>
       <div class="endnote-body">
         <a class="endnote-word always" id="note-13" href="#ref-13" title="Back to text">christos</a>
-        Χριστός is ambiguous between a title -- the Anointed One, the Messiah -- and a fixed second name for Jesus. SBLGNT prints the word lowercase throughout, and STEPBible&#x27;s TAGNT apparatus classifies it as titular rather than as a personal name, like kyrios. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. CNT renders it &quot;the Anointed&quot; so the title stays audible. The whole family follows from it. χρίω is the verb it is built on, so an anointing anywhere in the New Testament is the same word as the name; χρῖσμα is the substance. Χριστιανός, rendered here &quot;Anointedian&quot;, is the partisan noun -- the -ιανός suffix is a Latin formation meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs only three times, and what it meant at Antioch is disputed: an outsiders&#x27; nickname, a Roman administrative label, or something the group called itself. &quot;Christian&quot; now carries two thousand years the word did not have then, and it also hides that the word is built on Χριστός at all.<a class="endnote-back" href="#ref-13" title="Back to text" aria-label="Back to text">↑</a>
+        The same phrase, &quot;the one called Christ,&quot; recurs at Matthew 27:17 and 27:22, where Pilate offers the crowd a choice between Jesus and Barabbas. Some scholars read this verse, not 1:1, as the point where the title is activated for the reader, closing a chiastic frame with 1:1 and 1:17. A tally of Matthew&#x27;s roughly eighteen uses of the word rates this occurrence as only &quot;probably&quot; titular, one degree less certain than the next occurrence two verses later. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-13" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>BDAG (Bauer/Danker) — s.v. Χριστός, two senses: titular &quot;Anointed One/Messiah&quot; vs. a personal name; names Matthew 11:2 as roughly the hinge point where sense shifts</li>
-            <li>M. Jack Suggs (<i>Wisdom, Christology, and Law in Matthew&#x27;s Gospel</i>, Harvard University Press, 1970) — argues against a bare-name reading at Matthew 11:2</li>
-            <li>John Nolland (NIGTC) — the chiasm between Matthew 1:1 and 1:17 favors a titular reading across the whole genealogy</li>
-            <li>R.T. France (NICNT) — &quot;the colorless translation &#x27;Jesus Christ&#x27;&quot; loses Matthew&#x27;s intended title; ὁ λεγόμενος χριστός recurs verbatim at 27:17 and 27:22</li>
-            <li>D.A. Carson (EBC) — the outlier, reads the word as already shifting toward fixed-name use by Matthew 1:16</li>
+            <li>Nolland (NIGTC) — reads this verse, not 1:1, as where Christ is clarified as titular</li>
+            <li>France (NICNT) — notes the phrase&#x27;s inclusio with the Pilate scene at 27:17 and 27:22</li>
+            <li>Carson (EBC) — rates this occurrence only &quot;probably&quot; titular in his own tally of Matthew&#x27;s uses</li>
           </ul>
         </details>
       </div>
@@ -1014,14 +416,14 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-14" href="#ref-14" title="Back to text">egennēthē</a>
         Every other link in the genealogy uses the active verb egennēsen, &quot;fathered.&quot; Here the verb shifts to the passive egennēthē, &quot;was born,&quot; with Jesus as its subject and Mary marked as the source. Joseph never appears as the grammatical subject of a begetting verb applied to Jesus.<a class="endnote-back" href="#ref-14" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> begat, born, begotten</div>
+        <div class="endnote-senses"><b>Usually</b> begat, born, brought forth</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Nolland (NIGTC) — reads the passive as denying Joseph the normal role in procreation, without explanation</li>
             <li>Hagner (WBC) — calls the verb shift &quot;the biggest surprise of the genealogy&quot;</li>
-            <li>MacArthur Study Bible — notes the singular relative pronoun ties the birth to Mary alone, excluding Joseph as father</li>
-            <li>Orthodox Study Bible — states the pronoun is feminine in Greek, referring only to Mary</li>
+            <li><i>MacArthur Study Bible</i> — notes the singular relative pronoun ties the birth to Mary alone, excluding Joseph as father</li>
+            <li><i>Orthodox Study Bible</i> — states the pronoun is feminine in Greek, referring only to Mary</li>
           </ul>
         </details>
       </div>
@@ -1031,16 +433,15 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-15" title="Back to text">o</a>
       <div class="endnote-body">
         <a class="endnote-word always" id="note-15" href="#ref-15" title="Back to text">christou</a>
-        Χριστός is ambiguous between a title -- the Anointed One, the Messiah -- and a fixed second name for Jesus. SBLGNT prints the word lowercase throughout, and STEPBible&#x27;s TAGNT apparatus classifies it as titular rather than as a personal name, like kyrios. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. CNT renders it &quot;the Anointed&quot; so the title stays audible. The whole family follows from it. χρίω is the verb it is built on, so an anointing anywhere in the New Testament is the same word as the name; χρῖσμα is the substance. Χριστιανός, rendered here &quot;Anointedian&quot;, is the partisan noun -- the -ιανός suffix is a Latin formation meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs only three times, and what it meant at Antioch is disputed: an outsiders&#x27; nickname, a Roman administrative label, or something the group called itself. &quot;Christian&quot; now carries two thousand years the word did not have then, and it also hides that the word is built on Χριστός at all.<a class="endnote-back" href="#ref-15" title="Back to text" aria-label="Back to text">↑</a>
+        The genealogy closes on the same word it opened with at 1:1, bracketing every generation between two uses of the title. Translations split three ways at this verse, between &quot;the Anointed,&quot; &quot;the Messiah,&quot; and &quot;the Christ.&quot; Whether that bracketing settles the word as a title rather than as a second name is disputed. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-15" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>BDAG (Bauer/Danker) — s.v. Χριστός, two senses: titular &quot;Anointed One/Messiah&quot; vs. a personal name; names Matthew 11:2 as roughly the hinge point where sense shifts</li>
-            <li>M. Jack Suggs (<i>Wisdom, Christology, and Law in Matthew&#x27;s Gospel</i>, Harvard University Press, 1970) — argues against a bare-name reading at Matthew 11:2</li>
-            <li>John Nolland (NIGTC) — the chiasm between Matthew 1:1 and 1:17 favors a titular reading across the whole genealogy</li>
-            <li>R.T. France (NICNT) — &quot;the colorless translation &#x27;Jesus Christ&#x27;&quot; loses Matthew&#x27;s intended title; ὁ λεγόμενος χριστός recurs verbatim at 27:17 and 27:22</li>
-            <li>D.A. Carson (EBC) — the outlier, reads the word as already shifting toward fixed-name use by Matthew 1:16</li>
+            <li>Nolland (NIGTC) — &quot;The chiasm formed by vv. 1 and 17 favours a titular use&quot;</li>
+            <li>Carson (EBC) — the outlier, reads the word as already shifting toward fixed-name use by 1:16</li>
+            <li>Hart — alone in rendering &quot;the Anointed,&quot; against &quot;the Messiah&quot; in NRSVue, HCSB, the <i>MacArthur Study Bible</i> and <i>The Jewish Annotated New Testament</i></li>
+            <li><i>Ignatius Bible</i> and <i>Orthodox Study Bible</i> — both render &quot;the Christ,&quot; the reading closest to a bare personal name</li>
           </ul>
         </details>
       </div>
@@ -1050,8 +451,18 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-16" title="Back to text">p</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-16" href="#ref-16" title="Back to text">genesis</a>
-        <a class="endnote-back" href="#ref-16" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> birth</div>
+        Two disputes attach to this single word. Textually, the Textus Receptus and the Byzantine tradition read &quot;gennēsis&quot; (&quot;birth&quot;) where every other collated edition reads &quot;genesis&quot; (&quot;origin, becoming&quot;), a substitution Metzger attributes to scribes narrowing an unfamiliar broader sense toward a more specialized one. Separately, translators render the agreed-upon &quot;genesis&quot; here as &quot;birth,&quot; obscuring its repetition of the same word opening the genealogy at 1:1. Commentators disagree on how much is lost: some read &quot;birth&quot; as a defensible narrowing that still preserves the link, others as a translation that erases a deliberate authorial echo.<a class="endnote-back" href="#ref-16" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> birth, natural</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — rates &quot;genesis&quot; {B}, attributes the variant to scribal narrowing toward a more familiar word</li>
+            <li>Nolland (NIGTC) — reads &quot;birth&quot; as a narrowing translation that still takes up 1:1&#x27;s usage</li>
+            <li>France (NICNT) — argues &quot;birth&quot; loses a deliberate verbal link to 1:1 that only repeating &quot;genesis&quot; would preserve</li>
+            <li>Turner (BECNT) — uses the repetition as evidence against reading 1:1&#x27;s &quot;genesis&quot; narrowly as &quot;genealogy&quot;</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — reports a minority view (Davies) that the direction of corruption may run the other way, then sets it aside</li>
+          </ul>
+        </details>
       </div>
     </div>
     
@@ -1063,7 +474,7 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>, 2nd ed.) — rates the longer reading {B} but calls it &quot;intrinsically improbable&quot; on internal grounds</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — rates the longer reading {B} but calls it &quot;intrinsically improbable&quot; on internal grounds</li>
             <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — compiles the wider manuscript and patristic evidence for both readings</li>
             <li>Ehrman (<i>The Orthodox Corruption of Scripture</i>) — reads the shorter reading as a second-century scribal alteration made in an anti-separationist dispute</li>
             <li>France (NICNT) — adopts the shorter reading as original, against the manuscript majority</li>
@@ -1077,16 +488,16 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-18" title="Back to text">r</a>
       <div class="endnote-body">
         <a class="endnote-word always" id="note-18" href="#ref-18" title="Back to text">christou</a>
-        Χριστός is ambiguous between a title -- the Anointed One, the Messiah -- and a fixed second name for Jesus. SBLGNT prints the word lowercase throughout, and STEPBible&#x27;s TAGNT apparatus classifies it as titular rather than as a personal name, like kyrios. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. CNT renders it &quot;the Anointed&quot; so the title stays audible. The whole family follows from it. χρίω is the verb it is built on, so an anointing anywhere in the New Testament is the same word as the name; χρῖσμα is the substance. Χριστιανός, rendered here &quot;Anointedian&quot;, is the partisan noun -- the -ιανός suffix is a Latin formation meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs only three times, and what it meant at Antioch is disputed: an outsiders&#x27; nickname, a Roman administrative label, or something the group called itself. &quot;Christian&quot; now carries two thousand years the word did not have then, and it also hides that the word is built on Χριστός at all.<a class="endnote-back" href="#ref-18" title="Back to text" aria-label="Back to text">↑</a>
+        Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-18" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>BDAG (Bauer/Danker) — s.v. Χριστός, two senses: titular &quot;Anointed One/Messiah&quot; vs. a personal name; names Matthew 11:2 as roughly the hinge point where sense shifts</li>
-            <li>M. Jack Suggs (<i>Wisdom, Christology, and Law in Matthew&#x27;s Gospel</i>, Harvard University Press, 1970) — argues against a bare-name reading at Matthew 11:2</li>
-            <li>John Nolland (NIGTC) — the chiasm between Matthew 1:1 and 1:17 favors a titular reading across the whole genealogy</li>
-            <li>R.T. France (NICNT) — &quot;the colorless translation &#x27;Jesus Christ&#x27;&quot; loses Matthew&#x27;s intended title; ὁ λεγόμενος χριστός recurs verbatim at 27:17 and 27:22</li>
-            <li>D.A. Carson (EBC) — the outlier, reads the word as already shifting toward fixed-name use by Matthew 1:16</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — separates a titular &quot;Anointed One&quot; from a personal name, and puts the shift around Matthew 11:2</li>
+            <li>Suggs (<i>Wisdom, Christology, and Law in Matthew&#x27;s Gospel</i>) — argues against a bare-name reading at Matthew 11:2</li>
+            <li>Nolland (NIGTC) — the chiasm between Matthew 1:1 and 1:17 favors a titular reading across the whole genealogy</li>
+            <li>France (NICNT) — &quot;the colorless translation &#x27;Jesus Christ&#x27;&quot; loses Matthew&#x27;s intended title, and notes that ὁ λεγόμενος χριστός recurs verbatim at 27:17 and 27:22</li>
+            <li>Carson (EBC) — the outlier, reads the word as already shifting toward fixed-name use by Matthew 1:16</li>
           </ul>
         </details>
       </div>
@@ -1103,8 +514,8 @@ render.py's query logic) and regenerate instead.
           <ul>
             <li>Nolland (NIGTC) — betrothal created &quot;a legal state of marriage, with attendant possibilities of adultery, divorce, and widowhood&quot;</li>
             <li>France (NICNT) — Joseph&#x27;s dilemma was never whether to divorce Mary but only whether to do so publicly or privately</li>
-            <li>Brown (<i>Birth of the Messiah</i>) — supplies fuller rabbinic sourcing (Mishnah <i>Ketubbot</i>, <i>Kethuboth</i>) for the same two-stage structure</li>
-            <li>JANT — corroborates the rabbinic sourcing while noting the rabbinic ideal may not reflect first-century practice</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — supplies fuller rabbinic sourcing (Mishnah <i>Ketubbot</i>, <i>Kethuboth</i>) for the same two-stage structure</li>
+            <li><i>The Jewish Annotated New Testament</i> — corroborates the rabbinic sourcing while noting the rabbinic ideal may not reflect first-century practice</li>
             <li>Keener (<i>A Commentary on the Gospel of Matthew</i>) — reads continued restraint after betrothal as culturally notable rather than a neutral legal default</li>
           </ul>
         </details>
@@ -1115,15 +526,15 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-20" title="Back to text">t</a>
       <div class="endnote-body">
         <a class="endnote-word always" id="note-20" href="#ref-20" title="Back to text">pneumatos</a>
-        Pneuma spans a range from ordinary wind or breath to the animating principle in a person, an incorporeal spirit or demon, and the divine Spirit. Greek grammar does not resolve which sense is meant in a given case. The presence or absence of the article is sometimes read as marking the divine Spirit specifically, though this pattern is not applied consistently and remains disputed.<a class="endnote-back" href="#ref-20" title="Back to text" aria-label="Back to text">↑</a>
+        The phrase is grammatically anarthrous, lacking a definite article, a pattern that recurs at 1:20 and 3:11 but not at 12:32 or 28:19. Some translations render this &quot;a Holy Spirit&quot; rather than &quot;the Holy Spirit&quot; on that basis. Commentators who address the grammar directly argue the missing article does not indicate an indefinite spirit, since the referent is fixed by context regardless. Pneuma spans a range from ordinary wind or breath to the animating principle in a person, an incorporeal spirit or demon, and the divine Spirit. Greek grammar does not resolve which sense is meant in a given case. The presence or absence of the article is sometimes read as marking the divine Spirit specifically, though this pattern is not applied consistently and remains disputed.<a class="endnote-back" href="#ref-20" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> spirit, ghost, wind</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Nolland (NIGTC; also <i>JSNT</i> 62 [1996]) — distinguishes the LXX idiom for conception, which can mark a male role, from the idiom used here, which does not</li>
-            <li>Davies &amp; Allison (ICC) — &quot;the word is definite from the nature of the case&quot; despite the missing article</li>
-            <li>Brown (<i>Birth of the Messiah</i>) — the Spirit is never presented as the male element in the conception, being neither male nor a sexual partner</li>
-            <li>Lagrand (<i>NovT</i> 22 [1980]) — reads the grammar differently, assigning Mary the &quot;male&quot; role and the Spirit the &quot;female&quot; role</li>
+            <li>Nolland (NIGTC) — distinguishes the LXX idiom for conception, which can mark a male role, from the idiom used here, which does not</li>
+            <li>Davies and Allison (ICC) — &quot;the word is definite from the nature of the case&quot; despite the missing article</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — the Spirit is never presented as the male element in the conception, being neither male nor a sexual partner</li>
+            <li>Lagrand (&quot;How Was the Virgin Mary &#x27;Like a Man&#x27;?,&quot; NovT) — reads the grammar differently, assigning Mary the &quot;male&quot; role and the Spirit the &quot;female&quot; role</li>
           </ul>
         </details>
       </div>
@@ -1133,16 +544,15 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-21" title="Back to text">u</a>
       <div class="endnote-body">
         <a class="endnote-word always" id="note-21" href="#ref-21" title="Back to text">dikaios</a>
-        δικαιοσύνη, δίκαιος, and δικαιόω range in sense from personal moral righteousness to covenantal or forensic justice. Translators and commentators divide over which sense a given occurrence carries. No single English word covers that full range.<a class="endnote-back" href="#ref-21" title="Back to text" aria-label="Back to text">↑</a>
+        Two readings divide the commentaries. One takes Joseph&#x27;s righteousness as strict law-observance, standing in tension with his wish to spare Mary public disgrace. The other takes his righteousness as already including that mercy, with no tension to resolve. Commentators split close to evenly on which reading is correct. δικαιοσύνη, δίκαιος, and δικαιόω range in sense from personal moral righteousness to covenantal or forensic justice. Translators and commentators divide over which sense a given occurrence carries. No single English word covers that full range.<a class="endnote-back" href="#ref-21" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> righteous, right, righteous one</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Strong&#x27;s Greek Dictionary, G1342 (δίκαιος) / G1343 (δικαιοσύνη) — glosses δίκαιος &quot;equitable (in character or act),&quot; δικαιοσύνη &quot;equity... specially (Christian) justification,&quot; spanning both senses</li>
-            <li>Abbott-Smith (<i>Manual Greek Lexicon of the New Testament</i>) — two-tier entry: broad sense &quot;conformity to the Divine will in purpose, thought, and action,&quot; narrower sense &quot;justice&quot;</li>
-            <li>Benno Przybylski, <i>Righteousness in Matthew and His World of Thought</i> (SNTSMS 41, Cambridge University Press, 1980) — argues Matthew&#x27;s usage is uniformly ethical, &quot;proper conduct before God,&quot; against a Pauline forensic-gift reading</li>
-            <li>Donald A. Hagner — opposing view: some occurrences (5:6, 6:33) denote eschatological &quot;justice&quot; or gift, not ethical performance, explicitly &quot;pace Przybylski&quot;</li>
-            <li>W.D. Davies &amp; Dale C. Allison (ICC, <i>Matthew 1-7</i>) — favors the &quot;conduct&quot; reading at 5:10, listing allied scholars (Barth, Fenton, Gundry, Luz, Przybylski, Strecker, Reumann, Ziesler) against dissenter Giesen</li>
+            <li>Turner (BECNT) and France (NICNT) — read dikaios as law-abiding, with the following clause set against it</li>
+            <li>Nolland (NIGTC) — rejects any tension, reading dikaios as explaining the divorce decision itself</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — sides with Nolland, calling this the only convincing account among three</li>
+            <li>Davies and Allison (ICC) — sides with Turner and France, and reports Ulrich Luz taking the opposite view</li>
           </ul>
         </details>
       </div>
@@ -1153,13 +563,13 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-22" href="#ref-22" title="Back to text">kai</a>
         Grammarians disagree whether this conjunction is adversative (&quot;though righteous, yet unwilling&quot;) or continuative (&quot;being righteous, and so unwilling&quot;). A widely cited grammar is invoked for the adversative reading, but its actual text classifies the clause as causal, not concessive.<a class="endnote-back" href="#ref-22" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> both, neither, likewise</div>
+        <div class="endnote-senses"><b>Usually</b> both, neither, indeed</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Turner (BECNT) — reads kai as a mild adversative, citing BDF §417</li>
-            <li>Blass, Debrunner &amp; Funk, <i>A Greek Grammar of the New Testament</i> (1961), §418(1) — names Matthew 1:19 as its own example of a causal, not concessive, participle</li>
-            <li>Wallace, <i>Greek Grammar Beyond the Basics</i> (1996) — confirms the general concessive/causal participle distinction without ruling on this verse</li>
+            <li>Turner (BECNT) — reads kai as a mild adversative, citing Blass, Debrunner and Funk</li>
+            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — names Matthew 1:19 as its own example of a causal, not concessive, participle</li>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — confirms the general concessive/causal participle distinction without ruling on this verse</li>
           </ul>
         </details>
       </div>
@@ -1169,14 +579,14 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-23" title="Back to text">w</a>
       <div class="endnote-body">
         <a class="endnote-word variant" id="note-23" href="#ref-23" title="Back to text">deigmatisai</a>
-        Manuscripts split between this reading, &quot;to expose publicly,&quot; and the stronger compound paradeigmatisai, &quot;to hold up as a public example.&quot; Modern critical editions favor the shorter reading; the Byzantine tradition and Textus Receptus favor the compound. Nearly every translation renders the verse the same way regardless of which is followed.<a class="endnote-back" href="#ref-23" title="Back to text" aria-label="Back to text">↑</a>
+        Manuscripts split between this reading, &quot;to expose publicly,&quot; and the stronger compound paradeigmatisai, &quot;to hold up as a public example.&quot; Modern critical editions favor the shorter reading, the Byzantine tradition and Textus Receptus the compound. Nearly every translation renders the verse the same way regardless of which is followed.<a class="endnote-back" href="#ref-23" title="Back to text" aria-label="Back to text">↑</a>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>STEPBible TAGNT apparatus — NA28, NA27, Tyndale House, SBL, WH, and Tregelles all read deigmatisai; Byzantine/TR read paradeigmatisai</li>
-            <li>Davies &amp; Allison (ICC) — supplies manuscript sigla for the split (deigmatisai in Aleph-1, B, Z, f1; paradeigmatisai in the majority text)</li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — NA28, NA27, Tyndale House, SBL, WH, and Tregelles all read deigmatisai, against the Byzantine and Textus Receptus reading paradeigmatisai</li>
+            <li>Davies and Allison (ICC) — supplies manuscript sigla for the split, deigmatisai in Aleph-1, B, Z and f1 against paradeigmatisai in the majority text</li>
             <li>Nolland (NIGTC) — reads the word as referring to a formal public trial, not merely ordinary social visibility</li>
-            <li>Bruce Metzger, <i>A Textual Commentary on the Greek New Testament</i>, 2nd ed. (UBS, 1994) — contains no entry on this variant, a checked absence</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — contains no entry on this variant, a checked absence</li>
           </ul>
         </details>
       </div>
@@ -1186,16 +596,16 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-24" title="Back to text">x</a>
       <div class="endnote-body">
         <a class="endnote-word always" id="note-24" href="#ref-24" title="Back to text">kuriou</a>
-        κύριος ranges from an ordinary term of respectful address (&quot;sir,&quot; &quot;master&quot;) through a disciple&#x27;s title for a living teacher to the full divine name. In the Septuagint it is the standard reverential substitute for the unpronounced Hebrew Tetragrammaton, YHWH. When the New Testament quotes an Old Testament passage naming YHWH, the Greek text carries the same word, κύριος, with no orthographic marker distinguishing it from the word&#x27;s ordinary human sense.<a class="endnote-back" href="#ref-24" title="Back to text" aria-label="Back to text">↑</a>
+        κύριος ranges from an ordinary term of respectful address (&quot;sir,&quot; &quot;master&quot;) through a disciple&#x27;s title for a living teacher to the full divine name. In the Septuagint it is the standard reverential substitute for the unpronounced Hebrew Tetragrammaton. When the New Testament quotes an Old Testament passage that names it, the Greek text carries the same word, κύριος, with no orthographic marker distinguishing it from the word&#x27;s ordinary human sense.<a class="endnote-back" href="#ref-24" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> lord, master, sir</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Abbott-Smith (<i>Manual Greek Lexicon of the New Testament</i>) — states κύριος is used &quot;in LXX (subst.) chiefly for יהוה, also for בַּעַל, אָדוֹן,&quot; cataloguing the full range from genitive-of-possession (&quot;master of the house&quot;) through vocative address (&quot;sir&quot;) to the full divine title</li>
-            <li>Strong&#x27;s Greek Dictionary, G2962 — &quot;supreme in authority, i.e. controller; by implication, Master (as a respectful title)&quot;</li>
-            <li>John Nolland (NIGTC) — cautions against over-reading an anarthrous κύριος as inherently a divine title, noting Psalm 110:1&#x27;s &quot;my lord&quot; is ordinary court address to a king</li>
-            <li>R.T. France (NICNT) — on Matthew&#x27;s citation of Isaiah 40:3, applying to Jesus a text whose κύριος names God himself constitutes &quot;a remarkable christological claim&quot;</li>
-            <li>Martin Hengel, &quot;Sit at My Right Hand!&quot; in <i>Studies in Early Christology</i> (T&amp;T Clark, 1995) — traces how Psalm 110:1&#x27;s double κύριος became the primary vehicle for the earliest church&#x27;s confession of Jesus&#x27;s exalted status</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — states κύριος is used &quot;in LXX (subst.) chiefly for [the divine name], also for בַּעַל, אָדוֹן,&quot; cataloguing the full range from genitive-of-possession (&quot;master of the house&quot;) through vocative address (&quot;sir&quot;) to the full divine title</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;supreme in authority, i.e. controller; by implication, Master (as a respectful title)&quot;</li>
+            <li>Nolland (NIGTC) — cautions against over-reading an anarthrous κύριος as inherently a divine title, noting Psalm 110:1&#x27;s &quot;my lord&quot; is ordinary court address to a king</li>
+            <li>France (NICNT) — on Matthew&#x27;s citation of Isaiah 40:3, applying to Jesus a text whose κύριος names God himself constitutes &quot;a remarkable christological claim&quot;</li>
+            <li>Hengel (<i>Studies in Early Christology</i>) — traces how Psalm 110:1&#x27;s double κύριος became the primary vehicle for the earliest church&#x27;s confession of Jesus&#x27;s exalted status</li>
           </ul>
         </details>
       </div>
@@ -1206,13 +616,13 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-25" href="#ref-25" title="Back to text">paralabein</a>
         παραλαμβάνω is an ordinary verb for taking a person along or to oneself, used elsewhere in Matthew for taking children on a journey, taking companions up a mountain, and marching a prisoner into custody. Applied to a wife, it marks the second stage of Jewish marriage law, bringing a betrothed woman into the groom&#x27;s household. No lexicon entry treats the marital use as a distinct sense apart from the verb&#x27;s other objects.<a class="endnote-back" href="#ref-25" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> received, taken, took</div>
+        <div class="endnote-senses"><b>Usually</b> taken, received, took unto</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Abbott-Smith (<i>Manual Greek Lexicon of the New Testament</i>) — groups Matthew 1:20&#x27;s &quot;take as wife&quot; in the same sense as taking companions up a mountain or a prisoner into custody</li>
-            <li>Davies &amp; Allison (ICC) — cites Herodotus 4.155, two passages of Josephus, and the rabbinic term for bringing a bride into the groom&#x27;s house</li>
-            <li>Albright &amp; Mann (Anchor) — describes betrothal and the taking of the bride into the groom&#x27;s house as the two legal stages of Jewish marriage</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — groups Matthew 1:20&#x27;s &quot;take as wife&quot; in the same sense as taking companions up a mountain or a prisoner into custody</li>
+            <li>Davies and Allison (ICC) — cites Herodotus, two passages of Josephus, and the rabbinic term for bringing a bride into the groom&#x27;s house</li>
+            <li>Albright and Mann (Anchor) — describes betrothal and the taking of the bride into the groom&#x27;s house as the two legal stages of Jewish marriage</li>
             <li>France (NICNT) — reads the verb as carrying a sense of welcome, not mere dutiful compliance</li>
           </ul>
         </details>
@@ -1224,13 +634,13 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-26" href="#ref-26" title="Back to text">gennēthen</a>
         γεννηθέν is the neuter passive participle of γεννάω, the same verb behind 1:16&#x27;s ἐγεννήθη. The article τό substantizes the participle into an unspecified subject, an ordinary construction that recurs in Matthew&#x27;s own fulfillment formulas. The neuter form leaves the child&#x27;s gender undisclosed until the following verse.<a class="endnote-back" href="#ref-26" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> begat, born, begotten</div>
+        <div class="endnote-senses"><b>Usually</b> begat, born, brought forth</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Nolland (NIGTC) — reads the neuter construction as withholding the child&#x27;s gender until verse 21, and the intervening ἐστιν as blocking a reading of divine paternity</li>
-            <li>Blass, Debrunner &amp; Funk (<i>Greek Grammar of the New Testament</i>) — classifies the construction as an ordinary neuter substantival participle, citing Matthew&#x27;s own &quot;to rhēthen&quot; as a parallel</li>
-            <li>Davies &amp; Allison (ICC) — argue Greek&#x27;s neuter πνεῦμα, unlike its feminine Hebrew counterpart, tells against reading the Spirit&#x27;s role as a male parent</li>
+            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — classifies the construction as an ordinary neuter substantival participle, citing Matthew&#x27;s own &quot;to rhēthen&quot; as a parallel</li>
+            <li>Davies and Allison (ICC) — argue Greek&#x27;s neuter πνεῦμα, unlike its feminine Hebrew counterpart, tells against reading the Spirit&#x27;s role as a male parent</li>
             <li>France (NICNT) — notes &quot;pregnant from&quot; is unnatural English idiom while &quot;pregnant by&quot; wrongly implies natural male generation</li>
           </ul>
         </details>
@@ -1246,10 +656,10 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Strong&#x27;s Greek Dictionary, G4151 — base sense &quot;a current of air, i.e. breath (blast) or a breeze,&quot; extending by analogy to human soul, angel, demon, or God&#x27;s own Spirit</li>
-            <li>Abbott-Smith (<i>Manual Greek Lexicon of the New Testament</i>) — five-sense entry (wind/breath, vital principle, disposition, incorporeal being, Holy Spirit); article&#x27;s presence &quot;as a rule&quot; marks the Spirit as Person/Divine Power versus an anarthrous &quot;operation, influence, or gift&quot;</li>
-            <li>John Nolland (NIGTC) and W.D. Davies &amp; Dale C. Allison (ICC) — both argue, independently, that &quot;ἐκ πνεύματος ἁγίου&quot; denotes divine creative power rather than a paternal/male generative role, Nolland via LXX idiom, Davies &amp; Allison via grammatical gender (Greek πνεῦμα is neuter, Hebrew רוּחַ is feminine)</li>
-            <li>SBLGNT text itself — πνεῦμα ἅγιον is anarthrous at Matthew 1:18, 1:20, and 3:11 but articular at 12:32 and 28:19, a distributional pattern whose significance remains disputed absent a dedicated grammar treatment</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — base sense &quot;a current of air, i.e. breath (blast) or a breeze,&quot; extending by analogy to human soul, angel, demon, or God&#x27;s own Spirit</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — five-sense entry, running from wind and breath through vital principle, disposition and incorporeal being to Holy Spirit, where the article&#x27;s presence &quot;as a rule&quot; marks the Spirit as Person/Divine Power versus an anarthrous &quot;operation, influence, or gift&quot;</li>
+            <li>Nolland (NIGTC) and Davies and Allison (ICC) — both argue, independently, that &quot;ἐκ πνεύματος ἁγίου&quot; denotes divine creative power rather than a paternal/male generative role, Nolland via Septuagint idiom, Davies and Allison via grammatical gender (Greek πνεῦμα is neuter, Hebrew רוּחַ is feminine)</li>
+            <li><i>SBL Greek New Testament</i> — πνεῦμα ἅγιον is anarthrous at Matthew 1:18, 1:20, and 3:11 but articular at 12:32 and 28:19, a distributional pattern whose significance remains disputed absent a dedicated grammar treatment</li>
           </ul>
         </details>
       </div>
@@ -1268,7 +678,7 @@ render.py's query logic) and regenerate instead.
             <li>Nolland (NIGTC) — takes the referent as ethnic Israel at this point in the narrative, later both narrowed and widened</li>
             <li>Brown (<i>The Birth of the Messiah</i>) — states plainly that &quot;his people&quot; already includes both Jews and Gentiles for Matthew</li>
             <li>Hagner (WBC) — ties an inclusive reading to Matthew 1:1&#x27;s &quot;son of David&quot; and &quot;son of Abraham&quot; titles, anchored to the ekklēsia of 16:18</li>
-            <li>Boring (<i>New Interpreter&#x27;s Bible</i>) — declines to specify the referent, locating the eventual dispute over &quot;his people&quot; at 21:43 and 27:25</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — declines to specify the referent, locating the eventual dispute over &quot;his people&quot; at 21:43 and 27:25</li>
           </ul>
         </details>
       </div>
@@ -1278,12 +688,12 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-29" title="Back to text">ac</a>
       <div class="endnote-body">
         <a class="endnote-word always" id="note-29" href="#ref-29" title="Back to text">hamartiōn</a>
-        The root sense is a missing of the mark, the failure of a thrown spear or arrow to hit its target. Classical usage extends this to any fault, failure, or error of judgment, then narrows in philosophical and religious writing to guilt or moral sin. The New Testament and the Septuagint before it use only the narrowed sense.<a class="endnote-back" href="#ref-29" title="Back to text" aria-label="Back to text">↑</a>
+        Psalm 130:8 LXX, the closest verbal parallel to this clause, reads &quot;from all his ἀνομίαι,&quot; lawless deeds, not ἁμαρτίαι. Proposed reasons for the substitution include an echo pairing σώσει with the name Ἰησοῦν, and ἁμαρτία&#x27;s currency in Isaiah 53 and early confessional formulas. The parallel to the psalm remains thematic rather than a verbatim quotation. The root sense is a missing of the mark, the failure of a thrown spear or arrow to hit its target. Classical usage extends this to any fault, failure, or error of judgment, then narrows in philosophical and religious writing to guilt or moral sin. The New Testament and the Septuagint before it use only the narrowed sense.<a class="endnote-back" href="#ref-29" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> sin</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Davies &amp; Allison (ICC) — propose the ἀνομία/ἁμαρτία shift responds to the σώσει/Ἰησοῦν pun and to ἁμαρτία&#x27;s use in Isaiah 53 and early confessional formulas</li>
+            <li>Davies and Allison (ICC) — propose the ἀνομία/ἁμαρτία shift responds to the σώσει/Ἰησοῦν pun and to ἁμαρτία&#x27;s use in Isaiah 53 and early confessional formulas</li>
             <li>Turner (BECNT) — identifies Psalm 130:8 as the closest Old Testament verbal parallel</li>
             <li>Nolland (NIGTC) — calls the psalm &quot;verbally closest to Mt. 1:21&quot; while noting the wording still differs</li>
             <li>Hagner (WBC) — proposes the clause may be a targumic rendering of the psalm</li>
@@ -1297,14 +707,14 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-30" href="#ref-30" title="Back to text">holon</a>
         τοῦτο δὲ ὅλον, &quot;all this,&quot; introduces the citation before the events it explains are fully narrated. Commentators disagree on how far the phrase reaches. Some read it as spanning forward through the child&#x27;s naming, not yet narrated at this point. Others read it as bounded, covering only the pregnancy and the angel&#x27;s appearance already recounted.<a class="endnote-back" href="#ref-30" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> all, whole, entirely</div>
+        <div class="endnote-senses"><b>Usually</b> all, whole, every whit</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>France (NICNT) — reads &quot;all this&quot; as spanning forward through the naming of the child</li>
             <li>Nolland (NIGTC) — reads the phrase as bounded, covering only Mary&#x27;s pregnancy and the angel&#x27;s appearance</li>
             <li>Kupp (<i>Matthew&#x27;s Emmanuel</i>) — ties the phrase&#x27;s fulfillment to the meaning of the name Emmanuel, not the bare historical events alone</li>
-            <li>Chrysostom (<i>Homilies on Matthew</i>, cited in Mitch &amp; Sri, CCSS) — treats Joseph&#x27;s own act of naming the child as part of what is being accomplished</li>
+            <li>Chrysostom (<i>Homilies on Matthew</i>), cited in Mitch and Sri (CCSS) — treats Joseph&#x27;s own act of naming the child as part of what is being accomplished</li>
           </ul>
         </details>
       </div>
@@ -1319,11 +729,11 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Pesch (<i>Biblica</i> 48 [1967]) — proposes that &quot;by the Lord&quot; signals a Son-of-God reading of the quotation&#x27;s &quot;son,&quot; cited independently by France and Nolland</li>
+            <li>Pesch (&quot;Der Gottessohn im matthäischen Evangelienprolog,&quot; Bib) — proposes that &quot;by the Lord&quot; signals a Son-of-God reading of the quotation&#x27;s &quot;son,&quot; cited independently by France and Nolland</li>
             <li>Nolland (NIGTC) — rejects Pesch&#x27;s proposal, reading &quot;by the Lord&quot; instead as an echo of &quot;the angel of the Lord&quot; at 1:20</li>
             <li>France (NICNT) — independently rejects Pesch&#x27;s proposal, noting Matthew nowhere else links Jesus&#x27; Spirit-conception directly to a &quot;Son of God&quot; title</li>
-            <li>Davies &amp; Allison (ICC) — accepts Pesch&#x27;s proposal as &quot;the more plausible&quot; of two explanations on offer</li>
-            <li>Abbott-Smith (<i>Manual Greek Lexicon of the New Testament</i>) — confirms ὑπό and διά together mark a real, if inconsistently applied, distinction between ultimate agent and instrumental channel, citing Matthew 1:22 and 2:15</li>
+            <li>Davies and Allison (ICC) — accepts Pesch&#x27;s proposal as &quot;the more plausible&quot; of two explanations on offer</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — confirms ὑπό and διά together mark a real, if inconsistently applied, distinction between ultimate agent and instrumental channel, citing Matthew 1:22 and 2:15</li>
           </ul>
         </details>
       </div>
@@ -1340,7 +750,7 @@ render.py's query logic) and regenerate instead.
           <ul>
             <li>Nolland (NIGTC) — classifies this citation as claiming the eschatological fulfillment of a prophecy already given a partial, inadequate historical fulfillment</li>
             <li>Turner (BECNT) — calls a strictly predictive reading of Matthew&#x27;s fulfillment formula &quot;simplistic at best&quot;</li>
-            <li>Albright &amp; Mann (Anchor) — root Matthew&#x27;s method in Qumran pesher exegesis, citing Brownlee&#x27;s study of Dead Sea Scrolls interpretive principles</li>
+            <li>Albright and Mann (Anchor) — root Matthew&#x27;s method in Qumran pesher exegesis, citing Brownlee&#x27;s study of Dead Sea Scrolls interpretive principles</li>
             <li>Hagner (WBC) — describes Matthew&#x27;s compositional method here as &quot;his midrashic haggadah&quot;</li>
           </ul>
         </details>
@@ -1352,14 +762,14 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-33" href="#ref-33" title="Back to text">parthenos</a>
         The underlying Hebrew, <i>almah</i>, denotes a young woman of childbearing age. It does not specify virginity the way the more exact Hebrew word <i>bethulah</i> does. The Septuagint renders <i>almah</i> with <i>parthenos</i> at only one other place among the word&#x27;s seven occurrences in the Hebrew Bible, using the more common <i>neanis</i>, &quot;young woman,&quot; elsewhere. Commentators disagree on how much weight this earlier translation choice can bear, since the Septuagint&#x27;s rendering of Isaiah is independently documented as a loose translation.<a class="endnote-back" href="#ref-33" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> virgin</div>
+        <div class="endnote-senses"><b>Usually</b> virgin, virginity</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Turner (BECNT) — citing Seeligmann&#x27;s study of the Septuagint&#x27;s translation technique in Isaiah, judges the Greek word choice unable to bear much interpretive weight on its own</li>
             <li>France (NICNT) — reads the Septuagint&#x27;s choice as tracing back to something unusual in Isaiah&#x27;s own Hebrew wording</li>
-            <li>Davies &amp; Allison (ICC) — confirms <i>neanis</i>, not <i>parthenos</i>, as the Septuagint&#x27;s ordinary rendering of <i>almah</i></li>
-            <li>Brown (<i>Birth of the Messiah</i>) — reads the Septuagint&#x27;s choice as deliberate but not necessarily a signal of virginity preserved through birth</li>
+            <li>Davies and Allison (ICC) — confirms <i>neanis</i>, not <i>parthenos</i>, as the Septuagint&#x27;s ordinary rendering of <i>almah</i></li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — reads the Septuagint&#x27;s choice as deliberate but not necessarily a signal of virginity preserved through birth</li>
             <li>Nolland (NIGTC) — locates the &quot;virgin&quot; reading in an unintended combination of two separate, otherwise ordinary translation choices</li>
           </ul>
         </details>
@@ -1375,10 +785,10 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Menken (<i>NovT</i> 43 [2001]) — argues the plural was already present in a revised Septuagint text, tracing to a Hebrew variant close to the reading in the Isaiah scroll from Qumran</li>
+            <li>Menken (&quot;The Textual Form of the Quotation from Isaiah 7:14 in Matthew 1:23,&quot; NovT) — argues the plural was already present in a revised Septuagint text, tracing to a Hebrew variant close to the reading in the Isaiah scroll from Qumran</li>
             <li>France (NICNT) — reads the plural as Matthew&#x27;s own free composition, with no indication it came from any other source</li>
             <li>Nolland (NIGTC) — surveys several explanations, preferring one that gives Joseph, not only Mary, a role in the naming</li>
-            <li>Brown (<i>Birth of the Messiah</i>) — adds a Dead Sea Scrolls reading, <i>qr&#x27;</i>, as a fourth witness alongside the Masoretic Text, the Septuagint, and Matthew&#x27;s own text</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — adds a Dead Sea Scrolls reading, <i>qr&#x27;</i>, as a fourth witness alongside the Masoretic Text, the Septuagint, and Matthew&#x27;s own text</li>
           </ul>
         </details>
       </div>
@@ -1389,13 +799,13 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-35" href="#ref-35" title="Back to text">Emmanouēl</a>
         The Hebrew name is transliterated rather than translated, following the Septuagint&#x27;s own practice at this verse. The clause immediately following supplies a Greek translation, &quot;God with us.&quot;<a class="endnote-back" href="#ref-35" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> immanuel</div>
+        <div class="endnote-senses"><b>Usually</b> emmanuel</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Strong&#x27;s Greek Dictionary, G1694 — &quot;of Hebrew origin [H6005]; God with us; Emmanuel, a symbolic name of Christ&quot;</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;of Hebrew origin [H6005]; God with us; Emmanuel, a symbolic name of Christ&quot;</li>
             <li>Septuagint, Isaiah 7:14 — transliterates the same Hebrew name as Ἐμμανουήλ rather than translating it</li>
-            <li>Brown (<i>Birth of the Messiah</i>) — notes the Septuagint translates the identical Hebrew phrase as an ordinary clause, not a transliterated name, two verses later at Isaiah 8:8</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — notes the Septuagint translates the identical Hebrew phrase as an ordinary clause, not a transliterated name, two verses later at Isaiah 8:8</li>
           </ul>
         </details>
       </div>
@@ -1412,7 +822,7 @@ render.py's query logic) and regenerate instead.
           <ul>
             <li>Turner (BECNT) — reads the clause in the fullest sense, that Jesus as God&#x27;s Son is also God himself among his people</li>
             <li>Nolland (NIGTC) — gives a five-point argument against reading the clause as an ontological &quot;Jesus is God&quot; claim</li>
-            <li>Davies &amp; Allison (ICC) — reads the phrase adverbially, &quot;with us is God,&quot; denying a full incarnational intent while affirming a unique divine presence</li>
+            <li>Davies and Allison (ICC) — reads the phrase adverbially, &quot;with us is God,&quot; denying a full incarnational intent while affirming a unique divine presence</li>
             <li>Carson (EBC) — argues for the strong reading from Isaiah&#x27;s own theology, linking the name to Isaiah 9:6&#x27;s &quot;Mighty God&quot;</li>
             <li>Kupp (<i>Matthew&#x27;s Emmanuel</i>) — reframes the question as functional rather than ontological, calling Jesus the agent of God&#x27;s presence rather than adjudicating a &quot;Son of God&quot; claim directly</li>
           </ul>
@@ -1424,16 +834,16 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-37" title="Back to text">ak</a>
       <div class="endnote-body">
         <a class="endnote-word always" id="note-37" href="#ref-37" title="Back to text">kuriou</a>
-        κύριος ranges from an ordinary term of respectful address (&quot;sir,&quot; &quot;master&quot;) through a disciple&#x27;s title for a living teacher to the full divine name. In the Septuagint it is the standard reverential substitute for the unpronounced Hebrew Tetragrammaton, YHWH. When the New Testament quotes an Old Testament passage naming YHWH, the Greek text carries the same word, κύριος, with no orthographic marker distinguishing it from the word&#x27;s ordinary human sense.<a class="endnote-back" href="#ref-37" title="Back to text" aria-label="Back to text">↑</a>
+        κύριος ranges from an ordinary term of respectful address (&quot;sir,&quot; &quot;master&quot;) through a disciple&#x27;s title for a living teacher to the full divine name. In the Septuagint it is the standard reverential substitute for the unpronounced Hebrew Tetragrammaton. When the New Testament quotes an Old Testament passage that names it, the Greek text carries the same word, κύριος, with no orthographic marker distinguishing it from the word&#x27;s ordinary human sense.<a class="endnote-back" href="#ref-37" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> lord, master, sir</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Abbott-Smith (<i>Manual Greek Lexicon of the New Testament</i>) — states κύριος is used &quot;in LXX (subst.) chiefly for יהוה, also for בַּעַל, אָדוֹן,&quot; cataloguing the full range from genitive-of-possession (&quot;master of the house&quot;) through vocative address (&quot;sir&quot;) to the full divine title</li>
-            <li>Strong&#x27;s Greek Dictionary, G2962 — &quot;supreme in authority, i.e. controller; by implication, Master (as a respectful title)&quot;</li>
-            <li>John Nolland (NIGTC) — cautions against over-reading an anarthrous κύριος as inherently a divine title, noting Psalm 110:1&#x27;s &quot;my lord&quot; is ordinary court address to a king</li>
-            <li>R.T. France (NICNT) — on Matthew&#x27;s citation of Isaiah 40:3, applying to Jesus a text whose κύριος names God himself constitutes &quot;a remarkable christological claim&quot;</li>
-            <li>Martin Hengel, &quot;Sit at My Right Hand!&quot; in <i>Studies in Early Christology</i> (T&amp;T Clark, 1995) — traces how Psalm 110:1&#x27;s double κύριος became the primary vehicle for the earliest church&#x27;s confession of Jesus&#x27;s exalted status</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — states κύριος is used &quot;in LXX (subst.) chiefly for [the divine name], also for בַּעַל, אָדוֹן,&quot; cataloguing the full range from genitive-of-possession (&quot;master of the house&quot;) through vocative address (&quot;sir&quot;) to the full divine title</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;supreme in authority, i.e. controller; by implication, Master (as a respectful title)&quot;</li>
+            <li>Nolland (NIGTC) — cautions against over-reading an anarthrous κύριος as inherently a divine title, noting Psalm 110:1&#x27;s &quot;my lord&quot; is ordinary court address to a king</li>
+            <li>France (NICNT) — on Matthew&#x27;s citation of Isaiah 40:3, applying to Jesus a text whose κύριος names God himself constitutes &quot;a remarkable christological claim&quot;</li>
+            <li>Hengel (<i>Studies in Early Christology</i>) — traces how Psalm 110:1&#x27;s double κύριος became the primary vehicle for the earliest church&#x27;s confession of Jesus&#x27;s exalted status</li>
           </ul>
         </details>
       </div>
@@ -1444,12 +854,12 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-38" href="#ref-38" title="Back to text">eginōsken</a>
         The verb carries a well-attested sense, &quot;to have relations with,&quot; used the same way for the same verb three times in Genesis 4. The imperfect tense describes the state lasting up to the birth. A minority reading takes the imperfect&#x27;s own aspect as suggesting relations began only afterward, a reading directly rejected elsewhere in the commentary literature.<a class="endnote-back" href="#ref-38" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> know, known, knew</div>
+        <div class="endnote-senses"><b>Usually</b> know, knew not, perceived</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Abbott-Smith and LSJ — both name Matthew 1:25 as a citation instance of this euphemistic sense, tracing it through classical usage as well as the Septuagint</li>
-            <li>Turner (BECNT) — reports a minority &quot;inceptive imperfect&quot; reading, citing W. Allen (1912), under which the tense itself implies relations began after the birth</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) and Liddell and Scott (<i>A Greek-English Lexicon</i>) — both name Matthew 1:25 as a citation instance of this euphemistic sense, tracing it through classical usage as well as the Septuagint</li>
+            <li>Turner (BECNT) — reports a minority &quot;inceptive imperfect&quot; reading, citing Allen, under which the tense itself implies relations began after the birth</li>
             <li>Carson (EBC) — rejects an imperfect-tense argument for continued celibacy after the birth, naming and answering John McHugh&#x27;s version of it directly</li>
           </ul>
         </details>
@@ -1464,16 +874,59 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Mitch &amp; Sri (CCSS) — read the grammar as settling nothing either way, leaving Catholic doctrine on the question grounded elsewhere</li>
+            <li>Mitch and Sri (CCSS) — read the grammar as settling nothing either way, leaving Catholic doctrine on the question grounded elsewhere</li>
             <li>France (NICNT) — reads &quot;until&quot; as most naturally implying resumption of ordinary marital relations after the birth</li>
             <li>Nolland (NIGTC) — translates the word &quot;before&quot; rather than &quot;until&quot; specifically to avoid implying anything about what came after</li>
-            <li>Wright, <i>Biblical and Ancient Greek Linguistics</i> 13 (2025) — argues on formal-semantic grounds that the construction carries an obligatory inference of resumption, against the wider scholarly consensus</li>
+            <li>Wright (&quot;Prepositions and Perpetual Virginity: <i>Until</i> as a Scalar Item in Matt 1:25,&quot; BAGL) — argues on formal-semantic grounds that the construction carries an obligatory inference of resumption, against the wider scholarly consensus</li>
           </ul>
         </details>
       </div>
     </div>
     
   </div>
+
+  <dialog class="sitemap" id="sitemap" aria-label="Site map">
+    <div class="sitemap-head">
+      <span class="sitemap-title">Site map</span>
+      <button class="sitemap-close masthead-tools" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.1rem;height:1.1rem;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sitemap-body">
+      <h3>Books</h3>
+      <ul class="booklist">
+        <li><a href="../../Matthew/1/index.html">Matthew</a></li>
+        <li><span title="Not yet drafted">Mark</span></li>
+        <li><span title="Not yet drafted">Luke</span></li>
+        <li><span title="Not yet drafted">John</span></li>
+        <li><span title="Not yet drafted">Acts</span></li>
+        <li><span title="Not yet drafted">Romans</span></li>
+        <li><span title="Not yet drafted">1 Corinthians</span></li>
+        <li><span title="Not yet drafted">2 Corinthians</span></li>
+        <li><span title="Not yet drafted">Galatians</span></li>
+        <li><span title="Not yet drafted">Ephesians</span></li>
+        <li><span title="Not yet drafted">Philippians</span></li>
+        <li><span title="Not yet drafted">Colossians</span></li>
+        <li><span title="Not yet drafted">1 Thessalonians</span></li>
+        <li><span title="Not yet drafted">2 Thessalonians</span></li>
+        <li><span title="Not yet drafted">1 Timothy</span></li>
+        <li><span title="Not yet drafted">2 Timothy</span></li>
+        <li><span title="Not yet drafted">Titus</span></li>
+        <li><span title="Not yet drafted">Philemon</span></li>
+        <li><span title="Not yet drafted">Hebrews</span></li>
+        <li><span title="Not yet drafted">James</span></li>
+        <li><span title="Not yet drafted">1 Peter</span></li>
+        <li><span title="Not yet drafted">2 Peter</span></li>
+        <li><span title="Not yet drafted">1 John</span></li>
+        <li><span title="Not yet drafted">2 John</span></li>
+        <li><span title="Not yet drafted">3 John</span></li>
+        <li><span title="Not yet drafted">Jude</span></li>
+        <li><span title="Not yet drafted">Revelation</span></li>
+      </ul>
+    </div>
+  </dialog>
 
   <div class="toggle-dock-wrap">
     <div class="nav-dock">
@@ -1490,296 +943,10 @@ render.py's query logic) and regenerate instead.
         <button data-mode="translit">Translit</button>
         <button data-mode="gloss" class="active">Gloss</button>
       </span>
-      <span class="toggle-divider"></span>
-      <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
-        <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
-          <circle cx="12" cy="12" r="4"/>
-          <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
-          <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
-          <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
-          <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
-        </svg>
-        <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
-          <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
-        </svg>
-      </button>
     </div>
   </div>
 
 </div>
 
-<script>
-  (function () {
-    // Left/Right arrow keys mirror the nav-dock's prev/next buttons
-    // (data-nav="prev"/"next" -- absent entirely when the button is
-    // disabled, so the querySelector below just finds nothing and silently
-    // no-ops). Byte-identical to verse.html.jinja's copy: there the two
-    // keys step verse to verse, here chapter to chapter.
-    //
-    // NO VERTICAL KEY IS BOUND, deliberately: Up and Down must go on
-    // scrolling the chapter text, which is the whole page.
-    //
-    // Skipped with any modifier held (so Cmd/Alt+Arrow browser-history
-    // shortcuts and shift-selection still work normally) and skipped
-    // whenever focus is on a form control -- most importantly the
-    // Book/Chapter <select>s just above, where arrow keys are how you move
-    // between options and must not also navigate the page.
-    var NAV_KEYS = { ArrowLeft: 'prev', ArrowRight: 'next' };
-    document.addEventListener('keydown', function (e) {
-      var which = NAV_KEYS[e.key];
-      if (!which) { return; }
-      if (e.ctrlKey || e.altKey || e.metaKey || e.shiftKey) { return; }
-      var active = document.activeElement;
-      if (active) {
-        var tag = active.tagName;
-        if (tag === 'SELECT' || tag === 'INPUT' || tag === 'TEXTAREA' || active.isContentEditable) {
-          return;
-        }
-      }
-      var link = document.querySelector('[data-nav="' + which + '"]');
-      if (link) {
-        e.preventDefault();
-        window.location.href = link.getAttribute('href');
-      }
-    });
-  })();
-
-  (function () {
-    // A native <select>'s closed-state box sizes to its widest OPTION, not
-    // its current value -- e.g. the book select would stay as wide as
-    // "2 Thessalonians" even while showing "Matthew". Measured against a
-    // hidden span mirroring the select's own computed font, so the box
-    // instead tracks whichever option is actually selected right now.
-    var measurer = document.createElement('span');
-    measurer.style.position = 'absolute';
-    measurer.style.visibility = 'hidden';
-    measurer.style.whiteSpace = 'pre';
-    document.body.appendChild(measurer);
-
-    function resizeApparatusSelect(select) {
-      var cs = getComputedStyle(select);
-      measurer.style.fontFamily = cs.fontFamily;
-      measurer.style.fontSize = cs.fontSize;
-      measurer.style.fontWeight = cs.fontWeight;
-      measurer.style.fontStyle = cs.fontStyle;
-      measurer.style.letterSpacing = cs.letterSpacing;
-      measurer.style.textTransform = cs.textTransform;
-      var opt = select.options[select.selectedIndex];
-      measurer.textContent = opt ? opt.textContent : '';
-      var padding = parseFloat(cs.paddingLeft) + parseFloat(cs.paddingRight);
-      select.style.width = (measurer.offsetWidth + padding + 2) + 'px';
-    }
-
-    function resizeAllApparatusSelects() {
-      document.querySelectorAll('.apparatus-select').forEach(function (select) {
-        resizeApparatusSelect(select);
-      });
-    }
-
-    // TWO passes, and both are needed. The measurement reads the select's
-    // COMPUTED font, so whatever font is actually in force when it runs is
-    // what the width ends up fitting -- and the stylesheet requests Cardo
-    // from Google Fonts with `display=swap`, which renders the fallback
-    // (Times New Roman) first and swaps the real face in later. A single
-    // pass at parse time therefore sizes every box to fallback metrics on a
-    // cold load and never corrects itself; the boxes end up a few px off
-    // for the rest of the session, and more than a few if a bigger font
-    // change lands on them.
-    //
-    // So: size once immediately, because the alternative -- waiting -- is
-    // worse (until the first pass runs, a <select> is as wide as its widest
-    // option, which is the whole bug this code exists to fix, and the book
-    // select would visibly jump in from "2 Thessalonians" width). Then size
-    // again once the real faces have loaded. `document.fonts` is guarded
-    // because the second pass is a correction, not a requirement.
-    resizeAllApparatusSelects();
-    if (document.fonts && document.fonts.ready) {
-      document.fonts.ready.then(resizeAllApparatusSelects);
-    }
-
-    document.querySelectorAll('.apparatus-select').forEach(function (select) {
-      select.addEventListener('change', function () { resizeApparatusSelect(select); });
-    });
-  })();
-
-  (function () {
-    document.querySelectorAll('.vspan').forEach(function (span) {
-      span.addEventListener('click', function (e) {
-        if (e.target.closest('.flagword, .note-ref')) { return; }
-        var href = span.getAttribute('data-href');
-        if (href) { window.location.href = href; }
-      });
-    });
-  })();
-
-  (function () {
-    // Explicit JS-managed box (see .jumped in the stylesheet), not :target --
-    // gives full, predictable control over exactly when it appears and
-    // disappears, independent of any browser-specific :target/focus quirks.
-    // Also self-clears after a hold + fade, rather than sitting there
-    // until the reader clicks something else -- see the two timers below.
-    var FADE_DELAY_MS = 1500;
-    var FADE_DURATION_MS = 500; // must match .jumped's CSS transition time
-    var fadeTimer = null;
-    var removeTimer = null;
-
-    function clearJumped() {
-      if (fadeTimer) { clearTimeout(fadeTimer); fadeTimer = null; }
-      if (removeTimer) { clearTimeout(removeTimer); removeTimer = null; }
-      document.querySelectorAll('.jumped').forEach(function (el) {
-        el.classList.remove('jumped', 'jumped-fade');
-      });
-    }
-    document.querySelectorAll('.flagword, .note-ref, .endnote-num, .endnote-word, .endnote-back').forEach(function (link) {
-      link.addEventListener('click', function () {
-        clearJumped();
-        var href = link.getAttribute('href') || '';
-        if (href.charAt(0) !== '#') { return; }
-        var target = document.getElementById(href.slice(1));
-        if (!target) { return; }
-        target.classList.add('jumped');
-        // Following an #id link makes the browser move keyboard focus onto
-        // the target (per the HTML "scroll to the fragment" steps), which
-        // paints its own separate a:focus-visible outline underneath ours,
-        // identical in appearance -- invisible while .jumped is solid, but
-        // exposed the instant .jumped fades, looking like the box "comes
-        // back." Deferred one tick so it runs after that native focus step
-        // (which happens right after this click handler, not during it).
-        setTimeout(function () {
-          if (document.activeElement === target) { target.blur(); }
-        }, 0);
-        fadeTimer = setTimeout(function () {
-          target.classList.add('jumped-fade');
-          removeTimer = setTimeout(function () {
-            target.classList.remove('jumped', 'jumped-fade');
-          }, FADE_DURATION_MS);
-        }, FADE_DELAY_MS);
-      });
-    });
-    document.addEventListener('click', function (e) {
-      if (e.target.closest('.flagword, .note-ref, .endnote-num, .endnote-word, .endnote-back')) { return; }
-      clearJumped();
-    });
-  })();
-
-  (function () {
-    var STORAGE_KEY = 'cnt-toggle-mode';
-    var buttons = document.querySelectorAll('.toggle-dock button[data-mode]');
-    var words = document.querySelectorAll('.flagword');
-
-    function applyMode(mode) {
-      words.forEach(function (w) {
-        var text = w.getAttribute('data-' + mode);
-        if (text) { w.textContent = text; }
-      });
-      buttons.forEach(function (b) {
-        b.classList.toggle('active', b.getAttribute('data-mode') === mode);
-      });
-      try { localStorage.setItem(STORAGE_KEY, mode); } catch (e) {}
-    }
-
-    buttons.forEach(function (b) {
-      b.addEventListener('click', function () { applyMode(b.getAttribute('data-mode')); });
-    });
-
-    var saved = null;
-    try { saved = localStorage.getItem(STORAGE_KEY); } catch (e) {}
-    if (saved) { applyMode(saved); }
-
-    var THEME_KEY = 'cnt-theme';
-    var root = document.documentElement;
-    var themeBtn = document.getElementById('theme-toggle');
-
-    function effectiveTheme() {
-      var explicit = root.getAttribute('data-theme');
-      if (explicit === 'light' || explicit === 'dark') { return explicit; }
-      return (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches)
-        ? 'dark' : 'light';
-    }
-
-    if (themeBtn) {
-      themeBtn.addEventListener('click', function () {
-        var next = effectiveTheme() === 'dark' ? 'light' : 'dark';
-        root.setAttribute('data-theme', next);
-        try { localStorage.setItem(THEME_KEY, next); } catch (e) {}
-      });
-    }
-
-    var savedTheme = null;
-    try { savedTheme = localStorage.getItem(THEME_KEY); } catch (e) {}
-    if (savedTheme === 'light' || savedTheme === 'dark') { root.setAttribute('data-theme', savedTheme); }
-  })();
-
-  /* Sense tip. One shared element, moved to whichever flagged word is hovered.
-     It is created here rather than emitted per word so the reading-mode toggle,
-     which rewrites flagged words via textContent, cannot destroy it. */
-  (function () {
-    var words = document.querySelectorAll('[data-senses]');
-    if (!words.length) { return; }
-
-    var tip = document.createElement('div');
-    tip.className = 'sense-tip';
-    tip.hidden = true;
-    tip.innerHTML = '<div class="sense-tip-head">'
-      + '<span class="sense-tip-lemma"></span></div>'
-      + '<div class="sense-tip-senses"></div>'
-      + '<div class="sense-tip-credit">Berean &middot; KJV</div>';
-    document.body.appendChild(tip);
-
-    var lemmaEl = tip.querySelector('.sense-tip-lemma');
-    var sensesEl = tip.querySelector('.sense-tip-senses');
-    var active = null;
-
-    function hide() {
-      active = null;
-      tip.classList.remove('is-visible');
-      tip.hidden = true;
-    }
-
-    function show(word) {
-      var senses = word.getAttribute('data-senses');
-      if (!senses) { return; }
-      active = word;
-      lemmaEl.textContent = word.getAttribute('data-greek') || '';
-      sensesEl.textContent = senses;
-
-      tip.hidden = false;
-      /* Measure before placing: the width is content-dependent, and the tip has
-         to know its own size to stay inside the window. */
-      var box = word.getBoundingClientRect();
-      var size = tip.getBoundingClientRect();
-      var margin = 8;
-
-      var left = window.scrollX + box.left + (box.width - size.width) / 2;
-      var maxLeft = window.scrollX + document.documentElement.clientWidth - size.width - margin;
-      left = Math.max(window.scrollX + margin, Math.min(left, maxLeft));
-
-      /* Above the word by default, so it never covers the line being read;
-         below only when there is no room above. */
-      var top = window.scrollY + box.top - size.height - margin;
-      if (box.top - size.height - margin < 0) {
-        top = window.scrollY + box.bottom + margin;
-      }
-
-      tip.style.left = left + 'px';
-      tip.style.top = top + 'px';
-      tip.classList.add('is-visible');
-    }
-
-    for (var i = 0; i < words.length; i++) {
-      words[i].addEventListener('mouseenter', function (e) { show(e.currentTarget); });
-      words[i].addEventListener('mouseleave', hide);
-      /* Keyboard reaches these: they are already links to their endnote. */
-      words[i].addEventListener('focus', function (e) { show(e.currentTarget); });
-      words[i].addEventListener('blur', hide);
-    }
-
-    document.addEventListener('keydown', function (e) {
-      if (e.key === 'Escape' && active) { hide(); }
-    });
-    /* A tip positioned in page coordinates would drift away from its word on
-       scroll, so it is dismissed instead of chased. */
-    window.addEventListener('scroll', function () { if (active) { hide(); } }, true);
-  })();
-
-</script>
+<script src="../../static/cnt.js"></script>
+<script src="../../static/reading.js"></script>

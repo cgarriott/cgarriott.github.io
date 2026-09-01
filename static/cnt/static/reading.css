@@ -1,0 +1,550 @@
+/* CNT -- the reading pages: verse, chapter, and any future pericope page.
+ *
+ * Everything here belongs to reading a passage: the apparatus pill, the Greek
+ * line, the translation and its flagged words, the endnote apparatus, the
+ * sense tip, and the two floating docks. Nothing here is needed by the landing
+ * page, which links landing.css instead.
+ *
+ * Requires cnt.css (tokens, page frame, masthead, legend).
+ */
+
+:root {
+  /* One height for every button in either dock. The two used to arrive at their
+     size by unrelated means -- a fixed square on one side, padding plus text on
+     the other -- which is how the left dock ended up 5px taller than the right. */
+  --dock-btn: 2rem;
+}
+
+/* Book/Chapter/Verse navigation, presented as a PILL matching the two docks at
+   the foot of the page -- same background, border, radius and shadow, and
+   the same Source Sans 3 they use. The page's rule is that pill-shaped
+   means clickable, and this control was the one interactive thing that did
+   not look interactive: it was styled as plain running text, which read as
+   a citation rather than as something to operate.
+
+   IT IS CHROME, NOT TEXT, and the type says so. An earlier pass kept the
+   reading face here on the argument that the control names the passage;
+   seen against the finished pill that reading was wrong -- at reading size
+   the control competed with the verse directly beneath it. The UI face,
+   smaller and in --ink-soft, settles it back into the furniture. That also
+   retires a small collision: the apparatus used to be --slate, which is
+   the colour .variant flagged words carry a few lines below.
+
+   THE DIVIDERS DO THE WORK A CARET USED TO. Each level had its own hand-
+   drawn caret; three of them crowded a small pill, and the pill shape had
+   by then taken over the job of saying "clickable". What a caret was still
+   needed for was showing that this is THREE controls and not one label --
+   so a hairline rule between segments says it instead, the same mark
+   .toggle-divider already makes between the mode buttons and the theme
+   button. Chapter and Verse need no rule between them; .apparatus-colon
+   already separates those.
+
+   Underneath it is still a native <select> per level, chrome stripped
+   (appearance:none, no border/background) -- real selects, so keyboard
+   support, screen readers and the native OS picker all come free. A
+   <select>'s closed box sizes to its widest OPTION rather than its current
+   value (the book select would sit at "2 Thessalonians" width forever),
+   which resizeApparatusSelect at the foot of this page corrects by
+   measuring the selected option and setting the width explicitly -- twice,
+   see its own comment.
+
+   Both templates carry this block identically, per the shared-style rule
+   above; change one, change the other. */
+.apparatus {
+  display: inline-flex;
+  align-items: center;
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  text-transform: none;
+  color: var(--ink-soft);
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.3rem 0.5rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+}
+.apparatus-colon { opacity: 0.5; margin: 0 0.05rem 0 -0.05rem; }
+.apparatus-select-wrap { display: inline-flex; align-items: center; }
+/* Segment rule between Book and Chapter -- the only two selects directly
+   adjacent with nothing between them. Chapter/Verse are already separated
+   by .apparatus-colon, so this deliberately doesn't apply there. */
+.apparatus-select-wrap + .apparatus-select-wrap {
+  margin-left: 0;
+  border-left: 1px solid var(--rule);
+}
+.apparatus-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  border: none;
+  background: transparent;
+  font: inherit;
+  letter-spacing: inherit;
+  text-transform: inherit;
+  color: inherit;
+  cursor: pointer;
+  /* Even padding: each level is its own hit area inside the pill, and
+     nothing has to be left clear for a caret any more. */
+  padding: 0.3rem 0.8rem;
+  margin: 0;
+  border-radius: 999px;
+}
+/* The chapter page's verse select opens on a range placeholder ("1-25")
+   rather than a value, since a chapter page has no verse to be at. Dimmed so
+   it reads as an invitation rather than as the current location -- the two
+   segments beside it are showing where you ARE, and this one is not.
+   Server-rendered, not toggled: picking a verse navigates away, so the class
+   never needs removing. (Defined in both templates because the two share one
+   stylesheet by rule; only the chapter page emits the class.) */
+.apparatus-select.is-unset { opacity: 0.6; font-style: italic; }
+.apparatus-select.is-unset:hover { opacity: 1; }
+.apparatus-select:hover { color: var(--ink); background: var(--paper); }
+.apparatus-select:focus-visible { outline: 2px solid var(--focus); outline-offset: 2px; border-radius: 2px; }
+.apparatus-select option:disabled { color: var(--rule); }
+/* Only ever wraps .apparatus now (the plain verse_ref label it used to
+   hold moved back to the masthead) -- kept just for the layout spacing;
+   text/color styling lives on .apparatus itself instead. */
+.ref { margin: 0 0 1.6rem; }
+/* Set in the same type as the English below it -- same size, same
+   leading, off the same two custom properties -- so the two lines read as
+   one block rather than as a specimen and a caption. It carries no
+   type styling of its own; only its colour and the gap beneath it are
+   its own. */
+.greek-line {
+  font-size: var(--reading-size);
+  line-height: var(--reading-leading);
+  color: var(--ink-soft);
+  margin: 0 0 1.6rem;
+  text-wrap: pretty;
+}
+/* SHARED READING STYLE. The chapter page and the verse page must render
+   identical type -- same size, same leading, same measure -- so moving
+   between them reads as one document at two zoom levels rather than two
+   designs. This block and .ref/.endnote-num below are byte-identical in
+   both templates; change one, change the other.
+
+   margin-bottom is what separates consecutive paragraphs on the chapter
+   page. The verse page has exactly one .translation, which is therefore
+   also :last-of-type, so the reset below zeroes it there and the shared
+   rule costs that page nothing. */
+.translation {
+  font-size: var(--reading-size);
+  line-height: var(--reading-leading);
+  margin: 0 0 1.5rem;
+  text-wrap: pretty;
+}
+.translation:last-of-type { margin-bottom: 0; }
+.flagword {
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 0.03em;
+  transition: background-color 0.15s ease;
+  border-radius: 2px;
+  scroll-margin-top: 2rem;
+}
+.flagword, .flagword:visited { color: inherit; }
+.flagword.always { color: var(--rubric); }
+.flagword.crux    { color: var(--gold); }
+.flagword.variant { color: var(--slate); }
+.flagword.always:hover { background: var(--rubric-soft); }
+.flagword.crux:hover    { background: var(--gold-soft); }
+.flagword.variant:hover { background: var(--slate-soft); }
+/* Same treatment applied to the Greek line's own corresponding words,
+   so a reader can see which Greek word underlies which English one. */
+.greek-word {
+  cursor: pointer;
+  text-decoration: none;
+  border-bottom: 1.5px solid currentColor;
+  padding-bottom: 0.03em;
+  border-radius: 2px;
+}
+.greek-word, .greek-word:visited { color: inherit; }
+.greek-word.always { color: var(--rubric); }
+.greek-word.crux    { color: var(--gold); }
+.greek-word.variant { color: var(--slate); }
+.greek-word.always:hover { background: var(--rubric-soft); }
+.greek-word.crux:hover    { background: var(--gold-soft); }
+.greek-word.variant:hover { background: var(--slate-soft); }
+.note-ref {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.62rem;
+  vertical-align: super;
+  text-decoration: none;
+  color: var(--ink-soft);
+  margin-left: 0.06em;
+  font-weight: 600;
+}
+.note-ref:hover { color: var(--focus); }
+.endnotes {
+  margin-top: 2.4rem;
+  padding-top: 1.4rem;
+  border-top: 1px dotted var(--rule);
+}
+.endnotes-label {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.68rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  margin: 0 0 0.9rem;
+}
+.endnote {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--ink-soft);
+  display: flex;
+  gap: 0.6rem;
+  padding: 0.55rem 0;
+  scroll-margin-top: 5rem;
+}
+.endnote:not(:last-child) { border-bottom: 1px solid color-mix(in srgb, var(--rule) 55%, transparent); }
+.endnote-num {
+  flex: 0 0 auto;
+  font-weight: 600;
+  color: var(--ink);
+  min-width: 1.6rem;
+  text-decoration: none;
+  cursor: pointer;
+}
+.endnote-num, .endnote-num:visited { color: var(--ink); }
+.endnote-num:hover { color: var(--focus); text-decoration: underline; }
+.endnote-body { flex: 1 1 auto; }
+.endnote-word {
+  display: inline-block;
+  font-family: 'Cardo', serif;
+  font-style: italic;
+  color: var(--ink);
+  margin-right: 0.15em;
+  scroll-margin-top: 5rem;
+  text-decoration: none;
+  cursor: pointer;
+  border-radius: 2px;
+}
+.endnote-word, .endnote-word:visited { color: var(--ink); }
+.endnote-word:hover { text-decoration: underline; }
+.endnote-word.always { color: var(--rubric); }
+.endnote-word.crux    { color: var(--gold); }
+.endnote-word.variant { color: var(--slate); }
+/* Return-to-text link after an endnote's own prose -- same #ref-N target,
+   same jumped-box behavior as .endnote-num/.endnote-word above, just
+   placed where a reader who scrolled through the note's text actually
+   is, instead of making them scroll back up to the number or lead word. */
+.endnote-back {
+  display: inline-block;
+  margin-left: 0.3em;
+  color: var(--ink-soft);
+  text-decoration: none;
+  cursor: pointer;
+}
+.endnote-back:hover { color: var(--focus); text-decoration: underline; }
+/* The same "jumped-to" box in both directions: clicking a flagged word
+   (or its note-ref number) lands on the endnote's lead word; clicking
+   the endnote number lands on the flagged word. Driven by an explicit
+   JS-managed class (below), not :target -- history.replaceState does
+   not reliably re-trigger :target matching, and the box needs to
+   disappear on any click elsewhere, not just on the next #-link click. */
+.jumped {
+  outline: 2px solid var(--focus);
+  outline-offset: 3px;
+  border-radius: 3px;
+  transition: outline-color 0.5s ease;
+}
+/* Added by JS ~1.5s after .jumped lands, so the box holds still long
+   enough to actually find, then dissolves on its own rather than
+   sitting there until the reader clicks something else. */
+.jumped.jumped-fade { outline-color: transparent; }
+/* The sense tip: the three commonest English renderings of a flagged word's
+   lemma, pooled from the Berean interlinear and the KJV's own concordance
+   counts. Shown on hover so a reader who does not know the Greek can still
+   read the page -- deliberately three competing words rather than one
+   definition, since a definition would answer the question the untranslated
+   word exists to keep open.
+
+   It is a SINGLE element parked on <body> and moved, not a child of the word.
+   Two reasons, both load-bearing: the reading-mode toggle rewrites flagged
+   words with `textContent`, which would delete any child node; and a tip
+   nested inside the paragraph cannot escape an ancestor's overflow or reach
+   past the viewport edge. */
+.sense-tip {
+  position: absolute;
+  z-index: 200;
+  max-width: 22rem;
+  padding: 0.5rem 0.7rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 8px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.12s ease;
+}
+.sense-tip[hidden] { display: none; }
+.sense-tip.is-visible { opacity: 1; }
+.sense-tip .sense-tip-head {
+  font-size: 0.75rem;
+  color: var(--ink-soft);
+  margin-bottom: 0.15rem;
+}
+.sense-tip .sense-tip-lemma {
+  font-family: 'Cardo', Georgia, serif;
+  font-size: 0.95rem;
+  color: var(--ink);
+}
+.sense-tip .sense-tip-senses {
+  font-size: 0.95rem;
+  color: var(--ink);
+  line-height: 1.35;
+}
+/* Small, muted, and always present: these counts are two translations'
+   choices, not a census, and the tip should not read as an authority. */
+.sense-tip .sense-tip-credit {
+  font-size: 0.65rem;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-soft);
+  opacity: 0.75;
+  margin-top: 0.3rem;
+}
+/* The same three words, repeated in the endnote where they need no hover.
+   Touch devices have no hover at all, and a tap gesture here would fight the
+   endnote link the flagged word already carries. */
+.endnote-senses {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.8rem;
+  color: var(--ink-soft);
+  margin-top: 0.2rem;
+}
+.endnote-senses b {
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 0.72rem;
+  opacity: 0.8;
+}
+details.sources {
+  margin-top: 0.4rem;
+}
+details.sources summary {
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  color: var(--focus);
+  list-style: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+details.sources summary::-webkit-details-marker { display: none; }
+details.sources summary::before {
+  content: '▸';
+  display: inline-block;
+  transition: transform 0.15s ease;
+  font-size: 1.05em;
+}
+details.sources[open] summary::before { transform: rotate(90deg); }
+details.sources ul {
+  margin: 0.6rem 0 0.2rem;
+  padding-left: 1.1rem;
+  font-size: 0.92rem;
+}
+details.sources li { margin-bottom: 0.4rem; }
+
+/* A web-native source carries its link (STYLE.md rule 17). Nothing else on a
+   reading page is an outbound link, and there is no global `a` rule, so
+   without this it renders browser-default blue -- which reads as an error
+   against this palette. Keep it the colour of the text it sits in and let a
+   thin underline do the work. */
+details.sources a {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-underline-offset: 0.15em;
+}
+details.sources a:hover,
+details.sources a:focus-visible { text-decoration-color: currentColor; }
+/* Fixed, full-width strip mirroring .page's own max-width/centering/
+   padding, so the dock it holds tracks the column's right edge instead
+   of drifting into the empty margin on a wide viewport. Pointer events
+   pass through the empty part of the strip so it never blocks clicks
+   on the page underneath. */
+/* Lives as the last child inside .page (normal document flow), not a
+   fixed overlay -- so on a short page it just sits in place right after
+   the content, and position:sticky only pins it near the viewport
+   bottom once scrolling would otherwise carry it below that point (a
+   long page). Being an ordinary in-flow child of .page, it already
+   inherits the column's own width/alignment for free -- no separate
+   viewport-spanning wrapper needed the way a `position: fixed` version
+   required. */
+/* Nav (prev/up/next) pill and mode/theme pill share one row, pinned to
+   opposite ends of the column -- not stacked -- via space-between on a
+   full-width flex row (the wrap already spans .page's width as a block-
+   level flex container). */
+.toggle-dock-wrap {
+  position: sticky;
+  /* Above the body text, so the scrim below can fade it. */
+  z-index: 5;
+  bottom: 1.6rem;
+  display: flex;
+  flex-direction: row;
+  /* Wraps rather than overflowing. The two pills together need ~370px and
+     a phone column is narrower than that, so without this the toggle pill
+     pushed past the viewport and the whole page scrolled sideways. No
+     breakpoint: on any width that fits, space-between keeps them on one
+     line and wrap never engages. */
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 2rem;
+}
+
+/* THE SCRIM. The two docks float over continuous body copy, and their fill sits
+   only ~3% off the page colour, so on a chapter page they dissolved into the
+   text. Rather than making the pills louder -- a heavier fill, a harder border,
+   an inverted toolbar were all tried and all pulled the eye away from the
+   reading -- this fades the PAGE beneath them, so text dissolves before it
+   reaches a control. The pills stay as quiet as they were.
+
+   position: FIXED, not absolute. Spanning the window with `left: -50vw;
+   right: -50vw` pushes the element past the document and gives the page a
+   horizontal scrollbar; a fixed element spans the viewport by construction and
+   contributes nothing to scrollable overflow.
+
+   z-index: -1 inside the wrap's own stacking context (z-index: 5 above) paints
+   it beneath the pills but above the body text -- exactly the layering a scrim
+   needs. The sense tip (z-index: 200) and the site map <dialog> still sit above.
+
+   The ramp starts from `color-mix(... var(--paper) 0%, transparent)` rather than
+   bare `transparent`: a plain transparent keyword interpolates through
+   transparent BLACK in sRGB, which casts a faint grey through the middle of the
+   fade -- visible against warm paper. */
+.toggle-dock-wrap::before {
+  content: '';
+  position: fixed;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 5rem;
+  background: linear-gradient(to bottom,
+    color-mix(in srgb, var(--paper) 0%, transparent),
+    color-mix(in srgb, var(--paper) 70%, transparent) 55%,
+    var(--paper) 92%);
+  pointer-events: none;
+  z-index: -1;
+}
+/* Second pill, single-verse pages only: prev/up/next verse navigation.
+   Same pill styling as .toggle-dock (background/border/shadow) so the
+   two read as one family of controls stacked in the same dock. */
+/* THE TWO DOCKS ARE ONE OBJECT IN TWO ROLES, so their chrome is defined once.
+   Written as separate rules they drifted: the nav dock never received the UI
+   font and so inherited the body's 20px reading size -- wrong for a control,
+   and it would mis-size anything later specified in em. */
+.nav-dock,
+.toggle-dock {
+  display: flex;
+  align-items: center;
+  gap: 0.15rem;
+  padding: 0.3rem;
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+}
+
+.nav-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: var(--dock-btn);
+  height: var(--dock-btn);
+  border-radius: 999px;
+  color: var(--ink-soft);
+  text-decoration: none;
+  cursor: pointer;
+}
+.nav-btn svg { width: 1.15rem; height: 1.15rem; }
+a.nav-btn:hover { color: var(--ink); background: var(--paper); }
+.nav-btn.disabled { color: var(--rule); cursor: default; }
+.toggle-dock {
+  background: var(--paper-raised);
+  border: 1px solid var(--rule);
+  border-radius: 999px;
+  padding: 0.3rem;
+  display: flex;
+  gap: 0.15rem;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.18);
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+}
+.toggle-dock button {
+  appearance: none;
+  border: none;
+  background: transparent;
+  color: var(--ink-soft);
+  font-size: 0.74rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  /* Height from the token, not from padding: text metrics differ between
+     fonts and weights, so a padding-derived height is exactly what drifts. */
+  height: var(--dock-btn);
+  padding: 0 0.85rem;
+  display: inline-flex;
+  align-items: center;
+  border-radius: 999px;
+  cursor: pointer;
+  font-family: inherit;
+}
+.toggle-dock button:hover { color: var(--ink); }
+.toggle-dock button.active {
+  background: var(--focus);
+  color: var(--paper);
+}
+.toggle-dock button:focus-visible {
+  outline: 2px solid var(--focus);
+  outline-offset: 2px;
+}
+.toggle-divider {
+  width: 1px;
+  align-self: stretch;
+  background: var(--rule);
+  margin: 0.3rem 0.15rem;
+}
+
+/* ---- chapter-page verse markup ----------------------------------------
+ *
+ * Only the chapter page emits .vspan/.vnum; on a verse page these rules are
+ * simply inert. They live in the shared sheet rather than a chapter-only one
+ * because a pericope page will emit the same markup, and because the old
+ * templates already carried each other's unused rules for the same reason.
+ */
+
+.vnum {
+  font-family: 'Source Sans 3', system-ui, sans-serif;
+  font-size: 0.66rem;
+  font-weight: 700;
+  vertical-align: super;
+  color: var(--slate);
+  margin-right: 0.2em;
+  scroll-margin-top: 5rem;
+}
+
+/* Hovering a verse's plain text (not one of its flagged/untranslated words,
+   which already have their own hover treatment and their own click target --
+   the endnote, not this verse's page) shows a light underline and makes the
+   whole verse clickable through to its own single-verse page. :has()
+   suppresses the effect while the cursor is actually over a .flagword or
+   .note-ref child. */
+.vspan:hover:not(:has(.flagword:hover, .note-ref:hover)) {
+  cursor: pointer;
+  text-decoration: underline;
+  text-decoration-color: var(--rule);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 4px;
+}
