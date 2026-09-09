@@ -1,0 +1,290 @@
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+Single-verse page template. This is THE format for one verse -- see
+../PLAN.md's "Page architecture" section: the verse is the atomic unit,
+this template is not used for multi-verse (chapter/pericope) pages, which
+get their own template later, assembled from the same per-verse data.
+
+Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
+  verse_ref        -- display string, e.g. "Matthew 1:1"
+  greek_segments    -- list of {type:"text", text} or
+                        {type:"word", class, greek, translit, gloss, note}
+  translation_segments -- same shape as greek_segments, plus note_letter
+                        (the reader-facing letter label, see note_label() --
+                        ids/hrefs stay numeric via note; only the visible
+                        text uses letters, so they never look like verse
+                        numbers)
+  endnotes          -- list of {number, letter, word, class, text, sources:
+                        [{label, position}]} -- "letter" is the display
+                        label (a, b, ..., z, aa, ab, ...); "number" is
+                        still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
+  nav               -- {prev, next, up}: relative hrefs (same directory)
+                        for the second toggle-dock row below, or None for
+                        prev/next when there's no neighboring drafted verse
+                        to link to (see render.py's build_nav_context)
+  apparatus         -- {books, chapters, verses, verse_range}: the masthead's
+                        Book/Chapter/Verse dropdowns, each a list of {name or
+                        num, current, enabled, href} covering the FULL
+                        canonical NT structure, not just what's drafted.
+                        `verse_range` heads the verse select as "1-25", the
+                        whole chapter -- from here a real destination back out
+                        to the chapter page; from a chapter page it is instead
+                        the current entry (see render.py's build_apparatus)
+
+Do not hand-edit generated output HTML -- edit this template (or
+render.py's query logic) and regenerate instead.
+-->
+<title>CNT — Matthew 5:4</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../static/cnt.css">
+<link rel="stylesheet" href="../../static/reading.css">
+<!-- Runs before first paint, so a reader who chose light does not see a dark
+     flash first. It has to be inline for that reason -- an external file is
+     fetched too late. Everything else lives in static/cnt.js. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('cnt-theme');
+      if (t === 'light' || t === 'dark') { document.documentElement.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
+
+<div class="page">
+
+  <div class="header">
+    <div class="masthead">
+      <span><a class="masthead-home" href="../../index.html"><strong>CNT</strong> — Corey's Non-Translation</a></span>
+      <span class="masthead-tools">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+            <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+          </svg>
+        </button>
+        <button id="sitemap-toggle" aria-label="Open site map" title="Site map" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </span>
+    </div>
+    <div class="legend">
+      <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
+      <span class="crux"><i></i><span class="legend-label"><b>Crux</b><span class="legend-desc">: untranslated here</span></span></span>
+      <span class="variant"><i></i><span class="legend-label"><b>Variant</b><span class="legend-desc">: editions disagree</span></span></span>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <p class="ref">
+      <span class="apparatus">
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Book" onchange="if(this.value){location.href=this.value;}">
+            <option value="" selected>Matthew</option>
+            <option value="../../Mark/1/index.html" disabled>Mark</option>
+            <option value="../../Luke/1/index.html" disabled>Luke</option>
+            <option value="../../John/1/index.html" disabled>John</option>
+            <option value="../../Acts/1/index.html" disabled>Acts</option>
+            <option value="../../Romans/1/index.html" disabled>Romans</option>
+            <option value="../../1 Corinthians/1/index.html" disabled>1 Corinthians</option>
+            <option value="../../2 Corinthians/1/index.html" disabled>2 Corinthians</option>
+            <option value="../../Galatians/1/index.html" disabled>Galatians</option>
+            <option value="../../Ephesians/1/index.html" disabled>Ephesians</option>
+            <option value="../../Philippians/1/index.html" disabled>Philippians</option>
+            <option value="../../Colossians/1/index.html" disabled>Colossians</option>
+            <option value="../../1 Thessalonians/1/index.html" disabled>1 Thessalonians</option>
+            <option value="../../2 Thessalonians/1/index.html" disabled>2 Thessalonians</option>
+            <option value="../../1 Timothy/1/index.html" disabled>1 Timothy</option>
+            <option value="../../2 Timothy/1/index.html" disabled>2 Timothy</option>
+            <option value="../../Titus/1/index.html" disabled>Titus</option>
+            <option value="../../Philemon/1/index.html" disabled>Philemon</option>
+            <option value="../../Hebrews/1/index.html" disabled>Hebrews</option>
+            <option value="../../James/1/index.html" disabled>James</option>
+            <option value="../../1 Peter/1/index.html" disabled>1 Peter</option>
+            <option value="../../2 Peter/1/index.html" disabled>2 Peter</option>
+            <option value="../../1 John/1/index.html" disabled>1 John</option>
+            <option value="../../2 John/1/index.html" disabled>2 John</option>
+            <option value="../../3 John/1/index.html" disabled>3 John</option>
+            <option value="../../Jude/1/index.html" disabled>Jude</option>
+            <option value="../../Revelation/1/index.html" disabled>Revelation</option>
+          </select>
+        </span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
+            <option value="../1/index.html">1</option>
+            <option value="../2/index.html">2</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="" selected>5</option>
+            <option value="../6/index.html">6</option>
+            <option value="../7/index.html" disabled>7</option>
+            <option value="../8/index.html" disabled>8</option>
+            <option value="../9/index.html" disabled>9</option>
+            <option value="../10/index.html" disabled>10</option>
+            <option value="../11/index.html" disabled>11</option>
+            <option value="../12/index.html" disabled>12</option>
+            <option value="../13/index.html" disabled>13</option>
+            <option value="../14/index.html" disabled>14</option>
+            <option value="../15/index.html" disabled>15</option>
+            <option value="../16/index.html" disabled>16</option>
+            <option value="../17/index.html" disabled>17</option>
+            <option value="../18/index.html" disabled>18</option>
+            <option value="../19/index.html" disabled>19</option>
+            <option value="../20/index.html" disabled>20</option>
+            <option value="../21/index.html" disabled>21</option>
+            <option value="../22/index.html" disabled>22</option>
+            <option value="../23/index.html" disabled>23</option>
+            <option value="../24/index.html" disabled>24</option>
+            <option value="../25/index.html" disabled>25</option>
+            <option value="../26/index.html" disabled>26</option>
+            <option value="../27/index.html" disabled>27</option>
+            <option value="../28/index.html" disabled>28</option>
+          </select>
+        </span>
+        <span class="apparatus-colon">:</span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Verse" onchange="if(this.value){location.href=this.value;}">
+            <option value="index.html">1–48</option>
+            <option value="1.html">1</option>
+            <option value="2.html">2</option>
+            <option value="3.html">3</option>
+            <option value="" selected>4</option>
+            <option value="5.html">5</option>
+            <option value="6.html">6</option>
+            <option value="7.html">7</option>
+            <option value="8.html">8</option>
+            <option value="9.html">9</option>
+            <option value="10.html">10</option>
+            <option value="11.html">11</option>
+            <option value="12.html">12</option>
+            <option value="13.html">13</option>
+            <option value="14.html">14</option>
+            <option value="15.html">15</option>
+            <option value="16.html">16</option>
+            <option value="17.html">17</option>
+            <option value="18.html">18</option>
+            <option value="19.html">19</option>
+            <option value="20.html">20</option>
+            <option value="21.html">21</option>
+            <option value="22.html">22</option>
+            <option value="23.html">23</option>
+            <option value="24.html">24</option>
+            <option value="25.html">25</option>
+            <option value="26.html">26</option>
+            <option value="27.html">27</option>
+            <option value="28.html">28</option>
+            <option value="29.html">29</option>
+            <option value="30.html">30</option>
+            <option value="31.html">31</option>
+            <option value="32.html">32</option>
+            <option value="33.html">33</option>
+            <option value="34.html">34</option>
+            <option value="35.html">35</option>
+            <option value="36.html">36</option>
+            <option value="37.html">37</option>
+            <option value="38.html">38</option>
+            <option value="39.html">39</option>
+            <option value="40.html">40</option>
+            <option value="41.html">41</option>
+            <option value="42.html">42</option>
+            <option value="43.html">43</option>
+            <option value="44.html">44</option>
+            <option value="45.html">45</option>
+            <option value="46.html">46</option>
+            <option value="47.html">47</option>
+            <option value="48.html">48</option>
+          </select>
+        </span>
+      </span>
+    </p>
+    <p class="greek-line">μακάριοι οἱ <a class="greek-word crux" href="#note-None" data-greek="πενθοῦντες" data-translit="penthountes" data-gloss="penthying" data-senses="mourn, wailing">πενθοῦντες</a> ὅτι αὐτοὶ <a class="greek-word crux" href="#note-None" data-greek="παρακληθήσονται" data-translit="paraklēthēsontai" data-gloss="paraklesied" data-senses="exhort, besought, comforted">παρακληθήσονται</a></p>
+    <p class="translation">Blessed are the <span class="flagword crux" data-greek="πενθοῦντες" data-translit="penthountes" data-gloss="penthying" data-senses="mourn, wailing">penthying</span>, for they will be <span class="flagword crux" data-greek="παρακληθήσονται" data-translit="paraklēthēsontai" data-gloss="paraklesied" data-senses="exhort, besought, comforted">paraklesied</span>.</p>
+  </div>
+
+  
+
+  <dialog class="sitemap" id="sitemap" aria-label="Site map">
+    <div class="sitemap-head">
+      <span class="sitemap-title">Site map</span>
+      <button class="sitemap-close masthead-tools" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.1rem;height:1.1rem;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sitemap-body">
+      <h3>Books</h3>
+      <ul class="booklist">
+        <li><a href="../../Matthew/1/index.html">Matthew</a></li>
+        <li><span title="Not yet drafted">Mark</span></li>
+        <li><span title="Not yet drafted">Luke</span></li>
+        <li><span title="Not yet drafted">John</span></li>
+        <li><span title="Not yet drafted">Acts</span></li>
+        <li><span title="Not yet drafted">Romans</span></li>
+        <li><span title="Not yet drafted">1 Corinthians</span></li>
+        <li><span title="Not yet drafted">2 Corinthians</span></li>
+        <li><span title="Not yet drafted">Galatians</span></li>
+        <li><span title="Not yet drafted">Ephesians</span></li>
+        <li><span title="Not yet drafted">Philippians</span></li>
+        <li><span title="Not yet drafted">Colossians</span></li>
+        <li><span title="Not yet drafted">1 Thessalonians</span></li>
+        <li><span title="Not yet drafted">2 Thessalonians</span></li>
+        <li><span title="Not yet drafted">1 Timothy</span></li>
+        <li><span title="Not yet drafted">2 Timothy</span></li>
+        <li><span title="Not yet drafted">Titus</span></li>
+        <li><span title="Not yet drafted">Philemon</span></li>
+        <li><span title="Not yet drafted">Hebrews</span></li>
+        <li><span title="Not yet drafted">James</span></li>
+        <li><span title="Not yet drafted">1 Peter</span></li>
+        <li><span title="Not yet drafted">2 Peter</span></li>
+        <li><span title="Not yet drafted">1 John</span></li>
+        <li><span title="Not yet drafted">2 John</span></li>
+        <li><span title="Not yet drafted">3 John</span></li>
+        <li><span title="Not yet drafted">Jude</span></li>
+        <li><span title="Not yet drafted">Revelation</span></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <div class="toggle-dock-wrap">
+    <div class="nav-dock">
+      <a class="nav-btn" data-nav="prev" href="3.html" aria-label="Previous verse" title="Previous verse (←)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <a class="nav-btn" href="index.html" aria-label="Up to chapter" title="Up to chapter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+      </a>
+      <a class="nav-btn" data-nav="next" href="5.html" aria-label="Next verse" title="Next verse (→)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+    <div class="toggle-dock">
+      <span role="group" aria-label="Display mode for untranslated words" style="display:flex;">
+        <button data-mode="greek">Greek</button>
+        <button data-mode="translit">Translit</button>
+        <button data-mode="gloss" class="active">Gloss</button>
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../static/cnt.js"></script>
+<script src="../../static/reading.js"></script>

@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Ἀβραὰμ ἐγέννησεν τὸν Ἰσαάκ, Ἰσαὰκ δὲ ἐγέννησεν τὸν Ἰακώβ, Ἰακὼβ δὲ ἐγέννησεν τὸν Ἰούδαν καὶ τοὺς <a class="greek-word crux" href="#note-1" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">ἀδελφοὺς</a> αὐτοῦ,</p>
-    <p class="translation">Abraham fathered Isaac, and Isaac fathered Jacob, and Jacob fathered Judah and his <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">adelphoi</a><a class="note-ref" href="#note-1">a</a>.</p>
+    <p class="greek-line">Ἀβραὰμ ἐγέννησεν τὸν Ἰσαάκ, Ἰσαὰκ δὲ ἐγέννησεν τὸν Ἰακώβ, Ἰακὼβ δὲ ἐγέννησεν τὸν Ἰούδαν καὶ τοὺς <a class="greek-word always" href="#note-1" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">ἀδελφοὺς</a> αὐτοῦ,</p>
+    <p class="translation">Abraham fathered Isaac, and Isaac fathered Jacob, and Jacob fathered Judah and his <a id="ref-1" class="flagword always" href="#note-1" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">adelphoi</a><a class="note-ref" href="#note-1">a</a>.</p>
   </div>
 
   <div class="endnotes">
@@ -195,16 +201,17 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">adelphous</a>
-        Isaac&#x27;s brother Ishmael and Jacob&#x27;s brother Esau go unnamed at the parallel points earlier in the same sentence. Commentators read the asymmetry as a deliberate signal, most often tracing it to the twelve tribes of Israel through Judah&#x27;s reception of the royal scepter in Genesis 49:10.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word always" id="note-1" href="#ref-1" title="Back to text">adelphous</a>
+        Isaac&#x27;s brother Ishmael and Jacob&#x27;s brother Esau go unnamed at the parallel points earlier in the same sentence. Commentators read the asymmetry as a deliberate signal, most often tracing it to the twelve tribes of Israel through Judah&#x27;s reception of the royal scepter in Genesis 49:10. ἀδελφός is a brother by birth. It also covers wider kin, a compatriot, and a member of a religious association. The Greek Septuagint calls Abraham and his nephew Lot adelphoi. Whether that range reaches cousin in the New Testament is disputed, and the men named as Jesus&#x27;s adelphoi are the case in question. Greek had a separate word for cousin and the New Testament uses it once. The masculine plural can take in women, and the versions divide over printing sisters.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> brother</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Turner (BECNT) — reads the phrase as &quot;an allusion to the twelve tribes who form the locus of the people of God and the pattern for the twelve apostles&quot;</li>
             <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — traces it instead to an interest in the people of God as a brotherhood, where &quot;Judah and his brothers prefigure the brotherhood of the church&quot;</li>
-            <li>Hagner (WBC) — reads it as pointing to the twelve tribes of Israel, whose theological fullness comes to bear on Jesus as their culmination</li>
-            <li>Hood (<i>The Messiah, His Brothers, and the Nations</i>) — reads it as foreshadowing Jesus&#x27;s own self-sacrifice on behalf of his brothers</li>
+            <li>Hagner (WBC) — reads it as pointing to the twelve tribes of Israel, with Jesus as the culmination that carries the genealogy&#x27;s theological fullness back to all Israel</li>
+            <li>Hood (<i>The Messiah, His Brothers, and the Nations</i>), cited in Rieske (<i>Themelios</i>) — reads it as foreshadowing Jesus&#x27;s own self-sacrifice on behalf of his brothers</li>
+            <li>Luz (Hermeneia) — finds the reference &quot;understandable&quot; since Jacob&#x27;s other sons are the ancestors of the twelve tribes</li>
           </ul>
         </details>
       </div>

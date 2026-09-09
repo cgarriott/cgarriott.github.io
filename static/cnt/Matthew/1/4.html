@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -186,7 +192,7 @@ render.py's query logic) and regenerate instead.
       </span>
     </p>
     <p class="greek-line">Ἀρὰμ δὲ ἐγέννησεν τὸν Ἀμιναδάβ, Ἀμιναδὰβ δὲ ἐγέννησεν τὸν Ναασσών, Ναασσὼν δὲ ἐγέννησεν τὸν Σαλμών,</p>
-    <p class="translation">Aram fathered Amminadab, and Amminadab fathered Nahshon, and Nahshon fathered Salmon.</p>
+    <p class="translation">And Aram fathered Amminadab, and Amminadab fathered Nahshon, and Nahshon fathered Salmon.</p>
   </div>
 
   

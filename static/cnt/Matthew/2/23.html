@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">καὶ ἐλθὼν κατῴκησεν εἰς <a class="greek-word crux" href="#note-1" data-greek="πόλιν" data-translit="polin" data-gloss="polis" data-senses="city, town">πόλιν</a> λεγομένην Ναζαρέτ, ὅπως <a class="greek-word crux" href="#note-2" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleroma" data-senses="fulfilled, filled, full">πληρωθῇ</a> τὸ ῥηθὲν διὰ τῶν προφητῶν ὅτι <a class="greek-word crux" href="#note-3" data-greek="Ναζωραῖος" data-translit="Nazōraios" data-gloss="Nazorean" data-senses="nazareth, nazarene">Ναζωραῖος</a> κληθήσεται.</p>
-    <p class="translation">And having come, he settled in a <a id="ref-1" class="flagword crux" href="#note-1" data-greek="πόλιν" data-translit="polin" data-gloss="polis" data-senses="city, town">polis</a><a class="note-ref" href="#note-1">a</a> called Nazareth, so that what was spoken through the prophets might reach its <a id="ref-2" class="flagword crux" href="#note-2" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleroma" data-senses="fulfilled, filled, full">pleroma</a><a class="note-ref" href="#note-2">b</a>, that he will be called a <a id="ref-3" class="flagword crux" href="#note-3" data-greek="Ναζωραῖος" data-translit="Nazōraios" data-gloss="Nazorean" data-senses="nazareth, nazarene">Nazorean</a><a class="note-ref" href="#note-3">c</a>.</p>
+    <p class="greek-line">καὶ ἐλθὼν κατῴκησεν εἰς πόλιν λεγομένην Ναζαρέτ, ὅπως <a class="greek-word crux" href="#note-2" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleried" data-senses="fulfilled, filled, full">πληρωθῇ</a> τὸ ῥηθὲν διὰ τῶν <a class="greek-word crux" href="#note-1" data-greek="προφητῶν" data-translit="prophētōn" data-gloss="prophetai" data-senses="prophet, than a prophet">προφητῶν</a> <a class="greek-word crux" href="#note-3" data-greek="ὅτι" data-translit="hoti" data-gloss="hoti" data-senses="because, usually untranslated, though">ὅτι</a> <a class="greek-word crux" href="#note-4" data-greek="Ναζωραῖος" data-translit="Nazōraios" data-gloss="Nazorean" data-senses="nazareth, nazarene">Ναζωραῖος</a> κληθήσεται.</p>
+    <p class="translation">And having come, he settled into a city called Nazareth, so that what was spoken through the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="προφητῶν" data-translit="prophētōn" data-gloss="prophetai" data-senses="prophet, than a prophet">prophetai</a><a class="note-ref" href="#note-1">a</a> might be <a id="ref-2" class="flagword crux" href="#note-2" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleried" data-senses="fulfilled, filled, full">pleried</a><a class="note-ref" href="#note-2">b</a>, <a id="ref-3" class="flagword crux" href="#note-3" data-greek="ὅτι" data-translit="hoti" data-gloss="hoti" data-senses="because, usually untranslated, though">hoti</a><a class="note-ref" href="#note-3">c</a> <a id="ref-4" class="flagword crux" href="#note-4" data-greek="Ναζωραῖος" data-translit="Nazōraios" data-gloss="Nazorean" data-senses="nazareth, nazarene">Nazorean</a><a class="note-ref" href="#note-4">d</a> he will be called.</p>
   </div>
 
   <div class="endnotes">
@@ -193,15 +199,18 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">polin</a>
-        Nazareth was a small, obscure Galilean village, unmentioned anywhere in the Hebrew Bible. First-century population estimates run under five hundred. Translations split between &quot;city&quot; and &quot;town&quot; for polis, with no footnote in any of them addressing the choice.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> city, town</div>
+        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">prophētōn</a>
+        διὰ τῶν προφητῶν is plural, and what the plural denotes is disputed. Some read it as a theme gathered from several prophets rather than one passage, and some as a direction to look for the substance of more than one text. A third reading makes it a hedge over a citation whose source the evangelist could not place. A fourth takes it as a designation of the historical books, which record events rather than utter oracles. Matthew uses the plural again at 26:56, where no particular passage is cited either.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> prophet, than a prophet</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Hart, <i>MacArthur Study Bible</i>, <i>Ignatius Bible</i> and <i>Orthodox Study Bible</i> — render &quot;city&quot;</li>
-            <li>NRSVue, HCSB and <i>The Jewish Annotated New Testament</i> — render &quot;town&quot;</li>
-            <li>France (NICNT) — cites J. F. Strange&#x27;s population estimate of under five hundred (<i>Anchor Bible Dictionary</i> 4:1050)</li>
+            <li>France (NICNT) — the plural and the missing participle together show that &quot;what Matthew is here providing is not a quotation of a specific passage but rather a theme of prophecy&quot;</li>
+            <li>Nolland (NIGTC), Turner (BECNT) and Mitch and Sri (CCSS) — with France, a theme gathered from the prophets rather than one passage, Nolland reading the changes as deliberate imprecision</li>
+            <li>Davies and Allison (ICC) — take the plural as pointing to a citation that rests on more than one Old Testament text, with Isaiah 4:3 the chief one</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — reads it as a direction to look for the substance of more than one passage, and finds those passages in the Davidic branch texts</li>
+            <li>Luz (Hermeneia) — the plural is an indefinite statement, because Matthew &quot;could not identify the quotation transmitted to him&quot;</li>
+            <li>Menken (&quot;The Sources of the Old Testament Quotation in Matthew 2:23,&quot; JBL) — &quot;the prophets&quot; names the former prophets, the corpus holding Judges 13, whose books wrote history rather than uttering oracles</li>
           </ul>
         </details>
       </div>
@@ -211,7 +220,7 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">plērōthēi</a>
-        This is the fourth of ten fulfillment citations in Matthew, and the only one built this way. Every other instance names a single prophet, or says simply &quot;the prophet,&quot; and introduces a direct quotation with &quot;saying.&quot; Here the plural &quot;the prophets&quot; appears with no name, introduced by &quot;that&quot; rather than &quot;saying,&quot; and no known Old Testament text says anything close to &quot;he will be called a Nazorean.&quot;<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        This is the fourth of ten fulfillment citations in Matthew, and the only one built this way. Every other instance names a single prophet, or says simply &quot;the prophet,&quot; and introduces a direct quotation with &quot;saying.&quot; Here the plural &quot;the prophets&quot; appears with no name, introduced by &quot;that&quot; rather than &quot;saying,&quot; and no known Old Testament text says anything close to <i>he will be called a Nazorean</i>.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> fulfilled, filled, full</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -228,8 +237,27 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">Nazōraios</a>
-        No Old Testament text says &quot;he will be called a Nazorean.&quot; Proposed derivations include the Hebrew netser, &quot;branch,&quot; from Isaiah 11:1, and nazir, &quot;one consecrated to God,&quot; from Judges 13, reached by way of Isaiah 4:3&#x27;s &quot;he will be called holy.&quot; Others point to &quot;watchmen&quot; in Jeremiah 31:6, to a &quot;despised and rejected&quot; theme tied to Nazareth&#x27;s obscurity, or to the plain sense of a person from Nazareth with no wordplay at all. A minority position reads the verse as a genuine, reshaped quotation of Judges 13:5, 7 rather than a thematic gesture.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">hoti</a>
+        ὅτι stands where Matthew&#x27;s other nine fulfillment citations carry the participle for &quot;saying.&quot; It can work as an opening quotation mark, so the two words after it are quoted. It can introduce reported content, so what follows is a summary rather than exact wording. Or it can be the first word of the quotation itself, read as &quot;because,&quot; which makes the quoted material three words. At 26:54 the same conjunction follows a fulfillment verb with no Old Testament sentence behind it.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> because, usually untranslated, though</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Nolland (NIGTC) — allows three roles for the word and settles on indirect quotation, since &quot;The three changes taken together suggest that Matthew is deliberately being imprecise&quot;</li>
+            <li>France (NICNT) — the word can stand for quotation marks or mark a paraphrase, and taken with the plural it marks a theme rather than a passage</li>
+            <li>Luz (Hermeneia) — cites 26:54 as a Matthean parallel for the word introducing an indirect quotation</li>
+            <li>Davies and Allison (ICC) — the displacement of the participle marks this citation&#x27;s unusual standing among the fulfillment quotations, and 26:54 supports reading the conjunction the same way</li>
+            <li>Menken (&quot;The Sources of the Old Testament Quotation in Matthew 2:23,&quot; JBL) — argues the word belongs to the quotation rather than to Matthew, so &quot;the quotation is made up of three words&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-4" href="#ref-4" title="Back to text">Nazōraios</a>
+        No Old Testament text says &quot;he will be called a Nazorean.&quot; Proposed derivations include the Hebrew netser, &quot;branch,&quot; from Isaiah 11:1, and nazir, &quot;one consecrated to God,&quot; from Judges 13, reached by way of Isaiah 4:3&#x27;s &quot;he will be called holy.&quot; Others point to &quot;watchmen&quot; in Jeremiah 31:6, to a &quot;despised and rejected&quot; theme tied to Nazareth&#x27;s obscurity, or to the plain sense of a person from Nazareth with no wordplay at all. A minority position reads the verse as a genuine, reshaped quotation of Judges 13:5, 7 rather than a thematic gesture.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> nazareth, nazarene</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -297,9 +325,9 @@ render.py's query logic) and regenerate instead.
       <a class="nav-btn" href="index.html" aria-label="Up to chapter" title="Up to chapter">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
       </a>
-      <span class="nav-btn disabled" aria-hidden="true">
+      <a class="nav-btn" data-nav="next" href="../3/1.html" aria-label="Next verse" title="Next verse (→)">
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
-      </span>
+      </a>
     </div>
     <div class="toggle-dock">
       <span role="group" aria-label="Display mode for untranslated words" style="display:flex;">

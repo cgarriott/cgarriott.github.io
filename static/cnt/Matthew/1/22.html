@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">τοῦτο δὲ <a class="greek-word crux" href="#note-1" data-greek="ὅλον" data-translit="holon" data-gloss="holon" data-senses="all, whole, every whit">ὅλον</a> γέγονεν ἵνα <a class="greek-word crux" href="#note-3" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleroma" data-senses="fulfilled, filled, full">πληρωθῇ</a> τὸ ῥηθὲν ὑπὸ <a class="greek-word crux" href="#note-2" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">κυρίου</a> διὰ τοῦ προφήτου λέγοντος·</p>
-    <p class="translation">Now this <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ὅλον" data-translit="holon" data-gloss="holon" data-senses="all, whole, every whit">holon</a><a class="note-ref" href="#note-1">a</a> has come to pass, so that what was spoken by <a id="ref-2" class="flagword crux" href="#note-2" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-2">b</a> through the prophet might reach its <a id="ref-3" class="flagword crux" href="#note-3" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleroma" data-senses="fulfilled, filled, full">pleroma</a><a class="note-ref" href="#note-3">c</a>, saying:</p>
+    <p class="greek-line">τοῦτο δὲ <a class="greek-word crux" href="#note-1" data-greek="ὅλον" data-translit="holon" data-gloss="holon" data-senses="all, whole, every whit">ὅλον</a> <a class="greek-word crux" href="#note-2" data-greek="γέγονεν" data-translit="gegonen" data-gloss="gegonied" data-senses="become, came to pass, come">γέγονεν</a> ἵνα <a class="greek-word crux" href="#note-4" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleried" data-senses="fulfilled, filled, full">πληρωθῇ</a> τὸ ῥηθὲν ὑπὸ <a class="greek-word always" href="#note-3" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">κυρίου</a> διὰ τοῦ προφήτου λέγοντος·</p>
+    <p class="translation">Now this <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ὅλον" data-translit="holon" data-gloss="holon" data-senses="all, whole, every whit">holon</a><a class="note-ref" href="#note-1">a</a> has <a id="ref-2" class="flagword crux" href="#note-2" data-greek="γέγονεν" data-translit="gegonen" data-gloss="gegonied" data-senses="become, came to pass, come">gegonied</a><a class="note-ref" href="#note-2">b</a>, so that what was spoken by <a id="ref-3" class="flagword always" href="#note-3" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-3">c</a> through the prophet might be <a id="ref-4" class="flagword crux" href="#note-4" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleried" data-senses="fulfilled, filled, full">pleried</a><a class="note-ref" href="#note-4">d</a>, saying:</p>
   </div>
 
   <div class="endnotes">
@@ -205,6 +211,7 @@ render.py's query logic) and regenerate instead.
             <li>Nolland (NIGTC) — reads the phrase as bounded, covering only Mary&#x27;s pregnancy and the angel&#x27;s appearance</li>
             <li>Kupp (<i>Matthew&#x27;s Emmanuel</i>) — ties the phrase&#x27;s fulfillment to the meaning of the name Emmanuel, not the bare historical events alone</li>
             <li>Chrysostom (<i>Homilies on Matthew</i>), cited in Mitch and Sri (CCSS) — treats Joseph&#x27;s own act of naming the child as part of what is being accomplished</li>
+            <li>Luz (Hermeneia) — reads the unusual &quot;all&quot; as reaching the entire birth-announcement story, not the name alone, siding with France and Kupp</li>
           </ul>
         </details>
       </div>
@@ -213,17 +220,18 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">kuriou</a>
-        The verse names God as the prophecy&#x27;s ultimate source, ὑπὸ κυρίου, and the prophet as its instrumental channel, διὰ τοῦ προφήτου. Matthew uses this fuller two-part form only once elsewhere, at 2:15. Every other fulfillment-formula citation in the Gospel names only the channel. One proposal reads the ultimate-source phrase as a signal that the &quot;son&quot; named in the coming quotation is God&#x27;s own son. Commentators are divided: most reject this reading, one accepts it, and one reads the phrase instead as an echo of &quot;the angel of the Lord&quot; two verses earlier.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> lord, master, sir</div>
+        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">gegonen</a>
+        Matthew&#x27;s fulfillment formula takes the aorist at most of its occurrences. Three take the perfect γέγονεν instead, and this is the first. Commentators construe the perfect four ways. Some take it as a perfect standing in for an aorist, some as meaning the event stands recorded in the abiding Christian tradition, some as a stylistic mark of Matthew&#x27;s own hand, and some as an ordinary perfect, &quot;all this has taken place.&quot; One version alone renders it as an English perfect.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> become, came to pass, come</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Pesch (&quot;Der Gottessohn im matthäischen Evangelienprolog,&quot; Bib) — proposes that &quot;by the Lord&quot; signals a Son-of-God reading of the quotation&#x27;s &quot;son,&quot; cited independently by France and Nolland</li>
-            <li>Nolland (NIGTC) — rejects Pesch&#x27;s proposal, reading &quot;by the Lord&quot; instead as an echo of &quot;the angel of the Lord&quot; at 1:20</li>
-            <li>France (NICNT) — independently rejects Pesch&#x27;s proposal, noting Matthew nowhere else links Jesus&#x27; Spirit-conception directly to a &quot;Son of God&quot; title</li>
-            <li>Davies and Allison (ICC) — accepts Pesch&#x27;s proposal as &quot;the more plausible&quot; of two explanations on offer</li>
-            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — confirms ὑπό and διά together mark a real, if inconsistently applied, distinction between ultimate agent and instrumental channel, citing Matthew 1:22 and 2:15</li>
+            <li>Carson (EBC) — sets the first three construals aside and keeps the ordinary force, holding that &quot;if we hold that Matthew presents the angel as saying the words, then the perfect may enjoy its normal force&quot;</li>
+            <li>Turner (BECNT) — reads an &quot;aoristic perfect&quot; that is &quot;translated simply &#x27;happened,&#x27;&quot; which fits a Matthean editorial comment rather than the angel&#x27;s speech</li>
+            <li>McNeile (<i>The Gospel according to St. Matthew</i>) and Moule (<i>An Idiom Book of New Testament Greek</i>), cited in Carson (EBC) — read the perfect as reporting that the event stands recorded in the abiding Christian tradition</li>
+            <li>Rothfuchs (<i>Die Erfüllungszitate des Matthäus-Evangeliums</i>), cited in Carson (EBC) — reads the perfect as a stylistic indicator that Matthew himself introduced the fulfillment passage</li>
+            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — list Matthew 25:6 and 17:2, not 1:22, as the Matthean instances of γέγονεν standing for an aorist, and treat this occurrence as admitting a perfective reading</li>
+            <li>Hart — alone among the versions renders it as an English perfect, &quot;All of this has occurred&quot;</li>
           </ul>
         </details>
       </div>
@@ -232,8 +240,28 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">plērōthēi</a>
-        This is the first of ten fulfillment-formula citations in Matthew&#x27;s Gospel. Commentators divide over what kind of fulfillment the verb claims. Some read a strict, one-to-one predictive fulfillment. Others read a looser, typological pattern, in which an earlier word or event takes on a fuller meaning only later.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">kuriou</a>
+        The verse names God as the prophecy&#x27;s ultimate source, ὑπὸ κυρίου, and the prophet as its instrumental channel, διὰ τοῦ προφήτου. Matthew uses this fuller two-part form only once elsewhere, at 2:15. Every other fulfillment-formula citation in the Gospel names only the channel. One proposal reads the ultimate-source phrase as a signal that the &quot;son&quot; named in the coming quotation is God&#x27;s own son. Commentators are divided: most reject this reading, one accepts it, and one reads the phrase instead as an echo of &quot;the angel of the Lord&quot; two verses earlier. κύριος ranges from an ordinary term of respectful address (&quot;sir,&quot; &quot;master&quot;) through a disciple&#x27;s title for a living teacher to the full divine name. In the Septuagint it is the standard reverential substitute for the unpronounced Hebrew Tetragrammaton. When the New Testament quotes an Old Testament passage that names it, the Greek text carries the same word, κύριος, with no orthographic marker distinguishing it from the word&#x27;s ordinary human sense.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> lord, master, sir</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Pesch (&quot;Der Gottessohn im matthäischen Evangelienprolog,&quot; Bib) — proposes that &quot;by the Lord&quot; signals a Son-of-God reading of the quotation&#x27;s &quot;son,&quot; cited independently by France and Nolland</li>
+            <li>Nolland (NIGTC) — rejects Pesch&#x27;s proposal, reading &quot;by the Lord&quot; instead as an echo of &quot;the angel of the Lord&quot; at 1:20</li>
+            <li>France (NICNT) — independently rejects Pesch&#x27;s proposal, noting Matthew nowhere else links Jesus&#x27; Spirit-conception directly to a &quot;Son of God&quot; title</li>
+            <li>Davies and Allison (ICC) — accepts Pesch&#x27;s proposal as &quot;the more plausible&quot; of two explanations on offer</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — confirms ὑπό and διά together mark a distinction between ultimate agent and instrumental channel, citing Matthew 1:22 and 2:15</li>
+            <li>Luz (Hermeneia) — grants the shared &quot;Son&quot; language prepares readers for a Son-of-God theme, while denying a first-time reader could yet register a fully worked-out Son-of-David-subordinated-to-Son-of-God christology</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-4" href="#ref-4" title="Back to text">plērōthēi</a>
+        This is the first of ten fulfillment-formula citations in Matthew&#x27;s Gospel. Commentators divide over what kind of fulfillment the verb claims. Some read a strict, one-to-one predictive fulfillment. Others read a looser, typological pattern, in which an earlier word or event takes on a fuller meaning only later.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> fulfilled, filled, full</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -241,7 +269,8 @@ render.py's query logic) and regenerate instead.
             <li>Nolland (NIGTC) — classifies this citation as claiming the eschatological fulfillment of a prophecy already given a partial, inadequate historical fulfillment</li>
             <li>Turner (BECNT) — calls a strictly predictive reading of Matthew&#x27;s fulfillment formula &quot;simplistic at best&quot;</li>
             <li>Albright and Mann (Anchor) — root Matthew&#x27;s method in Qumran pesher exegesis, citing Brownlee&#x27;s study of Dead Sea Scrolls interpretive principles</li>
-            <li>Hagner (WBC) — describes Matthew&#x27;s compositional method here as &quot;his midrashic haggadah&quot;</li>
+            <li>Hagner (WBC) — labels the genre of the passage &quot;midrashic haggadah&quot;</li>
+            <li>Luz (Hermeneia) — calls the traditional predictive reading of Isaiah 7:14 &quot;untenable as historical exegesis,&quot; reading the fulfillment claim instead as the early church&#x27;s own belief</li>
           </ul>
         </details>
       </div>

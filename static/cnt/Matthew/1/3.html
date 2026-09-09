@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -186,7 +192,7 @@ render.py's query logic) and regenerate instead.
       </span>
     </p>
     <p class="greek-line">Ἰούδας δὲ ἐγέννησεν τὸν Φαρὲς καὶ τὸν Ζάρα ἐκ τῆς Θαμάρ, Φαρὲς δὲ ἐγέννησεν τὸν Ἑσρώμ, Ἑσρὼμ δὲ ἐγέννησεν τὸν <a class="greek-word crux" href="#note-1" data-greek="Ἀράμ" data-translit="Aram" data-gloss="Aram" data-senses="ram">Ἀράμ</a></p>
-    <p class="translation">Judah fathered Perez and Zerah by Tamar, and Perez fathered Hezron, and Hezron fathered <a id="ref-1" class="flagword crux" href="#note-1" data-greek="Ἀράμ" data-translit="Aram" data-gloss="Aram" data-senses="ram">Aram</a><a class="note-ref" href="#note-1">a</a>.</p>
+    <p class="translation">And Judah fathered Perez and Zerah from Tamar, and Perez fathered Hezron, and Hezron fathered <a id="ref-1" class="flagword crux" href="#note-1" data-greek="Ἀράμ" data-translit="Aram" data-gloss="Aram" data-senses="ram">Aram</a><a class="note-ref" href="#note-1">a</a>.</p>
   </div>
 
   <div class="endnotes">
@@ -196,12 +202,12 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">Aram</a>
-        Matthew&#x27;s Greek reads Ἀράμ, the same spelling as the Septuagint&#x27;s text of 1 Chronicles 2:9–10. The Septuagint itself is inconsistent: the same figure is spelled Ἀρραν at Ruth 4:19, and both spellings differ from the Hebrew form behind them, Ram. Translations split on which name to print: some transliterate Matthew&#x27;s own wording as &quot;Aram,&quot; others harmonize to the familiar Hebrew &quot;Ram.&quot;<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        Matthew&#x27;s Greek reads Ἀράμ, the same spelling as the Septuagint&#x27;s text of 1 Chronicles 2:9-10. The Septuagint itself is inconsistent: the same figure is spelled Ἀρραν at Ruth 4:19, and both spellings differ from the Hebrew form behind them, Ram. Translations split on which name to print: some transliterate Matthew&#x27;s own wording as &quot;Aram,&quot; others harmonize to the familiar Hebrew &quot;Ram.&quot;<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> ram</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li><i>Strong&#x27;s Greek Dictionary</i> — glosses Ἀράμ as &quot;of Hebrew origin; Aram (i.e. Ram)&quot;</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — derives Ἀράμ from the Hebrew and glosses it &quot;Aram (i.e. Ram), an Israelite&quot;</li>
             <li>Nolland (NIGTC) — traces the double spelling to an internal doublet in the Septuagint&#x27;s own text of 1 Chronicles 2:9–10</li>
             <li>Davies and Allison (ICC) — independently confirm the same Septuagint-internal mechanism from the primary texts</li>
             <li>Wasserman (<a href="https://evangelicaltextualcriticism.blogspot.com/" target="_blank" rel="noopener noreferrer">Evangelical Textual Criticism</a>) — notes that confidence in the parallel reading at Luke 3:33 has since weakened in a later critical edition</li>

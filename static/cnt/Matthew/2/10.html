@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,31 +189,11 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">ἰδόντες δὲ τὸν ἀστέρα <a class="greek-word crux" href="#note-1" data-greek="ἐχάρησαν χαρὰν μεγάλην σφόδρα" data-translit="echarēsan charan megalēn sphodra" data-gloss="echarēsan charan megalēn sphodra" data-senses="">ἐχάρησαν χαρὰν μεγάλην σφόδρα</a></p>
-    <p class="translation">Now having seen the star, they <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐχάρησαν χαρὰν μεγάλην σφόδρα" data-translit="echarēsan charan megalēn sphodra" data-gloss="echarēsan charan megalēn sphodra" data-senses="">echarēsan charan megalēn sphodra</a><a class="note-ref" href="#note-1">a</a>.</p>
+    <p class="greek-line">ἰδόντες δὲ τὸν ἀστέρα ἐχάρησαν χαρὰν μεγάλην σφόδρα.</p>
+    <p class="translation">Now having seen the star, they rejoiced an exceedingly great joy.</p>
   </div>
 
-  <div class="endnotes">
-    <p class="endnotes-label">Notes</p>
-    
-    <div class="endnote">
-      <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
-      <div class="endnote-body">
-        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">echarēsan charan megalēn sphodra</a>
-        The Greek stacks four elements onto the magi&#x27;s reaction: a verb of rejoicing, its own cognate noun as object, an intensifying adjective, and a further adverb. Translations split over how literally to carry the stack, from &quot;rejoiced exceedingly with great joy&quot; to a single collapsed predicate like &quot;were overjoyed.&quot; The construction reproduces a Septuagint idiom, occurring in the same form at Isaiah 39:2 and Jonah 4:6.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
-        <details class="sources">
-          <summary>Sources</summary>
-          <ul>
-            <li>Turner (BECNT) — identifies the cognate accusative, intensified by an adjective and further by an adverb, citing Blass, Debrunner and Funk alongside Wallace</li>
-            <li>Dalman (<i>The Words of Jesus</i>) — traces the construction to the Septuagint&#x27;s rendering at Jonah 4:6</li>
-            <li>Davies and Allison (ICC) — adds 1 Kings 1:40 and Nehemiah 12:43 as further Septuagint parallels for the same idiom</li>
-            <li>France (NICNT) — calls the construction difficult to capture in any single English idiom, rendering it &quot;they were absolutely delighted&quot;</li>
-          </ul>
-        </details>
-      </div>
-    </div>
-    
-  </div>
+  
 
   <dialog class="sitemap" id="sitemap" aria-label="Site map">
     <div class="sitemap-head">

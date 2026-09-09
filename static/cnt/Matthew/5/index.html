@@ -1,0 +1,1196 @@
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+Continuous multi-verse chapter page. This is a SEPARATE template from
+verse.html.jinja (the single-verse atomic-unit page, which keeps the Greek
+line) -- see ../PLAN.md's "Page architecture": a chapter page reads like an
+ordinary printed Bible chapter, continuous English paragraphs with small
+superscript verse numbers, no Greek, assembled at build time from every
+verse's own content.
+
+Rendered by ../render.py, which queries build/cnt.sqlite and
+supplies:
+  chapter_ref -- display string, e.g. "Matthew 1"
+  paragraphs  -- list of paragraphs, each a list of per-verse context dicts
+                 (verse_num, anchor, translation_segments -- shaped like
+                 verse.html.jinja's own, minus greek_segments). Paragraph
+                 grouping is a manual editorial call (PARAGRAPH_BREAKS in
+                 render.py) -- no source text carries this data.
+  endnotes    -- ALL verses' endnotes flattened into one continuously-
+                 numbered list (per PLAN.md's Endnotes section)
+  apparatus   -- {books, chapters, verses, verse_range}: the masthead's
+                 Book/Chapter/Verse dropdowns. The verse select is headed by
+                 `verse_range` ("1-25", the whole chapter), which here is the
+                 CURRENT entry -- a chapter page has no verse to be at, so the
+                 select opens on the range instead of on a value. From a verse
+                 page the same option is the way back out to the chapter.
+                 See render.py's build_apparatus
+  nav         -- {prev, next, up}: the dock's chapter-to-chapter arrows.
+                 `up` is always None here (there is no book-level page),
+                 so this dock is two buttons where the verse page's is
+                 three -- see render.py's buildChapterNavContext
+
+Do not hand-edit generated output HTML -- edit this template (or
+render.py's query logic) and regenerate instead.
+-->
+<title>CNT — Matthew 5</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../static/cnt.css">
+<link rel="stylesheet" href="../../static/reading.css">
+<!-- Runs before first paint, so a reader who chose light does not see a dark
+     flash first. It has to be inline for that reason -- an external file is
+     fetched too late. Everything else lives in static/cnt.js. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('cnt-theme');
+      if (t === 'light' || t === 'dark') { document.documentElement.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
+
+<div class="page">
+
+  <div class="header">
+    <div class="masthead">
+      <span><a class="masthead-home" href="../../index.html"><strong>CNT</strong> — Corey's Non-Translation</a></span>
+      <span class="masthead-tools">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+            <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+          </svg>
+        </button>
+        <button id="sitemap-toggle" aria-label="Open site map" title="Site map" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </span>
+    </div>
+    <div class="legend">
+      <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
+      <span class="crux"><i></i><span class="legend-label"><b>Crux</b><span class="legend-desc">: untranslated here</span></span></span>
+      <span class="variant"><i></i><span class="legend-label"><b>Variant</b><span class="legend-desc">: editions disagree</span></span></span>
+    </div>
+  </div>
+
+  <p class="ref">
+    <span class="apparatus">
+      <span class="apparatus-select-wrap">
+        <select class="apparatus-select" aria-label="Book" onchange="if(this.value){location.href=this.value;}">
+          <option value="" selected>Matthew</option>
+          <option value="../../Mark/1/index.html" disabled>Mark</option>
+          <option value="../../Luke/1/index.html" disabled>Luke</option>
+          <option value="../../John/1/index.html" disabled>John</option>
+          <option value="../../Acts/1/index.html" disabled>Acts</option>
+          <option value="../../Romans/1/index.html" disabled>Romans</option>
+          <option value="../../1 Corinthians/1/index.html" disabled>1 Corinthians</option>
+          <option value="../../2 Corinthians/1/index.html" disabled>2 Corinthians</option>
+          <option value="../../Galatians/1/index.html" disabled>Galatians</option>
+          <option value="../../Ephesians/1/index.html" disabled>Ephesians</option>
+          <option value="../../Philippians/1/index.html" disabled>Philippians</option>
+          <option value="../../Colossians/1/index.html" disabled>Colossians</option>
+          <option value="../../1 Thessalonians/1/index.html" disabled>1 Thessalonians</option>
+          <option value="../../2 Thessalonians/1/index.html" disabled>2 Thessalonians</option>
+          <option value="../../1 Timothy/1/index.html" disabled>1 Timothy</option>
+          <option value="../../2 Timothy/1/index.html" disabled>2 Timothy</option>
+          <option value="../../Titus/1/index.html" disabled>Titus</option>
+          <option value="../../Philemon/1/index.html" disabled>Philemon</option>
+          <option value="../../Hebrews/1/index.html" disabled>Hebrews</option>
+          <option value="../../James/1/index.html" disabled>James</option>
+          <option value="../../1 Peter/1/index.html" disabled>1 Peter</option>
+          <option value="../../2 Peter/1/index.html" disabled>2 Peter</option>
+          <option value="../../1 John/1/index.html" disabled>1 John</option>
+          <option value="../../2 John/1/index.html" disabled>2 John</option>
+          <option value="../../3 John/1/index.html" disabled>3 John</option>
+          <option value="../../Jude/1/index.html" disabled>Jude</option>
+          <option value="../../Revelation/1/index.html" disabled>Revelation</option>
+        </select>
+      </span>
+      <span class="apparatus-select-wrap">
+        <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
+          <option value="../1/index.html">1</option>
+          <option value="../2/index.html">2</option>
+          <option value="../3/index.html">3</option>
+          <option value="../4/index.html">4</option>
+          <option value="" selected>5</option>
+          <option value="../6/index.html">6</option>
+          <option value="../7/index.html" disabled>7</option>
+          <option value="../8/index.html" disabled>8</option>
+          <option value="../9/index.html" disabled>9</option>
+          <option value="../10/index.html" disabled>10</option>
+          <option value="../11/index.html" disabled>11</option>
+          <option value="../12/index.html" disabled>12</option>
+          <option value="../13/index.html" disabled>13</option>
+          <option value="../14/index.html" disabled>14</option>
+          <option value="../15/index.html" disabled>15</option>
+          <option value="../16/index.html" disabled>16</option>
+          <option value="../17/index.html" disabled>17</option>
+          <option value="../18/index.html" disabled>18</option>
+          <option value="../19/index.html" disabled>19</option>
+          <option value="../20/index.html" disabled>20</option>
+          <option value="../21/index.html" disabled>21</option>
+          <option value="../22/index.html" disabled>22</option>
+          <option value="../23/index.html" disabled>23</option>
+          <option value="../24/index.html" disabled>24</option>
+          <option value="../25/index.html" disabled>25</option>
+          <option value="../26/index.html" disabled>26</option>
+          <option value="../27/index.html" disabled>27</option>
+          <option value="../28/index.html" disabled>28</option>
+        </select>
+      </span>
+      <span class="apparatus-colon">:</span>
+      <span class="apparatus-select-wrap">
+        <select class="apparatus-select is-unset" aria-label="Verse" onchange="if(this.value){location.href=this.value;}">
+          <option value="" selected>1–48</option>
+          <option value="1.html">1</option>
+          <option value="2.html">2</option>
+          <option value="3.html">3</option>
+          <option value="4.html">4</option>
+          <option value="5.html">5</option>
+          <option value="6.html">6</option>
+          <option value="7.html">7</option>
+          <option value="8.html">8</option>
+          <option value="9.html">9</option>
+          <option value="10.html">10</option>
+          <option value="11.html">11</option>
+          <option value="12.html">12</option>
+          <option value="13.html">13</option>
+          <option value="14.html">14</option>
+          <option value="15.html">15</option>
+          <option value="16.html">16</option>
+          <option value="17.html">17</option>
+          <option value="18.html">18</option>
+          <option value="19.html">19</option>
+          <option value="20.html">20</option>
+          <option value="21.html">21</option>
+          <option value="22.html">22</option>
+          <option value="23.html">23</option>
+          <option value="24.html">24</option>
+          <option value="25.html">25</option>
+          <option value="26.html">26</option>
+          <option value="27.html">27</option>
+          <option value="28.html">28</option>
+          <option value="29.html">29</option>
+          <option value="30.html">30</option>
+          <option value="31.html">31</option>
+          <option value="32.html">32</option>
+          <option value="33.html">33</option>
+          <option value="34.html">34</option>
+          <option value="35.html">35</option>
+          <option value="36.html">36</option>
+          <option value="37.html">37</option>
+          <option value="38.html">38</option>
+          <option value="39.html">39</option>
+          <option value="40.html">40</option>
+          <option value="41.html">41</option>
+          <option value="42.html">42</option>
+          <option value="43.html">43</option>
+          <option value="44.html">44</option>
+          <option value="45.html">45</option>
+          <option value="46.html">46</option>
+          <option value="47.html">47</option>
+          <option value="48.html">48</option>
+        </select>
+      </span>
+    </span>
+  </p>
+
+  
+  <p class="translation"><span class="vspan" data-href="1.html"><sup class="vnum" id="Matthew-5-1">1</sup>Now, having seen the crowds, he went up into <span class="flagword crux" data-greek="τὸ ὄρος" data-translit="to oros" data-gloss="to oros" data-senses="">to oros</span>; and, he having <span class="flagword crux" data-greek="καθίσαντος" data-translit="kathisantos" data-gloss="kathisied" data-senses="sat down, sit, sat">kathisied</span>, his <span class="flagword crux" data-greek="μαθηταὶ" data-translit="mathētai" data-gloss="mathetai" data-senses="disciple">mathetai</span> came to him.</span><span class="vspan" data-href="2.html"><sup class="vnum" id="Matthew-5-2">2</sup>And <span class="flagword crux" data-greek="ἀνοίξας τὸ στόμα αὐτοῦ" data-translit="anoixas to stoma autou" data-gloss="anoixas to stoma autou" data-senses="">anoixas to stoma autou</span> he was teaching them, saying:</span><span class="vspan" data-href="3.html"><sup class="vnum" id="Matthew-5-3">3</sup><span class="flagword crux" data-greek="Μακάριοι" data-translit="Makarioi" data-gloss="Makarial" data-senses="blessed, happy">Makarial</span> are the <span class="flagword crux" data-greek="πτωχοὶ" data-translit="ptōchoi" data-gloss="ptochoi" data-senses="poor, poor man, beggar">ptochoi</span> in <a id="ref-1" class="flagword always" href="#note-1" data-greek="πνεύματι" data-translit="pneumati" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-1">a</a>, for theirs is the <a id="ref-2" class="flagword always" href="#note-2" data-greek="βασιλεία" data-translit="basileia" data-gloss="basileia" data-senses="kingdom, kingship">basileia</a><a class="note-ref" href="#note-2">b</a> of the <span class="flagword crux" data-greek="οὐρανῶν" data-translit="ouranōn" data-gloss="ouranoi" data-senses="heaven, air, sky">ouranoi</span>.</span><span class="vspan" data-href="4.html"><sup class="vnum" id="Matthew-5-4">4</sup>Blessed are the <span class="flagword crux" data-greek="πενθοῦντες" data-translit="penthountes" data-gloss="penthying" data-senses="mourn, wailing">penthying</span>, for they will be <span class="flagword crux" data-greek="παρακληθήσονται" data-translit="paraklēthēsontai" data-gloss="paraklesied" data-senses="exhort, besought, comforted">paraklesied</span>.</span><span class="vspan" data-href="5.html"><sup class="vnum" id="Matthew-5-5">5</sup>Blessed are the <span class="flagword crux" data-greek="πραεῖς" data-translit="praeis" data-gloss="prautic" data-senses="meek, gentle">prautic</span>, for they will inherit the <span class="flagword crux" data-greek="γῆν" data-translit="gēn" data-gloss="ge" data-senses="earth, land, ground">ge</span>.</span><span class="vspan" data-href="6.html"><sup class="vnum" id="Matthew-5-6">6</sup>Blessed are those hungering and thirsting for <a id="ref-3" class="flagword always" href="#note-3" data-greek="δικαιοσύνην" data-translit="dikaiosunēn" data-gloss="rectitude" data-senses="righteousness">rectitude</a><a class="note-ref" href="#note-3">c</a>, for they will be <span class="flagword crux" data-greek="χορτασθήσονται" data-translit="chortasthēsontai" data-gloss="chortasied" data-senses="filled, satisfied, full">chortasied</span>.</span><span class="vspan" data-href="7.html"><sup class="vnum" id="Matthew-5-7">7</sup>Blessed are the <span class="flagword crux" data-greek="ἐλεήμονες" data-translit="eleēmones" data-gloss="eleemonic" data-senses="merciful">eleemonic</span>, for they will be <span class="flagword crux" data-greek="ἐλεηθήσονται" data-translit="eleēthēsontai" data-gloss="eleesied" data-senses="mercy, show mercy, obtained mercy">eleesied</span>.</span><span class="vspan" data-href="8.html"><sup class="vnum" id="Matthew-5-8">8</sup>Blessed are the <span class="flagword crux" data-greek="καθαροὶ" data-translit="katharoi" data-gloss="katharic" data-senses="pure, clean, dean">katharic</span> in <span class="flagword crux" data-greek="καρδίᾳ" data-translit="kardiai" data-gloss="kardia" data-senses="heart, mind">kardia</span>, for they will <span class="flagword crux" data-greek="ὄψονται" data-translit="opsontai" data-gloss="opsie" data-senses="seen, knowing, appeared">opsie</span> <a id="ref-4" class="flagword always" href="#note-4" data-greek="θεὸν" data-translit="theon" data-gloss="theos" data-senses="god">theos</a><a class="note-ref" href="#note-4">d</a>.</span><span class="vspan" data-href="9.html"><sup class="vnum" id="Matthew-5-9">9</sup>Blessed are the <span class="flagword crux" data-greek="εἰρηνοποιοί" data-translit="eirēnopoioi" data-gloss="eirenopoioi" data-senses="peacemakers">eirenopoioi</span>, for they will be <span class="flagword crux" data-greek="κληθήσονται" data-translit="klēthēsontai" data-gloss="kalesied" data-senses="called, call, invited">kalesied</span> <span class="flagword crux" data-greek="υἱοὶ" data-translit="huioi" data-gloss="filii" data-senses="son, child, foal">filii</span> of <a id="ref-5" class="flagword always" href="#note-5" data-greek="θεοῦ" data-translit="theou" data-gloss="theos" data-senses="god">theos</a><a class="note-ref" href="#note-5">e</a>.</span><span class="vspan" data-href="10.html"><sup class="vnum" id="Matthew-5-10">10</sup>Blessed are the <span class="flagword crux" data-greek="δεδιωγμένοι" data-translit="dediōgmenoi" data-gloss="dediogmenoi" data-senses="persecuted, pursue, follow">dediogmenoi</span> for the sake of <a id="ref-6" class="flagword always" href="#note-6" data-greek="δικαιοσύνης" data-translit="dikaiosunēs" data-gloss="rectitude" data-senses="righteousness">rectitude</a><a class="note-ref" href="#note-6">f</a>, for theirs is the <a id="ref-7" class="flagword always" href="#note-7" data-greek="βασιλεία" data-translit="basileia" data-gloss="basileia" data-senses="kingdom, kingship">basileia</a><a class="note-ref" href="#note-7">g</a> of the heavens.</span><span class="vspan" data-href="11.html"><sup class="vnum" id="Matthew-5-11">11</sup>Blessed are you whenever they revile you and persecute you and say every <a id="ref-8" class="flagword always" href="#note-8" data-greek="πονηρὸν" data-translit="ponēron" data-gloss="baleful" data-senses="evil, wicked, wicked one">baleful</a><a class="note-ref" href="#note-8">h</a> against you, <span class="flagword crux" data-greek="ψευδόμενοι" data-translit="pseudomenoi" data-gloss="pseudesis" data-senses="lie, lying, not lie">pseudesis</span>, on account of me.</span><span class="vspan" data-href="12.html"><sup class="vnum" id="Matthew-5-12">12</sup>Rejoice and <span class="flagword crux" data-greek="ἀγαλλιᾶσθε" data-translit="agalliasthe" data-gloss="agalliasis" data-senses="exult, rejoiced">agalliasis</span>, because your <a id="ref-9" class="flagword always" href="#note-9" data-greek="μισθὸς" data-translit="misthos" data-gloss="misthos" data-senses="reward, wage, hire">misthos</a><a class="note-ref" href="#note-9">i</a> [is] much in the <span class="flagword crux" data-greek="οὐρανοῖς" data-translit="ouranois" data-gloss="ouranoi" data-senses="heaven, air, sky">ouranoi</span>; for thus they persecuted the <span class="flagword crux" data-greek="προφήτας" data-translit="prophētas" data-gloss="prophetai" data-senses="prophet, than a prophet">prophetai</span> before you.</span><span class="vspan" data-href="13.html"><sup class="vnum" id="Matthew-5-13">13</sup>You are the <span class="flagword crux" data-greek="ἅλας" data-translit="halas" data-gloss="halas" data-senses="salt">halas</span> of the <span class="flagword crux" data-greek="γῆς" data-translit="gēs" data-gloss="ge" data-senses="earth, land, ground">ge</span>; but if the salt becomes <span class="flagword crux" data-greek="μωρανθῇ" data-translit="mōranthēi" data-gloss="moria" data-senses="became fools, lost savour, becomes tasteless">moria</span>, in what will it <span class="flagword crux" data-greek="ἁλισθήσεται" data-translit="halisthēsetai" data-gloss="halize" data-senses="salted">halize</span>? It is strong into nothing any longer except, <a id="ref-10" class="flagword variant" href="#note-10" data-greek="βληθὲν" data-translit="blēthen" data-gloss="having been cast" data-senses="">having been cast</a><a class="note-ref" href="#note-10">j</a> outside, to be trampled by people.</span><span class="vspan" data-href="14.html"><sup class="vnum" id="Matthew-5-14">14</sup>You are the <span class="flagword crux" data-greek="φῶς" data-translit="phōs" data-gloss="phos" data-senses="light, fire">phos</span> of the <a id="ref-11" class="flagword always" href="#note-11" data-greek="κόσμου" data-translit="kosmou" data-gloss="kosmos" data-senses="world, adorning">kosmos</a><a class="note-ref" href="#note-11">k</a>. A <span class="flagword crux" data-greek="πόλις" data-translit="polis" data-gloss="polis" data-senses="city, town">polis</span> cannot <a id="ref-12" class="flagword always" href="#note-12" data-greek="κρυβῆναι" data-translit="krubēnai" data-gloss="kryptie" data-senses="hid, hidden, hid himself">kryptie</a><a class="note-ref" href="#note-12">l</a>, <span class="flagword crux" data-greek="κειμένη" data-translit="keimenē" data-gloss="keimie" data-senses="lying, laid, set">keimie</span> above a <span class="flagword crux" data-greek="ὄρους" data-translit="orous" data-gloss="oros" data-senses="mountain, mount, hill">oros</span>.</span><span class="vspan" data-href="15.html"><sup class="vnum" id="Matthew-5-15">15</sup>Nor do they light a lamp and place it under the <span class="flagword crux" data-greek="μόδιον" data-translit="modion" data-gloss="modios" data-senses="basket, bushel, corn measure">modios</span>, but upon the lampstand, and it shines to all in the <span class="flagword crux" data-greek="οἰκίᾳ" data-translit="oikiai" data-gloss="oikia" data-senses="house, household, house to house">oikia</span>.</span><span class="vspan" data-href="16.html"><sup class="vnum" id="Matthew-5-16">16</sup>Thus let your <span class="flagword crux" data-greek="φῶς" data-translit="phōs" data-gloss="phos" data-senses="light, fire">phos</span> shine before people, so that they may see your good works and glorify your Father in the heavens.</span><span class="vspan" data-href="17.html"><sup class="vnum" id="Matthew-5-17">17</sup>Do not <span class="flagword crux" data-greek="νομίσητε" data-translit="nomisēte" data-gloss="legize" data-senses="supposing, think, thought">legize</span> that I came to <span class="flagword crux" data-greek="καταλῦσαι" data-translit="katalusai" data-gloss="katalysis" data-senses="destroy, thrown down, destroyest">katalysis</span> the <a id="ref-13" class="flagword always" href="#note-13" data-greek="νόμον" data-translit="nomon" data-gloss="lege" data-senses="law, principle">lege</a><a class="note-ref" href="#note-13">m</a> or the prophets; I did not come to <span class="flagword crux" data-greek="καταλῦσαι" data-translit="katalusai" data-gloss="katalysis" data-senses="destroy, thrown down, destroyest">katalysis</span> but to <span class="flagword crux" data-greek="πληρῶσαι" data-translit="plērōsai" data-gloss="plerie" data-senses="fulfilled, filled, full">plerie</span>.</span><span class="vspan" data-href="18.html"><sup class="vnum" id="Matthew-5-18">18</sup>For, amen, I say to you, until the heaven and the earth pass away, not one <span class="flagword crux" data-greek="ἰῶτα" data-translit="iōta" data-gloss="iota" data-senses="iota">iota</span> or one <span class="flagword crux" data-greek="κεραία" data-translit="keraia" data-gloss="keraia" data-senses="tittle">keraia</span> will by any means pass from the <a id="ref-14" class="flagword always" href="#note-14" data-greek="νόμου" data-translit="nomou" data-gloss="lege" data-senses="law, principle">lege</a><a class="note-ref" href="#note-14">n</a>, until all things <span class="flagword crux" data-greek="γένηται" data-translit="genētai" data-gloss="gegonie" data-senses="become, came to pass, come">gegonie</span>.</span><span class="vspan" data-href="19.html"><sup class="vnum" id="Matthew-5-19">19</sup>Whoever then breaks one of these least <span class="flagword crux" data-greek="ἐντολῶν" data-translit="entolōn" data-gloss="entolai" data-senses="commandment, command, precept">entolai</span> and teaches people so, will be called least in the <a id="ref-15" class="flagword always" href="#note-15" data-greek="βασιλείᾳ" data-translit="basileiai" data-gloss="basileia" data-senses="kingdom, kingship">basileia</a><a class="note-ref" href="#note-15">o</a> of the heavens; but whoever does and teaches them, this one will be called great in the <a id="ref-15" class="flagword always" href="#note-15" data-greek="βασιλείᾳ" data-translit="basileiai" data-gloss="basileia" data-senses="kingdom, kingship">basileia</a><a class="note-ref" href="#note-15">o</a> of the heavens.</span><span class="vspan" data-href="20.html"><sup class="vnum" id="Matthew-5-20">20</sup>For I say to you that unless your <a id="ref-16" class="flagword always" href="#note-16" data-greek="δικαιοσύνη" data-translit="dikaiosunē" data-gloss="rectitude" data-senses="righteousness">rectitude</a><a class="note-ref" href="#note-16">p</a> <span class="flagword crux" data-greek="περισσεύσῃ" data-translit="perisseusēi" data-gloss="perisseusies" data-senses="abound, abundance, over and above">perisseusies</span> more than the scribes and Pharisees, you will by no means enter into the <a id="ref-17" class="flagword always" href="#note-17" data-greek="βασιλείαν" data-translit="basileian" data-gloss="basileia" data-senses="kingdom, kingship">basileia</a><a class="note-ref" href="#note-17">q</a> of the heavens.</span><span class="vspan" data-href="21.html"><sup class="vnum" id="Matthew-5-21">21</sup>You have heard that it was <span class="flagword crux" data-greek="ἐρρέθη" data-translit="errethē" data-gloss="errethe" data-senses="said, speak, tell">errethe</span> <span class="flagword crux" data-greek="τοῖς ἀρχαίοις" data-translit="tois archaiois" data-gloss="tois archaiois" data-senses="">tois archaiois</span>, &quot;You shall not murder&quot;; but whoever murders will be liable to the <span class="flagword crux" data-greek="κρίσει" data-translit="krisei" data-gloss="crinance" data-senses="judgment, condemnation, damnation">crinance</span>.</span><span class="vspan" data-href="22.html"><sup class="vnum" id="Matthew-5-22">22</sup>I, <span class="flagword crux" data-greek="δὲ" data-translit="de" data-gloss="de" data-senses="now, however, nevertheless">de</span>, say to you that everyone who is angry with his <a id="ref-18" class="flagword always" href="#note-18" data-greek="ἀδελφῷ" data-translit="adelphōi" data-gloss="adelphos" data-senses="brother">adelphos</a><a class="note-ref" href="#note-18">r</a> will be liable to the <span class="flagword crux" data-greek="κρίσει" data-translit="krisei" data-gloss="crinance" data-senses="judgment, condemnation, damnation">crinance</span>; but whoever says to his <a id="ref-18" class="flagword always" href="#note-18" data-greek="ἀδελφῷ" data-translit="adelphōi" data-gloss="adelphos" data-senses="brother">adelphos</a><a class="note-ref" href="#note-18">r</a>, &quot;<span class="flagword crux" data-greek="Ῥακά" data-translit="Rhaka" data-gloss="raka" data-senses="raca">raka</span>,&quot; will be liable to the <span class="flagword crux" data-greek="συνεδρίῳ" data-translit="sunedriōi" data-gloss="sunedrion" data-senses="council, sanhedrim, courts">sunedrion</span>; but whoever says, &quot;<span class="flagword crux" data-greek="Μωρέ" data-translit="Mōre" data-gloss="moria" data-senses="foolish, fool, foolish things">moria</span>,&quot; will be liable into the <a id="ref-19" class="flagword always" href="#note-19" data-greek="γέενναν" data-translit="geennan" data-gloss="gehenna" data-senses="hell, gehenna">gehenna</a><a class="note-ref" href="#note-19">s</a> of the fire.</span><span class="vspan" data-href="23.html"><sup class="vnum" id="Matthew-5-23">23</sup>If then you bring your gift to the altar, and there remember that your <a id="ref-20" class="flagword always" href="#note-20" data-greek="ἀδελφός" data-translit="adelphos" data-gloss="adelphos" data-senses="brother">adelphos</a><a class="note-ref" href="#note-20">t</a> has something against you,</span><span class="vspan" data-href="24.html"><sup class="vnum" id="Matthew-5-24">24</sup><a id="ref-21" class="flagword always" href="#note-21" data-greek="ἄφες" data-translit="aphes" data-gloss="Dimit" data-senses="left, forgiven, suffer">Dimit</a><a class="note-ref" href="#note-21">u</a> your gift there before the altar, and go, first be reconciled to your <a id="ref-22" class="flagword always" href="#note-22" data-greek="ἀδελφῷ" data-translit="adelphōi" data-gloss="adelphos" data-senses="brother">adelphos</a><a class="note-ref" href="#note-22">v</a>, and then come and offer your gift.</span><span class="vspan" data-href="25.html"><sup class="vnum" id="Matthew-5-25">25</sup>Be well-disposed to your <a id="ref-23" class="flagword always" href="#note-23" data-greek="ἀντιδίκῳ" data-translit="antidikōi" data-gloss="antirect" data-senses="adversary, accuser">antirect</a><a class="note-ref" href="#note-23">w</a> quickly, while you are with him on the way, lest the <a id="ref-24" class="flagword always" href="#note-24" data-greek="ἀντίδικος" data-translit="antidikos" data-gloss="antirect" data-senses="adversary, accuser">antirect</a><a class="note-ref" href="#note-24">x</a> <a id="ref-25" class="flagword always" href="#note-25" data-greek="παραδῷ" data-translit="paradōi" data-gloss="hand" data-senses="delivered up, delivered, betray">hand</a><a class="note-ref" href="#note-25">y</a> you to the judge, and the judge to the officer, and you be cast into prison.</span><span class="vspan" data-href="26.html"><sup class="vnum" id="Matthew-5-26">26</sup>Amen, I say to you, you will by no means come out from there until you pay back the last quadrans.</span><span class="vspan" data-href="27.html"><sup class="vnum" id="Matthew-5-27">27</sup>You have <span class="flagword crux" data-greek="Ἠκούσατε" data-translit="Ēkousate" data-gloss="akousied" data-senses="heard, him hear, listen">akousied</span> that it was said: &quot;You shall not <span class="flagword crux" data-greek="μοιχεύσεις" data-translit="moicheuseis" data-gloss="moicheuo" data-senses="commit adultery">moicheuo</span>.&quot;</span><span class="vspan" data-href="28.html"><sup class="vnum" id="Matthew-5-28">28</sup>But I say to you that everyone who looks at a <span class="flagword crux" data-greek="γυναῖκα" data-translit="gunaika" data-gloss="gyne" data-senses="woman, wife">gyne</span> <span class="flagword crux" data-greek="πρὸς τὸ ἐπιθυμῆσαι αὐτὴν" data-translit="pros to epithumēsai autēn" data-gloss="pros to epithumesai auten" data-senses="">pros to epithumesai auten</span> has already <span class="flagword crux" data-greek="ἐμοίχευσεν" data-translit="emoicheusen" data-gloss="moicheuo" data-senses="commit adultery">moicheuo</span> her in his heart.</span><span class="vspan" data-href="29.html"><sup class="vnum" id="Matthew-5-29">29</sup>And if your right eye <a id="ref-26" class="flagword always" href="#note-26" data-greek="σκανδαλίζει" data-translit="skandalizei" data-gloss="trips" data-senses="offended, cause to offend, fall away">trips</a><a class="note-ref" href="#note-26">z</a> you up, pluck it out and cast it from you, for it is profitable for you that one of your members should perish, and not that your whole body should be thrown into <a id="ref-27" class="flagword always" href="#note-27" data-greek="γέενναν" data-translit="geennan" data-gloss="gehenna" data-senses="hell, gehenna">gehenna</a><a class="note-ref" href="#note-27">aa</a>.</span><span class="vspan" data-href="30.html"><sup class="vnum" id="Matthew-5-30">30</sup>And if your right hand <a id="ref-28" class="flagword always" href="#note-28" data-greek="σκανδαλίζει" data-translit="skandalizei" data-gloss="trips" data-senses="offended, cause to offend, fall away">trips</a><a class="note-ref" href="#note-28">ab</a> you up, cut it off and cast it from you, for it is profitable for you that one of your members should perish, and not that your whole body should <a id="ref-29" class="flagword variant" href="#note-29" data-greek="ἀπέλθῃ" data-translit="apelthēi" data-gloss="depart" data-senses="">depart</a><a class="note-ref" href="#note-29">ac</a> into <a id="ref-30" class="flagword always" href="#note-30" data-greek="γέενναν" data-translit="geennan" data-gloss="gehenna" data-senses="hell, gehenna">gehenna</a><a class="note-ref" href="#note-30">ad</a>.</span><span class="vspan" data-href="31.html"><sup class="vnum" id="Matthew-5-31">31</sup>Now, <span class="flagword crux" data-greek="Ἐρρέθη" data-translit="Errethē" data-gloss="errethe" data-senses="said, speak, tell">errethe</span>: &quot;Whoever divorces his wife, let him give her a document of divorce.&quot;</span><span class="vspan" data-href="32.html"><sup class="vnum" id="Matthew-5-32">32</sup>But I say to you that <a id="ref-31" class="flagword variant" href="#note-31" data-greek="πᾶς" data-translit="pas" data-gloss="everyone" data-senses="">everyone</a><a class="note-ref" href="#note-31">ae</a> <a id="ref-32" class="flagword variant" href="#note-32" data-greek="ὁ" data-translit="ho" data-gloss="who" data-senses="">who</a><a class="note-ref" href="#note-32">af</a> <a id="ref-33" class="flagword variant" href="#note-33" data-greek="ἀπολύων" data-translit="apoluōn" data-gloss="divorces" data-senses="">divorces</a><a class="note-ref" href="#note-33">ag</a> his wife, <span class="flagword crux" data-greek="παρεκτὸς" data-translit="parektos" data-gloss="parektos" data-senses="except">parektos</span> <a id="ref-34" class="flagword always" href="#note-34" data-greek="λόγου" data-translit="logou" data-gloss="logos" data-senses="word, saying, account">logos</a><a class="note-ref" href="#note-34">ah</a> of <a id="ref-35" class="flagword always" href="#note-35" data-greek="πορνείας" data-translit="porneias" data-gloss="porneia" data-senses="fomication, sexual immorality, fornication">porneia</a><a class="note-ref" href="#note-35">ai</a>, makes her <span class="flagword crux" data-greek="μοιχευθῆναι" data-translit="moicheuthēnai" data-gloss="moicheuthenai" data-senses="commit adultery">moicheuthenai</span>, and whoever marries a divorced woman commits adultery.</span><span class="vspan" data-href="33.html"><sup class="vnum" id="Matthew-5-33">33</sup>Again you have heard that it was said to the ancients, &quot;You shall not <span class="flagword crux" data-greek="ἐπιορκήσεις" data-translit="epiorkēseis" data-gloss="epiork" data-senses="forswear">epiork</span>, but you shall render to the <a id="ref-36" class="flagword always" href="#note-36" data-greek="κυρίῳ" data-translit="kuriōi" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-36">aj</a> your oaths.&quot;</span><span class="vspan" data-href="34.html"><sup class="vnum" id="Matthew-5-34">34</sup>But I say to you not to swear <span class="flagword crux" data-greek="ὅλως" data-translit="holōs" data-gloss="holos" data-senses="all, altogether, commonly">holos</span>: neither in heaven, because it is a throne of the <a id="ref-37" class="flagword always" href="#note-37" data-greek="θεοῦ" data-translit="theou" data-gloss="theos" data-senses="god">theos</a><a class="note-ref" href="#note-37">ak</a>;</span><span class="vspan" data-href="35.html"><sup class="vnum" id="Matthew-5-35">35</sup>neither in the earth, because it is a footstool of his feet; neither into Jerusalem, because it is a city of the great king;</span><span class="vspan" data-href="36.html"><sup class="vnum" id="Matthew-5-36">36</sup>neither shall you swear in your head, because you are not able to make one hair white or black.</span><span class="vspan" data-href="37.html"><sup class="vnum" id="Matthew-5-37">37</sup>But let your <a id="ref-38" class="flagword always" href="#note-38" data-greek="λόγος" data-translit="logos" data-gloss="logos" data-senses="word, saying, account">logos</a><a class="note-ref" href="#note-38">al</a> be <span class="flagword crux" data-greek="ναὶ ναί, οὒ οὔ" data-translit="nai nai, ou ou" data-gloss="nai nai, ou ou" data-senses="">nai nai, ou ou</span>; but the excess of these is from the <a id="ref-39" class="flagword always" href="#note-39" data-greek="πονηροῦ" data-translit="ponērou" data-gloss="baleful" data-senses="evil, wicked, wicked one">baleful</a><a class="note-ref" href="#note-39">am</a>.</span><span class="vspan" data-href="38.html"><sup class="vnum" id="Matthew-5-38">38</sup>You have heard that it was said, &quot;Eye for eye and tooth for tooth.&quot;</span><span class="vspan" data-href="39.html"><sup class="vnum" id="Matthew-5-39">39</sup>But I say to you not to <span class="flagword crux" data-greek="ἀντιστῆναι" data-translit="antistēnai" data-gloss="anthistie" data-senses="resist, withstood, opposed">anthistie</span> the <a id="ref-40" class="flagword always" href="#note-40" data-greek="πονηρῷ" data-translit="ponērōi" data-gloss="baleful" data-senses="evil, wicked, wicked one">baleful</a><a class="note-ref" href="#note-40">an</a>; but whoever <a id="ref-41" class="flagword variant" href="#note-41" data-greek="ῥαπίζει" data-translit="rhapizei" data-gloss="slaps" data-senses="">slaps</a><a class="note-ref" href="#note-41">ao</a> you <a id="ref-42" class="flagword variant" href="#note-42" data-greek="εἰς" data-translit="eis" data-gloss="into" data-senses="">into</a><a class="note-ref" href="#note-42">ap</a> the <span class="flagword crux" data-greek="δεξιὰν" data-translit="dexian" data-gloss="dextral" data-senses="right hand, right, right side">dextral</span> cheek, turn to him also the other;</span><span class="vspan" data-href="40.html"><sup class="vnum" id="Matthew-5-40">40</sup>And to the one wanting to sue you and to take your <span class="flagword crux" data-greek="χιτῶνά" data-translit="chitōna" data-gloss="chiton" data-senses="tunic, coat, garment">chiton</span>, <a id="ref-43" class="flagword always" href="#note-43" data-greek="ἄφες" data-translit="aphes" data-gloss="dimit" data-senses="left, forgiven, suffer">dimit</a><a class="note-ref" href="#note-43">aq</a> to him also the <span class="flagword crux" data-greek="ἱμάτιον" data-translit="himation" data-gloss="himation" data-senses="garment, cloak, clothes">himation</span>;</span><span class="vspan" data-href="41.html"><sup class="vnum" id="Matthew-5-41">41</sup>And whoever <span class="flagword crux" data-greek="ἀγγαρεύσει" data-translit="angareusei" data-gloss="angareusies" data-senses="compelled, compel to go">angareusies</span> you one mile, go with him two.</span><span class="vspan" data-href="42.html"><sup class="vnum" id="Matthew-5-42">42</sup><a id="ref-44" class="flagword variant" href="#note-44" data-greek="δός" data-translit="dos" data-gloss="Give" data-senses="">Give</a><a class="note-ref" href="#note-44">ar</a> to the one asking you, and do not turn away from the one wanting to borrow from you.</span><span class="vspan" data-href="43.html"><sup class="vnum" id="Matthew-5-43">43</sup>You have heard that it was said, &quot;You shall <a id="ref-45" class="flagword always" href="#note-45" data-greek="Ἀγαπήσεις" data-translit="Agapēseis" data-gloss="agapate" data-senses="love, beloved, shalt love">agapate</a><a class="note-ref" href="#note-45">as</a> your <span class="flagword crux" data-greek="πλησίον" data-translit="plēsion" data-gloss="plesion" data-senses="neighbour, neighbor, near">plesion</span> and you shall <span class="flagword crux" data-greek="μισήσεις" data-translit="misēseis" data-gloss="misesie" data-senses="hated">misesie</span> your enemy.&quot;</span><span class="vspan" data-href="44.html"><sup class="vnum" id="Matthew-5-44">44</sup>But I say to you, <a id="ref-46" class="flagword always" href="#note-46" data-greek="ἀγαπᾶτε" data-translit="agapate" data-gloss="agapate" data-senses="love, beloved, shalt love">agapate</a><a class="note-ref" href="#note-46">at</a> your <span class="flagword crux" data-greek="ἐχθροὺς" data-translit="echthrous" data-gloss="echthroi" data-senses="enemy, foes">echthroi</span> and pray for those persecuting you.</span><span class="vspan" data-href="45.html"><sup class="vnum" id="Matthew-5-45">45</sup>So that you may become <span class="flagword crux" data-greek="υἱοὶ" data-translit="huioi" data-gloss="filii" data-senses="son, child, foal">filii</span> of your father in the heavens, for he makes his sun rise upon the <a id="ref-47" class="flagword always" href="#note-47" data-greek="πονηροὺς" data-translit="ponērous" data-gloss="baleful" data-senses="evil, wicked, wicked one">baleful</a><a class="note-ref" href="#note-47">au</a> and good, and sends rain upon the <a id="ref-48" class="flagword always" href="#note-48" data-greek="δικαίους" data-translit="dikaious" data-gloss="rectic" data-senses="righteous, right, righteous one">rectic</a><a class="note-ref" href="#note-48">av</a> and <a id="ref-49" class="flagword always" href="#note-49" data-greek="ἀδίκους" data-translit="adikous" data-gloss="rectless" data-senses="unrighteous, unjust">rectless</a><a class="note-ref" href="#note-49">aw</a>.</span><span class="vspan" data-href="46.html"><sup class="vnum" id="Matthew-5-46">46</sup>For if you <a id="ref-50" class="flagword always" href="#note-50" data-greek="ἀγαπήσητε" data-translit="agapēsēte" data-gloss="agapate" data-senses="love, beloved, shalt love">agapate</a><a class="note-ref" href="#note-50">ax</a> those <a id="ref-51" class="flagword always" href="#note-51" data-greek="ἀγαπῶντας" data-translit="agapōntas" data-gloss="agapating" data-senses="love, beloved, shalt love">agapating</a><a class="note-ref" href="#note-51">ay</a> you, what <a id="ref-52" class="flagword always" href="#note-52" data-greek="μισθὸν" data-translit="misthon" data-gloss="misthos" data-senses="reward, wage, hire">misthos</a><a class="note-ref" href="#note-52">az</a> do you have? Do not even the tax collectors do <a id="ref-53" class="flagword variant" href="#note-53" data-greek="τὸ" data-translit="to" data-gloss="the" data-senses="">the</a><a class="note-ref" href="#note-53">ba</a> <a id="ref-54" class="flagword variant" href="#note-54" data-greek="αὐτὸ" data-translit="auto" data-gloss="same" data-senses="">same</a><a class="note-ref" href="#note-54">bb</a>?</span><span class="vspan" data-href="47.html"><sup class="vnum" id="Matthew-5-47">47</sup>And if you greet only your <a id="ref-55" class="flagword always" href="#note-55" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">adelphoi</a><a class="note-ref" href="#note-55">bc</a>, what more are you doing? Do not even the <a id="ref-56" class="flagword always" href="#note-56" data-greek="ἐθνικοὶ" data-translit="ethnikoi" data-gloss="ethnics" data-senses="gentiles, heathen, pagan">ethnics</a><a class="note-ref" href="#note-56">bd</a> do <a id="ref-57" class="flagword variant" href="#note-57" data-greek="τὸ" data-translit="to" data-gloss="the" data-senses="">the</a><a class="note-ref" href="#note-57">be</a> <a id="ref-58" class="flagword variant" href="#note-58" data-greek="αὐτὸ" data-translit="auto" data-gloss="same" data-senses="">same</a><a class="note-ref" href="#note-58">bf</a>?</span><span class="vspan" data-href="48.html"><sup class="vnum" id="Matthew-5-48">48</sup>You, therefore, shall be <span class="flagword crux" data-greek="τέλειοι" data-translit="teleioi" data-gloss="teleic" data-senses="perfect, full grown, mature">teleic</span>, <a id="ref-59" class="flagword variant" href="#note-59" data-greek="ὡς" data-translit="hōs" data-gloss="as" data-senses="">as</a><a class="note-ref" href="#note-59">bg</a> your <a id="ref-60" class="flagword variant" href="#note-60" data-greek="οὐράνιος" data-translit="ouranios" data-gloss="heavenly" data-senses="">heavenly</a><a class="note-ref" href="#note-60">bh</a> father is <span class="flagword crux" data-greek="τέλειός" data-translit="teleios" data-gloss="teleic" data-senses="perfect, full grown, mature">teleic</span>.</span></p>
+  
+
+  <div class="endnotes">
+    <p class="endnotes-label">Notes</p>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-1" href="#ref-1" title="Back to text">pneumati</a>
+        Pneuma spans a range from ordinary wind or breath to the animating principle in a person, an incorporeal spirit or demon, and the divine Spirit. Greek grammar does not resolve which sense is meant in a given case. The presence or absence of the article is sometimes read as marking the divine Spirit specifically, though this pattern is not applied consistently and remains disputed.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> spirit, ghost, wind</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — base sense &quot;a current of air, i.e. breath (blast) or a breeze,&quot; extending by analogy to human soul, angel, demon, or God&#x27;s own Spirit</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — five-sense entry, running from wind and breath through vital principle, disposition and incorporeal being to Holy Spirit, where the article&#x27;s presence &quot;as a rule&quot; marks the Spirit as Person/Divine Power versus an anarthrous &quot;operation, influence, or gift&quot;</li>
+            <li>Nolland (NIGTC) and Davies and Allison (ICC) — both argue, independently, that &quot;ἐκ πνεύματος ἁγίου&quot; denotes divine creative power rather than a paternal/male generative role, Nolland via Septuagint idiom, Davies and Allison via grammatical gender (Greek πνεῦμα is neuter, Hebrew רוּחַ is feminine)</li>
+            <li><i>SBL Greek New Testament</i> — πνεῦμα ἅγιον is anarthrous at Matthew 1:18, 1:20 and 3:11 but articular at 12:32 and 28:19</li>
+            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — the article drops after a preposition and by assimilation to an anarthrous noun, which covers all three anarthrous occurrences</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">basileia</a>
+        βασιλεία covers both the act of ruling and the territory ruled. Ninety-nine of its hundred and sixty-two New Testament occurrences take a genitive of God or of the heavens. Most commentators hold that the sense there is the ruling rather than the realm, and they divide over whether English &quot;kingdom&quot;, now a concrete noun, should give way to &quot;kingship&quot;, &quot;reign&quot; or &quot;dominion&quot;.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> kingdom, kingship</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — files the word under the act of ruling, and warns that &quot;kingdom of God&quot; is often understood as a royal realm with the reigning activity diluted out of it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — makes &quot;sovereignty, royal power, dominion&quot; the proper sense and the territory ruled a metonymy from it</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry runs the other way, leading with &quot;kingdom, dominion&quot; and giving the kingly office separately</li>
+            <li>France (NICNT) — &quot;This dynamic sense is now better conveyed by an abstract noun such as &#x27;kingship&#x27; or &#x27;sovereignty&#x27; rather than by &#x27;kingdom,&#x27; which has become in general usage a concrete noun&quot;</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — &quot;&#x27;kingdom&#x27; is a verbal noun whose primary connotation is not territory but ruling power, &#x27;reign&#x27; or &#x27;rule&#x27; often being the best translation&quot;</li>
+            <li>Marcus (Anchor), Stein (BECNT), Turner (BECNT) and Guelich (<i>The Sermon on the Mount</i>) — the ruling rather than the realm, Marcus printing &quot;the dominion of God has come near&quot; in his own translation</li>
+            <li>Nolland (NIGTC), Marshall (NIGTC) and Carter (<i>Matthew and the Margins</i>) — print &quot;royal rule&quot;, &quot;kingly rule&quot; and &quot;empire&quot; in their own translations</li>
+            <li>Sanders (<i>Jesus and Judaism</i>) — keeps &quot;kingdom&quot;, his charge of &quot;evading the obvious by the semantic device of denying that by &#x27;kingdom&#x27; Jesus meant &#x27;kingdom&#x27;&quot; aimed by his own footnote at the readings that make the word a symbol, not at the reign-not-realm rendering</li>
+            <li>Dodd (<i>The Parables of the Kingdom</i>) and Meier (<i>A Marginal Jew</i>) — with Sanders, retaining the word while granting what it suggests to a reader</li>
+            <li>Aalen (&quot;&#x27;Reign&#x27; and &#x27;House&#x27; in the Kingdom of God in the Gospels,&quot; NTS) and Ladd (JBL), cited in Danker — the standing dissent, a house or community of God and a realm, against the ruling sense</li>
+            <li>Dalman (<i>The Words of Jesus</i>), cited in Dodd — the Semitic noun behind it, &quot;as related to God always means &#x27;kingly rule&#x27; and never &#x27;kingdom&#x27;&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">dikaiosunēn</a>
+        δικαιοσύνη, δίκαιος, and δικαιόω range in sense from personal moral righteousness to covenantal or forensic justice. Translators and commentators divide over which sense a given occurrence carries. No single English word covers that full range.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> righteousness</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — glosses δίκαιος &quot;equitable (in character or act),&quot; δικαιοσύνη &quot;equity... specially (Christian) justification,&quot; spanning both senses</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — a two-tier entry, a broad sense &quot;conformity to the Divine will in purpose, thought, and action&quot; and a narrower sense &quot;justice&quot;</li>
+            <li>Przybylski (<i>Righteousness in Matthew and His World of Thought</i>) — argues Matthew&#x27;s usage is uniformly ethical, &quot;proper conduct before God,&quot; against a Pauline forensic-gift reading</li>
+            <li>Hagner (WBC) — an opposing view, that some occurrences (5:6, 6:33) denote eschatological &quot;justice&quot; or gift rather than ethical performance, explicitly against Przybylski</li>
+            <li>Davies and Allison (ICC) — favors the &quot;conduct&quot; reading at 5:10, listing allied scholars (Barth, Fenton, Gundry, Luz, Przybylski, Strecker, Reumann, Ziesler) against dissenter Giesen</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-4" href="#ref-4" title="Back to text">theon</a>
+        θεός ranges from a generic term for deity, one among many, to the proper-name-like designation of the God of Israel, usually marked by the article. An anarthrous predicate use is often read as qualitative, describing nature rather than identity, a distinction with no exact English equivalent. The word also applies, as in phrases like &quot;son of God,&quot; to referents other than one unique divine being.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> god</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;a deity, especially (with G3588 (ὁ)) the supreme Divinity&quot;, its own cross-reference there being to the article</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — distinguishes polytheistic use, anarthrous use (including as a qualitative predicate, &quot;when the nature and character rather than the person of God is meant&quot;), and the more frequent articular use</li>
+            <li>Harner (&quot;Qualitative Anarthrous Predicate Nouns: Mark 15:39 and John 1:1,&quot; JBL) — argues anarthrous preverbal predicate θεός is typically qualitative, describing nature rather than identity</li>
+            <li>Colwell (&quot;A Definite Rule for the Use of the Article in the Greek New Testament,&quot; JBL) — establishes that definite preverbal predicate nouns regularly drop the article in Koine Greek</li>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — refines Harner&#x27;s rule, and treats passive-plus-predicate constructions of the they-will-be-called-sons shape as expressing a subset relation rather than strict identity</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-5" title="Back to text">e</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-5" href="#ref-5" title="Back to text">theou</a>
+        θεός ranges from a generic term for deity, one among many, to the proper-name-like designation of the God of Israel, usually marked by the article. An anarthrous predicate use is often read as qualitative, describing nature rather than identity, a distinction with no exact English equivalent. The word also applies, as in phrases like &quot;son of God,&quot; to referents other than one unique divine being.<a class="endnote-back" href="#ref-5" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> god</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;a deity, especially (with G3588 (ὁ)) the supreme Divinity&quot;, its own cross-reference there being to the article</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — distinguishes polytheistic use, anarthrous use (including as a qualitative predicate, &quot;when the nature and character rather than the person of God is meant&quot;), and the more frequent articular use</li>
+            <li>Harner (&quot;Qualitative Anarthrous Predicate Nouns: Mark 15:39 and John 1:1,&quot; JBL) — argues anarthrous preverbal predicate θεός is typically qualitative, describing nature rather than identity</li>
+            <li>Colwell (&quot;A Definite Rule for the Use of the Article in the Greek New Testament,&quot; JBL) — establishes that definite preverbal predicate nouns regularly drop the article in Koine Greek</li>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — refines Harner&#x27;s rule, and treats passive-plus-predicate constructions of the they-will-be-called-sons shape as expressing a subset relation rather than strict identity</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-6" title="Back to text">f</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-6" href="#ref-6" title="Back to text">dikaiosunēs</a>
+        δικαιοσύνη, δίκαιος, and δικαιόω range in sense from personal moral righteousness to covenantal or forensic justice. Translators and commentators divide over which sense a given occurrence carries. No single English word covers that full range.<a class="endnote-back" href="#ref-6" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> righteousness</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — glosses δίκαιος &quot;equitable (in character or act),&quot; δικαιοσύνη &quot;equity... specially (Christian) justification,&quot; spanning both senses</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — a two-tier entry, a broad sense &quot;conformity to the Divine will in purpose, thought, and action&quot; and a narrower sense &quot;justice&quot;</li>
+            <li>Przybylski (<i>Righteousness in Matthew and His World of Thought</i>) — argues Matthew&#x27;s usage is uniformly ethical, &quot;proper conduct before God,&quot; against a Pauline forensic-gift reading</li>
+            <li>Hagner (WBC) — an opposing view, that some occurrences (5:6, 6:33) denote eschatological &quot;justice&quot; or gift rather than ethical performance, explicitly against Przybylski</li>
+            <li>Davies and Allison (ICC) — favors the &quot;conduct&quot; reading at 5:10, listing allied scholars (Barth, Fenton, Gundry, Luz, Przybylski, Strecker, Reumann, Ziesler) against dissenter Giesen</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-7" title="Back to text">g</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-7" href="#ref-7" title="Back to text">basileia</a>
+        βασιλεία covers both the act of ruling and the territory ruled. Ninety-nine of its hundred and sixty-two New Testament occurrences take a genitive of God or of the heavens. Most commentators hold that the sense there is the ruling rather than the realm, and they divide over whether English &quot;kingdom&quot;, now a concrete noun, should give way to &quot;kingship&quot;, &quot;reign&quot; or &quot;dominion&quot;.<a class="endnote-back" href="#ref-7" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> kingdom, kingship</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — files the word under the act of ruling, and warns that &quot;kingdom of God&quot; is often understood as a royal realm with the reigning activity diluted out of it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — makes &quot;sovereignty, royal power, dominion&quot; the proper sense and the territory ruled a metonymy from it</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry runs the other way, leading with &quot;kingdom, dominion&quot; and giving the kingly office separately</li>
+            <li>France (NICNT) — &quot;This dynamic sense is now better conveyed by an abstract noun such as &#x27;kingship&#x27; or &#x27;sovereignty&#x27; rather than by &#x27;kingdom,&#x27; which has become in general usage a concrete noun&quot;</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — &quot;&#x27;kingdom&#x27; is a verbal noun whose primary connotation is not territory but ruling power, &#x27;reign&#x27; or &#x27;rule&#x27; often being the best translation&quot;</li>
+            <li>Marcus (Anchor), Stein (BECNT), Turner (BECNT) and Guelich (<i>The Sermon on the Mount</i>) — the ruling rather than the realm, Marcus printing &quot;the dominion of God has come near&quot; in his own translation</li>
+            <li>Nolland (NIGTC), Marshall (NIGTC) and Carter (<i>Matthew and the Margins</i>) — print &quot;royal rule&quot;, &quot;kingly rule&quot; and &quot;empire&quot; in their own translations</li>
+            <li>Sanders (<i>Jesus and Judaism</i>) — keeps &quot;kingdom&quot;, his charge of &quot;evading the obvious by the semantic device of denying that by &#x27;kingdom&#x27; Jesus meant &#x27;kingdom&#x27;&quot; aimed by his own footnote at the readings that make the word a symbol, not at the reign-not-realm rendering</li>
+            <li>Dodd (<i>The Parables of the Kingdom</i>) and Meier (<i>A Marginal Jew</i>) — with Sanders, retaining the word while granting what it suggests to a reader</li>
+            <li>Aalen (&quot;&#x27;Reign&#x27; and &#x27;House&#x27; in the Kingdom of God in the Gospels,&quot; NTS) and Ladd (JBL), cited in Danker — the standing dissent, a house or community of God and a realm, against the ruling sense</li>
+            <li>Dalman (<i>The Words of Jesus</i>), cited in Dodd — the Semitic noun behind it, &quot;as related to God always means &#x27;kingly rule&#x27; and never &#x27;kingdom&#x27;&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-8" title="Back to text">h</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-8" href="#ref-8" title="Back to text">ponēron</a>
+        πονηρός runs from a hard day to the Evil One. Abbott-Smith derives it from πονέω, to toil, and files three of its New Testament occurrences under that older sense of toilsome or painful -- the days of Ephesians 5:16, the day of Ephesians 6:13, the sore of Revelation 16:2 -- before the senses of worthless and then actively wicked. The sharper difficulty is grammatical. In the genitive and dative singular the masculine and neuter are spelled alike, so &quot;rescue us from the balesome&quot; at Matthew 6:13 is either a power or a person, and nothing in the form decides it. Of the seventeen versions consulted here, nine print &quot;the evil one&quot; at that verse and seven print &quot;evil&quot;; the Vulgate&#x27;s a malo is as undecidable as the Greek. One version prints both: the RSV of the Ignatius edition has &quot;deliver us from evil&quot; at 6:13 and &quot;comes from the Evil One&quot; at 5:37, for the same construction.<a class="endnote-back" href="#ref-8" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> evil, wicked, wicked one</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — derives the word from πονέω, to toil, and runs it from oppressed by toils and toilsome, painful through bad, worthless to the ethical sense, taking the singular at Matthew 5:37 and 6:13 as Satan and citing Lightfoot for the argument</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical range runs from &quot;in bad case, in sorry plight, useless, good-for-nothing&quot; of an animal or a diet to the moral sense of knavish, and includes a political use of the baser sort against the καλοὶ κἀγαθοί</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — glosses the substantive as &quot;the evil one=the devil (who is not defined as a sinner but as one who is morally destructive)&quot;, and names ancient and modern readers on both sides of the gender at Matthew 5:37 and 6:13</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — takes the word as hurtful, evil in effect or influence, against κακός, &quot;which refers rather to essential character&quot;, and records &quot;masculine (singular) the devil, or (plural) sinners&quot;</li>
+            <li>Nolland (NIGTC) — reads the word abstractly at Matthew 6:13, since &quot;πονηρός (&#x27;evil&#x27;) is that which harms&quot; and &quot;Natural disaster is as much an &#x27;evil&#x27; as is murder&quot;</li>
+            <li>France (NICNT) — &quot;the genitive form is the same in the masculine and neuter&quot;, so either reading stands, and the traditional rendering &quot;would come to the same thing, but with a less personal understanding of the conflict&quot;</li>
+            <li>Davies and Allison (ICC) — follow the Eastern liturgies in reading the masculine, then take that very reading as a mark of lateness, since &quot;&#x27;the evil one&#x27; never equals Satan in Hebrew or Aramaic literature. On the other hand, &#x27;the evil one&#x27; does belong to the vocabulary of the church&quot;</li>
+            <li>Luz (Hermeneia) — argues for the neuter from the Matthean and wider New Testament usage, reporting that &quot;From ancient times it has been debated whether &#x27;evil&#x27; in this final petition is to be understood as masculine or neuter&quot;</li>
+            <li>Betz (Hermeneia) — traces the division to the early church, most Eastern fathers taking the devil and the Western fathers the neuter apart from Tertullian, and holds the language of prayer ambivalent enough that too sharp a distinction between the genders may not be advisable</li>
+            <li>Chase (<i>The Lord&#x27;s Prayer in the Early Church</i>) — a chapter-length case for the personal reading, built on an antithesis between the Father and the devil running through the successive petitions</li>
+            <li>NRSVue, HCSB, NIV, NLT, NET and the <i>Orthodox Study Bible</i> — print the evil one at Matthew 6:13, against evil in the <i>MacArthur Study Bible</i>, the <i>Ignatius Bible</i>, ESV and KJV</li>
+            <li>ESV, NIV, NLT, HCSB, <i>MacArthur Study Bible</i>, <i>Ignatius Bible</i> and <i>The Jewish Annotated New Testament</i> — seven footnotes at Matthew 6:13, each offering the reading its own text declines</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-9" title="Back to text">i</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-9" href="#ref-9" title="Back to text">misthos</a>
+        Misthos is what is due for work — wages, pay — and also a reward. One English version alone renders it &quot;reward,&quot; &quot;pay,&quot; and &quot;wages&quot; in different verses. Whether what is promised is earned or given is the difference between the two English words, and the Greek uses one.<a class="endnote-back" href="#ref-9" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> reward, wage, hire</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-10" title="Back to text">j</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-10" href="#ref-10" title="Back to text">blēthen</a>
+        <a class="endnote-back" href="#ref-10" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-11" title="Back to text">k</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-11" href="#ref-11" title="Back to text">kosmou</a>
+        κόσμος means an ordered arrangement, and everything it names in the New Testament follows from that: the ordered universe, the inhabited earth, humanity, the present world-system set against God, and, at 1 Peter 3:3, a woman&#x27;s outward adornment. The senses are not neutral. God so loved the kosmos (John 3:16), and do not love the kosmos (1 John 2:15), are the same word under contrary commands, and a translator who writes &quot;world&quot; in both places has already decided that one of them means something else.<a class="endnote-back" href="#ref-11" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> world, adorning</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — the entry opens at &quot;that which serves to beautify through decoration, adornment, adorning&quot; and reaches the universe only in its third sense, after &quot;condition of orderliness, orderly arrangement, order&quot;</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — a further sense in which &quot;the world, and everything that belongs to it, appears as that which is hostile to God&quot;, found chiefly in Paul and the Johannine writings</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical sense of order, from Homer&#x27;s &quot;in order, duly&quot; through good behaviour and a state&#x27;s constitution, with the philosophical world-order dated first to Pythagoras or Parmenides</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — the range from order and adornment through the universe to the inhabited world and its people</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — makes &quot;orderly arrangement&quot; the root sense and the world an implication drawn from it</li>
+            <li>Genesis 2:1 (Septuagint) — καὶ πᾶς ὁ κόσμος αὐτῶν closes the creation account, the word standing for the host of heaven and earth rather than for the world itself</li>
+            <li>Barrett (<i>The Gospel According to St John</i>) — the Johannine word is &quot;not the sum total of creation but the organized and responsible world&quot;</li>
+            <li>Brown (<i>The Gospel According to John</i>) — counts 78 of the New Testament&#x27;s 185 occurrences in the Gospel of John, and holds the world there oriented toward evil and dominated by it rather than evil in itself</li>
+            <li>Keener (<i>The Gospel of John</i>) — sets the universe sense aside as outside John&#x27;s usage, and reads the command not to love the world beside God&#x27;s love for it as one tension inside a single term</li>
+            <li>Michaels (WBC) — at 1 Peter 3:3 warns against confusing &quot;the specialized use of κόσμος here as &#x27;adornment&#x27;&quot; with its commoner meaning of world</li>
+            <li>KJV, HCSB and NIV — divide at 1 Peter 3:3 between &quot;adorning&quot; and &quot;beauty&quot; for the one noun</li>
+            <li>NRSVue — turns that noun into a verb, &quot;[d]o not adorn yourselves outwardly by braiding your hair&quot;, so the word itself drops out of the verse</li>
+            <li>John 1:10 — one verse using the word in three of its senses in succession</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-12" title="Back to text">l</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-12" href="#ref-12" title="Back to text">krubēnai</a>
+        <a class="endnote-back" href="#ref-12" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> hid, hidden, hid himself</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-13" title="Back to text">m</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-13" href="#ref-13" title="Back to text">nomon</a>
+        νόμος is the Greek word behind &quot;the law,&quot; and it does not hold still. It names the Torah, the Mosaic covenant whole, a particular commandment, the Hebrew scriptures as a body, and, in Romans 7 and 8, something closer to a principle or governing power, a lege of the mind and a lege of peccancy at war in the same person. Paul stretches it across all of these inside a single argument, and whether a given occurrence means Torah or something wider is exactly what Christians have divided over since the Reformation. Printing &quot;law&quot; everywhere settles that silently.<a class="endnote-back" href="#ref-13" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> law, principle</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-14" title="Back to text">n</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-14" href="#ref-14" title="Back to text">nomou</a>
+        νόμος is the Greek word behind &quot;the law,&quot; and it does not hold still. It names the Torah, the Mosaic covenant whole, a particular commandment, the Hebrew scriptures as a body, and, in Romans 7 and 8, something closer to a principle or governing power, a lege of the mind and a lege of peccancy at war in the same person. Paul stretches it across all of these inside a single argument, and whether a given occurrence means Torah or something wider is exactly what Christians have divided over since the Reformation. Printing &quot;law&quot; everywhere settles that silently.<a class="endnote-back" href="#ref-14" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> law, principle</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-15" title="Back to text">o</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-15" href="#ref-15" title="Back to text">basileiai</a>
+        βασιλεία covers both the act of ruling and the territory ruled. Ninety-nine of its hundred and sixty-two New Testament occurrences take a genitive of God or of the heavens. Most commentators hold that the sense there is the ruling rather than the realm, and they divide over whether English &quot;kingdom&quot;, now a concrete noun, should give way to &quot;kingship&quot;, &quot;reign&quot; or &quot;dominion&quot;.<a class="endnote-back" href="#ref-15" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> kingdom, kingship</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — files the word under the act of ruling, and warns that &quot;kingdom of God&quot; is often understood as a royal realm with the reigning activity diluted out of it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — makes &quot;sovereignty, royal power, dominion&quot; the proper sense and the territory ruled a metonymy from it</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry runs the other way, leading with &quot;kingdom, dominion&quot; and giving the kingly office separately</li>
+            <li>France (NICNT) — &quot;This dynamic sense is now better conveyed by an abstract noun such as &#x27;kingship&#x27; or &#x27;sovereignty&#x27; rather than by &#x27;kingdom,&#x27; which has become in general usage a concrete noun&quot;</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — &quot;&#x27;kingdom&#x27; is a verbal noun whose primary connotation is not territory but ruling power, &#x27;reign&#x27; or &#x27;rule&#x27; often being the best translation&quot;</li>
+            <li>Marcus (Anchor), Stein (BECNT), Turner (BECNT) and Guelich (<i>The Sermon on the Mount</i>) — the ruling rather than the realm, Marcus printing &quot;the dominion of God has come near&quot; in his own translation</li>
+            <li>Nolland (NIGTC), Marshall (NIGTC) and Carter (<i>Matthew and the Margins</i>) — print &quot;royal rule&quot;, &quot;kingly rule&quot; and &quot;empire&quot; in their own translations</li>
+            <li>Sanders (<i>Jesus and Judaism</i>) — keeps &quot;kingdom&quot;, his charge of &quot;evading the obvious by the semantic device of denying that by &#x27;kingdom&#x27; Jesus meant &#x27;kingdom&#x27;&quot; aimed by his own footnote at the readings that make the word a symbol, not at the reign-not-realm rendering</li>
+            <li>Dodd (<i>The Parables of the Kingdom</i>) and Meier (<i>A Marginal Jew</i>) — with Sanders, retaining the word while granting what it suggests to a reader</li>
+            <li>Aalen (&quot;&#x27;Reign&#x27; and &#x27;House&#x27; in the Kingdom of God in the Gospels,&quot; NTS) and Ladd (JBL), cited in Danker — the standing dissent, a house or community of God and a realm, against the ruling sense</li>
+            <li>Dalman (<i>The Words of Jesus</i>), cited in Dodd — the Semitic noun behind it, &quot;as related to God always means &#x27;kingly rule&#x27; and never &#x27;kingdom&#x27;&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-16" title="Back to text">p</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-16" href="#ref-16" title="Back to text">dikaiosunē</a>
+        δικαιοσύνη, δίκαιος, and δικαιόω range in sense from personal moral righteousness to covenantal or forensic justice. Translators and commentators divide over which sense a given occurrence carries. No single English word covers that full range.<a class="endnote-back" href="#ref-16" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> righteousness</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — glosses δίκαιος &quot;equitable (in character or act),&quot; δικαιοσύνη &quot;equity... specially (Christian) justification,&quot; spanning both senses</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — a two-tier entry, a broad sense &quot;conformity to the Divine will in purpose, thought, and action&quot; and a narrower sense &quot;justice&quot;</li>
+            <li>Przybylski (<i>Righteousness in Matthew and His World of Thought</i>) — argues Matthew&#x27;s usage is uniformly ethical, &quot;proper conduct before God,&quot; against a Pauline forensic-gift reading</li>
+            <li>Hagner (WBC) — an opposing view, that some occurrences (5:6, 6:33) denote eschatological &quot;justice&quot; or gift rather than ethical performance, explicitly against Przybylski</li>
+            <li>Davies and Allison (ICC) — favors the &quot;conduct&quot; reading at 5:10, listing allied scholars (Barth, Fenton, Gundry, Luz, Przybylski, Strecker, Reumann, Ziesler) against dissenter Giesen</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-17" title="Back to text">q</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-17" href="#ref-17" title="Back to text">basileian</a>
+        βασιλεία covers both the act of ruling and the territory ruled. Ninety-nine of its hundred and sixty-two New Testament occurrences take a genitive of God or of the heavens. Most commentators hold that the sense there is the ruling rather than the realm, and they divide over whether English &quot;kingdom&quot;, now a concrete noun, should give way to &quot;kingship&quot;, &quot;reign&quot; or &quot;dominion&quot;.<a class="endnote-back" href="#ref-17" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> kingdom, kingship</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — files the word under the act of ruling, and warns that &quot;kingdom of God&quot; is often understood as a royal realm with the reigning activity diluted out of it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — makes &quot;sovereignty, royal power, dominion&quot; the proper sense and the territory ruled a metonymy from it</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry runs the other way, leading with &quot;kingdom, dominion&quot; and giving the kingly office separately</li>
+            <li>France (NICNT) — &quot;This dynamic sense is now better conveyed by an abstract noun such as &#x27;kingship&#x27; or &#x27;sovereignty&#x27; rather than by &#x27;kingdom,&#x27; which has become in general usage a concrete noun&quot;</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — &quot;&#x27;kingdom&#x27; is a verbal noun whose primary connotation is not territory but ruling power, &#x27;reign&#x27; or &#x27;rule&#x27; often being the best translation&quot;</li>
+            <li>Marcus (Anchor), Stein (BECNT), Turner (BECNT) and Guelich (<i>The Sermon on the Mount</i>) — the ruling rather than the realm, Marcus printing &quot;the dominion of God has come near&quot; in his own translation</li>
+            <li>Nolland (NIGTC), Marshall (NIGTC) and Carter (<i>Matthew and the Margins</i>) — print &quot;royal rule&quot;, &quot;kingly rule&quot; and &quot;empire&quot; in their own translations</li>
+            <li>Sanders (<i>Jesus and Judaism</i>) — keeps &quot;kingdom&quot;, his charge of &quot;evading the obvious by the semantic device of denying that by &#x27;kingdom&#x27; Jesus meant &#x27;kingdom&#x27;&quot; aimed by his own footnote at the readings that make the word a symbol, not at the reign-not-realm rendering</li>
+            <li>Dodd (<i>The Parables of the Kingdom</i>) and Meier (<i>A Marginal Jew</i>) — with Sanders, retaining the word while granting what it suggests to a reader</li>
+            <li>Aalen (&quot;&#x27;Reign&#x27; and &#x27;House&#x27; in the Kingdom of God in the Gospels,&quot; NTS) and Ladd (JBL), cited in Danker — the standing dissent, a house or community of God and a realm, against the ruling sense</li>
+            <li>Dalman (<i>The Words of Jesus</i>), cited in Dodd — the Semitic noun behind it, &quot;as related to God always means &#x27;kingly rule&#x27; and never &#x27;kingdom&#x27;&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-18" title="Back to text">r</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-18" href="#ref-18" title="Back to text">adelphōi</a>
+        ἀδελφός is a brother by birth. It also covers wider kin, a compatriot, and a member of a religious association. The Greek Septuagint calls Abraham and his nephew Lot adelphoi. Whether that range reaches cousin in the New Testament is disputed, and the men named as Jesus&#x27;s adelphoi are the case in question. Greek had a separate word for cousin and the New Testament uses it once. The masculine plural can take in women, and the versions divide over printing sisters.<a class="endnote-back" href="#ref-18" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> brother</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — holds the Septuagint passages &quot;do not establish the mng. &#x27;cousin&#x27; for&quot; the word, showing only that it renders the Hebrew loosely for male relatives of various degrees</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — &quot;the view of Jerome, which makes ἀ. equivalent to ἀνεψιός, is inconsistent with Greek usage&quot;</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — enters kinsman as its own sense citing Genesis 13:8, and enters the word for a first cousin separately</li>
+            <li>Meier (<i>A Marginal Jew</i>) — the siblings reading on philological grounds, since the Pauline tradition &quot;knew perfectly well the word for &#x27;cousin&#x27;&quot; and used it at Colossians 4:10, so &quot;the most probable opinion is that the brothers and sisters of Jesus were his siblings&quot;</li>
+            <li>France (NICNT) and Carson (EBC) — with Meier, France holding that &quot;It is dogma, not exegesis, which suggests that they were either cousins or Joseph&#x27;s children by a previous marriage&quot;</li>
+            <li>Mitch and Sri (CCSS), the <i>Ignatius Bible</i> and the <i>Orthodox Study Bible</i> — the wider reading, that &quot;The Hebrew language had no word for cousin, and it was common to use the word brother to describe cousins or other males in the extended family&quot;</li>
+            <li>Hooker (<i>The Gospel According to Saint Mark</i>) — asserts the wide range while declining the conclusion drawn from it, the word usable &quot;of any male relative&quot; though Mark &quot;knows nothing&quot; of the belief it is made to serve</li>
+            <li><i>Glossa Ordinaria</i> — the traditional identification stated outright, &quot;Fratres Domini sunt consobrini ejus, filii Mariæ materteræ ejus&quot;</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>), France (NICNT) and Fee (NICNT) — on the inclusive plural, the lexicon&#x27;s own introductory essay, signed by Bauer, saying &quot;There is no longer any doubt in my mind that ἀδελφοί can mean &#x27;brothers and sisters&#x27; in any number&quot;</li>
+            <li>Thiselton (NIGTC) — grants that sense and holds it &quot;escapes precise translation by any single English word or phrase&quot;</li>
+            <li><i>Septuagint</i> — Genesis 13:8 and 14:14 call Abraham and Lot adelphoi where 11:27 makes Lot his brother&#x27;s son, and Leviticus 10:4 names men as sons of Aaron&#x27;s father&#x27;s brother and then calls the dead &quot;your adelphoi&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-19" title="Back to text">s</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-19" href="#ref-19" title="Back to text">geennan</a>
+        Gehenna is a place name, not a description: the valley south of Jerusalem associated with child sacrifice in the prophets and later with judgement. English &quot;hell&quot; replaces the place with a developed doctrine, and merges it with two other words — Hades and Tartarus — that the Greek keeps separate.<a class="endnote-back" href="#ref-19" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> hell, gehenna</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-20" title="Back to text">t</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-20" href="#ref-20" title="Back to text">adelphos</a>
+        ἀδελφός is a brother by birth. It also covers wider kin, a compatriot, and a member of a religious association. The Greek Septuagint calls Abraham and his nephew Lot adelphoi. Whether that range reaches cousin in the New Testament is disputed, and the men named as Jesus&#x27;s adelphoi are the case in question. Greek had a separate word for cousin and the New Testament uses it once. The masculine plural can take in women, and the versions divide over printing sisters.<a class="endnote-back" href="#ref-20" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> brother</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — holds the Septuagint passages &quot;do not establish the mng. &#x27;cousin&#x27; for&quot; the word, showing only that it renders the Hebrew loosely for male relatives of various degrees</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — &quot;the view of Jerome, which makes ἀ. equivalent to ἀνεψιός, is inconsistent with Greek usage&quot;</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — enters kinsman as its own sense citing Genesis 13:8, and enters the word for a first cousin separately</li>
+            <li>Meier (<i>A Marginal Jew</i>) — the siblings reading on philological grounds, since the Pauline tradition &quot;knew perfectly well the word for &#x27;cousin&#x27;&quot; and used it at Colossians 4:10, so &quot;the most probable opinion is that the brothers and sisters of Jesus were his siblings&quot;</li>
+            <li>France (NICNT) and Carson (EBC) — with Meier, France holding that &quot;It is dogma, not exegesis, which suggests that they were either cousins or Joseph&#x27;s children by a previous marriage&quot;</li>
+            <li>Mitch and Sri (CCSS), the <i>Ignatius Bible</i> and the <i>Orthodox Study Bible</i> — the wider reading, that &quot;The Hebrew language had no word for cousin, and it was common to use the word brother to describe cousins or other males in the extended family&quot;</li>
+            <li>Hooker (<i>The Gospel According to Saint Mark</i>) — asserts the wide range while declining the conclusion drawn from it, the word usable &quot;of any male relative&quot; though Mark &quot;knows nothing&quot; of the belief it is made to serve</li>
+            <li><i>Glossa Ordinaria</i> — the traditional identification stated outright, &quot;Fratres Domini sunt consobrini ejus, filii Mariæ materteræ ejus&quot;</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>), France (NICNT) and Fee (NICNT) — on the inclusive plural, the lexicon&#x27;s own introductory essay, signed by Bauer, saying &quot;There is no longer any doubt in my mind that ἀδελφοί can mean &#x27;brothers and sisters&#x27; in any number&quot;</li>
+            <li>Thiselton (NIGTC) — grants that sense and holds it &quot;escapes precise translation by any single English word or phrase&quot;</li>
+            <li><i>Septuagint</i> — Genesis 13:8 and 14:14 call Abraham and Lot adelphoi where 11:27 makes Lot his brother&#x27;s son, and Leviticus 10:4 names men as sons of Aaron&#x27;s father&#x27;s brother and then calls the dead &quot;your adelphoi&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-21" title="Back to text">u</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-21" href="#ref-21" title="Back to text">aphes</a>
+        One Greek verb covers sending away, letting go, leaving behind, permitting, abandoning, divorcing, and forgiving. English distributes these across several unrelated words, so a reader meets &quot;forgive&quot; in one verse and &quot;leave&quot; in another without seeing that the same word stands in both. The debt metaphor behind the forgiveness sense — a release from what is owed — is visible in Greek and invisible in English.<a class="endnote-back" href="#ref-21" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> left, forgiven, suffer</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — one verb for sending away, leaving, permitting, divorcing and forgiving</li>
+            <li>Matthew 6:12 — the forgiveness sense used of debts, where the metaphor is release from what is owed</li>
+            <li>Matthew 19:14 — the permitting sense</li>
+            <li>Matthew 5:31 — the divorce sense</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-22" title="Back to text">v</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-22" href="#ref-22" title="Back to text">adelphōi</a>
+        ἀδελφός is a brother by birth. It also covers wider kin, a compatriot, and a member of a religious association. The Greek Septuagint calls Abraham and his nephew Lot adelphoi. Whether that range reaches cousin in the New Testament is disputed, and the men named as Jesus&#x27;s adelphoi are the case in question. Greek had a separate word for cousin and the New Testament uses it once. The masculine plural can take in women, and the versions divide over printing sisters.<a class="endnote-back" href="#ref-22" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> brother</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — holds the Septuagint passages &quot;do not establish the mng. &#x27;cousin&#x27; for&quot; the word, showing only that it renders the Hebrew loosely for male relatives of various degrees</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — &quot;the view of Jerome, which makes ἀ. equivalent to ἀνεψιός, is inconsistent with Greek usage&quot;</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — enters kinsman as its own sense citing Genesis 13:8, and enters the word for a first cousin separately</li>
+            <li>Meier (<i>A Marginal Jew</i>) — the siblings reading on philological grounds, since the Pauline tradition &quot;knew perfectly well the word for &#x27;cousin&#x27;&quot; and used it at Colossians 4:10, so &quot;the most probable opinion is that the brothers and sisters of Jesus were his siblings&quot;</li>
+            <li>France (NICNT) and Carson (EBC) — with Meier, France holding that &quot;It is dogma, not exegesis, which suggests that they were either cousins or Joseph&#x27;s children by a previous marriage&quot;</li>
+            <li>Mitch and Sri (CCSS), the <i>Ignatius Bible</i> and the <i>Orthodox Study Bible</i> — the wider reading, that &quot;The Hebrew language had no word for cousin, and it was common to use the word brother to describe cousins or other males in the extended family&quot;</li>
+            <li>Hooker (<i>The Gospel According to Saint Mark</i>) — asserts the wide range while declining the conclusion drawn from it, the word usable &quot;of any male relative&quot; though Mark &quot;knows nothing&quot; of the belief it is made to serve</li>
+            <li><i>Glossa Ordinaria</i> — the traditional identification stated outright, &quot;Fratres Domini sunt consobrini ejus, filii Mariæ materteræ ejus&quot;</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>), France (NICNT) and Fee (NICNT) — on the inclusive plural, the lexicon&#x27;s own introductory essay, signed by Bauer, saying &quot;There is no longer any doubt in my mind that ἀδελφοί can mean &#x27;brothers and sisters&#x27; in any number&quot;</li>
+            <li>Thiselton (NIGTC) — grants that sense and holds it &quot;escapes precise translation by any single English word or phrase&quot;</li>
+            <li><i>Septuagint</i> — Genesis 13:8 and 14:14 call Abraham and Lot adelphoi where 11:27 makes Lot his brother&#x27;s son, and Leviticus 10:4 names men as sons of Aaron&#x27;s father&#x27;s brother and then calls the dead &quot;your adelphoi&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-23" title="Back to text">w</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-23" href="#ref-23" title="Back to text">antidikōi</a>
+        <a class="endnote-back" href="#ref-23" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> adversary, accuser</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-24" title="Back to text">x</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-24" href="#ref-24" title="Back to text">antidikos</a>
+        <a class="endnote-back" href="#ref-24" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> adversary, accuser</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-25" title="Back to text">y</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-25" href="#ref-25" title="Back to text">paradōi</a>
+        One Greek verb covers handing something over, delivering a person up to the authorities, betraying, entrusting, risking, and handing on a teaching to those who come after. English cannot say it without choosing a particle -- hand over, hand on, hand down, give up -- and each choice decides the sense. So CNT prints the verb bare, as hand, and the noun as handdown. The cost of not doing so is visible at 1 Corinthians 11:23, where Paul uses the word twice in one sentence -- what he handed to the Corinthians, and the night on which the kyrios was handed -- and where every English translation splits it into two unrelated words, so that a reader cannot see that the word used of Judas is the word used of passing on what was received.<a class="endnote-back" href="#ref-25" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> delivered up, delivered, betray</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — files five senses under a single entry, running from &quot;to give or hand over to another&quot; through committing, delivering up to prison or judgment, &quot;to hand down, hand on or deliver verbally&quot;, and permitting</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry has the same reach, and treats betrayal as a shading of surrender rather than a sense of its own, &quot;with collateral notion of treachery, betray&quot;</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — defines the verb neutrally as &quot;to surrender, i.e yield up, intrust, transmit&quot;, and gives the King James renderings as &quot;betray, bring forth, cast, commit, deliver (up), give (over, up), hazard, put in prison, recommend&quot;</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — separates handing over, entrusting for care, and passing on tradition into three numbered senses, and doubts at 1 Corinthians 11:23 that Paul is &quot;even thinking of the action taken against Jesus by Judas much less interpreting it as betrayal&quot;</li>
+            <li>Marcus (Anchor) — &quot;The basic meaning of paradidonai is to transfer something or someone into the possession of another, usually without any nuance of treachery&quot;, and the negative colouring in the Gospels follows from the association with Judas</li>
+            <li>Marcus (Anchor) — at Mark 1:14 no agent is named, so the verb may carry both a human arrest and God&#x27;s own delivering up of his servant, as at Isaiah 53:6 and 12</li>
+            <li>Brown (<i>The Death of the Messiah</i>) — reports the tendency to render the verb as betray, and holds that such a rendering obscures the parallel between Judas&#x27;s act and the agency of others in the passion narrative</li>
+            <li>Popkes (<i>Christus Traditus</i>), cited in Brown (<i>The Death of the Messiah</i>) — sorts the passion uses by whether Jesus is given over by God, by human beings, or by himself</li>
+            <li>Fitzmyer (<i>Romans</i>) — counts four nuances in Paul alone, the vicarious handing over of Romans 4:25 and 8:32, handing over to degradation at 1:24, 26 and 28, handing over to another master at 6:17, and passing on a tradition at 1 Corinthians 11:2 and 15:3</li>
+            <li>Fitzmyer (<i>First Corinthians</i>) — holds Paul &quot;scarcely referring&quot; to Judas at 11:23, and reads the passive as either divine or middle</li>
+            <li>Thiselton (NIGTC) — sets four published renderings of the one clause against each other, betrayed, arrested, delivered up and handed over, and follows Hays in holding that the handing over by God eclipses the allusion to Judas</li>
+            <li>Fee (NICNT) — grants that the verb &quot;is just ambiguous enough so that it could mean &#x27;handed over&#x27;&quot;, but holds its first reference is the treachery of Judas</li>
+            <li>Bauckham (<i>Jesus and the Eyewitnesses</i>) — reads the verb at 1 Corinthians 11:2 and 15:3 as the fixed term for formal transmission, current in the Hellenistic schools and in Jewish Greek before Paul</li>
+            <li>Field (<i>Notes on the Translation of the New Testament</i>) — on Acts 15:26 objects that &quot;hazarded&quot; understates a Greek word that &quot;implies a general determination and readiness to die for the cause&quot;</li>
+            <li>NRSVue, Hart, KJV, Tyndale, ESV and NIV — every one splits the two occurrences in the single sentence of 1 Corinthians 11:23 into unrelated English words, handed on, delivered or passed on for the first and betrayed for the second</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-26" title="Back to text">z</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-26" href="#ref-26" title="Back to text">skandalizei</a>
+        The noun names the trigger-stick of a trap — the part that springs it. From there it comes to mean anything that brings another down. English reaches for &quot;stumbling block,&quot; &quot;offend,&quot; or &quot;cause to sin,&quot; none of which keeps the image of a trap set for someone, and &quot;scandalize&quot; has drifted away from it entirely.<a class="endnote-back" href="#ref-26" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> offended, cause to offend, fall away</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-27" title="Back to text">aa</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-27" href="#ref-27" title="Back to text">geennan</a>
+        Gehenna is a place name, not a description: the valley south of Jerusalem associated with child sacrifice in the prophets and later with judgement. English &quot;hell&quot; replaces the place with a developed doctrine, and merges it with two other words — Hades and Tartarus — that the Greek keeps separate.<a class="endnote-back" href="#ref-27" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> hell, gehenna</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-28" title="Back to text">ab</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-28" href="#ref-28" title="Back to text">skandalizei</a>
+        The noun names the trigger-stick of a trap — the part that springs it. From there it comes to mean anything that brings another down. English reaches for &quot;stumbling block,&quot; &quot;offend,&quot; or &quot;cause to sin,&quot; none of which keeps the image of a trap set for someone, and &quot;scandalize&quot; has drifted away from it entirely.<a class="endnote-back" href="#ref-28" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> offended, cause to offend, fall away</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-29" title="Back to text">ac</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-29" href="#ref-29" title="Back to text">apelthēi</a>
+        <a class="endnote-back" href="#ref-29" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-30" title="Back to text">ad</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-30" href="#ref-30" title="Back to text">geennan</a>
+        Gehenna is a place name, not a description: the valley south of Jerusalem associated with child sacrifice in the prophets and later with judgement. English &quot;hell&quot; replaces the place with a developed doctrine, and merges it with two other words — Hades and Tartarus — that the Greek keeps separate.<a class="endnote-back" href="#ref-30" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> hell, gehenna</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-31" title="Back to text">ae</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-31" href="#ref-31" title="Back to text">pas</a>
+        <a class="endnote-back" href="#ref-31" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-32" title="Back to text">af</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-32" href="#ref-32" title="Back to text">ho</a>
+        <a class="endnote-back" href="#ref-32" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-33" title="Back to text">ag</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-33" href="#ref-33" title="Back to text">apoluōn</a>
+        <a class="endnote-back" href="#ref-33" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-34" title="Back to text">ah</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-34" href="#ref-34" title="Back to text">logou</a>
+        Logos covers a spoken word, a saying, an account or reckoning, a reason or argument, and the ordering principle Greek philosophy named with it. English &quot;word&quot; is the narrowest of these. The same noun serves for a remark, a financial account to be settled, and the opening of John&#x27;s Gospel.<a class="endnote-back" href="#ref-34" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> word, saying, account</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-35" title="Back to text">ai</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-35" href="#ref-35" title="Back to text">porneias</a>
+        <a class="endnote-back" href="#ref-35" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> fomication, sexual immorality, fornication</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-36" title="Back to text">aj</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-36" href="#ref-36" title="Back to text">kuriōi</a>
+        κύριος ranges from an ordinary term of respectful address (&quot;sir,&quot; &quot;master&quot;) through a disciple&#x27;s title for a living teacher to the full divine name. In the Septuagint it is the standard reverential substitute for the unpronounced Hebrew Tetragrammaton. When the New Testament quotes an Old Testament passage that names it, the Greek text carries the same word, κύριος, with no orthographic marker distinguishing it from the word&#x27;s ordinary human sense.<a class="endnote-back" href="#ref-36" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> lord, master, sir</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — states κύριος is used &quot;in LXX (subst.) chiefly for [the divine name], also for [Baal, Adon],&quot; cataloguing the full range from genitive-of-possession (&quot;master of the house&quot;) through vocative address (&quot;sir&quot;) to the full divine title</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;supreme in authority, i.e. (as noun) controller; by implication, Master (as a respectful title)&quot;</li>
+            <li>Nolland (NIGTC) — cautions against over-reading an anarthrous κύριος as inherently a divine title, noting Psalm 110:1&#x27;s &quot;my lord&quot; is ordinary court address to a king</li>
+            <li>France (NICNT) — on Matthew&#x27;s citation of Isaiah 40:3, applying to Jesus a text whose κύριος names God himself constitutes &quot;a remarkable christological claim&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-37" title="Back to text">ak</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-37" href="#ref-37" title="Back to text">theou</a>
+        θεός ranges from a generic term for deity, one among many, to the proper-name-like designation of the God of Israel, usually marked by the article. An anarthrous predicate use is often read as qualitative, describing nature rather than identity, a distinction with no exact English equivalent. The word also applies, as in phrases like &quot;son of God,&quot; to referents other than one unique divine being.<a class="endnote-back" href="#ref-37" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> god</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;a deity, especially (with G3588 (ὁ)) the supreme Divinity&quot;, its own cross-reference there being to the article</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — distinguishes polytheistic use, anarthrous use (including as a qualitative predicate, &quot;when the nature and character rather than the person of God is meant&quot;), and the more frequent articular use</li>
+            <li>Harner (&quot;Qualitative Anarthrous Predicate Nouns: Mark 15:39 and John 1:1,&quot; JBL) — argues anarthrous preverbal predicate θεός is typically qualitative, describing nature rather than identity</li>
+            <li>Colwell (&quot;A Definite Rule for the Use of the Article in the Greek New Testament,&quot; JBL) — establishes that definite preverbal predicate nouns regularly drop the article in Koine Greek</li>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — refines Harner&#x27;s rule, and treats passive-plus-predicate constructions of the they-will-be-called-sons shape as expressing a subset relation rather than strict identity</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-38" title="Back to text">al</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-38" href="#ref-38" title="Back to text">logos</a>
+        Logos covers a spoken word, a saying, an account or reckoning, a reason or argument, and the ordering principle Greek philosophy named with it. English &quot;word&quot; is the narrowest of these. The same noun serves for a remark, a financial account to be settled, and the opening of John&#x27;s Gospel.<a class="endnote-back" href="#ref-38" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> word, saying, account</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-39" title="Back to text">am</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-39" href="#ref-39" title="Back to text">ponērou</a>
+        πονηρός runs from a hard day to the Evil One. Abbott-Smith derives it from πονέω, to toil, and files three of its New Testament occurrences under that older sense of toilsome or painful -- the days of Ephesians 5:16, the day of Ephesians 6:13, the sore of Revelation 16:2 -- before the senses of worthless and then actively wicked. The sharper difficulty is grammatical. In the genitive and dative singular the masculine and neuter are spelled alike, so &quot;rescue us from the balesome&quot; at Matthew 6:13 is either a power or a person, and nothing in the form decides it. Of the seventeen versions consulted here, nine print &quot;the evil one&quot; at that verse and seven print &quot;evil&quot;; the Vulgate&#x27;s a malo is as undecidable as the Greek. One version prints both: the RSV of the Ignatius edition has &quot;deliver us from evil&quot; at 6:13 and &quot;comes from the Evil One&quot; at 5:37, for the same construction.<a class="endnote-back" href="#ref-39" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> evil, wicked, wicked one</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — derives the word from πονέω, to toil, and runs it from oppressed by toils and toilsome, painful through bad, worthless to the ethical sense, taking the singular at Matthew 5:37 and 6:13 as Satan and citing Lightfoot for the argument</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical range runs from &quot;in bad case, in sorry plight, useless, good-for-nothing&quot; of an animal or a diet to the moral sense of knavish, and includes a political use of the baser sort against the καλοὶ κἀγαθοί</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — glosses the substantive as &quot;the evil one=the devil (who is not defined as a sinner but as one who is morally destructive)&quot;, and names ancient and modern readers on both sides of the gender at Matthew 5:37 and 6:13</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — takes the word as hurtful, evil in effect or influence, against κακός, &quot;which refers rather to essential character&quot;, and records &quot;masculine (singular) the devil, or (plural) sinners&quot;</li>
+            <li>Nolland (NIGTC) — reads the word abstractly at Matthew 6:13, since &quot;πονηρός (&#x27;evil&#x27;) is that which harms&quot; and &quot;Natural disaster is as much an &#x27;evil&#x27; as is murder&quot;</li>
+            <li>France (NICNT) — &quot;the genitive form is the same in the masculine and neuter&quot;, so either reading stands, and the traditional rendering &quot;would come to the same thing, but with a less personal understanding of the conflict&quot;</li>
+            <li>Davies and Allison (ICC) — follow the Eastern liturgies in reading the masculine, then take that very reading as a mark of lateness, since &quot;&#x27;the evil one&#x27; never equals Satan in Hebrew or Aramaic literature. On the other hand, &#x27;the evil one&#x27; does belong to the vocabulary of the church&quot;</li>
+            <li>Luz (Hermeneia) — argues for the neuter from the Matthean and wider New Testament usage, reporting that &quot;From ancient times it has been debated whether &#x27;evil&#x27; in this final petition is to be understood as masculine or neuter&quot;</li>
+            <li>Betz (Hermeneia) — traces the division to the early church, most Eastern fathers taking the devil and the Western fathers the neuter apart from Tertullian, and holds the language of prayer ambivalent enough that too sharp a distinction between the genders may not be advisable</li>
+            <li>Chase (<i>The Lord&#x27;s Prayer in the Early Church</i>) — a chapter-length case for the personal reading, built on an antithesis between the Father and the devil running through the successive petitions</li>
+            <li>NRSVue, HCSB, NIV, NLT, NET and the <i>Orthodox Study Bible</i> — print the evil one at Matthew 6:13, against evil in the <i>MacArthur Study Bible</i>, the <i>Ignatius Bible</i>, ESV and KJV</li>
+            <li>ESV, NIV, NLT, HCSB, <i>MacArthur Study Bible</i>, <i>Ignatius Bible</i> and <i>The Jewish Annotated New Testament</i> — seven footnotes at Matthew 6:13, each offering the reading its own text declines</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-40" title="Back to text">an</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-40" href="#ref-40" title="Back to text">ponērōi</a>
+        πονηρός runs from a hard day to the Evil One. Abbott-Smith derives it from πονέω, to toil, and files three of its New Testament occurrences under that older sense of toilsome or painful -- the days of Ephesians 5:16, the day of Ephesians 6:13, the sore of Revelation 16:2 -- before the senses of worthless and then actively wicked. The sharper difficulty is grammatical. In the genitive and dative singular the masculine and neuter are spelled alike, so &quot;rescue us from the balesome&quot; at Matthew 6:13 is either a power or a person, and nothing in the form decides it. Of the seventeen versions consulted here, nine print &quot;the evil one&quot; at that verse and seven print &quot;evil&quot;; the Vulgate&#x27;s a malo is as undecidable as the Greek. One version prints both: the RSV of the Ignatius edition has &quot;deliver us from evil&quot; at 6:13 and &quot;comes from the Evil One&quot; at 5:37, for the same construction.<a class="endnote-back" href="#ref-40" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> evil, wicked, wicked one</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — derives the word from πονέω, to toil, and runs it from oppressed by toils and toilsome, painful through bad, worthless to the ethical sense, taking the singular at Matthew 5:37 and 6:13 as Satan and citing Lightfoot for the argument</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical range runs from &quot;in bad case, in sorry plight, useless, good-for-nothing&quot; of an animal or a diet to the moral sense of knavish, and includes a political use of the baser sort against the καλοὶ κἀγαθοί</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — glosses the substantive as &quot;the evil one=the devil (who is not defined as a sinner but as one who is morally destructive)&quot;, and names ancient and modern readers on both sides of the gender at Matthew 5:37 and 6:13</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — takes the word as hurtful, evil in effect or influence, against κακός, &quot;which refers rather to essential character&quot;, and records &quot;masculine (singular) the devil, or (plural) sinners&quot;</li>
+            <li>Nolland (NIGTC) — reads the word abstractly at Matthew 6:13, since &quot;πονηρός (&#x27;evil&#x27;) is that which harms&quot; and &quot;Natural disaster is as much an &#x27;evil&#x27; as is murder&quot;</li>
+            <li>France (NICNT) — &quot;the genitive form is the same in the masculine and neuter&quot;, so either reading stands, and the traditional rendering &quot;would come to the same thing, but with a less personal understanding of the conflict&quot;</li>
+            <li>Davies and Allison (ICC) — follow the Eastern liturgies in reading the masculine, then take that very reading as a mark of lateness, since &quot;&#x27;the evil one&#x27; never equals Satan in Hebrew or Aramaic literature. On the other hand, &#x27;the evil one&#x27; does belong to the vocabulary of the church&quot;</li>
+            <li>Luz (Hermeneia) — argues for the neuter from the Matthean and wider New Testament usage, reporting that &quot;From ancient times it has been debated whether &#x27;evil&#x27; in this final petition is to be understood as masculine or neuter&quot;</li>
+            <li>Betz (Hermeneia) — traces the division to the early church, most Eastern fathers taking the devil and the Western fathers the neuter apart from Tertullian, and holds the language of prayer ambivalent enough that too sharp a distinction between the genders may not be advisable</li>
+            <li>Chase (<i>The Lord&#x27;s Prayer in the Early Church</i>) — a chapter-length case for the personal reading, built on an antithesis between the Father and the devil running through the successive petitions</li>
+            <li>NRSVue, HCSB, NIV, NLT, NET and the <i>Orthodox Study Bible</i> — print the evil one at Matthew 6:13, against evil in the <i>MacArthur Study Bible</i>, the <i>Ignatius Bible</i>, ESV and KJV</li>
+            <li>ESV, NIV, NLT, HCSB, <i>MacArthur Study Bible</i>, <i>Ignatius Bible</i> and <i>The Jewish Annotated New Testament</i> — seven footnotes at Matthew 6:13, each offering the reading its own text declines</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-41" title="Back to text">ao</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-41" href="#ref-41" title="Back to text">rhapizei</a>
+        <a class="endnote-back" href="#ref-41" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-42" title="Back to text">ap</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-42" href="#ref-42" title="Back to text">eis</a>
+        <a class="endnote-back" href="#ref-42" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-43" title="Back to text">aq</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-43" href="#ref-43" title="Back to text">aphes</a>
+        One Greek verb covers sending away, letting go, leaving behind, permitting, abandoning, divorcing, and forgiving. English distributes these across several unrelated words, so a reader meets &quot;forgive&quot; in one verse and &quot;leave&quot; in another without seeing that the same word stands in both. The debt metaphor behind the forgiveness sense — a release from what is owed — is visible in Greek and invisible in English.<a class="endnote-back" href="#ref-43" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> left, forgiven, suffer</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — one verb for sending away, leaving, permitting, divorcing and forgiving</li>
+            <li>Matthew 6:12 — the forgiveness sense used of debts, where the metaphor is release from what is owed</li>
+            <li>Matthew 19:14 — the permitting sense</li>
+            <li>Matthew 5:31 — the divorce sense</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-44" title="Back to text">ar</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-44" href="#ref-44" title="Back to text">dos</a>
+        <a class="endnote-back" href="#ref-44" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-45" title="Back to text">as</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-45" href="#ref-45" title="Back to text">Agapēseis</a>
+        Agape is often said to name a distinctively divine or selfless love, set against philia and eros. The Septuagint does not support the distinction cleanly: it uses the same verb for ordinary affection and for Amnon&#x27;s desire for Tamar in 2 Samuel 13. Whether the word carries any special quality of its own, or takes its colour entirely from context, is disputed.<a class="endnote-back" href="#ref-45" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> love, beloved, shalt love</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — treats the noun as effectively a Septuagint and New Testament coinage</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical adjective glossed &quot;of only children&quot;</li>
+            <li>Genesis 22:2 (Septuagint) — renders &quot;your only son&quot; with this adjective</li>
+            <li>2 Samuel 13:15 (Septuagint) — the cognate verb used of Amnon&#x27;s desire for Tamar, which tells against a distinctively selfless sense</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-46" title="Back to text">at</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-46" href="#ref-46" title="Back to text">agapate</a>
+        Agape is often said to name a distinctively divine or selfless love, set against philia and eros. The Septuagint does not support the distinction cleanly: it uses the same verb for ordinary affection and for Amnon&#x27;s desire for Tamar in 2 Samuel 13. Whether the word carries any special quality of its own, or takes its colour entirely from context, is disputed.<a class="endnote-back" href="#ref-46" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> love, beloved, shalt love</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — treats the noun as effectively a Septuagint and New Testament coinage</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical adjective glossed &quot;of only children&quot;</li>
+            <li>Genesis 22:2 (Septuagint) — renders &quot;your only son&quot; with this adjective</li>
+            <li>2 Samuel 13:15 (Septuagint) — the cognate verb used of Amnon&#x27;s desire for Tamar, which tells against a distinctively selfless sense</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-47" title="Back to text">au</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-47" href="#ref-47" title="Back to text">ponērous</a>
+        πονηρός runs from a hard day to the Evil One. Abbott-Smith derives it from πονέω, to toil, and files three of its New Testament occurrences under that older sense of toilsome or painful -- the days of Ephesians 5:16, the day of Ephesians 6:13, the sore of Revelation 16:2 -- before the senses of worthless and then actively wicked. The sharper difficulty is grammatical. In the genitive and dative singular the masculine and neuter are spelled alike, so &quot;rescue us from the balesome&quot; at Matthew 6:13 is either a power or a person, and nothing in the form decides it. Of the seventeen versions consulted here, nine print &quot;the evil one&quot; at that verse and seven print &quot;evil&quot;; the Vulgate&#x27;s a malo is as undecidable as the Greek. One version prints both: the RSV of the Ignatius edition has &quot;deliver us from evil&quot; at 6:13 and &quot;comes from the Evil One&quot; at 5:37, for the same construction.<a class="endnote-back" href="#ref-47" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> evil, wicked, wicked one</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — derives the word from πονέω, to toil, and runs it from oppressed by toils and toilsome, painful through bad, worthless to the ethical sense, taking the singular at Matthew 5:37 and 6:13 as Satan and citing Lightfoot for the argument</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical range runs from &quot;in bad case, in sorry plight, useless, good-for-nothing&quot; of an animal or a diet to the moral sense of knavish, and includes a political use of the baser sort against the καλοὶ κἀγαθοί</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — glosses the substantive as &quot;the evil one=the devil (who is not defined as a sinner but as one who is morally destructive)&quot;, and names ancient and modern readers on both sides of the gender at Matthew 5:37 and 6:13</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — takes the word as hurtful, evil in effect or influence, against κακός, &quot;which refers rather to essential character&quot;, and records &quot;masculine (singular) the devil, or (plural) sinners&quot;</li>
+            <li>Nolland (NIGTC) — reads the word abstractly at Matthew 6:13, since &quot;πονηρός (&#x27;evil&#x27;) is that which harms&quot; and &quot;Natural disaster is as much an &#x27;evil&#x27; as is murder&quot;</li>
+            <li>France (NICNT) — &quot;the genitive form is the same in the masculine and neuter&quot;, so either reading stands, and the traditional rendering &quot;would come to the same thing, but with a less personal understanding of the conflict&quot;</li>
+            <li>Davies and Allison (ICC) — follow the Eastern liturgies in reading the masculine, then take that very reading as a mark of lateness, since &quot;&#x27;the evil one&#x27; never equals Satan in Hebrew or Aramaic literature. On the other hand, &#x27;the evil one&#x27; does belong to the vocabulary of the church&quot;</li>
+            <li>Luz (Hermeneia) — argues for the neuter from the Matthean and wider New Testament usage, reporting that &quot;From ancient times it has been debated whether &#x27;evil&#x27; in this final petition is to be understood as masculine or neuter&quot;</li>
+            <li>Betz (Hermeneia) — traces the division to the early church, most Eastern fathers taking the devil and the Western fathers the neuter apart from Tertullian, and holds the language of prayer ambivalent enough that too sharp a distinction between the genders may not be advisable</li>
+            <li>Chase (<i>The Lord&#x27;s Prayer in the Early Church</i>) — a chapter-length case for the personal reading, built on an antithesis between the Father and the devil running through the successive petitions</li>
+            <li>NRSVue, HCSB, NIV, NLT, NET and the <i>Orthodox Study Bible</i> — print the evil one at Matthew 6:13, against evil in the <i>MacArthur Study Bible</i>, the <i>Ignatius Bible</i>, ESV and KJV</li>
+            <li>ESV, NIV, NLT, HCSB, <i>MacArthur Study Bible</i>, <i>Ignatius Bible</i> and <i>The Jewish Annotated New Testament</i> — seven footnotes at Matthew 6:13, each offering the reading its own text declines</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-48" title="Back to text">av</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-48" href="#ref-48" title="Back to text">dikaious</a>
+        δικαιοσύνη, δίκαιος, and δικαιόω range in sense from personal moral righteousness to covenantal or forensic justice. Translators and commentators divide over which sense a given occurrence carries. No single English word covers that full range.<a class="endnote-back" href="#ref-48" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> righteous, right, righteous one</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — glosses δίκαιος &quot;equitable (in character or act),&quot; δικαιοσύνη &quot;equity... specially (Christian) justification,&quot; spanning both senses</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — a two-tier entry, a broad sense &quot;conformity to the Divine will in purpose, thought, and action&quot; and a narrower sense &quot;justice&quot;</li>
+            <li>Przybylski (<i>Righteousness in Matthew and His World of Thought</i>) — argues Matthew&#x27;s usage is uniformly ethical, &quot;proper conduct before God,&quot; against a Pauline forensic-gift reading</li>
+            <li>Hagner (WBC) — an opposing view, that some occurrences (5:6, 6:33) denote eschatological &quot;justice&quot; or gift rather than ethical performance, explicitly against Przybylski</li>
+            <li>Davies and Allison (ICC) — favors the &quot;conduct&quot; reading at 5:10, listing allied scholars (Barth, Fenton, Gundry, Luz, Przybylski, Strecker, Reumann, Ziesler) against dissenter Giesen</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-49" title="Back to text">aw</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-49" href="#ref-49" title="Back to text">adikous</a>
+        <a class="endnote-back" href="#ref-49" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> unrighteous, unjust</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-50" title="Back to text">ax</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-50" href="#ref-50" title="Back to text">agapēsēte</a>
+        Agape is often said to name a distinctively divine or selfless love, set against philia and eros. The Septuagint does not support the distinction cleanly: it uses the same verb for ordinary affection and for Amnon&#x27;s desire for Tamar in 2 Samuel 13. Whether the word carries any special quality of its own, or takes its colour entirely from context, is disputed.<a class="endnote-back" href="#ref-50" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> love, beloved, shalt love</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — treats the noun as effectively a Septuagint and New Testament coinage</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical adjective glossed &quot;of only children&quot;</li>
+            <li>Genesis 22:2 (Septuagint) — renders &quot;your only son&quot; with this adjective</li>
+            <li>2 Samuel 13:15 (Septuagint) — the cognate verb used of Amnon&#x27;s desire for Tamar, which tells against a distinctively selfless sense</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-51" title="Back to text">ay</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-51" href="#ref-51" title="Back to text">agapōntas</a>
+        Agape is often said to name a distinctively divine or selfless love, set against philia and eros. The Septuagint does not support the distinction cleanly: it uses the same verb for ordinary affection and for Amnon&#x27;s desire for Tamar in 2 Samuel 13. Whether the word carries any special quality of its own, or takes its colour entirely from context, is disputed.<a class="endnote-back" href="#ref-51" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> love, beloved, shalt love</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — treats the noun as effectively a Septuagint and New Testament coinage</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical adjective glossed &quot;of only children&quot;</li>
+            <li>Genesis 22:2 (Septuagint) — renders &quot;your only son&quot; with this adjective</li>
+            <li>2 Samuel 13:15 (Septuagint) — the cognate verb used of Amnon&#x27;s desire for Tamar, which tells against a distinctively selfless sense</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-52" title="Back to text">az</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-52" href="#ref-52" title="Back to text">misthon</a>
+        Misthos is what is due for work — wages, pay — and also a reward. One English version alone renders it &quot;reward,&quot; &quot;pay,&quot; and &quot;wages&quot; in different verses. Whether what is promised is earned or given is the difference between the two English words, and the Greek uses one.<a class="endnote-back" href="#ref-52" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> reward, wage, hire</div>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-53" title="Back to text">ba</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-53" href="#ref-53" title="Back to text">to</a>
+        <a class="endnote-back" href="#ref-53" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-54" title="Back to text">bb</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-54" href="#ref-54" title="Back to text">auto</a>
+        <a class="endnote-back" href="#ref-54" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-55" title="Back to text">bc</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-55" href="#ref-55" title="Back to text">adelphous</a>
+        ἀδελφός is a brother by birth. It also covers wider kin, a compatriot, and a member of a religious association. The Greek Septuagint calls Abraham and his nephew Lot adelphoi. Whether that range reaches cousin in the New Testament is disputed, and the men named as Jesus&#x27;s adelphoi are the case in question. Greek had a separate word for cousin and the New Testament uses it once. The masculine plural can take in women, and the versions divide over printing sisters.<a class="endnote-back" href="#ref-55" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> brother</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — holds the Septuagint passages &quot;do not establish the mng. &#x27;cousin&#x27; for&quot; the word, showing only that it renders the Hebrew loosely for male relatives of various degrees</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — &quot;the view of Jerome, which makes ἀ. equivalent to ἀνεψιός, is inconsistent with Greek usage&quot;</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — enters kinsman as its own sense citing Genesis 13:8, and enters the word for a first cousin separately</li>
+            <li>Meier (<i>A Marginal Jew</i>) — the siblings reading on philological grounds, since the Pauline tradition &quot;knew perfectly well the word for &#x27;cousin&#x27;&quot; and used it at Colossians 4:10, so &quot;the most probable opinion is that the brothers and sisters of Jesus were his siblings&quot;</li>
+            <li>France (NICNT) and Carson (EBC) — with Meier, France holding that &quot;It is dogma, not exegesis, which suggests that they were either cousins or Joseph&#x27;s children by a previous marriage&quot;</li>
+            <li>Mitch and Sri (CCSS), the <i>Ignatius Bible</i> and the <i>Orthodox Study Bible</i> — the wider reading, that &quot;The Hebrew language had no word for cousin, and it was common to use the word brother to describe cousins or other males in the extended family&quot;</li>
+            <li>Hooker (<i>The Gospel According to Saint Mark</i>) — asserts the wide range while declining the conclusion drawn from it, the word usable &quot;of any male relative&quot; though Mark &quot;knows nothing&quot; of the belief it is made to serve</li>
+            <li><i>Glossa Ordinaria</i> — the traditional identification stated outright, &quot;Fratres Domini sunt consobrini ejus, filii Mariæ materteræ ejus&quot;</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>), France (NICNT) and Fee (NICNT) — on the inclusive plural, the lexicon&#x27;s own introductory essay, signed by Bauer, saying &quot;There is no longer any doubt in my mind that ἀδελφοί can mean &#x27;brothers and sisters&#x27; in any number&quot;</li>
+            <li>Thiselton (NIGTC) — grants that sense and holds it &quot;escapes precise translation by any single English word or phrase&quot;</li>
+            <li><i>Septuagint</i> — Genesis 13:8 and 14:14 call Abraham and Lot adelphoi where 11:27 makes Lot his brother&#x27;s son, and Leviticus 10:4 names men as sons of Aaron&#x27;s father&#x27;s brother and then calls the dead &quot;your adelphoi&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-56" title="Back to text">bd</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-56" href="#ref-56" title="Back to text">ethnikoi</a>
+        Ethnos is a nation or people. In the plural it usually means the nations other than Israel, which English renders &quot;Gentiles&quot; — a word with no existence outside this usage — or sometimes &quot;pagans,&quot; which adds a judgement. The same word means simply &quot;nations&quot; elsewhere, and a translation has to choose each time.<a class="endnote-back" href="#ref-56" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> gentiles, heathen, pagan</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — a nation or people, the plural used of the nations other than Israel</li>
+            <li>Keener (<i>The IVP Bible Background Commentary</i>) — Galilee&#x27;s inhabitants were &quot;primarily ethnically as well as religiously Jewish&quot;, citing 1 Maccabees</li>
+            <li>Blomberg (NAC) — flatly opposed, that &quot;in the first century more than half the population was Gentile&quot;</li>
+            <li>Davies and Allison (ICC) — marshal ancient evidence for a mixed population while citing Luz&#x27;s verdict that the phrase had a fictive character by Matthew&#x27;s day</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — sidesteps the demography, since Matthew treats Galilee as Gentile on the basis of this text rather than on demography</li>
+            <li>Nolland (NIGTC) — the outlier on the theological question, declining to load the phrase with Gentile-mission weight</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-57" title="Back to text">be</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-57" href="#ref-57" title="Back to text">to</a>
+        <a class="endnote-back" href="#ref-57" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-58" title="Back to text">bf</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-58" href="#ref-58" title="Back to text">auto</a>
+        <a class="endnote-back" href="#ref-58" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-59" title="Back to text">bg</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-59" href="#ref-59" title="Back to text">hōs</a>
+        <a class="endnote-back" href="#ref-59" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-60" title="Back to text">bh</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-60" href="#ref-60" title="Back to text">ouranios</a>
+        <a class="endnote-back" href="#ref-60" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+  </div>
+
+  <dialog class="sitemap" id="sitemap" aria-label="Site map">
+    <div class="sitemap-head">
+      <span class="sitemap-title">Site map</span>
+      <button class="sitemap-close masthead-tools" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.1rem;height:1.1rem;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sitemap-body">
+      <h3>Books</h3>
+      <ul class="booklist">
+        <li><a href="../../Matthew/1/index.html">Matthew</a></li>
+        <li><span title="Not yet drafted">Mark</span></li>
+        <li><span title="Not yet drafted">Luke</span></li>
+        <li><span title="Not yet drafted">John</span></li>
+        <li><span title="Not yet drafted">Acts</span></li>
+        <li><span title="Not yet drafted">Romans</span></li>
+        <li><span title="Not yet drafted">1 Corinthians</span></li>
+        <li><span title="Not yet drafted">2 Corinthians</span></li>
+        <li><span title="Not yet drafted">Galatians</span></li>
+        <li><span title="Not yet drafted">Ephesians</span></li>
+        <li><span title="Not yet drafted">Philippians</span></li>
+        <li><span title="Not yet drafted">Colossians</span></li>
+        <li><span title="Not yet drafted">1 Thessalonians</span></li>
+        <li><span title="Not yet drafted">2 Thessalonians</span></li>
+        <li><span title="Not yet drafted">1 Timothy</span></li>
+        <li><span title="Not yet drafted">2 Timothy</span></li>
+        <li><span title="Not yet drafted">Titus</span></li>
+        <li><span title="Not yet drafted">Philemon</span></li>
+        <li><span title="Not yet drafted">Hebrews</span></li>
+        <li><span title="Not yet drafted">James</span></li>
+        <li><span title="Not yet drafted">1 Peter</span></li>
+        <li><span title="Not yet drafted">2 Peter</span></li>
+        <li><span title="Not yet drafted">1 John</span></li>
+        <li><span title="Not yet drafted">2 John</span></li>
+        <li><span title="Not yet drafted">3 John</span></li>
+        <li><span title="Not yet drafted">Jude</span></li>
+        <li><span title="Not yet drafted">Revelation</span></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <div class="toggle-dock-wrap">
+    <div class="nav-dock">
+      <a class="nav-btn" data-nav="prev" href="../4/index.html" aria-label="Previous chapter" title="Previous chapter (←)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <a class="nav-btn" data-nav="next" href="../6/index.html" aria-label="Next chapter" title="Next chapter (→)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+    <div class="toggle-dock">
+      <span role="group" aria-label="Display mode for untranslated words" style="display:flex;">
+        <button data-mode="greek">Greek</button>
+        <button data-mode="translit">Translit</button>
+        <button data-mode="gloss" class="active">Gloss</button>
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../static/cnt.js"></script>
+<script src="../../static/reading.js"></script>

@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -186,7 +192,7 @@ render.py's query logic) and regenerate instead.
       </span>
     </p>
     <p class="greek-line">Ἰεσσαὶ δὲ ἐγέννησεν τὸν Δαυὶδ τὸν <a class="greek-word crux" href="#note-1" data-greek="βασιλέα" data-translit="basilea" data-gloss="basileus" data-senses="king">βασιλέα</a> Δαυὶδ δὲ ἐγέννησεν τὸν Σολομῶνα ἐκ τῆς τοῦ Οὐρίου,</p>
-    <p class="translation">Jesse fathered David the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="βασιλέα" data-translit="basilea" data-gloss="basileus" data-senses="king">basileus</a><a class="note-ref" href="#note-1">a</a>. And David fathered Solomon by her of Uriah.</p>
+    <p class="translation">And Jesse fathered David the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="βασιλέα" data-translit="basilea" data-gloss="basileus" data-senses="king">basileus</a><a class="note-ref" href="#note-1">a</a>. And David fathered Solomon from her of Uriah.</p>
   </div>
 
   <div class="endnotes">
@@ -196,7 +202,7 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">basilea</a>
-        David alone among the genealogy&#x27;s named figures carries a title. Scholars read this as marking a structural pivot in the list, closing its first section before the pattern shifts toward decline and a later climax. A minority view treats the title mainly as standard Old Testament phrasing for David rather than a deliberate structural marker.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        David alone among the genealogy&#x27;s named figures carries a title. Scholars read this as marking a structural pivot in the list, closing its first section before the pattern shifts toward decline and a later climax. One dissent rejects the climax-decline-climax shape that structural reading rests on.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> king</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -205,6 +211,7 @@ render.py's query logic) and regenerate instead.
             <li>Hagner (WBC) — reads the addition as strengthening the link between David and Jesus as &quot;the Davidic, messianic king, an important motif in Matthew&quot;</li>
             <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — reads Matthew&#x27;s adoption of the Old Testament designation as putting David forward as &quot;a prototype of Jesus&quot; and closing the genealogy&#x27;s first section</li>
             <li>Albright and Mann (Anchor) — dissents, calling the climax-decline-climax structural reading unconvincing</li>
+            <li>Luz (Hermeneia) — &quot;v. 6 also emphasizes David as king and then lets the kings on David&#x27;s throne with whom the readers were familiar pass before their eyes&quot;</li>
           </ul>
         </details>
       </div>

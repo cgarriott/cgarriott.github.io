@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Μετὰ δὲ τὴν μετοικεσίαν Βαβυλῶνος Ἰεχονίας ἐγέννησεν τὸν <a class="greek-word crux" href="#note-1" data-greek="Σαλαθιήλ" data-translit="Salathiēl" data-gloss="Salathiel" data-senses="shealtiel">Σαλαθιήλ</a> Σαλαθιὴλ δὲ ἐγέννησεν τὸν Ζοροβαβέλ,</p>
-    <p class="translation">After the deportation to Babylon, Iechonias fathered <a id="ref-1" class="flagword crux" href="#note-1" data-greek="Σαλαθιήλ" data-translit="Salathiēl" data-gloss="Salathiel" data-senses="shealtiel">Salathiel</a><a class="note-ref" href="#note-1">a</a>, and Salathiel fathered Zerubbabel.</p>
+    <p class="greek-line">Μετὰ δὲ τὴν <a class="greek-word crux" href="#note-1" data-greek="μετοικεσίαν" data-translit="metoikesian" data-gloss="metoikesia" data-senses="carrying away">μετοικεσίαν</a> Βαβυλῶνος <a class="greek-word crux" href="#note-2" data-greek="Ἰεχονίας" data-translit="Iechonias" data-gloss="Iechonias" data-senses="jeconiah, jechonias">Ἰεχονίας</a> ἐγέννησεν τὸν <a class="greek-word crux" href="#note-3" data-greek="Σαλαθιήλ" data-translit="Salathiēl" data-gloss="Salathiel" data-senses="shealtiel">Σαλαθιήλ</a> <a class="greek-word crux" href="#note-None" data-greek="Σαλαθιὴλ" data-translit="Salathiēl" data-gloss="Salathiel" data-senses="shealtiel">Σαλαθιὴλ</a> δὲ ἐγέννησεν τὸν Ζοροβαβέλ,</p>
+    <p class="translation">And after the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="μετοικεσίαν" data-translit="metoikesian" data-gloss="metoikesia" data-senses="carrying away">metoikesia</a><a class="note-ref" href="#note-1">a</a> to Babylon, <a id="ref-2" class="flagword crux" href="#note-2" data-greek="Ἰεχονίας" data-translit="Iechonias" data-gloss="Iechonias" data-senses="jeconiah, jechonias">Iechonias</a><a class="note-ref" href="#note-2">b</a> fathered <a id="ref-3" class="flagword crux" href="#note-3" data-greek="Σαλαθιήλ" data-translit="Salathiēl" data-gloss="Salathiel" data-senses="shealtiel">Salathiel</a><a class="note-ref" href="#note-3">c</a>, and <span class="flagword crux" data-greek="Σαλαθιὴλ" data-translit="Salathiēl" data-gloss="Salathiel" data-senses="shealtiel">Salathiel</span> fathered Zerubbabel.</p>
   </div>
 
   <div class="endnotes">
@@ -195,16 +201,56 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">Salathiēl</a>
-        The Hebrew text of 1 Chronicles 3:19 names Zerubbabel as the son of Pedaiah, not Shealtiel (Salathiel). Every other biblical reference to Zerubbabel, including the Septuagint&#x27;s own rendering of that same verse, calls him son of Shealtiel. Proposed explanations include a levirate marriage, a shift in family headship after Shealtiel died without an heir, and a substitution driven by the curse pronounced on Jeconiah&#x27;s own offspring in Jeremiah 22.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">metoikesian</a>
+        μετά here governs the accusative, and the phrase marks the period after the deportation rather than the return from it. The noun is the Greek Old Testament&#x27;s word for the Babylonian captivity, and the New Testament uses it only in this phrase, at 1:11, 1:12 and 1:17. Two deportations stand behind it. One carried Jeconiah himself to Babylon, and one destroyed the temple a decade later. Which of them the phrase names is disputed.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> carrying away</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Nolland (NIGTC) — reads the opening phrase as one that &quot;does not refer to the restoration, but rather to the period after the deportation has happened,&quot; and lists 2 Kings 24:16, 1 Chronicles 5:22 and Ezekiel 12:11 for the noun</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — glosses it &quot;especially of the captivity of the Jews&quot;</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — records it as the Septuagint&#x27;s usual rendering of the Hebrew word for exile, and finds it in the New Testament at Matthew 1:11, 1:12 and 1:17 alone</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — traces Matthew&#x27;s word to the Greek text of 2 Kings 24:10-16, the passage recording Jeconiah&#x27;s own removal</li>
+            <li><i>The Jewish Annotated New Testament</i> — dates the deportation to 597, &quot;a decade before the destruction of the First Temple and exile in 586 bce&quot;</li>
+            <li>Mitch and Sri (CCSS) and the <i>Ignatius Bible</i> — date the exile instead to 586 and the Babylonian destruction of Jerusalem</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">Iechonias</a>
+        The king appears in the Old Testament under three names: Jehoiachin in Kings, Coniah in Jeremiah, and Jeconiah in the genealogy of 1 Chronicles 3, which is the form Matthew&#x27;s Greek takes up. English versions divide over the spelling, some keeping the Hebrew-derived Jeconiah and others transliterating the Greek as Jechoniah. Jeremiah 22:30 records the same king as childless and bars his offspring from David&#x27;s throne. The clause here names his son.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> jeconiah, jechonias</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>France (NICNT) — takes the name from the Greek and Hebrew of 1 Chronicles 3:16-17, and judges that &quot;it was probably his given name, Jehoiachin being a throne name&quot;</li>
+            <li>Nolland (NIGTC) — reports that the Greek Old Testament drops two of the three forms, so that &quot;&#x27;Jehoiachin&#x27; is either &#x27;Jechoniah&#x27; or (a second) &#x27;Jehoiakim&#x27;&quot;</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — derives the Greek name from the Hebrew form rendered Jeconiah in the Old Testament</li>
+            <li><i>MacArthur Study Bible</i> — reports that &quot;[a] curse on him forbade any of his descendants from the throne of David forever,&quot; and holds that Jesus escapes it through a legal rather than physical descent</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — limits the curse to Jeconiah&#x27;s own sons, since &quot;the Lord called his grandson Zerubbabel a chosen &#x27;signet&#x27;&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">Salathiēl</a>
+        The Hebrew text of 1 Chronicles 3:19 names Zerubbabel as the son of Pedaiah, not Shealtiel (Salathiel). Every other biblical reference to Zerubbabel, including the Septuagint&#x27;s own rendering of that same verse, calls him son of Shealtiel. Proposed explanations include a levirate marriage, a shift in family headship after Shealtiel died without an heir, and a substitution driven by the curse pronounced on Jeconiah&#x27;s own offspring in Jeremiah 22.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> shealtiel</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — proposes that the curse on Jeconiah&#x27;s line led to &quot;replacement of his son Pedaiah with Salathiel, who came from another branch of David&#x27;s family&quot;</li>
             <li>Turner (BECNT) — suggests Pedaiah &quot;entered a levirate marriage with Shealtiel&#x27;s widow to raise up children for his brother&quot;</li>
+            <li>Davies and Allison (ICC) — Pedaiah the actual father, with Zerubbabel called Shealtiel&#x27;s son because he succeeded him as head of the family</li>
             <li>Albright and Mann (Anchor) — reads the discrepancy as a confusion already present in the Greek textual tradition, with Zerubbabel&#x27;s identity merged with a cousin&#x27;s</li>
-            <li>Gill (<i>Exposition of the Old and New Testament</i>) — reports an alternate reading, attributed to the medieval exegete Kimchi, in which Zerubbabel counts as Shealtiel&#x27;s grandson rather than his son</li>
+            <li>Gill (<i>Exposition of the Old and New Testament</i>), known through secondary digests — reports an alternate reading, attributed to the medieval exegete Kimchi, in which Zerubbabel counts as Shealtiel&#x27;s grandson rather than his son</li>
           </ul>
         </details>
       </div>

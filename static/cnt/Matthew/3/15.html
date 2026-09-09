@@ -1,0 +1,377 @@
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+Single-verse page template. This is THE format for one verse -- see
+../PLAN.md's "Page architecture" section: the verse is the atomic unit,
+this template is not used for multi-verse (chapter/pericope) pages, which
+get their own template later, assembled from the same per-verse data.
+
+Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
+  verse_ref        -- display string, e.g. "Matthew 1:1"
+  greek_segments    -- list of {type:"text", text} or
+                        {type:"word", class, greek, translit, gloss, note}
+  translation_segments -- same shape as greek_segments, plus note_letter
+                        (the reader-facing letter label, see note_label() --
+                        ids/hrefs stay numeric via note; only the visible
+                        text uses letters, so they never look like verse
+                        numbers)
+  endnotes          -- list of {number, letter, word, class, text, sources:
+                        [{label, position}]} -- "letter" is the display
+                        label (a, b, ..., z, aa, ab, ...); "number" is
+                        still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
+  nav               -- {prev, next, up}: relative hrefs (same directory)
+                        for the second toggle-dock row below, or None for
+                        prev/next when there's no neighboring drafted verse
+                        to link to (see render.py's build_nav_context)
+  apparatus         -- {books, chapters, verses, verse_range}: the masthead's
+                        Book/Chapter/Verse dropdowns, each a list of {name or
+                        num, current, enabled, href} covering the FULL
+                        canonical NT structure, not just what's drafted.
+                        `verse_range` heads the verse select as "1-25", the
+                        whole chapter -- from here a real destination back out
+                        to the chapter page; from a chapter page it is instead
+                        the current entry (see render.py's build_apparatus)
+
+Do not hand-edit generated output HTML -- edit this template (or
+render.py's query logic) and regenerate instead.
+-->
+<title>CNT — Matthew 3:15</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../static/cnt.css">
+<link rel="stylesheet" href="../../static/reading.css">
+<!-- Runs before first paint, so a reader who chose light does not see a dark
+     flash first. It has to be inline for that reason -- an external file is
+     fetched too late. Everything else lives in static/cnt.js. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('cnt-theme');
+      if (t === 'light' || t === 'dark') { document.documentElement.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
+
+<div class="page">
+
+  <div class="header">
+    <div class="masthead">
+      <span><a class="masthead-home" href="../../index.html"><strong>CNT</strong> — Corey's Non-Translation</a></span>
+      <span class="masthead-tools">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+            <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+          </svg>
+        </button>
+        <button id="sitemap-toggle" aria-label="Open site map" title="Site map" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </span>
+    </div>
+    <div class="legend">
+      <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
+      <span class="crux"><i></i><span class="legend-label"><b>Crux</b><span class="legend-desc">: untranslated here</span></span></span>
+      <span class="variant"><i></i><span class="legend-label"><b>Variant</b><span class="legend-desc">: editions disagree</span></span></span>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <p class="ref">
+      <span class="apparatus">
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Book" onchange="if(this.value){location.href=this.value;}">
+            <option value="" selected>Matthew</option>
+            <option value="../../Mark/1/index.html" disabled>Mark</option>
+            <option value="../../Luke/1/index.html" disabled>Luke</option>
+            <option value="../../John/1/index.html" disabled>John</option>
+            <option value="../../Acts/1/index.html" disabled>Acts</option>
+            <option value="../../Romans/1/index.html" disabled>Romans</option>
+            <option value="../../1 Corinthians/1/index.html" disabled>1 Corinthians</option>
+            <option value="../../2 Corinthians/1/index.html" disabled>2 Corinthians</option>
+            <option value="../../Galatians/1/index.html" disabled>Galatians</option>
+            <option value="../../Ephesians/1/index.html" disabled>Ephesians</option>
+            <option value="../../Philippians/1/index.html" disabled>Philippians</option>
+            <option value="../../Colossians/1/index.html" disabled>Colossians</option>
+            <option value="../../1 Thessalonians/1/index.html" disabled>1 Thessalonians</option>
+            <option value="../../2 Thessalonians/1/index.html" disabled>2 Thessalonians</option>
+            <option value="../../1 Timothy/1/index.html" disabled>1 Timothy</option>
+            <option value="../../2 Timothy/1/index.html" disabled>2 Timothy</option>
+            <option value="../../Titus/1/index.html" disabled>Titus</option>
+            <option value="../../Philemon/1/index.html" disabled>Philemon</option>
+            <option value="../../Hebrews/1/index.html" disabled>Hebrews</option>
+            <option value="../../James/1/index.html" disabled>James</option>
+            <option value="../../1 Peter/1/index.html" disabled>1 Peter</option>
+            <option value="../../2 Peter/1/index.html" disabled>2 Peter</option>
+            <option value="../../1 John/1/index.html" disabled>1 John</option>
+            <option value="../../2 John/1/index.html" disabled>2 John</option>
+            <option value="../../3 John/1/index.html" disabled>3 John</option>
+            <option value="../../Jude/1/index.html" disabled>Jude</option>
+            <option value="../../Revelation/1/index.html" disabled>Revelation</option>
+          </select>
+        </span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
+            <option value="../1/index.html">1</option>
+            <option value="../2/index.html">2</option>
+            <option value="" selected>3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
+            <option value="../7/index.html" disabled>7</option>
+            <option value="../8/index.html" disabled>8</option>
+            <option value="../9/index.html" disabled>9</option>
+            <option value="../10/index.html" disabled>10</option>
+            <option value="../11/index.html" disabled>11</option>
+            <option value="../12/index.html" disabled>12</option>
+            <option value="../13/index.html" disabled>13</option>
+            <option value="../14/index.html" disabled>14</option>
+            <option value="../15/index.html" disabled>15</option>
+            <option value="../16/index.html" disabled>16</option>
+            <option value="../17/index.html" disabled>17</option>
+            <option value="../18/index.html" disabled>18</option>
+            <option value="../19/index.html" disabled>19</option>
+            <option value="../20/index.html" disabled>20</option>
+            <option value="../21/index.html" disabled>21</option>
+            <option value="../22/index.html" disabled>22</option>
+            <option value="../23/index.html" disabled>23</option>
+            <option value="../24/index.html" disabled>24</option>
+            <option value="../25/index.html" disabled>25</option>
+            <option value="../26/index.html" disabled>26</option>
+            <option value="../27/index.html" disabled>27</option>
+            <option value="../28/index.html" disabled>28</option>
+          </select>
+        </span>
+        <span class="apparatus-colon">:</span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Verse" onchange="if(this.value){location.href=this.value;}">
+            <option value="index.html">1–17</option>
+            <option value="1.html">1</option>
+            <option value="2.html">2</option>
+            <option value="3.html">3</option>
+            <option value="4.html">4</option>
+            <option value="5.html">5</option>
+            <option value="6.html">6</option>
+            <option value="7.html">7</option>
+            <option value="8.html">8</option>
+            <option value="9.html">9</option>
+            <option value="10.html">10</option>
+            <option value="11.html">11</option>
+            <option value="12.html">12</option>
+            <option value="13.html">13</option>
+            <option value="14.html">14</option>
+            <option value="" selected>15</option>
+            <option value="16.html">16</option>
+            <option value="17.html">17</option>
+          </select>
+        </span>
+      </span>
+    </p>
+    <p class="greek-line">ἀποκριθεὶς δὲ ὁ Ἰησοῦς εἶπεν <a class="greek-word variant" href="#note-1" data-greek="πρὸς" data-translit="pros" data-gloss="toward" data-senses="">πρὸς</a> <a class="greek-word variant" href="#note-2" data-greek="αὐτόν" data-translit="auton" data-gloss="him" data-senses="">αὐτόν</a> <a class="greek-word always" href="#note-3" data-greek="Ἄφες" data-translit="Aphes" data-gloss="Dimit" data-senses="left, forgiven, suffer">Ἄφες</a> ἄρτι, οὕτως γὰρ πρέπον ἐστὶν ἡμῖν <a class="greek-word crux" href="#note-4" data-greek="πληρῶσαι" data-translit="plērōsai" data-gloss="plerie" data-senses="fulfilled, filled, full">πληρῶσαι</a> πᾶσαν <a class="greek-word always" href="#note-5" data-greek="δικαιοσύνην" data-translit="dikaiosunēn" data-gloss="rectitude" data-senses="righteousness">δικαιοσύνην</a> τότε <a class="greek-word always" href="#note-6" data-greek="ἀφίησιν" data-translit="aphiēsin" data-gloss="dimits" data-senses="left, forgiven, suffer">ἀφίησιν</a> αὐτόν.</p>
+    <p class="translation">But having answered, Jesus said <a id="ref-1" class="flagword variant" href="#note-1" data-greek="πρὸς" data-translit="pros" data-gloss="toward" data-senses="">toward</a><a class="note-ref" href="#note-1">a</a> <a id="ref-2" class="flagword variant" href="#note-2" data-greek="αὐτόν" data-translit="auton" data-gloss="him" data-senses="">him</a><a class="note-ref" href="#note-2">b</a>, &quot;<a id="ref-3" class="flagword always" href="#note-3" data-greek="Ἄφες" data-translit="Aphes" data-gloss="Dimit" data-senses="left, forgiven, suffer">Dimit</a><a class="note-ref" href="#note-3">c</a> now, for thus it is fitting for us to <a id="ref-4" class="flagword crux" href="#note-4" data-greek="πληρῶσαι" data-translit="plērōsai" data-gloss="plerie" data-senses="fulfilled, filled, full">plerie</a><a class="note-ref" href="#note-4">d</a> all <a id="ref-5" class="flagword always" href="#note-5" data-greek="δικαιοσύνην" data-translit="dikaiosunēn" data-gloss="rectitude" data-senses="righteousness">rectitude</a><a class="note-ref" href="#note-5">e</a>.&quot; Then he <a id="ref-6" class="flagword always" href="#note-6" data-greek="ἀφίησιν" data-translit="aphiēsin" data-gloss="dimits" data-senses="left, forgiven, suffer">dimits</a><a class="note-ref" href="#note-6">f</a> him.</p>
+  </div>
+
+  <div class="endnotes">
+    <p class="endnotes-label">Notes</p>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-1" href="#ref-1" title="Back to text">pros</a>
+        Every collated edition but one reads a preposition here rather than a plain dative pronoun. The construction stands nowhere else in Matthew, whose ordinary form after this verb is the dative, and it is the standard form in Luke. One commentary prints the dative against both standard critical editions for that reason. The same preposition closes the previous verse, which may have drawn it in.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Davies and Allison (ICC) — print the dative against both standard hand editions, since the construction occurs nowhere else in Matthew while the dative form is attested at 15:15, 16:17, 19:27, 25:26 and 26:33</li>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — rates the choice indecisive, counts the dative construction repeatedly in Matthew against this one instance of the preposition, and reports the preposition as the ordinary form in Luke</li>
+            <li>Weiss (<i>Das Matthäus-Evangelium</i>), cited in Willker (<i>A Textual Commentary on the Greek Gospels</i>) — judged the preposition &quot;completely against the evangelist&#x27;s usage&quot;</li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the preposition in every collated edition except Westcott and Hort</li>
+            <li>Matthew 3:14 — the same preposition closes the previous verse</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-2" href="#ref-2" title="Back to text">auton</a>
+        The competing reading is a dative pronoun with no preposition, and a further group of witnesses drops both words and puts nothing in their place. A papyrus from about 200 supports the accusative, while a sixth-century papyrus and Codex Vaticanus support the dative. The Latin has a dative where it usually renders the Greek preposition with a preposition of its own.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — sets out the papyrus support on each side, rates the choice indecisive, and reads the Latin as fitting the dative without settling it</li>
+            <li>Davies and Allison (ICC) — record the witnesses that drop both words, and adopt the dative</li>
+            <li><i>Vulgate</i> — reads <i>dixit ei</i>, a dative, where the preposition would ordinarily give <i>dixit ad eum</i></li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the accusative in every collated edition except Westcott and Hort</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — his entry at this verse takes up the Old Latin tradition of a light on the Jordan rather than this reading</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">Aphes</a>
+        Two words in Greek, and the verb has no object. Of the seven singular aorist imperatives of this verb in Matthew, this is the only one followed by neither an object nor a verb of its own. Fifteen of the seventeen versions supply an object anyway. The lexicon files this occurrence under permitting, the same sense it assigns to &quot;permit the children&quot; at 19:14, which tells against the one version reading it as overriding an obstacle. One Greek verb covers sending away, letting go, leaving behind, permitting, abandoning, divorcing, and forgiving. English distributes these across several unrelated words, so a reader meets &quot;forgive&quot; in one verse and &quot;leave&quot; in another without seeing that the same word stands in both. The debt metaphor behind the forgiveness sense — a release from what is owed — is visible in Greek and invisible in English.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> left, forgiven, suffer</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — cites this verse under the &quot;let, suffer, permit&quot; sense</li>
+            <li>Davies and Allison (ICC) — gloss the phrase &quot;let it be so now&quot; and call it &quot;an idiom of permission&quot;, comparing the verb&#x27;s pairing with the word for hindering at Mark 10:14</li>
+            <li>Hagner (WBC) — independently glosses the imperative &quot;permit (it)&quot;, with the adverb &quot;at once&quot; or &quot;immediately&quot;, and also &quot;now&quot; in a weaker sense</li>
+            <li><i>SBL Greek New Testament</i> — the seven singular aorist imperatives in Matthew are 3:15, 5:24, 5:40, 6:12, 7:4, 8:22 and 27:49, and only this one stands without an object or a following verb; the three plurals at 13:30, 15:14 and 19:14 all carry one</li>
+            <li>Matthew 19:14 — the same sense of the same verb</li>
+            <li>Matthew 3:15 — the verb returns at the end of the verse, where it does take an object</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-4" href="#ref-4" title="Back to text">plērōsai</a>
+        Two questions, not one. Why Jesus sought a baptism of repentance at all, and what &quot;fulfil all righteousness&quot; means. On the first, one commentary lists eight proposed answers and declines to choose. On the second, the argument is whether Matthew&#x27;s righteousness-word is ethical or soteriological.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> fulfilled, filled, full</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Davies and Allison (ICC) — catalogue eight positions on the first question and conclude &quot;[w]e remain in the dark&quot;, then adopt Meier&#x27;s prophecy-fulfilment reading on the second</li>
+            <li>Nolland (NIGTC) — his own graded taxonomy, ranking repentance for personal sin least credible</li>
+            <li>Turner (BECNT) — rejects Bruner as anachronistic and Cullmann&#x27;s atonement-typology as &quot;overly subtle&quot;, favouring fulfilment plus solidarity with a repentant remnant</li>
+            <li>Przybylski (<i>Righteousness in Matthew and His World of Thought</i>) — the reference point for reading the noun as consistently ethical, rebutting Barth and Fiedler</li>
+            <li>Hagner (WBC) — the named dissenter, reading its primary reference as God&#x27;s saving will</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — reverses the &quot;model for Christian baptism&quot; reading, since the causal arrow runs the other way</li>
+            <li>France (NICNT) — an Isaiah 53 servant-echo, against Carson&#x27;s objection that this reads Paul back into Matthew</li>
+            <li>Luz (Hermeneia) — against that whole line, calling a reading of the verse in terms of the passion &quot;a widespread eisegesis of the text&quot;, and holding the righteousness here to be ethical</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-5" title="Back to text">e</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-5" href="#ref-5" title="Back to text">dikaiosunēn</a>
+        δικαιοσύνη, δίκαιος, and δικαιόω range in sense from personal moral righteousness to covenantal or forensic justice. Translators and commentators divide over which sense a given occurrence carries. No single English word covers that full range.<a class="endnote-back" href="#ref-5" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> righteousness</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — glosses δίκαιος &quot;equitable (in character or act),&quot; δικαιοσύνη &quot;equity... specially (Christian) justification,&quot; spanning both senses</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — a two-tier entry, a broad sense &quot;conformity to the Divine will in purpose, thought, and action&quot; and a narrower sense &quot;justice&quot;</li>
+            <li>Przybylski (<i>Righteousness in Matthew and His World of Thought</i>) — argues Matthew&#x27;s usage is uniformly ethical, &quot;proper conduct before God,&quot; against a Pauline forensic-gift reading</li>
+            <li>Hagner (WBC) — an opposing view, that some occurrences (5:6, 6:33) denote eschatological &quot;justice&quot; or gift rather than ethical performance, explicitly against Przybylski</li>
+            <li>Davies and Allison (ICC) — favors the &quot;conduct&quot; reading at 5:10, listing allied scholars (Barth, Fenton, Gundry, Luz, Przybylski, Strecker, Reumann, Ziesler) against dissenter Giesen</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-6" title="Back to text">f</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-6" href="#ref-6" title="Back to text">aphiēsin</a>
+        One Greek verb covers sending away, letting go, leaving behind, permitting, abandoning, divorcing, and forgiving. English distributes these across several unrelated words, so a reader meets &quot;forgive&quot; in one verse and &quot;leave&quot; in another without seeing that the same word stands in both. The debt metaphor behind the forgiveness sense — a release from what is owed — is visible in Greek and invisible in English.<a class="endnote-back" href="#ref-6" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> left, forgiven, suffer</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — one verb for sending away, leaving, permitting, divorcing and forgiving</li>
+            <li>Matthew 6:12 — the forgiveness sense used of debts, where the metaphor is release from what is owed</li>
+            <li>Matthew 19:14 — the permitting sense</li>
+            <li>Matthew 5:31 — the divorce sense</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+  </div>
+
+  <dialog class="sitemap" id="sitemap" aria-label="Site map">
+    <div class="sitemap-head">
+      <span class="sitemap-title">Site map</span>
+      <button class="sitemap-close masthead-tools" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.1rem;height:1.1rem;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sitemap-body">
+      <h3>Books</h3>
+      <ul class="booklist">
+        <li><a href="../../Matthew/1/index.html">Matthew</a></li>
+        <li><span title="Not yet drafted">Mark</span></li>
+        <li><span title="Not yet drafted">Luke</span></li>
+        <li><span title="Not yet drafted">John</span></li>
+        <li><span title="Not yet drafted">Acts</span></li>
+        <li><span title="Not yet drafted">Romans</span></li>
+        <li><span title="Not yet drafted">1 Corinthians</span></li>
+        <li><span title="Not yet drafted">2 Corinthians</span></li>
+        <li><span title="Not yet drafted">Galatians</span></li>
+        <li><span title="Not yet drafted">Ephesians</span></li>
+        <li><span title="Not yet drafted">Philippians</span></li>
+        <li><span title="Not yet drafted">Colossians</span></li>
+        <li><span title="Not yet drafted">1 Thessalonians</span></li>
+        <li><span title="Not yet drafted">2 Thessalonians</span></li>
+        <li><span title="Not yet drafted">1 Timothy</span></li>
+        <li><span title="Not yet drafted">2 Timothy</span></li>
+        <li><span title="Not yet drafted">Titus</span></li>
+        <li><span title="Not yet drafted">Philemon</span></li>
+        <li><span title="Not yet drafted">Hebrews</span></li>
+        <li><span title="Not yet drafted">James</span></li>
+        <li><span title="Not yet drafted">1 Peter</span></li>
+        <li><span title="Not yet drafted">2 Peter</span></li>
+        <li><span title="Not yet drafted">1 John</span></li>
+        <li><span title="Not yet drafted">2 John</span></li>
+        <li><span title="Not yet drafted">3 John</span></li>
+        <li><span title="Not yet drafted">Jude</span></li>
+        <li><span title="Not yet drafted">Revelation</span></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <div class="toggle-dock-wrap">
+    <div class="nav-dock">
+      <a class="nav-btn" data-nav="prev" href="14.html" aria-label="Previous verse" title="Previous verse (←)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <a class="nav-btn" href="index.html" aria-label="Up to chapter" title="Up to chapter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+      </a>
+      <a class="nav-btn" data-nav="next" href="16.html" aria-label="Next verse" title="Next verse (→)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+    <div class="toggle-dock">
+      <span role="group" aria-label="Display mode for untranslated words" style="display:flex;">
+        <button data-mode="greek">Greek</button>
+        <button data-mode="translit">Translit</button>
+        <button data-mode="gloss" class="active">Gloss</button>
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../static/cnt.js"></script>
+<script src="../../static/reading.js"></script>

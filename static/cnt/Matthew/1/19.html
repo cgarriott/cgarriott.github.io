@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Ἰωσὴφ δὲ ὁ ἀνὴρ αὐτῆς, <a class="greek-word always" href="#note-1" data-greek="δίκαιος" data-translit="dikaios" data-gloss="rectic" data-senses="righteous, right, righteous one">δίκαιος</a> ὢν <a class="greek-word crux" href="#note-2" data-greek="καὶ" data-translit="kai" data-gloss="kai" data-senses="both, neither, indeed">καὶ</a> μὴ θέλων αὐτὴν <a class="greek-word variant" href="#note-3" data-greek="δειγματίσαι" data-translit="deigmatisai" data-gloss="expose" data-senses="">δειγματίσαι</a> ἐβουλήθη λάθρᾳ ἀπολῦσαι αὐτήν.</p>
-    <p class="translation">Joseph, her husband, being <a id="ref-1" class="flagword always" href="#note-1" data-greek="δίκαιος" data-translit="dikaios" data-gloss="rectic" data-senses="righteous, right, righteous one">rectic</a><a class="note-ref" href="#note-1">a</a> <a id="ref-2" class="flagword crux" href="#note-2" data-greek="καὶ" data-translit="kai" data-gloss="kai" data-senses="both, neither, indeed">kai</a><a class="note-ref" href="#note-2">b</a> not wanting to <a id="ref-3" class="flagword variant" href="#note-3" data-greek="δειγματίσαι" data-translit="deigmatisai" data-gloss="expose" data-senses="">expose</a><a class="note-ref" href="#note-3">c</a> her, resolved to divorce her secretly.</p>
+    <p class="greek-line">Ἰωσὴφ δὲ ὁ ἀνὴρ αὐτῆς, <a class="greek-word always" href="#note-1" data-greek="δίκαιος" data-translit="dikaios" data-gloss="rectic" data-senses="righteous, right, righteous one">δίκαιος</a> ὢν <a class="greek-word crux" href="#note-2" data-greek="καὶ" data-translit="kai" data-gloss="kai" data-senses="both, neither, indeed">καὶ</a> μὴ θέλων αὐτὴν <a class="greek-word crux" href="#note-3" data-greek="δειγματίσαι" data-translit="deigmatisai" data-gloss="deigmatizie" data-senses="made a show">δειγματίσαι</a> ἐβουλήθη λάθρᾳ ἀπολῦσαι αὐτήν.</p>
+    <p class="translation">Now Joseph her husband, being <a id="ref-1" class="flagword always" href="#note-1" data-greek="δίκαιος" data-translit="dikaios" data-gloss="rectic" data-senses="righteous, right, righteous one">rectic</a><a class="note-ref" href="#note-1">a</a> <a id="ref-2" class="flagword crux" href="#note-2" data-greek="καὶ" data-translit="kai" data-gloss="kai" data-senses="both, neither, indeed">kai</a><a class="note-ref" href="#note-2">b</a> not willing to <a id="ref-3" class="flagword crux" href="#note-3" data-greek="δειγματίσαι" data-translit="deigmatisai" data-gloss="deigmatizie" data-senses="made a show">deigmatizie</a><a class="note-ref" href="#note-3">c</a> her, resolved to secretly release her.</p>
   </div>
 
   <div class="endnotes">
@@ -204,7 +210,8 @@ render.py's query logic) and regenerate instead.
             <li>Turner (BECNT) and France (NICNT) — read dikaios as law-abiding, with the following clause set against it</li>
             <li>Nolland (NIGTC) — rejects any tension, reading dikaios as explaining the divorce decision itself</li>
             <li>Brown (<i>The Birth of the Messiah</i>) — sides with Nolland, calling this the only convincing account among three</li>
-            <li>Davies and Allison (ICC) — sides with Turner and France, and reports Ulrich Luz taking the opposite view</li>
+            <li>Davies and Allison (ICC) — sides with Turner and France, and reports Luz taking the opposite view</li>
+            <li>Luz (Hermeneia) — with Nolland, reading the two participles as harmonious</li>
           </ul>
         </details>
       </div>
@@ -214,14 +221,18 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">kai</a>
-        Grammarians disagree whether this conjunction is adversative (&quot;though righteous, yet unwilling&quot;) or continuative (&quot;being righteous, and so unwilling&quot;). A widely cited grammar is invoked for the adversative reading, but its actual text classifies the clause as causal, not concessive.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        Grammarians divide on whether this conjunction is adversative (&quot;though righteous, yet
+unwilling&quot;) or harmonious (<i>being righteous, and so unwilling</i>). The question is whether
+Joseph&#x27;s justice is what made him want to expose Mary or what restrained him. Twelve named
+scholars split into two camps, five against seven. A widely cited grammar is invoked for the
+adversative reading, and its actual text classifies the clause the other way.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> both, neither, indeed</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Turner (BECNT) — reads kai as a mild adversative, citing Blass, Debrunner and Funk</li>
-            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — names Matthew 1:19 as its own example of a causal, not concessive, participle</li>
-            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — confirms the general concessive/causal participle distinction without ruling on this verse</li>
+            <li>Turner (BECNT), France (NICNT), Davies and Allison (ICC), Hagner (WBC) and Boring (<i>The New Interpreter&#x27;s Bible</i>) — a concessive reading, the justice and the reluctance in tension</li>
+            <li>Nolland (NIGTC), Brown (<i>The Birth of the Messiah</i>), Carson (EBC), Blomberg (NAC), Keener (<i>A Commentary on the Gospel of Matthew</i>) and Luz (Hermeneia) — the other camp, the two participles harmonious, Joseph&#x27;s justice being what restrains him, Luz arguing from the conjunction itself</li>
+            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — names Matthew 1:19 as its own example of a causal, not concessive, participle, which cuts against the grammar&#x27;s own citation on the concessive side</li>
           </ul>
         </details>
       </div>
@@ -230,15 +241,16 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
       <div class="endnote-body">
-        <a class="endnote-word variant" id="note-3" href="#ref-3" title="Back to text">deigmatisai</a>
-        Manuscripts split between this reading, &quot;to expose publicly,&quot; and the stronger compound paradeigmatisai, &quot;to hold up as a public example.&quot; Modern critical editions favor the shorter reading, the Byzantine tradition and Textus Receptus the compound. Nearly every translation renders the verse the same way regardless of which is followed.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">deigmatisai</a>
+        Manuscripts split between this reading, &quot;to expose publicly,&quot; and the stronger compound paradeigmatisai, to hold up as a public example. Modern critical editions favor the shorter reading, the Byzantine tradition and Textus Receptus the compound. Nearly every translation renders the verse the same way regardless of which is followed.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> made a show</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li><i>Translators Amalgamated Greek New Testament</i> — NA28, NA27, Tyndale House, SBL, WH, and Tregelles all read deigmatisai, against the Byzantine and Textus Receptus reading paradeigmatisai</li>
             <li>Davies and Allison (ICC) — supplies manuscript sigla for the split, deigmatisai in Aleph-1, B, Z and f1 against paradeigmatisai in the majority text</li>
             <li>Nolland (NIGTC) — reads the word as referring to a formal public trial, not merely ordinary social visibility</li>
-            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — contains no entry on this variant, a checked absence</li>
+            <li>Luz (Hermeneia) — gives the verb a range running from &quot;to expose&quot; and &quot;make an example of&quot; to &quot;to examine&quot; or neutrally &quot;to make public&quot;</li>
           </ul>
         </details>
       </div>

@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">καὶ ἐλθόντες εἰς τὴν οἰκίαν <a class="greek-word variant" href="#note-1" data-greek="εἶδον" data-translit="eidon" data-gloss="saw" data-senses="">εἶδον</a> τὸ παιδίον μετὰ Μαρίας τῆς μητρὸς αὐτοῦ, καὶ πεσόντες <a class="greek-word crux" href="#note-2" data-greek="προσεκύνησαν" data-translit="prosekunēsan" data-gloss="proskynied" data-senses="worship, homage, kneeling down">προσεκύνησαν</a> αὐτῷ, καὶ ἀνοίξαντες τοὺς θησαυροὺς αὐτῶν προσήνεγκαν αὐτῷ δῶρα, χρυσὸν καὶ λίβανον καὶ σμύρναν.</p>
-    <p class="translation">And having come into the house, they <a id="ref-1" class="flagword variant" href="#note-1" data-greek="εἶδον" data-translit="eidon" data-gloss="saw" data-senses="">saw</a><a class="note-ref" href="#note-1">a</a> the child with Mary his mother, and having fallen down, they <a id="ref-2" class="flagword crux" href="#note-2" data-greek="προσεκύνησαν" data-translit="prosekunēsan" data-gloss="proskynied" data-senses="worship, homage, kneeling down">proskynied</a><a class="note-ref" href="#note-2">b</a> him, and having opened their treasures, they offered him gifts, gold and frankincense and myrrh.</p>
+    <p class="greek-line">καὶ ἐλθόντες εἰς τὴν οἰκίαν <a class="greek-word variant" href="#note-1" data-greek="εἶδον" data-translit="eidon" data-gloss="saw" data-senses="">εἶδον</a> τὸ παιδίον μετὰ Μαρίας τῆς μητρὸς αὐτοῦ, καὶ πεσόντες <a class="greek-word always" href="#note-2" data-greek="προσεκύνησαν" data-translit="prosekunēsan" data-gloss="proskynied" data-senses="worship, homage, kneeling down">προσεκύνησαν</a> αὐτῷ, καὶ ἀνοίξαντες τοὺς θησαυροὺς αὐτῶν προσήνεγκαν αὐτῷ δῶρα, χρυσὸν καὶ λίβανον καὶ σμύρναν.</p>
+    <p class="translation">And having come into the house, they <a id="ref-1" class="flagword variant" href="#note-1" data-greek="εἶδον" data-translit="eidon" data-gloss="saw" data-senses="">saw</a><a class="note-ref" href="#note-1">a</a> the child with Mary his mother, and having fallen, they <a id="ref-2" class="flagword always" href="#note-2" data-greek="προσεκύνησαν" data-translit="prosekunēsan" data-gloss="proskynied" data-senses="worship, homage, kneeling down">proskynied</a><a class="note-ref" href="#note-2">b</a> to him, and having opened their treasure chests, they offered him gifts, gold and frankincense and myrrh.</p>
   </div>
 
   <div class="endnotes">
@@ -194,24 +200,35 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
         <a class="endnote-word variant" id="note-1" href="#ref-1" title="Back to text">eidon</a>
-        The Textus Receptus alone reads &quot;found&quot; (εὗρον) where every other collated edition, including the Byzantine text, reads &quot;saw&quot; (εἶδον). The difference is a genuine change of wording, not a matter of spelling or word order. No surveyed English version renders it differently.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        The Textus Receptus alone reads &quot;found&quot; (εὗρον) where every other collated edition, including the Byzantine text, reads &quot;saw&quot; (εἶδον). Four of the seventeen versions follow it, printing &quot;found&quot; where the rest print &quot;saw.&quot; Three stand in the Latin tradition. The fourth is a German version rendered from the Erasmian Greek, which is the edition tradition the reading actually belongs to.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Translators Amalgamated Greek New Testament</i> — collates the reading across eight editions, the Textus Receptus standing alone</li>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — traces the Textus Receptus reading to a few minuscules and the Old Latin and Vulgate tradition, rates the majority reading clearly original, and, printing Mark 7:30&#x27;s own text alongside as the likely source of a harmonization, judges the reading &quot;probably from the Latin&quot;</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — carries no entry at this verse, his nearest Matthew entries falling at 2:5 and 2:18</li>
+            <li><i>Vulgate</i>, Tyndale, the Douay-Rheims and Luther — read &quot;found&quot; against the thirteen other versions, Luther printing &quot;und gingen in das Haus und fanden das Kindlein&quot;</li>
+            <li>Matthew 2:9 — the star&#x27;s own appearance, where the same verb of seeing recurs two verses earlier</li>
+          </ul>
+        </details>
       </div>
     </div>
     
     <div class="endnote">
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">prosekunēsan</a>
-        This is the third and final use of the verb in the pericope, now paired with a prostration participle absent at 2:2 and 2:8. Whether that addition tips the sense toward worship is disputed. Some read the participle as redundant unless full worship is meant. Others read the identical pairing elsewhere in the New Testament for ordinary court supplication, including a servant begging a king for mercy at Matthew 18:26. One standard lexicon classifies this occurrence under homage to human superiors, grouping it with the same verb&#x27;s use at Matthew 4:9 rather than with acts of divine worship.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">prosekunēsan</a>
+        This is the third and final use of the verb in the pericope, now paired with a prostration participle absent at 2:2 and 2:8. Whether that addition tips the sense toward worship is disputed. Some read the participle as redundant unless full worship is meant. The identical pairing occurs at Matthew 18:26, where a servant begs a king for mercy. One standard lexicon classifies this occurrence under homage to human superiors, grouping it with the same verb&#x27;s use at Matthew 4:9 rather than with acts of divine worship. προσκυνέω denotes full prostration before a superior, a gesture Greek usage associated with subjects bowing before Persian kings. The same verb covers ordinary court homage to a human ruler and the cultic worship of a god. Koine grammar supplies no separate construction that reliably marks which sense is meant. Context alone decides between the two.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> worship, homage, kneeling down</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Turner (BECNT) — reads the added prostration participle as redundant unless genuine worship is meant, continuing his position from 2:2</li>
+            <li>Turner (BECNT) — reads the added prostration participle as redundant unless genuine worship is meant, continuing his position from 2:2, while naming Matthew 18:26 against his own argument</li>
             <li>Mitch and Sri (CCSS) — reads the pairing as marking divine worship elsewhere in Matthew, so the magi &quot;offer Christ the worship that Herod, the chief priests, and scribes failed to offer&quot;</li>
             <li>France (NICNT) — calls the prostration &quot;a familiar act of homage in Eastern society, a recognition of social superiority&quot;</li>
-            <li>Brown (<i>The Birth of the Messiah</i>) — proposes the verb&#x27;s own sense shifts across the narrative, from royal homage at 2:2 toward something less stable by this verse</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — reads the title &quot;King of the Jews&quot; as directing the reader to homage paid to royalty rather than worship of divinity, while granting that &quot;the distinction may be tenuous&quot;</li>
             <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — classifies this occurrence with homage to human superiors, alongside Matthew 4:9, not with acts of divine worship</li>
+            <li>Luz (Hermeneia) — reads Matthew&#x27;s use of the verb across the whole Gospel as reserved almost exclusively for responses to Jesus, already settling the sense the magi&#x27;s own use carries</li>
           </ul>
         </details>
       </div>

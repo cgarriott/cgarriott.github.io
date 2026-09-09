@@ -121,13 +121,47 @@
       el.classList.remove('jumped', 'jumped-fade');
     });
   }
-  document.querySelectorAll('.flagword, .note-ref, .endnote-num, .endnote-word, .endnote-back').forEach(function (link) {
-    link.addEventListener('click', function () {
+  // Everything that jumps somewhere. The second selector is the odd one: a
+  // disputed passage's whole run is clickable to its own endnote (verse pages
+  // only -- render.py emits data-note there and nowhere else), but the span
+  // cannot BE an anchor, since it contains the flagged words' own anchors and
+  // anchors do not nest. So it carries the target in data-note and is read the
+  // same way. Same shape as .vspan at the foot of this file: a data attribute
+  // plus a guard letting inner links keep their own click target.
+  var JUMPERS = '.flagword, .note-ref, .endnote-num, .endnote-word, .endnote-back';
+  // Everything inside a passage that is a link in its own right. .greek-word is
+  // here and NOT in JUMPERS on purpose: it is an ordinary anchor the browser
+  // navigates by itself, so it needs no handler -- but a click on one still has
+  // to stop the passage from hijacking it to a different note.
+  var INNER = JUMPERS + ', .greek-word';
+  var PASSAGE = '.doubtful[data-note]';
+  document.querySelectorAll(JUMPERS + ', ' + PASSAGE).forEach(function (link) {
+    link.addEventListener('click', function (e) {
+      // A click that landed on a flagged word or its mark inside the passage
+      // belongs to that word. Without this both handlers run, and the passage's
+      // clearJumped() wipes the box the word's own handler just set.
+      if (link.matches(PASSAGE) && e.target.closest(INNER)) { return; }
       clearJumped();
-      var href = link.getAttribute('href') || '';
+      var href = link.getAttribute('href') || link.getAttribute('data-note') || '';
       if (href.charAt(0) !== '#') { return; }
       var target = document.getElementById(href.slice(1));
       if (!target) { return; }
+      // An anchor navigates itself; a span has to be scrolled by hand. Not via
+      // location.hash, which would push a history entry the reference letter
+      // does not push, and leave Back doing nothing visible.
+      if (!link.getAttribute('href')) {
+        // `start`, matching what following a #link does -- align the target to
+        // the top of the scrollport, offset by its own scroll-margin-top (5rem
+        // on .endnote-word), so the note's PROSE lands on screen and not just
+        // the word the box is drawn round. `nearest` scrolls the least amount
+        // that puts the target in view, which for a note already at the bottom
+        // edge is almost none: the box appeared and the endnote stayed unread.
+        // The rest of the site honours reduced motion (cnt.css, landing.js);
+        // a scroll the reader did not ask for is what that setting is about.
+        var still = window.matchMedia
+          && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        target.scrollIntoView({ block: 'start', behavior: still ? 'auto' : 'smooth' });
+      }
       target.classList.add('jumped');
       // Following an #id link makes the browser move keyboard focus onto
       // the target (per the HTML "scroll to the fragment" steps), which
@@ -148,7 +182,7 @@
     });
   });
   document.addEventListener('click', function (e) {
-    if (e.target.closest('.flagword, .note-ref, .endnote-num, .endnote-word, .endnote-back')) { return; }
+    if (e.target.closest(INNER + ', ' + PASSAGE)) { return; }
     clearJumped();
   });
 })();

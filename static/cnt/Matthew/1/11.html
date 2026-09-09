@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Ἰωσίας δὲ ἐγέννησεν τὸν <a class="greek-word crux" href="#note-1" data-greek="Ἰεχονίαν" data-translit="Iechonian" data-gloss="Iechonias" data-senses="jeconiah, jechonias">Ἰεχονίαν</a> καὶ τοὺς <a class="greek-word crux" href="#note-2" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">ἀδελφοὺς</a> αὐτοῦ ἐπὶ τῆς <a class="greek-word crux" href="#note-3" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">μετοικεσίας</a> Βαβυλῶνος.</p>
-    <p class="translation">Josiah fathered <a id="ref-1" class="flagword crux" href="#note-1" data-greek="Ἰεχονίαν" data-translit="Iechonian" data-gloss="Iechonias" data-senses="jeconiah, jechonias">Iechonias</a><a class="note-ref" href="#note-1">a</a> and his <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">adelphoi</a><a class="note-ref" href="#note-2">b</a> at the time of the <a id="ref-3" class="flagword crux" href="#note-3" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">metoikesia</a><a class="note-ref" href="#note-3">c</a> to Babylon.</p>
+    <p class="greek-line">Ἰωσίας δὲ ἐγέννησεν τὸν <a class="greek-word crux" href="#note-1" data-greek="Ἰεχονίαν" data-translit="Iechonian" data-gloss="Iechonias" data-senses="jeconiah, jechonias">Ἰεχονίαν</a> καὶ τοὺς <a class="greek-word always" href="#note-2" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">ἀδελφοὺς</a> αὐτοῦ ἐπὶ τῆς <a class="greek-word crux" href="#note-3" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">μετοικεσίας</a> Βαβυλῶνος.</p>
+    <p class="translation">And Josiah fathered <a id="ref-1" class="flagword crux" href="#note-1" data-greek="Ἰεχονίαν" data-translit="Iechonian" data-gloss="Iechonias" data-senses="jeconiah, jechonias">Iechonias</a><a class="note-ref" href="#note-1">a</a> and his <a id="ref-2" class="flagword always" href="#note-2" data-greek="ἀδελφοὺς" data-translit="adelphous" data-gloss="adelphoi" data-senses="brother">adelphoi</a><a class="note-ref" href="#note-2">b</a> at the <a id="ref-3" class="flagword crux" href="#note-3" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">metoikesia</a><a class="note-ref" href="#note-3">c</a> to Babylon.</p>
   </div>
 
   <div class="endnotes">
@@ -201,10 +207,10 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — rates the shorter reading, without an added &quot;Jehoiakim&quot; clause, as clearly original</li>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — rates the shorter reading, without an added &quot;Jehoiakim&quot; clause, as probably original, and clearly so once the witnesses are weighted</li>
             <li>Turner (BECNT) — judges the insertion of Jehoiakim a later variant &quot;motivated by the desire to conform Matthew&#x27;s genealogy&quot; to 1 Chronicles, producing a fifteenth generation</li>
             <li>Albright and Mann (Anchor) — presume that &quot;Jechoniah (1 Chron 3:16) is here an alternative for king Jehoiakim&quot;</li>
-            <li>Hagner (WBC) — derives the missing generation from 1 Chronicles 3:15&#x27;s naming of Jehoiakim&#x27;s own brothers</li>
+            <li>Hagner (WBC) and Luz (Hermeneia) — trace the omission to a scribe&#x27;s confusion of the two kings, whose names the Greek Old Testament spells alike</li>
           </ul>
         </details>
       </div>
@@ -213,8 +219,8 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">adelphous</a>
-        Only one brother of Jeconiah is named anywhere in the Old Testament record. Commentators disagree on who &quot;his brothers&quot; denotes: Jeconiah&#x27;s own royal siblings, the wider company of Jews deported with him, or brothers belonging instead to Jehoiakim, the king Matthew&#x27;s text skips.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">adelphous</a>
+        Only one brother of Jeconiah is named anywhere in the Old Testament record. Commentators disagree on who &quot;his brothers&quot; denotes: Jeconiah&#x27;s own royal siblings, the wider company of Jews deported with him, or brothers belonging instead to Jehoiakim, the king Matthew&#x27;s text skips. ἀδελφός is a brother by birth. It also covers wider kin, a compatriot, and a member of a religious association. The Greek Septuagint calls Abraham and his nephew Lot adelphoi. Whether that range reaches cousin in the New Testament is disputed, and the men named as Jesus&#x27;s adelphoi are the case in question. Greek had a separate word for cousin and the New Testament uses it once. The masculine plural can take in women, and the versions divide over printing sisters.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> brother</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -223,6 +229,7 @@ render.py's query logic) and regenerate instead.
             <li>Brown (<i>The Birth of the Messiah</i>) — reads the phrase as carried over from Jehoiakim&#x27;s own brothers, named at 1 Chronicles 3:15</li>
             <li>Blomberg (NAC) — reads the brothers as standing for the nation of Israel at the deportation</li>
             <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — says Matthew &quot;inserts &#x27;brothers&#x27; for theological reasons&quot; since Jehoiachin had only one brother</li>
+            <li>Luz (Hermeneia) — notes that Jehoiachin had no brothers, and asks whether the phrase was prompted by 1 Chronicles 3:16</li>
           </ul>
         </details>
       </div>
@@ -232,14 +239,16 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">metoikesias</a>
-        The Greek word denotes a change of residence and served in Jewish Greek usage as the standard term for the Babylonian deportation. The Septuagint applies the same word to the 597 BC deportation that took Jeconiah himself captive, a different event from the destruction of Jerusalem in 586 BC under Zedekiah.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        μετοικεσία is a term of the Greek Old Testament for the Babylonian captivity, and the New Testament uses it only here and at 1:12 and 1:17. At 2 Kings 24:16 it names the deportation of seven thousand men of valor, the event in which Jeconiah himself was carried to Babylon. Commentators and study Bibles divide over which deportation the phrase marks, that one or the destruction of the temple a decade later.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> carrying away</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Levine and Brettler (<i>The Jewish Annotated New Testament</i>) — dates the deportation to 597 BCE, a decade before the Temple&#x27;s destruction</li>
-            <li>Nolland (NIGTC) — takes the phrase to mean &quot;in the period in which the deportation to Babylon took place&quot; rather than a date within a reign</li>
-            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — connects the term to the Septuagint&#x27;s account of the 597 BC deportation in 2 Kings 24:10-16</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — glosses the noun &quot;especially of the captivity of the Jews&quot;</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — treats it as a change of abode used of the Babylonian exile, and confined in the New Testament to this phrase at 1:11, 1:12 and 1:17</li>
+            <li>Nolland (NIGTC) — reads ἐπί with the genitive as &quot;in the period in which the deportation to Babylon took place,&quot; rather than in its ordinary sense of during</li>
+            <li><i>The Jewish Annotated New Testament</i> — dates the deportation to 597, a decade before the destruction of the First Temple</li>
+            <li><i>Ignatius Bible</i> and Mitch and Sri (CCSS) — date it instead to 586 and the Babylonian destruction of the temple</li>
           </ul>
         </details>
       </div>

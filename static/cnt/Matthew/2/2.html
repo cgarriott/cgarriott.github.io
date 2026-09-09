@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">λέγοντες· Ποῦ ἐστιν ὁ τεχθεὶς βασιλεὺς τῶν Ἰουδαίων; εἴδομεν γὰρ αὐτοῦ τὸν ἀστέρα ἐν τῇ <a class="greek-word crux" href="#note-1" data-greek="ἀνατολῇ" data-translit="anatolēi" data-gloss="anatolē" data-senses="east, rising">ἀνατολῇ</a> καὶ ἤλθομεν <a class="greek-word crux" href="#note-2" data-greek="προσκυνῆσαι" data-translit="proskunēsai" data-gloss="proskynie" data-senses="worship, homage, kneeling down">προσκυνῆσαι</a> αὐτῷ.</p>
-    <p class="translation">saying, &quot;Where is the born king of the Jews? For we saw his star in the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἀνατολῇ" data-translit="anatolēi" data-gloss="anatolē" data-senses="east, rising">anatolē</a><a class="note-ref" href="#note-1">a</a>, and we came to <a id="ref-2" class="flagword crux" href="#note-2" data-greek="προσκυνῆσαι" data-translit="proskunēsai" data-gloss="proskynie" data-senses="worship, homage, kneeling down">proskynie</a><a class="note-ref" href="#note-2">b</a> him.&quot;</p>
+    <p class="greek-line">λέγοντες· Ποῦ ἐστιν ὁ τεχθεὶς βασιλεὺς τῶν Ἰουδαίων; εἴδομεν γὰρ αὐτοῦ τὸν ἀστέρα ἐν τῇ <a class="greek-word crux" href="#note-1" data-greek="ἀνατολῇ" data-translit="anatolēi" data-gloss="anatole" data-senses="east, rising">ἀνατολῇ</a> καὶ ἤλθομεν <a class="greek-word always" href="#note-2" data-greek="προσκυνῆσαι" data-translit="proskunēsai" data-gloss="proskynie" data-senses="worship, homage, kneeling down">προσκυνῆσαι</a> αὐτῷ.</p>
+    <p class="translation">saying, &quot;Where is the born king of the Jews? For we saw his star in the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἀνατολῇ" data-translit="anatolēi" data-gloss="anatole" data-senses="east, rising">anatole</a><a class="note-ref" href="#note-1">a</a>, and we came to <a id="ref-2" class="flagword always" href="#note-2" data-greek="προσκυνῆσαι" data-translit="proskunēsai" data-gloss="proskynie" data-senses="worship, homage, kneeling down">proskynie</a><a class="note-ref" href="#note-2">b</a> to him.&quot;</p>
   </div>
 
   <div class="endnotes">
@@ -194,15 +200,16 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">anatolēi</a>
-        ἀνατολή is the noun cognate to ἀνατέλλω, &quot;to rise,&quot; a verb used of stars and the sun. The phrase can mean either &quot;in the east,&quot; repeating the geographic claim already made at 2:1, or &quot;at its rising,&quot; reporting an astronomical event. Three verses later the same phrase describes a star moving ahead of the travelers, something a fixed compass direction cannot do, favoring the astronomical reading.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        ἀνατολή is the noun cognate to ἀνατέλλω, &quot;to rise,&quot; a verb used of stars and the sun. The phrase can mean either &quot;in the east,&quot; repeating the geographic claim already made at 2:1, or &quot;at its rising,&quot; reporting an astronomical event.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> east, rising</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Davies and Allison (ICC) — calls the phrase &quot;generally recognized&quot; as a technical astronomical phrase for a star&#x27;s rising, citing Homer, Plato, and Euripides</li>
-            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — the often-cited rule that compass points take no article turns out, on direct inspection, to be a single unsupported sentence with no New Testament example</li>
+            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — the often-cited rule that compass points take no article is a single unsupported sentence with no New Testament example</li>
             <li>Molnar (<i>The Star of Bethlehem: The Legacy of the Magi</i>) — reads the phrase as technical astrological vocabulary for a star&#x27;s heliacal rising</li>
             <li>Blomberg (NAC) — raises a syntactic alternative, that the phrase may modify &quot;we saw&quot; rather than &quot;star&quot;</li>
+            <li>Luz (Hermeneia) — judges the astronomical sense more probable while granting &quot;East&quot; attested for the singular elsewhere, citing Blass, Debrunner and Funk §141(2)</li>
           </ul>
         </details>
       </div>
@@ -211,8 +218,8 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">proskunēsai</a>
-        This is the first of three uses of the verb in this pericope, repeated at 2:8 and 2:11. The construction matches ordinary court homage to a human ruler, the same one Herod uses for his own pretext three verses later. Matthew applies the identical grammatical construction elsewhere to undisputed worship of Jesus, so grammar alone cannot settle which sense is meant here.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">proskunēsai</a>
+        This is the first of three uses of the verb in this pericope, repeated at 2:8 and 2:11. The construction matches ordinary court homage to a human ruler, the same one Herod uses for his own pretext six verses later. Matthew applies the identical grammatical construction elsewhere to undisputed worship of Jesus, so grammar alone cannot settle which sense is meant here. προσκυνέω denotes full prostration before a superior, a gesture Greek usage associated with subjects bowing before Persian kings. The same verb covers ordinary court homage to a human ruler and the cultic worship of a god. Koine grammar supplies no separate construction that reliably marks which sense is meant. Context alone decides between the two.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> worship, homage, kneeling down</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -221,6 +228,7 @@ render.py's query logic) and regenerate instead.
             <li>Davies and Allison (ICC) — the Septuagint regularly pairs &quot;come&quot; with &quot;worship&quot; as a single cultic action, the same construction the magi&#x27;s own request uses</li>
             <li>Mitch and Sri (CCSS) — reads the magi&#x27;s homage as already substantively divine worship, without flagging the ambiguity other commentators debate</li>
             <li>Hagner (WBC) — Matthew&#x27;s readers know the fuller sense of what the magi are doing better than the magi themselves would have known</li>
+            <li>Luz (Hermeneia) — reads Matthew&#x27;s use of the verb across the whole Gospel as reserved almost exclusively for responses to Jesus, favoring the worship reading here</li>
           </ul>
         </details>
       </div>

@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Πᾶσαι οὖν αἱ γενεαὶ ἀπὸ Ἀβραὰμ ἕως Δαυὶδ γενεαὶ δεκατέσσαρες, καὶ ἀπὸ Δαυὶδ ἕως τῆς μετοικεσίας Βαβυλῶνος γενεαὶ δεκατέσσαρες, καὶ ἀπὸ τῆς μετοικεσίας Βαβυλῶνος ἕως τοῦ <a class="greek-word always" href="#note-1" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">χριστοῦ</a> γενεαὶ δεκατέσσαρες.</p>
-    <p class="translation">So all the generations from Abraham to David are fourteen generations, and from David to the deportation to Babylon are fourteen generations, and from the deportation to Babylon to the <a id="ref-1" class="flagword always" href="#note-1" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-1">a</a> are fourteen generations.</p>
+    <p class="greek-line">Πᾶσαι οὖν αἱ γενεαὶ ἀπὸ Ἀβραὰμ ἕως Δαυὶδ γενεαὶ <a class="greek-word crux" href="#note-1" data-greek="δεκατέσσαρες" data-translit="dekatessares" data-gloss="dekatessares" data-senses="fourteen">δεκατέσσαρες</a> καὶ ἀπὸ Δαυὶδ ἕως τῆς <a class="greek-word crux" href="#note-2" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">μετοικεσίας</a> Βαβυλῶνος γενεαὶ <a class="greek-word crux" href="#note-None" data-greek="δεκατέσσαρες" data-translit="dekatessares" data-gloss="dekatessares" data-senses="fourteen">δεκατέσσαρες</a> καὶ ἀπὸ τῆς <a class="greek-word crux" href="#note-None" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">μετοικεσίας</a> Βαβυλῶνος ἕως τοῦ <a class="greek-word always" href="#note-3" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ">χριστοῦ</a> γενεαὶ <a class="greek-word crux" href="#note-None" data-greek="δεκατέσσαρες" data-translit="dekatessares" data-gloss="dekatessares" data-senses="fourteen">δεκατέσσαρες</a></p>
+    <p class="translation">All therefore the generations from Abraham until David, <a id="ref-1" class="flagword crux" href="#note-1" data-greek="δεκατέσσαρες" data-translit="dekatessares" data-gloss="dekatessares" data-senses="fourteen">dekatessares</a><a class="note-ref" href="#note-1">a</a> generations, and from David until the <a id="ref-2" class="flagword crux" href="#note-2" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">metoikesia</a><a class="note-ref" href="#note-2">b</a> to Babylon, <span class="flagword crux" data-greek="δεκατέσσαρες" data-translit="dekatessares" data-gloss="dekatessares" data-senses="fourteen">dekatessares</span> generations, and from the <span class="flagword crux" data-greek="μετοικεσίας" data-translit="metoikesias" data-gloss="metoikesia" data-senses="carrying away">metoikesia</span> to Babylon until the <a id="ref-3" class="flagword always" href="#note-3" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ">Anointed</a><a class="note-ref" href="#note-3">c</a>, <span class="flagword crux" data-greek="δεκατέσσαρες" data-translit="dekatessares" data-gloss="dekatessares" data-senses="fourteen">dekatessares</span> generations.</p>
   </div>
 
   <div class="endnotes">
@@ -195,9 +201,53 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word always" id="note-1" href="#ref-1" title="Back to text">christou</a>
-        The genealogy closes on the same word it opened with at 1:1, bracketing every generation between two uses of the title. Translations split three ways at this verse, between &quot;the Anointed,&quot; &quot;the Messiah,&quot; and &quot;the Christ.&quot; Whether that bracketing settles the word as a title rather than as a second name is disputed. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
+        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">dekatessares</a>
+        The Hebrew consonants of David&#x27;s name sum to fourteen. Whether the genealogy&#x27;s three fourteens carry that arithmetic, mark a providential ordering of Israel&#x27;s history, serve as an aid to memory, or follow from the names the list leaves out, is disputed. The count itself does not come out. The names of the preceding verses total fourteen, fourteen and thirteen unless Jeconiah is counted in two sections while David is counted in one.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> fourteen</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Davies and Allison (ICC) — argue the case from the numerical value of David&#x27;s name, citing the Greek Old Testament&#x27;s own Genesis 46 as precedent for an unflagged gematria in a genealogy, and settle on it as one factor rather than the sole one</li>
+            <li>Nolland (NIGTC), Turner (BECNT), Carson (EBC), Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) and Mitch and Sri (CCSS) — take the derivation from David&#x27;s name as established</li>
+            <li>France (NICNT) and Hagner (WBC) — object that the arithmetic would demand a Hebrew literacy a Greek readership is unlikely to have had, and that the text draws no explicit link</li>
+            <li>Albright and Mann (Anchor) — reject every numerological reading of the list, the value of David&#x27;s name included, as the work of a &quot;desk mind&quot; rather than verifiable historical research</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — has Matthew combining two inherited lists that already ran to fourteen, and treats the name arithmetic as a catalyst rather than a plan</li>
+            <li>Goulder (<i>Midrash and Lection in Matthew</i>) — derives the figure instead from a rabbinic reading of the monarchy as a waxing and waning moon, with the exile as its dark and Jesus as a second full moon</li>
+            <li>Blomberg (NAC) and Keener (<i>A Commentary on the Gospel of Matthew</i>) — hold that ancient counting alternated between inclusive and exclusive reckoning, so the totals need no repair</li>
+            <li>Luz (Hermeneia) — finds that &quot;the arrangement given in v. 17 does not add up&quot;, and reads the summary as applied to a genealogy Matthew received</li>
+            <li><i>MacArthur Study Bible</i> — &quot;[t]he significance of the number 14 is not clear&quot;, and offers the ordering as an aid to memorization</li>
+            <li>Ehrman (<a href="https://ehrmanblog.org/" target="_blank" rel="noopener noreferrer">The Bart Ehrman Blog</a>) — reads the shortfall as an error rather than a device</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">metoikesias</a>
+        Twice in this verse the word marks a division of the genealogy, not an event in the narrative. Abraham and David mark the others. The deportation is the one boundary named by a happening rather than a person, and commentators read that asymmetry as a clue to what was lost at the exile and what its end restores. Which deportation the word names, that of 597 or the destruction of the temple in 586, is disputed.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> carrying away</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Davies and Allison (ICC) — read the second break point as &quot;a clue to the evangelist&#x27;s eschatological orientation,&quot; the kingdom &quot;inaugurated with David and lost at the captivity&quot; restored at the coming of Jesus</li>
+            <li>Charette (<i>The Theme of Recompense in Matthew&#x27;s Gospel</i>) — &quot;[i]t is interesting that the catastrophic event of foreign captivity and not a person should mark the end of the second period and the beginning of the third,&quot; and adds the land to the kingdom as a second gift restored</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — glosses the noun &quot;especially of the captivity of the Jews&quot;</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — finds it in the New Testament at Matthew 1:11, 1:12 and 1:17 alone</li>
+            <li><i>The Jewish Annotated New Testament</i> — dates the deportation to 597, &quot;a decade before the destruction of the First Temple and exile in 586 bce&quot;</li>
+            <li><i>Ignatius Bible</i> and Mitch and Sri (CCSS) — date it instead to 586 and the Babylonian destruction of the temple</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">christou</a>
+        The genealogy closes on the same word it opened with at 1:1, bracketing every generation between two uses of the title. Translations split three ways at this verse, between &quot;the Anointed,&quot; &quot;the Messiah,&quot; and &quot;the Christ.&quot; Whether that bracketing settles the word as a title rather than as a second name is disputed. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> christ</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>

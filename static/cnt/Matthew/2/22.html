@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,11 +189,36 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">ἀκούσας δὲ ὅτι Ἀρχέλαος βασιλεύει τῆς Ἰουδαίας ἀντὶ τοῦ πατρὸς αὐτοῦ Ἡρῴδου ἐφοβήθη ἐκεῖ ἀπελθεῖν· χρηματισθεὶς δὲ κατ’ ὄναρ ἀνεχώρησεν εἰς τὰ μέρη τῆς Γαλιλαίας,</p>
-    <p class="translation">But having heard that Archelaus reigns over Judea in place of his father Herod, he was afraid to go there. And having been given chrēmatismos in a dream, he withdrew into the parts of Galilee,</p>
+    <p class="greek-line">ἀκούσας δὲ ὅτι Ἀρχέλαος βασιλεύει τῆς Ἰουδαίας ἀντὶ τοῦ πατρὸς αὐτοῦ Ἡρῴδου ἐφοβήθη ἐκεῖ ἀπελθεῖν· <a class="greek-word crux" href="#note-1" data-greek="χρηματισθεὶς" data-translit="chrēmatistheis" data-gloss="chrematisied" data-senses="divinely instructed, called, warned of god">χρηματισθεὶς</a> δὲ κατ’ ὄναρ ἀνεχώρησεν εἰς τὰ μέρη τῆς Γαλιλαίας,</p>
+    <p class="translation">But having heard that Archelaus is king of Judea in place of his father Herod, he was afraid to go away there; and having been <a id="ref-1" class="flagword crux" href="#note-1" data-greek="χρηματισθεὶς" data-translit="chrēmatistheis" data-gloss="chrematisied" data-senses="divinely instructed, called, warned of god">chrematisied</a><a class="note-ref" href="#note-1">a</a> in a dream, he withdrew into the parts of Galilee,</p>
   </div>
 
-  
+  <div class="endnotes">
+    <p class="endnotes-label">Notes</p>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">chrēmatistheis</a>
+        Joseph hears of Archelaus and is afraid to enter Judea. The warning comes after both, and the narrator has already given the fear as his reason. Commentators divide over what the warning then does, from redirecting a journey that would have ended in Judea to ratifying a decision already made and leaving the destination to Joseph. Some name an angel behind the verb. The verse names none.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> divinely instructed, called, warned of god</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Brown (<i>The Birth of the Messiah</i>) — reads the report about Archelaus as coming to Joseph &quot;from a source other than revelation,&quot; and calls that awkward, since the material on either side of it is revealed</li>
+            <li>Davies and Allison (ICC) — reads the sequence as the pattern of 1:18-25 repeated, a disquieting fact learned and then &quot;[d]ivine revelation intervenes to make the rightful course of action under the difficult circumstances plain&quot;</li>
+            <li>Turner (BECNT) — reads the dream as ratifying rather than directing, since &quot;[t]he warning of the angel underlines the fear Joseph already feels and evidently leaves it up to him where to settle&quot;</li>
+            <li>France (NICNT) — reads the dream as directing, since &quot;Joseph was not left to work it out for himself,&quot; and takes the verb to carry divine agency without an angel</li>
+            <li>Keener (<i>A Commentary on the Gospel of Matthew</i>) — treats the dream as answering a fear Joseph reached on his own, God responding to that fear with a further revelation</li>
+            <li>Nolland (NIGTC) — reads verses 22-23 as a fine-tuning of the imprecise directive of verse 20, the dream settling where in Israel the family lands</li>
+            <li>Mitch and Sri (CCSS) — supply the angel of the earlier dreams as the one who warns Joseph here</li>
+            <li>Carson (EBC) — counts this as the fifth and final dream of the infancy narrative, and reads Joseph as guided by it</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+  </div>
 
   <dialog class="sitemap" id="sitemap" aria-label="Site map">
     <div class="sitemap-head">

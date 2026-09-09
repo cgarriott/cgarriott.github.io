@@ -1,0 +1,382 @@
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+Single-verse page template. This is THE format for one verse -- see
+../PLAN.md's "Page architecture" section: the verse is the atomic unit,
+this template is not used for multi-verse (chapter/pericope) pages, which
+get their own template later, assembled from the same per-verse data.
+
+Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
+  verse_ref        -- display string, e.g. "Matthew 1:1"
+  greek_segments    -- list of {type:"text", text} or
+                        {type:"word", class, greek, translit, gloss, note}
+  translation_segments -- same shape as greek_segments, plus note_letter
+                        (the reader-facing letter label, see note_label() --
+                        ids/hrefs stay numeric via note; only the visible
+                        text uses letters, so they never look like verse
+                        numbers)
+  endnotes          -- list of {number, letter, word, class, text, sources:
+                        [{label, position}]} -- "letter" is the display
+                        label (a, b, ..., z, aa, ab, ...); "number" is
+                        still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
+  nav               -- {prev, next, up}: relative hrefs (same directory)
+                        for the second toggle-dock row below, or None for
+                        prev/next when there's no neighboring drafted verse
+                        to link to (see render.py's build_nav_context)
+  apparatus         -- {books, chapters, verses, verse_range}: the masthead's
+                        Book/Chapter/Verse dropdowns, each a list of {name or
+                        num, current, enabled, href} covering the FULL
+                        canonical NT structure, not just what's drafted.
+                        `verse_range` heads the verse select as "1-25", the
+                        whole chapter -- from here a real destination back out
+                        to the chapter page; from a chapter page it is instead
+                        the current entry (see render.py's build_apparatus)
+
+Do not hand-edit generated output HTML -- edit this template (or
+render.py's query logic) and regenerate instead.
+-->
+<title>CNT — Matthew 6:13</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../static/cnt.css">
+<link rel="stylesheet" href="../../static/reading.css">
+<!-- Runs before first paint, so a reader who chose light does not see a dark
+     flash first. It has to be inline for that reason -- an external file is
+     fetched too late. Everything else lives in static/cnt.js. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('cnt-theme');
+      if (t === 'light' || t === 'dark') { document.documentElement.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
+
+<div class="page">
+
+  <div class="header">
+    <div class="masthead">
+      <span><a class="masthead-home" href="../../index.html"><strong>CNT</strong> — Corey's Non-Translation</a></span>
+      <span class="masthead-tools">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+            <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+          </svg>
+        </button>
+        <button id="sitemap-toggle" aria-label="Open site map" title="Site map" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </span>
+    </div>
+    <div class="legend">
+      <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
+      <span class="crux"><i></i><span class="legend-label"><b>Crux</b><span class="legend-desc">: untranslated here</span></span></span>
+      <span class="variant"><i></i><span class="legend-label"><b>Variant</b><span class="legend-desc">: editions disagree</span></span></span>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <p class="ref">
+      <span class="apparatus">
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Book" onchange="if(this.value){location.href=this.value;}">
+            <option value="" selected>Matthew</option>
+            <option value="../../Mark/1/index.html" disabled>Mark</option>
+            <option value="../../Luke/1/index.html" disabled>Luke</option>
+            <option value="../../John/1/index.html" disabled>John</option>
+            <option value="../../Acts/1/index.html" disabled>Acts</option>
+            <option value="../../Romans/1/index.html" disabled>Romans</option>
+            <option value="../../1 Corinthians/1/index.html" disabled>1 Corinthians</option>
+            <option value="../../2 Corinthians/1/index.html" disabled>2 Corinthians</option>
+            <option value="../../Galatians/1/index.html" disabled>Galatians</option>
+            <option value="../../Ephesians/1/index.html" disabled>Ephesians</option>
+            <option value="../../Philippians/1/index.html" disabled>Philippians</option>
+            <option value="../../Colossians/1/index.html" disabled>Colossians</option>
+            <option value="../../1 Thessalonians/1/index.html" disabled>1 Thessalonians</option>
+            <option value="../../2 Thessalonians/1/index.html" disabled>2 Thessalonians</option>
+            <option value="../../1 Timothy/1/index.html" disabled>1 Timothy</option>
+            <option value="../../2 Timothy/1/index.html" disabled>2 Timothy</option>
+            <option value="../../Titus/1/index.html" disabled>Titus</option>
+            <option value="../../Philemon/1/index.html" disabled>Philemon</option>
+            <option value="../../Hebrews/1/index.html" disabled>Hebrews</option>
+            <option value="../../James/1/index.html" disabled>James</option>
+            <option value="../../1 Peter/1/index.html" disabled>1 Peter</option>
+            <option value="../../2 Peter/1/index.html" disabled>2 Peter</option>
+            <option value="../../1 John/1/index.html" disabled>1 John</option>
+            <option value="../../2 John/1/index.html" disabled>2 John</option>
+            <option value="../../3 John/1/index.html" disabled>3 John</option>
+            <option value="../../Jude/1/index.html" disabled>Jude</option>
+            <option value="../../Revelation/1/index.html" disabled>Revelation</option>
+          </select>
+        </span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
+            <option value="../1/index.html">1</option>
+            <option value="../2/index.html">2</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="" selected>6</option>
+            <option value="../7/index.html" disabled>7</option>
+            <option value="../8/index.html" disabled>8</option>
+            <option value="../9/index.html" disabled>9</option>
+            <option value="../10/index.html" disabled>10</option>
+            <option value="../11/index.html" disabled>11</option>
+            <option value="../12/index.html" disabled>12</option>
+            <option value="../13/index.html" disabled>13</option>
+            <option value="../14/index.html" disabled>14</option>
+            <option value="../15/index.html" disabled>15</option>
+            <option value="../16/index.html" disabled>16</option>
+            <option value="../17/index.html" disabled>17</option>
+            <option value="../18/index.html" disabled>18</option>
+            <option value="../19/index.html" disabled>19</option>
+            <option value="../20/index.html" disabled>20</option>
+            <option value="../21/index.html" disabled>21</option>
+            <option value="../22/index.html" disabled>22</option>
+            <option value="../23/index.html" disabled>23</option>
+            <option value="../24/index.html" disabled>24</option>
+            <option value="../25/index.html" disabled>25</option>
+            <option value="../26/index.html" disabled>26</option>
+            <option value="../27/index.html" disabled>27</option>
+            <option value="../28/index.html" disabled>28</option>
+          </select>
+        </span>
+        <span class="apparatus-colon">:</span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Verse" onchange="if(this.value){location.href=this.value;}">
+            <option value="index.html">1–34</option>
+            <option value="1.html" disabled>1</option>
+            <option value="2.html" disabled>2</option>
+            <option value="3.html" disabled>3</option>
+            <option value="4.html" disabled>4</option>
+            <option value="5.html" disabled>5</option>
+            <option value="6.html" disabled>6</option>
+            <option value="7.html" disabled>7</option>
+            <option value="8.html" disabled>8</option>
+            <option value="9.html" disabled>9</option>
+            <option value="10.html" disabled>10</option>
+            <option value="11.html" disabled>11</option>
+            <option value="12.html" disabled>12</option>
+            <option value="" selected>13</option>
+            <option value="14.html" disabled>14</option>
+            <option value="15.html" disabled>15</option>
+            <option value="16.html" disabled>16</option>
+            <option value="17.html" disabled>17</option>
+            <option value="18.html" disabled>18</option>
+            <option value="19.html" disabled>19</option>
+            <option value="20.html" disabled>20</option>
+            <option value="21.html" disabled>21</option>
+            <option value="22.html" disabled>22</option>
+            <option value="23.html" disabled>23</option>
+            <option value="24.html" disabled>24</option>
+            <option value="25.html" disabled>25</option>
+            <option value="26.html" disabled>26</option>
+            <option value="27.html" disabled>27</option>
+            <option value="28.html" disabled>28</option>
+            <option value="29.html" disabled>29</option>
+            <option value="30.html" disabled>30</option>
+            <option value="31.html" disabled>31</option>
+            <option value="32.html" disabled>32</option>
+            <option value="33.html" disabled>33</option>
+            <option value="34.html" disabled>34</option>
+          </select>
+        </span>
+      </span>
+    </p>
+    <p class="greek-line">καὶ μὴ εἰσενέγκῃς ἡμᾶς εἰς <a class="greek-word crux" href="#note-None" data-greek="πειρασμόν" data-translit="peirasmon" data-gloss="peirasmos" data-senses="temptation, trial, testing">πειρασμόν</a> ἀλλὰ ῥῦσαι ἡμᾶς ἀπὸ τοῦ <a class="greek-word always" href="#note-1" data-greek="πονηροῦ" data-translit="ponērou" data-gloss="baleful" data-senses="evil, wicked, wicked one">πονηροῦ</a> <span class="doubtful" data-note="#note-4">⟦ὅτι σοῦ ἐστιν ἡ <a class="greek-word always" href="#note-2" data-greek="βασιλεία" data-translit="basileia" data-gloss="basileia" data-senses="kingdom, kingship">βασιλεία</a> καὶ ἡ δύναμις καὶ ἡ δόξα εἰς τοῦς <a class="greek-word always" href="#note-3" data-greek="αἰῶνας" data-translit="aiōnas" data-gloss="aions" data-senses="age, ever, world">αἰῶνας</a> ἀμήν.⟧</span></p>
+    <p class="translation">And do not bring us into <span class="flagword crux" data-greek="πειρασμόν" data-translit="peirasmon" data-gloss="peirasmos" data-senses="temptation, trial, testing">peirasmos</span>, but rescue us from the <a id="ref-1" class="flagword always" href="#note-1" data-greek="πονηροῦ" data-translit="ponērou" data-gloss="baleful" data-senses="evil, wicked, wicked one">baleful</a><a class="note-ref" href="#note-1">a</a>. <span class="doubtful" id="ref-4" data-note="#note-4">⟦For yours is the <a id="ref-2" class="flagword always" href="#note-2" data-greek="βασιλεία" data-translit="basileia" data-gloss="basileia" data-senses="kingdom, kingship">basileia</a><a class="note-ref" href="#note-2">b</a> and the power and the glory unto the <a id="ref-3" class="flagword always" href="#note-3" data-greek="αἰῶνας" data-translit="aiōnas" data-gloss="aions" data-senses="age, ever, world">aions</a><a class="note-ref" href="#note-3">c</a>. Amen.⟧</span><a class="note-ref" href="#note-4">d</a></p>
+    <div class="doubt-legend">Bracketed and italic — a passage whose presence in the text is disputed.</div>
+  </div>
+
+  <div class="endnotes">
+    <p class="endnotes-label">Notes</p>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-1" href="#ref-1" title="Back to text">ponērou</a>
+        πονηρός runs from a hard day to the Evil One. Abbott-Smith derives it from πονέω, to toil, and files three of its New Testament occurrences under that older sense of toilsome or painful -- the days of Ephesians 5:16, the day of Ephesians 6:13, the sore of Revelation 16:2 -- before the senses of worthless and then actively wicked. The sharper difficulty is grammatical. In the genitive and dative singular the masculine and neuter are spelled alike, so &quot;rescue us from the balesome&quot; at Matthew 6:13 is either a power or a person, and nothing in the form decides it. Of the seventeen versions consulted here, nine print &quot;the evil one&quot; at that verse and seven print &quot;evil&quot;; the Vulgate&#x27;s a malo is as undecidable as the Greek. One version prints both: the RSV of the Ignatius edition has &quot;deliver us from evil&quot; at 6:13 and &quot;comes from the Evil One&quot; at 5:37, for the same construction.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> evil, wicked, wicked one</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — derives the word from πονέω, to toil, and runs it from oppressed by toils and toilsome, painful through bad, worthless to the ethical sense, taking the singular at Matthew 5:37 and 6:13 as Satan and citing Lightfoot for the argument</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical range runs from &quot;in bad case, in sorry plight, useless, good-for-nothing&quot; of an animal or a diet to the moral sense of knavish, and includes a political use of the baser sort against the καλοὶ κἀγαθοί</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — glosses the substantive as &quot;the evil one=the devil (who is not defined as a sinner but as one who is morally destructive)&quot;, and names ancient and modern readers on both sides of the gender at Matthew 5:37 and 6:13</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — takes the word as hurtful, evil in effect or influence, against κακός, &quot;which refers rather to essential character&quot;, and records &quot;masculine (singular) the devil, or (plural) sinners&quot;</li>
+            <li>Nolland (NIGTC) — reads the word abstractly at Matthew 6:13, since &quot;πονηρός (&#x27;evil&#x27;) is that which harms&quot; and &quot;Natural disaster is as much an &#x27;evil&#x27; as is murder&quot;</li>
+            <li>France (NICNT) — &quot;the genitive form is the same in the masculine and neuter&quot;, so either reading stands, and the traditional rendering &quot;would come to the same thing, but with a less personal understanding of the conflict&quot;</li>
+            <li>Davies and Allison (ICC) — follow the Eastern liturgies in reading the masculine, then take that very reading as a mark of lateness, since &quot;&#x27;the evil one&#x27; never equals Satan in Hebrew or Aramaic literature. On the other hand, &#x27;the evil one&#x27; does belong to the vocabulary of the church&quot;</li>
+            <li>Luz (Hermeneia) — argues for the neuter from the Matthean and wider New Testament usage, reporting that &quot;From ancient times it has been debated whether &#x27;evil&#x27; in this final petition is to be understood as masculine or neuter&quot;</li>
+            <li>Betz (Hermeneia) — traces the division to the early church, most Eastern fathers taking the devil and the Western fathers the neuter apart from Tertullian, and holds the language of prayer ambivalent enough that too sharp a distinction between the genders may not be advisable</li>
+            <li>Chase (<i>The Lord&#x27;s Prayer in the Early Church</i>) — a chapter-length case for the personal reading, built on an antithesis between the Father and the devil running through the successive petitions</li>
+            <li>NRSVue, HCSB, NIV, NLT, NET and the <i>Orthodox Study Bible</i> — print the evil one at Matthew 6:13, against evil in the <i>MacArthur Study Bible</i>, the <i>Ignatius Bible</i>, ESV and KJV</li>
+            <li>ESV, NIV, NLT, HCSB, <i>MacArthur Study Bible</i>, <i>Ignatius Bible</i> and <i>The Jewish Annotated New Testament</i> — seven footnotes at Matthew 6:13, each offering the reading its own text declines</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">basileia</a>
+        βασιλεία covers both the act of ruling and the territory ruled. Ninety-nine of its hundred and sixty-two New Testament occurrences take a genitive of God or of the heavens. Most commentators hold that the sense there is the ruling rather than the realm, and they divide over whether English &quot;kingdom&quot;, now a concrete noun, should give way to &quot;kingship&quot;, &quot;reign&quot; or &quot;dominion&quot;.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> kingdom, kingship</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — files the word under the act of ruling, and warns that &quot;kingdom of God&quot; is often understood as a royal realm with the reigning activity diluted out of it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — makes &quot;sovereignty, royal power, dominion&quot; the proper sense and the territory ruled a metonymy from it</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry runs the other way, leading with &quot;kingdom, dominion&quot; and giving the kingly office separately</li>
+            <li>France (NICNT) — &quot;This dynamic sense is now better conveyed by an abstract noun such as &#x27;kingship&#x27; or &#x27;sovereignty&#x27; rather than by &#x27;kingdom,&#x27; which has become in general usage a concrete noun&quot;</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — &quot;&#x27;kingdom&#x27; is a verbal noun whose primary connotation is not territory but ruling power, &#x27;reign&#x27; or &#x27;rule&#x27; often being the best translation&quot;</li>
+            <li>Marcus (Anchor), Stein (BECNT), Turner (BECNT) and Guelich (<i>The Sermon on the Mount</i>) — the ruling rather than the realm, Marcus printing &quot;the dominion of God has come near&quot; in his own translation</li>
+            <li>Nolland (NIGTC), Marshall (NIGTC) and Carter (<i>Matthew and the Margins</i>) — print &quot;royal rule&quot;, &quot;kingly rule&quot; and &quot;empire&quot; in their own translations</li>
+            <li>Sanders (<i>Jesus and Judaism</i>) — keeps &quot;kingdom&quot;, his charge of &quot;evading the obvious by the semantic device of denying that by &#x27;kingdom&#x27; Jesus meant &#x27;kingdom&#x27;&quot; aimed by his own footnote at the readings that make the word a symbol, not at the reign-not-realm rendering</li>
+            <li>Dodd (<i>The Parables of the Kingdom</i>) and Meier (<i>A Marginal Jew</i>) — with Sanders, retaining the word while granting what it suggests to a reader</li>
+            <li>Aalen (&quot;&#x27;Reign&#x27; and &#x27;House&#x27; in the Kingdom of God in the Gospels,&quot; NTS) and Ladd (JBL), cited in Danker — the standing dissent, a house or community of God and a realm, against the ruling sense</li>
+            <li>Dalman (<i>The Words of Jesus</i>), cited in Dodd — the Semitic noun behind it, &quot;as related to God always means &#x27;kingly rule&#x27; and never &#x27;kingdom&#x27;&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">aiōnas</a>
+        αἰών names a stretch of time, an age, this one or the one coming, and by extension what fills it, so that at Hebrews 11:3 the plural is usually rendered &quot;the worlds&quot;. Its adjective αἰώνιος is the word behind &quot;eternal life&quot;, but the two senses are not the same claim. &quot;Belonging to the age to come&quot; locates a thing, while &quot;eternal&quot; measures it. Translators divide, and the division has consequences. At Matthew 25:46 the same adjective governs both punishment and life, so whichever sense is chosen is applied to both at once.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> age, ever, world</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — the classical noun is &quot;a space of time, as, a lifetime, generation, period of history, an indefinitely long period&quot;, and the entry sets it against κόσμος as the world seen under the aspect of time</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the noun runs from a lifetime through an age or generation to a long space of time, and the adjective is lasting for an age, marked off from ἀΐδιος and used of an office held for life</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — separates three senses of the adjective, a long period of time gone by, a period without beginning or end, and a period without end, and reports of the noun that &quot;In Johannine usage the term is used formulaically without emphasis on eternity&quot;</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;properly, an age; by extension, perpetuity (also past); by implication, the world&quot;, and lists age, course, eternal, for ever and world among the English renderings the word received</li>
+            <li>France (NICNT) — holds that reading &quot;eternal punishment&quot; at Matthew 25:46 as unending &quot;depends more on modern English usage than on the meaning of aiōnios&quot;, and ties the adjective instead to the age to come</li>
+            <li>Marshall (ICC) — at Titus 1:2 the phrase before aionic times can mean in eternity past or only a very long time ago, and he weighs a reading on which the ages begin at creation</li>
+            <li>Attridge (Hermeneia) — reads the plural at Hebrews 1:2 and 11:3 as spatial, the spheres that make up the universe, rather than as the apocalyptic scheme of this age and the age to come</li>
+            <li>Hart — renders Matthew 25:46 &quot;the chastening of that Age, but the just to the life of that Age&quot;, and holds that taking the adjective as eternal wherever it can bear that sense &quot;serves to veil an ambiguity of the text&quot;</li>
+            <li>NRSVue — prints the one root as age at Matthew 13:22, worlds at Hebrews 11:3, eternal at Matthew 25:46 and for the long term at Philemon 15</li>
+            <li>KJV — prints world for the noun at Matthew 12:32, Matthew 13:22, Hebrews 11:3 and Titus 1:2, and for ever at Philemon 15</li>
+            <li>Vulgate — splits the root, taking <i>saeculum</i> for the noun and <i>aeternus</i> for the adjective, so Titus 1:2 carries both within one verse</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
+      <div class="endnote-body">
+        <a class="endnote-word doubtful" id="note-4" href="#ref-4" title="Back to text">the doxology of the Lord&#x27;s Prayer</a>
+        The words are absent from the earliest Greek manuscripts and from every modern critical
+edition, and stand in the Byzantine tradition the King James Version followed. Three things
+tell against them. The ascription is attested in several wordings, the shortest of them the
+oldest. Three early writers produced whole treatises on this prayer and none of them mentions
+it. Its language is drawn from 1 Chronicles 29:11-13. Against that, Jewish prayer was not
+expected to close without a doxology, so a spoken ending may long predate any written one.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — the Committee takes the ascription as composed for liturgical use on the model of 1 Chronicles 29:11-13, and rests the case for lateness on its absence from Tertullian, Origen and Cyprian, each of whom wrote at length on this prayer</li>
+            <li>Davies and Allison (<i>A Critical and Exegetical Commentary on the Gospel According to Saint Matthew</i>) — judge from the weight of the textual evidence that &quot;&#x27;deliver us from the evil one&#x27; was the original conclusion of the Lord&#x27;s Prayer in Matthew&quot;, confirmed by Luke&#x27;s text carrying no doxology either</li>
+            <li>Jeremias (<i>New Testament Theology</i>) — holds that &quot;it is quite inconceivable that a prayer ended with the words τοῦ πονηροῦ&quot;, explains the close as a <i>ḥătîmâ</i> formulated freely by the one praying, and reports that the earliest attested form is two-membered and &quot;very soon it becomes three-membered&quot;</li>
+            <li>Betz (<i>The Sermon on the Mount</i>) — objects that the words lack the grammar of a doxology, opening with ὅτι and a genitive where the form takes a dative, and proposes they began as the congregation&#x27;s own acclamation to a prayer said by a liturgist</li>
+            <li>France (<i>The Gospel of Matthew</i>) — reads the ascription as a liturgical addition already current in the latter part of the first century, and finds its declaration that the kingdom belongs to God in tension with the petition for the kingdom to come</li>
+            <li>Nolland (<i>The Gospel of Matthew</i>) — reports the argument that some doxology was supplied in use from the earliest practice, during the period when the written text carried none</li>
+            <li><i>Didache</i> — closes the prayer with power and glory and without the kingdom, the shortest of the attested wordings</li>
+            <li>Hart, <i>HCSB Study Bible</i> and the <i>MacArthur Study Bible</i> — print the ascription inside brackets in their own running text, against the NRSVue, the <i>Ignatius Bible</i>, <i>The Jewish Annotated New Testament</i>, NIV, NLT and NET, which leave it out, and the <i>Orthodox Study Bible</i> and KJV, which print it as running text with no mark</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+  </div>
+
+  <dialog class="sitemap" id="sitemap" aria-label="Site map">
+    <div class="sitemap-head">
+      <span class="sitemap-title">Site map</span>
+      <button class="sitemap-close masthead-tools" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.1rem;height:1.1rem;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sitemap-body">
+      <h3>Books</h3>
+      <ul class="booklist">
+        <li><a href="../../Matthew/1/index.html">Matthew</a></li>
+        <li><span title="Not yet drafted">Mark</span></li>
+        <li><span title="Not yet drafted">Luke</span></li>
+        <li><span title="Not yet drafted">John</span></li>
+        <li><span title="Not yet drafted">Acts</span></li>
+        <li><span title="Not yet drafted">Romans</span></li>
+        <li><span title="Not yet drafted">1 Corinthians</span></li>
+        <li><span title="Not yet drafted">2 Corinthians</span></li>
+        <li><span title="Not yet drafted">Galatians</span></li>
+        <li><span title="Not yet drafted">Ephesians</span></li>
+        <li><span title="Not yet drafted">Philippians</span></li>
+        <li><span title="Not yet drafted">Colossians</span></li>
+        <li><span title="Not yet drafted">1 Thessalonians</span></li>
+        <li><span title="Not yet drafted">2 Thessalonians</span></li>
+        <li><span title="Not yet drafted">1 Timothy</span></li>
+        <li><span title="Not yet drafted">2 Timothy</span></li>
+        <li><span title="Not yet drafted">Titus</span></li>
+        <li><span title="Not yet drafted">Philemon</span></li>
+        <li><span title="Not yet drafted">Hebrews</span></li>
+        <li><span title="Not yet drafted">James</span></li>
+        <li><span title="Not yet drafted">1 Peter</span></li>
+        <li><span title="Not yet drafted">2 Peter</span></li>
+        <li><span title="Not yet drafted">1 John</span></li>
+        <li><span title="Not yet drafted">2 John</span></li>
+        <li><span title="Not yet drafted">3 John</span></li>
+        <li><span title="Not yet drafted">Jude</span></li>
+        <li><span title="Not yet drafted">Revelation</span></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <div class="toggle-dock-wrap">
+    <div class="nav-dock">
+      <a class="nav-btn" data-nav="prev" href="../5/48.html" aria-label="Previous verse" title="Previous verse (←)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <a class="nav-btn" href="index.html" aria-label="Up to chapter" title="Up to chapter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+      </a>
+      <span class="nav-btn disabled" aria-hidden="true">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </span>
+    </div>
+    <div class="toggle-dock">
+      <span role="group" aria-label="Display mode for untranslated words" style="display:flex;">
+        <button data-mode="greek">Greek</button>
+        <button data-mode="translit">Translit</button>
+        <button data-mode="gloss" class="active">Gloss</button>
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../static/cnt.js"></script>
+<script src="../../static/reading.js"></script>

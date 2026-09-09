@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Ἰδοὺ ἡ <a class="greek-word crux" href="#note-1" data-greek="παρθένος" data-translit="parthenos" data-gloss="parthenos" data-senses="virgin, virginity">παρθένος</a> ἐν γαστρὶ ἕξει καὶ τέξεται υἱόν, καὶ <a class="greek-word crux" href="#note-2" data-greek="καλέσουσιν" data-translit="kalesousin" data-gloss="kalesance" data-senses="called, call, invited">καλέσουσιν</a> τὸ ὄνομα αὐτοῦ <a class="greek-word crux" href="#note-3" data-greek="Ἐμμανουήλ" data-translit="Emmanouēl" data-gloss="Emmanouēl" data-senses="emmanuel">Ἐμμανουήλ</a> ὅ ἐστιν μεθερμηνευόμενον Μεθ’ ἡμῶν ὁ <a class="greek-word crux" href="#note-4" data-greek="θεός" data-translit="theos" data-gloss="theos" data-senses="god">θεός</a></p>
-    <p class="translation">Behold, the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="παρθένος" data-translit="parthenos" data-gloss="parthenos" data-senses="virgin, virginity">parthenos</a><a class="note-ref" href="#note-1">a</a> will be pregnant and will bear a son, and they will <a id="ref-2" class="flagword crux" href="#note-2" data-greek="καλέσουσιν" data-translit="kalesousin" data-gloss="kalesance" data-senses="called, call, invited">kalesance</a><a class="note-ref" href="#note-2">b</a> his name <a id="ref-3" class="flagword crux" href="#note-3" data-greek="Ἐμμανουήλ" data-translit="Emmanouēl" data-gloss="Emmanouēl" data-senses="emmanuel">Emmanouēl</a><a class="note-ref" href="#note-3">c</a>, which is translated, &quot;with us the <a id="ref-4" class="flagword crux" href="#note-4" data-greek="θεός" data-translit="theos" data-gloss="theos" data-senses="god">theos</a><a class="note-ref" href="#note-4">d</a>.&quot;</p>
+    <p class="greek-line">Ἰδοὺ ἡ <a class="greek-word crux" href="#note-1" data-greek="παρθένος" data-translit="parthenos" data-gloss="parthenos" data-senses="virgin, virginity">παρθένος</a> ἐν γαστρὶ ἕξει καὶ τέξεται υἱόν, καὶ <a class="greek-word crux" href="#note-2" data-greek="καλέσουσιν" data-translit="kalesousin" data-gloss="kalesie" data-senses="called, call, invited">καλέσουσιν</a> τὸ ὄνομα αὐτοῦ <a class="greek-word crux" href="#note-3" data-greek="Ἐμμανουήλ" data-translit="Emmanouēl" data-gloss="Emmanouel" data-senses="emmanuel">Ἐμμανουήλ</a> ὅ ἐστιν μεθερμηνευόμενον Μεθ’ ἡμῶν ὁ <a class="greek-word always" href="#note-4" data-greek="θεός" data-translit="theos" data-gloss="theos" data-senses="god">θεός</a></p>
+    <p class="translation">Behold, the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="παρθένος" data-translit="parthenos" data-gloss="parthenos" data-senses="virgin, virginity">parthenos</a><a class="note-ref" href="#note-1">a</a> will have in womb and will bear a son, and they will <a id="ref-2" class="flagword crux" href="#note-2" data-greek="καλέσουσιν" data-translit="kalesousin" data-gloss="kalesie" data-senses="called, call, invited">kalesie</a><a class="note-ref" href="#note-2">b</a> his name <a id="ref-3" class="flagword crux" href="#note-3" data-greek="Ἐμμανουήλ" data-translit="Emmanouēl" data-gloss="Emmanouel" data-senses="emmanuel">Emmanouel</a><a class="note-ref" href="#note-3">c</a>, which is, being translated, &quot;With us the <a id="ref-4" class="flagword always" href="#note-4" data-greek="θεός" data-translit="theos" data-gloss="theos" data-senses="god">theos</a><a class="note-ref" href="#note-4">d</a>.&quot;</p>
   </div>
 
   <div class="endnotes">
@@ -206,6 +212,7 @@ render.py's query logic) and regenerate instead.
             <li>Davies and Allison (ICC) — confirms <i>neanis</i>, not <i>parthenos</i>, as the Septuagint&#x27;s ordinary rendering of <i>almah</i></li>
             <li>Brown (<i>The Birth of the Messiah</i>) — reads the Septuagint&#x27;s choice as deliberate but not necessarily a signal of virginity preserved through birth</li>
             <li>Nolland (NIGTC) — locates the &quot;virgin&quot; reading in an unintended combination of two separate, otherwise ordinary translation choices</li>
+            <li>Luz (Hermeneia) — confirms neanis as the Septuagint&#x27;s usual rendering of almah, and rejects a proposal that the choice of parthenos here reflects a pagan Egyptian virgin-birth motif</li>
           </ul>
         </details>
       </div>
@@ -238,9 +245,11 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;of Hebrew origin [H6005]; God with us; Emmanuel, a symbolic name of Christ&quot;</li>
-            <li>Septuagint, Isaiah 7:14 — transliterates the same Hebrew name as Ἐμμανουήλ rather than translating it</li>
-            <li>Brown (<i>The Birth of the Messiah</i>) — notes the Septuagint translates the identical Hebrew phrase as an ordinary clause, not a transliterated name, two verses later at Isaiah 8:8</li>
+            <li>Nolland (NIGTC) — a five-point case against reading a strong identification of Jesus with God here</li>
+            <li>France (NICNT) — a hedged middle position, citing Nolland&#x27;s own article on the absence of Son-of-God christology in this pericope</li>
+            <li>Turner (BECNT) — reads the name as programmatic for the Gospel, closing with the promise at 28:20</li>
+            <li>Davies and Allison (ICC) — treat the name as a title of function rather than of nature</li>
+            <li>Isaiah 7:14 (Septuagint) — the source of the name, where it is given to a child in Ahaz&#x27;s own reign</li>
           </ul>
         </details>
       </div>
@@ -249,8 +258,8 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-4" href="#ref-4" title="Back to text">theos</a>
-        Commentators divide sharply over how much theological weight the closing clause carries. Some read a direct claim that Jesus is God. Others read a narrower statement of divine presence and favor, left to develop across the rest of the Gospel. The Greek word order, &quot;with us God&quot; rather than &quot;God with us,&quot; figures in the disagreement: several commentators who resist the stronger reading argue the phrase functions adverbially, &quot;with us is God,&quot; rather than as a predication identifying Jesus as God outright.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word always" id="note-4" href="#ref-4" title="Back to text">theos</a>
+        Commentators divide sharply over how much theological weight the closing clause carries. Some read a direct claim that Jesus is God. Others read a narrower statement of divine presence and favor, left to develop across the rest of the Gospel. The Greek word order, &quot;with us God&quot; rather than &quot;God with us,&quot; figures in the disagreement: several commentators who resist the stronger reading argue the phrase functions adverbially, &quot;with us is God,&quot; rather than as a predication identifying Jesus as God outright. θεός ranges from a generic term for deity, one among many, to the proper-name-like designation of the God of Israel, usually marked by the article. An anarthrous predicate use is often read as qualitative, describing nature rather than identity, a distinction with no exact English equivalent. The word also applies, as in phrases like &quot;son of God,&quot; to referents other than one unique divine being.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> god</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -260,6 +269,7 @@ render.py's query logic) and regenerate instead.
             <li>Davies and Allison (ICC) — reads the phrase adverbially, &quot;with us is God,&quot; denying a full incarnational intent while affirming a unique divine presence</li>
             <li>Carson (EBC) — argues for the strong reading from Isaiah&#x27;s own theology, linking the name to Isaiah 9:6&#x27;s &quot;Mighty God&quot;</li>
             <li>Kupp (<i>Matthew&#x27;s Emmanuel</i>) — reframes the question as functional rather than ontological, calling Jesus the agent of God&#x27;s presence rather than adjudicating a &quot;Son of God&quot; claim directly</li>
+            <li>Luz (Hermeneia) — denies Matthew identifies Jesus with God while affirming &quot;an extremely high christological perspective,&quot; Jesus as the form God&#x27;s presence takes</li>
           </ul>
         </details>
       </div>

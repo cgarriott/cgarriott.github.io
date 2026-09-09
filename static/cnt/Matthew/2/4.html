@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">καὶ <a class="greek-word crux" href="#note-1" data-greek="συναγαγὼν" data-translit="sunagagōn" data-gloss="synagance" data-senses="gathered together, gathered, assembled">συναγαγὼν</a> πάντας τοὺς ἀρχιερεῖς καὶ γραμματεῖς τοῦ λαοῦ ἐπυνθάνετο παρ’ αὐτῶν ποῦ ὁ <a class="greek-word crux" href="#note-2" data-greek="χριστὸς" data-translit="christos" data-gloss="Anointed" data-senses="christ, jesus">χριστὸς</a> <a class="greek-word crux" href="#note-3" data-greek="γεννᾶται" data-translit="gennatai" data-gloss="gennied" data-senses="begat, born, brought forth">γεννᾶται</a></p>
-    <p class="translation">And, <a id="ref-1" class="flagword crux" href="#note-1" data-greek="συναγαγὼν" data-translit="sunagagōn" data-gloss="synagance" data-senses="gathered together, gathered, assembled">synagance</a><a class="note-ref" href="#note-1">a</a> all the chief priests and scribes of the people, he inquired from them where the <a id="ref-2" class="flagword crux" href="#note-2" data-greek="χριστὸς" data-translit="christos" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-2">b</a> is <a id="ref-3" class="flagword crux" href="#note-3" data-greek="γεννᾶται" data-translit="gennatai" data-gloss="gennied" data-senses="begat, born, brought forth">gennied</a><a class="note-ref" href="#note-3">c</a>.</p>
+    <p class="greek-line">καὶ <a class="greek-word crux" href="#note-1" data-greek="συναγαγὼν" data-translit="sunagagōn" data-gloss="synagied" data-senses="gathered together, gathered, assembled">συναγαγὼν</a> πάντας τοὺς ἀρχιερεῖς καὶ γραμματεῖς τοῦ λαοῦ ἐπυνθάνετο παρ’ αὐτῶν ποῦ ὁ <a class="greek-word always" href="#note-2" data-greek="χριστὸς" data-translit="christos" data-gloss="Anointed" data-senses="christ">χριστὸς</a> <a class="greek-word crux" href="#note-3" data-greek="γεννᾶται" data-translit="gennatai" data-gloss="gennied" data-senses="begat, born, brought forth">γεννᾶται</a></p>
+    <p class="translation">And having <a id="ref-1" class="flagword crux" href="#note-1" data-greek="συναγαγὼν" data-translit="sunagagōn" data-gloss="synagied" data-senses="gathered together, gathered, assembled">synagied</a><a class="note-ref" href="#note-1">a</a> all the chief priests and scribes of the people, he was inquiring from them where the <a id="ref-2" class="flagword always" href="#note-2" data-greek="χριστὸς" data-translit="christos" data-gloss="Anointed" data-senses="christ">Anointed</a><a class="note-ref" href="#note-2">b</a> is <a id="ref-3" class="flagword crux" href="#note-3" data-greek="γεννᾶται" data-translit="gennatai" data-gloss="gennied" data-senses="begat, born, brought forth">gennied</a><a class="note-ref" href="#note-3">c</a>.</p>
   </div>
 
   <div class="endnotes">
@@ -194,15 +200,16 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">sunagagōn</a>
-        This verb recurs at several points in the Passion narrative for the same leadership assembling against Jesus (26:3, 57; 27:1, 17, 27, 62), and shares a root with the Septuagint&#x27;s wording at Psalm 2:2 for rulers assembling against the Lord&#x27;s anointed. Here the verb is active, with Herod as the one gathering others. In the Passion-narrative recurrences and in the Psalm, the verb is passive, with no gathering agent named. Some readers also hear an echo of &quot;synagogue,&quot; the cognate noun for the leadership&#x27;s own institution; others judge that echo an over-reading of an otherwise ordinary word for gathering.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        This verb recurs at several points in the Passion narrative for the same leadership assembling against Jesus (26:3, 57; 27:62), and shares a root with the Septuagint&#x27;s wording at Psalm 2:2 for rulers assembling against the Lord&#x27;s anointed. Here the verb is active, with Herod as the one gathering others. In the Passion-narrative recurrences and in the Psalm, the verb is passive, with no gathering agent named. Some readers also hear an echo of &quot;synagogue,&quot; the cognate noun for the leadership&#x27;s own institution. Others judge that echo an over-reading of an otherwise ordinary word for gathering.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> gathered together, gathered, assembled</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Mitch and Sri (CCSS) — reads the verb as echoing Psalm 2:2&#x27;s rulers &quot;assembl[ing] against the Lord and his anointed&quot;</li>
+            <li>Mitch and Sri (CCSS) — reads the verb as recalling Psalm 2, where &quot;the rulers of this world will assemble against the Lord&#x27;s anointed king&quot;</li>
             <li>Brown (<i>The Birth of the Messiah</i>) — independently confirms the same Psalm 2:2 echo, noting the verb&#x27;s frequent Passion-narrative use for assembling against Jesus</li>
             <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — reads the verb as also punning on &quot;synagogue,&quot; the institution dominated by the chief priests and scribes</li>
             <li>Hagner (WBC) — rejects the synagogue wordplay as reading too much into an otherwise neutral word</li>
+            <li>Luz (Hermeneia) — takes the gathering as the point at which the scribes, recognizing whom they are describing, &quot;become Herod&#x27;s accomplices&quot;</li>
           </ul>
         </details>
       </div>
@@ -211,14 +218,18 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">christos</a>
-        Herod&#x27;s question uses this word where the magi&#x27;s earlier question used &quot;king of the Jews.&quot; Within Matthew, &quot;king of the Jews&quot; occurs only in the mouths of non-Jewish speakers, both here in the birth narrative and later at the trial and crucifixion. &quot;The Christ&quot; is the term a Jewish-context speaker reaches for instead. This is also the first point in the Gospel where the bare title is spoken by a character rather than by the narrator, and the speaker is a king hostile to the child he is asking about.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
+        <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">christos</a>
+        Herod&#x27;s question uses this word where the magi&#x27;s earlier question used &quot;king of the Jews.&quot; Within Matthew, &quot;king of the Jews&quot; occurs only in the mouths of non-Jewish speakers, both here in the birth narrative and later at the trial and crucifixion. &quot;The Christ&quot; is the term a Jewish-context speaker reaches for instead. This is also the first point in the Gospel where the bare title is spoken by a character rather than by the narrator, and the speaker is a king hostile to the child he is asking about. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> christ</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>France (NICNT) — &quot;the Gentile way of saying what a Jew would mean by &#x27;Messiah&#x27; (the term which Herod, who could hardly refer to someone else as &#x27;king of the Jews,&#x27; substitutes in v. 4)&quot;</li>
             <li>Davies and Allison (ICC) — corroborates the same Gentile-only use of &quot;king of the Jews&quot; elsewhere in the Gospel with first-century non-Christian attestations of the title in Josephus</li>
+            <li>Luz (Hermeneia) — treats &quot;king of the Jews&quot; as the evangelist&#x27;s marker for a Gentile speaker, who underscores that the magi are Gentiles by &quot;having them ask in v. 2 about the birthplace not of the king of Israel but of the &#x27;king of the Jews&#x27;&quot;</li>
+            <li>Turner (BECNT) — reads the question as equating &quot;king of the Jews&quot; with &quot;the Messiah,&quot; a linkage Matthew repeats through the Passion narrative (26:63, 68; 27:11, 17, 22, 29, 37)</li>
+            <li>Albright and Mann (Anchor), cited in Davies and Allison (ICC) — a separate claim about the title&#x27;s currency rather than about Matthew&#x27;s own usage, defending &quot;king of the Jews&quot; as genuine first-century Jewish speech on the Hasmonean king Aristobulus I&#x27;s use of it</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — cites this verse as its example of the titular sense, distinct from the later use of the word as a personal name</li>
           </ul>
         </details>
       </div>
@@ -228,7 +239,7 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">gennatai</a>
-        Herod&#x27;s question retains the present tense for a birth already narrated two verses earlier in the aorist. Grammars distinguish a futuristic present, used for a certain future event, from a gnomic present, stating a general timeless truth, though neither category is a precise fit for a verb of this kind with a definite subject. Several commentators nonetheless read the retained present as marking a settled fact of prophecy rather than a request for news of a recent event.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        Herod&#x27;s question retains the present tense for a birth already narrated three verses earlier in the aorist. Grammars distinguish a futuristic present, used for a certain future event, from a gnomic present, stating a general timeless truth, though neither category is a precise fit for a verb of this kind with a definite subject. Several commentators nonetheless read the retained present as marking a settled fact of prophecy rather than a request for news of a recent event.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> begat, born, brought forth</div>
         <details class="sources">
           <summary>Sources</summary>

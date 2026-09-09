@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">καὶ πέμψας αὐτοὺς εἰς Βηθλέεμ εἶπεν· Πορευθέντες <a class="greek-word crux" href="#note-1" data-greek="ἐξετάσατε" data-translit="exetasate" data-gloss="exetasance" data-senses="ask, inquire, search">ἐξετάσατε</a> ἀκριβῶς περὶ τοῦ παιδίου· ἐπὰν δὲ εὕρητε, ἀπαγγείλατέ μοι, ὅπως κἀγὼ ἐλθὼν <a class="greek-word crux" href="#note-2" data-greek="προσκυνήσω" data-translit="proskunēsō" data-gloss="proskynie" data-senses="worship, homage, kneeling down">προσκυνήσω</a> αὐτῷ.</p>
-    <p class="translation">And having sent them to Bethlehem, he said, &quot;Go, <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐξετάσατε" data-translit="exetasate" data-gloss="exetasance" data-senses="ask, inquire, search">exetasance</a><a class="note-ref" href="#note-1">a</a> exactly concerning the child; and when you find him, report to me, so that I too, having come, may <a id="ref-2" class="flagword crux" href="#note-2" data-greek="προσκυνήσω" data-translit="proskunēsō" data-gloss="proskynie" data-senses="worship, homage, kneeling down">proskynie</a><a class="note-ref" href="#note-2">b</a> him.&quot;</p>
+    <p class="greek-line">καὶ πέμψας αὐτοὺς εἰς Βηθλέεμ εἶπεν· Πορευθέντες ἐξετάσατε ἀκριβῶς περὶ τοῦ παιδίου· ἐπὰν δὲ εὕρητε, ἀπαγγείλατέ μοι, ὅπως κἀγὼ ἐλθὼν <a class="greek-word always" href="#note-1" data-greek="προσκυνήσω" data-translit="proskunēsō" data-gloss="proskynie" data-senses="worship, homage, kneeling down">προσκυνήσω</a> αὐτῷ.</p>
+    <p class="translation">And having sent them into Bethlehem he said, &quot;Having gone, search out exactly concerning the child; and when you find, report to me, so that I too, having come, may <a id="ref-1" class="flagword always" href="#note-1" data-greek="προσκυνήσω" data-translit="proskunēsō" data-gloss="proskynie" data-senses="worship, homage, kneeling down">proskynie</a><a class="note-ref" href="#note-1">a</a> to him.&quot;</p>
   </div>
 
   <div class="endnotes">
@@ -193,25 +199,8 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">exetasate</a>
-        ἐξετάζω carries a register of close examination or interrogation, stronger than ordinary &quot;seek.&quot; The verb occurs only three times in the New Testament: here, at Matthew 10:11 for a search for a worthy host, and at John 21:12 for an interrogation the risen Christ&#x27;s own disciples decline to make. The search Herod orders here and the search at 10:11 use the identical Greek word, one ending in betrayal and the other in welcome.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> ask, inquire, search</div>
-        <details class="sources">
-          <summary>Sources</summary>
-          <ul>
-            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — groups the verb with anakrinō (&quot;interrogate&quot;) and eraunaō (&quot;search out&quot;) rather than the ordinary zēteō (&quot;seek&quot;)</li>
-            <li>Nolland (NIGTC) — connects its use here to its later use at 10:11 for the disciples&#x27; own search for a worthy host</li>
-            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — cites classical usage for reviewing troops, cross-examining witnesses, and assaying gold</li>
-          </ul>
-        </details>
-      </div>
-    </div>
-    
-    <div class="endnote">
-      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
-      <div class="endnote-body">
-        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">proskunēsō</a>
-        προσκυνήσω is aorist subjunctive, the ordinary mood for a purpose clause, and carries no grammatical marker of insincerity on its own. The narrative later states that Herod sought the child&#x27;s destruction, not worship (2:13), and shows him reacting with rage once the magi fail to return (2:16). Of the thirteen occurrences of this verb in Matthew, this is the only one the narrative goes on to contradict.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word always" id="note-1" href="#ref-1" title="Back to text">proskunēsō</a>
+        προσκυνήσω is aorist subjunctive, the ordinary mood for a purpose clause, and carries no grammatical marker of insincerity on its own. The narrative later states that Herod sought the child&#x27;s destruction, not worship (2:13), and shows him reacting with rage once the magi fail to return (2:16). Of the thirteen occurrences of this verb in Matthew, this is the only one the narrative goes on to contradict. προσκυνέω denotes full prostration before a superior, a gesture Greek usage associated with subjects bowing before Persian kings. The same verb covers ordinary court homage to a human ruler and the cultic worship of a god. Koine grammar supplies no separate construction that reliably marks which sense is meant. Context alone decides between the two.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> worship, homage, kneeling down</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -220,6 +209,7 @@ render.py's query logic) and regenerate instead.
             <li>France (NICNT) — calls the statement Herod&#x27;s &quot;unconvincing declaration of intent&quot;</li>
             <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — reads this verse&#x27;s request as Herod&#x27;s original, narrower plan, later abandoned for the massacre once the magi&#x27;s warning intervenes at 2:12</li>
             <li>Benson and Gill, eighteenth- and nineteenth-century commentators — name the statement outright as hypocrisy, professing a wish to worship while intending to kill</li>
+            <li>Luz (Hermeneia) — &quot;the readers are to see Herod as a hypocrite,&quot; the verse laying the ground for verse 12</li>
           </ul>
         </details>
       </div>

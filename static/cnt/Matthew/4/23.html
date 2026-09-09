@@ -1,0 +1,429 @@
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+Single-verse page template. This is THE format for one verse -- see
+../PLAN.md's "Page architecture" section: the verse is the atomic unit,
+this template is not used for multi-verse (chapter/pericope) pages, which
+get their own template later, assembled from the same per-verse data.
+
+Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
+  verse_ref        -- display string, e.g. "Matthew 1:1"
+  greek_segments    -- list of {type:"text", text} or
+                        {type:"word", class, greek, translit, gloss, note}
+  translation_segments -- same shape as greek_segments, plus note_letter
+                        (the reader-facing letter label, see note_label() --
+                        ids/hrefs stay numeric via note; only the visible
+                        text uses letters, so they never look like verse
+                        numbers)
+  endnotes          -- list of {number, letter, word, class, text, sources:
+                        [{label, position}]} -- "letter" is the display
+                        label (a, b, ..., z, aa, ab, ...); "number" is
+                        still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
+  nav               -- {prev, next, up}: relative hrefs (same directory)
+                        for the second toggle-dock row below, or None for
+                        prev/next when there's no neighboring drafted verse
+                        to link to (see render.py's build_nav_context)
+  apparatus         -- {books, chapters, verses, verse_range}: the masthead's
+                        Book/Chapter/Verse dropdowns, each a list of {name or
+                        num, current, enabled, href} covering the FULL
+                        canonical NT structure, not just what's drafted.
+                        `verse_range` heads the verse select as "1-25", the
+                        whole chapter -- from here a real destination back out
+                        to the chapter page; from a chapter page it is instead
+                        the current entry (see render.py's build_apparatus)
+
+Do not hand-edit generated output HTML -- edit this template (or
+render.py's query logic) and regenerate instead.
+-->
+<title>CNT — Matthew 4:23</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../static/cnt.css">
+<link rel="stylesheet" href="../../static/reading.css">
+<!-- Runs before first paint, so a reader who chose light does not see a dark
+     flash first. It has to be inline for that reason -- an external file is
+     fetched too late. Everything else lives in static/cnt.js. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('cnt-theme');
+      if (t === 'light' || t === 'dark') { document.documentElement.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
+
+<div class="page">
+
+  <div class="header">
+    <div class="masthead">
+      <span><a class="masthead-home" href="../../index.html"><strong>CNT</strong> — Corey's Non-Translation</a></span>
+      <span class="masthead-tools">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+            <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+          </svg>
+        </button>
+        <button id="sitemap-toggle" aria-label="Open site map" title="Site map" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </span>
+    </div>
+    <div class="legend">
+      <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
+      <span class="crux"><i></i><span class="legend-label"><b>Crux</b><span class="legend-desc">: untranslated here</span></span></span>
+      <span class="variant"><i></i><span class="legend-label"><b>Variant</b><span class="legend-desc">: editions disagree</span></span></span>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <p class="ref">
+      <span class="apparatus">
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Book" onchange="if(this.value){location.href=this.value;}">
+            <option value="" selected>Matthew</option>
+            <option value="../../Mark/1/index.html" disabled>Mark</option>
+            <option value="../../Luke/1/index.html" disabled>Luke</option>
+            <option value="../../John/1/index.html" disabled>John</option>
+            <option value="../../Acts/1/index.html" disabled>Acts</option>
+            <option value="../../Romans/1/index.html" disabled>Romans</option>
+            <option value="../../1 Corinthians/1/index.html" disabled>1 Corinthians</option>
+            <option value="../../2 Corinthians/1/index.html" disabled>2 Corinthians</option>
+            <option value="../../Galatians/1/index.html" disabled>Galatians</option>
+            <option value="../../Ephesians/1/index.html" disabled>Ephesians</option>
+            <option value="../../Philippians/1/index.html" disabled>Philippians</option>
+            <option value="../../Colossians/1/index.html" disabled>Colossians</option>
+            <option value="../../1 Thessalonians/1/index.html" disabled>1 Thessalonians</option>
+            <option value="../../2 Thessalonians/1/index.html" disabled>2 Thessalonians</option>
+            <option value="../../1 Timothy/1/index.html" disabled>1 Timothy</option>
+            <option value="../../2 Timothy/1/index.html" disabled>2 Timothy</option>
+            <option value="../../Titus/1/index.html" disabled>Titus</option>
+            <option value="../../Philemon/1/index.html" disabled>Philemon</option>
+            <option value="../../Hebrews/1/index.html" disabled>Hebrews</option>
+            <option value="../../James/1/index.html" disabled>James</option>
+            <option value="../../1 Peter/1/index.html" disabled>1 Peter</option>
+            <option value="../../2 Peter/1/index.html" disabled>2 Peter</option>
+            <option value="../../1 John/1/index.html" disabled>1 John</option>
+            <option value="../../2 John/1/index.html" disabled>2 John</option>
+            <option value="../../3 John/1/index.html" disabled>3 John</option>
+            <option value="../../Jude/1/index.html" disabled>Jude</option>
+            <option value="../../Revelation/1/index.html" disabled>Revelation</option>
+          </select>
+        </span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
+            <option value="../1/index.html">1</option>
+            <option value="../2/index.html">2</option>
+            <option value="../3/index.html">3</option>
+            <option value="" selected>4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
+            <option value="../7/index.html" disabled>7</option>
+            <option value="../8/index.html" disabled>8</option>
+            <option value="../9/index.html" disabled>9</option>
+            <option value="../10/index.html" disabled>10</option>
+            <option value="../11/index.html" disabled>11</option>
+            <option value="../12/index.html" disabled>12</option>
+            <option value="../13/index.html" disabled>13</option>
+            <option value="../14/index.html" disabled>14</option>
+            <option value="../15/index.html" disabled>15</option>
+            <option value="../16/index.html" disabled>16</option>
+            <option value="../17/index.html" disabled>17</option>
+            <option value="../18/index.html" disabled>18</option>
+            <option value="../19/index.html" disabled>19</option>
+            <option value="../20/index.html" disabled>20</option>
+            <option value="../21/index.html" disabled>21</option>
+            <option value="../22/index.html" disabled>22</option>
+            <option value="../23/index.html" disabled>23</option>
+            <option value="../24/index.html" disabled>24</option>
+            <option value="../25/index.html" disabled>25</option>
+            <option value="../26/index.html" disabled>26</option>
+            <option value="../27/index.html" disabled>27</option>
+            <option value="../28/index.html" disabled>28</option>
+          </select>
+        </span>
+        <span class="apparatus-colon">:</span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Verse" onchange="if(this.value){location.href=this.value;}">
+            <option value="index.html">1–25</option>
+            <option value="1.html">1</option>
+            <option value="2.html">2</option>
+            <option value="3.html">3</option>
+            <option value="4.html">4</option>
+            <option value="5.html">5</option>
+            <option value="6.html">6</option>
+            <option value="7.html">7</option>
+            <option value="8.html">8</option>
+            <option value="9.html">9</option>
+            <option value="10.html">10</option>
+            <option value="11.html">11</option>
+            <option value="12.html">12</option>
+            <option value="13.html">13</option>
+            <option value="14.html">14</option>
+            <option value="15.html">15</option>
+            <option value="16.html">16</option>
+            <option value="17.html">17</option>
+            <option value="18.html">18</option>
+            <option value="19.html">19</option>
+            <option value="20.html">20</option>
+            <option value="21.html">21</option>
+            <option value="22.html">22</option>
+            <option value="" selected>23</option>
+            <option value="24.html">24</option>
+            <option value="25.html">25</option>
+          </select>
+        </span>
+      </span>
+    </p>
+    <p class="greek-line">Καὶ περιῆγεν <a class="greek-word variant" href="#note-1" data-greek="ἐν" data-translit="en" data-gloss="in" data-senses="">ἐν</a> <a class="greek-word variant" href="#note-3" data-greek="ὅλῃ" data-translit="holēi" data-gloss="whole" data-senses="">ὅλῃ</a> <a class="greek-word variant" href="#note-2" data-greek="τῇ" data-translit="tēi" data-gloss="the" data-senses="">τῇ</a> <a class="greek-word variant" href="#note-4" data-greek="Γαλιλαίᾳ" data-translit="Galilaiai" data-gloss="Galilee" data-senses="">Γαλιλαίᾳ</a> διδάσκων ἐν ταῖς συναγωγαῖς <a class="greek-word crux" href="#note-5" data-greek="αὐτῶν" data-translit="autōn" data-gloss="auton" data-senses="same, himself, themselves">αὐτῶν</a> καὶ κηρύσσων τὸ <a class="greek-word always" href="#note-6" data-greek="εὐαγγέλιον" data-translit="euangelion" data-gloss="evangel" data-senses="gospel, glad tidings">εὐαγγέλιον</a> τῆς <a class="greek-word always" href="#note-7" data-greek="βασιλείας" data-translit="basileias" data-gloss="basileia" data-senses="kingdom, kingship">βασιλείας</a> καὶ θεραπεύων πᾶσαν νόσον καὶ πᾶσαν μαλακίαν ἐν τῷ <a class="greek-word crux" href="#note-8" data-greek="λαῷ" data-translit="laōi" data-gloss="laos" data-senses="people">λαῷ</a></p>
+    <p class="translation">And he was going about <a id="ref-1" class="flagword variant" href="#note-1" data-greek="ἐν" data-translit="en" data-gloss="in" data-senses="">in</a><a class="note-ref" href="#note-1">a</a> <a id="ref-2" class="flagword variant" href="#note-2" data-greek="τῇ" data-translit="tēi" data-gloss="the" data-senses="">the</a><a class="note-ref" href="#note-2">b</a> <a id="ref-3" class="flagword variant" href="#note-3" data-greek="ὅλῃ" data-translit="holēi" data-gloss="whole" data-senses="">whole</a><a class="note-ref" href="#note-3">c</a> <a id="ref-4" class="flagword variant" href="#note-4" data-greek="Γαλιλαίᾳ" data-translit="Galilaiai" data-gloss="Galilee" data-senses="">Galilee</a><a class="note-ref" href="#note-4">d</a>, teaching in the synagogues <a id="ref-5" class="flagword crux" href="#note-5" data-greek="αὐτῶν" data-translit="autōn" data-gloss="auton" data-senses="same, himself, themselves">auton</a><a class="note-ref" href="#note-5">e</a> and heralding the <a id="ref-6" class="flagword always" href="#note-6" data-greek="εὐαγγέλιον" data-translit="euangelion" data-gloss="evangel" data-senses="gospel, glad tidings">evangel</a><a class="note-ref" href="#note-6">f</a> of the <a id="ref-7" class="flagword always" href="#note-7" data-greek="βασιλείας" data-translit="basileias" data-gloss="basileia" data-senses="kingdom, kingship">basileia</a><a class="note-ref" href="#note-7">g</a> and healing every disease and every infirmity in the <a id="ref-8" class="flagword crux" href="#note-8" data-greek="λαῷ" data-translit="laōi" data-gloss="laos" data-senses="people">laos</a><a class="note-ref" href="#note-8">h</a>.</p>
+  </div>
+
+  <div class="endnotes">
+    <p class="endnotes-label">Notes</p>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-1" href="#ref-1" title="Back to text">en</a>
+        The critical editions read a preposition before the place name. The Textus Receptus and the Byzantine tradition have none, so the verb&#x27;s own peri- prefix governs the phrase directly. That construction is not classical, and Matthew uses it at 9:35 and 23:15. The Markan parallel has a preposition of direction instead. One English version among the seventeen renders the preposition as &quot;in&quot;. The case of the three words that follow turns on the same variant.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the preposition in NA28, NA27, the Tyndale House edition, SBL, Westcott and Hort and Tregelles, and absent from the Textus Receptus and the Byzantine text</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — names Matthew 4:23 as the place this verb takes the preposition, and the bare accusative at 9:35, 23:15 and Mark 6:6 as &quot;governed by the περι-, not so in cl.&quot;</li>
+            <li>Davies and Allison (ICC) — trace the clause to Mark 1:39, where the same phrase carries a preposition of direction rather than one of place</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — carries no entry at this verse, though it treats 4:10 and 4:17 before moving on to chapter 5</li>
+            <li>Hart — &quot;in the whole of Galilee&quot;, the one English version among the seventeen to render the preposition at all</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-2" href="#ref-2" title="Back to text">tēi</a>
+        Both traditions carry an article here, and they differ only in its case. With ὅλος the article is the construction&#x27;s own marker. The lexicon entry files this verse and the next under the definite use, apart from the anarthrous form used of Jerusalem at Acts 21:31. The same articular construction stands one verse later over the whole of Syria, and carries no variant. Most English versions print no article at all.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Translators Amalgamated Greek New Testament</i> — the article stands in both traditions, dative in NA28, NA27, the Tyndale House edition, SBL, Westcott and Hort and Tregelles, and accusative in the Textus Receptus and the Byzantine text</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — cites Matthew 4:23 and 4:24 under ὅλος &quot;Definite, with art.&quot;, apart from the anarthrous use at Acts 21:31</li>
+            <li>Matthew 4:24 — the same articular construction one verse later, over the whole of Syria, with no variant attached</li>
+            <li>France (NICNT) — renders &quot;traveling around throughout the whole of Galilee&quot;, which carries the article into English</li>
+            <li>Luz (Hermeneia) — renders &quot;And he went about in all Galilee&quot;, which does not</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-3" href="#ref-3" title="Back to text">holēi</a>
+        Where the critical editions have a dative, the Textus Receptus and the Byzantine tradition read an accusative. The dative locates the activity inside the region. The accusative measures the ground crossed, and is the case this verb takes at 9:35 and 23:15. Commentators read the phrase as a generalization about the reach of the ministry rather than a claim of exhaustive coverage. Whether the preposition stands at all is the other half of the same variant.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the dative in NA28, NA27, the Tyndale House edition, SBL, Westcott and Hort and Tregelles, against the accusative of the Textus Receptus and the Byzantine text</li>
+            <li>France (NICNT) — reads &quot;&#x27;the whole of Galilee&#x27; should be understood as describing a widespread ministry rather than quite literally&quot;</li>
+            <li>Hagner (WBC) — sets the clause beside Mark 1:39, &quot;he went preaching in their synagogues in the whole of Galilee&quot;, and finds the contact with Mark slight</li>
+            <li>Nolland (NIGTC) — takes the verse as a generalizing summary in which the ministry begun at Nazareth and Capernaum &quot;is extended to cover the whole of Galilee&quot;</li>
+            <li><i>Vulgate</i> — reads <i>circuibat Jesus totam Galilæam</i>, an accusative with no preposition</li>
+            <li>KJV, Tyndale, <i>Ignatius Bible</i> and <i>Orthodox Study Bible</i> — &quot;went about all Galilee&quot; and &quot;went aboute all Galile&quot;, the accusative reading&#x27;s sense with no preposition</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-4" href="#ref-4" title="Back to text">Galilaiai</a>
+        The place name itself is not in doubt. What stands after it is. Four of the six editions leave the subject to carry over from the previous verse. The Textus Receptus and the Byzantine tradition name Jesus, and the witnesses that carry the name do not agree on where it stands. The parallel summary at 9:35 names him in every edition. Thirteen of the seventeen versions supply the name, and three of those footnote that the Greek reads only &quot;he&quot;.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Translators Amalgamated Greek New Testament</i> — the Textus Receptus and the Byzantine text add the name after the phrase, where the Tyndale House edition and Tregelles carry it at a different point</li>
+            <li>Nolland (NIGTC) — brackets the name in his own translation and lists the witnesses that carry it</li>
+            <li>Davies and Allison (ICC) — report the name present in several witnesses but standing in different positions, and note that the Markan and Lukan parallels all lack it</li>
+            <li>NRSVue and <i>The Jewish Annotated New Testament</i> — print the name and footnote &quot;Gk He&quot;</li>
+            <li>NET — prints the name and reports the Greek as &quot;Grk &#x27;And he.&#x27;&quot;</li>
+            <li>Matthew 9:35 — the parallel summary, where every edition names Jesus</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-5" title="Back to text">e</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-5" href="#ref-5" title="Back to text">autōn</a>
+        The pronoun has no antecedent here. It recurs on the same noun at 9:35, 10:17, 12:9 and 13:54, and in second-person form at 23:34, while the noun stands unmarked at 6:2, 5 and 23:6. Commentators divide on what the possessive marks. One reading takes it for a community writing from outside the synagogue. Another takes it for an ordinary way of naming the synagogues of Galilee. The Markan parallel already carries the pronoun, while the one behind 10:17 does not.<a class="endnote-back" href="#ref-5" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> same, himself, themselves</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Overman (<i>Matthew&#x27;s Gospel and Formative Judaism</i>) — reads the pattern as social distance, Matthew being the evangelist who most clearly shows the Jewish community establishing its own gathering places</li>
+            <li>Luz (Hermeneia) — the emphasized possessive &quot;makes clear that the evangelist and his community are located outside these synagogues&quot;</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — the possessive a mark of estrangement between the church and the synagogue</li>
+            <li>Hagner (WBC) — the same reading held more loosely, the possessive one that may reflect that distancing</li>
+            <li>Nolland (NIGTC) — against it, the possessive &quot;probably no more than a concretisation earthing the activity into particular synagogues&quot;</li>
+            <li>France (NICNT) — likewise, since the assemblies here are ones where Jesus and his disciples were welcome, and the distancing reading fits 10:17 better than this verse</li>
+            <li>Davies and Allison (ICC) — leave it open, since the relationship &quot;will have to be founded upon something more solid than the references to &#x27;their synagogues&#x27;&quot;</li>
+            <li>Kilpatrick (<i>The Origins of the Gospel according to St. Matthew</i>), cited in Overman — the earlier identification of the same pattern</li>
+            <li>Mark 1:39 — the possessive already standing in the Markan parallel</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-6" title="Back to text">f</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-6" href="#ref-6" title="Back to text">euangelion</a>
+        Euangelion is good news, or a good report, and had a life in imperial proclamation before it had one in the church -- the announcement of a victory or an accession. English &quot;gospel&quot; now names a literary genre and four particular books, which is a great deal to carry back into a word that first meant simply a piece of good news.<a class="endnote-back" href="#ref-6" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> gospel, glad tidings</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — good tidings, and in classical usage a reward for bringing them</li>
+            <li>Matthew 9:35 — the same three participles in the same order, framing the intervening chapters</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-7" title="Back to text">g</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-7" href="#ref-7" title="Back to text">basileias</a>
+        βασιλεία covers both the act of ruling and the territory ruled. Ninety-nine of its hundred and sixty-two New Testament occurrences take a genitive of God or of the heavens. Most commentators hold that the sense there is the ruling rather than the realm, and they divide over whether English &quot;kingdom&quot;, now a concrete noun, should give way to &quot;kingship&quot;, &quot;reign&quot; or &quot;dominion&quot;.<a class="endnote-back" href="#ref-7" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> kingdom, kingship</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — files the word under the act of ruling, and warns that &quot;kingdom of God&quot; is often understood as a royal realm with the reigning activity diluted out of it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — makes &quot;sovereignty, royal power, dominion&quot; the proper sense and the territory ruled a metonymy from it</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry runs the other way, leading with &quot;kingdom, dominion&quot; and giving the kingly office separately</li>
+            <li>France (NICNT) — &quot;This dynamic sense is now better conveyed by an abstract noun such as &#x27;kingship&#x27; or &#x27;sovereignty&#x27; rather than by &#x27;kingdom,&#x27; which has become in general usage a concrete noun&quot;</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — &quot;&#x27;kingdom&#x27; is a verbal noun whose primary connotation is not territory but ruling power, &#x27;reign&#x27; or &#x27;rule&#x27; often being the best translation&quot;</li>
+            <li>Marcus (Anchor), Stein (BECNT), Turner (BECNT) and Guelich (<i>The Sermon on the Mount</i>) — the ruling rather than the realm, Marcus printing &quot;the dominion of God has come near&quot; in his own translation</li>
+            <li>Nolland (NIGTC), Marshall (NIGTC) and Carter (<i>Matthew and the Margins</i>) — print &quot;royal rule&quot;, &quot;kingly rule&quot; and &quot;empire&quot; in their own translations</li>
+            <li>Sanders (<i>Jesus and Judaism</i>) — keeps &quot;kingdom&quot;, his charge of &quot;evading the obvious by the semantic device of denying that by &#x27;kingdom&#x27; Jesus meant &#x27;kingdom&#x27;&quot; aimed by his own footnote at the readings that make the word a symbol, not at the reign-not-realm rendering</li>
+            <li>Dodd (<i>The Parables of the Kingdom</i>) and Meier (<i>A Marginal Jew</i>) — with Sanders, retaining the word while granting what it suggests to a reader</li>
+            <li>Aalen (&quot;&#x27;Reign&#x27; and &#x27;House&#x27; in the Kingdom of God in the Gospels,&quot; NTS) and Ladd (JBL), cited in Danker — the standing dissent, a house or community of God and a realm, against the ruling sense</li>
+            <li>Dalman (<i>The Words of Jesus</i>), cited in Dodd — the Semitic noun behind it, &quot;as related to God always means &#x27;kingly rule&#x27; and never &#x27;kingdom&#x27;&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-8" title="Back to text">h</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-8" href="#ref-8" title="Back to text">laōi</a>
+        λαός occurs fourteen times in Matthew, against forty-nine occurrences of ὄχλος. Lexicons give λαός as the Septuagint&#x27;s standing word for Israel as the chosen people, and ὄχλος as the unorganized multitude. Here the healing is set in the λαός, while the crowds who follow two verses later are ὄχλοι. Commentators divide on how much that choice carries, from a word for the nation at large to a marked term for the holy people. Later copyists imported this verse&#x27;s phrase into the parallel summary at 9:35.<a class="endnote-back" href="#ref-8" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> people</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — cites Matthew 4:23 for the Israel sense, λαός being &quot;usually limited to the chosen people, Israel&quot; where ὄχλος is the unorganized multitude</li>
+            <li>Nolland (NIGTC) — reads the word here as marked, tying it back to 4:16 as &quot;God&#x27;s historic people, contrasted with the Gentiles&quot;</li>
+            <li>Hagner (WBC) — reads it as the &quot;people&quot; of Israel, &quot;as the word λαός is regularly used in Matthew&quot;, drawing no contrast</li>
+            <li>Luz (Hermeneia) — makes the switch to ὄχλοι at 4:25 a careful choice, since &quot;Jesus performs his healings in and for the holy nation/people&quot; while it is the crowds who follow him</li>
+            <li>Turner (BECNT) — puts this occurrence among those naming the nation in general, apart from the weighted uses at 1:21, 2:6, 4:16, 13:15, 15:8 and 27:25</li>
+            <li>Nolland (NIGTC) — records the phrase being added at 9:35 by a group of manuscripts &quot;to conform to 4:23&quot;</li>
+            <li>Matthew 9:35 — the parallel summary, which lacks the phrase</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+  </div>
+
+  <dialog class="sitemap" id="sitemap" aria-label="Site map">
+    <div class="sitemap-head">
+      <span class="sitemap-title">Site map</span>
+      <button class="sitemap-close masthead-tools" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.1rem;height:1.1rem;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sitemap-body">
+      <h3>Books</h3>
+      <ul class="booklist">
+        <li><a href="../../Matthew/1/index.html">Matthew</a></li>
+        <li><span title="Not yet drafted">Mark</span></li>
+        <li><span title="Not yet drafted">Luke</span></li>
+        <li><span title="Not yet drafted">John</span></li>
+        <li><span title="Not yet drafted">Acts</span></li>
+        <li><span title="Not yet drafted">Romans</span></li>
+        <li><span title="Not yet drafted">1 Corinthians</span></li>
+        <li><span title="Not yet drafted">2 Corinthians</span></li>
+        <li><span title="Not yet drafted">Galatians</span></li>
+        <li><span title="Not yet drafted">Ephesians</span></li>
+        <li><span title="Not yet drafted">Philippians</span></li>
+        <li><span title="Not yet drafted">Colossians</span></li>
+        <li><span title="Not yet drafted">1 Thessalonians</span></li>
+        <li><span title="Not yet drafted">2 Thessalonians</span></li>
+        <li><span title="Not yet drafted">1 Timothy</span></li>
+        <li><span title="Not yet drafted">2 Timothy</span></li>
+        <li><span title="Not yet drafted">Titus</span></li>
+        <li><span title="Not yet drafted">Philemon</span></li>
+        <li><span title="Not yet drafted">Hebrews</span></li>
+        <li><span title="Not yet drafted">James</span></li>
+        <li><span title="Not yet drafted">1 Peter</span></li>
+        <li><span title="Not yet drafted">2 Peter</span></li>
+        <li><span title="Not yet drafted">1 John</span></li>
+        <li><span title="Not yet drafted">2 John</span></li>
+        <li><span title="Not yet drafted">3 John</span></li>
+        <li><span title="Not yet drafted">Jude</span></li>
+        <li><span title="Not yet drafted">Revelation</span></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <div class="toggle-dock-wrap">
+    <div class="nav-dock">
+      <a class="nav-btn" data-nav="prev" href="22.html" aria-label="Previous verse" title="Previous verse (←)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <a class="nav-btn" href="index.html" aria-label="Up to chapter" title="Up to chapter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+      </a>
+      <a class="nav-btn" data-nav="next" href="24.html" aria-label="Next verse" title="Next verse (→)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+    <div class="toggle-dock">
+      <span role="group" aria-label="Display mode for untranslated words" style="display:flex;">
+        <button data-mode="greek">Greek</button>
+        <button data-mode="translit">Translit</button>
+        <button data-mode="gloss" class="active">Gloss</button>
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../static/cnt.js"></script>
+<script src="../../static/reading.js"></script>

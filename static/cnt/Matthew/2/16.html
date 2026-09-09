@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Τότε Ἡρῴδης ἰδὼν ὅτι <a class="greek-word crux" href="#note-1" data-greek="ἐνεπαίχθη" data-translit="enepaichthē" data-gloss="empaigmic" data-senses="mocked">ἐνεπαίχθη</a> ὑπὸ τῶν μάγων ἐθυμώθη λίαν, καὶ ἀποστείλας ἀνεῖλεν πάντας τοὺς <a class="greek-word crux" href="#note-2" data-greek="παῖδας" data-translit="paidas" data-gloss="paides" data-senses="servant, child, boy">παῖδας</a> τοὺς ἐν Βηθλέεμ καὶ ἐν πᾶσι τοῖς ὁρίοις αὐτῆς ἀπὸ διετοῦς καὶ κατωτέρω, κατὰ τὸν χρόνον ὃν ἠκρίβωσεν παρὰ τῶν μάγων.</p>
-    <p class="translation">Then Herod, seeing that he had been made <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐνεπαίχθη" data-translit="enepaichthē" data-gloss="empaigmic" data-senses="mocked">empaigmic</a><a class="note-ref" href="#note-1">a</a> by the magoi, was greatly enraged, and having sent, he killed all the <a id="ref-2" class="flagword crux" href="#note-2" data-greek="παῖδας" data-translit="paidas" data-gloss="paides" data-senses="servant, child, boy">paides</a><a class="note-ref" href="#note-2">b</a> in Bethlehem and in all its region, from two years old and under, according to the time that he had ascertained from the magoi.</p>
+    <p class="greek-line">Τότε Ἡρῴδης ἰδὼν ὅτι <a class="greek-word crux" href="#note-1" data-greek="ἐνεπαίχθη" data-translit="enepaichthē" data-gloss="empaizied" data-senses="mocked">ἐνεπαίχθη</a> ὑπὸ τῶν μάγων ἐθυμώθη λίαν, καὶ ἀποστείλας ἀνεῖλεν πάντας τοὺς <a class="greek-word crux" href="#note-2" data-greek="παῖδας" data-translit="paidas" data-gloss="paises" data-senses="servant, child, boy">παῖδας</a> τοὺς ἐν Βηθλέεμ καὶ ἐν πᾶσι τοῖς ὁρίοις αὐτῆς ἀπὸ διετοῦς καὶ κατωτέρω, κατὰ τὸν χρόνον ὃν <a class="greek-word crux" href="#note-3" data-greek="ἠκρίβωσεν" data-translit="ēkribōsen" data-gloss="akribied" data-senses="accurately inquired">ἠκρίβωσεν</a> παρὰ τῶν μάγων.</p>
+    <p class="translation">Then Herod, having seen that he was <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐνεπαίχθη" data-translit="enepaichthē" data-gloss="empaizied" data-senses="mocked">empaizied</a><a class="note-ref" href="#note-1">a</a> by the magi, was enraged exceedingly, and having sent, he killed all the <a id="ref-2" class="flagword crux" href="#note-2" data-greek="παῖδας" data-translit="paidas" data-gloss="paises" data-senses="servant, child, boy">paises</a><a class="note-ref" href="#note-2">b</a>, the ones in Bethlehem and in all its territories, from two years old and under, according to the time which he <a id="ref-3" class="flagword crux" href="#note-3" data-greek="ἠκρίβωσεν" data-translit="ēkribōsen" data-gloss="akribied" data-senses="accurately inquired">akribied</a><a class="note-ref" href="#note-3">c</a> from the magi.</p>
   </div>
 
   <div class="endnotes">
@@ -194,7 +200,7 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">enepaichthē</a>
-        Full LSJ treats the passive form here as its own distinct sense, &quot;to be deluded,&quot; apart from the active &quot;mock at&quot; sense the same verb carries elsewhere in Matthew. Six of seven surveyed translations render it &quot;tricked,&quot; &quot;outwitted,&quot; or &quot;deceived.&quot; Hart alone keeps a mockery sense, &quot;made a fool by.&quot; The same verb, in active voice, later names the soldiers&#x27; treatment of Jesus at the crucifixion (27:29, 31, 41).<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        Full LSJ treats the passive form here as its own distinct sense, &quot;to be deluded,&quot; apart from the active &quot;mock at&quot; sense the same verb carries elsewhere in Matthew. Six of seven surveyed translations render it &quot;tricked,&quot; &quot;outwitted,&quot; or &quot;deceived.&quot; One alone keeps a mockery sense. The same verb, in active voice, later names the treatment of Jesus at the crucifixion, by soldiers and by chief priests (27:29, 31, 41).<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> mocked</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -212,14 +218,34 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">paidas</a>
-        Five of seven surveyed translations render this &quot;male children.&quot; Two, sharing the NRSV base text, render it gender-neutrally as &quot;children.&quot; Elsewhere in these two chapters Matthew consistently uses the diminutive <i>paidion</i> for the infant Jesus. This is the only occurrence of the plain <i>pais</i>, a word ancient grammarians distinguished from <i>paidion</i> by life-stage.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        Five of seven surveyed translations render this &quot;male children.&quot; Two, sharing the NRSV base text, render it gender-neutrally as &quot;children.&quot; Elsewhere in these two chapters Matthew consistently uses the diminutive <i>paidion</i> for the infant Jesus. This is the only occurrence of the plain <i>pais</i>, a word ancient medical and technical writers distinguished from <i>paidion</i> by life-stage.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> servant, child, boy</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>France (NICNT) — grants the Greek &quot;does not in itself determine the sex of those killed&quot;, but reads the masculine as gender-specific, since Herod &quot;in eliminating a &#x27;king&#x27; had no need to kill girls&quot; and Pharaoh&#x27;s decree at Exodus 1:16 and 22 targeted males</li>
-            <li>Davies and Allison (ICC), citing Soares Prabhu — count <i>pais</i> among four words occurring nowhere else in Matthew</li>
-            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — attests ancient testimony, citing Hippocrates and Xenophon, distinguishing <i>paidion</i>, <i>pais</i>, and <i>meirakion</i> as successive life-stages</li>
+            <li>Davies and Allison (ICC) — read the masculine as gender-specific, since &quot;[i]n Matthew&#x27;s mind there could be no thought of a female king&quot;, citing Exodus 1:22</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — bounds <i>paidion</i> at seven years on Hippocrates&#x27;s authority, and separately carries Xenophon&#x27;s own sequence of <i>pais</i>, <i>meirakion</i> and <i>anēr</i> as successive life-stages</li>
+            <li>Luz (Hermeneia) — reads Herod&#x27;s order as one that &quot;includes all boys under two years of age&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">ēkribōsen</a>
+        The verb&#x27;s only other occurrence is at 2:7, where Herod asked the magi about the star&#x27;s appearance. What he established there fixes the age range here. Commentators divide over whether the two-year cutoff follows from the magi&#x27;s answer. Readings run from a precise datum applied with a wide margin, to a rough limit that was never a calculation, to a figure inherited from a source that knew nothing of the star.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> accurately inquired</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>France (NICNT) — reads the cutoff as a margin of safety rather than a calculation, since &quot;Herod&#x27;s specification of age need be no more than a rough rule of thumb to make sure his soldiers did not miss any potential rival&quot;</li>
+            <li>Davies and Allison (ICC) — take the closing clause as drawing its vocabulary from 2:7, and hold that because the text does not say whether the star&#x27;s rising marked the birth or the conception, &quot;we have no certain indication of how old Jesus is supposed to be&quot;</li>
+            <li>Nolland (NIGTC) — reads the clause as heavy borrowing from 2:7, binding an originally separate Herod narrative to the magi narrative, so that the mismatch in precision is a seam</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — assigns the two-year figure to a pre-Matthean narrative in which Herod learned of the birth by dream and never knew its date, and treats it as a recollection that Jesus was born some years before Herod died</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — holds that ancient reckoning counted an infant as two on entering its second year, so that the decree caught children of one year and under</li>
           </ul>
         </details>
       </div>

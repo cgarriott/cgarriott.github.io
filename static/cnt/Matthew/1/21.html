@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">τέξεται δὲ υἱὸν καὶ καλέσεις τὸ ὄνομα αὐτοῦ Ἰησοῦν, αὐτὸς γὰρ σώσει τὸν <a class="greek-word crux" href="#note-1" data-greek="λαὸν" data-translit="laon" data-gloss="laos" data-senses="people">λαὸν</a> αὐτοῦ ἀπὸ τῶν <a class="greek-word always" href="#note-2" data-greek="ἁμαρτιῶν" data-translit="hamartiōn" data-gloss="peccancies" data-senses="sin">ἁμαρτιῶν</a> αὐτῶν.</p>
-    <p class="translation">And she will bear a son, and you shall call his name Jesus, for he will save his <a id="ref-1" class="flagword crux" href="#note-1" data-greek="λαὸν" data-translit="laon" data-gloss="laos" data-senses="people">laos</a><a class="note-ref" href="#note-1">a</a> from their <a id="ref-2" class="flagword always" href="#note-2" data-greek="ἁμαρτιῶν" data-translit="hamartiōn" data-gloss="peccancies" data-senses="sin">peccancies</a><a class="note-ref" href="#note-2">b</a>.</p>
+    <p class="greek-line">τέξεται δὲ υἱὸν καὶ καλέσεις τὸ ὄνομα αὐτοῦ Ἰησοῦν, αὐτὸς γὰρ <a class="greek-word always" href="#note-1" data-greek="σώσει" data-translit="sōsei" data-gloss="soterate" data-senses="saved, healed, made whole">σώσει</a> τὸν <a class="greek-word crux" href="#note-2" data-greek="λαὸν" data-translit="laon" data-gloss="laos" data-senses="people">λαὸν</a> αὐτοῦ ἀπὸ τῶν <a class="greek-word always" href="#note-3" data-greek="ἁμαρτιῶν" data-translit="hamartiōn" data-gloss="peccancies" data-senses="sin">ἁμαρτιῶν</a> αὐτῶν.</p>
+    <p class="translation">And she will bear a son, and you shall call his name Jesus, for he himself will <a id="ref-1" class="flagword always" href="#note-1" data-greek="σώσει" data-translit="sōsei" data-gloss="soterate" data-senses="saved, healed, made whole">soterate</a><a class="note-ref" href="#note-1">a</a> his <a id="ref-2" class="flagword crux" href="#note-2" data-greek="λαὸν" data-translit="laon" data-gloss="laos" data-senses="people">laos</a><a class="note-ref" href="#note-2">b</a> from their <a id="ref-3" class="flagword always" href="#note-3" data-greek="ἁμαρτιῶν" data-translit="hamartiōn" data-gloss="peccancies" data-senses="sin">peccancies</a><a class="note-ref" href="#note-3">c</a>.</p>
   </div>
 
   <div class="endnotes">
@@ -195,17 +201,24 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">laon</a>
-        λαός in Biblical Greek usage denotes the covenantal people of Israel, standing opposite τὰ ἔθνη, the nations. Matthew glosses the same phrase with the appositive &quot;my people, Israel&quot; two chapters later, at 2:6. Whether the referent here stays ethnic Israel alone or already anticipates a wider Jewish and Gentile people remains a live, unresolved question.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> people</div>
+        <a class="endnote-word always" id="note-1" href="#ref-1" title="Back to text">sōsei</a>
+        One Greek word covers rescue from danger, healing from illness, being kept alive through a catastrophe, and salvation in the religious sense. English has no word that covers all four, so a translator has to choose, and the choice is not read off the Greek. The sentence &quot;your fidence has soterated you&quot; stands identically in seven places in the gospels; English versions render some of them &quot;healed&quot; and others &quot;saved,&quot; and they do not agree with each other about which are which. The word also reaches well past the religious: at Acts 27:34, on a foundering ship, Paul urges the passengers to eat because it is for their soteria -- there meaning that they will live. And soter was a standing public title in this period, borne by gods, kings and Roman emperors, so a first reader of Luke 2:11 met a word already in political use.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> saved, healed, made whole</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Turner (BECNT) — reads &quot;his people&quot; as a remnant within Israel, not yet inclusive of Gentiles</li>
-            <li>Nolland (NIGTC) — takes the referent as ethnic Israel at this point in the narrative, later both narrowed and widened</li>
-            <li>Brown (<i>The Birth of the Messiah</i>) — states plainly that &quot;his people&quot; already includes both Jews and Gentiles for Matthew</li>
-            <li>Hagner (WBC) — ties an inclusive reading to Matthew 1:1&#x27;s &quot;son of David&quot; and &quot;son of Abraham&quot; titles, anchored to the ekklēsia of 16:18</li>
-            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — declines to specify the referent, locating the eventual dispute over &quot;his people&quot; at 21:43 and 27:25</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — separates rescue from natural dangers and afflictions from saving &quot;from transcendent danger or destruction&quot;, then adds that certain passages belong under both at once</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — &quot;to save from peril, injury or suffering&quot;, and, listed apart, &quot;of healing, restoring to health&quot;</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical range runs from &quot;save from death, keep alive&quot; through &quot;to be healed, recover from sickness&quot; to keeping a law, a city or an argument safe</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — records the King James renderings of the one verb as &quot;heal, preserve, save (self), do well, be (make) whole&quot;</li>
+            <li>France (NICNT) — the verb &quot;is used by Matthew in a wide range of senses&quot;, from deliverance from death or disease to salvation from sins and to entering the kingdom</li>
+            <li>Nolland (NIGTC) — its use in Matthew stands generally in immediate connection with &quot;a pressing present difficulty or need&quot;, with the saving purposes of God behind that</li>
+            <li>Stein (BECNT) — at Mark 10:52 it covers physical healing and &quot;spiritual healing, the gift of salvation&quot;, and &quot;[h]ere both meanings are present&quot;</li>
+            <li>Fitzmyer (Anchor) — in Luke&#x27;s Gospel salvation &quot;often denotes deliverance from such evils as sickness, infirmity, or sin&quot;, where in Acts both noun and verb carry the fuller sense</li>
+            <li>Marcus (Anchor) — prints &quot;your faith has saved you&quot; in his own translation at Mark 5:34</li>
+            <li>Vulgate — keeps the salvation root at Mark 5:34, &quot;fides tua te salvam fecit&quot;, where the English versions turn to health</li>
+            <li>RNJB — prints &quot;your faith has saved you&quot; at Matthew 9:22 and Mark 5:34, where the other English versions checked print made you well, healed you, or made thee whole</li>
+            <li>NET — its note at Matthew 9:21 reports that the term &quot;would have spiritual significance to his readers&quot; and may be &quot;a double entendre&quot;</li>
           </ul>
         </details>
       </div>
@@ -214,8 +227,28 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
-        <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">hamartiōn</a>
-        Psalm 130:8 LXX, the closest verbal parallel to this clause, reads &quot;from all his ἀνομίαι,&quot; lawless deeds, not ἁμαρτίαι. Proposed reasons for the substitution include an echo pairing σώσει with the name Ἰησοῦν, and ἁμαρτία&#x27;s currency in Isaiah 53 and early confessional formulas. The parallel to the psalm remains thematic rather than a verbatim quotation. The root sense is a missing of the mark, the failure of a thrown spear or arrow to hit its target. Classical usage extends this to any fault, failure, or error of judgment, then narrows in philosophical and religious writing to guilt or moral sin. The New Testament and the Septuagint before it use only the narrowed sense.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">laon</a>
+        λαός in Biblical Greek usage denotes the covenantal people of Israel, standing opposite τὰ ἔθνη, the nations. The word recurs one chapter later inside the quoted prophecy at 2:6, there with the appositive &quot;my people Israel&quot;. Whether the referent here stays ethnic Israel alone or already anticipates a wider Jewish and Gentile people is disputed.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> people</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Turner (BECNT) — reads &quot;his people&quot; as a remnant within Israel, not yet inclusive of Gentiles</li>
+            <li>Nolland (NIGTC) — takes the referent as ethnic Israel at this point in the narrative, later both narrowed and widened</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — &quot;his people&quot; already includes both Jews and Gentiles for Matthew</li>
+            <li>Hagner (WBC) — ties an inclusive reading to Matthew 1:1&#x27;s &quot;son of David&quot; and &quot;son of Abraham&quot; titles, anchored to the ekklēsia of 16:18</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — declines to specify the referent, locating the eventual dispute over &quot;his people&quot; at 21:43 and 27:25</li>
+            <li>Luz (Hermeneia) — reads &quot;people&quot; as the OT people of God throughout Matthew, and names Davies and Allison&#x27;s inclusive reading directly before rejecting it</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">hamartiōn</a>
+        Psalm 130:8 LXX, the closest verbal parallel to this clause, reads &quot;from all his ἀνομίαι,&quot; lawless deeds, not ἁμαρτίαι. Proposed reasons for the substitution include an echo pairing σώσει with the name Ἰησοῦν, and ἁμαρτία&#x27;s currency in Isaiah 53 and early confessional formulas. The parallel to the psalm remains thematic rather than a verbatim quotation. The root sense is a missing of the mark, the failure of a thrown spear or arrow to hit its target. Classical usage extends this to any fault, failure, or error of judgment, then narrows in philosophical and religious writing to guilt or moral sin.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> sin</div>
         <details class="sources">
           <summary>Sources</summary>

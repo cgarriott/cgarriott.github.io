@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Ἰακὼβ δὲ ἐγέννησεν τὸν Ἰωσὴφ τὸν ἄνδρα Μαρίας, ἐξ ἧς <a class="greek-word crux" href="#note-2" data-greek="ἐγεννήθη" data-translit="egennēthē" data-gloss="gennied" data-senses="begat, born, brought forth">ἐγεννήθη</a> Ἰησοῦς ὁ λεγόμενος <a class="greek-word always" href="#note-1" data-greek="χριστός" data-translit="christos" data-gloss="Anointed" data-senses="christ, jesus">χριστός</a></p>
-    <p class="translation">Jacob fathered Joseph, the husband of Mary, from whom Jesus, who is called the <a id="ref-1" class="flagword always" href="#note-1" data-greek="χριστός" data-translit="christos" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-1">a</a>, was <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ἐγεννήθη" data-translit="egennēthē" data-gloss="gennied" data-senses="begat, born, brought forth">gennied</a><a class="note-ref" href="#note-2">b</a>.</p>
+    <p class="greek-line">Ἰακὼβ δὲ <a class="greek-word crux" href="#note-1" data-greek="ἐγέννησεν" data-translit="egennēsen" data-gloss="gennied" data-senses="begat, born, brought forth">ἐγέννησεν</a> τὸν Ἰωσὴφ τὸν ἄνδρα Μαρίας, ἐξ ἧς <a class="greek-word crux" href="#note-2" data-greek="ἐγεννήθη" data-translit="egennēthē" data-gloss="gennied" data-senses="begat, born, brought forth">ἐγεννήθη</a> Ἰησοῦς ὁ λεγόμενος <a class="greek-word always" href="#note-3" data-greek="χριστός" data-translit="christos" data-gloss="Anointed" data-senses="christ">χριστός</a></p>
+    <p class="translation">And Jacob <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐγέννησεν" data-translit="egennēsen" data-gloss="gennied" data-senses="begat, born, brought forth">gennied</a><a class="note-ref" href="#note-1">a</a> Joseph the husband of Mary, from whom was <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ἐγεννήθη" data-translit="egennēthē" data-gloss="gennied" data-senses="begat, born, brought forth">gennied</a><a class="note-ref" href="#note-2">b</a> Jesus the one called the <a id="ref-3" class="flagword always" href="#note-3" data-greek="χριστός" data-translit="christos" data-gloss="Anointed" data-senses="christ">Anointed</a><a class="note-ref" href="#note-3">c</a>.</p>
   </div>
 
   <div class="endnotes">
@@ -195,15 +201,18 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word always" id="note-1" href="#ref-1" title="Back to text">christos</a>
-        The same phrase, &quot;the one called Christ,&quot; recurs at Matthew 27:17 and 27:22, where Pilate offers the crowd a choice between Jesus and Barabbas. Some scholars read this verse, not 1:1, as the point where the title is activated for the reader, closing a chiastic frame with 1:1 and 1:17. A tally of Matthew&#x27;s roughly eighteen uses of the word rates this occurrence as only &quot;probably&quot; titular, one degree less certain than the next occurrence two verses later. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
+        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">egennēsen</a>
+        The active egennēsen runs down the genealogy thirty-nine times, and this is the last of them. Its object is Joseph, and the birth of Jesus in the same sentence takes the passive. What the verb claims of each pair it links is disputed. Two lexicons cite the genealogy itself as their example of the plain procreative sense, though the list skips three reigning kings between Joram and Uzziah at 1:8. Commentators read it as fathering, as descent at a remove, and as legal inheritance.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> begat, born, brought forth</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Nolland (NIGTC) — reads this verse, not 1:1, as where Christ is clarified as titular</li>
-            <li>France (NICNT) — notes the phrase&#x27;s inclusio with the Pilate scene at 27:17 and 27:22</li>
-            <li>Carson (EBC) — rates this occurrence only &quot;probably&quot; titular in his own tally of Matthew&#x27;s uses</li>
+            <li>Turner (BECNT) — counts the active thirty-nine times before the shift, and holds that where names are dropped the verb is &quot;to be understood as &#x27;was the ancestor of,&#x27; not &#x27;was the father of&#x27;&quot;</li>
+            <li>France (NICNT) — the verb &quot;is properly used of the male role in procreation, though in a formal genealogy its repetition apparently allows a less immediate relationship, including a gap of three generations in v. 8&quot;</li>
+            <li>Machen (<i>The Virgin Birth of Christ</i>) — reads it as a legal claim throughout, since &quot;[t]he word &#x27;begat&#x27; in the genealogy means simply &#x27;had as a legal heir&#x27;&quot;</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — files the genealogy&#x27;s whole run under becoming a parent by procreation, and compares a Greek genealogy in Diodorus Siculus that repeats the same verb the same way</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — cites Matthew 1:1-16 as its own example of the active used of the father, &quot;to beget&quot;</li>
+            <li>Luz (Hermeneia) — calls it &quot;[t]he key verb of the genealogy&quot; and marks its return at 2:1</li>
           </ul>
         </details>
       </div>
@@ -219,9 +228,29 @@ render.py's query logic) and regenerate instead.
           <summary>Sources</summary>
           <ul>
             <li>Nolland (NIGTC) — reads the passive as denying Joseph the normal role in procreation, without explanation</li>
-            <li>Hagner (WBC) — calls the verb shift &quot;the biggest surprise of the genealogy&quot;</li>
+            <li>Hagner (WBC) — calls the verb shift the biggest surprise of the genealogy</li>
             <li><i>MacArthur Study Bible</i> — notes the singular relative pronoun ties the birth to Mary alone, excluding Joseph as father</li>
             <li><i>Orthodox Study Bible</i> — states the pronoun is feminine in Greek, referring only to Mary</li>
+            <li>Luz (Hermeneia) — calls the verse &quot;the high point of the list of generations&quot; on the strength of this same shift, and renders the passive as &quot;beget&quot; rather than &quot;bear&quot; for consistency with the genealogy&#x27;s earlier links</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">christos</a>
+        The same phrase, &quot;the one called Christ,&quot; recurs at Matthew 27:17 and 27:22, where Pilate offers the crowd a choice between Jesus and Barabbas. One reading takes this verse, not 1:1, as the point where the title is activated for the reader, standing inside the chiastic frame that 1:1 and 1:17 form. A tally of Matthew&#x27;s roughly eighteen uses counts this occurrence among the few that are not exclusively titular, and the occurrence two verses later more certainly so. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> christ</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Carson (EBC) — his own tally puts this occurrence among the few that are not exclusively titular, &quot;probably&quot; so here and &quot;certainly&quot; two verses later</li>
+            <li>Nolland (NIGTC) — titular, on the strength of the frame between verses 1 and 17</li>
+            <li>France (NICNT) — reads the phrase as activating the title for the reader</li>
+            <li>Matthew 27:17 and 27:22 — the same phrase in Pilate&#x27;s mouth</li>
+            <li>Luz (Hermeneia) — cites the same 27:17/27:22 cross-reference and assigns &quot;the one called Christ&quot; to Matthew&#x27;s own editorial hand</li>
           </ul>
         </details>
       </div>

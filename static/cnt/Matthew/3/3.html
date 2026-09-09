@@ -1,0 +1,322 @@
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+Single-verse page template. This is THE format for one verse -- see
+../PLAN.md's "Page architecture" section: the verse is the atomic unit,
+this template is not used for multi-verse (chapter/pericope) pages, which
+get their own template later, assembled from the same per-verse data.
+
+Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
+  verse_ref        -- display string, e.g. "Matthew 1:1"
+  greek_segments    -- list of {type:"text", text} or
+                        {type:"word", class, greek, translit, gloss, note}
+  translation_segments -- same shape as greek_segments, plus note_letter
+                        (the reader-facing letter label, see note_label() --
+                        ids/hrefs stay numeric via note; only the visible
+                        text uses letters, so they never look like verse
+                        numbers)
+  endnotes          -- list of {number, letter, word, class, text, sources:
+                        [{label, position}]} -- "letter" is the display
+                        label (a, b, ..., z, aa, ab, ...); "number" is
+                        still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
+  nav               -- {prev, next, up}: relative hrefs (same directory)
+                        for the second toggle-dock row below, or None for
+                        prev/next when there's no neighboring drafted verse
+                        to link to (see render.py's build_nav_context)
+  apparatus         -- {books, chapters, verses, verse_range}: the masthead's
+                        Book/Chapter/Verse dropdowns, each a list of {name or
+                        num, current, enabled, href} covering the FULL
+                        canonical NT structure, not just what's drafted.
+                        `verse_range` heads the verse select as "1-25", the
+                        whole chapter -- from here a real destination back out
+                        to the chapter page; from a chapter page it is instead
+                        the current entry (see render.py's build_apparatus)
+
+Do not hand-edit generated output HTML -- edit this template (or
+render.py's query logic) and regenerate instead.
+-->
+<title>CNT — Matthew 3:3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../static/cnt.css">
+<link rel="stylesheet" href="../../static/reading.css">
+<!-- Runs before first paint, so a reader who chose light does not see a dark
+     flash first. It has to be inline for that reason -- an external file is
+     fetched too late. Everything else lives in static/cnt.js. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('cnt-theme');
+      if (t === 'light' || t === 'dark') { document.documentElement.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
+
+<div class="page">
+
+  <div class="header">
+    <div class="masthead">
+      <span><a class="masthead-home" href="../../index.html"><strong>CNT</strong> — Corey's Non-Translation</a></span>
+      <span class="masthead-tools">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+            <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+          </svg>
+        </button>
+        <button id="sitemap-toggle" aria-label="Open site map" title="Site map" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </span>
+    </div>
+    <div class="legend">
+      <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
+      <span class="crux"><i></i><span class="legend-label"><b>Crux</b><span class="legend-desc">: untranslated here</span></span></span>
+      <span class="variant"><i></i><span class="legend-label"><b>Variant</b><span class="legend-desc">: editions disagree</span></span></span>
+    </div>
+  </div>
+
+  <div class="verse-block">
+    <p class="ref">
+      <span class="apparatus">
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Book" onchange="if(this.value){location.href=this.value;}">
+            <option value="" selected>Matthew</option>
+            <option value="../../Mark/1/index.html" disabled>Mark</option>
+            <option value="../../Luke/1/index.html" disabled>Luke</option>
+            <option value="../../John/1/index.html" disabled>John</option>
+            <option value="../../Acts/1/index.html" disabled>Acts</option>
+            <option value="../../Romans/1/index.html" disabled>Romans</option>
+            <option value="../../1 Corinthians/1/index.html" disabled>1 Corinthians</option>
+            <option value="../../2 Corinthians/1/index.html" disabled>2 Corinthians</option>
+            <option value="../../Galatians/1/index.html" disabled>Galatians</option>
+            <option value="../../Ephesians/1/index.html" disabled>Ephesians</option>
+            <option value="../../Philippians/1/index.html" disabled>Philippians</option>
+            <option value="../../Colossians/1/index.html" disabled>Colossians</option>
+            <option value="../../1 Thessalonians/1/index.html" disabled>1 Thessalonians</option>
+            <option value="../../2 Thessalonians/1/index.html" disabled>2 Thessalonians</option>
+            <option value="../../1 Timothy/1/index.html" disabled>1 Timothy</option>
+            <option value="../../2 Timothy/1/index.html" disabled>2 Timothy</option>
+            <option value="../../Titus/1/index.html" disabled>Titus</option>
+            <option value="../../Philemon/1/index.html" disabled>Philemon</option>
+            <option value="../../Hebrews/1/index.html" disabled>Hebrews</option>
+            <option value="../../James/1/index.html" disabled>James</option>
+            <option value="../../1 Peter/1/index.html" disabled>1 Peter</option>
+            <option value="../../2 Peter/1/index.html" disabled>2 Peter</option>
+            <option value="../../1 John/1/index.html" disabled>1 John</option>
+            <option value="../../2 John/1/index.html" disabled>2 John</option>
+            <option value="../../3 John/1/index.html" disabled>3 John</option>
+            <option value="../../Jude/1/index.html" disabled>Jude</option>
+            <option value="../../Revelation/1/index.html" disabled>Revelation</option>
+          </select>
+        </span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
+            <option value="../1/index.html">1</option>
+            <option value="../2/index.html">2</option>
+            <option value="" selected>3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
+            <option value="../7/index.html" disabled>7</option>
+            <option value="../8/index.html" disabled>8</option>
+            <option value="../9/index.html" disabled>9</option>
+            <option value="../10/index.html" disabled>10</option>
+            <option value="../11/index.html" disabled>11</option>
+            <option value="../12/index.html" disabled>12</option>
+            <option value="../13/index.html" disabled>13</option>
+            <option value="../14/index.html" disabled>14</option>
+            <option value="../15/index.html" disabled>15</option>
+            <option value="../16/index.html" disabled>16</option>
+            <option value="../17/index.html" disabled>17</option>
+            <option value="../18/index.html" disabled>18</option>
+            <option value="../19/index.html" disabled>19</option>
+            <option value="../20/index.html" disabled>20</option>
+            <option value="../21/index.html" disabled>21</option>
+            <option value="../22/index.html" disabled>22</option>
+            <option value="../23/index.html" disabled>23</option>
+            <option value="../24/index.html" disabled>24</option>
+            <option value="../25/index.html" disabled>25</option>
+            <option value="../26/index.html" disabled>26</option>
+            <option value="../27/index.html" disabled>27</option>
+            <option value="../28/index.html" disabled>28</option>
+          </select>
+        </span>
+        <span class="apparatus-colon">:</span>
+        <span class="apparatus-select-wrap">
+          <select class="apparatus-select" aria-label="Verse" onchange="if(this.value){location.href=this.value;}">
+            <option value="index.html">1–17</option>
+            <option value="1.html">1</option>
+            <option value="2.html">2</option>
+            <option value="" selected>3</option>
+            <option value="4.html">4</option>
+            <option value="5.html">5</option>
+            <option value="6.html">6</option>
+            <option value="7.html">7</option>
+            <option value="8.html">8</option>
+            <option value="9.html">9</option>
+            <option value="10.html">10</option>
+            <option value="11.html">11</option>
+            <option value="12.html">12</option>
+            <option value="13.html">13</option>
+            <option value="14.html">14</option>
+            <option value="15.html">15</option>
+            <option value="16.html">16</option>
+            <option value="17.html">17</option>
+          </select>
+        </span>
+      </span>
+    </p>
+    <p class="greek-line">οὗτος γάρ ἐστιν ὁ <a class="greek-word crux" href="#note-1" data-greek="ῥηθεὶς" data-translit="rhētheis" data-gloss="rhetheis" data-senses="said, speak, tell">ῥηθεὶς</a> <a class="greek-word variant" href="#note-2" data-greek="διὰ" data-translit="dia" data-gloss="through" data-senses="">διὰ</a> Ἠσαΐου τοῦ προφήτου λέγοντος· Φωνὴ βοῶντος ἐν τῇ ἐρήμῳ· Ἑτοιμάσατε τὴν ὁδὸν <a class="greek-word always" href="#note-3" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">κυρίου</a> εὐθείας ποιεῖτε τὰς τρίβους αὐτοῦ.</p>
+    <p class="translation">For this is the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ῥηθεὶς" data-translit="rhētheis" data-gloss="rhetheis" data-senses="said, speak, tell">rhetheis</a><a class="note-ref" href="#note-1">a</a> <a id="ref-2" class="flagword variant" href="#note-2" data-greek="διὰ" data-translit="dia" data-gloss="through" data-senses="">through</a><a class="note-ref" href="#note-2">b</a> Isaiah the prophet, saying, &quot;Voice of one crying out in the wilderness: Prepare the way of <a id="ref-3" class="flagword always" href="#note-3" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-3">c</a>, straight make his paths.&quot;</p>
+  </div>
+
+  <div class="endnotes">
+    <p class="endnotes-label">Notes</p>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">rhētheis</a>
+        A masculine participle, occurring nowhere else in the New Testament. Matthew&#x27;s ten fulfilment formulas all use the neuter instead, and all contain a verb of fulfilment, which this verse lacks. What that absence implies about John&#x27;s standing is contested head-on.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> said, speak, tell</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — the missing verb is deliberate, and Matthew &quot;keeps that verb for the story of Jesus&quot;, presenting John as a prototypical preacher rather than a fulfiller of Scripture</li>
+            <li>Carson (EBC) — names and rejects that reading, arguing the citation formula &quot;can only be understood as identifying the Baptist in an eschatological, prophecy-and-fulfillment framework&quot;</li>
+            <li>Nolland (NIGTC) — with Gundry on the mechanism, that the absence is &quot;likely to be because he reserves the formula quotations for the story of Jesus&quot;</li>
+            <li>Davies and Allison (ICC) — against that mechanism on the text&#x27;s own evidence, since &quot;[n]either 2.17 nor 3.3 has to do with the activity of Jesus: but both are directly related to his coming&quot;</li>
+            <li>Turner (BECNT) — raises the same objection independently, that the reading &quot;seems to be contradicted by 2:17&quot;, while siding with Carson on the outcome</li>
+            <li>France (NICNT) — with Carson, since John &quot;is himself the subject of a prophetic oracle, not just the harbinger of the one predicted&quot;</li>
+            <li>Hagner (WBC) — the formula here is a pesher-type one, &quot;which points to fulfillment&quot; despite lacking the characteristic verb</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-2" href="#ref-2" title="Back to text">dia</a>
+        The critical editions read &quot;through&quot; where the Textus Receptus and the Byzantine tradition read &quot;by&quot;. English versions divide between the two, and one carries the alternative in its margin. Matthew&#x27;s citation formulas hold the prepositions apart, one naming the Lord as the source of what is spoken and the other the prophet through whom it comes (1:22, 2:15). The variant puts Isaiah in the place of the agent.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — separates ultimate from intermediate agency, lists this verse among the passages naming a prophet as the intermediate agent, and holds that &quot;the prophet&#x27;s personality was involved in the shaping of its wording&quot;</li>
+            <li>Luz (Hermeneia) — groups this verse with 2:5, 13:14 and 24:15 as introductory formulas close to the fulfilment citations without being one</li>
+            <li>Hagner (WBC) — tabulates the fulfilment citations, which use the same preposition for the named prophet throughout</li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the reading in NA28, NA27, the Tyndale House edition, SBL, Westcott and Hort and Tregelles, against the Textus Receptus and the Byzantine text</li>
+            <li><i>MacArthur Study Bible</i> — prints &quot;by&quot; in its text and offers &quot;through&quot; in its margin</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — carries no entry for this verse</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">kuriou</a>
+        In Isaiah the word stands for the divine name, and the one whose way is prepared is God. The citation ends with a pronoun where the Septuagint of Isaiah 40:3 names God a second time, a wording Mark and Luke share. Whether the pronoun carries a claim about Jesus or merely avoids naming God is the dispute. κύριος ranges from an ordinary term of respectful address (&quot;sir,&quot; &quot;master&quot;) through a disciple&#x27;s title for a living teacher to the full divine name. In the Septuagint it is the standard reverential substitute for the unpronounced Hebrew Tetragrammaton. When the New Testament quotes an Old Testament passage that names it, the Greek text carries the same word, κύριος, with no orthographic marker distinguishing it from the word&#x27;s ordinary human sense.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> lord, master, sir</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>France (NICNT) — &quot;there is a remarkable christological claim involved in applying Isaiah&#x27;s depiction of God&#x27;s forerunner to the man who prepared the way for the coming of Jesus&quot;</li>
+            <li>Turner (BECNT) — ties it to Matthew&#x27;s Immanuel christology, &quot;the deity of Christ is implied here&quot;</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — independently, the substitution transfers Isaiah&#x27;s prophecy of God&#x27;s advent to Jesus</li>
+            <li>Davies and Allison (ICC) — take the christological reading as primary, but raise avoidance of the divine name as an alternative, citing the Community Rule</li>
+            <li>Hagner (WBC) — argues the avoidance reading independently, without the Qumran parallel</li>
+            <li>Isaiah 40:3 (Septuagint) — the verse quoted, naming God where the citation puts a pronoun</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+  </div>
+
+  <dialog class="sitemap" id="sitemap" aria-label="Site map">
+    <div class="sitemap-head">
+      <span class="sitemap-title">Site map</span>
+      <button class="sitemap-close masthead-tools" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.1rem;height:1.1rem;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sitemap-body">
+      <h3>Books</h3>
+      <ul class="booklist">
+        <li><a href="../../Matthew/1/index.html">Matthew</a></li>
+        <li><span title="Not yet drafted">Mark</span></li>
+        <li><span title="Not yet drafted">Luke</span></li>
+        <li><span title="Not yet drafted">John</span></li>
+        <li><span title="Not yet drafted">Acts</span></li>
+        <li><span title="Not yet drafted">Romans</span></li>
+        <li><span title="Not yet drafted">1 Corinthians</span></li>
+        <li><span title="Not yet drafted">2 Corinthians</span></li>
+        <li><span title="Not yet drafted">Galatians</span></li>
+        <li><span title="Not yet drafted">Ephesians</span></li>
+        <li><span title="Not yet drafted">Philippians</span></li>
+        <li><span title="Not yet drafted">Colossians</span></li>
+        <li><span title="Not yet drafted">1 Thessalonians</span></li>
+        <li><span title="Not yet drafted">2 Thessalonians</span></li>
+        <li><span title="Not yet drafted">1 Timothy</span></li>
+        <li><span title="Not yet drafted">2 Timothy</span></li>
+        <li><span title="Not yet drafted">Titus</span></li>
+        <li><span title="Not yet drafted">Philemon</span></li>
+        <li><span title="Not yet drafted">Hebrews</span></li>
+        <li><span title="Not yet drafted">James</span></li>
+        <li><span title="Not yet drafted">1 Peter</span></li>
+        <li><span title="Not yet drafted">2 Peter</span></li>
+        <li><span title="Not yet drafted">1 John</span></li>
+        <li><span title="Not yet drafted">2 John</span></li>
+        <li><span title="Not yet drafted">3 John</span></li>
+        <li><span title="Not yet drafted">Jude</span></li>
+        <li><span title="Not yet drafted">Revelation</span></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <div class="toggle-dock-wrap">
+    <div class="nav-dock">
+      <a class="nav-btn" data-nav="prev" href="2.html" aria-label="Previous verse" title="Previous verse (←)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <a class="nav-btn" href="index.html" aria-label="Up to chapter" title="Up to chapter">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="18 15 12 9 6 15"/></svg>
+      </a>
+      <a class="nav-btn" data-nav="next" href="4.html" aria-label="Next verse" title="Next verse (→)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+    <div class="toggle-dock">
+      <span role="group" aria-label="Display mode for untranslated words" style="display:flex;">
+        <button data-mode="greek">Greek</button>
+        <button data-mode="translit">Translit</button>
+        <button data-mode="gloss" class="active">Gloss</button>
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../static/cnt.js"></script>
+<script src="../../static/reading.js"></script>

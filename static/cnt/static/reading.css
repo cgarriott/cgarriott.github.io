@@ -230,6 +230,11 @@
 .endnote-word.always { color: var(--rubric); }
 .endnote-word.crux    { color: var(--gold); }
 .endnote-word.variant { color: var(--slate); }
+/* A disputed passage's endnote leads with the passage's name, not a Greek word,
+   so it is prose length and has to wrap -- .endnote-word is inline-block, which
+   would push the whole phrase to the next line on a narrow screen. The .doubtful
+   class it also carries supplies the recession, tying the note to the mark. */
+.endnote-word.doubtful { display: inline; }
 /* Return-to-text link after an endnote's own prose -- same #ref-N target,
    same jumped-box behavior as .endnote-num/.endnote-word above, just
    placed where a reader who scrolled through the note's text actually
@@ -547,4 +552,102 @@ a.nav-btn:hover { color: var(--ink); background: var(--paper); }
   text-decoration-color: var(--rule);
   text-decoration-thickness: 1px;
   text-underline-offset: 4px;
+}
+
+
+/* A disputed passage -- text whose PRESENCE is doubted, not its rendering. Italic,
+   brackets and reduced contrast together, deliberately: the signal must not depend on
+   colour alone, or it is lost to colour-blindness, low vision and greyscale printing.
+
+   opacity rather than a colour, for two reasons. It recedes correctly in both themes
+   without a second token -- lighter against a light page, darker against a dark one --
+   and it fades a flagged word INSIDE the run proportionally, so a Theological, Crux or
+   Variant word keeps its own hue while taking the same recession as the text around it.
+   Setting a colour would have overridden those hues instead.
+
+   Kept at .72 rather than fainter on purpose. These passages are printed because they
+   deserve reading -- the pericope adulterae and Mark 16 are among the most-read pages in
+   the New Testament -- and if faint tips into hard to read, the mark has stopped
+   reporting and started editorialising. */
+/* CARDO'S ITALIC DRAWS GREEK UPRIGHT, and that is why these two files are here.
+   Cardo declares an italic face whose subsets cover both Greek ranges, so a browser
+   picks it and never synthesizes a slant -- and then draws the roman glyphs. It is
+   checkable rather than a matter of taste: in Cardo's own greek subset, alpha's outline
+   spans x 64-1201 in BOTH faces, kappa 53-1006 in both, sigma 75-1232 in both. A sheared
+   glyph cannot have the same horizontal extent as its upright.
+
+   The effect was that a disputed passage's Greek carried the brackets and the recession
+   but not the italic -- two of the three signals PLAN.md requires, and the missing one
+   silently, since the CSS said `font-style: italic` and was being honoured.
+
+   Gentium Book Plus (SIL, OFL) has a real cursive italic Greek. Only its two GREEK
+   subsets are loaded, under a private family name and behind the unicode-range Google's
+   own CSS declares for them, so it applies to Greek codepoints and to nothing else:
+   Latin inside a disputed passage falls straight through to Cardo Italic, and one or two
+   Greek words do not drag an English sentence into a second typeface. Served from here
+   rather than from Google so a versioned CDN URL cannot rot the page. */
+@font-face {
+  font-family: 'CNT Greek Italic';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('gentium-book-plus-italic-greek.woff2') format('woff2');
+  unicode-range: U+0370-0377, U+037A-037F, U+0384-038A, U+038C, U+038E-03A1, U+03A3-03FF;
+}
+@font-face {
+  font-family: 'CNT Greek Italic';
+  font-style: italic;
+  font-weight: 400;
+  font-display: swap;
+  src: url('gentium-book-plus-italic-greek-ext.woff2') format('woff2');
+  unicode-range: U+1F00-1FFF;
+}
+.doubtful {
+  font-style: italic;
+  opacity: .72;
+  /* First in the stack, but reachable only for the Greek codepoints the two
+     @font-face rules above claim. Everything else resolves to Cardo as before. */
+  font-family: 'CNT Greek Italic', 'Cardo', 'Times New Roman', serif;
+  /* PAINT ROOM FOR THE CLOSING BRACKET, AT NO LAYOUT COST. Two things meet on that
+     one character. U+27E7 is in neither Cardo nor Gentium, so it falls back to a
+     system face that has no italic of its own and the browser SYNTHESIZES an oblique
+     -- and a sheared glyph's ink leans out past its advance width at the top right.
+     Meanwhile `opacity` makes this span a composited layer, and the layer is sized
+     from the inline box, so ink outside that box is clipped rather than painted.
+     Together they shave the bracket's top-right corner, and only when it is the last
+     thing on its line, which is why reflowing the paragraph appears to fix it.
+
+     Padding widens the box the layer is cut from; the equal negative margin gives the
+     width straight back, so advance, line breaking and the position of the reference
+     letter after it are all unchanged. */
+  padding-right: 0.25em;
+  margin-right: -0.25em;
+}
+/* Only the wrapper that is an endnote target carries this -- it is what the
+   endnote's back-link scrolls to, and without it the passage lands under the
+   masthead. Same value the flagged words use, for the same reason. */
+.doubtful[id] { scroll-margin-top: 2rem; }
+/* Clickable to its own endnote on a verse page (reading.js reads data-note).
+   The cursor is the whole cue -- no underline, since a rule under a run this
+   long would read as a second mark competing with the italics. */
+.doubtful[data-note] { cursor: pointer; }
+
+/* The legend for the mark above, on a single-verse page only (render.py's
+   include_doubt_legend). It is set in the same face, the same italic and the
+   same recession as the passage it describes, so it reads as a specimen of
+   the thing rather than a caption about it -- and it carries the brackets
+   itself, which is why it needs no prose describing a typeface.
+
+   Smaller than the reading size, because it is apparatus and not text. The
+   opacity is .72 to match .doubtful exactly; if that value ever changes,
+   change both, or the note stops demonstrating what it explains. */
+.doubt-legend {
+  font-size: 0.82rem;
+  line-height: 1.5;
+  font-style: italic;
+  opacity: .72;
+  max-width: 34em;
+  /* .translation is still :last-of-type here -- this is a div, not a fourth p --
+     so its own bottom margin collapses to 0 and the whole gap is set here. */
+  margin-top: 1.1rem;
 }

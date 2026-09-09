@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">ταῦτα δὲ αὐτοῦ ἐνθυμηθέντος ἰδοὺ ἄγγελος <a class="greek-word always" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">κυρίου</a> κατ’ ὄναρ ἐφάνη αὐτῷ λέγων· Ἰωσὴφ υἱὸς Δαυίδ, μὴ φοβηθῇς <a class="greek-word crux" href="#note-2" data-greek="παραλαβεῖν" data-translit="paralabein" data-gloss="paralambance" data-senses="taken, received, took unto">παραλαβεῖν</a> Μαρίαν τὴν γυναῖκά σου, τὸ γὰρ ἐν αὐτῇ <a class="greek-word crux" href="#note-3" data-greek="γεννηθὲν" data-translit="gennēthen" data-gloss="gennied" data-senses="begat, born, brought forth">γεννηθὲν</a> ἐκ <a class="greek-word always" href="#note-4" data-greek="πνεύματός" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">πνεύματός</a> ἐστιν ἁγίου·</p>
-    <p class="translation">But as he was pondering these things, behold, angel of <a id="ref-1" class="flagword always" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-1">a</a> appeared to him in a dream, saying, &quot;Joseph, son of David, do not be afraid to <a id="ref-2" class="flagword crux" href="#note-2" data-greek="παραλαβεῖν" data-translit="paralabein" data-gloss="paralambance" data-senses="taken, received, took unto">paralambance</a><a class="note-ref" href="#note-2">b</a> Mary your wife, for that which was <a id="ref-3" class="flagword crux" href="#note-3" data-greek="γεννηθὲν" data-translit="gennēthen" data-gloss="gennied" data-senses="begat, born, brought forth">gennied</a><a class="note-ref" href="#note-3">c</a> in her is from holy <a id="ref-4" class="flagword always" href="#note-4" data-greek="πνεύματός" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-4">d</a>.&quot;</p>
+    <p class="greek-line">ταῦτα δὲ αὐτοῦ ἐνθυμηθέντος ἰδοὺ ἄγγελος <a class="greek-word always" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">κυρίου</a> κατ’ ὄναρ ἐφάνη αὐτῷ λέγων· Ἰωσὴφ υἱὸς Δαυίδ, μὴ φοβηθῇς <a class="greek-word crux" href="#note-2" data-greek="παραλαβεῖν" data-translit="paralabein" data-gloss="withtake" data-senses="taken, received, took unto">παραλαβεῖν</a> Μαρίαν τὴν γυναῖκά σου, τὸ γὰρ ἐν αὐτῇ <a class="greek-word crux" href="#note-3" data-greek="γεννηθὲν" data-translit="gennēthen" data-gloss="gennied" data-senses="begat, born, brought forth">γεννηθὲν</a> <a class="greek-word crux" href="#note-4" data-greek="ἐκ" data-translit="ek" data-gloss="ek" data-senses="out, among, amongst">ἐκ</a> <a class="greek-word always" href="#note-5" data-greek="πνεύματός" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">πνεύματός</a> ἐστιν ἁγίου·</p>
+    <p class="translation">But he having pondered these things, behold, angel of <a id="ref-1" class="flagword always" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-1">a</a> appeared to him in a dream, saying, &quot;Joseph, son of David, do not be afraid to <a id="ref-2" class="flagword crux" href="#note-2" data-greek="παραλαβεῖν" data-translit="paralabein" data-gloss="withtake" data-senses="taken, received, took unto">withtake</a><a class="note-ref" href="#note-2">b</a> Mary your wife, for that which was <a id="ref-3" class="flagword crux" href="#note-3" data-greek="γεννηθὲν" data-translit="gennēthen" data-gloss="gennied" data-senses="begat, born, brought forth">gennied</a><a class="note-ref" href="#note-3">c</a> in her is <a id="ref-4" class="flagword crux" href="#note-4" data-greek="ἐκ" data-translit="ek" data-gloss="ek" data-senses="out, among, amongst">ek</a><a class="note-ref" href="#note-4">d</a> holy <a id="ref-5" class="flagword always" href="#note-5" data-greek="πνεύματός" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-5">e</a>.&quot;</p>
   </div>
 
   <div class="endnotes">
@@ -201,11 +207,10 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — states κύριος is used &quot;in LXX (subst.) chiefly for [the divine name], also for בַּעַל, אָדוֹן,&quot; cataloguing the full range from genitive-of-possession (&quot;master of the house&quot;) through vocative address (&quot;sir&quot;) to the full divine title</li>
-            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;supreme in authority, i.e. controller; by implication, Master (as a respectful title)&quot;</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — states κύριος is used &quot;in LXX (subst.) chiefly for [the divine name], also for [Baal, Adon],&quot; cataloguing the full range from genitive-of-possession (&quot;master of the house&quot;) through vocative address (&quot;sir&quot;) to the full divine title</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;supreme in authority, i.e. (as noun) controller; by implication, Master (as a respectful title)&quot;</li>
             <li>Nolland (NIGTC) — cautions against over-reading an anarthrous κύριος as inherently a divine title, noting Psalm 110:1&#x27;s &quot;my lord&quot; is ordinary court address to a king</li>
             <li>France (NICNT) — on Matthew&#x27;s citation of Isaiah 40:3, applying to Jesus a text whose κύριος names God himself constitutes &quot;a remarkable christological claim&quot;</li>
-            <li>Hengel (<i>Studies in Early Christology</i>) — traces how Psalm 110:1&#x27;s double κύριος became the primary vehicle for the earliest church&#x27;s confession of Jesus&#x27;s exalted status</li>
           </ul>
         </details>
       </div>
@@ -215,7 +220,7 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">paralabein</a>
-        παραλαμβάνω is an ordinary verb for taking a person along or to oneself, used elsewhere in Matthew for taking children on a journey, taking companions up a mountain, and marching a prisoner into custody. Applied to a wife, it marks the second stage of Jewish marriage law, bringing a betrothed woman into the groom&#x27;s household. No lexicon entry treats the marital use as a distinct sense apart from the verb&#x27;s other objects.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        παραλαμβάνω is an ordinary verb for taking a person along or to oneself, used elsewhere in Matthew for taking children on a journey, taking companions up a mountain, and marching a prisoner into custody. Applied to a wife, it marks the second stage of Jewish marriage law, bringing a betrothed woman into the groom&#x27;s household. One lexicon gives the marital use a sense of its own, citing this verse and 1:24.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> taken, received, took unto</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -224,6 +229,9 @@ render.py's query logic) and regenerate instead.
             <li>Davies and Allison (ICC) — cites Herodotus, two passages of Josephus, and the rabbinic term for bringing a bride into the groom&#x27;s house</li>
             <li>Albright and Mann (Anchor) — describes betrothal and the taking of the bride into the groom&#x27;s house as the two legal stages of Jewish marriage</li>
             <li>France (NICNT) — reads the verb as carrying a sense of welcome, not mere dutiful compliance</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;to receive near, i.e. associate with oneself (in any familiar or intimate act or relation)&quot;</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — reads the angel&#x27;s words as suggesting &quot;reverential hesitation to intrude&quot; rather than suspicion of unfaithfulness</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — gives the marital use its own sub-sense, taking a wife into one&#x27;s home, citing this verse and 1:24</li>
           </ul>
         </details>
       </div>
@@ -242,6 +250,7 @@ render.py's query logic) and regenerate instead.
             <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — classifies the construction as an ordinary neuter substantival participle, citing Matthew&#x27;s own &quot;to rhēthen&quot; as a parallel</li>
             <li>Davies and Allison (ICC) — argue Greek&#x27;s neuter πνεῦμα, unlike its feminine Hebrew counterpart, tells against reading the Spirit&#x27;s role as a male parent</li>
             <li>France (NICNT) — notes &quot;pregnant from&quot; is unnatural English idiom while &quot;pregnant by&quot; wrongly implies natural male generation</li>
+            <li>Luz (Hermeneia) — reads the neuter Spirit against the feminine Hebrew רוּחַ as evidence against Mary&#x27;s sexual partner, matching Davies and Allison&#x27;s grammatical-gender argument</li>
           </ul>
         </details>
       </div>
@@ -250,8 +259,27 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
       <div class="endnote-body">
-        <a class="endnote-word always" id="note-4" href="#ref-4" title="Back to text">pneumatos</a>
-        Pneuma spans a range from ordinary wind or breath to the animating principle in a person, an incorporeal spirit or demon, and the divine Spirit. Greek grammar does not resolve which sense is meant in a given case. The presence or absence of the article is sometimes read as marking the divine Spirit specifically, though this pattern is not applied consistently and remains disputed.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word crux" id="note-4" href="#ref-4" title="Back to text">ek</a>
+        The five occurrences of ἐκ in the genealogy all name a mother. Here the same preposition governs the Spirit, and seven versions divide three ways over it, between &quot;from,&quot; &quot;by,&quot; and &quot;of.&quot; The dispute is whether the phrase marks a source or an agent of generation. Commentators converge on source. They argue from the word order that separates the participle from the preposition, from Septuagint idiom for conception, from the neuter gender of πνεῦμα against its feminine Hebrew counterpart, and from the absence of the vocabulary of Greek and Egyptian divine-birth stories.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> out, among, amongst</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Nolland (NIGTC) — reads the intervening ἐστιν as creating &quot;a measure of separation between the verb and the preposition,&quot; so that the idiom is not the Johannine &quot;begotten of&quot; that marks a male role</li>
+            <li>France (NICNT) — names the English difficulty directly, that &quot;&#x27;pregnant from&#x27; would be unnatural English idiom, while &#x27;pregnant by&#x27; is too specifically used of natural male generation&quot;</li>
+            <li>Davies and Allison (ICC) and Luz (Hermeneia) — argue from grammatical gender, πνεῦμα being neuter in Greek where its Hebrew counterpart is feminine, so that &quot;no male principle is involved&quot;</li>
+            <li>Fitzmyer (<i>To Advance the Gospel</i>) — argues from what the Greek lacks, &quot;no language that would suggest a hierogamy or a theogamy after the manner of Greek and Egyptian myths&quot;</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — files ἐκ πνεύματος under nativity and lineage beside John&#x27;s born-of-the-Spirit texts, and keeps agency after a passive verb as a separate heading</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-5" title="Back to text">e</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-5" href="#ref-5" title="Back to text">pneumatos</a>
+        Pneuma spans a range from ordinary wind or breath to the animating principle in a person, an incorporeal spirit or demon, and the divine Spirit. Greek grammar does not resolve which sense is meant in a given case. The presence or absence of the article is sometimes read as marking the divine Spirit specifically, though this pattern is not applied consistently and remains disputed.<a class="endnote-back" href="#ref-5" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> spirit, ghost, wind</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -259,7 +287,8 @@ render.py's query logic) and regenerate instead.
             <li><i>Strong&#x27;s Greek Dictionary</i> — base sense &quot;a current of air, i.e. breath (blast) or a breeze,&quot; extending by analogy to human soul, angel, demon, or God&#x27;s own Spirit</li>
             <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — five-sense entry, running from wind and breath through vital principle, disposition and incorporeal being to Holy Spirit, where the article&#x27;s presence &quot;as a rule&quot; marks the Spirit as Person/Divine Power versus an anarthrous &quot;operation, influence, or gift&quot;</li>
             <li>Nolland (NIGTC) and Davies and Allison (ICC) — both argue, independently, that &quot;ἐκ πνεύματος ἁγίου&quot; denotes divine creative power rather than a paternal/male generative role, Nolland via Septuagint idiom, Davies and Allison via grammatical gender (Greek πνεῦμα is neuter, Hebrew רוּחַ is feminine)</li>
-            <li><i>SBL Greek New Testament</i> — πνεῦμα ἅγιον is anarthrous at Matthew 1:18, 1:20, and 3:11 but articular at 12:32 and 28:19, a distributional pattern whose significance remains disputed absent a dedicated grammar treatment</li>
+            <li><i>SBL Greek New Testament</i> — πνεῦμα ἅγιον is anarthrous at Matthew 1:18, 1:20 and 3:11 but articular at 12:32 and 28:19</li>
+            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — the article drops after a preposition and by assimilation to an anarthrous noun, which covers all three anarthrous occurrences</li>
           </ul>
         </details>
       </div>

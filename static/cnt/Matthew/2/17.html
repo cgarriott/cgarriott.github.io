@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">τότε <a class="greek-word crux" href="#note-1" data-greek="ἐπληρώθη" data-translit="eplērōthē" data-gloss="pleroma" data-senses="fulfilled, filled, full">ἐπληρώθη</a> τὸ ῥηθὲν διὰ Ἰερεμίου τοῦ προφήτου λέγοντος·</p>
-    <p class="translation">Then what was spoken through Jeremiah the prophet reached its <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐπληρώθη" data-translit="eplērōthē" data-gloss="pleroma" data-senses="fulfilled, filled, full">pleroma</a><a class="note-ref" href="#note-1">a</a>, saying:</p>
+    <p class="greek-line">τότε <a class="greek-word crux" href="#note-1" data-greek="ἐπληρώθη" data-translit="eplērōthē" data-gloss="pleried" data-senses="fulfilled, filled, full">ἐπληρώθη</a> τὸ ῥηθὲν <a class="greek-word variant" href="#note-2" data-greek="διὰ" data-translit="dia" data-gloss="through" data-senses="">διὰ</a> Ἰερεμίου τοῦ προφήτου λέγοντος·</p>
+    <p class="translation">Then was <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐπληρώθη" data-translit="eplērōthē" data-gloss="pleried" data-senses="fulfilled, filled, full">pleried</a><a class="note-ref" href="#note-1">a</a> what was spoken <a id="ref-2" class="flagword variant" href="#note-2" data-greek="διὰ" data-translit="dia" data-gloss="through" data-senses="">through</a><a class="note-ref" href="#note-2">b</a> Jeremiah the prophet, saying,</p>
   </div>
 
   <div class="endnotes">
@@ -194,7 +200,7 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">eplērōthē</a>
-        Two of Matthew&#x27;s ten fulfillment-formula citations use this flat declarative, &quot;then was fulfilled,&quot; in place of the purpose clause &quot;so that it might be fulfilled&quot; used at the other eight. Both instances name Jeremiah, and both concern acts committed by human perpetrators with no scriptural purpose of their own. Proposed explanations for the shift include reluctance to attribute Herod&#x27;s and Judas&#x27;s actions directly to God&#x27;s own stated purpose, and a grammatical pattern that simply tracks human versus divine agency. Which explains the shift remains disputed.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        Two of Matthew&#x27;s ten fulfillment-formula citations use this flat declarative, &quot;then was fulfilled,&quot; in place of the purpose clause <i>so that it might be fulfilled</i> used at the other eight. Both instances name Jeremiah, and both concern acts committed by human perpetrators with no scriptural purpose of their own. Proposed explanations for the shift include reluctance to attribute Herod&#x27;s and Judas&#x27;s actions directly to God&#x27;s own stated purpose, and a grammatical pattern that simply tracks human versus divine agency. Which explains the shift remains disputed.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> fulfilled, filled, full</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -202,9 +208,17 @@ render.py's query logic) and regenerate instead.
             <li>Nolland (NIGTC) — reads the shift as marking that neither Herod nor Judas had any interest in fulfilling scripture</li>
             <li>France (NICNT) — traces the reading to a wider scholarly lineage, while cautioning that &quot;the difference is not very great&quot;</li>
             <li>Davies and Allison (ICC) — offers a more neutral alternative, that the grammar simply tracks human versus divine agency</li>
-            <li>Turner (BECNT) — presents the theodicy-avoidance reading unhedged at this verse, after calling the same reading &quot;debatable&quot; in his own introduction</li>
+            <li>Turner (BECNT) — gives the theodicy-avoidance reading at this verse without the doubt he attaches to it in his own introduction, where he calls it &quot;debatable&quot;</li>
           </ul>
         </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-2" href="#ref-2" title="Back to text">dia</a>
+        <a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
       </div>
     </div>
     

@@ -1,0 +1,1247 @@
+<meta name="robots" content="noindex, nofollow">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<!--
+Continuous multi-verse chapter page. This is a SEPARATE template from
+verse.html.jinja (the single-verse atomic-unit page, which keeps the Greek
+line) -- see ../PLAN.md's "Page architecture": a chapter page reads like an
+ordinary printed Bible chapter, continuous English paragraphs with small
+superscript verse numbers, no Greek, assembled at build time from every
+verse's own content.
+
+Rendered by ../render.py, which queries build/cnt.sqlite and
+supplies:
+  chapter_ref -- display string, e.g. "Matthew 1"
+  paragraphs  -- list of paragraphs, each a list of per-verse context dicts
+                 (verse_num, anchor, translation_segments -- shaped like
+                 verse.html.jinja's own, minus greek_segments). Paragraph
+                 grouping is a manual editorial call (PARAGRAPH_BREAKS in
+                 render.py) -- no source text carries this data.
+  endnotes    -- ALL verses' endnotes flattened into one continuously-
+                 numbered list (per PLAN.md's Endnotes section)
+  apparatus   -- {books, chapters, verses, verse_range}: the masthead's
+                 Book/Chapter/Verse dropdowns. The verse select is headed by
+                 `verse_range` ("1-25", the whole chapter), which here is the
+                 CURRENT entry -- a chapter page has no verse to be at, so the
+                 select opens on the range instead of on a value. From a verse
+                 page the same option is the way back out to the chapter.
+                 See render.py's build_apparatus
+  nav         -- {prev, next, up}: the dock's chapter-to-chapter arrows.
+                 `up` is always None here (there is no book-level page),
+                 so this dock is two buttons where the verse page's is
+                 three -- see render.py's buildChapterNavContext
+
+Do not hand-edit generated output HTML -- edit this template (or
+render.py's query logic) and regenerate instead.
+-->
+<title>CNT — Matthew 3</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cardo:ital,wght@0,400;0,700;1,400&family=Source+Sans+3:wght@400;500;600&display=swap">
+<link rel="stylesheet" href="../../static/cnt.css">
+<link rel="stylesheet" href="../../static/reading.css">
+<!-- Runs before first paint, so a reader who chose light does not see a dark
+     flash first. It has to be inline for that reason -- an external file is
+     fetched too late. Everything else lives in static/cnt.js. -->
+<script>
+  (function () {
+    try {
+      var t = localStorage.getItem('cnt-theme');
+      if (t === 'light' || t === 'dark') { document.documentElement.setAttribute('data-theme', t); }
+    } catch (e) {}
+  })();
+</script>
+
+<div class="page">
+
+  <div class="header">
+    <div class="masthead">
+      <span><a class="masthead-home" href="../../index.html"><strong>CNT</strong> — Corey's Non-Translation</a></span>
+      <span class="masthead-tools">
+        <button class="theme-toggle" id="theme-toggle" aria-label="Toggle light/dark theme" title="Toggle light/dark theme">
+          <svg class="icon-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4" y1="12" x2="2" y2="12"/><line x1="22" y1="12" x2="20" y2="12"/>
+            <line x1="19.07" y1="4.93" x2="17.66" y2="6.34"/><line x1="6.34" y1="17.66" x2="4.93" y2="19.07"/>
+            <line x1="19.07" y1="19.07" x2="17.66" y2="17.66"/><line x1="6.34" y1="6.34" x2="4.93" y2="4.93"/>
+          </svg>
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M12 3a9 9 0 1 0 9 9 7 7 0 0 1-9-9z"/>
+          </svg>
+        </button>
+        <button id="sitemap-toggle" aria-label="Open site map" title="Site map" aria-haspopup="dialog">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round">
+            <line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </span>
+    </div>
+    <div class="legend">
+      <span class="always"><i></i><span class="legend-label"><b>Theological</b><span class="legend-desc">: always untranslated</span></span></span>
+      <span class="crux"><i></i><span class="legend-label"><b>Crux</b><span class="legend-desc">: untranslated here</span></span></span>
+      <span class="variant"><i></i><span class="legend-label"><b>Variant</b><span class="legend-desc">: editions disagree</span></span></span>
+    </div>
+  </div>
+
+  <p class="ref">
+    <span class="apparatus">
+      <span class="apparatus-select-wrap">
+        <select class="apparatus-select" aria-label="Book" onchange="if(this.value){location.href=this.value;}">
+          <option value="" selected>Matthew</option>
+          <option value="../../Mark/1/index.html" disabled>Mark</option>
+          <option value="../../Luke/1/index.html" disabled>Luke</option>
+          <option value="../../John/1/index.html" disabled>John</option>
+          <option value="../../Acts/1/index.html" disabled>Acts</option>
+          <option value="../../Romans/1/index.html" disabled>Romans</option>
+          <option value="../../1 Corinthians/1/index.html" disabled>1 Corinthians</option>
+          <option value="../../2 Corinthians/1/index.html" disabled>2 Corinthians</option>
+          <option value="../../Galatians/1/index.html" disabled>Galatians</option>
+          <option value="../../Ephesians/1/index.html" disabled>Ephesians</option>
+          <option value="../../Philippians/1/index.html" disabled>Philippians</option>
+          <option value="../../Colossians/1/index.html" disabled>Colossians</option>
+          <option value="../../1 Thessalonians/1/index.html" disabled>1 Thessalonians</option>
+          <option value="../../2 Thessalonians/1/index.html" disabled>2 Thessalonians</option>
+          <option value="../../1 Timothy/1/index.html" disabled>1 Timothy</option>
+          <option value="../../2 Timothy/1/index.html" disabled>2 Timothy</option>
+          <option value="../../Titus/1/index.html" disabled>Titus</option>
+          <option value="../../Philemon/1/index.html" disabled>Philemon</option>
+          <option value="../../Hebrews/1/index.html" disabled>Hebrews</option>
+          <option value="../../James/1/index.html" disabled>James</option>
+          <option value="../../1 Peter/1/index.html" disabled>1 Peter</option>
+          <option value="../../2 Peter/1/index.html" disabled>2 Peter</option>
+          <option value="../../1 John/1/index.html" disabled>1 John</option>
+          <option value="../../2 John/1/index.html" disabled>2 John</option>
+          <option value="../../3 John/1/index.html" disabled>3 John</option>
+          <option value="../../Jude/1/index.html" disabled>Jude</option>
+          <option value="../../Revelation/1/index.html" disabled>Revelation</option>
+        </select>
+      </span>
+      <span class="apparatus-select-wrap">
+        <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
+          <option value="../1/index.html">1</option>
+          <option value="../2/index.html">2</option>
+          <option value="" selected>3</option>
+          <option value="../4/index.html">4</option>
+          <option value="../5/index.html">5</option>
+          <option value="../6/index.html">6</option>
+          <option value="../7/index.html" disabled>7</option>
+          <option value="../8/index.html" disabled>8</option>
+          <option value="../9/index.html" disabled>9</option>
+          <option value="../10/index.html" disabled>10</option>
+          <option value="../11/index.html" disabled>11</option>
+          <option value="../12/index.html" disabled>12</option>
+          <option value="../13/index.html" disabled>13</option>
+          <option value="../14/index.html" disabled>14</option>
+          <option value="../15/index.html" disabled>15</option>
+          <option value="../16/index.html" disabled>16</option>
+          <option value="../17/index.html" disabled>17</option>
+          <option value="../18/index.html" disabled>18</option>
+          <option value="../19/index.html" disabled>19</option>
+          <option value="../20/index.html" disabled>20</option>
+          <option value="../21/index.html" disabled>21</option>
+          <option value="../22/index.html" disabled>22</option>
+          <option value="../23/index.html" disabled>23</option>
+          <option value="../24/index.html" disabled>24</option>
+          <option value="../25/index.html" disabled>25</option>
+          <option value="../26/index.html" disabled>26</option>
+          <option value="../27/index.html" disabled>27</option>
+          <option value="../28/index.html" disabled>28</option>
+        </select>
+      </span>
+      <span class="apparatus-colon">:</span>
+      <span class="apparatus-select-wrap">
+        <select class="apparatus-select is-unset" aria-label="Verse" onchange="if(this.value){location.href=this.value;}">
+          <option value="" selected>1–17</option>
+          <option value="1.html">1</option>
+          <option value="2.html">2</option>
+          <option value="3.html">3</option>
+          <option value="4.html">4</option>
+          <option value="5.html">5</option>
+          <option value="6.html">6</option>
+          <option value="7.html">7</option>
+          <option value="8.html">8</option>
+          <option value="9.html">9</option>
+          <option value="10.html">10</option>
+          <option value="11.html">11</option>
+          <option value="12.html">12</option>
+          <option value="13.html">13</option>
+          <option value="14.html">14</option>
+          <option value="15.html">15</option>
+          <option value="16.html">16</option>
+          <option value="17.html">17</option>
+        </select>
+      </span>
+    </span>
+  </p>
+
+  
+  <p class="translation"><span class="vspan" data-href="1.html"><sup class="vnum" id="Matthew-3-1">1</sup>Now in those days arrives John the <a id="ref-1" class="flagword always" href="#note-1" data-greek="βαπτιστὴς" data-translit="baptistēs" data-gloss="mersor" data-senses="baptist">mersor</a><a class="note-ref" href="#note-1">a</a>, heralding in the wilderness of Judea</span><span class="vspan" data-href="2.html"><sup class="vnum" id="Matthew-3-2">2</sup><a id="ref-2" class="flagword variant" href="#note-2" data-greek="καὶ" data-translit="kai" data-gloss="and" data-senses="">and</a><a class="note-ref" href="#note-2">b</a> saying, &quot;<a id="ref-3" class="flagword always" href="#note-3" data-greek="Μετανοεῖτε" data-translit="Metanoeite" data-gloss="Transment" data-senses="repent, repented not">Transment</a><a class="note-ref" href="#note-3">c</a>, for has <a id="ref-4" class="flagword crux" href="#note-4" data-greek="ἤγγικεν" data-translit="ēngiken" data-gloss="engizied" data-senses="drawn near, drew near, drawing near">engizied</a><a class="note-ref" href="#note-4">d</a> the <a id="ref-5" class="flagword always" href="#note-5" data-greek="βασιλεία" data-translit="basileia" data-gloss="basileia" data-senses="kingdom, kingship">basileia</a><a class="note-ref" href="#note-5">e</a> of the <a id="ref-6" class="flagword crux" href="#note-6" data-greek="οὐρανῶν" data-translit="ouranōn" data-gloss="ouranoi" data-senses="heaven, air, sky">ouranoi</a><a class="note-ref" href="#note-6">f</a>.&quot;</span><span class="vspan" data-href="3.html"><sup class="vnum" id="Matthew-3-3">3</sup>For this is the <a id="ref-7" class="flagword crux" href="#note-7" data-greek="ῥηθεὶς" data-translit="rhētheis" data-gloss="rhetheis" data-senses="said, speak, tell">rhetheis</a><a class="note-ref" href="#note-7">g</a> <a id="ref-8" class="flagword variant" href="#note-8" data-greek="διὰ" data-translit="dia" data-gloss="through" data-senses="">through</a><a class="note-ref" href="#note-8">h</a> Isaiah the prophet, saying, &quot;Voice of one crying out in the wilderness: Prepare the way of <a id="ref-9" class="flagword always" href="#note-9" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-9">i</a>, straight make his paths.&quot;</span><span class="vspan" data-href="4.html"><sup class="vnum" id="Matthew-3-4">4</sup>Now John himself had his garment from hairs of camel and a leather belt around his loin; now his food was locusts and wild <a id="ref-10" class="flagword crux" href="#note-10" data-greek="μέλι" data-translit="meli" data-gloss="meli" data-senses="honey">meli</a><a class="note-ref" href="#note-10">j</a>.</span><span class="vspan" data-href="5.html"><sup class="vnum" id="Matthew-3-5">5</sup>Then was going out toward him Jerusalem and all Judea and all the surrounding region of the Jordan,</span><span class="vspan" data-href="6.html"><sup class="vnum" id="Matthew-3-6">6</sup>and they were being <a id="ref-11" class="flagword always" href="#note-11" data-greek="ἐβαπτίζοντο" data-translit="ebaptizonto" data-gloss="mersed" data-senses="baptized, washed, baptist">mersed</a><a class="note-ref" href="#note-11">k</a> in the Jordan <a id="ref-12" class="flagword variant" href="#note-12" data-greek="ποταμῷ" data-translit="potamōi" data-gloss="river" data-senses="">river</a><a class="note-ref" href="#note-12">l</a> by him, <a id="ref-13" class="flagword crux" href="#note-13" data-greek="ἐξομολογούμενοι" data-translit="exomologoumenoi" data-gloss="exomologying" data-senses="confess, praise, promised">exomologying</a><a class="note-ref" href="#note-13">m</a> their <a id="ref-14" class="flagword always" href="#note-14" data-greek="ἁμαρτίας" data-translit="hamartias" data-gloss="peccancies" data-senses="sin">peccancies</a><a class="note-ref" href="#note-14">n</a>.</span><span class="vspan" data-href="7.html"><sup class="vnum" id="Matthew-3-7">7</sup>But having seen many of the Pharisees and Sadducees coming <a id="ref-15" class="flagword crux" href="#note-15" data-greek="ἐπὶ τὸ βάπτισμα" data-translit="epi to baptisma" data-gloss="epi to baptisma" data-senses="">epi to baptisma</a><a class="note-ref" href="#note-15">o</a> <a id="ref-16" class="flagword variant" href="#note-16" data-greek="αὐτοῦ" data-translit="autou" data-gloss="of him" data-senses="">of him</a><a class="note-ref" href="#note-16">p</a>, he said to them, &quot;<a id="ref-17" class="flagword crux" href="#note-17" data-greek="Γεννήματα ἐχιδνῶν" data-translit="Gennēmata echidnōn" data-gloss="Gennemata echidnon" data-senses="">Gennemata echidnon</a><a class="note-ref" href="#note-17">q</a>, who showed to you to flee from the about-to-be wrath?&quot;</span><span class="vspan" data-href="8.html"><sup class="vnum" id="Matthew-3-8">8</sup>Make therefore <span class="flagword crux" data-greek="καρπὸν" data-translit="karpon" data-gloss="karpos" data-senses="fruit">karpos</span> <span class="flagword crux" data-greek="ἄξιον" data-translit="axion" data-gloss="axiac" data-senses="worthy, meet">axiac</span> of the <a id="ref-18" class="flagword always" href="#note-18" data-greek="μετανοίας" data-translit="metanoias" data-gloss="transmentation" data-senses="repentance">transmentation</a><a class="note-ref" href="#note-18">r</a>.</span><span class="vspan" data-href="9.html"><sup class="vnum" id="Matthew-3-9">9</sup>And do not think to say in yourselves, &quot;<a id="ref-19" class="flagword crux" href="#note-19" data-greek="Πατέρα" data-translit="Patera" data-gloss="Patrity" data-senses="father, parents, patriarchs">Patrity</a><a class="note-ref" href="#note-19">s</a> we have — Abraham&quot;; for I say to you that is able the <a id="ref-20" class="flagword always" href="#note-20" data-greek="θεὸς" data-translit="theos" data-gloss="theos" data-senses="god">theos</a><a class="note-ref" href="#note-20">t</a> out of these stones to raise <a id="ref-21" class="flagword crux" href="#note-21" data-greek="τέκνα" data-translit="tekna" data-gloss="tekna" data-senses="child, son">tekna</a><a class="note-ref" href="#note-21">u</a> to Abraham.</span><span class="vspan" data-href="10.html"><sup class="vnum" id="Matthew-3-10">10</sup>But already the axe at the root of the trees <a id="ref-22" class="flagword crux" href="#note-22" data-greek="κεῖται" data-translit="keitai" data-gloss="keimies" data-senses="lying, laid, set">keimies</a><a class="note-ref" href="#note-22">v</a>; every <a id="ref-23" class="flagword crux" href="#note-23" data-greek="δένδρον" data-translit="dendron" data-gloss="dendron" data-senses="tree">dendron</a><a class="note-ref" href="#note-23">w</a> therefore not making good fruit is <a id="ref-24" class="flagword crux" href="#note-24" data-greek="ἐκκόπτεται" data-translit="ekkoptetai" data-gloss="ekkoptied" data-senses="cut off, cut down, hewn down">ekkoptied</a><a class="note-ref" href="#note-24">x</a> and into fire is thrown.</span><span class="vspan" data-href="11.html"><sup class="vnum" id="Matthew-3-11">11</sup>I on the one hand <a id="ref-25" class="flagword always" href="#note-25" data-greek="βαπτίζω" data-translit="baptizō" data-gloss="merse" data-senses="baptized, washed, baptist">merse</a><a class="note-ref" href="#note-25">y</a> you <a id="ref-26" class="flagword crux" href="#note-26" data-greek="ἐν" data-translit="en" data-gloss="en" data-senses="among, within, during">en</a><a class="note-ref" href="#note-26">z</a> water into <a id="ref-27" class="flagword always" href="#note-27" data-greek="μετάνοιαν" data-translit="metanoian" data-gloss="transmentation" data-senses="repentance">transmentation</a><a class="note-ref" href="#note-27">aa</a>; but the one behind me <a id="ref-28" class="flagword crux" href="#note-28" data-greek="ἐρχόμενος" data-translit="erchomenos" data-gloss="erchying" data-senses="come, went, came not">erchying</a><a class="note-ref" href="#note-28">ab</a> is more <a id="ref-29" class="flagword crux" href="#note-29" data-greek="ἰσχυρότερός" data-translit="ischuroteros" data-gloss="ischuros" data-senses="strong, mighty, mightier">ischuros</a><a class="note-ref" href="#note-29">ac</a> than I, of whom I am not fit to <a id="ref-30" class="flagword crux" href="#note-30" data-greek="βαστάσαι" data-translit="bastasai" data-gloss="bastazie" data-senses="bear, carrying, bear them">bastazie</a><a class="note-ref" href="#note-30">ad</a> the sandals; he himself will <a id="ref-31" class="flagword always" href="#note-31" data-greek="βαπτίσει" data-translit="baptisei" data-gloss="merse" data-senses="baptized, washed, baptist">merse</a><a class="note-ref" href="#note-31">ae</a> you <a id="ref-32" class="flagword crux" href="#note-32" data-greek="ἐν" data-translit="en" data-gloss="en" data-senses="among, within, during">en</a><a class="note-ref" href="#note-32">af</a> holy <a id="ref-33" class="flagword always" href="#note-33" data-greek="πνεύματι" data-translit="pneumati" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-33">ag</a> <a id="ref-34" class="flagword variant" href="#note-34" data-greek="καὶ πυρί" data-translit="kai puri" data-gloss="and fire" data-senses="">and fire</a><a class="note-ref" href="#note-34">ah</a>.</span><span class="vspan" data-href="12.html"><sup class="vnum" id="Matthew-3-12">12</sup>of whom the winnowing shovel in his hand, and he will thoroughly cleanse his threshing floor and will gather his wheat into the storehouse, but the chaff he will burn up by <a id="ref-35" class="flagword crux" href="#note-35" data-greek="ἀσβέστῳ" data-translit="asbestōi" data-gloss="asbestine" data-senses="unquenchable">asbestine</a><a class="note-ref" href="#note-35">ai</a> fire.</span><span class="vspan" data-href="13.html"><sup class="vnum" id="Matthew-3-13">13</sup>Then arrives Jesus from Galilee upon the Jordan toward John, to be <a id="ref-36" class="flagword always" href="#note-36" data-greek="βαπτισθῆναι" data-translit="baptisthēnai" data-gloss="mersed" data-senses="baptized, washed, baptist">mersed</a><a class="note-ref" href="#note-36">aj</a> by him.</span><span class="vspan" data-href="14.html"><sup class="vnum" id="Matthew-3-14">14</sup>But <a id="ref-37" class="flagword variant" href="#note-37" data-greek="Ἰωάννης" data-translit="Iōannēs" data-gloss="John" data-senses="">John</a><a class="note-ref" href="#note-37">ak</a> was hindering him, saying, &quot;I have need by you to be <a id="ref-38" class="flagword always" href="#note-38" data-greek="βαπτισθῆναι" data-translit="baptisthēnai" data-gloss="mersed" data-senses="baptized, washed, baptist">mersed</a><a class="note-ref" href="#note-38">al</a>, and you come toward me?&quot;</span><span class="vspan" data-href="15.html"><sup class="vnum" id="Matthew-3-15">15</sup>But having answered, Jesus said <a id="ref-39" class="flagword variant" href="#note-39" data-greek="πρὸς" data-translit="pros" data-gloss="toward" data-senses="">toward</a><a class="note-ref" href="#note-39">am</a> <a id="ref-40" class="flagword variant" href="#note-40" data-greek="αὐτόν" data-translit="auton" data-gloss="him" data-senses="">him</a><a class="note-ref" href="#note-40">an</a>, &quot;<a id="ref-41" class="flagword always" href="#note-41" data-greek="Ἄφες" data-translit="Aphes" data-gloss="Dimit" data-senses="left, forgiven, suffer">Dimit</a><a class="note-ref" href="#note-41">ao</a> now, for thus it is fitting for us to <a id="ref-42" class="flagword crux" href="#note-42" data-greek="πληρῶσαι" data-translit="plērōsai" data-gloss="plerie" data-senses="fulfilled, filled, full">plerie</a><a class="note-ref" href="#note-42">ap</a> all <a id="ref-43" class="flagword always" href="#note-43" data-greek="δικαιοσύνην" data-translit="dikaiosunēn" data-gloss="rectitude" data-senses="righteousness">rectitude</a><a class="note-ref" href="#note-43">aq</a>.&quot; Then he <a id="ref-44" class="flagword always" href="#note-44" data-greek="ἀφίησιν" data-translit="aphiēsin" data-gloss="dimits" data-senses="left, forgiven, suffer">dimits</a><a class="note-ref" href="#note-44">ar</a> him.</span><span class="vspan" data-href="16.html"><sup class="vnum" id="Matthew-3-16">16</sup><a id="ref-45" class="flagword variant" href="#note-45" data-greek="δὲ" data-translit="de" data-gloss="But" data-senses="">But</a><a class="note-ref" href="#note-45">as</a> having been <a id="ref-46" class="flagword always" href="#note-46" data-greek="βαπτισθεὶς" data-translit="baptistheis" data-gloss="mersed" data-senses="baptized, washed, baptist">mersed</a><a class="note-ref" href="#note-46">at</a>, Jesus immediately went up from the water; and behold, the heavens were opened, and he saw <a id="ref-47" class="flagword always" href="#note-47" data-greek="πνεῦμα" data-translit="pneuma" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-47">au</a> of <a id="ref-48" class="flagword always" href="#note-48" data-greek="θεοῦ" data-translit="theou" data-gloss="theos" data-senses="god">theos</a><a class="note-ref" href="#note-48">av</a> going down as a dove, coming upon him;</span><span class="vspan" data-href="17.html"><sup class="vnum" id="Matthew-3-17">17</sup>And behold, voice out of the heavens saying, &quot;This is my <a id="ref-49" class="flagword crux" href="#note-49" data-greek="υἱός" data-translit="huios" data-gloss="filius" data-senses="son, child, foal">filius</a><a class="note-ref" href="#note-49">aw</a>, the <a id="ref-50" class="flagword always" href="#note-50" data-greek="ἀγαπητός" data-translit="agapētos" data-gloss="agapetic" data-senses="beloved, dearly beloved, dear">agapetic</a><a class="note-ref" href="#note-50">ax</a>, in whom I <a id="ref-51" class="flagword crux" href="#note-51" data-greek="εὐδόκησα" data-translit="eudokēsa" data-gloss="eudokied" data-senses="pleased, well pleased, found delight">eudokied</a><a class="note-ref" href="#note-51">ay</a>.&quot;</span></p>
+  
+
+  <div class="endnotes">
+    <p class="endnotes-label">Notes</p>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-1" href="#ref-1" title="Back to text">baptistēs</a>
+        Baptizo means to dip, plunge or immerse, and is used of ritual washing of both people and objects. English &quot;baptize&quot; is not a translation of it but the Greek word itself carried through Latin, so the English names a rite where the Greek describes an act. What the act physically involved — immersion, pouring, sprinkling — is disputed, and the word does not settle it.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> baptist</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — dip, plunge, immerse, with ritual washing derived from it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — separates ordinary washing from the initiatory rite</li>
+            <li>Josephus (<i>Antiquities of the Jews</i>) — describes John&#x27;s washing as of the body, the soul already cleansed by righteousness</li>
+            <li>Taylor (<i>The Immerser</i>) — treats John&#x27;s rite against the range of contemporary Jewish immersion practice</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-2" href="#ref-2" title="Back to text">kai</a>
+        Codex Sinaiticus and Codex Vaticanus omit the connective before the participle, and so do several early versions. The modern critical text prints it in brackets. Support for the omission is thin and does not fall along the usual textual lines. Versions that render a connective at all print &quot;and saying&quot; ahead of the imperative, and most modern ones open the sentence at the imperative instead.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — rates the choice indecisive, finds the support for omission slim and incoherent, and accepts the bracketing</li>
+            <li>Zahn, cited in Willker (<i>A Textual Commentary on the Greek Gospels</i>) — holds the connective is missed after the participle of proclaiming that precedes it</li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the word in NA28, NA27, the Tyndale House edition, SBL, Tregelles, the Textus Receptus and the Byzantine text, and absent from Westcott and Hort</li>
+            <li>NET — reports the Greek as &quot;and saying&quot; while dropping the following participle as redundant in English</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — carries no entry for this verse</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">Metanoeite</a>
+        A present imperative, a standing demand rather than a single act. Commentators converge on a comprehensive reorientation of life continuous with the prophetic call to turn, not a change of opinion. Where the word&#x27;s &quot;turn&quot; force comes from is contested, since the Septuagint does not use it to render the Hebrew verb for turning. Metanoia is literally a change of mind. Classical and Septuagint usage runs from changing one&#x27;s opinion to reversing a decision, without necessarily implying sorrow. English &quot;repentance&quot; imports moral remorse, and the Latin paenitentia behind it carried the further sense of doing penance. Whether the word demands grief for wrongdoing, or only a turn, is the question the English answers silently.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> repent, repented not</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Meier (<i>A Marginal Jew</i>) — locates the turn-sense in first-century rabbinic <i>tesuba</i> rather than in Septuagint practice</li>
+            <li>France (NICNT) and Turner (BECNT) — both read a comprehensive reorientation, continuous with the prophets</li>
+            <li>CCSS — concurs, against a merely intellectual sense</li>
+            <li>Sanders (<i>Jesus and Judaism</i>) — a different objection, that the repentance-preaching belongs to John and not to the historical Jesus, citing Bultmann and Perrin</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-4" href="#ref-4" title="Back to text">ēngiken</a>
+        A perfect tense, which describes a state resulting from a completed action. Whether that state is arrival or nearness is the whole question, and the versions divide three ways. The dispute has a long philological layer beneath the theological one, over what Hebrew and Aramaic verbs the Greek is rendering.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> drawn near, drew near, drawing near</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>France (NICNT) — the kingdom has arrived, not merely approached, citing Matthew&#x27;s own sequence at 26:45-46</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — against France, nearness &quot;right up to, but not including, the point of arrival&quot;</li>
+            <li>Turner (BECNT) — sets out the schools, Weiss and Schweitzer for a strictly future kingdom, Dodd for a present one, Ladd for both</li>
+            <li>Hagner (WBC) — a middle position, &quot;having drawn near and remaining near,&quot; citing Clark</li>
+            <li>Beasley-Murray (<i>Jesus and the Kingdom of God</i>) — traces Dodd against Campbell and Clark, and endorses Berkey&#x27;s view that nearness and arrival overlap</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-5" title="Back to text">e</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-5" href="#ref-5" title="Back to text">basileia</a>
+        βασιλεία covers both the act of ruling and the territory ruled. Ninety-nine of its hundred and sixty-two New Testament occurrences take a genitive of God or of the heavens. Most commentators hold that the sense there is the ruling rather than the realm, and they divide over whether English &quot;kingdom&quot;, now a concrete noun, should give way to &quot;kingship&quot;, &quot;reign&quot; or &quot;dominion&quot;.<a class="endnote-back" href="#ref-5" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> kingdom, kingship</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — files the word under the act of ruling, and warns that &quot;kingdom of God&quot; is often understood as a royal realm with the reigning activity diluted out of it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — makes &quot;sovereignty, royal power, dominion&quot; the proper sense and the territory ruled a metonymy from it</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry runs the other way, leading with &quot;kingdom, dominion&quot; and giving the kingly office separately</li>
+            <li>France (NICNT) — &quot;This dynamic sense is now better conveyed by an abstract noun such as &#x27;kingship&#x27; or &#x27;sovereignty&#x27; rather than by &#x27;kingdom,&#x27; which has become in general usage a concrete noun&quot;</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — &quot;&#x27;kingdom&#x27; is a verbal noun whose primary connotation is not territory but ruling power, &#x27;reign&#x27; or &#x27;rule&#x27; often being the best translation&quot;</li>
+            <li>Marcus (Anchor), Stein (BECNT), Turner (BECNT) and Guelich (<i>The Sermon on the Mount</i>) — the ruling rather than the realm, Marcus printing &quot;the dominion of God has come near&quot; in his own translation</li>
+            <li>Nolland (NIGTC), Marshall (NIGTC) and Carter (<i>Matthew and the Margins</i>) — print &quot;royal rule&quot;, &quot;kingly rule&quot; and &quot;empire&quot; in their own translations</li>
+            <li>Sanders (<i>Jesus and Judaism</i>) — keeps &quot;kingdom&quot;, his charge of &quot;evading the obvious by the semantic device of denying that by &#x27;kingdom&#x27; Jesus meant &#x27;kingdom&#x27;&quot; aimed by his own footnote at the readings that make the word a symbol, not at the reign-not-realm rendering</li>
+            <li>Dodd (<i>The Parables of the Kingdom</i>) and Meier (<i>A Marginal Jew</i>) — with Sanders, retaining the word while granting what it suggests to a reader</li>
+            <li>Aalen (&quot;&#x27;Reign&#x27; and &#x27;House&#x27; in the Kingdom of God in the Gospels,&quot; NTS) and Ladd (JBL), cited in Danker — the standing dissent, a house or community of God and a realm, against the ruling sense</li>
+            <li>Dalman (<i>The Words of Jesus</i>), cited in Dodd — the Semitic noun behind it, &quot;as related to God always means &#x27;kingly rule&#x27; and never &#x27;kingdom&#x27;&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-6" title="Back to text">f</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-6" href="#ref-6" title="Back to text">ouranōn</a>
+        The phrase &quot;kingdom of the heavens&quot; occurs thirty-two times in Matthew and nowhere else in the New Testament, and this is the first. Mark and Luke write &quot;kingdom of God&quot; instead. Why the two differ is disputed six ways.<a class="endnote-back" href="#ref-6" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> heaven, air, sky</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Turner (BECNT) — reverential avoidance of the divine name, which he reports as near-consensus, citing Howard</li>
+            <li>France (NICNT) — rejects that, since Matthew names God freely elsewhere, and proposes a bare stylistic preference</li>
+            <li>Carson (EBC) — rejects it on the same ground, then follows Pennington in reading heaven and earth as a sustained antithesis in Matthew</li>
+            <li><i>The Jewish Annotated New Testament</i> — a third possibility, that Matthew views the kingdom as an actual place in the sky</li>
+            <li>Pamment — proposes that the phrase always denotes the future consummated kingdom, a reading Carson reports and rejects</li>
+            <li>Luz (Hermeneia) — finds no reason for the difference in Matthew&#x27;s own theology, and traces the phrase to his community&#x27;s liturgical usage</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-7" title="Back to text">g</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-7" href="#ref-7" title="Back to text">rhētheis</a>
+        A masculine participle, occurring nowhere else in the New Testament. Matthew&#x27;s ten fulfilment formulas all use the neuter instead, and all contain a verb of fulfilment, which this verse lacks. What that absence implies about John&#x27;s standing is contested head-on.<a class="endnote-back" href="#ref-7" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> said, speak, tell</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — the missing verb is deliberate, and Matthew &quot;keeps that verb for the story of Jesus&quot;, presenting John as a prototypical preacher rather than a fulfiller of Scripture</li>
+            <li>Carson (EBC) — names and rejects that reading, arguing the citation formula &quot;can only be understood as identifying the Baptist in an eschatological, prophecy-and-fulfillment framework&quot;</li>
+            <li>Nolland (NIGTC) — with Gundry on the mechanism, that the absence is &quot;likely to be because he reserves the formula quotations for the story of Jesus&quot;</li>
+            <li>Davies and Allison (ICC) — against that mechanism on the text&#x27;s own evidence, since &quot;[n]either 2.17 nor 3.3 has to do with the activity of Jesus: but both are directly related to his coming&quot;</li>
+            <li>Turner (BECNT) — raises the same objection independently, that the reading &quot;seems to be contradicted by 2:17&quot;, while siding with Carson on the outcome</li>
+            <li>France (NICNT) — with Carson, since John &quot;is himself the subject of a prophetic oracle, not just the harbinger of the one predicted&quot;</li>
+            <li>Hagner (WBC) — the formula here is a pesher-type one, &quot;which points to fulfillment&quot; despite lacking the characteristic verb</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-8" title="Back to text">h</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-8" href="#ref-8" title="Back to text">dia</a>
+        The critical editions read &quot;through&quot; where the Textus Receptus and the Byzantine tradition read &quot;by&quot;. English versions divide between the two, and one carries the alternative in its margin. Matthew&#x27;s citation formulas hold the prepositions apart, one naming the Lord as the source of what is spoken and the other the prophet through whom it comes (1:22, 2:15). The variant puts Isaiah in the place of the agent.<a class="endnote-back" href="#ref-8" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — separates ultimate from intermediate agency, lists this verse among the passages naming a prophet as the intermediate agent, and holds that &quot;the prophet&#x27;s personality was involved in the shaping of its wording&quot;</li>
+            <li>Luz (Hermeneia) — groups this verse with 2:5, 13:14 and 24:15 as introductory formulas close to the fulfilment citations without being one</li>
+            <li>Hagner (WBC) — tabulates the fulfilment citations, which use the same preposition for the named prophet throughout</li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the reading in NA28, NA27, the Tyndale House edition, SBL, Westcott and Hort and Tregelles, against the Textus Receptus and the Byzantine text</li>
+            <li><i>MacArthur Study Bible</i> — prints &quot;by&quot; in its text and offers &quot;through&quot; in its margin</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — carries no entry for this verse</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-9" title="Back to text">i</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-9" href="#ref-9" title="Back to text">kuriou</a>
+        In Isaiah the word stands for the divine name, and the one whose way is prepared is God. The citation ends with a pronoun where the Septuagint of Isaiah 40:3 names God a second time, a wording Mark and Luke share. Whether the pronoun carries a claim about Jesus or merely avoids naming God is the dispute. κύριος ranges from an ordinary term of respectful address (&quot;sir,&quot; &quot;master&quot;) through a disciple&#x27;s title for a living teacher to the full divine name. In the Septuagint it is the standard reverential substitute for the unpronounced Hebrew Tetragrammaton. When the New Testament quotes an Old Testament passage that names it, the Greek text carries the same word, κύριος, with no orthographic marker distinguishing it from the word&#x27;s ordinary human sense.<a class="endnote-back" href="#ref-9" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> lord, master, sir</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>France (NICNT) — &quot;there is a remarkable christological claim involved in applying Isaiah&#x27;s depiction of God&#x27;s forerunner to the man who prepared the way for the coming of Jesus&quot;</li>
+            <li>Turner (BECNT) — ties it to Matthew&#x27;s Immanuel christology, &quot;the deity of Christ is implied here&quot;</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — independently, the substitution transfers Isaiah&#x27;s prophecy of God&#x27;s advent to Jesus</li>
+            <li>Davies and Allison (ICC) — take the christological reading as primary, but raise avoidance of the divine name as an alternative, citing the Community Rule</li>
+            <li>Hagner (WBC) — argues the avoidance reading independently, without the Qumran parallel</li>
+            <li>Isaiah 40:3 (Septuagint) — the verse quoted, naming God where the citation puts a pronoun</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-10" title="Back to text">j</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-10" href="#ref-10" title="Back to text">meli</a>
+        μέλι ἄγριον carries two senses in ancient usage. It can name honey from wild bees, or the sweet sap and gum exuded by trees, along with the drink made by mixing that sap with water. An ancient account of a desert people south of Judea applies the same adjective to a tree honey drunk with water. The adjective is classed at this verse with wild trees rather than with wild animals.<a class="endnote-back" href="#ref-10" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> honey</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Kelhoffer (<i>The Diet of John the Baptist</i>) — assembles the ancient evidence for a &quot;honey&quot; that is tree sap, gum, or a drink made from it, and leaves the referent open, since &quot;John&#x27;s food is simply a reflection of what was plentiful in his midst&quot;</li>
+            <li>Meier (<i>A Marginal Jew</i>) — takes neither side, the honey being either the sweet secretion of certain trees or the honey of wild bees</li>
+            <li>Luz (Hermeneia) — grants the plant reading may be correct, citing Diodorus Siculus, Pliny and Josephus, and records a patristic interpreter having to &quot;expressly emphasize that the locusts have wings and that the honey is natural&quot;</li>
+            <li>Davies and Allison (ICC) — hold out against the plant reading, finding &quot;insufficient cause for supposing &#x27;wild honey&#x27; to be an exudation of certain trees&quot;</li>
+            <li>Nolland (NIGTC) — honey &quot;presumably that produced in the wild without any role for a beekeeper&quot;, and a diet marking no rigid asceticism</li>
+            <li>France (NICNT) and Turner (BECNT) — the same bee reading, citing Judges 14:8-9 and 1 Samuel 14:25 for honey found in the wild</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — files this occurrence under the branch &quot;of trees, opposed to ἥμερος&quot;, beside the wild vine</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — glosses the adjective &quot;living in fields, wild&quot; and cites this verse and Mark 1:6</li>
+            <li>Diodorus Siculus (<i>Bibliotheca Historica</i>), cited in Kelhoffer (<i>The Diet of John the Baptist</i>) — the Nabataean Arabs drink a tree honey his account calls wild</li>
+            <li><i>Vulgate</i> — reads <i>mel silvestre</i>, honey of the woods, where the English versions print &quot;wild honey&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-11" title="Back to text">k</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-11" href="#ref-11" title="Back to text">ebaptizonto</a>
+        Baptizo means to dip, plunge or immerse, and is used of ritual washing of both people and objects. English &quot;baptize&quot; is not a translation of it but the Greek word itself carried through Latin, so the English names a rite where the Greek describes an act. What the act physically involved — immersion, pouring, sprinkling — is disputed, and the word does not settle it.<a class="endnote-back" href="#ref-11" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> baptized, washed, baptist</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — dip, plunge, immerse, with ritual washing derived from it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — separates ordinary washing from the initiatory rite</li>
+            <li>Josephus (<i>Antiquities of the Jews</i>) — describes John&#x27;s washing as of the body, the soul already cleansed by righteousness</li>
+            <li>Taylor (<i>The Immerser</i>) — treats John&#x27;s rite against the range of contemporary Jewish immersion practice</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-12" title="Back to text">l</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-12" href="#ref-12" title="Back to text">potamōi</a>
+        Where the critical editions call the Jordan a river, the Byzantine tradition and the Textus Receptus print the place name alone. The English versions split the same way, and eleven of the seventeen carry the noun. Nothing in the sense turns on it, since the Jordan is a river under either reading. That John baptized in running water was later cited in the Christian argument over whether baptism had to take place in a river or stream.<a class="endnote-back" href="#ref-12" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Translators Amalgamated Greek New Testament</i> — collates the noun in NA28, NA27, the Tyndale House edition, SBL, Westcott and Hort and Tregelles, and absent from the Textus Receptus and the Byzantine text</li>
+            <li><i>SBL Greek New Testament</i> — prints the noun and marks the word as a point of variation</li>
+            <li>Davies and Allison (ICC) — call it &quot;strictly superfluous, and in the OT &#x27;Jordan&#x27; usually stands on its own&quot;, and read the omission in the majority of the manuscripts as probably dogmatic</li>
+            <li>Davies and Allison (ICC) — hold even so that it would be &quot;unwise to read into the original text of Mt 3.6 anything about the evangelist&#x27;s views on Christian baptism&quot;</li>
+            <li><i>Didache</i>, cited in Davies and Allison (ICC) — prefers that baptism be given in living, that is running, water</li>
+            <li><i>Orthodox Study Bible</i> — prints &quot;in the Jordan&quot; without the noun, where Hart prints &quot;in the River Jordan&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-13" title="Back to text">m</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-13" href="#ref-13" title="Back to text">exomologoumenoi</a>
+        ἐξομολογέω sets ἐκ before ὁμολογέω. The lexicons give the compound both an admission of wrongdoing and an open acknowledgment, and record it in documentary formulae for admitting a debt. The participle is present, the form that ordinarily runs alongside its main verb. One reading holds the wording leaves the order of repentance, confession and baptism undefined. Five of the seventeen versions replace the participle with a temporal clause. Whether the confession was said aloud, and whether it followed a set form, is disputed.<a class="endnote-back" href="#ref-13" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> confess, praise, promised</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — anchors the confessing sense to this verse and the giving-praise sense to Matthew 11:25, and reads the compound&#x27;s active as equivalent to the simple verb</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — records the compound in legal formulae for acknowledging receipt, in a first-century-BC papyrus, and used absolutely for acknowledging a liability, in a third-century-BC one</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — separates an admission of wrongdoing from a distinct sense of open declaration, and compares the confession of the Community Rule at 1QS 1:24-26</li>
+            <li>France (NICNT) — holds the &quot;participial wording leaves the link between baptism and confession undefined&quot;</li>
+            <li>Luz (Hermeneia) — reads the confession of sins in this verse as evidence that forgiveness also takes place in John&#x27;s baptism</li>
+            <li>Turner (BECNT) — &quot;Perhaps the custom was for repentant baptismal candidates to confess their sins publicly as they were being baptized&quot;</li>
+            <li>Nolland (NIGTC) — reads the confession as made in the presence of God&#x27;s representative, and treats whether any wider public heard it as of no significance</li>
+            <li><i>The Jewish Annotated New Testament</i> — points the confession to Day of Atonement material at Tosefta Yoma 2:1, Jerusalem Talmud Yoma 8:9 and Leviticus Rabbah 3:3</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-14" title="Back to text">n</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-14" href="#ref-14" title="Back to text">hamartias</a>
+        The root sense is a missing of the mark, the failure of a thrown spear or arrow to hit its target. Classical usage extends this to any fault, failure, or error of judgment, then narrows in philosophical and religious writing to guilt or moral sin.<a class="endnote-back" href="#ref-14" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> sin</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — three senses, an act of wrongdoing, &quot;a state of being sinful, sinfulness&quot; prominent in John, and &quot;a destructive evil power&quot; in Paul</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — the proper sense is &quot;a missing the mark&quot;, the New Testament use always ethical, and the word &quot;personified as a ruling principle&quot; in Romans</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry leads with &quot;a failure, fault&quot; and an &quot;error of judgement&quot;, and reaches &quot;guilt, sin&quot; only &quot;in Philos. and Religion&quot;</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — derives the noun from the verb and glosses that verb &quot;properly, to miss the mark (and so not share in the prize)&quot;</li>
+            <li>Fitzmyer (Anchor) — the verb &quot;retains in Paul&#x27;s writings its basic meaning&quot; of missing the mark, failing to attain a moral goal or standard</li>
+            <li>Moo (NICNT) — reads Paul as personifying sin from Romans 5 onward, so that acts of sin constitute a principle &quot;so pervasive and dominant that the person&#x27;s destiny is determined by those actions&quot;</li>
+            <li>Grundmann, cited in Jewett (Hermeneia) — &quot;For Paul sin does not consist only in the individual act. Sin is for him a state which embraces all humanity&quot;</li>
+            <li>Röhser, cited in Jewett (Hermeneia) — the dissent, that Romans 3:9 and its context give no indication of such a personification</li>
+            <li>Moo (NICNT) — takes the prepositional phrase at Romans 8:3 as &quot;sin offering&quot;, the sense it carries throughout the Septuagint</li>
+            <li><i>Septuagint</i> — at Leviticus 4:24 the offering itself is named ἁμαρτία, the cultic use standing behind those alternative renderings</li>
+            <li>ESV and NIV — both footnote that cultic sense where their text prints &quot;sin&quot;, the ESV &quot;Or and as a sin offering&quot; at Romans 8:3 and the NIV &quot;Or be a sin offering&quot; at 2 Corinthians 5:21</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-15" title="Back to text">o</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-15" href="#ref-15" title="Back to text">epi to baptisma</a>
+        Matthew writes that the Pharisees and Sadducees came <i>to the baptism</i> rather than that they were baptized, as the crowds were a verse earlier. Whether they came seeking it or came to watch is contested, and the question reaches published English versions, which divide between coming for baptism and coming to the place of his baptism.<a class="endnote-back" href="#ref-15" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>France (NICNT) — the wording signals surveillance, and the reception John gives them &quot;makes it unlikely that any of them actually were baptized&quot;</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — anticipates the same reading by twenty-five years, &quot;presumably for critical observation&quot;</li>
+            <li>Nolland (NIGTC) — against it, on discourse grounds, since &quot;if baptism is not being sought, then there is nothing to link John&#x27;s question to&quot;</li>
+            <li>Taylor (<i>The Immerser</i>) — against the inference that rebuke means rejection, &quot;John did not send them away&quot;</li>
+            <li>Hagner (WBC) — a fourth position, that the motives were mixed</li>
+            <li>Davies and Allison (ICC) — raise the surveillance reading without committing, and concede the rebuke fits sincere seekers better</li>
+            <li>Luz (Hermeneia) — reads the pairing as Matthew&#x27;s construction, so that John and Jesus &quot;face a common front of Jewish leaders,&quot; a literary purpose distinct from any claim about their actual motive for coming</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-16" title="Back to text">p</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-16" href="#ref-16" title="Back to text">autou</a>
+        Codex Sinaiticus in its first hand, Codex Vaticanus and the Sahidic version read simply &quot;the baptism&quot; without the pronoun. The longer phrase occurs nowhere else in the New Testament. One proposal is that it was dropped because it could suggest more than one baptism, another that it read awkwardly beside the pronoun following it. One version alone footnotes the disagreement.<a class="endnote-back" href="#ref-16" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — rates the choice indecisive, notes the phrase is unique in the New Testament, and suggests it may have been dropped to avoid the notion of different baptisms</li>
+            <li>Nolland (NIGTC) — the pronoun is omitted by the earliest witnesses, &quot;perhaps as awkward&quot;</li>
+            <li>NRSVue — the one version of the seventeen surveyed to footnote the variant, &quot;Other ancient authorities lack his&quot;</li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the pronoun in every collated edition except Westcott and Hort</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — carries no entry for this verse</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-17" title="Back to text">q</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-17" href="#ref-17" title="Back to text">Gennēmata echidnōn</a>
+        A vocative without an article, followed by a bare genitive whose relation to it is unspecified. The proposed senses stack rather than compete, and several scholars hold more than one at once.<a class="endnote-back" href="#ref-17" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Nolland (NIGTC) — reads it as foreshadowing the threat the leaders will pose to Jesus</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — connects the phrase forward to the Gospel&#x27;s &quot;sons of the evil one&quot; dualism at 13:38</li>
+            <li>Taylor (<i>The Immerser</i>) — argues a Genesis 3:15 allusion, and separately that the charge is cowardice rather than treachery</li>
+            <li>Kraeling (<i>John the Baptist</i>) — distinguishes the snake of craftiness from the viper of venomous malignity, so the insult reaches the innermost character</li>
+            <li>Keener (<i>The IVP Bible Background Commentary</i>) — reports the ancient belief that vipers ate their way out of their mothers, making the phrase an implicit charge of matricide</li>
+            <li>Charette (<i>The Theme of Recompense in Matthew&#x27;s Gospel</i>) — citing Beare, that the leaders have been poisoning those in their charge</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-18" title="Back to text">r</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-18" href="#ref-18" title="Back to text">metanoias</a>
+        Metanoia is literally a change of mind. Classical and Septuagint usage runs from changing one&#x27;s opinion to reversing a decision, without necessarily implying sorrow. English &quot;repentance&quot; imports moral remorse, and the Latin paenitentia behind it carried the further sense of doing penance. Whether the word demands grief for wrongdoing, or only a turn, is the question the English answers silently.<a class="endnote-back" href="#ref-18" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> repentance</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Meier (<i>A Marginal Jew</i>) — locates the turn-sense in rabbinic usage rather than Septuagint translation practice</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — records Septuagint use of the verb for God relenting, where remorse cannot be meant</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical sense as change of mind or afterthought</li>
+            <li>France (NICNT) and Turner (BECNT) — a comprehensive reorientation of life, continuous with the prophetic call to turn</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-19" title="Back to text">s</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-19" href="#ref-19" title="Back to text">Patera</a>
+        The word is fronted and carries no article, which makes it the predicate, <i>as father we have Abraham</i>. What John is attacking is disputed. The merits of the fathers, a doctrine by which the patriarchs&#x27; standing avails for their descendants, is the usual answer, and it has been corrected in three directions.<a class="endnote-back" href="#ref-19" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> father, parents, patriarchs</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>The Jewish Annotated New Testament</i> — proposes the merits-of-the-fathers background</li>
+            <li>Keener (<i>A Commentary on the Gospel of Matthew</i>) — calibrates it, since the Abraham-specific form of that doctrine is attested mainly in rabbinic material long after this period</li>
+            <li>Taylor (<i>The Immerser</i>) — corrects it further, since the inherited merit is not biological, so the target is corporate standing rather than bloodline</li>
+            <li>Beasley-Murray (<i>Baptism in the New Testament</i>) — broadens it to the popular belief that Jewish identity alone secures the kingdom, citing Justin Martyr</li>
+            <li>Kraeling (<i>John the Baptist</i>) — reads the rebuke as a positive demand to match Abraham&#x27;s own piety</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-20" title="Back to text">t</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-20" href="#ref-20" title="Back to text">theos</a>
+        θεός ranges from a generic term for deity, one among many, to the proper-name-like designation of the God of Israel, usually marked by the article. An anarthrous predicate use is often read as qualitative, describing nature rather than identity, a distinction with no exact English equivalent. The word also applies, as in phrases like &quot;son of God,&quot; to referents other than one unique divine being.<a class="endnote-back" href="#ref-20" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> god</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;a deity, especially (with G3588 (ὁ)) the supreme Divinity&quot;, its own cross-reference there being to the article</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — distinguishes polytheistic use, anarthrous use (including as a qualitative predicate, &quot;when the nature and character rather than the person of God is meant&quot;), and the more frequent articular use</li>
+            <li>Harner (&quot;Qualitative Anarthrous Predicate Nouns: Mark 15:39 and John 1:1,&quot; JBL) — argues anarthrous preverbal predicate θεός is typically qualitative, describing nature rather than identity</li>
+            <li>Colwell (&quot;A Definite Rule for the Use of the Article in the Greek New Testament,&quot; JBL) — establishes that definite preverbal predicate nouns regularly drop the article in Koine Greek</li>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — refines Harner&#x27;s rule, and treats passive-plus-predicate constructions of the they-will-be-called-sons shape as expressing a subset relation rather than strict identity</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-21" title="Back to text">u</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-21" href="#ref-21" title="Back to text">tekna</a>
+        Matthew writes &quot;children&quot;, not &quot;sons&quot;. Behind the saying lies a Semitic wordplay, since the Hebrew words for children and stones differ by one letter. What the underlying form was is a live question, and the Aramaic does not carry the pun as cleanly as the Hebrew.<a class="endnote-back" href="#ref-21" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> child, son</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Albright and Mann (Anchor) — state the Hebrew wordplay flatly, <i>banim</i> against <i>abanim</i></li>
+            <li>Turner (BECNT) — the most cautious, since Aramaic uses a different word for son, so the pun would work only for those familiar with both languages</li>
+            <li>Davies and Allison (ICC) — endorse Jeremias&#x27;s proposal of a different Aramaic word behind &quot;stones&quot;, and credit Chrysostom with the Isaiah 51 background</li>
+            <li>Charette (<i>The Theme of Recompense in Matthew&#x27;s Gospel</i>) — argues against Jeremias, since the Hebrew pun is the more direct explanation</li>
+            <li>Nolland (NIGTC) — raises a separate question, whether the stones become children or bear them</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-22" title="Back to text">v</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-22" href="#ref-22" title="Back to text">keitai</a>
+        A present form serving as the passive of τίθημι. The axe has been laid and now lies there. Whether that describes a judgment already in motion, one certain but still future, or a blow poised and not yet struck divides the commentators three ways.<a class="endnote-back" href="#ref-22" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> lying, laid, set</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — gives the verb as used for the passive of τίθημι</li>
+            <li>France (NICNT) — already under way, &quot;the urgency of John&#x27;s &#x27;already&#x27; matches the claim that God&#x27;s kingship has now arrived&quot;</li>
+            <li>Turner (BECNT) — the same, a present process, citing Davies and Allison</li>
+            <li>Davies and Allison (ICC) — narrower in their own wording, &quot;certainty and immediacy&quot;, supported by the adverb</li>
+            <li>Nolland (NIGTC) — more future-leaning, the imminently expected activity of God</li>
+            <li>Meier (<i>A Marginal Jew</i>) — poised but not fallen, the woodsman adjusting the angle of the axe before the first stroke</li>
+            <li>Taylor (<i>The Immerser</i>) — the same, the axe already primed</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-23" title="Back to text">w</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-23" href="#ref-23" title="Back to text">dendron</a>
+        The whole clause recurs almost word for word at Matthew 7:19, spoken there by Jesus against false prophets. Tree-felling is elsewhere a prophetic figure for judgment on pagan empires, at Isaiah 10:33-34, Ezekiel 31 and Daniel 4. Who it picks out here is contested, from the covenant nation to its priesthood to the single hearer. The criterion named is fruit, not descent from Abraham.<a class="endnote-back" href="#ref-23" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> tree</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Turner (BECNT) and Meier (<i>A Marginal Jew</i>) — the individual hearer, Meier weighing a corporate reading and rejecting it on the force of &quot;every tree&quot;</li>
+            <li>Mitch and Sri (CCSS) — Israel&#x27;s religious leaders, an inversion of a prophetic figure the older oracles aim at pagan nations</li>
+            <li>Kraeling (<i>John the Baptist</i>) — the priestly aristocracy in particular, &quot;a judgment beginning with the house of Israel and bringing retribution above all to its priests&quot;</li>
+            <li>France (NICNT) — the nation warned while the criterion stays individual, &quot;the basis of judgment is not failure to belong to the natural family of Abraham, but the lack of the &#x27;good fruit&#x27;&quot;</li>
+            <li>Keener (<i>A Commentary on the Gospel of Matthew</i>) — the nation, on Israel-as-tree symbolism at Romans 11:16-17, Psalm 80 and Jeremiah 11:16, and hedged</li>
+            <li>Luz (Hermeneia) — between the two, the felled trees a corporate figure for Israel while the audience John addresses is the leadership, compared to Romans 9:6-13</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-24" title="Back to text">x</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-24" href="#ref-24" title="Back to text">ekkoptetai</a>
+        The compound verb names a cutting out, off or down. The verb is present passive with no agent named, and the clause that follows repeats the construction. Who does the cutting is contested. One reading finds the subject in the figure announced in the next verse. Another holds that the passage names God alone and no human mediator. Seven of the seventeen surveyed versions print a future in its place.<a class="endnote-back" href="#ref-24" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> cut off, cut down, hewn down</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Turner (BECNT) — Jesus, read forward from the next verse, &quot;it is now clear that the indefinite passive verbs of 3:10 find their subject in Jesus&quot;</li>
+            <li>Meier (<i>A Marginal Jew</i>) — God, argued from the silence of the unit itself, &quot;[t]he only human involved is John, who does not wield the ax&quot;</li>
+            <li>Charette (<i>The Theme of Recompense in Matthew&#x27;s Gospel</i>) — both verbs divine passives, &quot;the passive voice indicates that the one performing the action is God&quot;</li>
+            <li>Jeremias (<i>New Testament Theology</i>), cited in Charette (<i>The Theme of Recompense in Matthew&#x27;s Gospel</i>) — the authority behind that reading</li>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — finds the divine passive overstated as a category and folds it into ordinary passive usage</li>
+            <li>France (NICNT) — reads the axe laid to the root as marking &quot;a final removal of the tree rather than pruning&quot;</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — gives the compound as cutting out, off or down, citing this verse and 7:19 for a tree</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-25" title="Back to text">y</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-25" href="#ref-25" title="Back to text">baptizō</a>
+        Baptizo means to dip, plunge or immerse, and is used of ritual washing of both people and objects. English &quot;baptize&quot; is not a translation of it but the Greek word itself carried through Latin, so the English names a rite where the Greek describes an act. What the act physically involved — immersion, pouring, sprinkling — is disputed, and the word does not settle it.<a class="endnote-back" href="#ref-25" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> baptized, washed, baptist</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — dip, plunge, immerse, with ritual washing derived from it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — separates ordinary washing from the initiatory rite</li>
+            <li>Josephus (<i>Antiquities of the Jews</i>) — describes John&#x27;s washing as of the body, the soul already cleansed by righteousness</li>
+            <li>Taylor (<i>The Immerser</i>) — treats John&#x27;s rite against the range of contemporary Jewish immersion practice</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-26" title="Back to text">z</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-26" href="#ref-26" title="Back to text">en</a>
+        The preposition can be locative or instrumental, and the versions divide: four print that John baptizes <i>in</i> water, twelve that he baptizes <i>with</i> it. The first makes water the element a person is put into, the second makes it the means John uses. The lexicons divide the same way.<a class="endnote-back" href="#ref-26" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> among, within, during</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — files this verse under the instrumental sense, crediting the Hebrew</li>
+            <li>Hart, Tyndale and the Douay-Rheims — print the locative &quot;in water&quot;, following the Vulgate&#x27;s <i>in aqua</i>, against the twelve versions that print &quot;with&quot;</li>
+            <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — files the phrase the other way, as the external element the baptizing is done in, with the purpose following</li>
+            <li>Oliver (&quot;Is βαπτίζω Used with ἐν and the Instrumental?,&quot; RevExp), cited in Danker (<i>A Greek-English Lexicon of the New Testament</i>) — a dedicated treatment of this construction</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-27" title="Back to text">aa</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-27" href="#ref-27" title="Back to text">metanoian</a>
+        The preposition can mark purpose, cause, or reference. The commentators converge on reference, since the washing presupposes the change rather than producing it, which a first-century description of John&#x27;s practice independently supports. Metanoia is literally a change of mind. Classical and Septuagint usage runs from changing one&#x27;s opinion to reversing a decision, without necessarily implying sorrow. English &quot;repentance&quot; imports moral remorse, and the Latin paenitentia behind it carried the further sense of doing penance. Whether the word demands grief for wrongdoing, or only a turn, is the question the English answers silently.<a class="endnote-back" href="#ref-27" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> repentance</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Carson (EBC) — weighs purpose, cause and reference, and favours &quot;with reference to or in connection with&quot;, citing Blomberg and Harris</li>
+            <li>Hagner (WBC) — the identical conclusion independently, since &quot;the baptism itself presupposes the existence of repentance&quot;</li>
+            <li>Hill — proposes instead that the phrase subordinates John to Jesus, a reading Carson rebuts, since Mark and Luke describe John&#x27;s baptism the same way</li>
+            <li>Josephus (<i>Antiquities of the Jews</i>) — the washing follows prior moral purification rather than producing it</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-28" title="Back to text">ab</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-28" href="#ref-28" title="Back to text">erchomenos</a>
+        A participle used as a title, with future force. Who it names is disputed at least five ways, and the disagreement is explicit, with several scholars naming and rejecting each other&#x27;s answers.<a class="endnote-back" href="#ref-28" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> come, went, came not</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Hagner (WBC) — a technical term for the Messiah, and rejects Hughes&#x27;s stronger claim that the coming one is God</li>
+            <li>Carson (EBC) — doubts any allusion to a fixed messianic title at all</li>
+            <li>Hartman (<i>Into the Name of the Lord Jesus</i>) — argues the phrase stood for God, and catalogues a three-way split among Vielhauer, Becker and Böcher</li>
+            <li>Meier (<i>A Marginal Jew</i>) — rebuts the whole God reading, since &quot;a metaphor presenting John untying God&#x27;s shoelaces seems to go beyond the bounds of any OT example&quot;, and argues for deliberate vagueness</li>
+            <li>Davies and Allison (ICC) — survey six positions and favour the Messiah, against Elijah returned</li>
+            <li>Kraeling (<i>John the Baptist</i>) — a Daniel 7 figure, reached independently</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-29" title="Back to text">ac</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-29" href="#ref-29" title="Back to text">ischuroteros</a>
+        A comparative, marked by a bare genitive. The lexicons treat it as an ordinary adjective rather than a title, but the same word is applied to God in the Septuagint and its cognate to the Messiah in a first-century Jewish psalm, and what weight to give that is contested.<a class="endnote-back" href="#ref-29" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> strong, mighty, mightier</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — cites this verse as the type-example of ordinary comparative usage</li>
+            <li>Carson (EBC) — the term is applied to God at Jeremiah 32:18 and Isaiah 40:10, and its cognate to the Messiah in the <i>Psalms of Solomon</i></li>
+            <li>Hagner (WBC) — supplies the same <i>Psalms of Solomon</i> citation independently</li>
+            <li>France (NICNT) — a maximalist reading, that since the prophets have God pouring out the Spirit, &quot;in some remarkable sense, when Jesus comes, God comes&quot;</li>
+            <li>Nolland (NIGTC) — against that, since bestowal of the Spirit is not a normal part of Jewish messianic expectation</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-30" title="Back to text">ad</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-30" href="#ref-30" title="Back to text">bastasai</a>
+        βαστάζω means to lift or carry, and occurs three times in Matthew. Here it stands where Mark, Luke and John all write a different verb, untying the strap of a sandal. Two lexicons gloss Matthew&#x27;s verb in this verse as taking a sandal off instead. Commentators divide over whether the two images name one servile act or two, and over which of them the saying carried first.<a class="endnote-back" href="#ref-30" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> bear, carrying, bear them</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — files this verse under &quot;to bear, to carry&quot;, and reserves the later sense &quot;to take away&quot; for Matthew 8:17 alone</li>
+            <li>Hagner (WBC) — reports two lexicons glossing the verb here as &quot;to take off&quot;, against his own reading of the wording as &quot;possibly Matthew&#x27;s heightening of the contrast between John and Jesus&quot;</li>
+            <li>France (NICNT) — takes one verb to cover both images, since it &quot;often means &#x27;take away,&#x27; and hence in this context &#x27;remove&#x27;&quot;</li>
+            <li>Davies and Allison (ICC) — read it as carrying rather than untying, and judge that &quot;this hardly changes the substance&quot;</li>
+            <li>Keener (<i>A Commentary on the Gospel of Matthew</i>) — the two verbs &quot;convey the same sense of servility, and hence communicate the same point despite the variation in wording&quot;, and may render one Aramaic verb</li>
+            <li>Lagrange (<i>Évangile selon Saint Matthieu</i>) — carrying is the humbler office, a slave&#x27;s rather than a host&#x27;s courtesy, and the earlier of the two wordings</li>
+            <li>Ewald (<i>Die drei ersten Evangelien und die Apostelgeschichte</i>) — the reverse, that untying is the earlier wording and carrying suits a servant rather than the relation of pupil and master</li>
+            <li>Bretscher, cited in Davies and Allison (ICC) — a third reading, that the sandals are John&#x27;s own and he is not worthy to wear them in the coming one&#x27;s presence</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-31" title="Back to text">ae</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-31" href="#ref-31" title="Back to text">baptisei</a>
+        Baptizo means to dip, plunge or immerse, and is used of ritual washing of both people and objects. English &quot;baptize&quot; is not a translation of it but the Greek word itself carried through Latin, so the English names a rite where the Greek describes an act. What the act physically involved — immersion, pouring, sprinkling — is disputed, and the word does not settle it.<a class="endnote-back" href="#ref-31" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> baptized, washed, baptist</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — dip, plunge, immerse, with ritual washing derived from it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — separates ordinary washing from the initiatory rite</li>
+            <li>Josephus (<i>Antiquities of the Jews</i>) — describes John&#x27;s washing as of the body, the soul already cleansed by righteousness</li>
+            <li>Taylor (<i>The Immerser</i>) — treats John&#x27;s rite against the range of contemporary Jewish immersion practice</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-32" title="Back to text">af</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-32" href="#ref-32" title="Back to text">en</a>
+        One preposition governs the spirit and the fire together, with no article on either, and that fact is itself an argument. Some read it as evidence of a single baptism with two aspects. Others rebut that the argument holds for the noun but not for the verb, so the spirit and the fire remain two things. The fire of the verses on either side is judgment fire, which is the weight on the second reading.<a class="endnote-back" href="#ref-32" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> among, within, during</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Turner (BECNT) — the single preposition with a compound object indicates &quot;a single baptism with ostensibly two aspects&quot;</li>
+            <li>Carson (EBC) — the same ground independently, that one preposition governing both &quot;normally suggests a unified concept&quot;, citing Dunn</li>
+            <li>Nolland (NIGTC), following Webb — against both, since to baptize &quot;with the Holy Spirit and with fire&quot; is as naturally two distinct activities</li>
+            <li>Luz (Hermeneia) — with Nolland, reading the fire of this verse as the judgment fire of the verses either side of it, so the spirit and the fire are two baptisms rather than one</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-33" title="Back to text">ag</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-33" href="#ref-33" title="Back to text">pneumati</a>
+        Pneuma spans a range from ordinary wind or breath to the animating principle in a person, an incorporeal spirit or demon, and the divine Spirit. Greek grammar does not resolve which sense is meant in a given case. The presence or absence of the article is sometimes read as marking the divine Spirit specifically, though this pattern is not applied consistently and remains disputed.<a class="endnote-back" href="#ref-33" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> spirit, ghost, wind</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — base sense &quot;a current of air, i.e. breath (blast) or a breeze,&quot; extending by analogy to human soul, angel, demon, or God&#x27;s own Spirit</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — five-sense entry, running from wind and breath through vital principle, disposition and incorporeal being to Holy Spirit, where the article&#x27;s presence &quot;as a rule&quot; marks the Spirit as Person/Divine Power versus an anarthrous &quot;operation, influence, or gift&quot;</li>
+            <li>Nolland (NIGTC) and Davies and Allison (ICC) — both argue, independently, that &quot;ἐκ πνεύματος ἁγίου&quot; denotes divine creative power rather than a paternal/male generative role, Nolland via Septuagint idiom, Davies and Allison via grammatical gender (Greek πνεῦμα is neuter, Hebrew רוּחַ is feminine)</li>
+            <li><i>SBL Greek New Testament</i> — πνεῦμα ἅγιον is anarthrous at Matthew 1:18, 1:20 and 3:11 but articular at 12:32 and 28:19</li>
+            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — the article drops after a preposition and by assimilation to an anarthrous noun, which covers all three anarthrous occurrences</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-34" title="Back to text">ah</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-34" href="#ref-34" title="Back to text">kai puri</a>
+        The two closing words are absent from the Byzantine tradition. They stand in every other printed edition, the Textus Receptus included, and one modern version&#x27;s margin tells its reader of the omission. The parallel wording at Luke 3:16 is stable across the whole tradition, so the difference is particular to Matthew. Without the phrase the coming one&#x27;s baptism is of the Spirit alone, the form given at Mark 1:8, John 1:33 and the two recollections in Acts. With it, whether one baptism is promised or two becomes a question.<a class="endnote-back" href="#ref-34" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Translators Amalgamated Greek New Testament</i> — the words stand in seven of the eight editions collated, the Byzantine text alone omitting them</li>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — names the omitting witnesses and rates the shorter reading indecisive, with a slight lean toward the longer text as original</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — carries no entry for this verse</li>
+            <li><i>Orthodox Study Bible</i> — its margin reads &quot;M-Text omits and fire&quot;</li>
+            <li>Meier (<i>A Marginal Jew</i>) — treats the phrase as a later addition, since &quot;baptism with holy spirit and fire unbalances the logion&quot;</li>
+            <li>Beasley-Murray (<i>Baptism in the New Testament</i>) — reports and rejects the reconstruction in which fire alone was original, doubting that the Old Syriac &quot;has preserved the right reading of Mt. 3.11 against the otherwise universal manuscript tradition&quot;</li>
+            <li>Luz (Hermeneia) — takes the fire here as annihilating judgment, so that &quot;[t]he baptism by the Spirit then probably does not mean the same for him as the baptism by fire&quot;</li>
+            <li><i>MacArthur Study Bible</i> — reads the same fire as &quot;a baptism of judgment upon the unrepentant&quot;, distinct from the Spirit-baptism of all believers</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-35" title="Back to text">ai</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-35" href="#ref-35" title="Back to text">asbestōi</a>
+        A negated verbal adjective, readable as fire that is not quenched or fire that cannot be. The difference is a claim about duration, and it carries a dispute over whether the fire consumes what it burns or torments without end.<a class="endnote-back" href="#ref-35" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> unquenchable</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Turner (BECNT) — the word &quot;does not fit the concept of annihilationism but rather is tantamount to the Christian doctrine of eternal punishment&quot;</li>
+            <li>Keener (<i>A Commentary on the Gospel of Matthew</i>) — with Turner, that John &quot;specifically affirmed the harshest image of his day&quot;</li>
+            <li>France (NICNT) — holds that the word does not by itself settle the question, since &quot;an unquenchable fire may be the result of new fuel being constantly added&quot;, and favours the consuming sense elsewhere on other grounds, and names Sim as holding eternal torture by flames that burn but do not consume</li>
+            <li>Nolland (NIGTC) — agnostic, reading the word as underlining finality rather than duration</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — prints &quot;unquenched, unquenchable&quot;, in that order</li>
+            <li>Fudge (<i>The Fire That Consumes</i>), known only through a bibliographic pointer — the standard annihilationist monograph for the consuming sense</li>
+            <li>Luz (Hermeneia) — reads the image as pointing to &quot;eschatological annihilation in judgment,&quot; siding with the consuming rather than tormenting sense</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-36" title="Back to text">aj</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-36" href="#ref-36" title="Back to text">baptisthēnai</a>
+        Baptizo means to dip, plunge or immerse, and is used of ritual washing of both people and objects. English &quot;baptize&quot; is not a translation of it but the Greek word itself carried through Latin, so the English names a rite where the Greek describes an act. What the act physically involved — immersion, pouring, sprinkling — is disputed, and the word does not settle it.<a class="endnote-back" href="#ref-36" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> baptized, washed, baptist</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — dip, plunge, immerse, with ritual washing derived from it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — separates ordinary washing from the initiatory rite</li>
+            <li>Josephus (<i>Antiquities of the Jews</i>) — describes John&#x27;s washing as of the body, the soul already cleansed by righteousness</li>
+            <li>Taylor (<i>The Immerser</i>) — treats John&#x27;s rite against the range of contemporary Jewish immersion practice</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-37" title="Back to text">ak</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-37" href="#ref-37" title="Back to text">Iōannēs</a>
+        The earliest manuscripts lack the name, so that the clause says only that he was hindering him, leaving the subject to be taken from the previous verse, where both men are named. One reading of the evidence is that a scribe added the name so that John and not Jesus would be heard as the speaker. One version alone prints the shorter text, and another states in its notes that it supplies the name.<a class="endnote-back" href="#ref-37" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — rates the choice indecisive, and holds there is every reason for a scribe to add the name &quot;to make clear that it is John who is speaking and not Jesus&quot;</li>
+            <li>Nolland (NIGTC) — the name is omitted by the earliest witnesses and &quot;may be a clarifying expansion&quot;</li>
+            <li>NET — keeps the name while reporting that the earliest manuscripts lack it, &quot;clearly implied (and is thus supplied in translation)&quot;</li>
+            <li>Hart — the one version of the seventeen surveyed to print the shorter reading, &quot;But he prevented him&quot;</li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the name in every collated edition except Westcott and Hort</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — carries no entry for this verse</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-38" title="Back to text">al</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-38" href="#ref-38" title="Back to text">baptisthēnai</a>
+        Baptizo means to dip, plunge or immerse, and is used of ritual washing of both people and objects. English &quot;baptize&quot; is not a translation of it but the Greek word itself carried through Latin, so the English names a rite where the Greek describes an act. What the act physically involved — immersion, pouring, sprinkling — is disputed, and the word does not settle it.<a class="endnote-back" href="#ref-38" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> baptized, washed, baptist</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — dip, plunge, immerse, with ritual washing derived from it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — separates ordinary washing from the initiatory rite</li>
+            <li>Josephus (<i>Antiquities of the Jews</i>) — describes John&#x27;s washing as of the body, the soul already cleansed by righteousness</li>
+            <li>Taylor (<i>The Immerser</i>) — treats John&#x27;s rite against the range of contemporary Jewish immersion practice</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-39" title="Back to text">am</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-39" href="#ref-39" title="Back to text">pros</a>
+        Every collated edition but one reads a preposition here rather than a plain dative pronoun. The construction stands nowhere else in Matthew, whose ordinary form after this verb is the dative, and it is the standard form in Luke. One commentary prints the dative against both standard critical editions for that reason. The same preposition closes the previous verse, which may have drawn it in.<a class="endnote-back" href="#ref-39" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Davies and Allison (ICC) — print the dative against both standard hand editions, since the construction occurs nowhere else in Matthew while the dative form is attested at 15:15, 16:17, 19:27, 25:26 and 26:33</li>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — rates the choice indecisive, counts the dative construction repeatedly in Matthew against this one instance of the preposition, and reports the preposition as the ordinary form in Luke</li>
+            <li>Weiss (<i>Das Matthäus-Evangelium</i>), cited in Willker (<i>A Textual Commentary on the Greek Gospels</i>) — judged the preposition &quot;completely against the evangelist&#x27;s usage&quot;</li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the preposition in every collated edition except Westcott and Hort</li>
+            <li>Matthew 3:14 — the same preposition closes the previous verse</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-40" title="Back to text">an</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-40" href="#ref-40" title="Back to text">auton</a>
+        The competing reading is a dative pronoun with no preposition, and a further group of witnesses drops both words and puts nothing in their place. A papyrus from about 200 supports the accusative, while a sixth-century papyrus and Codex Vaticanus support the dative. The Latin has a dative where it usually renders the Greek preposition with a preposition of its own.<a class="endnote-back" href="#ref-40" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — sets out the papyrus support on each side, rates the choice indecisive, and reads the Latin as fitting the dative without settling it</li>
+            <li>Davies and Allison (ICC) — record the witnesses that drop both words, and adopt the dative</li>
+            <li><i>Vulgate</i> — reads <i>dixit ei</i>, a dative, where the preposition would ordinarily give <i>dixit ad eum</i></li>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the accusative in every collated edition except Westcott and Hort</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — his entry at this verse takes up the Old Latin tradition of a light on the Jordan rather than this reading</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-41" title="Back to text">ao</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-41" href="#ref-41" title="Back to text">Aphes</a>
+        Two words in Greek, and the verb has no object. Of the seven singular aorist imperatives of this verb in Matthew, this is the only one followed by neither an object nor a verb of its own. Fifteen of the seventeen versions supply an object anyway. The lexicon files this occurrence under permitting, the same sense it assigns to &quot;permit the children&quot; at 19:14, which tells against the one version reading it as overriding an obstacle. One Greek verb covers sending away, letting go, leaving behind, permitting, abandoning, divorcing, and forgiving. English distributes these across several unrelated words, so a reader meets &quot;forgive&quot; in one verse and &quot;leave&quot; in another without seeing that the same word stands in both. The debt metaphor behind the forgiveness sense — a release from what is owed — is visible in Greek and invisible in English.<a class="endnote-back" href="#ref-41" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> left, forgiven, suffer</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — cites this verse under the &quot;let, suffer, permit&quot; sense</li>
+            <li>Davies and Allison (ICC) — gloss the phrase &quot;let it be so now&quot; and call it &quot;an idiom of permission&quot;, comparing the verb&#x27;s pairing with the word for hindering at Mark 10:14</li>
+            <li>Hagner (WBC) — independently glosses the imperative &quot;permit (it)&quot;, with the adverb &quot;at once&quot; or &quot;immediately&quot;, and also &quot;now&quot; in a weaker sense</li>
+            <li><i>SBL Greek New Testament</i> — the seven singular aorist imperatives in Matthew are 3:15, 5:24, 5:40, 6:12, 7:4, 8:22 and 27:49, and only this one stands without an object or a following verb; the three plurals at 13:30, 15:14 and 19:14 all carry one</li>
+            <li>Matthew 19:14 — the same sense of the same verb</li>
+            <li>Matthew 3:15 — the verb returns at the end of the verse, where it does take an object</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-42" title="Back to text">ap</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-42" href="#ref-42" title="Back to text">plērōsai</a>
+        Two questions, not one. Why Jesus sought a baptism of repentance at all, and what &quot;fulfil all righteousness&quot; means. On the first, one commentary lists eight proposed answers and declines to choose. On the second, the argument is whether Matthew&#x27;s righteousness-word is ethical or soteriological.<a class="endnote-back" href="#ref-42" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> fulfilled, filled, full</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Davies and Allison (ICC) — catalogue eight positions on the first question and conclude &quot;[w]e remain in the dark&quot;, then adopt Meier&#x27;s prophecy-fulfilment reading on the second</li>
+            <li>Nolland (NIGTC) — his own graded taxonomy, ranking repentance for personal sin least credible</li>
+            <li>Turner (BECNT) — rejects Bruner as anachronistic and Cullmann&#x27;s atonement-typology as &quot;overly subtle&quot;, favouring fulfilment plus solidarity with a repentant remnant</li>
+            <li>Przybylski (<i>Righteousness in Matthew and His World of Thought</i>) — the reference point for reading the noun as consistently ethical, rebutting Barth and Fiedler</li>
+            <li>Hagner (WBC) — the named dissenter, reading its primary reference as God&#x27;s saving will</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — reverses the &quot;model for Christian baptism&quot; reading, since the causal arrow runs the other way</li>
+            <li>France (NICNT) — an Isaiah 53 servant-echo, against Carson&#x27;s objection that this reads Paul back into Matthew</li>
+            <li>Luz (Hermeneia) — against that whole line, calling a reading of the verse in terms of the passion &quot;a widespread eisegesis of the text&quot;, and holding the righteousness here to be ethical</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-43" title="Back to text">aq</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-43" href="#ref-43" title="Back to text">dikaiosunēn</a>
+        δικαιοσύνη, δίκαιος, and δικαιόω range in sense from personal moral righteousness to covenantal or forensic justice. Translators and commentators divide over which sense a given occurrence carries. No single English word covers that full range.<a class="endnote-back" href="#ref-43" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> righteousness</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — glosses δίκαιος &quot;equitable (in character or act),&quot; δικαιοσύνη &quot;equity... specially (Christian) justification,&quot; spanning both senses</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — a two-tier entry, a broad sense &quot;conformity to the Divine will in purpose, thought, and action&quot; and a narrower sense &quot;justice&quot;</li>
+            <li>Przybylski (<i>Righteousness in Matthew and His World of Thought</i>) — argues Matthew&#x27;s usage is uniformly ethical, &quot;proper conduct before God,&quot; against a Pauline forensic-gift reading</li>
+            <li>Hagner (WBC) — an opposing view, that some occurrences (5:6, 6:33) denote eschatological &quot;justice&quot; or gift rather than ethical performance, explicitly against Przybylski</li>
+            <li>Davies and Allison (ICC) — favors the &quot;conduct&quot; reading at 5:10, listing allied scholars (Barth, Fenton, Gundry, Luz, Przybylski, Strecker, Reumann, Ziesler) against dissenter Giesen</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-44" title="Back to text">ar</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-44" href="#ref-44" title="Back to text">aphiēsin</a>
+        One Greek verb covers sending away, letting go, leaving behind, permitting, abandoning, divorcing, and forgiving. English distributes these across several unrelated words, so a reader meets &quot;forgive&quot; in one verse and &quot;leave&quot; in another without seeing that the same word stands in both. The debt metaphor behind the forgiveness sense — a release from what is owed — is visible in Greek and invisible in English.<a class="endnote-back" href="#ref-44" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> left, forgiven, suffer</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — one verb for sending away, leaving, permitting, divorcing and forgiving</li>
+            <li>Matthew 6:12 — the forgiveness sense used of debts, where the metaphor is release from what is owed</li>
+            <li>Matthew 19:14 — the permitting sense</li>
+            <li>Matthew 5:31 — the divorce sense</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-45" title="Back to text">as</a>
+      <div class="endnote-body">
+        <a class="endnote-word variant" id="note-45" href="#ref-45" title="Back to text">de</a>
+        The Byzantine tradition and the Textus Receptus open the verse with &quot;and&quot; before the participle, and place the adverb after the verb rather than before it. The critical editions instead put the conjunction second in the clause, after the participle, where it marks the turn from John back to Jesus. Older English versions carry a connective here, and the modern ones divide almost evenly over it.<a class="endnote-back" href="#ref-45" title="Back to text" aria-label="Back to text">↑</a>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Translators Amalgamated Greek New Testament</i> — records the conjunction in NA28, NA27, the Tyndale House edition, SBL, Westcott and Hort and Tregelles, with the Textus Receptus and Byzantine text opening the verse with &quot;and&quot; instead</li>
+            <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — collates the Byzantine form of the whole verse against the critical text, where the conjunction and the position of the adverb both differ</li>
+            <li>KJV — &quot;And Jesus, when he was baptized&quot;, the older English form that follows the Byzantine reading</li>
+            <li><i>Vulgate</i> — reads <i>Baptizatus autem Jesus</i>, a postpositive conjunction rather than an opening &quot;and&quot;</li>
+            <li>NET — prints the critical reading and reports that the conjunction has not been translated</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — carries no entry for this reading, though the verse holds two others he does take up</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-46" title="Back to text">at</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-46" href="#ref-46" title="Back to text">baptistheis</a>
+        Baptizo means to dip, plunge or immerse, and is used of ritual washing of both people and objects. English &quot;baptize&quot; is not a translation of it but the Greek word itself carried through Latin, so the English names a rite where the Greek describes an act. What the act physically involved — immersion, pouring, sprinkling — is disputed, and the word does not settle it.<a class="endnote-back" href="#ref-46" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> baptized, washed, baptist</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — dip, plunge, immerse, with ritual washing derived from it</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — separates ordinary washing from the initiatory rite</li>
+            <li>Josephus (<i>Antiquities of the Jews</i>) — describes John&#x27;s washing as of the body, the soul already cleansed by righteousness</li>
+            <li>Taylor (<i>The Immerser</i>) — treats John&#x27;s rite against the range of contemporary Jewish immersion practice</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-47" title="Back to text">au</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-47" href="#ref-47" title="Back to text">pneuma</a>
+        Pneuma spans a range from ordinary wind or breath to the animating principle in a person, an incorporeal spirit or demon, and the divine Spirit. Greek grammar does not resolve which sense is meant in a given case. The presence or absence of the article is sometimes read as marking the divine Spirit specifically, though this pattern is not applied consistently and remains disputed.<a class="endnote-back" href="#ref-47" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> spirit, ghost, wind</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — base sense &quot;a current of air, i.e. breath (blast) or a breeze,&quot; extending by analogy to human soul, angel, demon, or God&#x27;s own Spirit</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — five-sense entry, running from wind and breath through vital principle, disposition and incorporeal being to Holy Spirit, where the article&#x27;s presence &quot;as a rule&quot; marks the Spirit as Person/Divine Power versus an anarthrous &quot;operation, influence, or gift&quot;</li>
+            <li>Nolland (NIGTC) and Davies and Allison (ICC) — both argue, independently, that &quot;ἐκ πνεύματος ἁγίου&quot; denotes divine creative power rather than a paternal/male generative role, Nolland via Septuagint idiom, Davies and Allison via grammatical gender (Greek πνεῦμα is neuter, Hebrew רוּחַ is feminine)</li>
+            <li><i>SBL Greek New Testament</i> — πνεῦμα ἅγιον is anarthrous at Matthew 1:18, 1:20 and 3:11 but articular at 12:32 and 28:19</li>
+            <li>Blass, Debrunner and Funk (<i>A Greek Grammar of the New Testament</i>) — the article drops after a preposition and by assimilation to an anarthrous noun, which covers all three anarthrous occurrences</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-48" title="Back to text">av</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-48" href="#ref-48" title="Back to text">theou</a>
+        θεός ranges from a generic term for deity, one among many, to the proper-name-like designation of the God of Israel, usually marked by the article. An anarthrous predicate use is often read as qualitative, describing nature rather than identity, a distinction with no exact English equivalent. The word also applies, as in phrases like &quot;son of God,&quot; to referents other than one unique divine being.<a class="endnote-back" href="#ref-48" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> god</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;a deity, especially (with G3588 (ὁ)) the supreme Divinity&quot;, its own cross-reference there being to the article</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — distinguishes polytheistic use, anarthrous use (including as a qualitative predicate, &quot;when the nature and character rather than the person of God is meant&quot;), and the more frequent articular use</li>
+            <li>Harner (&quot;Qualitative Anarthrous Predicate Nouns: Mark 15:39 and John 1:1,&quot; JBL) — argues anarthrous preverbal predicate θεός is typically qualitative, describing nature rather than identity</li>
+            <li>Colwell (&quot;A Definite Rule for the Use of the Article in the Greek New Testament,&quot; JBL) — establishes that definite preverbal predicate nouns regularly drop the article in Koine Greek</li>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — refines Harner&#x27;s rule, and treats passive-plus-predicate constructions of the they-will-be-called-sons shape as expressing a subset relation rather than strict identity</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-49" title="Back to text">aw</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-49" href="#ref-49" title="Back to text">huios</a>
+        Mark and Luke report the voice in the second person, &quot;You are my son.&quot; Matthew&#x27;s third person makes the words a report about Jesus rather than an address to him, and commentators divide over who is meant to hear it. God&#x27;s &quot;my son&quot; had come earlier at 2:15 only inside a quoted text whose own referent was Israel. Here it is spoken without a quotation. The kind of sonship declared is disputed. The candidates are the royal son of Psalm 2:7, the Servant of Isaiah 42:1, and the son offered in Genesis 22.<a class="endnote-back" href="#ref-49" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> son, child, foal</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Nolland (NIGTC) — no hearer on earth is in view, the words being &quot;God&#x27;s acclamation of Jesus before the heavenly court&quot;, which Jesus is perhaps privileged to overhear</li>
+            <li>France (NICNT) and Luz (Hermeneia) — a public revelation with hearers at the Jordan, Luz counting the crowds present since 3:5</li>
+            <li>Hartman (<i>&quot;Into the Name of the Lord Jesus&quot;: Baptism in the Early Church</i>) — addressed first to John, and to the Gospel&#x27;s readers only indirectly</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — a proclamation for the readers and &quot;not John, since in Matthew&#x27;s version John has already shown awareness of Jesus&#x27; identity&quot;</li>
+            <li>Davies and Allison (ICC) — Isaiah 42:1 stands behind the declaration and the Psalm 2:7 allusion was added to it later</li>
+            <li>Beasley-Murray (<i>Baptism in the New Testament</i>) — sets out Cullmann&#x27;s case that the voice cites Isaiah 42:1 alone, an original &quot;servant&quot; having been displaced by &quot;son&quot;, and rejects it for a fusion of King-Messiah and Servant</li>
+            <li>Marshall (&quot;Son of God or Servant of Yahweh?,&quot; NTS), cited in Gundry — defends both the Psalm 2:7 and the Isaiah 42:1 allusion against attempts to remove them</li>
+            <li>Mitch and Sri (CCSS) — the son of Genesis 22, Isaac offered on Mount Moriah as Jesus will be offered at Jerusalem</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-50" title="Back to text">ax</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-50" href="#ref-50" title="Back to text">agapētos</a>
+        The adjective sits in the emphatic construction that repeats the article, giving it near-appositional weight. It may also carry a sense of &quot;only&quot;, since the Septuagint uses it for Isaac at Genesis 22:2 where the Hebrew says &quot;only son&quot;, and not with the dedicated Greek word for &quot;only&quot; that the same translation tradition had available. Where that sense comes from, and whether the Isaac connection is the right source at all, is disputed four ways. Agape is often said to name a distinctively divine or selfless love, set against philia and eros. The Septuagint does not support the distinction cleanly: it uses the same verb for ordinary affection and for Amnon&#x27;s desire for Tamar in 2 Samuel 13. Whether the word carries any special quality of its own, or takes its colour entirely from context, is disputed.<a class="endnote-back" href="#ref-50" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> beloved, dearly beloved, dear</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>France (NICNT) — derives the sense directly from Genesis 22:2, treating the Akedah as one of two texts needed</li>
+            <li>Nolland (NIGTC) — the same conclusion by another route, from general Septuagint usage rather than a direct echo</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — a rival source, the Targum&#x27;s paraphrase of Psalm 2:7, since Isaac typology plays little role elsewhere in the Gospels</li>
+            <li>Taylor (<i>The Immerser</i>) — a different background entirely, the word as a designation for a prophet, on the model of Daniel</li>
+            <li>Liddell and Scott (<i>A Greek-English Lexicon</i>) — the classical entry glosses it &quot;of only children&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-51" title="Back to text">ay</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-51" href="#ref-51" title="Back to text">eudokēsa</a>
+        An aorist, where six of the seven versions print an English present. Three readings compete, and the grammars that name them stop short of choosing.<a class="endnote-back" href="#ref-51" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> pleased, well pleased, found delight</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Wallace (<i>Greek Grammar Beyond the Basics</i>) — lists this verse, with his own hedge, as a possible dramatic aorist, functionally a vivid present</li>
+            <li>Moulton (<i>Prolegomena</i>) — a performative act whose result stands while its timing is left undefined</li>
+            <li>Bacon, cited in Allen (<i>A Dictionary of Christ and the Gospels</i>) — a divine-election sense, &quot;I fixed my choice&quot;, tied to the language of authorization at 11:27</li>
+            <li>2 Peter 1:17 — quotes the same saying with a different preposition, so the construction is unstable in the tradition</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+  </div>
+
+  <dialog class="sitemap" id="sitemap" aria-label="Site map">
+    <div class="sitemap-head">
+      <span class="sitemap-title">Site map</span>
+      <button class="sitemap-close masthead-tools" aria-label="Close">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" style="width:1.1rem;height:1.1rem;">
+          <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+        </svg>
+      </button>
+    </div>
+    <div class="sitemap-body">
+      <h3>Books</h3>
+      <ul class="booklist">
+        <li><a href="../../Matthew/1/index.html">Matthew</a></li>
+        <li><span title="Not yet drafted">Mark</span></li>
+        <li><span title="Not yet drafted">Luke</span></li>
+        <li><span title="Not yet drafted">John</span></li>
+        <li><span title="Not yet drafted">Acts</span></li>
+        <li><span title="Not yet drafted">Romans</span></li>
+        <li><span title="Not yet drafted">1 Corinthians</span></li>
+        <li><span title="Not yet drafted">2 Corinthians</span></li>
+        <li><span title="Not yet drafted">Galatians</span></li>
+        <li><span title="Not yet drafted">Ephesians</span></li>
+        <li><span title="Not yet drafted">Philippians</span></li>
+        <li><span title="Not yet drafted">Colossians</span></li>
+        <li><span title="Not yet drafted">1 Thessalonians</span></li>
+        <li><span title="Not yet drafted">2 Thessalonians</span></li>
+        <li><span title="Not yet drafted">1 Timothy</span></li>
+        <li><span title="Not yet drafted">2 Timothy</span></li>
+        <li><span title="Not yet drafted">Titus</span></li>
+        <li><span title="Not yet drafted">Philemon</span></li>
+        <li><span title="Not yet drafted">Hebrews</span></li>
+        <li><span title="Not yet drafted">James</span></li>
+        <li><span title="Not yet drafted">1 Peter</span></li>
+        <li><span title="Not yet drafted">2 Peter</span></li>
+        <li><span title="Not yet drafted">1 John</span></li>
+        <li><span title="Not yet drafted">2 John</span></li>
+        <li><span title="Not yet drafted">3 John</span></li>
+        <li><span title="Not yet drafted">Jude</span></li>
+        <li><span title="Not yet drafted">Revelation</span></li>
+      </ul>
+    </div>
+  </dialog>
+
+  <div class="toggle-dock-wrap">
+    <div class="nav-dock">
+      <a class="nav-btn" data-nav="prev" href="../2/index.html" aria-label="Previous chapter" title="Previous chapter (←)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+      </a>
+      <a class="nav-btn" data-nav="next" href="../4/index.html" aria-label="Next chapter" title="Next chapter (→)">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+      </a>
+    </div>
+    <div class="toggle-dock">
+      <span role="group" aria-label="Display mode for untranslated words" style="display:flex;">
+        <button data-mode="greek">Greek</button>
+        <button data-mode="translit">Translit</button>
+        <button data-mode="gloss" class="active">Gloss</button>
+      </span>
+    </div>
+  </div>
+
+</div>
+
+<script src="../../static/cnt.js"></script>
+<script src="../../static/reading.js"></script>

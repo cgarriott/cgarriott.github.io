@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -184,7 +190,7 @@ render.py's query logic) and regenerate instead.
       </span>
     </p>
     <p class="greek-line">Τότε Ἡρῴδης <a class="greek-word crux" href="#note-1" data-greek="λάθρᾳ" data-translit="lathrai" data-gloss="lathrai" data-senses="secretly, privily">λάθρᾳ</a> καλέσας τοὺς μάγους <a class="greek-word crux" href="#note-2" data-greek="ἠκρίβωσεν" data-translit="ēkribōsen" data-gloss="akribied" data-senses="accurately inquired">ἠκρίβωσεν</a> παρ’ αὐτῶν τὸν <a class="greek-word crux" href="#note-3" data-greek="χρόνον" data-translit="chronon" data-gloss="chronos" data-senses="time, while, season">χρόνον</a> τοῦ φαινομένου ἀστέρος,</p>
-    <p class="translation">Then Herod, <a id="ref-1" class="flagword crux" href="#note-1" data-greek="λάθρᾳ" data-translit="lathrai" data-gloss="lathrai" data-senses="secretly, privily">lathrai</a><a class="note-ref" href="#note-1">a</a> having summoned the magi, <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ἠκρίβωσεν" data-translit="ēkribōsen" data-gloss="akribied" data-senses="accurately inquired">akribied</a><a class="note-ref" href="#note-2">b</a> from them the <a id="ref-3" class="flagword crux" href="#note-3" data-greek="χρόνον" data-translit="chronon" data-gloss="chronos" data-senses="time, while, season">chronos</a><a class="note-ref" href="#note-3">c</a> of the appearing star.</p>
+    <p class="translation">Then Herod, <a id="ref-1" class="flagword crux" href="#note-1" data-greek="λάθρᾳ" data-translit="lathrai" data-gloss="lathrai" data-senses="secretly, privily">lathrai</a><a class="note-ref" href="#note-1">a</a> having called the magi, <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ἠκρίβωσεν" data-translit="ēkribōsen" data-gloss="akribied" data-senses="accurately inquired">akribied</a><a class="note-ref" href="#note-2">b</a> from them the <a id="ref-3" class="flagword crux" href="#note-3" data-greek="χρόνον" data-translit="chronon" data-gloss="chronos" data-senses="time, while, season">chronos</a><a class="note-ref" href="#note-3">c</a> of the appearing star.</p>
   </div>
 
   <div class="endnotes">
@@ -194,7 +200,7 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">lathrai</a>
-        λάθρᾳ occurs four times in the New Testament, twice in Matthew, both times in the infancy narrative: here, and at 1:19, for Joseph&#x27;s plan to divorce Mary quietly. The word marks concealment from others, not mere quietness. Herod&#x27;s private summons of the magi stands apart from his public consultation of the chief priests and scribes one verse earlier.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        λάθρᾳ occurs four times in the New Testament, twice in Matthew, both times in the infancy narrative: here, and at 1:19, for Joseph&#x27;s plan to divorce Mary without publicity. The word marks concealment from others, not a lowered voice. Herod&#x27;s private summons of the magi stands apart from his public consultation of the chief priests and scribes one verse earlier.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> secretly, privily</div>
         <details class="sources">
           <summary>Sources</summary>

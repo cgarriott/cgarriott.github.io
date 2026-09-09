@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">καὶ οὐκ <a class="greek-word crux" href="#note-1" data-greek="ἐγίνωσκεν" data-translit="eginōsken" data-gloss="gnōsance" data-senses="know, knew not, perceived">ἐγίνωσκεν</a> αὐτὴν <a class="greek-word crux" href="#note-2" data-greek="ἕως οὗ" data-translit="heōs hou" data-gloss="heōs hou" data-senses="">ἕως οὗ</a> ἔτεκεν υἱόν· καὶ ἐκάλεσεν τὸ ὄνομα αὐτοῦ Ἰησοῦν.</p>
-    <p class="translation">And he did not <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐγίνωσκεν" data-translit="eginōsken" data-gloss="gnōsance" data-senses="know, knew not, perceived">gnōsance</a><a class="note-ref" href="#note-1">a</a> her <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ἕως οὗ" data-translit="heōs hou" data-gloss="heōs hou" data-senses="">heōs hou</a><a class="note-ref" href="#note-2">b</a> she bore a son, and he called his name Jesus.</p>
+    <p class="greek-line">καὶ οὐκ <a class="greek-word crux" href="#note-1" data-greek="ἐγίνωσκεν" data-translit="eginōsken" data-gloss="gnosying" data-senses="know, knew not, perceived">ἐγίνωσκεν</a> αὐτὴν <a class="greek-word crux" href="#note-2" data-greek="ἕως οὗ" data-translit="heōs hou" data-gloss="heos hou" data-senses="">ἕως οὗ</a> ἔτεκεν υἱόν· καὶ ἐκάλεσεν τὸ ὄνομα αὐτοῦ Ἰησοῦν.</p>
+    <p class="translation">And he was not <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐγίνωσκεν" data-translit="eginōsken" data-gloss="gnosying" data-senses="know, knew not, perceived">gnosying</a><a class="note-ref" href="#note-1">a</a> her <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ἕως οὗ" data-translit="heōs hou" data-gloss="heos hou" data-senses="">heos hou</a><a class="note-ref" href="#note-2">b</a> she bore a son; and he called his name Jesus.</p>
   </div>
 
   <div class="endnotes">
@@ -201,9 +207,13 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) and Liddell and Scott (<i>A Greek-English Lexicon</i>) — both name Matthew 1:25 as a citation instance of this euphemistic sense, tracing it through classical usage as well as the Septuagint</li>
-            <li>Turner (BECNT) — reports a minority &quot;inceptive imperfect&quot; reading, citing Allen, under which the tense itself implies relations began after the birth</li>
-            <li>Carson (EBC) — rejects an imperfect-tense argument for continued celibacy after the birth, naming and answering John McHugh&#x27;s version of it directly</li>
+            <li>Albright and Mann (Anchor) — build their argument on the aspectual force of the imperfect</li>
+            <li>Carson (EBC) — names and rejects McHugh&#x27;s argument that the imperfect implies continued celibacy</li>
+            <li>France (NICNT) — with Carson, the grammar favouring resumption</li>
+            <li>Hagner (WBC) — reaches resumption from what the verse as a whole makes &quot;most natural&quot; rather than from the imperfect, endorsing Brown along the way</li>
+            <li>Nolland (NIGTC), Turner (BECNT) and Brown (<i>The Birth of the Messiah</i>) — the other camp, that the grammar does not decide the question</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — with that camp on the grammar, and reaches resumption instead by a redaction-critical argument from the brothers-of-Jesus texts</li>
+            <li>Luz (Hermeneia) — calls the claim that the imperfect implies perpetual virginity &quot;hardly tenable&quot;</li>
           </ul>
         </details>
       </div>
@@ -221,6 +231,7 @@ render.py's query logic) and regenerate instead.
             <li>France (NICNT) — reads &quot;until&quot; as most naturally implying resumption of ordinary marital relations after the birth</li>
             <li>Nolland (NIGTC) — translates the word &quot;before&quot; rather than &quot;until&quot; specifically to avoid implying anything about what came after</li>
             <li>Wright (&quot;Prepositions and Perpetual Virginity: <i>Until</i> as a Scalar Item in Matt 1:25,&quot; BAGL) — argues on formal-semantic grounds that the construction carries an obligatory inference of resumption, against the wider scholarly consensus</li>
+            <li>Luz (Hermeneia) — grants that &quot;until&quot; does not necessarily imply a change afterward, while judging perpetual virginity foreign enough to Matthew&#x27;s own readers that he would have had to state it outright</li>
           </ul>
         </details>
       </div>

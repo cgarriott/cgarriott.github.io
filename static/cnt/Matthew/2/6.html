@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Καὶ σύ, Βηθλέεμ γῆ Ἰούδα, <a class="greek-word crux" href="#note-1" data-greek="οὐδαμῶς ἐλαχίστη" data-translit="oudamōs elachistē" data-gloss="oudamōs elachistē" data-senses="">οὐδαμῶς ἐλαχίστη</a> εἶ ἐν τοῖς <a class="greek-word crux" href="#note-2" data-greek="ἡγεμόσιν" data-translit="hēgemosin" data-gloss="hegemons" data-senses="governor, rulers">ἡγεμόσιν</a> Ἰούδα· ἐκ σοῦ γὰρ ἐξελεύσεται <a class="greek-word crux" href="#note-3" data-greek="ἡγούμενος" data-translit="hēgoumenos" data-gloss="hegumen" data-senses="esteem, count, leading">ἡγούμενος</a> ὅστις <a class="greek-word crux" href="#note-4" data-greek="ποιμανεῖ" data-translit="poimanei" data-gloss="poimanie" data-senses="shepherd, rule, feed">ποιμανεῖ</a> τὸν λαόν μου τὸν Ἰσραήλ.</p>
-    <p class="translation">And you, Bethlehem, land of Judah, are by no means least <a id="ref-1" class="flagword crux" href="#note-1" data-greek="οὐδαμῶς ἐλαχίστη" data-translit="oudamōs elachistē" data-gloss="oudamōs elachistē" data-senses="">oudamōs elachistē</a><a class="note-ref" href="#note-1">a</a> among the <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ἡγεμόσιν" data-translit="hēgemosin" data-gloss="hegemons" data-senses="governor, rulers">hegemons</a><a class="note-ref" href="#note-2">b</a> of Judah; for out of you will come forth a <a id="ref-3" class="flagword crux" href="#note-3" data-greek="ἡγούμενος" data-translit="hēgoumenos" data-gloss="hegumen" data-senses="esteem, count, leading">hegumen</a><a class="note-ref" href="#note-3">c</a>, who will <a id="ref-4" class="flagword crux" href="#note-4" data-greek="ποιμανεῖ" data-translit="poimanei" data-gloss="poimanie" data-senses="shepherd, rule, feed">poimanie</a><a class="note-ref" href="#note-4">d</a> my people Israel.</p>
+    <p class="greek-line">Καὶ σύ, Βηθλέεμ γῆ Ἰούδα, <a class="greek-word crux" href="#note-1" data-greek="οὐδαμῶς ἐλαχίστη" data-translit="oudamōs elachistē" data-gloss="oudamos elachiste" data-senses="">οὐδαμῶς ἐλαχίστη</a> εἶ ἐν τοῖς <a class="greek-word crux" href="#note-2" data-greek="ἡγεμόσιν" data-translit="hēgemosin" data-gloss="hegemons" data-senses="governor, rulers">ἡγεμόσιν</a> Ἰούδα· ἐκ σοῦ γὰρ ἐξελεύσεται <a class="greek-word crux" href="#note-3" data-greek="ἡγούμενος" data-translit="hēgoumenos" data-gloss="hegumen" data-senses="esteem, count, leading">ἡγούμενος</a> ὅστις <a class="greek-word crux" href="#note-4" data-greek="ποιμανεῖ" data-translit="poimanei" data-gloss="poimanie" data-senses="shepherd, rule, feed">ποιμανεῖ</a> τὸν λαόν μου τὸν Ἰσραήλ.</p>
+    <p class="translation">And you, Bethlehem, land of Judah, are <a id="ref-1" class="flagword crux" href="#note-1" data-greek="οὐδαμῶς ἐλαχίστη" data-translit="oudamōs elachistē" data-gloss="oudamos elachiste" data-senses="">oudamos elachiste</a><a class="note-ref" href="#note-1">a</a> among the <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ἡγεμόσιν" data-translit="hēgemosin" data-gloss="hegemons" data-senses="governor, rulers">hegemons</a><a class="note-ref" href="#note-2">b</a> of Judah; for out of you will come out a <a id="ref-3" class="flagword crux" href="#note-3" data-greek="ἡγούμενος" data-translit="hēgoumenos" data-gloss="hegumen" data-senses="esteem, count, leading">hegumen</a><a class="note-ref" href="#note-3">c</a>, who will <a id="ref-4" class="flagword crux" href="#note-4" data-greek="ποιμανεῖ" data-translit="poimanei" data-gloss="poimanie" data-senses="shepherd, rule, feed">poimanie</a><a class="note-ref" href="#note-4">d</a> my people Israel.</p>
   </div>
 
   <div class="endnotes">
@@ -200,7 +206,7 @@ render.py's query logic) and regenerate instead.
           <ul>
             <li>Turner (BECNT) — reads the negation as the point where &quot;Bethlehem&#x27;s theological significance has finally overcome its geographical insignificance&quot;</li>
             <li>France (NICNT) — reads Matthew&#x27;s negative as drawn from Matthew&#x27;s own reading of the fulfillment, not from a variant text of Micah</li>
-            <li>Nolland (NIGTC) — reads the change as restatement rather than reversal, since &quot;[t]he result is much the same&quot;</li>
+            <li>Nolland (NIGTC) — reads the change as restatement rather than reversal, since the result is much the same</li>
             <li>Stendahl (<i>The School of St. Matthew and Its Use of the Old Testament</i>) — reads it as free rendering, while treating a possible underlying Hebrew misreading as a live alternative</li>
           </ul>
         </details>
@@ -211,14 +217,14 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">hēgemosin</a>
-        Micah&#x27;s underlying Hebrew word here is usually read as &quot;thousands,&quot; the sense the Septuagint follows. The same consonants, differently vowel-pointed, yield &quot;chiefs&quot; or &quot;leaders,&quot; the sense Matthew&#x27;s Greek reflects. Matthew elsewhere uses this same Greek word for Pilate.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        The Septuagint reads Micah&#x27;s underlying Hebrew word as &quot;thousands,&quot; its frequent general sense, where most modern renderings take this occurrence as &quot;clans.&quot; The same consonants, differently vowel-pointed, yield &quot;chiefs&quot; or &quot;leaders,&quot; the sense Matthew&#x27;s Greek reflects. Matthew elsewhere uses this same Greek word for Pilate.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> governor, rulers</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Nolland (NIGTC) — finds &quot;princes&quot; suggests &quot;members of the royal family in a manner not implied here&quot; and &quot;governors&quot; a Roman provincial office</li>
             <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — records the word as reflecting a misreading of the Hebrew consonants as &quot;leaders&quot;</li>
-            <li>Davies and Allison (ICC) — reads the repointing as what makes the word available, with resemblance to the following word hēgoumenos shaping the final choice</li>
+            <li>Davies and Allison (ICC) — the Hebrew consonants could be pointed to give &quot;princes,&quot; which explains Matthew&#x27;s reading, since he is working with the Hebrew</li>
             <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — reads the word Matthew applies to Pilate eight times as making &quot;Jesus Pilate&#x27;s superior, too, the true governor of Judah&quot;</li>
           </ul>
         </details>
@@ -229,13 +235,18 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-3" href="#ref-3" title="Back to text">hēgoumenos</a>
-        This word is drawn from the Septuagint&#x27;s wording of 2 Samuel 5:2, where it names David&#x27;s own role as king, not from Micah. It shares a Greek root with the earlier word rendered &quot;rulers&quot; (hēgemosin), though the underlying Hebrew words are unrelated.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        It shares a Greek root with the earlier word rendered &quot;rulers&quot; (hēgemosin), though the underlying Hebrew words are unrelated. Where it comes from is disputed. One reading takes it from the Septuagint&#x27;s wording of 2 Samuel 5:2, where it names David&#x27;s own role as king. Another takes it as Micah&#x27;s own ruler-word, chosen for that resemblance.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> esteem, count, leading</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>France (NICNT) — reads the word as drawn from 2 Samuel 5:2 to connect the coming ruler to David&#x27;s own accession to the throne</li>
-            <li>Davies and Allison (ICC) — reads the participle as &quot;chosen because of its resemblance to&quot; hēgemosin rather than the Septuagint&#x27;s own &quot;archonta&quot; in Micah</li>
+            <li>Davies and Allison (ICC) — holds the participle is the equivalent of the Septuagint&#x27;s own archonta in Micah, and was &quot;chosen because of its resemblance to&quot; hēgemosin</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — with Davies and Allison, reading it as &quot;the reappearance of &#x27;governor&#x27;&quot; in an anarthrous participle, carrying forward what the earlier word established, and noting that &quot;the LXX has a different word&quot;</li>
+            <li>Hagner (WBC) — with Davies and Allison, a synonym for Micah&#x27;s own ruler-word chosen to agree with the word rendered &quot;rulers&quot; in the line before</li>
+            <li>Nolland (NIGTC) — a third position, chiefly a rendering of the Hebrew&#x27;s own participle, with any reinforcement from 2 Samuel left uncertain</li>
+            <li>Stendahl (<i>The School of St. Matthew and Its Use of the Old Testament</i>) — a fourth, the word generated by assimilation to the earlier one and serving as the link into the 2 Samuel clause</li>
+            <li>Luz (Hermeneia) — names only the final clause and &quot;the land of Judah&quot; as possibly Matthew&#x27;s own, leaving the citation&#x27;s remaining peculiarities, this word among them, as older than him</li>
           </ul>
         </details>
       </div>
@@ -245,14 +256,17 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-4" title="Back to text">d</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-4" href="#ref-4" title="Back to text">poimanei</a>
-        This verb is drawn from 2 Samuel 5:2, where it describes David&#x27;s own charge to shepherd Israel. It is the only occurrence of this verb form anywhere in Matthew&#x27;s Gospel. Three later passages (9:36, 25:32, 26:31) use the related noun &quot;shepherd&quot; instead.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
+        The clause carrying this verb is absent from Micah altogether and comes instead, almost word for word, from the Septuagint of 2 Samuel 5:2, where it is the Lord&#x27;s own word to David at his accession. Eleven of the seventeen translations keep the pastoral image and six replace it with governing or ruling, which is the whole question the word raises: whether the coming ruler&#x27;s work is described in terms of care or in terms of rule. This is the only occurrence of the verb anywhere in Matthew. The three later shepherd passages all use the cognate noun instead.<a class="endnote-back" href="#ref-4" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> shepherd, rule, feed</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>France (NICNT) — reads the clause as defining &quot;the caring rather than despotic role of this ideal king in contrast with Herod&#x27;s reign&quot;</li>
-            <li>Turner (BECNT) — sets Jesus as &quot;the genuine Davidic shepherd of Israel&quot; against Herod as &quot;a counterfeit successor of David&quot;</li>
-            <li>Nolland (NIGTC) — reads the clause as evoking the eschatological gathering of Israel&#x27;s twelve tribes</li>
+            <li><i>Ignatius Bible</i>, Tyndale, KJV, the Douay-Rheims, <i>Vulgate</i> and Luther — the six that replace the image with governing, Ignatius and Tyndale printing &quot;govern&quot;, the King James and the Douay-Rheims &quot;rule&quot;, the Vulgate &quot;qui regat populum meum Israël&quot; and Luther &quot;der über mein Volk Israel ein HERR sei&quot;</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — the clause &quot;comes from the Lord&#x27;s promise in 2 Sam 5:2; 1 Chr 11:2 to make David the shepherd-king over Israel&quot;, replacing Micah&#x27;s own ruler-clause</li>
+            <li>France (NICNT) — the clause &quot;defines the caring rather than despotic role of this ideal king in contrast with Herod&#x27;s reign&quot;</li>
+            <li>Turner (BECNT) — a contrast of legitimacy rather than of style, between &quot;the genuine Davidic shepherd of Israel and Herod, who with his religious leaders is a false shepherd&quot;</li>
+            <li>Nolland (NIGTC) — the clause &quot;can hardly avoid evoking the eschatological expectation of the ingathering of the twelve tribes of Israel&quot;, citing Ezekiel 34, Psalms of Solomon 17 and Mishnah Sanhedrin 10:3</li>
+            <li>Davies and Allison (ICC) — a Mosaic resonance alongside the Davidic one, since Moses too is remembered as a shepherd at Isaiah 63:11 and in the Biblical Antiquities, which they read as fitting Matthew&#x27;s Moses-Messiah typology</li>
           </ul>
         </details>
       </div>

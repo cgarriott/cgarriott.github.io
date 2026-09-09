@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">καὶ <a class="greek-word crux" href="#note-1" data-greek="χρηματισθέντες" data-translit="chrēmatisthentes" data-gloss="chrēmatismos" data-senses="divinely instructed, called, warned of god">χρηματισθέντες</a> κατ’ ὄναρ μὴ ἀνακάμψαι πρὸς Ἡρῴδην δι’ ἄλλης ὁδοῦ ἀνεχώρησαν εἰς τὴν χώραν αὐτῶν.</p>
-    <p class="translation">And having been given <a id="ref-1" class="flagword crux" href="#note-1" data-greek="χρηματισθέντες" data-translit="chrēmatisthentes" data-gloss="chrēmatismos" data-senses="divinely instructed, called, warned of god">chrēmatismos</a><a class="note-ref" href="#note-1">a</a> in a dream not to return to Herod, by another way they departed into their own country.</p>
+    <p class="greek-line">καὶ <a class="greek-word crux" href="#note-1" data-greek="χρηματισθέντες" data-translit="chrēmatisthentes" data-gloss="chrematisied" data-senses="divinely instructed, called, warned of god">χρηματισθέντες</a> κατ’ ὄναρ μὴ ἀνακάμψαι πρὸς Ἡρῴδην δι’ ἄλλης ὁδοῦ ἀνεχώρησαν εἰς τὴν χώραν αὐτῶν.</p>
+    <p class="translation">And having been <a id="ref-1" class="flagword crux" href="#note-1" data-greek="χρηματισθέντες" data-translit="chrēmatisthentes" data-gloss="chrematisied" data-senses="divinely instructed, called, warned of god">chrematisied</a><a class="note-ref" href="#note-1">a</a> in a dream not to return to Herod, by another way they withdrew into their country.</p>
   </div>
 
   <div class="endnotes">
@@ -201,9 +207,10 @@ render.py's query logic) and regenerate instead.
           <ul>
             <li>Nolland (NIGTC) — reads the verse as &quot;a Matthean abbreviated paraphrase of v. 13,&quot; with the angel of the Lord &quot;presumably assumed but no longer specifically mentioned&quot;</li>
             <li>France (NICNT) — reads the verb itself as already carrying full divine-communication weight, with the missing angel reflecting the magi&#x27;s own idiom as dream-interpreters</li>
-            <li>Brown (<i>The Birth of the Messiah</i>) — independently reaches Nolland&#x27;s source-critical reading, decades earlier</li>
-            <li>Hagner (WBC) — sides with France&#x27;s reading of the verb&#x27;s own divine register</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — reads the absent angel here and at 2:22 as a sign the material stood outside the pre-Matthean narrative of angelic dream appearances</li>
+            <li>Hagner (WBC) — notes the verb is &quot;commonly used in reference to divine revelations, injunctions, and warnings&quot; of the verb&#x27;s own divine register</li>
             <li>Carson (EBC) — proposes, tentatively, that &quot;Joseph and the Magi compared notes and saw their danger&quot;</li>
+            <li>Luz (Hermeneia) — reads the missing angel as marking that only Joseph is &quot;considered worthy&quot; of an angelic appearance</li>
           </ul>
         </details>
       </div>

@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -186,7 +192,7 @@ render.py's query logic) and regenerate instead.
       </span>
     </p>
     <p class="greek-line">ἐγερθεὶς δὲ ὁ Ἰωσὴφ ἀπὸ τοῦ ὕπνου ἐποίησεν ὡς προσέταξεν αὐτῷ ὁ ἄγγελος <a class="greek-word always" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">κυρίου</a> καὶ παρέλαβεν τὴν γυναῖκα αὐτοῦ·</p>
-    <p class="translation">And Joseph, having awakened from sleep, did as the angel of <a id="ref-1" class="flagword always" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-1">a</a> commanded him, and took his wife.</p>
+    <p class="translation">But having awakened from the sleep, Joseph did as the angel of <a id="ref-1" class="flagword always" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-1">a</a> prescribed to him, and took his wife;</p>
   </div>
 
   <div class="endnotes">
@@ -201,11 +207,10 @@ render.py's query logic) and regenerate instead.
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — states κύριος is used &quot;in LXX (subst.) chiefly for [the divine name], also for בַּעַל, אָדוֹן,&quot; cataloguing the full range from genitive-of-possession (&quot;master of the house&quot;) through vocative address (&quot;sir&quot;) to the full divine title</li>
-            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;supreme in authority, i.e. controller; by implication, Master (as a respectful title)&quot;</li>
+            <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — states κύριος is used &quot;in LXX (subst.) chiefly for [the divine name], also for [Baal, Adon],&quot; cataloguing the full range from genitive-of-possession (&quot;master of the house&quot;) through vocative address (&quot;sir&quot;) to the full divine title</li>
+            <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;supreme in authority, i.e. (as noun) controller; by implication, Master (as a respectful title)&quot;</li>
             <li>Nolland (NIGTC) — cautions against over-reading an anarthrous κύριος as inherently a divine title, noting Psalm 110:1&#x27;s &quot;my lord&quot; is ordinary court address to a king</li>
             <li>France (NICNT) — on Matthew&#x27;s citation of Isaiah 40:3, applying to Jesus a text whose κύριος names God himself constitutes &quot;a remarkable christological claim&quot;</li>
-            <li>Hengel (<i>Studies in Early Christology</i>) — traces how Psalm 110:1&#x27;s double κύριος became the primary vehicle for the earliest church&#x27;s confession of Jesus&#x27;s exalted status</li>
           </ul>
         </details>
       </div>

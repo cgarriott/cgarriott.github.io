@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -184,7 +190,7 @@ render.py's query logic) and regenerate instead.
       </span>
     </p>
     <p class="greek-line">Τοῦ δὲ Ἰησοῦ γεννηθέντος ἐν Βηθλέεμ τῆς Ἰουδαίας ἐν ἡμέραις Ἡρῴδου τοῦ βασιλέως, ἰδοὺ <a class="greek-word crux" href="#note-1" data-greek="μάγοι" data-translit="magoi" data-gloss="magoi" data-senses="magi, wise men, magician">μάγοι</a> ἀπὸ ἀνατολῶν παρεγένοντο εἰς Ἱεροσόλυμα</p>
-    <p class="translation">Now, Jesus having been born in Bethlehem of Judea in the days of Herod the king, behold, <a id="ref-1" class="flagword crux" href="#note-1" data-greek="μάγοι" data-translit="magoi" data-gloss="magoi" data-senses="magi, wise men, magician">magoi</a><a class="note-ref" href="#note-1">a</a> from the east arrived in Jerusalem.</p>
+    <p class="translation">Now Jesus having been born in Bethlehem of Judea in days of Herod the king, behold, <a id="ref-1" class="flagword crux" href="#note-1" data-greek="μάγοι" data-translit="magoi" data-gloss="magoi" data-senses="magi, wise men, magician">magoi</a><a class="note-ref" href="#note-1">a</a> from the east arrived into Jerusalem,</p>
   </div>
 
   <div class="endnotes">
@@ -203,7 +209,8 @@ render.py's query logic) and regenerate instead.
             <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — the same split, citing Matthew 2:1 for the priestly sense and Acts 13:6, 8 for the sorcerer sense</li>
             <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — a third independent lexicon confirming the split, tracing the priestly sense to Herodotus and Josephus</li>
             <li>Nolland (NIGTC) — &quot;later developments do not displace earlier usages, but rather the various usages tend to coexist&quot;</li>
-            <li>Sim (&quot;The Magi: Gentiles or Jews?,&quot; HTS) — the magi&#x27;s precise identity remains undetermined by Matthew&#x27;s own text</li>
+            <li>Sim (&quot;The Magi: Gentiles or Jews?,&quot; HTS) — argues against the majority Gentile reading, rebutting the arguments for it one by one</li>
+            <li>Luz (Hermeneia) — reads Matthew&#x27;s first readers as bringing a negative attitude toward &quot;magicians&quot; to the text, so the narrative&#x27;s favorable portrayal reverses their expectation rather than choosing neutrally between two live senses</li>
           </ul>
         </details>
       </div>

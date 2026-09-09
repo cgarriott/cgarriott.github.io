@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -184,7 +190,7 @@ render.py's query logic) and regenerate instead.
       </span>
     </p>
     <p class="greek-line">ἀκούσας δὲ ὁ βασιλεὺς Ἡρῴδης <a class="greek-word crux" href="#note-1" data-greek="ἐταράχθη" data-translit="etarachthē" data-gloss="tarassied" data-senses="troubled, agitating">ἐταράχθη</a> καὶ πᾶσα Ἱεροσόλυμα μετ’ αὐτοῦ,</p>
-    <p class="translation">Now having heard, the king Herod was <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐταράχθη" data-translit="etarachthē" data-gloss="tarassied" data-senses="troubled, agitating">tarassied</a><a class="note-ref" href="#note-1">a</a>, and all Jerusalem with him.</p>
+    <p class="translation">Now having heard, the king Herod was <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ἐταράχθη" data-translit="etarachthē" data-gloss="tarassied" data-senses="troubled, agitating">tarassied</a><a class="note-ref" href="#note-1">a</a>, and all Jerusalem with him,</p>
   </div>
 
   <div class="endnotes">
@@ -202,7 +208,8 @@ render.py's query logic) and regenerate instead.
             <li>Josephus (<i>Antiquities of the Jews</i>) — records Herod&#x27;s execution of his wife Mariamne, two sons, and finally his son Antipater on suspicion of threatening his throne</li>
             <li>Turner (BECNT) — reads Herod&#x27;s reaction as anxiety over a threat to his own rule</li>
             <li>France (NICNT) — Herod&#x27;s alarm is &quot;hardly surprising, and reflects the extraordinary paranoia of his defense of his throne in his latter years&quot;</li>
-            <li>Albright and Mann (Anchor) — an outlying reading, pairing the fear with the disciples at Matthew 14:26, where &quot;the fear results from a lack of faith&quot;</li>
+            <li>Albright and Mann (Anchor) — pair the fear with the disciples at Matthew 14:26, and alone infer that &quot;the fear results from a lack of faith&quot;</li>
+            <li>Luz (Hermeneia) — reads the dismay as Matthew&#x27;s own &quot;signal&quot; pointing forward to the passion narrative&#x27;s &quot;king of the Jews,&quot; not a report of Herod&#x27;s documented psychology</li>
           </ul>
         </details>
       </div>

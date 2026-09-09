@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">ὁ δὲ ἐγερθεὶς παρέλαβε τὸ παιδίον καὶ τὴν μητέρα αὐτοῦ καὶ <a class="greek-word variant" href="#note-1" data-greek="εἰσῆλθεν" data-translit="eisēlthen" data-gloss="entered" data-senses="">εἰσῆλθεν</a> εἰς γῆν Ἰσραήλ.</p>
-    <p class="translation">And he, having awakened, took the child and his mother and <a id="ref-1" class="flagword variant" href="#note-1" data-greek="εἰσῆλθεν" data-translit="eisēlthen" data-gloss="entered" data-senses="">entered</a><a class="note-ref" href="#note-1">a</a> into the land of Israel.</p>
+    <p class="greek-line">ὁ δὲ ἐγερθεὶς παρέλαβε τὸ παιδίον καὶ τὴν μητέρα αὐτοῦ καὶ <a class="greek-word variant" href="#note-1" data-greek="εἰσῆλθεν" data-translit="eisēlthen" data-gloss="entered" data-senses="">εἰσῆλθεν</a> εἰς <a class="greek-word crux" href="#note-2" data-greek="γῆν" data-translit="gēn" data-gloss="ge" data-senses="earth, land, ground">γῆν</a> Ἰσραήλ.</p>
+    <p class="translation">But he, having awakened, took the child and his mother and <a id="ref-1" class="flagword variant" href="#note-1" data-greek="εἰσῆλθεν" data-translit="eisēlthen" data-gloss="entered" data-senses="">entered</a><a class="note-ref" href="#note-1">a</a> into <a id="ref-2" class="flagword crux" href="#note-2" data-greek="γῆν" data-translit="gēn" data-gloss="ge" data-senses="earth, land, ground">ge</a><a class="note-ref" href="#note-2">b</a> of Israel.</p>
   </div>
 
   <div class="endnotes">
@@ -195,6 +201,25 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word variant" id="note-1" href="#ref-1" title="Back to text">eisēlthen</a>
         <a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">gēn</a>
+        Joseph&#x27;s return is narrated in the angel&#x27;s own words, the destination unchanged. The Greek Septuagint&#x27;s Ezekiel 20:38 says with the same verb of entering that the rebels purged from the returning exiles will not enter the land of Israel. The following verse then narrows the destination, since Archelaus reigns over Judea and the family turns aside into Galilee. Readings of the phrase run from broad geography to covenant land.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> earth, land, ground</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Nolland (NIGTC) — &quot;[t]he breadth of the term &#x27;Israel&#x27; means that Matthew can present vv. 22-23 as a fine-tuning of the imprecise directive of v. 20&quot;</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — &quot;[a] possible background for Matthew&#x27;s use of it is supplied by Ezek 20:36-38&quot;, where those purged in judgment are refused entry</li>
+            <li>Davies and Allison (ICC) — cite Ezekiel 20:38 among the Septuagint parallels for the phrase, and record that Matthew often pairs this verb of entering with this preposition</li>
+            <li>Luz (Hermeneia) — reads the arrival as a homecoming, &quot;Jesus, the son of David and of Abraham, returns to the land of the people for whom he has been sent&quot;</li>
+            <li>France (NICNT) — takes the direction as unspecific, with the political situation and further guidance reaching Joseph only on arrival</li>
+          </ul>
+        </details>
       </div>
     </div>
     

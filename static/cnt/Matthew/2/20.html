@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">λέγων· Ἐγερθεὶς παράλαβε τὸ παιδίον καὶ τὴν μητέρα αὐτοῦ καὶ πορεύου εἰς γῆν Ἰσραήλ, τεθνήκασιν γὰρ οἱ <a class="greek-word crux" href="#note-1" data-greek="ζητοῦντες" data-translit="zētountes" data-gloss="zetountes" data-senses="seek, sought, seek you">ζητοῦντες</a> τὴν <a class="greek-word always" href="#note-2" data-greek="ψυχὴν" data-translit="psuchēn" data-gloss="psuche" data-senses="soul, life, mind">ψυχὴν</a> τοῦ παιδίου.</p>
-    <p class="translation">saying, &quot;Having awakened, take the child and his mother and go into the land of Israel, for those <a id="ref-1" class="flagword crux" href="#note-1" data-greek="ζητοῦντες" data-translit="zētountes" data-gloss="zetountes" data-senses="seek, sought, seek you">zetountes</a><a class="note-ref" href="#note-1">a</a> the <a id="ref-2" class="flagword always" href="#note-2" data-greek="ψυχὴν" data-translit="psuchēn" data-gloss="psuche" data-senses="soul, life, mind">psuche</a><a class="note-ref" href="#note-2">b</a> of the child have died.&quot;</p>
+    <p class="greek-line">λέγων· Ἐγερθεὶς παράλαβε τὸ παιδίον καὶ τὴν μητέρα αὐτοῦ καὶ πορεύου εἰς <a class="greek-word crux" href="#note-1" data-greek="γῆν" data-translit="gēn" data-gloss="ge" data-senses="earth, land, ground">γῆν</a> Ἰσραήλ, τεθνήκασιν γὰρ οἱ <a class="greek-word crux" href="#note-2" data-greek="ζητοῦντες" data-translit="zētountes" data-gloss="zetountes" data-senses="seek, sought, seek you">ζητοῦντες</a> τὴν <a class="greek-word always" href="#note-3" data-greek="ψυχὴν" data-translit="psuchēn" data-gloss="psuche" data-senses="soul, life, mind">ψυχὴν</a> τοῦ παιδίου.</p>
+    <p class="translation">saying, &quot;Having awakened, take the child and his mother and go into <a id="ref-1" class="flagword crux" href="#note-1" data-greek="γῆν" data-translit="gēn" data-gloss="ge" data-senses="earth, land, ground">ge</a><a class="note-ref" href="#note-1">a</a> of Israel, for those <a id="ref-2" class="flagword crux" href="#note-2" data-greek="ζητοῦντες" data-translit="zētountes" data-gloss="zetountes" data-senses="seek, sought, seek you">zetountes</a><a class="note-ref" href="#note-2">b</a> the <a id="ref-3" class="flagword always" href="#note-3" data-greek="ψυχὴν" data-translit="psuchēn" data-gloss="psuche" data-senses="soul, life, mind">psuche</a><a class="note-ref" href="#note-3">c</a> of the child have died.&quot;</p>
   </div>
 
   <div class="endnotes">
@@ -193,8 +199,27 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">zētountes</a>
-        Herod alone has just been reported dead, yet the participle is plural. One account treats the plural as carried over unchanged from the Exodus 4:19 wording it echoes, where it already stood for a single king. Another treats it as a generalizing idiom for Herod and his circle, with proposed referents ranging from the chief priests and scribes of 2:3-4 to Herod&#x27;s own servants or advisors.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">gēn</a>
+        γῆν Ἰσραήλ stands in the New Testament only here and in the following verse. In the Greek Septuagint it is concentrated in Ezekiel, inside oracles of exile and regathering, and appears again across the historical books for the territory as a whole. Commentators divide over whether the angel&#x27;s destination carries that covenant-land weight, points back to the exodus, or names an area broad enough to cover Judea and Galilee alike.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> earth, land, ground</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Nolland (NIGTC) — holds that &quot;&#x27;Israel&#x27; (rather than something more precise) is the appropriate counterpart to &#x27;Egypt&#x27;, but probably more is involved&quot;, and points to Ezekiel 20:42&#x27;s promise of being brought into the land</li>
+            <li>Luz (Hermeneia) — reads the wording as a deliberate choice, &quot;corresponding to biblical and rabbinic language&quot;</li>
+            <li>Davies and Allison (ICC) — record the phrase as a standard rabbinic designation for Palestine including Galilee, and cite Judges 6:5, 1 Kingdoms 13:19 and Ezekiel 20:38 as Septuagint parallels</li>
+            <li>France (NICNT) — reads the direction as unspecific, &quot;a term broad enough to cover both Judea and Galilee&quot;</li>
+            <li>Stendahl (<i>The School of St. Matthew and Its Use of the Old Testament</i>), cited in France (NICNT) — takes the phrase to point back to the exodus under Moses</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <div class="endnote-body">
+        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">zētountes</a>
+        Herod alone has just been reported dead, yet the participle is plural. One account treats the plural as carried over unchanged from the Exodus 4:19 wording it echoes, where it already stood for a single king. Another treats it as a generalizing idiom for Herod and his circle, with proposed referents ranging from the chief priests and scribes of 2:3-4 to Herod&#x27;s own servants or advisors.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> seek, sought, seek you</div>
         <details class="sources">
           <summary>Sources</summary>
@@ -210,19 +235,19 @@ render.py's query logic) and regenerate instead.
     </div>
     
     <div class="endnote">
-      <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
       <div class="endnote-body">
-        <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">psuchēn</a>
-        ψυχή ranges across at least three senses: bare biological life, an inner self as seat of will and desire, and a periphrasis for the whole person. In the Septuagint it is the standard rendering of Hebrew נֶפֶשׁ (nephesh), a term closer to &quot;living being&quot; than to a philosophically separable immortal soul. English translations divide over which sense a given occurrence carries, at times rendering the same Greek word as both &quot;life&quot; and &quot;soul&quot; within a few verses of each other.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">psuchēn</a>
+        ψυχή ranges across at least three senses: bare biological life, an inner self as seat of will and desire, and a periphrasis for the whole person. In the Septuagint it is the standard rendering of Hebrew נֶפֶשׁ (nephesh), a term closer to &quot;living being&quot; than to a philosophically separable immortal soul. English translations divide over which sense a given occurrence carries, at times rendering the same Greek word as both &quot;life&quot; and &quot;soul&quot; within a few verses of each other.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> soul, life, mind</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Abbott-Smith (<i>A Manual Greek Lexicon of the New Testament</i>) — a three-sense entry running from breath and life through the seat of will and affections to a periphrasis for the person, and notes that ψυχή renders Hebrew נֶפֶשׁ very frequently in the Septuagint</li>
             <li><i>Strong&#x27;s Greek Dictionary</i> — &quot;the animal sentient principle,&quot; distinguished from πνεῦμα (&quot;the rational and immortal soul&quot;) and ζωή (&quot;mere vitality&quot;)</li>
-            <li>Gundry (<i>Sōma in Biblical Theology</i>) — argues body/soul separability at death is native to Second Temple Judaism, not a distinctively Hellenistic import</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) — argues body/soul separability at death is native to Second Temple Judaism rather than a Hellenistic import, against &quot;much current opinion to the contrary&quot;</li>
             <li>Nolland (NIGTC) — cautions against reading later Platonizing &quot;immortal soul&quot; metaphysics into ψυχή</li>
-            <li>Davies and Allison (ICC) — read ψυχή at Matthew 10:28 as a disembodied soul capable of surviving bodily death, against Oscar Cullmann&#x27;s thesis that resurrection-hope and Greek soul-immortality are incompatible</li>
+            <li>Davies and Allison (ICC) — read ψυχή at Matthew 10:28 as a disembodied soul capable of surviving bodily death, against Cullmann&#x27;s thesis that resurrection-hope and Greek soul-immortality are incompatible</li>
           </ul>
         </details>
       </div>

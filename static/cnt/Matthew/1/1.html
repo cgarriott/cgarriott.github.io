@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Βίβλος <a class="greek-word crux" href="#note-1" data-greek="γενέσεως" data-translit="geneseōs" data-gloss="genesis" data-senses="birth, natural">γενέσεως</a> Ἰησοῦ <a class="greek-word always" href="#note-2" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">χριστοῦ</a> υἱοῦ Δαυὶδ υἱοῦ Ἀβραάμ.</p>
-    <p class="translation">Book of <a id="ref-1" class="flagword crux" href="#note-1" data-greek="γενέσεως" data-translit="geneseōs" data-gloss="genesis" data-senses="birth, natural">genesis</a><a class="note-ref" href="#note-1">a</a> of Jesus <a id="ref-2" class="flagword always" href="#note-2" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-2">b</a>, son of David, son of Abraham.</p>
+    <p class="greek-line"><a class="greek-word crux" href="#note-1" data-greek="Βίβλος" data-translit="Biblos" data-gloss="Biblos" data-senses="book">Βίβλος</a> <a class="greek-word crux" href="#note-2" data-greek="γενέσεως" data-translit="geneseōs" data-gloss="genesis" data-senses="birth, natural">γενέσεως</a> Ἰησοῦ <a class="greek-word always" href="#note-3" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ">χριστοῦ</a> υἱοῦ Δαυὶδ υἱοῦ Ἀβραάμ.</p>
+    <p class="translation"><a id="ref-1" class="flagword crux" href="#note-1" data-greek="Βίβλος" data-translit="Biblos" data-gloss="Biblos" data-senses="book">Biblos</a><a class="note-ref" href="#note-1">a</a> of <a id="ref-2" class="flagword crux" href="#note-2" data-greek="γενέσεως" data-translit="geneseōs" data-gloss="genesis" data-senses="birth, natural">genesis</a><a class="note-ref" href="#note-2">b</a> of Jesus <a id="ref-3" class="flagword always" href="#note-3" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ">Anointed</a><a class="note-ref" href="#note-3">c</a>, son of David, son of Abraham.</p>
   </div>
 
   <div class="endnotes">
@@ -195,17 +201,21 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">geneseōs</a>
-        Βίβλος γενέσεως repeats a rare phrase from the Greek Septuagint&#x27;s own Genesis 2:4 and 5:1, both introducing accounts of a beginning. Commentators disagree on how much weight that echo carries, from a light stylistic flourish to a claim that the Gospel opens as a new act of creation. They also disagree on how far the resulting title reaches, from the seventeen-verse genealogy alone to the entire Gospel.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> birth, natural</div>
+        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">Biblos</a>
+        βίβλος names a book or a scroll. It occurs ten times in the New Testament and only here in Matthew, and in 41 of its 43 Septuagint occurrences it means a book, most often a book of Scripture. That usage is the ground for reading the heading over the whole Gospel. Against it stands the Septuagint&#x27;s own use of the word for a document included within a larger work, which leaves the genealogy alone, the birth narrative, and the two infancy chapters all in play.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> book</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Davies and Allison (ICC) — reads the phrase as a deliberate &quot;new Genesis,&quot; extending the title to the whole Gospel</li>
-            <li>Nolland (NIGTC) — reads the echo as real but rhetorically modest, and confines the title to the genealogy alone</li>
-            <li>Hagner (WBC) — treats the echo as carrying near-maximal theological weight while still limiting the title&#x27;s reach to the genealogy</li>
-            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — argues from the Septuagint&#x27;s own frequent use of &quot;book&quot; that the title covers the whole Gospel</li>
-            <li>Goulder (<i>Midrash and Lection in Matthew</i>) — reads the echo as a lectionary marker, tying the Gospel&#x27;s opening to Genesis&#x27;s place in the synagogue reading cycle</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — supplies the Septuagint count, and concludes that &quot;This suggests that 1:1 does not designate merely the genealogy, or Jesus&#x27; birth story, but is Matthew&#x27;s title for his whole work&quot;</li>
+            <li>Davies and Allison (ICC) — since no shorter unit could plausibly be labelled a book, the heading reaches the Gospel as a whole</li>
+            <li>Luz (Hermeneia) — the same conclusion, on the same ground, a book&#x27;s first word pointing to the book</li>
+            <li>Nolland (NIGTC) — &quot;It is considerably more natural (given the link here with &#x27;origin&#x27;) to apply βίβλος to the genealogy bracketed by vv. 1 and 17&quot;</li>
+            <li>Gundry (<i>Matthew: A Commentary on His Literary and Theological Art</i>) and Hagner (WBC) — also confine the heading to the genealogy, Hagner on the strength of the frame at verses 1 and 17</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — confines the heading to the genealogy, admits 1:18-25 only so far as it explains 1:16, and calls any stretch to the whole Gospel &quot;fanciful&quot;</li>
+            <li>Carson (EBC) and Blomberg (NAC) — a heading for the first two chapters, Blomberg on the ground that they form the narrative&#x27;s natural unit</li>
+            <li>Turner (BECNT) — the genealogy together with the birth narrative, on Fenton&#x27;s telescopic image of a title that reaches further as the book goes on</li>
+            <li>France (NICNT) — the whole-Gospel reading puts &quot;too much weight on the term &#x27;book&#x27;&quot;</li>
           </ul>
         </details>
       </div>
@@ -214,14 +224,37 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-2" title="Back to text">b</a>
       <div class="endnote-body">
-        <a class="endnote-word always" id="note-2" href="#ref-2" title="Back to text">christou</a>
-        This occurrence opens a chiasm with the same word at 1:17, bounding the genealogy between two uses of the title. Most readings treat every occurrence in the surrounding chapters as titular, but one holds that this first occurrence, alone among roughly eighteen uses in the Gospel, already carries more than titular force. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
+        <a class="endnote-word crux" id="note-2" href="#ref-2" title="Back to text">geneseōs</a>
+        Βίβλος γενέσεως repeats a rare phrase from the Greek Septuagint&#x27;s own Genesis 2:4 and 5:1, both introducing accounts of a beginning. Commentators disagree on how much weight that echo carries, from a light stylistic flourish to a claim that the Gospel opens as a new act of creation. They also disagree on how far the resulting title reaches, from the seventeen-verse genealogy alone to the entire Gospel.<a class="endnote-back" href="#ref-2" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> birth, natural</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Carson (EBC) — names 1:1 itself, alongside 1:16 and 1:18, as one of the rare places where &quot;Christ&quot; is not purely titular</li>
-            <li>Hagner (WBC) — the word&#x27;s proximity to &quot;son of David&quot; in the same verse keeps titular meaning close at hand even where the term functions as a name</li>
+            <li>Davies and Allison (ICC) — reads the phrase as a deliberate &quot;new genesis,&quot; extending the title to the whole Gospel</li>
+            <li>Nolland (NIGTC) — reads the echo as real but rhetorically modest, and confines the title to the genealogy alone</li>
+            <li>Hagner (WBC) — treats the echo as carrying near-maximal theological weight while still limiting the title&#x27;s reach to the genealogy</li>
+            <li>Boring (<i>The New Interpreter&#x27;s Bible</i>) — argues from the Septuagint&#x27;s own frequent use of &quot;book&quot; that the title covers the whole Gospel</li>
+            <li>Goulder (<i>Midrash and Lection in Matthew</i>) — reads the echo as a lectionary marker, tying the Gospel&#x27;s opening to Genesis&#x27;s place in the synagogue reading cycle</li>
+            <li>Luz (Hermeneia) — holds that as the book&#x27;s first word &quot;βίβλος quite clearly indicates that the following title refers to the entire book,&quot; while noting that γένεσις pulls the other way and leaves &quot;interpreters with a dilemma&quot;</li>
+          </ul>
+        </details>
+      </div>
+    </div>
+    
+    <div class="endnote">
+      <a class="endnote-num" href="#ref-3" title="Back to text">c</a>
+      <div class="endnote-body">
+        <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">christou</a>
+        This occurrence opens a chiasm with the same word at 1:17, bounding the genealogy between two uses of the title. Most readings treat every occurrence in the surrounding chapters as titular. Two dissent. One counts this occurrence among four, out of roughly eighteen in the Gospel, that are not exclusively titular. The other reads the opening pair as a double name. Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
+        <div class="endnote-senses"><b>Usually</b> christ</div>
+        <details class="sources">
+          <summary>Sources</summary>
+          <ul>
+            <li>Nolland (NIGTC) — titular here, the chiasm formed by verses 1 and 17 favouring it</li>
+            <li>France (NICNT) — with Nolland, reading the opening as a title rather than a name</li>
+            <li>Carson (EBC) — the outlier, whose own tally makes this occurrence one of the few not exclusively titular</li>
+            <li>Luz (Hermeneia) — the second dissent, taking the opening pair as &quot;probably a double name&quot;, since Matthew as a rule articulates the word where it is a title</li>
+            <li>Matthew 1:17 — the other end of the frame, where the word recurs articular</li>
           </ul>
         </details>
       </div>

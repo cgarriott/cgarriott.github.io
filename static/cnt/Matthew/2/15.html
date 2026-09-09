@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="../1/index.html">1</option>
             <option value="" selected>2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -183,8 +189,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">καὶ ἦν ἐκεῖ ἕως τῆς τελευτῆς Ἡρῴδου· ἵνα <a class="greek-word crux" href="#note-2" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleroma" data-senses="fulfilled, filled, full">πληρωθῇ</a> τὸ ῥηθὲν ὑπὸ <a class="greek-word crux" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">κυρίου</a> διὰ τοῦ προφήτου λέγοντος· Ἐξ Αἰγύπτου ἐκάλεσα τὸν <a class="greek-word crux" href="#note-3" data-greek="υἱόν" data-translit="huion" data-gloss="filius" data-senses="son, child, foal">υἱόν</a> μου.</p>
-    <p class="translation">And he was there until the death of Herod, so that what was spoken by <a id="ref-1" class="flagword crux" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-1">a</a> through the prophet might reach its <a id="ref-2" class="flagword crux" href="#note-2" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleroma" data-senses="fulfilled, filled, full">pleroma</a><a class="note-ref" href="#note-2">b</a>, saying, &quot;Out of Egypt I called my <a id="ref-3" class="flagword crux" href="#note-3" data-greek="υἱόν" data-translit="huion" data-gloss="filius" data-senses="son, child, foal">filius</a><a class="note-ref" href="#note-3">c</a>.&quot;</p>
+    <p class="greek-line">καὶ ἦν ἐκεῖ ἕως τῆς τελευτῆς Ἡρῴδου· ἵνα <a class="greek-word crux" href="#note-2" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleried" data-senses="fulfilled, filled, full">πληρωθῇ</a> τὸ ῥηθὲν ὑπὸ <a class="greek-word always" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">κυρίου</a> διὰ τοῦ προφήτου λέγοντος· Ἐξ Αἰγύπτου ἐκάλεσα τὸν <a class="greek-word crux" href="#note-3" data-greek="υἱόν" data-translit="huion" data-gloss="filius" data-senses="son, child, foal">υἱόν</a> μου.</p>
+    <p class="translation">And he was there until the death of Herod, so that what was spoken by <a id="ref-1" class="flagword always" href="#note-1" data-greek="κυρίου" data-translit="kuriou" data-gloss="kurios" data-senses="lord, master, sir">kurios</a><a class="note-ref" href="#note-1">a</a> through the prophet might be <a id="ref-2" class="flagword crux" href="#note-2" data-greek="πληρωθῇ" data-translit="plērōthēi" data-gloss="pleried" data-senses="fulfilled, filled, full">pleried</a><a class="note-ref" href="#note-2">b</a>, saying, &quot;Out of Egypt I called my <a id="ref-3" class="flagword crux" href="#note-3" data-greek="υἱόν" data-translit="huion" data-gloss="filius" data-senses="son, child, foal">filius</a><a class="note-ref" href="#note-3">c</a>.&quot;</p>
   </div>
 
   <div class="endnotes">
@@ -193,14 +199,15 @@ render.py's query logic) and regenerate instead.
     <div class="endnote">
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
-        <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">kuriou</a>
-        The Greek distinguishes two kinds of agency: &quot;by&quot; names God as the statement&#x27;s ultimate source, and &quot;through&quot; names the prophet as the means by which it reached the text. This same pairing, with an unnamed prophet, appears only here and at Matthew 1:22 among Matthew&#x27;s ten fulfillment citations. One reason proposed for the pairing is that the quoted words are themselves presented as God&#x27;s own first-person speech, placing responsibility on the Lord as their ultimate speaker rather than on Hosea as their human source.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        <a class="endnote-word always" id="note-1" href="#ref-1" title="Back to text">kuriou</a>
+        The Greek distinguishes two kinds of agency: &quot;by&quot; names God as the statement&#x27;s ultimate source, and &quot;through&quot; names the prophet as the means by which it reached the text. This same pairing, with an unnamed prophet, appears only here and at Matthew 1:22 among Matthew&#x27;s ten fulfillment citations. One reason proposed for the pairing is that the quoted words are themselves presented as God&#x27;s own first-person speech, placing responsibility on the Lord as their ultimate speaker rather than on Hosea as their human source. κύριος ranges from an ordinary term of respectful address (&quot;sir,&quot; &quot;master&quot;) through a disciple&#x27;s title for a living teacher to the full divine name. In the Septuagint it is the standard reverential substitute for the unpronounced Hebrew Tetragrammaton. When the New Testament quotes an Old Testament passage that names it, the Greek text carries the same word, κύριος, with no orthographic marker distinguishing it from the word&#x27;s ordinary human sense.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> lord, master, sir</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Nolland (NIGTC) — reads &quot;by the Lord&quot; as fitting &quot;a cited text that must be spoken by God (&#x27;my son&#x27;) and not by the prophet&quot;</li>
             <li>France (NICNT) — notes Matthew names only Isaiah and Jeremiah among his cited prophets, leaving citations from the Book of the Twelve, including Hosea, anonymous as a matter of course</li>
+            <li>Luz (Hermeneia) — reads the &quot;Lord&quot; attribution here as connected to the fact that &quot;the quotation speaks of the Son of God&quot;</li>
             <li><i>Translators Amalgamated Greek New Testament</i> — confirms every collated edition agrees on the wording, with only the Byzantine and Textus Receptus traditions adding an article before &quot;Lord,&quot; a variant with no effect on translation</li>
           </ul>
         </details>
@@ -218,8 +225,8 @@ render.py's query logic) and regenerate instead.
           <ul>
             <li>Turner (BECNT) — sorts the field into three camps, rejecting the first two for attributing &quot;error to Matthew&quot; and &quot;inscrutable hermeneutics to the Holy Spirit&quot;, and preferring a typological approach</li>
             <li>Kirk (&quot;Conceptualising Fulfilment in Matthew,&quot; TynBul) — independently confirms the same three-way split through a largely different set of scholars</li>
-            <li>McCasland (&quot;Matthew Twists the Scriptures,&quot; JBL) — argues Matthew misreads Hosea&#x27;s past-tense reference as a future prophecy</li>
-            <li>Sailhamer (&quot;Hosea 11:1 and Matthew 2:15,&quot; WTJ) — argues the messianic sense was already present in Hosea&#x27;s own words</li>
+            <li>McCasland (&quot;Matthew Twists the Scriptures,&quot; JBL), cited in Kirk — argues Matthew misreads Hosea&#x27;s past-tense reference as a future prophecy</li>
+            <li>Sailhamer (&quot;Hosea 11:1 and Matthew 2:15,&quot; WTJ), cited in Kirk — argues the messianic sense was already present in Hosea&#x27;s own words</li>
             <li>Stefański (&quot;&#x27;Rise, take the child and his mother, flee to Egypt&#x27; (Matt 2:13). But Why to Egypt?,&quot; <i>Teologia i Człowiek</i>) — reports that Jewish tradition read Hosea&#x27;s words as concerning Israel&#x27;s liberation, not as messianic</li>
           </ul>
         </details>

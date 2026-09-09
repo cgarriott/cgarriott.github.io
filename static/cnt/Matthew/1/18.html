@@ -20,6 +20,12 @@ Rendered by ../render.py, which queries build/cnt.sqlite and supplies:
                         [{label, position}]} -- "letter" is the display
                         label (a, b, ..., z, aa, ab, ...); "number" is
                         still the plain int used for ids/hrefs
+  doubt_legend      -- one sentence explaining the disputed-passage mark,
+                        present ONLY on a verse carrying such a passage and
+                        ONLY on this single-verse template (render.py's
+                        build_page_context, include_doubt_legend) -- a
+                        chapter or pericope page must not repeat it under
+                        every verse
   nav               -- {prev, next, up}: relative hrefs (same directory)
                         for the second toggle-dock row below, or None for
                         prev/next when there's no neighboring drafted verse
@@ -124,10 +130,10 @@ render.py's query logic) and regenerate instead.
           <select class="apparatus-select" aria-label="Chapter" onchange="if(this.value){location.href=this.value;}">
             <option value="" selected>1</option>
             <option value="../2/index.html">2</option>
-            <option value="../3/index.html" disabled>3</option>
-            <option value="../4/index.html" disabled>4</option>
-            <option value="../5/index.html" disabled>5</option>
-            <option value="../6/index.html" disabled>6</option>
+            <option value="../3/index.html">3</option>
+            <option value="../4/index.html">4</option>
+            <option value="../5/index.html">5</option>
+            <option value="../6/index.html">6</option>
             <option value="../7/index.html" disabled>7</option>
             <option value="../8/index.html" disabled>8</option>
             <option value="../9/index.html" disabled>9</option>
@@ -185,8 +191,8 @@ render.py's query logic) and regenerate instead.
         </span>
       </span>
     </p>
-    <p class="greek-line">Τοῦ δὲ <a class="greek-word variant" href="#note-2" data-greek="Ἰησοῦ" data-translit="Iēsou" data-gloss="Jesus" data-senses="">Ἰησοῦ</a> <a class="greek-word always" href="#note-3" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">χριστοῦ</a> ἡ <a class="greek-word crux" href="#note-1" data-greek="γένεσις" data-translit="genesis" data-gloss="genesis" data-senses="birth, natural">γένεσις</a> οὕτως ἦν. <a class="greek-word crux" href="#note-4" data-greek="μνηστευθείσης" data-translit="mnēsteutheisēs" data-gloss="mnesteia" data-senses="espoused, betrothed">μνηστευθείσης</a> τῆς μητρὸς αὐτοῦ Μαρίας τῷ Ἰωσήφ, πρὶν ἢ συνελθεῖν αὐτοὺς εὑρέθη ἐν γαστρὶ ἔχουσα ἐκ <a class="greek-word always" href="#note-5" data-greek="πνεύματος" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">πνεύματος</a> ἁγίου.</p>
-    <p class="translation">Now the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="γένεσις" data-translit="genesis" data-gloss="genesis" data-senses="birth, natural">genesis</a><a class="note-ref" href="#note-1">a</a> of <a id="ref-2" class="flagword variant" href="#note-2" data-greek="Ἰησοῦ" data-translit="Iēsou" data-gloss="Jesus" data-senses="">Jesus</a><a class="note-ref" href="#note-2">b</a> <a id="ref-3" class="flagword always" href="#note-3" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ, jesus">Anointed</a><a class="note-ref" href="#note-3">c</a> was like this. His mother Mary having entered <a id="ref-4" class="flagword crux" href="#note-4" data-greek="μνηστευθείσης" data-translit="mnēsteutheisēs" data-gloss="mnesteia" data-senses="espoused, betrothed">mnesteia</a><a class="note-ref" href="#note-4">d</a> with Joseph, before they came together, she was found to be pregnant from holy <a id="ref-5" class="flagword always" href="#note-5" data-greek="πνεύματος" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-5">e</a>.</p>
+    <p class="greek-line">Τοῦ δὲ <a class="greek-word variant" href="#note-2" data-greek="Ἰησοῦ" data-translit="Iēsou" data-gloss="Jesus" data-senses="">Ἰησοῦ</a> <a class="greek-word always" href="#note-3" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ">χριστοῦ</a> ἡ <a class="greek-word crux" href="#note-1" data-greek="γένεσις" data-translit="genesis" data-gloss="genesis" data-senses="birth, natural">γένεσις</a> οὕτως ἦν. <a class="greek-word crux" href="#note-4" data-greek="μνηστευθείσης" data-translit="mnēsteutheisēs" data-gloss="mnesteuied" data-senses="espoused, betrothed">μνηστευθείσης</a> τῆς μητρὸς αὐτοῦ Μαρίας τῷ Ἰωσήφ, πρὶν ἢ συνελθεῖν αὐτοὺς εὑρέθη ἐν γαστρὶ ἔχουσα ἐκ <a class="greek-word always" href="#note-5" data-greek="πνεύματος" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">πνεύματος</a> ἁγίου.</p>
+    <p class="translation">Now the <a id="ref-1" class="flagword crux" href="#note-1" data-greek="γένεσις" data-translit="genesis" data-gloss="genesis" data-senses="birth, natural">genesis</a><a class="note-ref" href="#note-1">a</a> of <a id="ref-2" class="flagword variant" href="#note-2" data-greek="Ἰησοῦ" data-translit="Iēsou" data-gloss="Jesus" data-senses="">Jesus</a><a class="note-ref" href="#note-2">b</a> <a id="ref-3" class="flagword always" href="#note-3" data-greek="χριστοῦ" data-translit="christou" data-gloss="Anointed" data-senses="christ">Anointed</a><a class="note-ref" href="#note-3">c</a> was thus. His mother Mary having been <a id="ref-4" class="flagword crux" href="#note-4" data-greek="μνηστευθείσης" data-translit="mnēsteutheisēs" data-gloss="mnesteuied" data-senses="espoused, betrothed">mnesteuied</a><a class="note-ref" href="#note-4">d</a> to Joseph, before they came together, she was found pregnant from holy <a id="ref-5" class="flagword always" href="#note-5" data-greek="πνεύματος" data-translit="pneumatos" data-gloss="pneuma" data-senses="spirit, ghost, wind">pneuma</a><a class="note-ref" href="#note-5">e</a>.</p>
   </div>
 
   <div class="endnotes">
@@ -196,16 +202,17 @@ render.py's query logic) and regenerate instead.
       <a class="endnote-num" href="#ref-1" title="Back to text">a</a>
       <div class="endnote-body">
         <a class="endnote-word crux" id="note-1" href="#ref-1" title="Back to text">genesis</a>
-        Two disputes attach to this single word. Textually, the Textus Receptus and the Byzantine tradition read &quot;gennēsis&quot; (&quot;birth&quot;) where every other collated edition reads &quot;genesis&quot; (&quot;origin, becoming&quot;), a substitution Metzger attributes to scribes narrowing an unfamiliar broader sense toward a more specialized one. Separately, translators render the agreed-upon &quot;genesis&quot; here as &quot;birth,&quot; obscuring its repetition of the same word opening the genealogy at 1:1. Commentators disagree on how much is lost: some read &quot;birth&quot; as a defensible narrowing that still preserves the link, others as a translation that erases a deliberate authorial echo.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
+        Two disputes attach to this single word. Textually, the Textus Receptus and the Byzantine tradition read &quot;gennēsis&quot; (&quot;birth&quot;) where every other collated edition reads &quot;genesis&quot; (&quot;origin, becoming&quot;), a substitution attributed to scribes narrowing an unfamiliar broader sense toward a more specialized one. Separately, translators render the agreed-upon &quot;genesis&quot; here as &quot;birth,&quot; obscuring its repetition of the same word opening the genealogy at 1:1. Commentators disagree on how much is lost: some read &quot;birth&quot; as a defensible narrowing that still preserves the link, others as a translation that erases a deliberate authorial echo.<a class="endnote-back" href="#ref-1" title="Back to text" aria-label="Back to text">↑</a>
         <div class="endnote-senses"><b>Usually</b> birth, natural</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
-            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — rates &quot;genesis&quot; {B}, attributes the variant to scribal narrowing toward a more familiar word</li>
+            <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — rates &quot;genesis&quot; {B}, attributes the variant to scribal narrowing toward a more specialized word</li>
             <li>Nolland (NIGTC) — reads &quot;birth&quot; as a narrowing translation that still takes up 1:1&#x27;s usage</li>
             <li>France (NICNT) — argues &quot;birth&quot; loses a deliberate verbal link to 1:1 that only repeating &quot;genesis&quot; would preserve</li>
             <li>Turner (BECNT) — uses the repetition as evidence against reading 1:1&#x27;s &quot;genesis&quot; narrowly as &quot;genealogy&quot;</li>
             <li>Brown (<i>The Birth of the Messiah</i>) — reports a minority view (Davies) that the direction of corruption may run the other way, then sets it aside</li>
+            <li>Luz (Hermeneia) — reads the clause as connecting back to 1:1, an &quot;enlarged footnote to the crucial point in the genealogy,&quot; a phrase borrowed from Stendahl</li>
           </ul>
         </details>
       </div>
@@ -221,9 +228,9 @@ render.py's query logic) and regenerate instead.
           <ul>
             <li>Metzger (<i>A Textual Commentary on the Greek New Testament</i>) — rates the longer reading {B} but calls it &quot;intrinsically improbable&quot; on internal grounds</li>
             <li>Willker (<i>A Textual Commentary on the Greek Gospels</i>) — compiles the wider manuscript and patristic evidence for both readings</li>
-            <li>Ehrman (<i>The Orthodox Corruption of Scripture</i>) — reads the shorter reading as a second-century scribal alteration made in an anti-separationist dispute</li>
+            <li>Ehrman (<i>The Orthodox Corruption of Scripture</i>), cited in Willker (<i>A Textual Commentary on the Greek Gospels</i>) — reads the shorter reading as a second-century scribal alteration made in an anti-separationist dispute</li>
             <li>France (NICNT) — adopts the shorter reading as original, against the manuscript majority</li>
-            <li>Zahn — independently argues for the shorter reading on stylistic grounds, matching Matthew&#x27;s usage at 11:2</li>
+            <li>Zahn (<i>Das Evangelium des Matthäus</i>), cited in Willker (<i>A Textual Commentary on the Greek Gospels</i>) — independently argues for the shorter reading on stylistic grounds, matching Matthew&#x27;s usage at 11:2</li>
           </ul>
         </details>
       </div>
@@ -234,14 +241,14 @@ render.py's query logic) and regenerate instead.
       <div class="endnote-body">
         <a class="endnote-word always" id="note-3" href="#ref-3" title="Back to text">christou</a>
         Χριστός is ambiguous between a title, the Anointed One or Messiah, and a fixed second name for Jesus. Scholars disagree on where the word tips from title into name, and some read it as doing both at once. The verb χρίω behind it means to anoint, so every anointing in the New Testament is the same word as the name. Χριστιανός is the partisan noun built on it, formed with a Latin suffix meaning someone&#x27;s people, as the Herodians were Herod&#x27;s. It occurs three times, and what it meant at Antioch is disputed.<a class="endnote-back" href="#ref-3" title="Back to text" aria-label="Back to text">↑</a>
-        <div class="endnote-senses"><b>Usually</b> christ, jesus</div>
+        <div class="endnote-senses"><b>Usually</b> christ</div>
         <details class="sources">
           <summary>Sources</summary>
           <ul>
             <li>Danker (<i>A Greek-English Lexicon of the New Testament</i>) — separates a titular &quot;Anointed One&quot; from a personal name, and puts the shift around Matthew 11:2</li>
             <li>Suggs (<i>Wisdom, Christology, and Law in Matthew&#x27;s Gospel</i>) — argues against a bare-name reading at Matthew 11:2</li>
             <li>Nolland (NIGTC) — the chiasm between Matthew 1:1 and 1:17 favors a titular reading across the whole genealogy</li>
-            <li>France (NICNT) — &quot;the colorless translation &#x27;Jesus Christ&#x27;&quot; loses Matthew&#x27;s intended title, and notes that ὁ λεγόμενος χριστός recurs verbatim at 27:17 and 27:22</li>
+            <li>France (NICNT) — &quot;the colorless translation &#x27;Jesus Christ&#x27;&quot; loses Matthew&#x27;s intended title, and notes that ὁ λεγόμενος χριστός recurs verbatim at 27:17</li>
             <li>Carson (EBC) — the outlier, reads the word as already shifting toward fixed-name use by Matthew 1:16</li>
           </ul>
         </details>
@@ -259,7 +266,7 @@ render.py's query logic) and regenerate instead.
           <ul>
             <li>Nolland (NIGTC) — betrothal created &quot;a legal state of marriage, with attendant possibilities of adultery, divorce, and widowhood&quot;</li>
             <li>France (NICNT) — Joseph&#x27;s dilemma was never whether to divorce Mary but only whether to do so publicly or privately</li>
-            <li>Brown (<i>The Birth of the Messiah</i>) — supplies fuller rabbinic sourcing (Mishnah <i>Ketubbot</i>, <i>Kethuboth</i>) for the same two-stage structure</li>
+            <li>Brown (<i>The Birth of the Messiah</i>) — supplies fuller rabbinic sourcing (Mishnah <i>Kethuboth</i>) for the same two-stage structure</li>
             <li><i>The Jewish Annotated New Testament</i> — corroborates the rabbinic sourcing while noting the rabbinic ideal may not reflect first-century practice</li>
             <li>Keener (<i>A Commentary on the Gospel of Matthew</i>) — reads continued restraint after betrothal as culturally notable rather than a neutral legal default</li>
           </ul>
@@ -279,7 +286,7 @@ render.py's query logic) and regenerate instead.
             <li>Nolland (NIGTC) — distinguishes the LXX idiom for conception, which can mark a male role, from the idiom used here, which does not</li>
             <li>Davies and Allison (ICC) — &quot;the word is definite from the nature of the case&quot; despite the missing article</li>
             <li>Brown (<i>The Birth of the Messiah</i>) — the Spirit is never presented as the male element in the conception, being neither male nor a sexual partner</li>
-            <li>Lagrand (&quot;How Was the Virgin Mary &#x27;Like a Man&#x27;?,&quot; NovT) — reads the grammar differently, assigning Mary the &quot;male&quot; role and the Spirit the &quot;female&quot; role</li>
+            <li>Lagrand (&quot;How Was the Virgin Mary &#x27;Like a Man&#x27;?,&quot; NovT), cited in Nolland (&quot;No Son-of-God Christology in Matthew 1.18-25,&quot; JSNT) — reads the grammar differently, assigning Mary the &quot;male&quot; role and the Spirit the &quot;female&quot; role</li>
           </ul>
         </details>
       </div>
