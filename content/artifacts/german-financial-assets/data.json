@@ -1,0 +1,4379 @@
+{
+  "generated_at": "2026-09-13",
+  "top": [
+    {
+      "id": "banks",
+      "label": "Banks",
+      "metric": "assets",
+      "size_eur_m": 10514452,
+      "blurb": "Deposits, loans, and payments. Sized by balance sheet — what a bank holds, not what it manages for someone else.",
+      "sub": [
+        {
+          "id": "sparkassen",
+          "label": "Sparkassen",
+          "metric": "assets",
+          "size_eur_m": 1619537,
+          "observed_eur_m": 845730.24,
+          "unobserved_eur_m": 773806.76,
+          "blurb": "Public savings banks. Each city or county owns one. Retail deposits and local lending are the core business. 342 exist nationally; our data covers a fraction of them.",
+          "institutions": [
+            {
+              "short_name": "Hamburger Sparkasse",
+              "legal_name": "Hamburger Sparkasse AG",
+              "size_eur_m": 56913.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "HASPA Finanzholding",
+              "url": "https://www.haspa.de/content/dam/myif/haspa/work/pdf/Unternehmen/ueber_uns/geschaeftsberichte/haspa-annual-report-2025.pdf",
+              "detail_lines": [
+                "Hamburger Sparkasse AG — €56.9bn assets (2025).",
+                "Equity €3.2bn. Net income €0m.",
+                "3,731 employees.",
+                "Parent: HASPA Finanzholding."
+              ]
+            },
+            {
+              "short_name": "Berliner Sparkasse",
+              "legal_name": "BSK 1818 AG",
+              "size_eur_m": 44801.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.berliner-sparkasse.de/de/home/ihre-sparkasse/ihre-sparkasse-vor-ort/lightboxes/Berichte.html",
+              "detail_lines": [
+                "BSK 1818 AG — €44.8bn assets (2025).",
+                "Equity €2.0bn. Net income €0m.",
+                "3,065 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Köln",
+              "legal_name": "Kreissparkasse Köln Mündelsichere Anstalt des öffentlichen Rechts",
+              "size_eur_m": 30860.28,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Köln Mündelsichere Anstalt des öffentlichen Rechts — €30.9bn assets (2025).",
+                "Equity €1.9bn. Net income €64m.",
+                "3,485 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse KölnBonn",
+              "legal_name": "Sparkasse KölnBonn",
+              "size_eur_m": 29176.25,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.sparkasse-koelnbonn.de/content/dam/myif/spk-koelnbonn/work/dokumente/pdf/unternehmen/zahlen-und-fakten/jahresabschluesse/JA_2025.pdf",
+              "detail_lines": [
+                "Sparkasse KölnBonn — €29.2bn assets (2025).",
+                "Equity €1.8bn. Net income €37m.",
+                "3,537 employees."
+              ]
+            },
+            {
+              "short_name": "Stadtsparkasse München",
+              "legal_name": "Stadtsparkasse München",
+              "size_eur_m": 24015.64,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.sskm.de/content/dam/myif/sskm/work/dokumente/pdf/sskm/offenlegungsbericht-2024.pdf",
+              "detail_lines": [
+                "Stadtsparkasse München — €24.0bn assets (2025).",
+                "Equity €1.5bn. Net income €49m.",
+                "2,065 employees."
+              ]
+            },
+            {
+              "short_name": "Frankfurter Sparkasse",
+              "legal_name": "Frankfurter Sparkasse",
+              "size_eur_m": 23435.65,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Landesbank Hessen-Thüringen Girozentrale",
+              "url": "https://www.frankfurter-sparkasse.de/content/dam/myif/sk-frankfurt/work/dokumente/pdf/Ihre-Sparkasse/unternehmen/geschaeftsbericht_frankfurter_sparkasse_2025.pdf?n=true",
+              "detail_lines": [
+                "Frankfurter Sparkasse — €23.4bn assets (2025).",
+                "Equity €1.0bn. Net income €60m.",
+                "1,601 employees.",
+                "Parent: Landesbank Hessen-Thüringen Girozentrale."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Hannover",
+              "legal_name": "Sparkasse Hannover",
+              "size_eur_m": 22127.86,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.sparkasse-hannover.de/de/home/ihre-sparkasse/zahlen-und-fakten/geschaeftsbericht.html",
+              "detail_lines": [
+                "Sparkasse Hannover — €22.1bn assets (2025).",
+                "Equity €1.1bn. Net income €20m.",
+                "1,919 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Pforzheim Calw",
+              "legal_name": "Sparkasse Pforzheim Calw, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 17631.4,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Pforzheim Calw, Anstalt des öffentlichen Rechts — €17.6bn assets (2025).",
+                "Equity €0.7bn. Net income €15m.",
+                "1,992 employees."
+              ]
+            },
+            {
+              "short_name": "Mittelbrandenburgische Sparkasse",
+              "legal_name": "Mittelbrandenburgische Sparkasse in Potsdam",
+              "size_eur_m": 17184.46,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Mittelbrandenburgische Sparkasse in Potsdam — €17.2bn assets (2025).",
+                "Equity €0.7bn. Net income €16m.",
+                "1,303 employees."
+              ]
+            },
+            {
+              "short_name": "Ostsächsische Sparkasse Dresden",
+              "legal_name": "Ostsächsische Sparkasse Dresden, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 16137.84,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Ostsächsische Sparkasse Dresden, Anstalt des öffentlichen Rechts — €16.1bn assets (2025).",
+                "Equity €0.6bn. Net income €31m.",
+                "1,451 employees."
+              ]
+            },
+            {
+              "short_name": "Stadtsparkasse Düsseldorf",
+              "legal_name": "Stadtsparkasse Düsseldorf",
+              "size_eur_m": 15349.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.sskduesseldorf.de/content/dam/myif/ssk-duesseldorf/work/dokumente/pdf/jahresberichte/2026/Jahresabschluss-2025.pdf",
+              "detail_lines": [
+                "Stadtsparkasse Düsseldorf — €15.3bn assets (2025).",
+                "Net income €50m.",
+                "1,621 employees."
+              ]
+            },
+            {
+              "short_name": "Nassauische Sparkasse",
+              "legal_name": "Nassauische Sparkasse, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 15245.44,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Nassauische Sparkasse, Anstalt des öffentlichen Rechts — €15.2bn assets (2025).",
+                "Equity €1.4bn. Net income €38m.",
+                "1,652 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Bremen",
+              "legal_name": "Die Sparkasse Bremen AG",
+              "size_eur_m": 15145.66,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Die Sparkasse Bremen AG — €15.1bn assets (2025).",
+                "Equity €1.1bn. Net income €48m.",
+                "1,261 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Aachen",
+              "legal_name": "Sparkasse Aachen, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 15071.31,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Aachen, Anstalt des öffentlichen Rechts — €15.1bn assets (2025).",
+                "Equity €1.0bn. Net income €38m.",
+                "1,589 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Münsterland Ost",
+              "legal_name": "Sparkasse Münsterland Ost, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 14269.5,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Münsterland Ost, Anstalt des öffentlichen Rechts — €14.3bn assets (2025).",
+                "Equity €0.6bn. Net income €17m.",
+                "1,334 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Heilbronn",
+              "legal_name": "Kreissparkasse Heilbronn, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 13695.02,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Heilbronn, Anstalt des öffentlichen Rechts — €13.7bn assets (2024).",
+                "Equity €0.6bn. Net income €12m.",
+                "1,652 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse München Starnberg Ebersberg",
+              "legal_name": "Kreissparkasse München Starnberg Ebersberg",
+              "size_eur_m": 13469.55,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse München Starnberg Ebersberg — €13.5bn assets (2025).",
+                "Equity €0.8bn. Net income €23m.",
+                "1,194 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Ludwigsburg",
+              "legal_name": "Kreissparkasse Ludwigsburg",
+              "size_eur_m": 13330.77,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Ludwigsburg — €13.3bn assets (2025).",
+                "Equity €0.7bn. Net income €18m.",
+                "1,418 employees."
+              ]
+            },
+            {
+              "short_name": "Landessparkasse zu Oldenburg",
+              "legal_name": "Landessparkasse zu Oldenburg",
+              "size_eur_m": 13214.81,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Landessparkasse zu Oldenburg — €13.2bn assets (2025).",
+                "Equity €0.8bn. Net income €65m.",
+                "1,716 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Esslingen-Nürtingen",
+              "legal_name": "Kreissparkasse Esslingen-Nürtingen",
+              "size_eur_m": 13107.8,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Esslingen-Nürtingen — €13.1bn assets (2025).",
+                "Equity €0.6bn. Net income €13m.",
+                "1,479 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Nürnberg",
+              "legal_name": "Sparkasse Nürnberg, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 12966.01,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Nürnberg, Anstalt des öffentlichen Rechts — €13.0bn assets (2025).",
+                "Equity €1.0bn. Net income €27m."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Dortmund",
+              "legal_name": "Sparkasse Dortmund",
+              "size_eur_m": 12785.55,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.sparkasse-dortmund.de/content/dam/myif/spk-dortmund/work/dokumente/pdf/allgemein/jahresabschluss-2025.pdf",
+              "detail_lines": [
+                "Sparkasse Dortmund — €12.8bn assets (2025).",
+                "Equity €0.6bn. Net income €8m.",
+                "1,528 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Leipzig",
+              "legal_name": "Stadt- und Kreissparkasse Leipzig",
+              "size_eur_m": 12091.26,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.sparkasse-leipzig.de/content/dam/myif/sksk-leipzig/work/dokumente/content/ihre-sparkasse/kurzbericht.pdf?n=true",
+              "detail_lines": [
+                "Stadt- und Kreissparkasse Leipzig — €12.1bn assets (2025).",
+                "Equity €0.5bn. Net income €20m.",
+                "1,378 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Karlsruhe",
+              "legal_name": "Sparkasse Karlsruhe, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 12003.13,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Karlsruhe, Anstalt des öffentlichen Rechts — €12.0bn assets (2025).",
+                "Equity €0.5bn. Net income €12m.",
+                "1,303 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Schwaben-Bodensee",
+              "legal_name": "Sparkasse Schwaben-Bodensee, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 11944.25,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Schwaben-Bodensee, Anstalt des öffentlichen Rechts — €11.9bn assets (2025).",
+                "Equity €0.7bn. Net income €34m.",
+                "1,328 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Paderborn-Detmold-Höxter",
+              "legal_name": "Sparkasse Paderborn-Detmold-Höxter, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 11925.76,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Paderborn-Detmold-Höxter, Anstalt des öffentlichen Rechts — €11.9bn assets (2024).",
+                "Equity €0.6bn. Net income €15m.",
+                "1,561 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Böblingen",
+              "legal_name": "Kreissparkasse Böblingen, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 11913.57,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Böblingen, Anstalt des öffentlichen Rechts — €11.9bn assets (2025).",
+                "Equity €0.5bn. Net income €15m.",
+                "976 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Westmünsterland",
+              "legal_name": "Sparkasse Westmünsterland, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 11579.33,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Westmünsterland, Anstalt des öffentlichen Rechts — €11.6bn assets (2025).",
+                "Equity €0.5bn. Net income €15m.",
+                "1,277 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Mainfranken Würzburg",
+              "legal_name": "Sparkasse Mainfranken Würzburg, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 11112.22,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Mainfranken Würzburg, Anstalt des öffentlichen Rechts — €11.1bn assets (2025).",
+                "Equity €0.6bn. Net income €7m.",
+                "1,353 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Waiblingen",
+              "legal_name": "Kreissparkasse Waiblingen",
+              "size_eur_m": 10888.39,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Waiblingen — €10.9bn assets (2024).",
+                "Equity €0.4bn. Net income €0m.",
+                "1,344 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Krefeld",
+              "legal_name": "Sparkasse Krefeld – Zweckverbandssparkasse Krefeld/Kreis Viersen",
+              "size_eur_m": 10122.54,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Krefeld – Zweckverbandssparkasse Krefeld/Kreis Viersen — €10.1bn assets (2024).",
+                "Equity €0.5bn. Net income €8m.",
+                "1,366 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Essen",
+              "legal_name": "Sparkasse Essen",
+              "size_eur_m": 10013.98,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": "https://www.sparkasse-essen.de/content/dam/myif/spk-essen/work/dokumente/pdf/ihre-sparkasse/reports-und-berichte/Spk_Essen_2024_Web.pdf",
+              "detail_lines": [
+                "Sparkasse Essen — €10.0bn assets (2024).",
+                "Equity €0.5bn. Net income €12m.",
+                "1,235 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Holstein",
+              "legal_name": "Sparkasse Holstein, rechtsfähige Anstalt des öffentlichen Rechts",
+              "size_eur_m": 9755.57,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Holstein, rechtsfähige Anstalt des öffentlichen Rechts — €9.8bn assets (2025).",
+                "Equity €0.5bn. Net income €18m.",
+                "843 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Hildesheim Goslar Peine",
+              "legal_name": "Sparkasse Hildesheim Goslar Peine, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 9359.98,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Hildesheim Goslar Peine, Anstalt des öffentlichen Rechts — €9.4bn assets (2024).",
+                "Equity €0.6bn. Net income €13m.",
+                "1,236 employees."
+              ]
+            },
+            {
+              "short_name": "Förde Sparkasse",
+              "legal_name": "Förde Sparkasse",
+              "size_eur_m": 9244.61,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Förde Sparkasse — €9.2bn assets (2025).",
+                "Equity €0.4bn. Net income €10m.",
+                "1,140 employees."
+              ]
+            },
+            {
+              "short_name": "Stadtsparkasse Augsburg",
+              "legal_name": "Stadtsparkasse Augsburg",
+              "size_eur_m": 8765.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Stadtsparkasse Augsburg — €8.8bn assets (2025).",
+                "Equity €0.9bn. Net income €16m.",
+                "1,015 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Osnabrück",
+              "legal_name": "Sparkasse Osnabrück",
+              "size_eur_m": 8710.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Osnabrück — €8.7bn assets (2025).",
+                "Net income €19m.",
+                "1,142 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Bochum",
+              "legal_name": "Sparkasse Bochum",
+              "size_eur_m": 8500.0,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Bochum — €8.5bn assets (2024).",
+                "Net income €19m."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Freiburg-Nördlicher Breisgau",
+              "legal_name": "Sparkasse Freiburg-Nördlicher Breisgau",
+              "size_eur_m": 8379.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Freiburg-Nördlicher Breisgau — €8.4bn assets (2025).",
+                "Equity €0.9bn. Net income €8m.",
+                "995 employees."
+              ]
+            },
+            {
+              "short_name": "Stadtsparkasse Wuppertal",
+              "legal_name": "Stadtsparkasse Wuppertal",
+              "size_eur_m": 8295.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Stadtsparkasse Wuppertal — €8.3bn assets (2025).",
+                "Net income €13m.",
+                "1,176 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Heidelberg",
+              "legal_name": "Sparkasse Heidelberg",
+              "size_eur_m": 8177.0,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Heidelberg — €8.2bn assets (2024).",
+                "Equity €0.3bn.",
+                "1,052 employees."
+              ]
+            },
+            {
+              "short_name": "Nord-Ostsee Sparkasse",
+              "legal_name": "Nord-Ostsee Sparkasse",
+              "size_eur_m": 7900.0,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Nord-Ostsee Sparkasse — €7.9bn assets (2024).",
+                "Net income €12m.",
+                "818 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Vest Recklinghausen",
+              "legal_name": "Sparkasse Vest Recklinghausen, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 7700.22,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Vest Recklinghausen, Anstalt des öffentlichen Rechts — €7.7bn assets (2025).",
+                "Equity €0.4bn. Net income €3m.",
+                "1,180 employees."
+              ]
+            },
+            {
+              "short_name": "Taunus-Sparkasse",
+              "legal_name": "Taunus-Sparkasse, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 7501.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Taunus-Sparkasse, Anstalt des öffentlichen Rechts — €7.5bn assets (2025).",
+                "Equity €0.3bn. Net income €8m.",
+                "815 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Celle-Gifhorn-Wolfsburg",
+              "legal_name": "Sparkasse Celle-Gifhorn-Wolfsburg, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 7490.58,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Celle-Gifhorn-Wolfsburg, Anstalt des öffentlichen Rechts — €7.5bn assets (2024).",
+                "Equity €0.4bn. Net income €6m.",
+                "1,034 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Steinfurt",
+              "legal_name": "Kreissparkasse Steinfurt, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 7423.14,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Steinfurt, Anstalt des öffentlichen Rechts — €7.4bn assets (2024).",
+                "Equity €0.3bn. Net income €8m.",
+                "894 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Diepholz",
+              "legal_name": "Kreissparkasse Diepholz, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 7269.62,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Diepholz, Anstalt des öffentlichen Rechts — €7.3bn assets (2024).",
+                "Equity €0.4bn. Net income €10m.",
+                "917 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Ingolstadt Eichstätt",
+              "legal_name": "Sparkasse Ingolstadt Eichstätt, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 7050.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Ingolstadt Eichstätt, Anstalt des öffentlichen Rechts — €7.0bn assets (2025).",
+                "Equity €1.1bn. Net income €15m.",
+                "849 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Südholstein",
+              "legal_name": "Sparkasse Südholstein, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6995.41,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Südholstein, Anstalt des öffentlichen Rechts — €7.0bn assets (2025).",
+                "Equity €0.3bn. Net income €0m.",
+                "866 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Tübingen",
+              "legal_name": "Kreissparkasse Tübingen, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6766.31,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Tübingen, Anstalt des öffentlichen Rechts — €6.8bn assets (2025).",
+                "Equity €0.2bn. Net income €2m.",
+                "883 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Biberach",
+              "legal_name": "Kreissparkasse Biberach, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6752.77,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Biberach, Anstalt des öffentlichen Rechts — €6.8bn assets (2025).",
+                "Equity €0.4bn. Net income €6m.",
+                "918 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Darmstadt",
+              "legal_name": "Stadt- und Kreis-Sparkasse Darmstadt, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6650.16,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Stadt- und Kreis-Sparkasse Darmstadt, Anstalt des öffentlichen Rechts — €6.7bn assets (2025).",
+                "Equity €0.4bn. Net income €9m.",
+                "771 employees."
+              ]
+            },
+            {
+              "short_name": "Kasseler Sparkasse",
+              "legal_name": "Kasseler Sparkasse, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6627.2,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kasseler Sparkasse, Anstalt des öffentlichen Rechts — €6.6bn assets (2024).",
+                "Equity €0.3bn. Net income €8m.",
+                "902 employees."
+              ]
+            },
+            {
+              "short_name": "Saalesparkasse",
+              "legal_name": "Saalesparkasse, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6501.2,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Saalesparkasse, Anstalt des öffentlichen Rechts — €6.5bn assets (2024).",
+                "Equity €0.2bn. Net income €2m.",
+                "612 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Göppingen",
+              "legal_name": "Kreissparkasse Göppingen, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6447.32,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Göppingen, Anstalt des öffentlichen Rechts — €6.4bn assets (2024).",
+                "Equity €0.4bn. Net income €7m.",
+                "978 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Reutlingen",
+              "legal_name": "Kreissparkasse Reutlingen, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6409.0,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Reutlingen, Anstalt des öffentlichen Rechts — €6.4bn assets (2024).",
+                "Equity €0.3bn. Net income €2m.",
+                "847 employees."
+              ]
+            },
+            {
+              "short_name": "OstseeSparkasse Rostock",
+              "legal_name": "OstseeSparkasse Rostock, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6225.5,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "OstseeSparkasse Rostock, Anstalt des öffentlichen Rechts — €6.2bn assets (2024).",
+                "Equity €0.2bn. Net income €5m.",
+                "650 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Oberhessen",
+              "legal_name": "Sparkasse Oberhessen, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6204.18,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Oberhessen, Anstalt des öffentlichen Rechts — €6.2bn assets (2024).",
+                "Equity €0.4bn. Net income €12m.",
+                "850 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Vorderpfalz",
+              "legal_name": "Sparkasse Vorderpfalz, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 6054.45,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Vorderpfalz, Anstalt des öffentlichen Rechts — €6.1bn assets (2024).",
+                "Equity €0.4bn. Net income €4m.",
+                "803 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Hanau",
+              "legal_name": "Sparkasse Hanau, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5939.79,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Hanau, Anstalt des öffentlichen Rechts — €5.9bn assets (2025).",
+                "Equity €0.3bn. Net income €9m.",
+                "588 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Mittelfranken-Süd",
+              "legal_name": "Sparkasse Mittelfranken-Süd, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5923.52,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Mittelfranken-Süd, Anstalt des öffentlichen Rechts — €5.9bn assets (2025).",
+                "Equity €0.2bn. Net income €4m.",
+                "714 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Ansbach",
+              "legal_name": "Sparkasse Ansbach, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5877.44,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Ansbach, Anstalt des öffentlichen Rechts — €5.9bn assets (2025).",
+                "Equity €0.3bn. Net income €6m.",
+                "622 employees."
+              ]
+            },
+            {
+              "short_name": "Erzgebirgssparkasse",
+              "legal_name": "Erzgebirgssparkasse, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5851.97,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Erzgebirgssparkasse, Anstalt des öffentlichen Rechts — €5.9bn assets (2024).",
+                "Equity €0.2bn. Net income €0m."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Herford",
+              "legal_name": "Sparkasse Herford, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5789.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Herford, Anstalt des öffentlichen Rechts — €5.8bn assets (2025).",
+                "Equity €0.4bn. Net income €13m."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Vorpommern",
+              "legal_name": "Sparkasse Vorpommern, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5745.06,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Vorpommern, Anstalt des öffentlichen Rechts — €5.7bn assets (2025).",
+                "Equity €0.2bn. Net income €2m.",
+                "679 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Rhein Neckar Nord",
+              "legal_name": "Sparkasse Rhein Neckar Nord, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5736.13,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Rhein Neckar Nord, Anstalt des öffentlichen Rechts — €5.7bn assets (2025).",
+                "Equity €0.3bn. Net income €5m.",
+                "708 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Koblenz",
+              "legal_name": "Sparkasse Koblenz, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5698.4,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Koblenz, Anstalt des öffentlichen Rechts — €5.7bn assets (2025).",
+                "Equity €0.4bn. Net income €9m.",
+                "778 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Ravensburg",
+              "legal_name": "Kreissparkasse Ravensburg, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5671.89,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Ravensburg, Anstalt des öffentlichen Rechts — €5.7bn assets (2024).",
+                "Equity €0.3bn. Net income €7m.",
+                "739 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Trier",
+              "legal_name": "Sparkasse Trier, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5512.43,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Trier, Anstalt des öffentlichen Rechts — €5.5bn assets (2025).",
+                "Equity €0.3bn. Net income €7m.",
+                "695 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Regensburg",
+              "legal_name": "Sparkasse Regensburg, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5359.51,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Regensburg, Anstalt des öffentlichen Rechts — €5.4bn assets (2025).",
+                "Equity €0.4bn. Net income €20m.",
+                "634 employees."
+              ]
+            },
+            {
+              "short_name": "Kreissparkasse Halle-Wiedenbrück",
+              "legal_name": "Kreissparkasse Halle-Wiedenbrück, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5333.93,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kreissparkasse Halle-Wiedenbrück, Anstalt des öffentlichen Rechts — €5.3bn assets (2025).",
+                "Equity €0.2bn. Net income €2m.",
+                "546 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Südpfalz",
+              "legal_name": "Sparkasse Südpfalz, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5317.11,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Südpfalz, Anstalt des öffentlichen Rechts — €5.3bn assets (2024).",
+                "Equity €0.4bn. Net income €18m."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Bodensee",
+              "legal_name": "Sparkasse Bodensee, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 5290.21,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparkasse Bodensee, Anstalt des öffentlichen Rechts — €5.3bn assets (2025).",
+                "Equity €0.2bn. Net income €4m.",
+                "663 employees."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "kreditgenossenschaften",
+          "label": "Kreditgenossenschaften",
+          "metric": "assets",
+          "size_eur_m": 1237782,
+          "observed_eur_m": 1049752.68,
+          "unobserved_eur_m": 188029.32,
+          "blurb": "Cooperative banks, owned by their own members. Same retail-and-local-lending business as Sparkassen, different ownership structure. 644 exist nationally.",
+          "institutions": [
+            {
+              "short_name": "DZ BANK",
+              "legal_name": "DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main",
+              "size_eur_m": 404225.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.dzbank.de/content/dam/dzbank/dokumente/de/dzbank/investor_relations/berichte/DZ_BANK_AG_2025_Gesamt_final.pdf",
+              "detail_lines": [
+                "DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main — €404.2bn assets (2025).",
+                "Equity €10.9bn. Net income €0.6bn.",
+                "5,981 employees."
+              ]
+            },
+            {
+              "short_name": "apoBank",
+              "legal_name": "Deutsche Apotheker- und Ärztebank eG",
+              "size_eur_m": 52437.77,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.apobank.de/ueber-die-apobank/investor-relations-en",
+              "detail_lines": [
+                "Deutsche Apotheker- und Ärztebank eG — €52.4bn assets (2025).",
+                "Equity €2.2bn. Net income €100m.",
+                "2,374 employees."
+              ]
+            },
+            {
+              "short_name": "Berliner Volksbank",
+              "legal_name": "Berliner Volksbank eG",
+              "size_eur_m": 20080.68,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://atruvia.scene7.com/is/content/atruvia/geschaeftsbericht-2025-berliner-volksbankpdf",
+              "detail_lines": [
+                "Berliner Volksbank eG — €20.1bn assets (2025).",
+                "Equity €2.0bn. Net income €40m.",
+                "1,983 employees."
+              ]
+            },
+            {
+              "short_name": "BBBank",
+              "legal_name": "BBBank eG",
+              "size_eur_m": 19356.2,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "BBBank eG — €19.4bn assets (2024).",
+                "Equity €0.8bn. Net income €16m.",
+                "1,400 employees."
+              ]
+            },
+            {
+              "short_name": "Frankfurter Volksbank Rhein/Main",
+              "legal_name": "Frankfurter Volksbank Rhein/Main eG",
+              "size_eur_m": 19331.86,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://atruvia.scene7.com/is/content/atruvia/geschaeftsbericht-2025-mit-konzern-webpdf",
+              "detail_lines": [
+                "Frankfurter Volksbank Rhein/Main eG — €19.3bn assets (2025).",
+                "Equity €1.0bn. Net income €17m.",
+                "1,854 employees."
+              ]
+            },
+            {
+              "short_name": "Sparda-Bank Baden-Württemberg",
+              "legal_name": "Sparda-Bank Baden-Württemberg eG",
+              "size_eur_m": 15536.07,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://hub.sparda-bw.de/storyblok/asset/x/05745ae4ae/geschaftsbericht-sparda-bank-bw-2025.pdf?_hash=OfPFrfehMv5teHrWeIDm8MNzf8Hh-zSjGEVKqi2W_w4",
+              "detail_lines": [
+                "Sparda-Bank Baden-Württemberg eG — €15.5bn assets (2025).",
+                "Equity €0.8bn. Net income €14m.",
+                "728 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Darmstadt Mainz",
+              "legal_name": "Volksbank Darmstadt Mainz eG",
+              "size_eur_m": 15523.06,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Darmstadt Mainz eG — €15.5bn assets (2025).",
+                "Equity €0.7bn. Net income €20m.",
+                "1,561 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank – Die Gestalterbank",
+              "legal_name": "Volksbank eG – Die Gestalterbank",
+              "size_eur_m": 14154.94,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank eG – Die Gestalterbank — €14.2bn assets (2025).",
+                "Equity €0.7bn. Net income €25m.",
+                "1,203 employees."
+              ]
+            },
+            {
+              "short_name": "Sparda-Bank West",
+              "legal_name": "Sparda-Bank West eG",
+              "size_eur_m": 13932.79,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://atruvia.scene7.com/is/content/atruvia/Sparda-Gesch%C3%A4ftsbericht-2025-Webpdf",
+              "detail_lines": [
+                "Sparda-Bank West eG — €13.9bn assets (2025).",
+                "Equity €0.8bn. Net income €15m.",
+                "878 employees."
+              ]
+            },
+            {
+              "short_name": "meine Volksbank Raiffeisenbank",
+              "legal_name": "meine Volksbank Raiffeisenbank eG, Rosenheim",
+              "size_eur_m": 12358.16,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "meine Volksbank Raiffeisenbank eG, Rosenheim — €12.4bn assets (2025).",
+                "Equity €1.1bn. Net income €52m.",
+                "1,393 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank pur",
+              "legal_name": "Volksbank pur eG",
+              "size_eur_m": 12106.83,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank pur eG — €12.1bn assets (2025).",
+                "Equity €0.7bn. Net income €17m.",
+                "1,277 employees."
+              ]
+            },
+            {
+              "short_name": "Sparda-Bank Südwest",
+              "legal_name": "Sparda-Bank Südwest eG",
+              "size_eur_m": 11983.1,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparda-Bank Südwest eG — €12.0bn assets (2025).",
+                "Equity €0.6bn. Net income €15m.",
+                "724 employees."
+              ]
+            },
+            {
+              "short_name": "Dortmunder Volksbank",
+              "legal_name": "Dortmunder Volksbank eingetragene Genossenschaft",
+              "size_eur_m": 11651.82,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Dortmunder Volksbank eingetragene Genossenschaft — €11.7bn assets (2025).",
+                "Equity €0.7bn. Net income €19m.",
+                "1,353 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Mittelhessen",
+              "legal_name": "Volksbank Mittelhessen eG",
+              "size_eur_m": 11631.6,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": "https://www.vb-mittelhessen.de/meine-bank/ueber-uns/jahresberichte.html",
+              "detail_lines": [
+                "Volksbank Mittelhessen eG — €11.6bn assets (2024).",
+                "Equity €1.1bn. Net income €56m.",
+                "1,117 employees."
+              ]
+            },
+            {
+              "short_name": "GLS Gemeinschaftsbank",
+              "legal_name": "GLS Gemeinschaftsbank e.G.",
+              "size_eur_m": 11555.31,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "GLS Gemeinschaftsbank e.G. — €11.6bn assets (2025).",
+                "Equity €0.8bn. Net income €18m.",
+                "911 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank im Münsterland",
+              "legal_name": "Volksbank im Münsterland eG",
+              "size_eur_m": 11327.25,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank im Münsterland eG — €11.3bn assets (2025).",
+                "Equity €0.6bn. Net income €17m.",
+                "1,400 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank in Ostwestfalen",
+              "legal_name": "Volksbank in Ostwestfalen eG",
+              "size_eur_m": 10704.53,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank in Ostwestfalen eG — €10.7bn assets (2025).",
+                "Equity €0.6bn. Net income €21m."
+              ]
+            },
+            {
+              "short_name": "Volksbank Kraichgau",
+              "legal_name": "Volksbank Kraichgau eG",
+              "size_eur_m": 10542.19,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Kraichgau eG — €10.5bn assets (2025).",
+                "Equity €0.6bn. Net income €19m.",
+                "1,113 employees."
+              ]
+            },
+            {
+              "short_name": "Sparda-Bank Hessen",
+              "legal_name": "Sparda-Bank Hessen eG",
+              "size_eur_m": 9352.58,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparda-Bank Hessen eG — €9.4bn assets (2025).",
+                "Equity €0.5bn. Net income €10m.",
+                "472 employees."
+              ]
+            },
+            {
+              "short_name": "Sparda-Bank München",
+              "legal_name": "Sparda-Bank München eG",
+              "size_eur_m": 9265.66,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparda-Bank München eG — €9.3bn assets (2025).",
+                "Equity €0.5bn. Net income €9m.",
+                "762 employees."
+              ]
+            },
+            {
+              "short_name": "Hannoversche Volksbank",
+              "legal_name": "Hannoversche Volksbank eG",
+              "size_eur_m": 9164.88,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Hannoversche Volksbank eG — €9.2bn assets (2025).",
+                "Equity €0.5bn. Net income €17m.",
+                "1,102 employees."
+              ]
+            },
+            {
+              "short_name": "Evangelische Bank",
+              "legal_name": "Evangelische Bank eG",
+              "size_eur_m": 8832.73,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Evangelische Bank eG — €8.8bn assets (2025).",
+                "Equity €0.4bn. Net income €11m.",
+                "427 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Stuttgart",
+              "legal_name": "Volksbank Stuttgart eG",
+              "size_eur_m": 8812.31,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Stuttgart eG — €8.8bn assets (2025).",
+                "Equity €0.6bn. Net income €22m.",
+                "1,028 employees."
+              ]
+            },
+            {
+              "short_name": "Pax-Bank",
+              "legal_name": "Pax-Bank für Kirche und Caritas eG",
+              "size_eur_m": 8592.11,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Pax-Bank für Kirche und Caritas eG — €8.6bn assets (2025).",
+                "Equity €0.5bn. Net income €20m.",
+                "352 employees."
+              ]
+            },
+            {
+              "short_name": "Sparda-Bank Berlin",
+              "legal_name": "Sparda-Bank Berlin eG",
+              "size_eur_m": 7719.26,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparda-Bank Berlin eG — €7.7bn assets (2025).",
+                "Equity €0.4bn. Net income €5m.",
+                "847 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank RheinAhrEifel",
+              "legal_name": "VR Bank RheinAhrEifel eG",
+              "size_eur_m": 7205.05,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank RheinAhrEifel eG — €7.2bn assets (2025).",
+                "Equity €0.4bn. Net income €11m.",
+                "955 employees."
+              ]
+            },
+            {
+              "short_name": "Vereinigte VR Bank Kur- und Rheinpfalz",
+              "legal_name": "Vereinigte VR Bank Kur- und Rheinpfalz eG",
+              "size_eur_m": 6857.05,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Vereinigte VR Bank Kur- und Rheinpfalz eG — €6.9bn assets (2024).",
+                "Equity €0.3bn. Net income €10m.",
+                "720 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Köln Bonn",
+              "legal_name": "Volksbank Köln Bonn eG",
+              "size_eur_m": 6714.3,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://volksbank-koeln-bonn.1kcloud.com/ep16a042ce15f1b2/epaper/ausgabe.pdf",
+              "detail_lines": [
+                "Volksbank Köln Bonn eG — €6.7bn assets (2025).",
+                "Equity €0.4bn. Net income €15m.",
+                "720 employees."
+              ]
+            },
+            {
+              "short_name": "BANK IM BISTUM ESSEN",
+              "legal_name": "BANK IM BISTUM ESSEN eG",
+              "size_eur_m": 6688.6,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "BANK IM BISTUM ESSEN eG — €6.7bn assets (2025).",
+                "Equity €0.3bn. Net income €7m.",
+                "183 employees."
+              ]
+            },
+            {
+              "short_name": "VR-Bank Bonn Rhein-Sieg",
+              "legal_name": "VR-Bank Bonn Rhein-Sieg eG",
+              "size_eur_m": 6636.17,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR-Bank Bonn Rhein-Sieg eG — €6.6bn assets (2025).",
+                "Equity €0.4bn. Net income €14m.",
+                "748 employees."
+              ]
+            },
+            {
+              "short_name": "KD-Bank",
+              "legal_name": "Bank für Kirche und Diakonie eG - KD-Bank",
+              "size_eur_m": 6582.2,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Bank für Kirche und Diakonie eG - KD-Bank — €6.6bn assets (2025).",
+                "Equity €0.3bn. Net income €13m.",
+                "255 employees."
+              ]
+            },
+            {
+              "short_name": "LIGA Bank",
+              "legal_name": "LIGA Bank eG",
+              "size_eur_m": 6463.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "LIGA Bank eG — €6.5bn assets (2025).",
+                "Equity €0.2bn. Net income €5m.",
+                "314 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank BRAWO",
+              "legal_name": "Volksbank BRAWO eG",
+              "size_eur_m": 6418.7,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank BRAWO eG — €6.4bn assets (2024).",
+                "Equity €0.5bn. Net income €24m.",
+                "793 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Raiffeisenbank Bayern Mitte",
+              "legal_name": "Volksbank Raiffeisenbank Bayern Mitte eG",
+              "size_eur_m": 6219.5,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Raiffeisenbank Bayern Mitte eG — €6.2bn assets (2025).",
+                "Equity €0.3bn. Net income €8m.",
+                "796 employees."
+              ]
+            },
+            {
+              "short_name": "VR-Bank Ludwigsburg",
+              "legal_name": "VR-Bank Ludwigsburg eG",
+              "size_eur_m": 6168.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR-Bank Ludwigsburg eG — €6.2bn assets (2025).",
+                "Equity €0.3bn. Net income €7m.",
+                "719 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Mittlerer Neckar",
+              "legal_name": "Volksbank Mittlerer Neckar eG",
+              "size_eur_m": 6146.1,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Mittlerer Neckar eG — €6.1bn assets (2025).",
+                "Equity €0.3bn. Net income €9m.",
+                "799 employees."
+              ]
+            },
+            {
+              "short_name": "Sparda-Bank Hannover",
+              "legal_name": "Sparda-Bank Hannover eG",
+              "size_eur_m": 5850.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparda-Bank Hannover eG — €5.8bn assets (2025).",
+                "Equity €0.3bn. Net income €8m.",
+                "419 employees."
+              ]
+            },
+            {
+              "short_name": "Vereinigte Volksbanken",
+              "legal_name": "Vereinigte Volksbanken eG",
+              "size_eur_m": 5711.29,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Vereinigte Volksbanken eG — €5.7bn assets (2025).",
+                "Equity €0.2bn. Net income €4m."
+              ]
+            },
+            {
+              "short_name": "VR Bank Nord",
+              "legal_name": "VR Bank Nord eG",
+              "size_eur_m": 5666.74,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank Nord eG — €5.7bn assets (2025).",
+                "Equity €0.4bn. Net income €11m.",
+                "496 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank Starnberg-Zugspitze",
+              "legal_name": "VR Bank Starnberg-Zugspitze eG",
+              "size_eur_m": 5638.57,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank Starnberg-Zugspitze eG — €5.6bn assets (2025).",
+                "Equity €0.4bn. Net income €31m.",
+                "710 employees."
+              ]
+            },
+            {
+              "short_name": "Sparda-Bank Hamburg",
+              "legal_name": "Sparda-Bank Hamburg eG",
+              "size_eur_m": 5543.83,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparda-Bank Hamburg eG — €5.5bn assets (2025).",
+                "Equity €0.3bn. Net income €7m.",
+                "345 employees."
+              ]
+            },
+            {
+              "short_name": "VR TeilhaberBank Metropolregion Nürnberg",
+              "legal_name": "VR TeilhaberBank Metropolregion Nürnberg eG",
+              "size_eur_m": 5512.28,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR TeilhaberBank Metropolregion Nürnberg eG — €5.5bn assets (2025).",
+                "Equity €0.3bn. Net income €12m.",
+                "740 employees."
+              ]
+            },
+            {
+              "short_name": "Sparda-Bank Nürnberg",
+              "legal_name": "Sparda-Bank Nürnberg eG",
+              "size_eur_m": 5499.21,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sparda-Bank Nürnberg eG — €5.5bn assets (2025).",
+                "Equity €0.3bn. Net income €3m.",
+                "348 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank Rhein-Neckar",
+              "legal_name": "VR Bank Rhein-Neckar eG",
+              "size_eur_m": 5399.06,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank Rhein-Neckar eG — €5.4bn assets (2025).",
+                "Equity €0.3bn. Net income €8m.",
+                "652 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Sauerland",
+              "legal_name": "Volksbank Sauerland eG",
+              "size_eur_m": 5366.97,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Sauerland eG — €5.4bn assets (2025).",
+                "Equity €0.3bn. Net income €9m.",
+                "633 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Alzey-Worms",
+              "legal_name": "Volksbank Alzey-Worms eG",
+              "size_eur_m": 5261.45,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Alzey-Worms eG — €5.3bn assets (2025).",
+                "Equity €0.2bn. Net income €7m."
+              ]
+            },
+            {
+              "short_name": "Volksbank Ulm-Biberach",
+              "legal_name": "Volksbank Ulm-Biberach eG",
+              "size_eur_m": 5259.12,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Ulm-Biberach eG — €5.3bn assets (2025).",
+                "Equity €0.3bn. Net income €5m.",
+                "628 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Allgäu-Oberschwaben",
+              "legal_name": "Volksbank Allgäu-Oberschwaben eG",
+              "size_eur_m": 5221.78,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Allgäu-Oberschwaben eG — €5.2bn assets (2025).",
+                "Equity €0.3bn. Net income €7m.",
+                "645 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Westmünsterland",
+              "legal_name": "Volksbank Westmünsterland eG",
+              "size_eur_m": 5161.73,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Westmünsterland eG — €5.2bn assets (2025).",
+                "Equity €0.4bn. Net income €21m.",
+                "640 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Bodensee-Oberschwaben",
+              "legal_name": "Volksbank Bodensee-Oberschwaben eG",
+              "size_eur_m": 5140.63,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Bodensee-Oberschwaben eG — €5.1bn assets (2025).",
+                "Equity €0.3bn. Net income €11m.",
+                "721 employees."
+              ]
+            },
+            {
+              "short_name": "DKM Darlehnskasse Münster",
+              "legal_name": "DKM Darlehnskasse Münster eG",
+              "size_eur_m": 5140.26,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "DKM Darlehnskasse Münster eG — €5.1bn assets (2025).",
+                "Equity €0.2bn. Net income €2m.",
+                "160 employees."
+              ]
+            },
+            {
+              "short_name": "Hausbank München",
+              "legal_name": "Hausbank München eG Bank für Haus- und Grundbesitz",
+              "size_eur_m": 5129.14,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Hausbank München eG Bank für Haus- und Grundbesitz — €5.1bn assets (2025).",
+                "Equity €0.2bn. Net income €6m.",
+                "344 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank in Schaumburg und Nienburg",
+              "legal_name": "Volksbank in Schaumburg und Nienburg eG",
+              "size_eur_m": 5113.35,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank in Schaumburg und Nienburg eG — €5.1bn assets (2025).",
+                "Equity €0.3bn. Net income €7m.",
+                "463 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Trier Eifel",
+              "legal_name": "Volksbank Trier Eifel eG",
+              "size_eur_m": 4988.51,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Trier Eifel eG — €5.0bn assets (2025).",
+                "Equity €0.3bn. Net income €3m.",
+                "596 employees."
+              ]
+            },
+            {
+              "short_name": "Vereinigte Volksbank Raiffeisenbank (Reinheim)",
+              "legal_name": "Vereinigte Volksbank Raiffeisenbank eG",
+              "size_eur_m": 4983.2,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Vereinigte Volksbank Raiffeisenbank eG — €5.0bn assets (2024).",
+                "Equity €0.3bn. Net income €10m."
+              ]
+            },
+            {
+              "short_name": "Bank 1 Saar",
+              "legal_name": "Bank 1 Saar eG",
+              "size_eur_m": 4935.09,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Bank 1 Saar eG — €4.9bn assets (2025).",
+                "Equity €0.3bn. Net income €8m.",
+                "673 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank in der Region",
+              "legal_name": "Volksbank in der Region eG",
+              "size_eur_m": 4930.1,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank in der Region eG — €4.9bn assets (2025).",
+                "Equity €0.3bn. Net income €6m.",
+                "634 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Oberberg",
+              "legal_name": "Volksbank Oberberg eG",
+              "size_eur_m": 4902.72,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Oberberg eG — €4.9bn assets (2025).",
+                "Equity €0.3bn. Net income €11m.",
+                "444 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank Heilbronn Schwäbisch Hall",
+              "legal_name": "VR Bank Heilbronn Schwäbisch Hall eG",
+              "size_eur_m": 4891.98,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank Heilbronn Schwäbisch Hall eG — €4.9bn assets (2025).",
+                "Equity €0.3bn. Net income €9m.",
+                "647 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Heidelberg-Neckartal",
+              "legal_name": "Volksbank Heidelberg-Neckartal eG",
+              "size_eur_m": 4751.22,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Heidelberg-Neckartal eG — €4.8bn assets (2025).",
+                "Equity €0.5bn. Net income €6m.",
+                "620 employees."
+              ]
+            },
+            {
+              "short_name": "PSD Bank Nürnberg",
+              "legal_name": "PSD Bank Nürnberg eG",
+              "size_eur_m": 4695.39,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "PSD Bank Nürnberg eG — €4.7bn assets (2025).",
+                "Equity €0.2bn. Net income €6m.",
+                "297 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank Schleswig-Holstein Mitte",
+              "legal_name": "VR Bank Schleswig-Holstein Mitte eG",
+              "size_eur_m": 4673.32,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank Schleswig-Holstein Mitte eG — €4.7bn assets (2025).",
+                "Equity €0.3bn. Net income €7m.",
+                "630 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Raiffeisenbank Nordoberpfalz",
+              "legal_name": "Volksbank Raiffeisenbank Nordoberpfalz eG",
+              "size_eur_m": 4607.79,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Raiffeisenbank Nordoberpfalz eG — €4.6bn assets (2025).",
+                "Equity €0.2bn. Net income €5m.",
+                "836 employees."
+              ]
+            },
+            {
+              "short_name": "VR-Bank Mittelfranken Mitte",
+              "legal_name": "VR-Bank Mittelfranken Mitte eG",
+              "size_eur_m": 4601.97,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR-Bank Mittelfranken Mitte eG — €4.6bn assets (2025).",
+                "Equity €0.5bn. Net income €9m.",
+                "532 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank in Südwestfalen",
+              "legal_name": "Volksbank in Südwestfalen eG",
+              "size_eur_m": 4590.96,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank in Südwestfalen eG — €4.6bn assets (2025).",
+                "Equity €0.2bn. Net income €5m.",
+                "558 employees."
+              ]
+            },
+            {
+              "short_name": "Ihre Volksbank (Neckar Odenwald Main Tauber)",
+              "legal_name": "Ihre Volksbank eG Neckar Odenwald Main Tauber",
+              "size_eur_m": 4502.9,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Ihre Volksbank eG Neckar Odenwald Main Tauber — €4.5bn assets (2025).",
+                "Equity €0.2bn. Net income €5m.",
+                "686 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Gronau-Ahaus",
+              "legal_name": "Volksbank Gronau-Ahaus eG",
+              "size_eur_m": 4495.23,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Gronau-Ahaus eG — €4.5bn assets (2025).",
+                "Equity €0.2bn. Net income €6m.",
+                "398 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank Augsburg-Ostallgäu",
+              "legal_name": "VR Bank Augsburg-Ostallgäu eG",
+              "size_eur_m": 4463.95,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank Augsburg-Ostallgäu eG — €4.5bn assets (2025).",
+                "Equity €0.3bn. Net income €11m.",
+                "523 employees."
+              ]
+            },
+            {
+              "short_name": "PSD Bank Rhein-Ruhr",
+              "legal_name": "PSD Bank Rhein-Ruhr eG",
+              "size_eur_m": 4438.21,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "PSD Bank Rhein-Ruhr eG — €4.4bn assets (2025).",
+                "Equity €0.3bn. Net income €7m.",
+                "235 employees."
+              ]
+            },
+            {
+              "short_name": "Westerwald Bank",
+              "legal_name": "Westerwald Bank eG Volks- und Raiffeisenbank",
+              "size_eur_m": 4404.94,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Westerwald Bank eG Volks- und Raiffeisenbank — €4.4bn assets (2025).",
+                "Equity €0.2bn. Net income €7m.",
+                "507 employees."
+              ]
+            },
+            {
+              "short_name": "VR-Bank Rottal-Inn",
+              "legal_name": "VR-Bank Rottal-Inn eG",
+              "size_eur_m": 4387.19,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR-Bank Rottal-Inn eG — €4.4bn assets (2025).",
+                "Equity €0.2bn. Net income €10m.",
+                "611 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank Main-Kinzig-Büdingen",
+              "legal_name": "VR Bank Main-Kinzig-Büdingen eG",
+              "size_eur_m": 4291.41,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank Main-Kinzig-Büdingen eG — €4.3bn assets (2025).",
+                "Equity €0.3bn. Net income €8m.",
+                "532 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank zwischen den Meeren",
+              "legal_name": "VR Bank zwischen den Meeren eG",
+              "size_eur_m": 4277.51,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank zwischen den Meeren eG — €4.3bn assets (2025).",
+                "Equity €0.2bn. Net income €9m.",
+                "477 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Lüneburger Heide",
+              "legal_name": "Volksbank Lüneburger Heide eG",
+              "size_eur_m": 4249.18,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Lüneburger Heide eG — €4.2bn assets (2025).",
+                "Equity €0.2bn. Net income €7m.",
+                "517 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Kurpfalz",
+              "legal_name": "Volksbank Kurpfalz eG",
+              "size_eur_m": 4137.01,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Kurpfalz eG — €4.1bn assets (2025).",
+                "Equity €0.2bn. Net income €9m.",
+                "473 employees."
+              ]
+            },
+            {
+              "short_name": "Ostfriesische Volksbank",
+              "legal_name": "Ostfriesische Volksbank eG",
+              "size_eur_m": 4120.99,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Ostfriesische Volksbank eG — €4.1bn assets (2025).",
+                "Equity €0.2bn. Net income €16m.",
+                "343 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Freiburg",
+              "legal_name": "Volksbank Freiburg eG",
+              "size_eur_m": 4110.8,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.volksbank-freiburg.de/meine-bank/ueber-uns/zahlen-fakten.html",
+              "detail_lines": [
+                "Volksbank Freiburg eG — €4.1bn assets (2025).",
+                "Equity €0.2bn. Net income €4m.",
+                "422 employees."
+              ]
+            },
+            {
+              "short_name": "EDEKABANK",
+              "legal_name": "EDEKABANK Aktiengesellschaft",
+              "size_eur_m": 4108.9,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "EDEKABANK Aktiengesellschaft — €4.1bn assets (2025).",
+                "Equity €0.2bn. Net income €12m.",
+                "246 employees."
+              ]
+            },
+            {
+              "short_name": "Hamburger Volksbank",
+              "legal_name": "Hamburger Volksbank eG",
+              "size_eur_m": 4020.56,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Hamburger Volksbank eG — €4.0bn assets (2025).",
+                "Equity €0.2bn. Net income €14m.",
+                "420 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank Westfalen-Lippe",
+              "legal_name": "VR Bank Westfalen-Lippe eG",
+              "size_eur_m": 3908.91,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank Westfalen-Lippe eG — €3.9bn assets (2025).",
+                "Equity €0.3bn. Net income €8m.",
+                "394 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Zollernalb",
+              "legal_name": "Volksbank Zollernalb eG",
+              "size_eur_m": 3885.49,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Zollernalb eG — €3.9bn assets (2025).",
+                "Equity €0.2bn. Net income €4m.",
+                "312 employees."
+              ]
+            },
+            {
+              "short_name": "VR Bank Bamberg-Forchheim",
+              "legal_name": "VR Bank Bamberg-Forchheim eG Volks- Raiffeisenbank",
+              "size_eur_m": 3810.94,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "VR Bank Bamberg-Forchheim eG Volks- Raiffeisenbank — €3.8bn assets (2025).",
+                "Equity €0.2bn. Net income €10m.",
+                "440 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Raiffeisenbank (Itzehoe)",
+              "legal_name": "Volksbank Raiffeisenbank eG",
+              "size_eur_m": 3664.19,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Raiffeisenbank eG — €3.7bn assets (2025).",
+                "Equity €0.3bn. Net income €10m.",
+                "541 employees."
+              ]
+            },
+            {
+              "short_name": "Emsländische Volksbank",
+              "legal_name": "Emsländische Volksbank eG",
+              "size_eur_m": 3661.13,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Emsländische Volksbank eG — €3.7bn assets (2025).",
+                "Equity €0.2bn. Net income €20m.",
+                "400 employees."
+              ]
+            },
+            {
+              "short_name": "Münchner Bank",
+              "legal_name": "Münchner Bank eG",
+              "size_eur_m": 3639.76,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Münchner Bank eG — €3.6bn assets (2025).",
+                "Equity €0.2bn. Net income €4m.",
+                "450 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Niedersachsen-Mitte",
+              "legal_name": "Volksbank Niedersachsen-Mitte eG",
+              "size_eur_m": 3619.66,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volksbank Niedersachsen-Mitte eG — €3.6bn assets (2025).",
+                "Equity €0.2bn. Net income €3m."
+              ]
+            },
+            {
+              "short_name": "VR Smart Finanz",
+              "legal_name": "VR Smart Finanz AG",
+              "size_eur_m": 2107.4,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main",
+              "url": "https://www.vr-smart-finanz.de/unternehmen/gesch%C3%A4ftsbericht",
+              "detail_lines": [
+                "VR Smart Finanz AG — €2.1bn assets (2024).",
+                "Equity €0.2bn. Net income €0m.",
+                "323 employees.",
+                "Parent: DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "landesbanken",
+          "label": "Landesbanken",
+          "metric": "assets",
+          "size_eur_m": 905841,
+          "observed_eur_m": 915642.15,
+          "unobserved_eur_m": 0,
+          "blurb": "Wholesale banks owned by state governments and regional Sparkassen groups. They fund Sparkassen, lend to state-linked projects, and run capital-markets desks. Only 6 exist.",
+          "institutions": [
+            {
+              "short_name": "LBBW",
+              "legal_name": "Landesbank Baden-Württemberg",
+              "size_eur_m": 353168.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.lbbw.de/konzern/investor-relations/finanzberichte/einzelabschluesse/2025/lbbw-jahresabschluss-hgb-2025_ampzkhfjhr_m.pdf",
+              "detail_lines": [
+                "Landesbank Baden-Württemberg — €353.2bn assets (2025).",
+                "Equity €14.4bn. Net income €0.3bn.",
+                "8,701 employees."
+              ]
+            },
+            {
+              "short_name": "Helaba",
+              "legal_name": "Landesbank Hessen-Thüringen Girozentrale",
+              "size_eur_m": 181426.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.helaba.com/media/docs/int/investor-relations/publications/annual-reports/annual-reports-2025/annual-financial-report-2025.pdf",
+              "detail_lines": [
+                "Landesbank Hessen-Thüringen Girozentrale — €181.4bn assets (2025).",
+                "Equity €6.9bn. Net income €0.5bn.",
+                "2,913 employees."
+              ]
+            },
+            {
+              "short_name": "BayernLB",
+              "legal_name": "Bayerische Landesbank",
+              "size_eur_m": 156763.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.bayernlb.com/internet/media/en/ir/downloads_1/investor_relations_3/finanzberichte/2025_21/konzernabschluss_2025.pdf",
+              "detail_lines": [
+                "Bayerische Landesbank — €156.8bn assets (2025).",
+                "Equity €8.5bn. Net income €0.5bn.",
+                "2,916 employees."
+              ]
+            },
+            {
+              "short_name": "NordLB",
+              "legal_name": "Norddeutsche Landesbank - Girozentrale -",
+              "size_eur_m": 127695.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.nordlb.com/fileadmin/redaktion/Investor_Relations/pdf/2025/NORDLB_Group_Annual_Report_2025.pdf",
+              "detail_lines": [
+                "Norddeutsche Landesbank - Girozentrale - — €127.7bn assets (2025).",
+                "Equity €6.6bn. Net income €0.2bn.",
+                "3,561 employees."
+              ]
+            },
+            {
+              "short_name": "DZ HYP",
+              "legal_name": "DZ HYP AG",
+              "size_eur_m": 77362.95,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main",
+              "url": "https://dzhyp.de/fileadmin/user_upload/Dokumente/Investor_Relations/Geschaeftsberichte/DZ_HYP/DZHYP_GB_2025_D.pdf",
+              "detail_lines": [
+                "DZ HYP AG — €77.4bn assets (2025).",
+                "Equity €1.1bn. Net income €0m.",
+                "953 employees.",
+                "Parent: DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main."
+              ]
+            },
+            {
+              "short_name": "SaarLB",
+              "legal_name": "Landesbank Saar",
+              "size_eur_m": 19227.2,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://saarlb.de/wp-content/uploads/2026/04/Finanzbericht_2025_SaarLB_D.pdf",
+              "detail_lines": [
+                "Landesbank Saar — €19.2bn assets (2025).",
+                "Equity €0.6bn. Net income €18m.",
+                "492 employees."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "foerderbanken",
+          "label": "Förderbanken",
+          "metric": "assets",
+          "size_eur_m": 1524004,
+          "observed_eur_m": 1053964.2,
+          "unobserved_eur_m": 470039.8,
+          "blurb": "State-owned development banks. KfW is the largest. They fund policy goals — housing, exports, small business, green energy — rather than compete for retail deposits.",
+          "institutions": [
+            {
+              "short_name": "KfW",
+              "legal_name": "KfW",
+              "size_eur_m": 574112.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.kfw.de/PDF/Download-Center/Finanzpublikationen/PDF-Dokumente-Berichte-etc/3_Finanzberichte/KfW-Finanzbericht-2025-2.pdf",
+              "detail_lines": [
+                "KfW — €574.1bn assets (2025).",
+                "Equity €33.8bn. Net income €0.9bn."
+              ]
+            },
+            {
+              "short_name": "NRW.BANK",
+              "legal_name": "NRW.BANK",
+              "size_eur_m": 164052.64,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.nrwbank.de/.galleries/downloads/Info-und-Service/Finanzberichte/nrwbank-financial-report-2025.pdf",
+              "detail_lines": [
+                "NRW.BANK — €164.1bn assets (2025).",
+                "Equity €17.7bn. Net income €5m.",
+                "1,666 employees."
+              ]
+            },
+            {
+              "short_name": "L-Bank",
+              "legal_name": "Landeskreditbank Baden-Württemberg - Förderbank -",
+              "size_eur_m": 91759.9,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.l-bank.info/en/about-l-bank/publications/annual-reports/annual-reports.html?lang=en",
+              "detail_lines": [
+                "Landeskreditbank Baden-Württemberg - Förderbank - — €91.8bn assets (2025).",
+                "Equity €3.5bn. Net income €0.2bn.",
+                "1,627 employees."
+              ]
+            },
+            {
+              "short_name": "Landwirtschaftliche Rentenbank",
+              "legal_name": "Landwirtschaftliche Rentenbank",
+              "size_eur_m": 90470.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://publikationen.rentenbank.de/export/sites/publikationen/en/pdf/annual-report-2025.pdf",
+              "detail_lines": [
+                "Landwirtschaftliche Rentenbank — €90.5bn assets (2025).",
+                "Equity €5.0bn. Net income €39m.",
+                "492 employees."
+              ]
+            },
+            {
+              "short_name": "LfA Förderbank Bayern",
+              "legal_name": "LfA Förderbank Bayern",
+              "size_eur_m": 25192.13,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "LfA Förderbank Bayern — €25.2bn assets (2025).",
+                "Equity €1.1bn. Net income €20m.",
+                "373 employees."
+              ]
+            },
+            {
+              "short_name": "Investitionsbank Berlin",
+              "legal_name": "Investitionsbank Berlin",
+              "size_eur_m": 24151.6,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.ibb.de/media/dokumente/ueber-die-ibb/jahresabschluss/ibb-jahresabschluss-und-lagebericht-2025.pdf",
+              "detail_lines": [
+                "Investitionsbank Berlin — €24.2bn assets (2025).",
+                "Equity €1.2bn. Net income €56m.",
+                "980 employees."
+              ]
+            },
+            {
+              "short_name": "IB.SH",
+              "legal_name": "Investitionsbank Schleswig-Holstein",
+              "size_eur_m": 23218.2,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.ib-sh.de/fileadmin/user_upload/downloads/allgemeines/geschaeftsberichte/ib.sh_geschaeftsbericht_2025.pdf",
+              "detail_lines": [
+                "Investitionsbank Schleswig-Holstein — €23.2bn assets (2025).",
+                "Equity €1.4bn. Net income €72m.",
+                "901 employees."
+              ]
+            },
+            {
+              "short_name": "ILB",
+              "legal_name": "Investitionsbank des Landes Brandenburg",
+              "size_eur_m": 15593.56,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Investitionsbank des Landes Brandenburg — €15.6bn assets (2025).",
+                "Equity €0.2bn. Net income €6m.",
+                "885 employees."
+              ]
+            },
+            {
+              "short_name": "ISB Rheinland-Pfalz",
+              "legal_name": "Investitions- und Strukturbank Rheinland-Pfalz",
+              "size_eur_m": 11348.87,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Investitions- und Strukturbank Rheinland-Pfalz — €11.3bn assets (2025).",
+                "Equity €0.3bn. Net income €0m.",
+                "430 employees."
+              ]
+            },
+            {
+              "short_name": "SAB",
+              "legal_name": "Sächsische Aufbaubank – Förderbank –",
+              "size_eur_m": 10947.51,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Sächsische Aufbaubank – Förderbank – — €10.9bn assets (2025).",
+                "Equity €0.6bn. Net income €1m.",
+                "1,124 employees."
+              ]
+            },
+            {
+              "short_name": "NBank",
+              "legal_name": "Investitions- und Förderbank Niedersachsen",
+              "size_eur_m": 7205.43,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Investitions- und Förderbank Niedersachsen — €7.2bn assets (2025).",
+                "Equity €0.3bn. Net income €0m.",
+                "864 employees."
+              ]
+            },
+            {
+              "short_name": "IFB Hamburg",
+              "legal_name": "Hamburgische Investitions- und Förderbank",
+              "size_eur_m": 7191.42,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Hamburgische Investitions- und Förderbank — €7.2bn assets (2025).",
+                "Equity €0.9bn. Net income €2m.",
+                "389 employees."
+              ]
+            },
+            {
+              "short_name": "Thüringer Aufbaubank",
+              "legal_name": "Thüringer Aufbaubank -Anstalt des öffentlichen Rechts-",
+              "size_eur_m": 3569.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Thüringer Aufbaubank -Anstalt des öffentlichen Rechts- — €3.6bn assets (2025).",
+                "Equity €0.1bn. Net income €5m.",
+                "528 employees."
+              ]
+            },
+            {
+              "short_name": "SIKB",
+              "legal_name": "Saarländische Investitionskreditbank Aktiengesellschaft",
+              "size_eur_m": 2079.01,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Saarländische Investitionskreditbank Aktiengesellschaft — €2.1bn assets (2025).",
+                "Equity €0.1bn. Net income €1m.",
+                "77 employees."
+              ]
+            },
+            {
+              "short_name": "IB Sachsen-Anhalt",
+              "legal_name": "Investitionsbank Sachsen-Anhalt",
+              "size_eur_m": 1781.1,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Investitionsbank Sachsen-Anhalt — €1.8bn assets (2025).",
+                "Equity €0.2bn. Net income €2m."
+              ]
+            },
+            {
+              "short_name": "Bremer Aufbau-Bank",
+              "legal_name": "Bremer Aufbau-Bank GmbH",
+              "size_eur_m": 1290.43,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Bremer Aufbau-Bank GmbH — €1.3bn assets (2024).",
+                "Equity €0.1bn. Net income €0m.",
+                "138 employees."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "grossbanken",
+          "label": "Großbanken",
+          "metric": "assets",
+          "size_eur_m": 2416174,
+          "observed_eur_m": 2000478.0,
+          "unobserved_eur_m": 415696.0,
+          "blurb": "The three national full-service banks. Retail, corporate, and investment banking under one roof, nationwide branch networks.",
+          "institutions": [
+            {
+              "short_name": "Deutsche Bank",
+              "legal_name": "Deutsche Bank AG",
+              "size_eur_m": 1186374.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://investor-relations.db.com/files/documents/other-presentations-and-events/2025/Annual-Report-2025.pdf?language_id=1",
+              "detail_lines": [
+                "Deutsche Bank AG — €1,186.4bn assets (2025).",
+                "Equity €48.7bn. Net income €6.2bn.",
+                "36,320 employees."
+              ]
+            },
+            {
+              "short_name": "Commerzbank",
+              "legal_name": "COMMERZBANK Aktiengesellschaft",
+              "size_eur_m": 543673.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://investor-relations.commerzbank.com/media/document/6bda9b0a-12bd-4744-b083-a41d20180df3/assets/Commerzbank_AG_Jahresabschluss_2025.pdf",
+              "detail_lines": [
+                "COMMERZBANK Aktiengesellschaft — €543.7bn assets (2025).",
+                "Equity €17.2bn. Net income €2.4bn.",
+                "25,835 employees."
+              ]
+            },
+            {
+              "short_name": "HypoVereinsbank",
+              "legal_name": "UniCredit Bank GmbH",
+              "size_eur_m": 270431.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "UniCredit S.p.A.",
+              "url": "https://www.hypovereinsbank.de/content/dam/hypovereinsbank/ueber-uns/pdf/investor-relations/Berichte/DE/2025/20260313-UniCredit-Bank-GmbH-Jahresabschluss-2025.pdf",
+              "detail_lines": [
+                "UniCredit Bank GmbH — €270.4bn assets (2025).",
+                "Equity €16.8bn. Net income €2.0bn.",
+                "9,456 employees.",
+                "Parent: UniCredit S.p.A.."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "regionalbanken",
+          "label": "Regionalbanken",
+          "metric": "assets",
+          "size_eur_m": 2373608,
+          "observed_eur_m": 1425979.89,
+          "unobserved_eur_m": 947628.11,
+          "blurb": "Everyone else with a German banking license: foreign banks' German subsidiaries, auto-finance banks, direct banks, and smaller private banks. A wide mix of sizes and models.",
+          "institutions": [
+            {
+              "short_name": "JPMorgan SE",
+              "legal_name": "J.P. Morgan SE",
+              "size_eur_m": 433545.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "J.P. Morgan International Finance Limited",
+              "url": "https://www.jpmorgan.com/content/dam/jpm/global/disclosures/de/2025-annual-report-deutsch.pdf",
+              "detail_lines": [
+                "J.P. Morgan SE — €433.5bn assets (2025).",
+                "Equity €29.0bn. Net income €1.7bn.",
+                "5,310 employees.",
+                "Parent: J.P. Morgan International Finance Limited."
+              ]
+            },
+            {
+              "short_name": "ING Deutschland",
+              "legal_name": "ING-DiBa AG",
+              "size_eur_m": 215911.0,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "ING Holding Deutschland GmbH",
+              "url": "https://www.ing.de/dokumente/uber-uns-unternehmen/investor-relations/jahresabschluss-der-ing-diba-ag-nach-hgb/",
+              "detail_lines": [
+                "ING-DiBa AG — €215.9bn assets (2024).",
+                "Equity €4.0bn. Net income €0m.",
+                "4,637 employees.",
+                "Parent: ING Holding Deutschland GmbH."
+              ]
+            },
+            {
+              "short_name": "DKB",
+              "legal_name": "Deutsche Kreditbank Aktiengesellschaft",
+              "size_eur_m": 138456.3,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Bayerische Landesbank",
+              "url": "https://dok.dkb.de/pdf/gb_2025.pdf",
+              "detail_lines": [
+                "Deutsche Kreditbank Aktiengesellschaft — €138.5bn assets (2025).",
+                "Equity €4.0bn. Net income €0.3bn.",
+                "4,182 employees.",
+                "Parent: Bayerische Landesbank."
+              ]
+            },
+            {
+              "short_name": "Volkswagen Bank",
+              "legal_name": "Volkswagen Bank GmbH",
+              "size_eur_m": 118679.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Volkswagen Bank GmbH — €118.7bn assets (2025).",
+                "Equity €14.5bn. Net income €0m.",
+                "3,028 employees."
+              ]
+            },
+            {
+              "short_name": "Goldman Sachs Europe",
+              "legal_name": "Goldman Sachs Bank Europe SE",
+              "size_eur_m": 107238.0,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Goldman Sachs Bank USA",
+              "url": "https://www.goldmansachs.com/investor-relations/financials/subsidiary-financial-info/gsbe/",
+              "detail_lines": [
+                "Goldman Sachs Bank Europe SE — €107.2bn assets (2024).",
+                "Equity €13.3bn. Net income €0.6bn.",
+                "1,182 employees.",
+                "Parent: Goldman Sachs Bank USA."
+              ]
+            },
+            {
+              "short_name": "Morgan Stanley Europe",
+              "legal_name": "Morgan Stanley Europe SE",
+              "size_eur_m": 63433.0,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Morgan Stanley International Limited",
+              "url": "https://www.morganstanley.com/content/dam/msdotcom/en/about-us-ir/pdf/MSESE_Annual_Report_2024.pdf",
+              "detail_lines": [
+                "Morgan Stanley Europe SE — €63.4bn assets (2024).",
+                "Equity €6.4bn. Net income €0.2bn.",
+                "781 employees.",
+                "Parent: Morgan Stanley International Limited."
+              ]
+            },
+            {
+              "short_name": "UBS Europe SE",
+              "legal_name": "UBS Europe SE",
+              "size_eur_m": 61502.3,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "UBS Group AG",
+              "url": "https://www.lobbyregister.bundestag.de/media/2d/8c/837025/ubs-ese-financial-statements-2025-homepage.pdf",
+              "detail_lines": [
+                "UBS Europe SE — €61.5bn assets (2025).",
+                "Equity €3.3bn. Net income €0.1bn.",
+                "2,649 employees.",
+                "Parent: UBS Group AG."
+              ]
+            },
+            {
+              "short_name": "Santander Germany",
+              "legal_name": "Santander Consumer Bank AG",
+              "size_eur_m": 52953.16,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Santander Consumer Finance, S.A.",
+              "url": "https://www.santander.de/content/dam/santander-aem/Dokumente/geschaeftsberichte/santander_geschaeftsbericht_2024.pdf.coredownload.pdf",
+              "detail_lines": [
+                "Santander Consumer Bank AG — €53.0bn assets (2024).",
+                "Equity €3.6bn. Net income €0m.",
+                "2,958 employees.",
+                "Parent: Santander Consumer Finance, S.A.."
+              ]
+            },
+            {
+              "short_name": "State Street Bank International",
+              "legal_name": "State Street Bank International GmbH",
+              "size_eur_m": 49499.67,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "State Street Bank International GmbH — €49.5bn assets (2025).",
+                "Equity €3.9bn. Net income €0m.",
+                "8,148 employees."
+              ]
+            },
+            {
+              "short_name": "TARGOBANK",
+              "legal_name": "TARGOBANK AG",
+              "size_eur_m": 43564.33,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "TARGOBANK AG — €43.6bn assets (2024).",
+                "Equity €2.7bn. Net income €0m.",
+                "3,634 employees."
+              ]
+            },
+            {
+              "short_name": "Citigroup Global Markets Europe",
+              "legal_name": "Citigroup Global Markets Europe AG",
+              "size_eur_m": 41890.49,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Citigroup Global Markets Europe AG — €41.9bn assets (2024).",
+                "Equity €4.7bn. Net income €73m.",
+                "582 employees."
+              ]
+            },
+            {
+              "short_name": "Oldenburgische Landesbank",
+              "legal_name": "Oldenburgische Landesbank Aktiengesellschaft",
+              "size_eur_m": 37160.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Oldenburgische Landesbank Aktiengesellschaft — €37.2bn assets (2025).",
+                "Equity €2.1bn. Net income €0.2bn.",
+                "1,735 employees."
+              ]
+            },
+            {
+              "short_name": "BMW Bank",
+              "legal_name": "BMW Bank GmbH",
+              "size_eur_m": 29065.96,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "BMW Bank GmbH — €29.1bn assets (2025).",
+                "Equity €2.1bn. Net income €0m.",
+                "1,211 employees."
+              ]
+            },
+            {
+              "short_name": "Toyota Kreditbank",
+              "legal_name": "TOYOTA Kreditbank GmbH",
+              "size_eur_m": 17546.08,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "TOYOTA Kreditbank GmbH — €17.5bn assets (2025).",
+                "Equity €2.1bn. Net income €75m.",
+                "690 employees."
+              ]
+            },
+            {
+              "short_name": "Mercedes-Benz Bank",
+              "legal_name": "Mercedes-Benz Bank Aktiengesellschaft",
+              "size_eur_m": 15534.9,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Mercedes-Benz Bank Aktiengesellschaft — €15.5bn assets (2025).",
+                "Equity €1.8bn. Net income €0m.",
+                "606 employees."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "realkreditinstitute",
+          "label": "Realkreditinstitute",
+          "metric": "assets",
+          "size_eur_m": 177160,
+          "observed_eur_m": 54515.22,
+          "unobserved_eur_m": 122644.78,
+          "blurb": "Mortgage banks. They fund long-term property loans, often through covered bonds (Pfandbriefe). A small, specialized group.",
+          "institutions": [
+            {
+              "short_name": "Münchener Hypothekenbank",
+              "legal_name": "Münchener Hypothekenbank eG",
+              "size_eur_m": 54515.22,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": "https://www.mhb.de/sites/default/files/2025-09/MHB_AR_2024_EN.pdf",
+              "detail_lines": [
+                "Münchener Hypothekenbank eG — €54.5bn assets (2024).",
+                "Equity €1.8bn. Net income €0.1bn.",
+                "664 employees."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "bausparkassen",
+          "label": "Bausparkassen",
+          "metric": "assets",
+          "size_eur_m": 260346,
+          "observed_eur_m": 117939.2,
+          "unobserved_eur_m": 142406.8,
+          "blurb": "Building societies. Customers save into a contract for years, then get a cheap home loan. A specific, regulated product line, not a general bank.",
+          "institutions": [
+            {
+              "short_name": "Bausparkasse Schwäbisch Hall",
+              "legal_name": "Bausparkasse Schwäbisch Hall AG",
+              "size_eur_m": 81061.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main",
+              "url": "https://www.schwaebisch-hall.de/content/dam/dambsh/unternehmen/dokumente/geschaeftsbericht/260317_BSH_Finanzbericht_nach_IFRS_2025_final.pdf",
+              "detail_lines": [
+                "Bausparkasse Schwäbisch Hall AG — €81.1bn assets (2025).",
+                "Equity €1.8bn. Net income €0m.",
+                "Parent: DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main."
+              ]
+            },
+            {
+              "short_name": "W&W (Bausparkasse)",
+              "legal_name": "Wüstenrot Bausparkasse AG",
+              "size_eur_m": 36878.2,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Wüstenrot & Württembergische AG",
+              "url": "https://www.ww-ag.com/media/dokumente/investor_relations_1/berichte_1/geschaeftsberichte/2025_9/BSW_GB_2025.pdf",
+              "detail_lines": [
+                "Wüstenrot Bausparkasse AG — €36.9bn assets (2025).",
+                "Equity €1.0bn. Net income €54m.",
+                "1,702 employees.",
+                "Parent: Wüstenrot & Württembergische AG."
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "id": "asset-managers",
+      "label": "Asset Managers",
+      "seg_label": "AMs",
+      "metric": "aum",
+      "size_eur_m": 4471657,
+      "blurb": "They invest money on behalf of clients. The money stays the client's. Sized by assets under management, not by the manager's own balance sheet.",
+      "sub": [
+        {
+          "id": "bank-owned",
+          "label": "Bank- and insurer-owned managers",
+          "metric": "aum",
+          "size_eur_m": 3472758.0,
+          "observed_eur_m": 3472758.0,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Fund managers owned by a bank or insurer group, such as DWS (Deutsche Bank). Most German fund money sits here.",
+          "institutions": [
+            {
+              "short_name": "DWS",
+              "legal_name": "DWS Group GmbH & Co. KGaA",
+              "size_eur_m": 1085000.0,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "Deutsche Bank AG",
+              "url": "https://www.northdata.de/DWS+Group+GmbH+%26+Co.+KGaA,+Frankfurt+am+Main/HRB+111128",
+              "detail_lines": [
+                "DWS Group GmbH & Co. KGaA — €1,085.0bn AUM (2025).",
+                "Equity €7.9bn. Net income €0.5bn.",
+                "Parent: Deutsche Bank AG."
+              ]
+            },
+            {
+              "short_name": "Union Investment",
+              "legal_name": "Union Asset Management Holding AG",
+              "size_eur_m": 504700.0,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "DZ BANK AG Deutsche Zentral-Genossenschaftsbank",
+              "url": "https://unternehmen.union-investment.de/ueber-uns/geschaeftsbericht/berichte-vergangener-jahre",
+              "detail_lines": [
+                "Union Asset Management Holding AG — €504.7bn AUM (2025).",
+                "Equity €2.6bn. Net income €0.7bn.",
+                "399 employees.",
+                "Parent: DZ BANK AG Deutsche Zentral-Genossenschaftsbank."
+              ]
+            },
+            {
+              "short_name": "Deka",
+              "legal_name": "DekaBank Deutsche Girozentrale",
+              "size_eur_m": 431422.0,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.deka.de/site/dekade_deka-gruppe_site/get/params_E-1963519639/10215520/DekaBank_Jahresabschluss_2025_DE.pdf",
+              "detail_lines": [
+                "DekaBank Deutsche Girozentrale — €431.4bn AUM (2025).",
+                "Equity €1.0bn. Net income €0.4bn.",
+                "4,048 employees."
+              ]
+            },
+            {
+              "short_name": "AllianzGI",
+              "legal_name": "Allianz Global Investors GmbH",
+              "size_eur_m": 356000.0,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "Allianz SE",
+              "url": "https://www.allianz.com/en/investor_relations/results-reports/annual-reports.html",
+              "detail_lines": [
+                "Allianz Global Investors GmbH — €356.0bn AUM (2025).",
+                "Equity €0.4bn. Net income €0m.",
+                "1,508 employees.",
+                "Parent: Allianz SE."
+              ]
+            },
+            {
+              "short_name": "MEAG",
+              "legal_name": "MEAG MUNICH ERGO AssetManagement GmbH",
+              "size_eur_m": 317400.0,
+              "metric": "aum",
+              "fiscal_year": 2024,
+              "parent": "Münchener Rückversicherungs-Gesellschaft AG in München",
+              "url": "https://www.munichre.com/en/company/investors/reports-and-presentations/results-reports.html",
+              "detail_lines": [
+                "MEAG MUNICH ERGO AssetManagement GmbH — €317.4bn AUM (2024).",
+                "Equity €0.1bn. Net income €62m.",
+                "643 employees.",
+                "Parent: Münchener Rückversicherungs-Gesellschaft AG in München."
+              ]
+            },
+            {
+              "short_name": "Ampega",
+              "legal_name": "Ampega Asset Management GmbH",
+              "size_eur_m": 204000.0,
+              "metric": "aum",
+              "fiscal_year": null,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Ampega Asset Management GmbH — €204.0bn AUM."
+              ]
+            },
+            {
+              "short_name": "Helaba Invest",
+              "legal_name": "Helaba Invest Kapitalanlagegesellschaft mbH",
+              "size_eur_m": 183430.0,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "Landesbank Hessen-Thüringen Girozentrale",
+              "url": null,
+              "detail_lines": [
+                "Helaba Invest Kapitalanlagegesellschaft mbH — €183.4bn AUM (2025).",
+                "Equity €18m. Net income €0m.",
+                "420 employees.",
+                "Parent: Landesbank Hessen-Thüringen Girozentrale."
+              ]
+            },
+            {
+              "short_name": "BayernInvest",
+              "legal_name": "BayernInvest Kapitalverwaltungsgesellschaft mbH",
+              "size_eur_m": 100000.0,
+              "metric": "aum",
+              "fiscal_year": null,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "BayernInvest Kapitalverwaltungsgesellschaft mbH — €100.0bn AUM.",
+                "178 employees."
+              ]
+            },
+            {
+              "short_name": "LBBW Asset Management",
+              "legal_name": "LBBW Asset Management Investmentgesellschaft mbH",
+              "size_eur_m": 75000.0,
+              "metric": "aum",
+              "fiscal_year": null,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "LBBW Asset Management Investmentgesellschaft mbH — €75.0bn AUM."
+              ]
+            },
+            {
+              "short_name": "HANSAINVEST",
+              "legal_name": "HANSAINVEST Hanseatische Investment-GmbH",
+              "size_eur_m": 67000.0,
+              "metric": "aum",
+              "fiscal_year": null,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "HANSAINVEST Hanseatische Investment-GmbH — €67.0bn AUM.",
+                "410 employees."
+              ]
+            },
+            {
+              "short_name": "Commerz Real",
+              "legal_name": "Commerz Real AG",
+              "size_eur_m": 55000.0,
+              "metric": "aum",
+              "fiscal_year": null,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Commerz Real AG — €55.0bn AUM.",
+                "1,000 employees."
+              ]
+            },
+            {
+              "short_name": "Metzler Asset Management",
+              "legal_name": "METZLER ASSET MANAGEMENT GmbH",
+              "size_eur_m": 53000.0,
+              "metric": "aum",
+              "fiscal_year": 2024,
+              "parent": "B. Metzler seel. Sohn & Co. Holding AG",
+              "url": null,
+              "detail_lines": [
+                "METZLER ASSET MANAGEMENT GmbH — €53.0bn AUM (2024).",
+                "Equity €26m. Net income €0m.",
+                "164 employees.",
+                "Parent: B. Metzler seel. Sohn & Co. Holding AG."
+              ]
+            },
+            {
+              "short_name": "W&W (Asset Management)",
+              "legal_name": "W&W Asset Management GmbH",
+              "size_eur_m": 35106.0,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "Wüstenrot & Württembergische AG",
+              "url": "https://www.ww-ag.com/media/dokumente/asset_management_1/offenlegungsbericht_am/Offenlegungsbericht_Asset_Management_GmbH_2025.pdf",
+              "detail_lines": [
+                "W&W Asset Management GmbH — €35.1bn AUM (2025).",
+                "Equity €11m. Net income €0m.",
+                "108 employees.",
+                "Parent: Wüstenrot & Württembergische AG."
+              ]
+            },
+            {
+              "short_name": "Warburg Invest",
+              "legal_name": "Warburg Invest Kapitalanlagegesellschaft mbH",
+              "size_eur_m": 5700.0,
+              "metric": "aum",
+              "fiscal_year": null,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Warburg Invest Kapitalanlagegesellschaft mbH — €5.7bn AUM."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "independent",
+          "label": "Independent managers",
+          "metric": "aum",
+          "size_eur_m": 508200.0,
+          "observed_eur_m": 508200.0,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Fund managers not owned by a bank or insurer — founder-owned or independently listed firms. Fewer of them, and smaller in total AUM than the bank-owned group.",
+          "institutions": [
+            {
+              "short_name": "Universal Investment",
+              "legal_name": "Universal-Investment-Gesellschaft mbH",
+              "size_eur_m": 379700.0,
+              "metric": "aum",
+              "fiscal_year": "2024/2025",
+              "parent": "Universal-Beteiligungs- und Servicegesellschaft mbH",
+              "url": null,
+              "detail_lines": [
+                "Universal-Investment-Gesellschaft mbH — €379.7bn AUM (2024/2025).",
+                "Equity €76m. Net income €0m.",
+                "976 employees.",
+                "Parent: Universal-Beteiligungs- und Servicegesellschaft mbH."
+              ]
+            },
+            {
+              "short_name": "Flossbach von Storch",
+              "legal_name": "Flossbach von Storch SE",
+              "size_eur_m": 72500.0,
+              "metric": "aum",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Flossbach von Storch SE — €72.5bn AUM (2024).",
+                "Equity €1.4bn. Net income €0.5bn.",
+                "330 employees."
+              ]
+            },
+            {
+              "short_name": "PATRIZIA",
+              "legal_name": "PATRIZIA SE",
+              "size_eur_m": 56000.0,
+              "metric": "aum",
+              "fiscal_year": null,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "PATRIZIA SE — €56.0bn AUM.",
+                "800 employees."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "other-not-sampled",
+          "label": "Other companies (not sampled)",
+          "metric": "aum",
+          "size_eur_m": 490699.0,
+          "observed_eur_m": 0,
+          "unobserved_eur_m": 490699.0,
+          "blurb": "The rest of this category. Real companies, not yet identified or collected in this dataset.",
+          "institutions": []
+        }
+      ]
+    },
+    {
+      "id": "insurers",
+      "label": "Insurers",
+      "metric": "assets",
+      "size_eur_m": 1889000,
+      "blurb": "They collect premiums and pay claims. Sized by capital investments (Kapitalanlagen) — the closest public sector figure available. No official total-assets figure exists.",
+      "sub": [
+        {
+          "id": "reinsurers",
+          "label": "Reinsurers",
+          "metric": "assets",
+          "size_eur_m": 179158.0,
+          "observed_eur_m": 179158.0,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Insurers of insurers. Munich Re and Hannover Re write policies for other insurance companies, not individuals or businesses. Germany is home to two of the world's largest.",
+          "institutions": [
+            {
+              "short_name": "Munich Re",
+              "legal_name": "Münchener Rückversicherungs-Gesellschaft Aktiengesellschaft in München",
+              "size_eur_m": 111207.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.munichre.com/content/dam/munichre/mrwebsiteslaunches/2025-annual-report/MunichRe-AG-Geschaeftsbericht-2025-de.pdf/_jcr_content/renditions/original./MunichRe-AG-Geschaeftsbericht-2025-de.pdf",
+              "detail_lines": [
+                "Münchener Rückversicherungs-Gesellschaft Aktiengesellschaft in München — €111.2bn assets (2025).",
+                "Equity €14.6bn. Net income €5.5bn.",
+                "5,294 employees."
+              ]
+            },
+            {
+              "short_name": "Hannover Re",
+              "legal_name": "Hannover Rück SE",
+              "size_eur_m": 67951.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Talanx AG",
+              "url": "https://www.hannover-re.com/en/investors/results-and-reports",
+              "detail_lines": [
+                "Hannover Rück SE — €68.0bn assets (2025).",
+                "Equity €4.2bn. Net income €1.9bn.",
+                "Parent: Talanx AG."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "primary-insurers",
+          "label": "Primary insurers",
+          "metric": "assets",
+          "size_eur_m": 638046.74,
+          "observed_eur_m": 638046.74,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Life, health, and property/casualty insurers that sell directly to individuals and businesses. The bulk of the German insurance industry by company count.",
+          "institutions": [
+            {
+              "short_name": "Allianz",
+              "legal_name": "Allianz SE",
+              "size_eur_m": 137318.8,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.lobbyregister.bundestag.de/media/6f/f8/791885/de-allianz-se-geschaeftsbericht-2025.pdf",
+              "detail_lines": [
+                "Allianz SE — €137.3bn assets (2025).",
+                "Equity €44.6bn. Net income €9.4bn.",
+                "2,468 employees."
+              ]
+            },
+            {
+              "short_name": "Generali (Leben)",
+              "legal_name": "Generali Deutschland Lebensversicherung AG",
+              "size_eur_m": 65042.41,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Generali Deutschland AG",
+              "url": "https://www.generali.de/resource/blob/120076/78945567a6f2d7d338860ad20c8877ee/Gesch%C3%A4ftsbericht%202025%20Generali%20Deutschland%20Lebensversicherung%20AG.pdf",
+              "detail_lines": [
+                "Generali Deutschland Lebensversicherung AG — €65.0bn assets (2025).",
+                "Equity €0.3bn. Net income €0m.",
+                "Parent: Generali Deutschland AG."
+              ]
+            },
+            {
+              "short_name": "Debeka (Kranken)",
+              "legal_name": "Debeka Krankenversicherungsverein auf Gegenseitigkeit Sitz Koblenz am Rhein",
+              "size_eur_m": 62895.99,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.debeka.de/content/dam/de/webauftritt/sonstige/unternehmen/gesch%C3%A4ftsberichte/krankenversicherung/geschaeftsbericht-debeka-kv-2025.pdf",
+              "detail_lines": [
+                "Debeka Krankenversicherungsverein auf Gegenseitigkeit Sitz Koblenz am Rhein — €62.9bn assets (2025).",
+                "Equity €0.9bn. Net income €19m."
+              ]
+            },
+            {
+              "short_name": "Provinzial (Leben)",
+              "legal_name": "Provinzial Lebensversicherung AG",
+              "size_eur_m": 35455.76,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Holding AG",
+              "url": "https://www.provinzial-konzern.de/dam/jcr:f104abd4-1fcb-4d5b-913c-9594ab39f9f0/GB%20PL%202025%20finale%20Fassung_s.pdf",
+              "detail_lines": [
+                "Provinzial Lebensversicherung AG — €35.5bn assets (2025).",
+                "Equity €0.6bn. Net income €0m.",
+                "2,039 employees.",
+                "Parent: Provinzial Holding AG."
+              ]
+            },
+            {
+              "short_name": "ALH (Alte Leipziger Leben)",
+              "legal_name": "Alte Leipziger Lebensversicherung a.G.",
+              "size_eur_m": 34582.8,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.alh.de/-/media/dokumente/berichte/geschaeftsberichte/al-leben/geschaeftsbericht_al_leben_2025.pdf",
+              "detail_lines": [
+                "Alte Leipziger Lebensversicherung a.G. — €34.6bn assets (2025).",
+                "Equity €1.2bn. Net income €34m.",
+                "1,161 employees."
+              ]
+            },
+            {
+              "short_name": "W&W (Leben)",
+              "legal_name": "Württembergische Lebensversicherung AG",
+              "size_eur_m": 32020.5,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Wüstenrot & Württembergische AG",
+              "url": "https://www.ww-ag.com/media/dokumente/investor_relations_1/berichte_1/geschaeftsberichte/2025_9/WL_GB_2025.pdf",
+              "detail_lines": [
+                "Württembergische Lebensversicherung AG — €32.0bn assets (2025).",
+                "Equity €0.6bn. Net income €15m.",
+                "478 employees.",
+                "Parent: Wüstenrot & Württembergische AG."
+              ]
+            },
+            {
+              "short_name": "Zurich (Deutscher Herold)",
+              "legal_name": "Zurich Deutscher Herold Lebensversicherung AG",
+              "size_eur_m": 29567.7,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Zurich Holding SE",
+              "url": "https://www.zurich.de/-/media/project/zwp/germany/br/documents/dokumente-formulare/geschaeftsbericht-zdhl_2023_05.pdf",
+              "detail_lines": [
+                "Zurich Deutscher Herold Lebensversicherung AG — €29.6bn assets (2024).",
+                "Equity €0.1bn. Net income €0m.",
+                "Parent: Zurich Holding SE."
+              ]
+            },
+            {
+              "short_name": "BarmeniaGothaer (Gothaer Leben)",
+              "legal_name": "Gothaer Lebensversicherung AG",
+              "size_eur_m": 21695.56,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "BarmeniaGothaer AG",
+              "url": "https://cdn.barmeniagothaer.de/barmeniagothaer/media/ueber_uns/geschaeftsberichte/2025_1/gothaer-lebensversicherung-ag-geschaeftsbericht-2025.pdf",
+              "detail_lines": [
+                "Gothaer Lebensversicherung AG — €21.7bn assets (2025).",
+                "Equity €0.6bn. Net income €8m.",
+                "1,421 employees.",
+                "Parent: BarmeniaGothaer AG."
+              ]
+            },
+            {
+              "short_name": "Generali (Kranken)",
+              "legal_name": "Generali Deutschland Krankenversicherung AG",
+              "size_eur_m": 21528.49,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Generali Deutschland AG",
+              "url": "https://www.generali.de/resource/blob/120074/48915c8abc672e80b1733fc8f058b2ed/Gesch%C3%A4ftsbericht%202025%20Generali%20Deutschland%20Krankenversicherung%20AG.pdf",
+              "detail_lines": [
+                "Generali Deutschland Krankenversicherung AG — €21.5bn assets (2025).",
+                "Equity €0.1bn. Net income €0m.",
+                "Parent: Generali Deutschland AG."
+              ]
+            },
+            {
+              "short_name": "BarmeniaGothaer (Barmenia Kranken)",
+              "legal_name": "Barmenia Krankenversicherung AG",
+              "size_eur_m": 16377.93,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "BarmeniaGothaer AG",
+              "url": "https://cdn.barmeniagothaer.de/barmeniagothaer/media/ueber_uns/geschaeftsberichte/2025_1/barmenia-krankenversicherung-ag-geschaeftsbericht-2025.pdf",
+              "detail_lines": [
+                "Barmenia Krankenversicherung AG — €16.4bn assets (2025).",
+                "Equity €0.6bn. Net income €48m.",
+                "2,446 employees.",
+                "Parent: BarmeniaGothaer AG."
+              ]
+            },
+            {
+              "short_name": "Generali (Cosmos Leben)",
+              "legal_name": "Cosmos Lebensversicherungs-AG",
+              "size_eur_m": 15363.46,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Generali Deutschland AG",
+              "url": "https://www.cosmosdirekt.de/resource/blob/730336/ba437ebdac049064371473bee98e33fc/geschaeftsbericht-2025-leben-data.pdf",
+              "detail_lines": [
+                "Cosmos Lebensversicherungs-AG — €15.4bn assets (2025).",
+                "Equity €0.2bn. Net income €0m.",
+                "Parent: Generali Deutschland AG."
+              ]
+            },
+            {
+              "short_name": "ERGO",
+              "legal_name": "ERGO Group AG",
+              "size_eur_m": 15342.09,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Münchener Rückversicherungs-Gesellschaft Aktiengesellschaft in München",
+              "url": "https://www.lobbyregister.bundestag.de/media/b6/0a/814817/ERGO-Group-AG_Geschaeftsbericht-2025.pdf",
+              "detail_lines": [
+                "ERGO Group AG — €15.3bn assets (2025).",
+                "Equity €7.1bn. Net income €0.3bn.",
+                "9,067 employees.",
+                "Parent: Münchener Rückversicherungs-Gesellschaft Aktiengesellschaft in München."
+              ]
+            },
+            {
+              "short_name": "Talanx",
+              "legal_name": "Talanx AG",
+              "size_eur_m": 14029.11,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "HDI Haftpflichtverband der Deutschen Industrie Versicherungsverein auf Gegenseitigkeit",
+              "url": "https://www.talanx.com/media/files/investor-relations/pdf/ergebnisse/2025/fy/2025_talanx_ag_en.pdf",
+              "detail_lines": [
+                "Talanx AG — €14.0bn assets (2025).",
+                "Equity €7.2bn. Net income €1.3bn.",
+                "102 employees.",
+                "Parent: HDI Haftpflichtverband der Deutschen Industrie Versicherungsverein auf Gegenseitigkeit."
+              ]
+            },
+            {
+              "short_name": "ALH (Hallesche Kranken)",
+              "legal_name": "Hallesche Krankenversicherung a.G.",
+              "size_eur_m": 13287.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Hallesche Krankenversicherung a.G. — €13.3bn assets (2025).",
+                "Equity €0.5bn. Net income €15m.",
+                "1,305 employees."
+              ]
+            },
+            {
+              "short_name": "R+V Versicherung",
+              "legal_name": "R+V Versicherung AG",
+              "size_eur_m": 12167.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main",
+              "url": "https://www.ruv.de/ueber-uns/unternehmen/geschaeftsberichte",
+              "detail_lines": [
+                "R+V Versicherung AG — €12.2bn assets (2025).",
+                "Equity €2.4bn. Net income €0m.",
+                "951 employees.",
+                "Parent: DZ BANK AG Deutsche Zentral-Genossenschaftsbank, Frankfurt am Main."
+              ]
+            },
+            {
+              "short_name": "VHV (Hannoversche Leben)",
+              "legal_name": "Hannoversche Lebensversicherung AG",
+              "size_eur_m": 9932.92,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "VHV Vereinigte Hannoversche Versicherung a.G.",
+              "url": "https://www.hannoversche.de/dam/unternehmen/geschaeftsberichte/geschaeftsbericht-hannoversche-lebensversicherung-ag-2025.pdf",
+              "detail_lines": [
+                "Hannoversche Lebensversicherung AG — €9.9bn assets (2025).",
+                "Equity €0.5bn. Net income €31m.",
+                "172 employees.",
+                "Parent: VHV Vereinigte Hannoversche Versicherung a.G.."
+              ]
+            },
+            {
+              "short_name": "BarmeniaGothaer (Gothaer Kranken)",
+              "legal_name": "Gothaer Krankenversicherung AG",
+              "size_eur_m": 9337.57,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "BarmeniaGothaer AG",
+              "url": "https://cdn.barmeniagothaer.de/barmeniagothaer/media/ueber_uns/geschaeftsberichte/2025_1/gothaer-krankenversicherung-ag-geschaeftsbericht-2025.pdf",
+              "detail_lines": [
+                "Gothaer Krankenversicherung AG — €9.3bn assets (2025).",
+                "Equity €0.1bn. Net income €4m.",
+                "548 employees.",
+                "Parent: BarmeniaGothaer AG."
+              ]
+            },
+            {
+              "short_name": "HUK-COBURG",
+              "legal_name": "HUK-COBURG Haftpflicht-Unterstützungs-Kasse kraftfahrender Beamter Deutschlands a.G. in Coburg",
+              "size_eur_m": 8518.05,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://static.c.huk.de/content/dam/hukde/dokumente/presse/einzelabschluss_2025_hukcoburg.pdf",
+              "detail_lines": [
+                "HUK-COBURG Haftpflicht-Unterstützungs-Kasse kraftfahrender Beamter Deutschlands a.G. in Coburg — €8.5bn assets (2025).",
+                "Equity €4.2bn. Net income €0.1bn.",
+                "9,195 employees."
+              ]
+            },
+            {
+              "short_name": "VHV (Allgemeine)",
+              "legal_name": "VHV Allgemeine Versicherung AG",
+              "size_eur_m": 7340.64,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "VHV Vereinigte Hannoversche Versicherung a.G.",
+              "url": "https://www.vhv.de/files/bfsg/service/downloads/geschaeftsberichte/SFCR_5862_2024.pdf",
+              "detail_lines": [
+                "VHV Allgemeine Versicherung AG — €7.3bn assets (2025).",
+                "Equity €1.5bn. Net income €0m.",
+                "621 employees.",
+                "Parent: VHV Vereinigte Hannoversche Versicherung a.G.."
+              ]
+            },
+            {
+              "short_name": "VKB (Union Krankenversicherung)",
+              "legal_name": "Union Krankenversicherung AG",
+              "size_eur_m": 7121.86,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts",
+              "url": "https://www.konzern-versicherungskammer.de/dam/jcr:baffccbc-4381-45c2-aa06-2ff9674d6b27/VKB_GB25_UKV.pdf",
+              "detail_lines": [
+                "Union Krankenversicherung AG — €7.1bn assets (2025).",
+                "Equity €98m. Net income €7m.",
+                "514 employees.",
+                "Parent: Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts."
+              ]
+            },
+            {
+              "short_name": "Provinzial (Versicherung)",
+              "legal_name": "Provinzial Versicherung AG",
+              "size_eur_m": 6961.23,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Holding AG",
+              "url": "https://www.provinzial-konzern.de/dam/jcr:7866e699-598f-45ae-b689-ad4d783cae38/GB%20PV%202025%20finale%20Fassung_s.pdf",
+              "detail_lines": [
+                "Provinzial Versicherung AG — €7.0bn assets (2025).",
+                "Equity €0.9bn. Net income €0m.",
+                "3,804 employees.",
+                "Parent: Provinzial Holding AG."
+              ]
+            },
+            {
+              "short_name": "Generali Deutschland",
+              "legal_name": "Generali Deutschland AG",
+              "size_eur_m": 6513.78,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Assicurazioni Generali S.p.A.",
+              "url": "https://www.lobbyregister.bundestag.de/media/28/18/631537/0104_GB-GDAG-2024_Final_06-03-2025.pdf",
+              "detail_lines": [
+                "Generali Deutschland AG — €6.5bn assets (2024).",
+                "Equity €2.4bn. Net income €0m.",
+                "6,521 employees.",
+                "Parent: Assicurazioni Generali S.p.A.."
+              ]
+            },
+            {
+              "short_name": "AXA Deutschland",
+              "legal_name": "AXA Konzern AG",
+              "size_eur_m": 6387.28,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "AXA S.A.",
+              "url": "https://www.axa.de/site/axa-de/get/documents_E-236301509/axade/medien/ueber-axa/daten-publikationen/2025/sfcr-axa-konzern-ag-2025.pdf",
+              "detail_lines": [
+                "AXA Konzern AG — €6.4bn assets (2025).",
+                "Equity €3.7bn. Net income €0.6bn.",
+                "7,080 employees.",
+                "Parent: AXA S.A.."
+              ]
+            },
+            {
+              "short_name": "VKB",
+              "legal_name": "Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts",
+              "size_eur_m": 5540.08,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.konzern-versicherungskammer.de/dam/jcr:3944d2e8-f024-4c30-b703-2c94bcfd2d9a/VKB_GB25_VKB_A%C3%B6R.pdf",
+              "detail_lines": [
+                "Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts — €5.5bn assets (2025).",
+                "Equity €2.9bn. Net income €0.2bn.",
+                "35 employees."
+              ]
+            },
+            {
+              "short_name": "HDI",
+              "legal_name": "HDI V.a.G.",
+              "size_eur_m": 5381.1,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.hdi.de/konzern/unternehmen/kennzahlen/",
+              "detail_lines": [
+                "HDI V.a.G. — €5.4bn assets (2025).",
+                "Equity €5.2bn. Net income €0.6bn."
+              ]
+            },
+            {
+              "short_name": "VKB (Versicherungsverband)",
+              "legal_name": "Bayerischer Versicherungsverband Versicherungs-AG",
+              "size_eur_m": 5361.22,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts",
+              "url": "https://www.konzern-versicherungskammer.de/dam/jcr:e5979c17-b750-4701-9fe1-f59549c86bb4/VKB_GB25_BVV.pdf",
+              "detail_lines": [
+                "Bayerischer Versicherungsverband Versicherungs-AG — €5.4bn assets (2025).",
+                "Equity €0.7bn. Net income €61m.",
+                "1,938 employees.",
+                "Parent: Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts."
+              ]
+            },
+            {
+              "short_name": "Provinzial (Holding)",
+              "legal_name": "Provinzial Holding AG",
+              "size_eur_m": 4864.75,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.provinzial-konzern.de/dam/jcr:e09a45e7-2e54-4cdb-a24d-3f1a9fa4ce45/GB%20PH%202025%20finale%20Fassung_s.pdf",
+              "detail_lines": [
+                "Provinzial Holding AG — €4.9bn assets (2025).",
+                "Equity €2.2bn. Net income €0.2bn.",
+                "292 employees."
+              ]
+            },
+            {
+              "short_name": "BarmeniaGothaer (Gothaer Allgemeine)",
+              "legal_name": "Gothaer Allgemeine Versicherung AG",
+              "size_eur_m": 4629.4,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "BarmeniaGothaer AG",
+              "url": "https://cdn.barmeniagothaer.de/barmeniagothaer/media/ueber_uns/geschaeftsberichte/2025_1/gothaer-allgemeine-versicherung-ag-geschaeftsbericht-2025.pdf",
+              "detail_lines": [
+                "Gothaer Allgemeine Versicherung AG — €4.6bn assets (2025).",
+                "Equity €0.4bn. Net income €0m.",
+                "1,632 employees.",
+                "Parent: BarmeniaGothaer AG."
+              ]
+            },
+            {
+              "short_name": "Generali (Versicherung)",
+              "legal_name": "Generali Deutschland Versicherung AG",
+              "size_eur_m": 4545.69,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Generali Deutschland AG",
+              "url": "https://www.generali.de/resource/blob/120078/094a8c58d2da2ba0a2beec608146d098/Gesch%C3%A4ftsbericht%202025%20Generali%20Deutschland%20Versicherung%20AG.pdf",
+              "detail_lines": [
+                "Generali Deutschland Versicherung AG — €4.5bn assets (2025).",
+                "Equity €0.3bn. Net income €0m.",
+                "Parent: Generali Deutschland AG."
+              ]
+            },
+            {
+              "short_name": "W&W (Versicherung)",
+              "legal_name": "Württembergische Versicherung AG",
+              "size_eur_m": 4216.1,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Wüstenrot & Württembergische AG",
+              "url": "https://www.ww-ag.com/media/dokumente/investor_relations_1/berichte_1/geschaeftsberichte/2025_9/WV_-_GB_2025.pdf",
+              "detail_lines": [
+                "Württembergische Versicherung AG — €4.2bn assets (2025).",
+                "Equity €0.5bn. Net income €0m.",
+                "3,259 employees.",
+                "Parent: Wüstenrot & Württembergische AG."
+              ]
+            },
+            {
+              "short_name": "BarmeniaGothaer",
+              "legal_name": "BarmeniaGothaer AG",
+              "size_eur_m": 2715.4,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://cdn.barmeniagothaer.de/barmeniagothaer/media/ueber_uns/geschaeftsberichte/2025_1/barmenia-versicherungen-a-g-2025.pdf",
+              "detail_lines": [
+                "BarmeniaGothaer AG — €2.7bn assets (2025).",
+                "Equity €1.6bn. Net income €80m.",
+                "728 employees."
+              ]
+            },
+            {
+              "short_name": "Zurich Deutschland",
+              "legal_name": "Zurich Holding SE",
+              "size_eur_m": 2105.3,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Zurich Insurance Group AG",
+              "url": "https://www.zurich.de/de-de/ueber-uns/unternehmen/zurich-gruppe-deutschland/geschaeftsberichte",
+              "detail_lines": [
+                "Zurich Holding SE — €2.1bn assets (2024).",
+                "Equity €1.3bn. Net income €16m.",
+                "4,267 employees.",
+                "Parent: Zurich Insurance Group AG."
+              ]
+            },
+            {
+              "short_name": "W&W (Kranken)",
+              "legal_name": "Württembergische Krankenversicherung AG",
+              "size_eur_m": 1853.5,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Wüstenrot & Württembergische AG",
+              "url": "https://www.ww-ag.com/media/dokumente/investor_relations_1/berichte_1/geschaeftsberichte/2025_9/WK_GB_2025.pdf",
+              "detail_lines": [
+                "Württembergische Krankenversicherung AG — €1.9bn assets (2025).",
+                "Equity €68m. Net income €10m.",
+                "32 employees.",
+                "Parent: Wüstenrot & Württembergische AG."
+              ]
+            },
+            {
+              "short_name": "VKB (Landesbrandversicherung)",
+              "legal_name": "Bayerische Landesbrandversicherung AG",
+              "size_eur_m": 1428.09,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts",
+              "url": "https://www.konzern-versicherungskammer.de/dam/jcr:ead499e7-c881-4596-8f6e-fefdc3c691be/VKB_GB25_BLBV.pdf",
+              "detail_lines": [
+                "Bayerische Landesbrandversicherung AG — €1.4bn assets (2025).",
+                "Equity €0.3bn. Net income €52m.",
+                "1,458 employees.",
+                "Parent: Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts."
+              ]
+            },
+            {
+              "short_name": "Provinzial (Nord Brandkasse)",
+              "legal_name": "Provinzial Nord Brandkasse AG",
+              "size_eur_m": 1074.47,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Holding AG",
+              "url": "https://www.provinzial-konzern.de/dam/jcr:74f2802c-865a-420e-9e69-c76d05250bee/GB%20PNB%202025%20finale%20Fassung_s.pdf",
+              "detail_lines": [
+                "Provinzial Nord Brandkasse AG — €1.1bn assets (2025).",
+                "Equity €0.1bn. Net income €0m.",
+                "935 employees.",
+                "Parent: Provinzial Holding AG."
+              ]
+            },
+            {
+              "short_name": "Generali (Dialog Versicherung)",
+              "legal_name": "Dialog Versicherung AG",
+              "size_eur_m": 1029.9,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Generali Deutschland AG",
+              "url": "https://www.dialog-versicherung.de/resource/blob/33720/7baecb47632a39eb68a792fe8922b7ac/Gesch%C3%A4ftsbericht%202025%20Dialog%20Versicherung%20AG.pdf",
+              "detail_lines": [
+                "Dialog Versicherung AG — €1.0bn assets (2025).",
+                "Equity €64m. Net income €0m.",
+                "Parent: Generali Deutschland AG."
+              ]
+            },
+            {
+              "short_name": "Generali (Dialog Leben)",
+              "legal_name": "Dialog Lebensversicherungs-AG",
+              "size_eur_m": 1009.53,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Generali Deutschland AG",
+              "url": "https://www.dialog-versicherung.de/resource/blob/33722/8176069797b5c3a7428211e1f96729e0/Gesch%C3%A4ftsbericht%202025%20Dialog%20Lebensversicherungs-AG.pdf",
+              "detail_lines": [
+                "Dialog Lebensversicherungs-AG — €1.0bn assets (2025).",
+                "Equity €25m. Net income €0m.",
+                "Parent: Generali Deutschland AG."
+              ]
+            },
+            {
+              "short_name": "SIGNAL IDUNA",
+              "legal_name": "SIGNAL IDUNA Holding Aktiengesellschaft",
+              "size_eur_m": 913.65,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://signal-iduna.de/unternehmen/finanzberichte/",
+              "detail_lines": [
+                "SIGNAL IDUNA Holding Aktiengesellschaft — €0.9bn assets (2025).",
+                "Equity €0.7bn. Net income €-4m."
+              ]
+            },
+            {
+              "short_name": "VHV",
+              "legal_name": "VHV Vereinigte Hannoversche Versicherung a.G.",
+              "size_eur_m": 666.6,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": "https://www.vhv-gruppe.de/wf-cdn/66cc933b70e74d41bc78e180/6a71c494778e096b2570db59_2025_annual%20report%20VHV%20a.G..pdf",
+              "detail_lines": [
+                "VHV Vereinigte Hannoversche Versicherung a.G. — €0.7bn assets (2024).",
+                "Equity €0.7bn. Net income €0m.",
+                "350 employees."
+              ]
+            },
+            {
+              "short_name": "Generali (Cosmos Versicherung)",
+              "legal_name": "Cosmos Versicherung AG",
+              "size_eur_m": 523.71,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Generali Deutschland AG",
+              "url": "https://www.cosmosdirekt.de/resource/blob/730338/38a563cb000805c050bf192a2b461c25/geschaeftsbericht-2025-versicherung-data.pdf",
+              "detail_lines": [
+                "Cosmos Versicherung AG — €0.5bn assets (2025).",
+                "Equity €29m. Net income €0m.",
+                "681 employees.",
+                "Parent: Generali Deutschland AG."
+              ]
+            },
+            {
+              "short_name": "BarmeniaGothaer (Barmenia Allgemeine)",
+              "legal_name": "Barmenia Allgemeine Versicherungs-AG",
+              "size_eur_m": 418.8,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "BarmeniaGothaer AG",
+              "url": "https://cdn.barmeniagothaer.de/barmeniagothaer/media/ueber_uns/geschaeftsberichte/2025_1/barmenia-allgemeine-versicherungs-ag-geschaeftsbericht-2025.pdf",
+              "detail_lines": [
+                "Barmenia Allgemeine Versicherungs-AG — €0.4bn assets (2025).",
+                "Equity €82m. Net income €9m.",
+                "1,229 employees.",
+                "Parent: BarmeniaGothaer AG."
+              ]
+            },
+            {
+              "short_name": "Zurich (DA Deutsche Allgemeine)",
+              "legal_name": "DA Deutsche Allgemeine Versicherung AG",
+              "size_eur_m": 311.2,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Zurich Holding SE",
+              "url": "https://www.da-direkt.de/zurichinsur200c-zwpdadd1dc-prodf075-c74a/media/project/zurich-headless/dadirekt/website/dateien-pdf/unternehmen/da_direkt_geschaeftsbericht_2024.pdf",
+              "detail_lines": [
+                "DA Deutsche Allgemeine Versicherung AG — €0.3bn assets (2024).",
+                "Equity €47m. Net income €0m.",
+                "Parent: Zurich Holding SE."
+              ]
+            },
+            {
+              "short_name": "Provinzial (Lippische Landesbrand)",
+              "legal_name": "Lippische Landesbrandversicherung AG",
+              "size_eur_m": 239.82,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Holding AG",
+              "url": "https://www.provinzial-konzern.de/dam/jcr:15f44875-2f26-423c-8d91-7cdd02dc3138/GB%20LLB%202025%20finale%20Fassung_s.pdf",
+              "detail_lines": [
+                "Lippische Landesbrandversicherung AG — €0.2bn assets (2025).",
+                "Equity €52m. Net income €0m.",
+                "214 employees.",
+                "Parent: Provinzial Holding AG."
+              ]
+            },
+            {
+              "short_name": "BarmeniaGothaer (Janitos)",
+              "legal_name": "Janitos Versicherung AG",
+              "size_eur_m": 210.76,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "BarmeniaGothaer AG",
+              "url": "https://www.janitos.de/media/downloads/geschaeftsberichte/geschaeftsbericht_janitos_versicherung_ag_2024.pdf",
+              "detail_lines": [
+                "Janitos Versicherung AG — €0.2bn assets (2024).",
+                "Equity €23m. Net income €0m.",
+                "185 employees.",
+                "Parent: BarmeniaGothaer AG."
+              ]
+            },
+            {
+              "short_name": "Provinzial (Hamburger Feuerkasse)",
+              "legal_name": "Hamburger Feuerkasse Versicherungs-AG",
+              "size_eur_m": 152.63,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Holding AG",
+              "url": "https://www.provinzial-konzern.de/dam/jcr:73ac61e7-83fc-4e08-bafe-483398730a11/GB%20HFK%202025%20finale%20Fassung_s.pdf",
+              "detail_lines": [
+                "Hamburger Feuerkasse Versicherungs-AG — €0.2bn assets (2025).",
+                "Equity €70m. Net income €4m.",
+                "188 employees.",
+                "Parent: Provinzial Holding AG."
+              ]
+            },
+            {
+              "short_name": "VKB (Union Reiseversicherung)",
+              "legal_name": "Union Reiseversicherung AG",
+              "size_eur_m": 66.41,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts",
+              "url": "https://www.konzern-versicherungskammer.de/dam/jcr:3a161428-eb2c-4ae5-b2e4-00925f11374f/VKB_GB25_URV.pdf",
+              "detail_lines": [
+                "Union Reiseversicherung AG — €66m assets (2025).",
+                "Equity €32m. Net income €5m.",
+                "15 employees.",
+                "Parent: Versicherungskammer Bayern Versicherungsanstalt des öffentlichen Rechts."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "other-not-sampled",
+          "label": "Other companies (not sampled)",
+          "metric": "assets",
+          "size_eur_m": 1071795.26,
+          "observed_eur_m": 0,
+          "unobserved_eur_m": 1071795.26,
+          "blurb": "The rest of this category. Real companies, not yet identified or collected in this dataset.",
+          "institutions": []
+        }
+      ]
+    },
+    {
+      "id": "pension-institutions",
+      "label": "Pension Institutions",
+      "metric": "assets",
+      "size_eur_m": 556038,
+      "blurb": "They hold and pay out pensions, outside the state pension system. Three separate regulatory regimes, each with its own size, sit inside this one category.",
+      "sub": [
+        {
+          "id": "versorgungswerke",
+          "label": "Versorgungswerke",
+          "metric": "assets",
+          "size_eur_m": 286172,
+          "observed_eur_m": 140981.1,
+          "unobserved_eur_m": 145190.9,
+          "blurb": "Mandatory pension funds for one profession — doctors, lawyers, architects, and similar. Membership replaces state pension insurance for that profession. 91 exist nationally.",
+          "institutions": [
+            {
+              "short_name": "BVK (Ärzteversorgung)",
+              "legal_name": "Bayerische Ärzteversorgung",
+              "size_eur_m": 31358.03,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Bayerische Versorgungskammer",
+              "url": null,
+              "detail_lines": [
+                "Bayerische Ärzteversorgung — €31.4bn assets (2024).",
+                "Equity €2.0bn. Net income €81m.",
+                "Parent: Bayerische Versorgungskammer."
+              ]
+            },
+            {
+              "short_name": "BWVA (Baden-Württemberg)",
+              "legal_name": "Baden-Württembergische Versorgungsanstalt für Ärzte, Zahnärzte und Tierärzte",
+              "size_eur_m": 19706.82,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Baden-Württembergische Versorgungsanstalt für Ärzte, Zahnärzte und Tierärzte — €19.7bn assets (2025).",
+                "Equity €2.1bn. Net income €0.1bn.",
+                "115 employees."
+              ]
+            },
+            {
+              "short_name": "Ärzteversorgung Nordrhein",
+              "legal_name": "Nordrheinische Ärzteversorgung, Einrichtung der Ärztekammer Nordrhein",
+              "size_eur_m": 17167.71,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Nordrheinische Ärzteversorgung, Einrichtung der Ärztekammer Nordrhein — €17.2bn assets (2024).",
+                "Equity €1.7bn. Net income €0m.",
+                "132 employees."
+              ]
+            },
+            {
+              "short_name": "Ärzteversorgung Westfalen-Lippe",
+              "legal_name": "Ärzteversorgung Westfalen-Lippe, Einrichtung der Ärztekammer Westfalen-Lippe",
+              "size_eur_m": 16013.6,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Ärzteversorgung Westfalen-Lippe, Einrichtung der Ärztekammer Westfalen-Lippe — €16.0bn assets (2025).",
+                "Equity €2.0bn. Net income €-0.1bn."
+              ]
+            },
+            {
+              "short_name": "Versorgungswerk LÄK Hessen",
+              "legal_name": "Versorgungswerk der Landesärztekammer Hessen",
+              "size_eur_m": 11520.0,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Versorgungswerk der Landesärztekammer Hessen — €11.5bn assets (2024)."
+              ]
+            },
+            {
+              "short_name": "BVK (Rechtsanwälte/Steuerberater)",
+              "legal_name": "Bayerische Rechtsanwalts- und Steuerberaterversorgung",
+              "size_eur_m": 11277.24,
+              "metric": "assets",
+              "fiscal_year": 2023,
+              "parent": "Bayerische Versorgungskammer",
+              "url": "https://www.brastv.de/Portals/10/Media/Dokumente/0%20Schlagzeilen/50%20-%2059/57_GB_BRAStV_2023.pdf",
+              "detail_lines": [
+                "Bayerische Rechtsanwalts- und Steuerberaterversorgung — €11.3bn assets (2023).",
+                "Equity €0.2bn. Net income €0.2bn.",
+                "Parent: Bayerische Versorgungskammer."
+              ]
+            },
+            {
+              "short_name": "BVK (Apothekerversorgung)",
+              "legal_name": "Bayerische Apothekerversorgung",
+              "size_eur_m": 10630.24,
+              "metric": "assets",
+              "fiscal_year": 2023,
+              "parent": "Bayerische Versorgungskammer",
+              "url": "https://www.bapv.de/Portals/7/Media/Dokumente/Archiv/Geschäftsberichte%20%20Datenblätter/BApV%20Geschäftsbericht%202023.pdf",
+              "detail_lines": [
+                "Bayerische Apothekerversorgung — €10.6bn assets (2023).",
+                "Equity €75m. Net income €12m.",
+                "120 employees.",
+                "Parent: Bayerische Versorgungskammer."
+              ]
+            },
+            {
+              "short_name": "Ärzteversorgung Niedersachsen",
+              "legal_name": "Ärzteversorgung Niedersachsen, Einrichtung der Ärztekammer Niedersachsen",
+              "size_eur_m": 10598.4,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Ärzteversorgung Niedersachsen, Einrichtung der Ärztekammer Niedersachsen — €10.6bn assets (2024)."
+              ]
+            },
+            {
+              "short_name": "BVK (Architektenversorgung)",
+              "legal_name": "Bayerische Architektenversorgung",
+              "size_eur_m": 9358.97,
+              "metric": "assets",
+              "fiscal_year": 2023,
+              "parent": "Bayerische Versorgungskammer",
+              "url": "https://www.barchv.de/Portals/5/Media/Dokumente/Geschäftsberichte/2023%20Geschäftsbericht.pdf",
+              "detail_lines": [
+                "Bayerische Architektenversorgung — €9.4bn assets (2023).",
+                "Equity €58m. Net income €15m.",
+                "Parent: Bayerische Versorgungskammer."
+              ]
+            },
+            {
+              "short_name": "BVK (Beamtenversorgung)",
+              "legal_name": "Bayerischer Versorgungsverband",
+              "size_eur_m": 1835.51,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Bayerische Versorgungskammer",
+              "url": "https://www.bvk-beamtenversorgung.de/Portals/11/Media/Dokumente/Gesch%C3%A4ftsberichte/BayVV_Gesch%C3%A4ftsbericht_2024.pdf",
+              "detail_lines": [
+                "Bayerischer Versorgungsverband — €1.8bn assets (2024).",
+                "Equity €98m. Net income €6m.",
+                "Parent: Bayerische Versorgungskammer."
+              ]
+            },
+            {
+              "short_name": "BVK (Ingenieurversorgung)",
+              "legal_name": "Bayerische Ingenieurversorgung-Bau mit Psychotherapeutenversorgung",
+              "size_eur_m": 1514.58,
+              "metric": "assets",
+              "fiscal_year": 2021,
+              "parent": "Bayerische Versorgungskammer",
+              "url": "https://www.bingv.de/Portals/8/Media/Dokumente/Downloadcenter/Geschäftsberichte/BIngPPV%20Geschaeftsbericht%202021.pdf",
+              "detail_lines": [
+                "Bayerische Ingenieurversorgung-Bau mit Psychotherapeutenversorgung — €1.5bn assets (2021).",
+                "Equity €16m. Net income €2m.",
+                "Parent: Bayerische Versorgungskammer."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pensionskassen",
+          "label": "Pensionskassen",
+          "metric": "assets",
+          "size_eur_m": 209268,
+          "observed_eur_m": 59032.39,
+          "unobserved_eur_m": 150235.61,
+          "blurb": "Employer-sponsored pension funds, regulated by BaFin. An employer or industry group sets one up to pay staff pensions. 124 exist nationally.",
+          "institutions": [
+            {
+              "short_name": "BVV Pensionskasse",
+              "legal_name": "BVV Versicherungsverein des Bankgewerbes a.G.",
+              "size_eur_m": 35348.9,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "BVV Versicherungsverein des Bankgewerbes a.G. — €35.3bn assets (2025).",
+                "Equity €2.2bn. Net income €21m."
+              ]
+            },
+            {
+              "short_name": "Bayer-Pensionskasse",
+              "legal_name": "Bayer-Pensionskasse VVaG",
+              "size_eur_m": 9879.35,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Bayer-Pensionskasse VVaG — €9.9bn assets (2025).",
+                "Equity €0.3bn. Net income €0m."
+              ]
+            },
+            {
+              "short_name": "BarmeniaGothaer (Pensionskasse)",
+              "legal_name": "Gothaer Pensionskasse AG",
+              "size_eur_m": 3392.89,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "BarmeniaGothaer AG",
+              "url": "https://cdn.barmeniagothaer.de/barmeniagothaer/media/ueber_uns/geschaeftsberichte/2025_1/gothaer-pensionskasse-geschaeftsbericht-2025.pdf",
+              "detail_lines": [
+                "Gothaer Pensionskasse AG — €3.4bn assets (2025).",
+                "Equity €41m. Net income €0m.",
+                "Parent: BarmeniaGothaer AG."
+              ]
+            },
+            {
+              "short_name": "R+V Pensionskasse",
+              "legal_name": "R+V Pensionskasse AG",
+              "size_eur_m": 3128.92,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "R+V Pensionskasse AG — €3.1bn assets (2025).",
+                "Equity €0.1bn. Net income €-10m."
+              ]
+            },
+            {
+              "short_name": "HDI Pensionskasse",
+              "legal_name": "HDI Pensionskasse AG",
+              "size_eur_m": 2472.63,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "HDI Pensionskasse AG — €2.5bn assets (2025).",
+                "Equity €46m. Net income €1m."
+              ]
+            },
+            {
+              "short_name": "PKDW",
+              "legal_name": "Pensionskasse für die Deutsche Wirtschaft VVaG",
+              "size_eur_m": 2330.75,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Pensionskasse für die Deutsche Wirtschaft VVaG — €2.3bn assets (2025).",
+                "Equity €0.1bn. Net income €5m.",
+                "50 employees."
+              ]
+            },
+            {
+              "short_name": "Debeka Pensionskasse",
+              "legal_name": "Debeka Pensionskasse AG",
+              "size_eur_m": 1205.11,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Debeka Pensionskasse AG — €1.2bn assets (2025).",
+                "Equity €28m. Net income €2m."
+              ]
+            },
+            {
+              "short_name": "ALH (Pensionskasse)",
+              "legal_name": "Alte Leipziger Pensionskasse AG",
+              "size_eur_m": 529.06,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Alte Leipziger Lebensversicherung a.G.",
+              "url": "https://www.alh.de/-/media/dokumente/berichte/geschaeftsberichte/al-pensionskasse/geschaeftsbericht_al_pensionskasse_2025.pdf",
+              "detail_lines": [
+                "Alte Leipziger Pensionskasse AG — €0.5bn assets (2025).",
+                "Equity €33m. Net income €-1m.",
+                "Parent: Alte Leipziger Lebensversicherung a.G.."
+              ]
+            },
+            {
+              "short_name": "Kölner Pensionskasse",
+              "legal_name": "Kölner Pensionskasse VVaG i.L.",
+              "size_eur_m": 444.94,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Kölner Pensionskasse VVaG i.L. — €0.4bn assets (2025).",
+                "Equity €3m. Net income €-1m.",
+                "47 employees."
+              ]
+            },
+            {
+              "short_name": "BVK (Schornsteinfeger)",
+              "legal_name": "Pensionskasse des Schornsteinfegerhandwerks",
+              "size_eur_m": 292.5,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "Bayerische Versorgungskammer",
+              "url": "https://www.schornsteinfegerversorgung.de/Portals/16/Media/Dokumente/Geschäftsdaten/Geschaeftsbericht%202024.pdf",
+              "detail_lines": [
+                "Pensionskasse des Schornsteinfegerhandwerks — €0.3bn assets (2024).",
+                "Equity €13m. Net income €1m.",
+                "Parent: Bayerische Versorgungskammer."
+              ]
+            },
+            {
+              "short_name": "BVK (Bezirksschornsteinfeger)",
+              "legal_name": "Versorgungsanstalt der bevollmächtigten Bezirksschornsteinfeger",
+              "size_eur_m": 7.34,
+              "metric": "assets",
+              "fiscal_year": 2023,
+              "parent": "Bayerische Versorgungskammer",
+              "url": "https://www.schornsteinfegerkasse.de/Portals/14/Media/Dokumente/Geschäftsdaten/Geschäftsbericht_VdBS_2023.pdf",
+              "detail_lines": [
+                "Versorgungsanstalt der bevollmächtigten Bezirksschornsteinfeger — €7m assets (2023).",
+                "Net income €1m.",
+                "Parent: Bayerische Versorgungskammer."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "pensionsfonds",
+          "label": "Pensionsfonds",
+          "metric": "assets",
+          "size_eur_m": 60598,
+          "observed_eur_m": 8063.44,
+          "unobserved_eur_m": 52534.56,
+          "blurb": "A newer, more flexible pension vehicle, also BaFin-regulated. Can invest more aggressively than a Pensionskasse in exchange for weaker guarantees. 35 exist nationally.",
+          "institutions": [
+            {
+              "short_name": "R+V Pensionsfonds",
+              "legal_name": "R+V Pensionsfonds AG",
+              "size_eur_m": 2800.2,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "R+V Pensionsfonds AG — €2.8bn assets (2025).",
+                "Equity €45m. Net income €4m."
+              ]
+            },
+            {
+              "short_name": "CHEMIE Pensionsfonds",
+              "legal_name": "CHEMIE Pensionsfonds AG",
+              "size_eur_m": 1513.59,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "CHEMIE Pensionsfonds AG — €1.5bn assets (2025).",
+                "Equity €38m. Net income €4m."
+              ]
+            },
+            {
+              "short_name": "ERGO Pensionsfonds",
+              "legal_name": "ERGO Pensionsfonds AG",
+              "size_eur_m": 1351.49,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "ERGO Pensionsfonds AG — €1.4bn assets (2025).",
+                "Equity €5m. Net income €0m."
+              ]
+            },
+            {
+              "short_name": "HDI Pensionsfonds",
+              "legal_name": "HDI Pensionsfonds AG",
+              "size_eur_m": 1077.42,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "HDI Pensionsfonds AG — €1.1bn assets (2025).",
+                "Equity €10m. Net income €0m."
+              ]
+            },
+            {
+              "short_name": "BVV Pensionsfonds",
+              "legal_name": "BVV Pensionsfonds des Bankgewerbes AG",
+              "size_eur_m": 1060.01,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "BVV Pensionsfonds des Bankgewerbes AG — €1.1bn assets (2025).",
+                "Equity €16m. Net income €0m."
+              ]
+            },
+            {
+              "short_name": "ALH (Pensionsfonds)",
+              "legal_name": "Alte Leipziger Pensionsfonds AG",
+              "size_eur_m": 260.73,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Alte Leipziger Lebensversicherung a.G.",
+              "url": null,
+              "detail_lines": [
+                "Alte Leipziger Pensionsfonds AG — €0.3bn assets (2025).",
+                "Equity €6m. Net income €0m.",
+                "Parent: Alte Leipziger Lebensversicherung a.G.."
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

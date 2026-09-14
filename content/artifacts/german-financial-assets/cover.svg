@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 630" width="1200" height="630" role="img" aria-label="Stylized drill-down bar chart: German banks, asset managers, insurers, and pension institutions at top, funneling down into a breakdown of bank sub-groups below.">
+  <defs>
+    <linearGradient id="gfaBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#141924"/>
+      <stop offset="100%" stop-color="#1b2436"/>
+    </linearGradient>
+    <radialGradient id="gfaGlow" cx="22%" cy="14%" r="60%">
+      <stop offset="0%" stop-color="#3985d0" stop-opacity="0.18"/>
+      <stop offset="100%" stop-color="#3985d0" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="gfaFunnel" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#3985d0" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#3985d0" stop-opacity="0.05"/>
+    </linearGradient>
+    <clipPath id="gfaBar1Clip"><rect x="140" y="170" width="920" height="90" rx="14"/></clipPath>
+    <clipPath id="gfaBar2Clip"><rect x="140" y="430" width="920" height="90" rx="14"/></clipPath>
+  </defs>
+
+  <rect x="0" y="0" width="1200" height="630" fill="url(#gfaBg)"/>
+  <rect x="0" y="0" width="1200" height="630" fill="url(#gfaGlow)"/>
+
+  <!-- breadcrumb-style corner tag, echoing the app's own "GERMANY" crumb -->
+  <text x="140" y="108" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif"
+        font-size="15" font-weight="600" letter-spacing="0.06em" fill="#7b8291">GERMANY</text>
+
+  <!-- funnel: the Banks segment (top bar, largest, leftmost) drilling down
+       into the full-width sub-group bar below (left edge stays aligned,
+       since Banks is the leftmost/largest segment; right edge widens),
+       matching the real app's own drill-down animation. -->
+  <polygon points="140,260 695,260 1060,430 140,430" fill="url(#gfaFunnel)"/>
+  <line x1="695" y1="260" x2="1060" y2="430" stroke="#3985d0" stroke-opacity="0.30" stroke-width="1.5"/>
+
+  <!-- rung 1: sector bar (Banks / Asset Managers / Insurers / Pension Institutions) -->
+  <g clip-path="url(#gfaBar1Clip)">
+    <rect x="140" y="170" width="920" height="90" fill="#0f1116"/>
+    <rect x="140.0" y="170" width="555.0" height="90" fill="#3985d0"/>
+    <rect x="695.0" y="170" width="236.0" height="90" fill="#39d0ab"/>
+    <rect x="931.0" y="170" width="99.7" height="90" fill="#d09139"/>
+    <rect x="1030.7" y="170" width="29.3" height="90" fill="#7839d0"/>
+    <line x1="695.0" y1="170" x2="695.0" y2="260" stroke="#141924" stroke-opacity="0.35"/>
+    <line x1="931.0" y1="170" x2="931.0" y2="260" stroke="#141924" stroke-opacity="0.35"/>
+    <line x1="1030.7" y1="170" x2="1030.7" y2="260" stroke="#141924" stroke-opacity="0.35"/>
+  </g>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" fill="#ffffff" text-anchor="middle">
+    <text x="417.5" y="209" font-size="19" font-weight="700">Banks</text>
+    <text x="417.5" y="231" font-size="15" opacity="0.85">€10.51tn</text>
+    <text x="813.0" y="209" font-size="17" font-weight="700">Asset Managers</text>
+    <text x="813.0" y="231" font-size="14" opacity="0.85">€4.47tn</text>
+    <text x="980.9" y="215" font-size="14" font-weight="700">Insurers</text>
+    <text x="980.9" y="233" font-size="12" opacity="0.85">€1.89tn</text>
+  </g>
+
+  <!-- rung 2: Banks sub-groups, full-width drill-down -->
+  <g clip-path="url(#gfaBar2Clip)">
+    <rect x="140" y="430" width="920" height="90" fill="#0f1116"/>
+    <rect x="140.0" y="430" width="211.4" height="90" fill="#47afd1"/>
+    <rect x="351.4" y="430" width="207.7" height="90" fill="#4753d1"/>
+    <rect x="559.1" y="430" width="141.7" height="90" fill="#9847d1"/>
+    <rect x="700.8" y="430" width="133.4" height="90" fill="#d147af"/>
+    <rect x="834.2" y="430" width="108.3" height="90" fill="#d14753"/>
+    <rect x="942.5" y="430" width="79.3" height="90" fill="#d19847"/>
+    <rect x="1021.8" y="430" width="22.8" height="90" fill="#afd147"/>
+    <rect x="1044.6" y="430" width="15.5" height="90" fill="#53d147"/>
+    <line x1="351.4" y1="430" x2="351.4" y2="520" stroke="#141924" stroke-opacity="0.35"/>
+    <line x1="559.1" y1="430" x2="559.1" y2="520" stroke="#141924" stroke-opacity="0.35"/>
+    <line x1="700.8" y1="430" x2="700.8" y2="520" stroke="#141924" stroke-opacity="0.35"/>
+    <line x1="834.2" y1="430" x2="834.2" y2="520" stroke="#141924" stroke-opacity="0.35"/>
+    <line x1="942.5" y1="430" x2="942.5" y2="520" stroke="#141924" stroke-opacity="0.35"/>
+    <line x1="1021.8" y1="430" x2="1021.8" y2="520" stroke="#141924" stroke-opacity="0.35"/>
+    <line x1="1044.6" y1="430" x2="1044.6" y2="520" stroke="#141924" stroke-opacity="0.35"/>
+  </g>
+
+  <g font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif" fill="#ffffff" text-anchor="middle">
+    <text x="245.7" y="469" font-size="16" font-weight="700">Großbanken</text>
+    <text x="245.7" y="489" font-size="13" opacity="0.85">€2.42tn</text>
+    <text x="455.3" y="469" font-size="15" font-weight="700">Regionalbanken</text>
+    <text x="455.3" y="489" font-size="13" opacity="0.85">€2.37tn</text>
+    <text x="629.9" y="469" font-size="15" font-weight="700">Sparkassen</text>
+    <text x="629.9" y="489" font-size="13" opacity="0.85">€1.62tn</text>
+    <text x="767.5" y="475" font-size="13" font-weight="700">Förderbanken</text>
+  </g>
+
+  <!-- ancestor-line-style caption, echoing the app's own blurb text under a bar -->
+  <text x="140" y="565" font-family="-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif"
+        font-size="16" fill="#d8dde6">Drill down from the whole system to a single company's own filing.</text>
+</svg>
