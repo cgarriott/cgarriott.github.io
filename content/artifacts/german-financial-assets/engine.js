@@ -59,10 +59,11 @@
     els.callouts = q("#callouts");
     els.svg = q("#lines");
     els.stage2 = els.bar2.closest(".bar-wrap");
+    els.hierarchy = q("#hierarchy");
 
     els.title.addEventListener("click", goHome);
     els.subtitle.addEventListener("click", goHome);
-    window.addEventListener("resize", drawInstLine);
+    window.addEventListener("resize", handleResize);
 
     // Delegated hover -- attached once, survives every bar rebuild, and
     // avoids the enter/leave race you'd get re-attaching per-segment
@@ -197,6 +198,39 @@
     renderRung1(b1);
     renderRung2(b2);
     updateCrumbs();
+    growMinHeight();
+  }
+
+  // ---- min-height ratchet --------------------------------------------------
+  // Drilling back up (e.g. clicking a different rung-0 segment while rung 2
+  // is open) collapses the DOM height instantly. If the page had scrolled
+  // down to see the deeper rungs, that collapse yanks the scroll position
+  // back up as the browser clamps it to the new (shorter) document height --
+  // jarring, and it can leave the cursor hovering a completely different
+  // segment than the one the user meant to act on. Fix: never let the
+  // hierarchy container get shorter than the tallest it's ever been *at the
+  // current viewport width* -- a plain ratchet, since content height is data-
+  // driven (varies with which callouts are open) and not worth precomputing.
+  let maxHierarchyHeight = 0;
+  function growMinHeight() {
+    if (!els.hierarchy) return;
+    const h = els.hierarchy.scrollHeight;
+    if (h > maxHierarchyHeight) {
+      maxHierarchyHeight = h;
+      els.hierarchy.style.minHeight = maxHierarchyHeight + "px";
+    }
+  }
+  function handleResize() {
+    drawInstLine();
+    // The ratchet is only valid for one viewport width -- a min-height
+    // calibrated for a wide desktop layout would force excess blank space
+    // (or, worse, an under-sized one could clip content) once the layout
+    // reflows for a narrower/wider width. Reset and let it re-establish
+    // itself from the current, already-rendered content.
+    if (!els.hierarchy) return;
+    els.hierarchy.style.minHeight = "";
+    maxHierarchyHeight = els.hierarchy.scrollHeight;
+    els.hierarchy.style.minHeight = maxHierarchyHeight + "px";
   }
 
   function buildBar(barEl, segs, highlightRealIndex, boostSelected) {
