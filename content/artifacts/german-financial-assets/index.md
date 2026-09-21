@@ -32,14 +32,14 @@ disableAnchoredHeadings: false
   --seg-label: #ffffff;
   --callout-bg: var(--entry);
   --callout-border: var(--border);
-  /* Measure toggle. It is the one control that changes what every number
-     below it means, so which side is on has to be readable at a glance.
-     Mapped to theme variables rather than fixed colours so the filled
-     active state stays high-contrast in both the light and dark site
-     themes: active background is the body text colour, active text is the
-     page background. */
-  --toggle-track: var(--theme);
-  --toggle-border: var(--border);
+  /* The container has to sit ABOVE the page, not level with it. Mapping the
+     track to var(--theme) made it exactly the page colour, so the bubble
+     vanished and the tabs read as two free-floating words -- the same mistake
+     the standalone page made with a near-black track on a near-black page.
+     --entry is PaperMod's raised-surface colour and is what card backgrounds
+     use, so it reads as a control in both light and dark. */
+  --toggle-track: var(--entry);
+  --toggle-border: var(--secondary);
   --toggle-text: var(--secondary);
   --toggle-active-bg: var(--primary);
   --toggle-active-text: var(--theme);
@@ -54,7 +54,10 @@ disableAnchoredHeadings: false
         <h1 id="page-title">Click on a segment to explore</h1>
         <p class="subtitle" id="page-subtitle">What financial institutions hold on their own balance sheets.</p>
       </div>
-      <div class="view-toggle" id="view-toggle" role="tablist" aria-label="Measure"></div>
+      <div class="view-toggles">
+        <div class="view-toggle" id="measure-toggle" role="tablist" aria-label="Measure"></div>
+        <div class="view-toggle" id="basis-toggle" role="tablist" aria-label="Basis"></div>
+      </div>
     </div>
     <div id="crumbs"></div>
     <div id="hierarchy">
@@ -82,7 +85,16 @@ disableAnchoredHeadings: false
     topOrder: "size",
     subOrder: "size",
     colorMode: "perLevel",
-    topHue: { banks: 210, "asset-managers": 165, insurers: 35, "pension-institutions": 265 },
+    // Each By-group category reuses its By-sector counterpart's hue, so
+    // switching basis reads as the same data recut rather than a different
+    // chart. topColor() falls back to 220 for anything unmapped.
+    topHue: {
+      banks: 210, "asset-managers": 165, insurers: 35, "pension-institutions": 265,
+      "monoline-banks": 210, "monoline-insurers": 35, "monoline-pensions": 265,
+      conglomerates: 285,
+      "monoline-banks-aum": 210, "monoline-insurers-aum": 35,
+      "conglomerates-aum": 285, "independent-managers": 165,
+    },
     levelHueSeed: [0, 195, 20],
     unobservedColor: "hsl(220 10% 22%)",
 

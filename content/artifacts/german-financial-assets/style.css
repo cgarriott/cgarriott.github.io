@@ -37,15 +37,28 @@
 /* Measure toggle. The two views are not two slices of one number -- they are
    two different measures -- so this reads as a pair of tabs rather than an
    on/off switch. */
-#gfa-app .view-toggle {
+/* Two controls side by side: measure on the left, basis on the right. */
+#gfa-app .view-toggles {
   display: flex;
   flex: none;
-  padding: 3px;
-  border-radius: 8px;
-  background: var(--toggle-track);
-  border: 1px solid var(--toggle-border);
-  box-shadow: inset 0 1px 3px rgba(0,0,0,0.6);
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
 }
+
+#gfa-app .view-toggle {
+  display: flex;
+  /* Padding is what makes the container legible as a container: it is the
+     visible gutter between the active pill and the border. At 3px the pill
+     nearly touched the edge and the bubble read as a hairline around a
+     button. */
+  padding: 5px;
+  border-radius: 11px;
+  background: var(--toggle-track);
+  border: 2px solid var(--toggle-border);
+  box-shadow: inset 0 1px 4px rgba(0,0,0,0.5);
+}
+
 
 #gfa-app .view-tab {
   appearance: none;

@@ -14,7 +14,13 @@
     if (m >= 1e3) return `€${(m / 1e3).toFixed(1)}bn`;
     return `€${Math.round(m)}m`;
   };
-  const metricLabel = (m) => (m === "aum" ? "AUM" : "assets");
+  // Data-driven, and the `|| m` tail is the point: an unmapped metric prints
+  // its own id -- visibly wrong in review -- rather than confidently printing
+  // "assets" and telling a plausible lie.
+  const METRIC_LABEL_FALLBACK = { assets: "assets", aum: "AUM" };
+  const metricLabel = (m) =>
+    (DATA && DATA.metric_labels && DATA.metric_labels[m]) ||
+    METRIC_LABEL_FALLBACK[m] || m;
   const clamp = (n, lo, hi) => Math.max(lo, Math.min(hi, n));
   // Touch browsers synthesize a "mouseover" immediately before the (often
   // ~300ms-delayed) synthetic "click" for a tap. Our hover-preview handlers
@@ -32,34 +38,62 @@
     window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches
   );
 
-  // ---- views -------------------------------------------------------------
-  // The chart measures two different things and they are not additive, so it
-  // shows one at a time rather than putting them in one bar. A bank's balance
-  // sheet is what it owns; an asset manager's AUM is what it runs for other
-  // people, much of which is money that appears on the other view as some
-  // insurer's or bank's own balance sheet. Adding the two would be wrong, and
-  // making them exclusive would be wrong too -- both statements are true. So:
-  // two views, each internally consistent, each with its own benchmark.
-  // Definitions come from data.json, written by prepare_data.py, which asserts
-  // they partition the top-level categories exactly. The literals below are
-  // only a fallback so this file still renders against an older data.json.
+  // ---- views: a measure x basis grid -------------------------------------
+  // TWO INDEPENDENT QUESTIONS, so two independent controls.
+  //
+  // MEASURE -- what is being counted. A bank's balance sheet is what it owns;
+  // an asset manager's AUM is what it runs for other people, much of which
+  // appears on the other measure as some insurer's own balance sheet. Adding
+  // them would be wrong and making them exclusive would be wrong too, because
+  // both statements are true.
+  //
+  // BASIS -- what a row IS. By sector, a row is one legal entity sized on its
+  // standalone accounts and filed under one sector. By group, a row is a
+  // corporate group sized on its CONSOLIDATED accounts, so a subsidiary is
+  // counted once, inside its parent. Munich Re is EUR 111,207m on one basis
+  // and EUR 279,934m on the other, and both are correct.
+  //
+  // Definitions and every label come from data.json, written by
+  // prepare_data.py, which asserts the views are a clean cross product AND
+  // partition the top-level categories. The literals below are only a fallback
+  // so this file still renders against an older data.json.
+  const MEASURES_FALLBACK = [
+    { id: "balance-sheet", label: "On balance sheet" },
+    { id: "under-management", label: "Under management" },
+  ];
+  const BASES_FALLBACK = [
+    { id: "sector", label: "By sector" },
+    { id: "group", label: "By group" },
+  ];
   const VIEWS_FALLBACK = [
     {
-      id: "balance-sheet",
-      label: "On balance sheet",
+      id: "balance-sheet:sector", measure: "balance-sheet", basis: "sector",
       top_ids: ["banks", "insurers", "pension-institutions"],
       subtitle: "What financial institutions hold on their own balance sheets.",
     },
     {
-      id: "under-management",
-      label: "Under management",
+      id: "under-management:sector", measure: "under-management", basis: "sector",
       top_ids: ["asset-managers"],
       subtitle: "What asset managers manage (on others' balance sheets).",
     },
   ];
+  let MEASURES = MEASURES_FALLBACK;
+  let BASES = BASES_FALLBACK;
   let VIEWS = VIEWS_FALLBACK;
-  let viewIndex = 0;
-  function view() { return VIEWS[viewIndex]; }
+  let measureId = MEASURES[0].id;
+  let basisId = BASES[0].id;
+
+  function findView(m, b) {
+    return VIEWS.find((v) => v.measure === m && v.basis === b) || null;
+  }
+  function view() {
+    const v = findView(measureId, basisId);
+    if (v) return v;
+    // prepare_data.py makes a hole impossible in any data.json this repo
+    // emits; this only fires for an engine served against a stale one.
+    console.warn("no view for", measureId, basisId, "- falling back");
+    return VIEWS[0];
+  }
   // The categories visible in the current view, in data order. Every index in
   // `topIndex` and `hover` is an index INTO THIS ARRAY, not into DATA.top.
   function tops() {
@@ -92,7 +126,10 @@
     els.bar2 = q("#bar-2");
     els.blurb2 = q("#blurb-2");
     els.callouts = q("#callouts");
-    els.viewToggle = q("#view-toggle");
+    // Two controls. #view-toggle is the pre-2026-09-20 single-control id and is
+    // accepted as the measure toggle so an un-migrated host page still works.
+    els.measureToggle = q("#measure-toggle") || q("#view-toggle");
+    els.basisToggle = q("#basis-toggle");
     els.svg = q("#lines");
     els.stage2 = els.bar2.closest(".bar-wrap");
     els.hierarchy = q("#hierarchy");
@@ -115,7 +152,16 @@
       .then((r) => r.json())
       .then((d) => {
         DATA = d;
+        if (Array.isArray(d.measures) && d.measures.length) MEASURES = d.measures;
+        if (Array.isArray(d.bases) && d.bases.length) BASES = d.bases;
         if (Array.isArray(d.views) && d.views.length) VIEWS = d.views;
+        // Re-seed from the ADOPTED tables. Leaving the fallback ids in place
+        // would silently point at nothing if data.json ever renames a measure
+        // or a basis.
+        measureId = MEASURES[0].id;
+        basisId = BASES[0].id;
+        // Applies the one-category home rule before the first paint.
+        resetSelection();
         renderAll();
       })
       .catch((e) => {
@@ -151,13 +197,23 @@
     const idx = top.sub.map((_, i) => i);
     if (CFG.subOrder === "size") {
       idx.sort((a, b) => {
-        // "Other companies (not sampled)" placeholders (no institutions)
-        // always sort last, regardless of size -- several of them are
-        // actually the biggest slice of their bar, and sorting a residual
-        // "we don't know" bucket to the front would be misleading.
-        const aEmpty = top.sub[a].institutions.length === 0;
-        const bEmpty = top.sub[b].institutions.length === 0;
-        if (aEmpty !== bEmpty) return aEmpty ? 1 : -1;
+        // Two kinds of segment are pinned right regardless of size, and the
+        // rank makes their order relative to each other explicit rather than
+        // accidental:
+        //   1  no institutions -- an un-itemised bar. In the sector basis that
+        //      is the "Other companies (not sampled)" placeholder; in the group
+        //      basis it is a group whose members we hold no standalone figure
+        //      for (Sparkasse Chemnitz). Several are the biggest slice of their
+        //      bar, and sorting a "we don't know" bucket to the front misleads.
+        //   2  pin_last -- the group basis's "Independent" bucket, which must
+        //      be the RIGHTMOST segment. It is the largest segment in two of
+        //      its four categories, but it is a residual of ungrouped
+        //      institutions rather than a group, so it reads as the tail of the
+        //      bar no matter its size. Requested explicitly on 2026-09-20.
+        const rank = (x) =>
+          x.pin_last ? 2 : x.institutions.length === 0 ? 1 : 0;
+        const ra = rank(top.sub[a]), rb = rank(top.sub[b]);
+        if (ra !== rb) return ra - rb;
         return top.sub[b].size_eur_m - top.sub[a].size_eur_m;
       });
     }
@@ -165,7 +221,10 @@
   }
 
   // ---- color -------------------------------------------------------------
-  function topColor(topId) { return CFG.topHue[topId]; }
+  // A bare lookup returned undefined for an unmapped id, which produced
+  // `hsl(undefined 62% 52%)` -- an invalid color, so the whole segment
+  // rendered unstyled rather than merely wrong. Fall back instead.
+  function topColor(topId) { return CFG.topHue[topId] ?? 220; }
   function segmentColor(kind, ctx) {
     if (kind === "top") return `hsl(${topColor(ctx.top.id)} 62% 52%)`;
     if (kind === "unobserved") return CFG.unobservedColor;
@@ -232,7 +291,7 @@
   function renderAll() {
     const b1 = resolveBar1();
     const b2 = resolveBar2(b1);
-    renderViewToggle();
+    renderViewToggles();
     renderRung0();
     renderRung1(b1);
     renderRung2(b2);
@@ -241,38 +300,66 @@
   }
 
   // ---- view toggle ---------------------------------------------------------
-  function renderViewToggle() {
-    if (!els.viewToggle) return;
-    els.viewToggle.innerHTML = "";
-    VIEWS.forEach((v, i) => {
+  // One renderer, two call sites. `options` comes straight from data.json, so
+  // this file names no label of its own and prepare_data.py stays the single
+  // source of truth for the wording.
+  function renderToggle(el, options, activeId, onPick) {
+    if (!el) return;
+    el.innerHTML = "";
+    options.forEach((o) => {
       const b = document.createElement("button");
       b.type = "button";
-      b.className = "view-tab" + (i === viewIndex ? " active" : "");
-      b.textContent = v.label;
+      b.className = "view-tab" + (o.id === activeId ? " active" : "");
+      b.textContent = o.label;
       b.setAttribute("role", "tab");
-      b.setAttribute("aria-selected", i === viewIndex ? "true" : "false");
-      b.addEventListener("click", () => setView(i));
-      els.viewToggle.appendChild(b);
+      b.setAttribute("aria-selected", o.id === activeId ? "true" : "false");
+      b.addEventListener("click", () => onPick(o.id));
+      el.appendChild(b);
     });
+  }
+
+  function renderViewToggles() {
+    renderToggle(els.measureToggle, MEASURES, measureId, setMeasure);
+    renderToggle(els.basisToggle, BASES, basisId, setBasis);
     els.subtitle.textContent = view().subtitle;
   }
 
-  function setView(i) {
-    if (i === viewIndex) return;
-    viewIndex = i;
-    // Indices are positions within the view's own category list, so none of
-    // the current selection survives the switch.
-    topIndex = null;
+  // A one-category view opens straight onto its sub-groups. Landing on a single
+  // full-width segment with nothing to compare it against would waste the first
+  // click. Defined once here because goHome() and first paint need it too --
+  // before 2026-09-20 this rule lived only in setView, so a one-category view
+  // rendered at startup showed an empty chart until something was clicked.
+  function homeTopIndex() { return tops().length === 1 ? 0 : null; }
+
+  // Everything that does not survive a change of view. Call it AFTER assigning
+  // the new measureId/basisId: it reads tops() through the NEW view.
+  function resetSelection() {
+    topIndex = homeTopIndex();
     subIndex = null;
     hover = null;
     instPinned = null;
     bar2Segs = [];
-    els.callouts.innerHTML = "";
-    els.svg.innerHTML = "";
-    // A one-category view opens straight onto its sub-groups. Landing on a
-    // single full-width segment with nothing to compare it against would
-    // waste the first click.
-    if (tops().length === 1) topIndex = 0;
+    if (els.callouts) els.callouts.innerHTML = "";
+    if (els.svg) els.svg.innerHTML = "";
+    // The min-height ratchet is per-view. Without this, switching from a deeper
+    // view to a shallower one leaves the taller view's blank space behind.
+    // renderAll() ends with growMinHeight(), which re-establishes the floor
+    // from the new content in the same frame, so there is no flash.
+    maxHierarchyHeight = 0;
+    if (els.hierarchy) els.hierarchy.style.minHeight = "";
+  }
+
+  function setMeasure(m) {
+    if (m === measureId) return;
+    measureId = m;
+    resetSelection();
+    commitRender();
+  }
+
+  function setBasis(b) {
+    if (b === basisId) return;
+    basisId = b;
+    resetSelection();
     commitRender();
   }
 
@@ -521,13 +608,19 @@
     if (s.unobserved_eur_m > 0) {
       segs.push({
         key: "unobserved",
-        label: "Other companies (not sampled)",
+        // The remainder means something different on each basis, so the wording
+        // travels with the data. By sector: institutions we have not collected.
+        // By group: the rest of that group, overwhelmingly foreign subsidiaries
+        // which can never be rows because the dataset is German legal entities.
+        label: s.unobserved_label || "Other companies (not sampled)",
         sizeLabel: fmtEur(s.unobserved_eur_m),
         pct: (s.unobserved_eur_m / total) * 100,
         color: segmentColor("unobserved", {}),
         kind: "unobserved",
         detailLines: [
-          `${fmtEur(s.unobserved_eur_m)} ${metricLabel(s.metric)} of ${s.label} is not sampled.`,
+          s.unobserved_detail
+            ? s.unobserved_detail.replace("{amount}", fmtEur(s.unobserved_eur_m))
+            : `${fmtEur(s.unobserved_eur_m)} ${metricLabel(s.metric)} of ${s.label} is not sampled.`,
         ],
       });
     }
@@ -676,8 +769,8 @@
   // ---- navigation ----------------------------------------------------------
   function goHome() {
     // In a one-category view "home" is that category's sub-groups, not an
-    // empty top bar -- same reasoning as setView().
-    const home = tops().length === 1 ? 0 : null;
+    // empty top bar -- same reasoning as resetSelection().
+    const home = homeTopIndex();
     if (topIndex === home && subIndex === null) return;
     topIndex = home;
     subIndex = null;
