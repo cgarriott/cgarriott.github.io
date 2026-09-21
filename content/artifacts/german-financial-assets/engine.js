@@ -321,7 +321,23 @@
   function renderViewToggles() {
     renderToggle(els.measureToggle, MEASURES, measureId, setMeasure);
     renderToggle(els.basisToggle, BASES, basisId, setBasis);
-    els.subtitle.textContent = view().subtitle;
+    renderSubtitle();
+  }
+
+  // Two lines per view, built as child nodes rather than innerHTML so the
+  // copy stays plain text. Every view carries both: before 2026-09-20 only the
+  // one-category view had a second line, and only by accident -- with rung 0
+  // hidden its category blurb surfaced into #blurb-1, so that one view read as
+  // explained and the other three did not.
+  function renderSubtitle() {
+    const v = view();
+    els.subtitle.textContent = "";
+    [v.subtitle, v.subtitle_2].filter(Boolean).forEach((text, i) => {
+      const line = document.createElement("span");
+      line.className = i === 0 ? "subtitle-line" : "subtitle-line subtitle-note";
+      line.textContent = text;
+      els.subtitle.appendChild(line);
+    });
   }
 
   // A one-category view opens straight onto its sub-groups. Landing on a single

@@ -14325,7 +14325,8 @@
         "insurers",
         "pension-institutions"
       ],
-      "subtitle": "What financial institutions hold on their own balance sheets."
+      "subtitle": "What financial institutions hold on their own balance sheets.",
+      "subtitle_2": "One row per legal entity, on the same basis the official statistics count them, so the bars can be measured against a real sector total."
     },
     {
       "id": "under-management:sector",
@@ -14334,7 +14335,8 @@
       "top_ids": [
         "asset-managers"
       ],
-      "subtitle": "What asset managers manage (on others' balance sheets)."
+      "subtitle": "What asset managers manage (on others' balance sheets).",
+      "subtitle_2": "Not a second helping of the balance-sheet view. Much of this is money that also sits there, as some insurer's or bank's own investments."
     },
     {
       "id": "balance-sheet:group",
@@ -14346,7 +14348,8 @@
         "monoline-insurers",
         "monoline-pensions"
       ],
-      "subtitle": "What corporate groups hold, consolidated — a subsidiary counted once, inside its parent."
+      "subtitle": "What corporate groups hold, counting each subsidiary once inside its parent.",
+      "subtitle_2": "Munich Re is EUR 280bn here and EUR 111bn by sector. Both are right: German accounting carries a subsidiary at what the parent paid for it, however large it has since grown."
     },
     {
       "id": "under-management:group",
@@ -14358,7 +14361,8 @@
         "monoline-insurers-aum",
         "independent-managers"
       ],
-      "subtitle": "What each group's asset managers run, by the group that owns them."
+      "subtitle": "What each group's asset managers run, grouped by who owns them.",
+      "subtitle_2": "Deutsche Bank is the largest here because it owns DWS. The group holds none of this money itself."
     }
   ]
 }
