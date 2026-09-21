@@ -3229,8 +3229,8 @@
           "label": "Regionalbanken",
           "metric": "assets",
           "size_eur_m": 1786347,
-          "observed_eur_m": 1471473.14,
-          "unobserved_eur_m": 314873.86,
+          "observed_eur_m": 1472036.87,
+          "unobserved_eur_m": 314310.13,
           "blurb": "Everyone else with a German banking license: foreign banks' German subsidiaries, auto-finance banks, direct banks, and smaller private banks. A wide mix of sizes and models. 119 file annual accounts.",
           "institutions": [
             {
@@ -3495,6 +3495,22 @@
                 "Equity €0.4bn. Net income €0m.",
                 "58 employees.",
                 "Parent: DB Capital Markets (Deutschland)."
+              ]
+            },
+            {
+              "short_name": "MMV Bank",
+              "seg_label": null,
+              "legal_name": "MMV Bank GmbH, Koblenz",
+              "size_eur_m": 563.73,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "LBBW",
+              "url": null,
+              "detail_lines": [
+                "MMV Bank GmbH, Koblenz — €0.6bn assets (2025).",
+                "Equity €97m. Net income €21m.",
+                "373 employees.",
+                "Parent: LBBW."
               ]
             }
           ]
@@ -6481,8 +6497,8 @@
           "label": "Pensionsfonds",
           "metric": "assets",
           "size_eur_m": 60598,
-          "observed_eur_m": 14484.6,
-          "unobserved_eur_m": 46113.4,
+          "observed_eur_m": 15431.66,
+          "unobserved_eur_m": 45166.34,
           "blurb": "A newer, more flexible pension vehicle, also BaFin-regulated. Can invest more aggressively than a Pensionskasse in exchange for weaker guarantees. 35 exist nationally.",
           "institutions": [
             {
@@ -6599,6 +6615,21 @@
               "detail_lines": [
                 "BVV Pensionsfonds des Bankgewerbes AG — €1.1bn assets (2025).",
                 "Equity €16m. Net income €0m."
+              ]
+            },
+            {
+              "short_name": "Generali Pensionsfonds",
+              "seg_label": null,
+              "legal_name": "Generali Pensionsfonds AG",
+              "size_eur_m": 947.06,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Generali Deutschland",
+              "url": null,
+              "detail_lines": [
+                "Generali Pensionsfonds AG — €0.9bn assets (2025).",
+                "Equity €12m. Net income €0m.",
+                "Parent: Generali Deutschland."
               ]
             },
             {
