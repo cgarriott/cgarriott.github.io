@@ -27,11 +27,57 @@
 
 #gfa-app .header-row {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
+  gap: 20px;
 }
 
 #gfa-app .header-text { min-width: 0; flex: 1; }
+
+/* Measure toggle. The two views are not two slices of one number -- they are
+   two different measures -- so this reads as a pair of tabs rather than an
+   on/off switch. */
+#gfa-app .view-toggle {
+  display: flex;
+  flex: none;
+  padding: 3px;
+  border-radius: 8px;
+  background: var(--toggle-track);
+  border: 1px solid var(--toggle-border);
+  box-shadow: inset 0 1px 3px rgba(0,0,0,0.6);
+}
+
+#gfa-app .view-tab {
+  appearance: none;
+  border: 0;
+  cursor: pointer;
+  white-space: nowrap;
+  padding: 8px 16px;
+  border-radius: 6px;
+  background: transparent;
+  color: var(--toggle-text);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+  transition: background 0.12s ease, color 0.12s ease;
+}
+#gfa-app .view-tab:hover:not(.active) {
+  color: var(--heading);
+  background: rgba(255,255,255,0.06);
+}
+/* The active side is a solid filled block, not a tint. A low-contrast
+   "selected" state on a two-way control is the same as no state at all --
+   you can't tell which side is on without reading both labels. */
+#gfa-app .view-tab.active {
+  background: var(--toggle-active-bg);
+  color: var(--toggle-active-text);
+  box-shadow: 0 1px 3px rgba(0,0,0,0.5);
+}
+#gfa-app .view-tab:focus-visible {
+  outline: 2px solid var(--toggle-active-bg);
+  outline-offset: 2px;
+}
 
 #gfa-app h1 {
   font-family: var(--font-display);
@@ -204,6 +250,9 @@
 #gfa-app .source-link:hover { text-decoration: underline; }
 
 @media (max-width: 560px) {
+  #gfa-app .header-row { flex-direction: column; align-items: stretch; gap: 0; }
+  #gfa-app .view-toggle { align-self: flex-start; margin-bottom: 18px; }
+  #gfa-app .subtitle { margin-bottom: 14px; }
   #gfa-app .bar { height: 84px; }
   #gfa-app #callouts { flex-direction: column; margin-top: 20px; }
   #gfa-app .callout, #gfa-app .callout-single { max-width: 100%; }

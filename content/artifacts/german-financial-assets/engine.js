@@ -32,6 +32,41 @@
     window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches
   );
 
+  // ---- views -------------------------------------------------------------
+  // The chart measures two different things and they are not additive, so it
+  // shows one at a time rather than putting them in one bar. A bank's balance
+  // sheet is what it owns; an asset manager's AUM is what it runs for other
+  // people, much of which is money that appears on the other view as some
+  // insurer's or bank's own balance sheet. Adding the two would be wrong, and
+  // making them exclusive would be wrong too -- both statements are true. So:
+  // two views, each internally consistent, each with its own benchmark.
+  // Definitions come from data.json, written by prepare_data.py, which asserts
+  // they partition the top-level categories exactly. The literals below are
+  // only a fallback so this file still renders against an older data.json.
+  const VIEWS_FALLBACK = [
+    {
+      id: "balance-sheet",
+      label: "On balance sheet",
+      top_ids: ["banks", "insurers", "pension-institutions"],
+      subtitle: "What financial institutions hold on their own balance sheets.",
+    },
+    {
+      id: "under-management",
+      label: "Under management",
+      top_ids: ["asset-managers"],
+      subtitle: "What asset managers manage (on others' balance sheets).",
+    },
+  ];
+  let VIEWS = VIEWS_FALLBACK;
+  let viewIndex = 0;
+  function view() { return VIEWS[viewIndex]; }
+  // The categories visible in the current view, in data order. Every index in
+  // `topIndex` and `hover` is an index INTO THIS ARRAY, not into DATA.top.
+  function tops() {
+    if (!DATA) return [];
+    return view().top_ids.map((id) => DATA.top.find((t) => t.id === id)).filter(Boolean);
+  }
+
   // ---- state -----------------------------------------------------------
   let DATA = null;
   let topIndex = null;    // real committed selection, unchanged semantics
@@ -57,6 +92,7 @@
     els.bar2 = q("#bar-2");
     els.blurb2 = q("#blurb-2");
     els.callouts = q("#callouts");
+    els.viewToggle = q("#view-toggle");
     els.svg = q("#lines");
     els.stage2 = els.bar2.closest(".bar-wrap");
     els.hierarchy = q("#hierarchy");
@@ -79,6 +115,7 @@
       .then((r) => r.json())
       .then((d) => {
         DATA = d;
+        if (Array.isArray(d.views) && d.views.length) VIEWS = d.views;
         renderAll();
       })
       .catch((e) => {
@@ -93,19 +130,20 @@
     if (subIndex === null) return 1;
     return 2;
   }
-  function currentTop() { return topIndex === null ? null : DATA.top[topIndex]; }
+  function currentTop() { return topIndex === null ? null : tops()[topIndex]; }
   function currentSub() {
     const t = currentTop();
     return t && subIndex !== null ? t.sub[subIndex] : null;
   }
 
   function orderedTopIndices() {
-    const idx = DATA.top.map((_, i) => i);
+    const T = tops();
+    const idx = T.map((_, i) => i);
     if (CFG.topOrder === "size") {
-      idx.sort((a, b) => DATA.top[b].size_eur_m - DATA.top[a].size_eur_m);
+      idx.sort((a, b) => T[b].size_eur_m - T[a].size_eur_m);
     } else {
       const fixed = CFG.fixedTopOrder;
-      idx.sort((a, b) => fixed.indexOf(DATA.top[a].id) - fixed.indexOf(DATA.top[b].id));
+      idx.sort((a, b) => fixed.indexOf(T[a].id) - fixed.indexOf(T[b].id));
     }
     return idx;
   }
@@ -153,10 +191,10 @@
   // ---- resolve what each slot shows: hover preview > real > nothing -----
   function resolveBar1() {
     if (hover && hover.depth === 0 && hover.index !== topIndex) {
-      return { top: DATA.top[hover.index], topRealIndex: hover.index, source: "preview" };
+      return { top: tops()[hover.index], topRealIndex: hover.index, source: "preview" };
     }
     if (topIndex !== null) {
-      return { top: DATA.top[topIndex], topRealIndex: topIndex, source: "real" };
+      return { top: tops()[topIndex], topRealIndex: topIndex, source: "real" };
     }
     return null;
   }
@@ -168,7 +206,7 @@
       return { top: b1.top, topRealIndex: b1.topRealIndex, sub: s, subRealIndex: hover.index, source: "preview" };
     }
     if (topIndex !== null && subIndex !== null) {
-      const t = DATA.top[topIndex];
+      const t = tops()[topIndex];
       return { top: t, topRealIndex: topIndex, sub: t.sub[subIndex], subRealIndex: subIndex, source: "real" };
     }
     return null;
@@ -194,11 +232,48 @@
   function renderAll() {
     const b1 = resolveBar1();
     const b2 = resolveBar2(b1);
+    renderViewToggle();
     renderRung0();
     renderRung1(b1);
     renderRung2(b2);
     updateCrumbs();
     growMinHeight();
+  }
+
+  // ---- view toggle ---------------------------------------------------------
+  function renderViewToggle() {
+    if (!els.viewToggle) return;
+    els.viewToggle.innerHTML = "";
+    VIEWS.forEach((v, i) => {
+      const b = document.createElement("button");
+      b.type = "button";
+      b.className = "view-tab" + (i === viewIndex ? " active" : "");
+      b.textContent = v.label;
+      b.setAttribute("role", "tab");
+      b.setAttribute("aria-selected", i === viewIndex ? "true" : "false");
+      b.addEventListener("click", () => setView(i));
+      els.viewToggle.appendChild(b);
+    });
+    els.subtitle.textContent = view().subtitle;
+  }
+
+  function setView(i) {
+    if (i === viewIndex) return;
+    viewIndex = i;
+    // Indices are positions within the view's own category list, so none of
+    // the current selection survives the switch.
+    topIndex = null;
+    subIndex = null;
+    hover = null;
+    instPinned = null;
+    bar2Segs = [];
+    els.callouts.innerHTML = "";
+    els.svg.innerHTML = "";
+    // A one-category view opens straight onto its sub-groups. Landing on a
+    // single full-width segment with nothing to compare it against would
+    // waste the first click.
+    if (tops().length === 1) topIndex = 0;
+    commitRender();
   }
 
   // ---- min-height ratchet --------------------------------------------------
@@ -302,10 +377,21 @@
   }
 
   function renderRung0() {
+    const T = tops();
+    // A view with one category (Under management) has nothing to choose
+    // between at this rung. A full-width segment that is always selected is
+    // not a choice, it is a label -- so the rung is dropped entirely and that
+    // view runs on two bars: sub-groups, then institutions. The category's
+    // own blurb still appears, as the header line above the sub-group bar.
+    if (T.length === 1) {
+      els.rung0.hidden = true;
+      return;
+    }
+    els.rung0.hidden = false;
     const order = orderedTopIndices();
-    const total = order.reduce((s, i) => s + DATA.top[i].size_eur_m, 0);
+    const total = order.reduce((s, i) => s + T[i].size_eur_m, 0);
     const segs = order.map((i) => {
-      const t = DATA.top[i];
+      const t = T[i];
       return {
         key: `top:${t.id}`,
         realIndex: i,
@@ -399,7 +485,12 @@
     const total = s.size_eur_m;
     const segs = s.institutions.map((inst, rank) => ({
       key: `inst:${inst.short_name}`,
-      label: inst.short_name || inst.legal_name,
+      // seg_label is a shorter form used only on the bar. A name that does not
+      // fit its segment is hidden entirely by the ellipsize pass below, so a
+      // long name on a narrow segment loses its label altogether -- an
+      // abbreviation is the difference between a labelled slice and a blank
+      // one. The callout and detail lines always use the full name.
+      label: inst.seg_label || inst.short_name || inst.legal_name,
       sizeLabel: fmtEur(inst.size_eur_m),
       pct: (inst.size_eur_m / total) * 100,
       color: segmentColor("inst", { top: t, rank, n: s.institutions.length }),
@@ -437,7 +528,6 @@
         kind: "unobserved",
         detailLines: [
           `${fmtEur(s.unobserved_eur_m)} ${metricLabel(s.metric)} of ${s.label} is not sampled.`,
-          "Real institutions sit here — we just haven't collected them.",
         ],
       });
     }
@@ -585,8 +675,11 @@
 
   // ---- navigation ----------------------------------------------------------
   function goHome() {
-    if (level() === 0) return;
-    topIndex = null;
+    // In a one-category view "home" is that category's sub-groups, not an
+    // empty top bar -- same reasoning as setView().
+    const home = tops().length === 1 ? 0 : null;
+    if (topIndex === home && subIndex === null) return;
+    topIndex = home;
     subIndex = null;
     hover = null;
     commitRender();

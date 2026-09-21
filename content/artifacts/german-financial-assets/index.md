@@ -32,6 +32,17 @@ disableAnchoredHeadings: false
   --seg-label: #ffffff;
   --callout-bg: var(--entry);
   --callout-border: var(--border);
+  /* Measure toggle. It is the one control that changes what every number
+     below it means, so which side is on has to be readable at a glance.
+     Mapped to theme variables rather than fixed colours so the filled
+     active state stays high-contrast in both the light and dark site
+     themes: active background is the body text colour, active text is the
+     page background. */
+  --toggle-track: var(--theme);
+  --toggle-border: var(--border);
+  --toggle-text: var(--secondary);
+  --toggle-active-bg: var(--primary);
+  --toggle-active-text: var(--theme);
 }
 #gfa-app h1 { font-weight: 700; }
 </style>
@@ -41,8 +52,9 @@ disableAnchoredHeadings: false
     <div class="header-row">
       <div class="header-text">
         <h1 id="page-title">Click on a segment to explore</h1>
-        <p class="subtitle" id="page-subtitle">Assets in the German financial system, sized by sector. Assets are AUM for asset managers.</p>
+        <p class="subtitle" id="page-subtitle">What financial institutions hold on their own balance sheets.</p>
       </div>
+      <div class="view-toggle" id="view-toggle" role="tablist" aria-label="Measure"></div>
     </div>
     <div id="crumbs"></div>
     <div id="hierarchy">
