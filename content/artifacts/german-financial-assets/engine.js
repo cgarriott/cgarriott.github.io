@@ -321,23 +321,7 @@
   function renderViewToggles() {
     renderToggle(els.measureToggle, MEASURES, measureId, setMeasure);
     renderToggle(els.basisToggle, BASES, basisId, setBasis);
-    renderSubtitle();
-  }
-
-  // Two lines per view, built as child nodes rather than innerHTML so the
-  // copy stays plain text. Every view carries both: before 2026-09-20 only the
-  // one-category view had a second line, and only by accident -- with rung 0
-  // hidden its category blurb surfaced into #blurb-1, so that one view read as
-  // explained and the other three did not.
-  function renderSubtitle() {
-    const v = view();
-    els.subtitle.textContent = "";
-    [v.subtitle, v.subtitle_2].filter(Boolean).forEach((text, i) => {
-      const line = document.createElement("span");
-      line.className = i === 0 ? "subtitle-line" : "subtitle-line subtitle-note";
-      line.textContent = text;
-      els.subtitle.appendChild(line);
-    });
+    els.subtitle.textContent = view().subtitle;
   }
 
   // A one-category view opens straight onto its sub-groups. Landing on a single
@@ -470,6 +454,29 @@
     });
   }
 
+  // The view's own explanation, in the same place and the same voice as a
+  // category blurb. A one-category view does not get one: rung 0 is hidden
+  // there and its single category's blurb already occupies that slot, so
+  // adding this would say the same thing twice.
+  //
+  // The <p> is created here rather than sitting in the host markup because
+  // three separate pages host this engine (the standalone page, the Hugo
+  // bundle, the Artifact) and an element added to only some of them is a
+  // silent difference between them.
+  function renderViewBlurb() {
+    const v = view();
+    let el = document.getElementById("blurb-0");
+    if (!v.blurb) { if (el) el.remove(); return; }
+    if (!el) {
+      el = document.createElement("p");
+      el.id = "blurb-0";
+      el.className = "ancestor-line";
+      els.rung0.insertBefore(el, els.rung0.firstChild);
+    }
+    el.innerHTML = "";
+    el.appendChild(ancestorLine(v.blurb_label || "", v.blurb));
+  }
+
   function ancestorLine(label, blurb) {
     const p = document.createElement("p");
     const strong = document.createElement("strong");
@@ -491,6 +498,7 @@
       return;
     }
     els.rung0.hidden = false;
+    renderViewBlurb();
     const order = orderedTopIndices();
     const total = order.reduce((s, i) => s + T[i].size_eur_m, 0);
     const segs = order.map((i) => {

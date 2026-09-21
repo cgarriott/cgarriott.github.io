@@ -116,17 +116,6 @@
   color: var(--muted);
   font-size: 0.85rem;
   margin: 0 0 22px;
-  max-width: 62ch;
-}
-
-/* Two lines per view. The first says what the bars measure; the second is the
-   caveat that stops the number being misread, so it is set quieter and is
-   allowed to be longer. */
-#gfa-app .subtitle-line { display: block; }
-#gfa-app .subtitle-note {
-  margin-top: 4px;
-  font-size: 0.8rem;
-  opacity: 0.8;
 }
 
 #gfa-app #crumbs {

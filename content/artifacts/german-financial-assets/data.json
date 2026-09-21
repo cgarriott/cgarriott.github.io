@@ -14326,7 +14326,8 @@
         "pension-institutions"
       ],
       "subtitle": "What financial institutions hold on their own balance sheets.",
-      "subtitle_2": "One row per legal entity, on the same basis the official statistics count them, so the bars can be measured against a real sector total."
+      "blurb_label": "Sectors",
+      "blurb": "Each bar is one regulated industry, and each company inside it counts once, on its own books. This is the basis the official German statistics use, so every bar can be measured against a real sector total and the grey tail is what we have not collected yet."
     },
     {
       "id": "under-management:sector",
@@ -14335,8 +14336,7 @@
       "top_ids": [
         "asset-managers"
       ],
-      "subtitle": "What asset managers manage (on others' balance sheets).",
-      "subtitle_2": "Not a second helping of the balance-sheet view. Much of this is money that also sits there, as some insurer's or bank's own investments."
+      "subtitle": "What asset managers manage (on others' balance sheets)."
     },
     {
       "id": "balance-sheet:group",
@@ -14349,7 +14349,8 @@
         "monoline-pensions"
       ],
       "subtitle": "What corporate groups hold, counting each subsidiary once inside its parent.",
-      "subtitle_2": "Munich Re is EUR 280bn here and EUR 111bn by sector. Both are right: German accounting carries a subsidiary at what the parent paid for it, however large it has since grown."
+      "blurb_label": "Groups",
+      "blurb": "Each bar is a corporate group, sized by its consolidated accounts, so a subsidiary is counted once inside its parent rather than on its own. Munich Re is EUR 280bn here and EUR 111bn by sector, and both are right: German accounting carries a subsidiary at what the parent paid for it, however large it has since grown."
     },
     {
       "id": "under-management:group",
@@ -14362,7 +14363,8 @@
         "independent-managers"
       ],
       "subtitle": "What each group's asset managers run, grouped by who owns them.",
-      "subtitle_2": "Deutsche Bank is the largest here because it owns DWS. The group holds none of this money itself."
+      "blurb_label": "Who runs the money",
+      "blurb": "The same money as the sector view, sorted by the group that owns the manager rather than by the manager itself. Deutsche Bank is the largest bar because it owns DWS, and the group holds none of this money on its own books."
     }
   ]
 }
