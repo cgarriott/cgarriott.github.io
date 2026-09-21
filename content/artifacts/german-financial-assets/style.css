@@ -163,6 +163,14 @@
 }
 #gfa-app .ancestor-line strong { color: var(--heading); }
 
+/* The explanation above a bar is height-locked to two lines. Without this the
+   bar below it moves whenever the copy wraps differently -- switching basis
+   dropped the first bar 23px because one blurb ran to three lines -- and at
+   narrow widths any of them can gain a line. Reserving the space costs one
+   blank line on a short blurb and keeps the bars still.
+   1.55 line-height x 2 lines = 3.1em. */
+#gfa-app #blurb-0 p, #gfa-app #blurb-1 p { min-height: 3.1em; }
+
 #gfa-app .bar-wrap {
   position: relative;
 }

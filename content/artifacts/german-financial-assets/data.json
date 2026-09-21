@@ -14327,7 +14327,7 @@
       ],
       "subtitle": "What financial institutions hold on their own balance sheets.",
       "blurb_label": "Sectors",
-      "blurb": "Each bar is one regulated industry, and each company inside it counts once, on its own books. This is the basis the official German statistics use, so every bar can be measured against a real sector total and the grey tail is what we have not collected yet."
+      "blurb": "Each bar is one regulated industry, and every company in it counts once, on its own books. That is how the official German statistics count them, so the grey tail is what we have not collected."
     },
     {
       "id": "under-management:sector",
@@ -14350,7 +14350,7 @@
       ],
       "subtitle": "What corporate groups hold, counting each subsidiary once inside its parent.",
       "blurb_label": "Groups",
-      "blurb": "Each bar is a corporate group, sized by its consolidated accounts, so a subsidiary is counted once inside its parent rather than on its own. Munich Re is EUR 280bn here and EUR 111bn by sector, and both are right: German accounting carries a subsidiary at what the parent paid for it, however large it has since grown."
+      "blurb": "Each bar is a whole corporate group, with every subsidiary counted once inside its parent. Munich Re is EUR 280bn here and EUR 111bn by sector, and both of those figures are right."
     },
     {
       "id": "under-management:group",
@@ -14364,7 +14364,7 @@
       ],
       "subtitle": "What each group's asset managers run, grouped by who owns them.",
       "blurb_label": "Who runs the money",
-      "blurb": "The same money as the sector view, sorted by the group that owns the manager rather than by the manager itself. Deutsche Bank is the largest bar because it owns DWS, and the group holds none of this money on its own books."
+      "blurb": "The same money as the sector view, sorted by whoever owns the manager. Deutsche Bank leads here because it owns DWS, and the group holds none of it on its own books."
     }
   ]
 }
