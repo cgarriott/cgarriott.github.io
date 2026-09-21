@@ -6,7 +6,7 @@ author: ["Corey Garriott"]
 description: "An interactive, drill-down look at the size of the German financial system by sector, sourced from audited annual reports and official sector statistics."
 summary: "Explore German banks, insurers, asset managers, and pension institutions by size -- click down from the whole system to a single company's own filing."
 cover:
-    image: "cover.svg"
+    image: "cover.png"
     alt: "Stylized drill-down bar chart of German banks, asset managers, insurers, and pension institutions, funneling into a breakdown of bank sub-groups."
     relative: true
 editPost:
