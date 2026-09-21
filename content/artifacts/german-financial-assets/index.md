@@ -39,7 +39,7 @@ disableAnchoredHeadings: false
      --entry is PaperMod's raised-surface colour and is what card backgrounds
      use, so it reads as a control in both light and dark. */
   --toggle-track: var(--entry);
-  --toggle-border: var(--secondary);
+  --toggle-border: var(--border);
   --toggle-text: var(--secondary);
   --toggle-active-bg: var(--primary);
   --toggle-active-text: var(--theme);
