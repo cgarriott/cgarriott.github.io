@@ -25,14 +25,23 @@
   margin: 0 auto;
 }
 
+/* Title above the controls, not beside them. Side by side, two toggle pairs
+   take roughly half the width and the <h1> wraps into a narrow column against
+   the left edge -- the heading is the thing being compressed to make room for
+   a control. Stacking costs one row of vertical space and lets the title run
+   full width. */
 #gfa-app .header-row {
   display: flex;
+  flex-direction: column;
   align-items: flex-start;
-  justify-content: space-between;
-  gap: 20px;
+  gap: 16px;
+  /* Stacking puts the controls directly above #crumbs, which has no top
+     margin of its own -- without this the toggle border sits on the crumb
+     text. */
+  margin-bottom: 22px;
 }
 
-#gfa-app .header-text { min-width: 0; flex: 1; }
+#gfa-app .header-text { min-width: 0; width: 100%; }
 
 /* Measure toggle. The two views are not two slices of one number -- they are
    two different measures -- so this reads as a pair of tabs rather than an
@@ -43,7 +52,6 @@
   flex: none;
   gap: 10px;
   flex-wrap: wrap;
-  justify-content: flex-end;
 }
 
 #gfa-app .view-toggle {
@@ -263,8 +271,10 @@
 #gfa-app .source-link:hover { text-decoration: underline; }
 
 @media (max-width: 560px) {
-  #gfa-app .header-row { flex-direction: column; align-items: stretch; gap: 0; }
-  #gfa-app .view-toggle { align-self: flex-start; margin-bottom: 18px; }
+  /* Already a column above; just tighten the spacing and let the two pairs
+     wrap onto separate lines when they no longer fit side by side. */
+  #gfa-app .header-row { align-items: stretch; gap: 14px; }
+  #gfa-app .view-toggles { justify-content: flex-start; margin-bottom: 18px; }
   #gfa-app .subtitle { margin-bottom: 14px; }
   #gfa-app .bar { height: 84px; }
   #gfa-app #callouts { flex-direction: column; margin-top: 20px; }
