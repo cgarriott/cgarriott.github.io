@@ -6267,8 +6267,8 @@
           "label": "Pensionskassen",
           "metric": "assets",
           "size_eur_m": 209268,
-          "observed_eur_m": 87490.45,
-          "unobserved_eur_m": 121777.55,
+          "observed_eur_m": 87769.74,
+          "unobserved_eur_m": 121498.26,
           "blurb": "Employer-sponsored pension funds, regulated by BaFin. An employer or industry group sets one up to pay staff pensions. 124 exist nationally.",
           "institutions": [
             {
@@ -6473,6 +6473,34 @@
                 "Pensionskasse des Schornsteinfegerhandwerks — €0.3bn assets (2024).",
                 "Equity €13m. Net income €1m.",
                 "Parent: BVK."
+              ]
+            },
+            {
+              "short_name": "Versorgungskasse Volksfürsorge",
+              "seg_label": null,
+              "legal_name": "Versorgungskasse der Volksfürsorge VVaG",
+              "size_eur_m": 239.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Versorgungskasse der Volksfürsorge VVaG — €0.2bn assets (2025).",
+                "Equity €5m. Net income €-0m."
+              ]
+            },
+            {
+              "short_name": "AMVK Versorgungskasse",
+              "seg_label": null,
+              "legal_name": "Versorgungskasse für die Angestellten der AachenMünchener Versicherung AG und der Generali Deutschland AG VVaG",
+              "size_eur_m": 39.59,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "detail_lines": [
+                "Versorgungskasse für die Angestellten der AachenMünchener Versicherung AG und der Generali Deutschland AG VVaG — €40m assets (2025).",
+                "Equity €5m. Net income €0m."
               ]
             },
             {
