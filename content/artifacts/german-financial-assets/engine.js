@@ -608,6 +608,7 @@
       kind: "inst",
       detailLines: inst.detail_lines,
       url: inst.url,
+      urlLabel: inst.url_label,
       onClick: () => {
         const key = `inst:${inst.short_name}`;
         if (b2.source === "preview") {
@@ -624,7 +625,7 @@
         } else {
           instPinned = key;
           highlightBar2(key);
-          renderInstDetail(inst.detail_lines, inst.url);
+          renderInstDetail(inst.detail_lines, inst.url, inst.url_label);
           drawSingleLine(key);
         }
       },
@@ -717,7 +718,7 @@
     const seg = bar2Segs.find((s) => s.key === el.dataset.key);
     if (!seg) return;
     highlightBar2(seg.key);
-    renderInstDetail(seg.detailLines, seg.url);
+    renderInstDetail(seg.detailLines, seg.url, seg.urlLabel);
     drawSingleLine(seg.key);
   }
   function handleInstLeave() {
@@ -725,7 +726,7 @@
       const seg = bar2Segs.find((s) => s.key === instPinned);
       if (seg) {
         highlightBar2(seg.key);
-        renderInstDetail(seg.detailLines, seg.url);
+        renderInstDetail(seg.detailLines, seg.url, seg.urlLabel);
         drawSingleLine(seg.key);
         return;
       }
@@ -740,7 +741,7 @@
       el.classList.toggle("dim", key !== null && el.dataset.key !== key);
     });
   }
-  function renderInstDetail(lines, url) {
+  function renderInstDetail(lines, url, urlLabel) {
     els.callouts.innerHTML = "";
     const box = document.createElement("div");
     box.className = "callout callout-single";
@@ -755,7 +756,7 @@
       a.target = "_blank";
       a.rel = "noopener";
       a.className = "source-link";
-      a.textContent = "Source ↗";
+      a.textContent = urlLabel || "Source ↗";
       box.appendChild(a);
     }
     els.callouts.appendChild(box);
