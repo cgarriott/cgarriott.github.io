@@ -89,7 +89,11 @@ disableAnchoredHeadings: false
     // switching basis reads as the same data recut rather than a different
     // chart. topColor() falls back to 220 for anything unmapped.
     topHue: {
-      banks: 210, "asset-managers": 165, insurers: 35, "pension-institutions": 265,
+      banks: 210, insurers: 35, "pension-institutions": 265,
+      // The under-management sector view is three ownership classes, not one
+      // "Asset Managers" bar (DECISIONS.md Round 27). Each reuses the hue of
+      // the sector that owns it, per the convention above.
+      "bank-owned-am": 210, "insurer-owned-am": 35, "independent-am": 165,
       "monoline-banks": 210, "monoline-insurers": 35, "monoline-pensions": 265,
       conglomerates: 285,
       "monoline-banks-aum": 210, "monoline-insurers-aum": 35,

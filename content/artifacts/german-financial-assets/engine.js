@@ -56,7 +56,15 @@
   // Definitions and every label come from data.json, written by
   // prepare_data.py, which asserts the views are a clean cross product AND
   // partition the top-level categories. The literals below are only a fallback
-  // so this file still renders against an older data.json.
+  // so this file still renders against a data.json too old to carry them.
+  //
+  // KEEP THE FALLBACK IN STEP WITH prepare_data.py's VIEWS. It went stale once
+  // and silently: it still named a single "asset-managers" top for months after
+  // Round 27 replaced that with three ownership classes, and it only ever
+  // covered 2 of the 4 views, so a stale-data.json render would have lost both
+  // By-group views AND drawn an empty under-management bar. Nothing catches
+  // this, because the fallback by definition only runs when the real data is
+  // absent.
   const MEASURES_FALLBACK = [
     { id: "balance-sheet", label: "On balance sheet" },
     { id: "under-management", label: "Under management" },
@@ -73,8 +81,21 @@
     },
     {
       id: "under-management:sector", measure: "under-management", basis: "sector",
-      top_ids: ["asset-managers"],
+      top_ids: ["bank-owned-am", "insurer-owned-am", "independent-am"],
       subtitle: "What asset managers manage (on others' balance sheets).",
+    },
+    {
+      id: "balance-sheet:group", measure: "balance-sheet", basis: "group",
+      top_ids: ["conglomerates", "monoline-banks", "monoline-insurers",
+                "monoline-pensions"],
+      subtitle: "What corporate groups hold, counting each subsidiary once " +
+                "inside its parent.",
+    },
+    {
+      id: "under-management:group", measure: "under-management", basis: "group",
+      top_ids: ["conglomerates-aum", "monoline-banks-aum",
+                "monoline-insurers-aum", "independent-managers"],
+      subtitle: "What each group's asset managers run, grouped by who owns them.",
     },
   ];
   let MEASURES = MEASURES_FALLBACK;
@@ -620,8 +641,7 @@
         if (instPinned === key) {
           instPinned = null;
           highlightBar2(null);
-          els.callouts.innerHTML = "";
-          els.svg.innerHTML = "";
+          clearInstDetail();
         } else {
           instPinned = key;
           highlightBar2(key);
@@ -732,14 +752,28 @@
       }
     }
     highlightBar2(null);
-    els.callouts.innerHTML = "";
-    els.svg.innerHTML = "";
+    clearInstDetail();
   }
   function highlightBar2(key) {
     [...els.bar2.children].forEach((el) => {
       el.classList.toggle("bright", key !== null && el.dataset.key === key);
       el.classList.toggle("dim", key !== null && el.dataset.key !== key);
     });
+  }
+  // Every path that changes the callout block's height has to re-run the
+  // ratchet, and until 2026-09-21 this one -- the busiest of them -- did not.
+  // Emptying #callouts drops it back to its 20px floor, which on a 680px
+  // column is up to 150px of document height disappearing on a single
+  // mouse-out. The document gets shorter, the browser clamps scrollTop, and
+  // the whole page slides under a stationary cursor onto a different segment,
+  // which renders a different-height box, which moves it again. Growing is
+  // harmless; shrinking is the entire bug, and growMinHeight() exists to stop
+  // exactly this -- it was just never wired to the rung-2 hover path, which
+  // bypasses renderAll().
+  function clearInstDetail() {
+    els.callouts.innerHTML = "";
+    els.svg.innerHTML = "";
+    growMinHeight();
   }
   function renderInstDetail(lines, url, urlLabel) {
     els.callouts.innerHTML = "";
@@ -760,6 +794,10 @@
       box.appendChild(a);
     }
     els.callouts.appendChild(box);
+    // Before the caller's drawSingleLine(): the box sits at the top of
+    // #callouts, so raising the container's floor cannot move it, and the
+    // leader line still measures against a settled layout.
+    growMinHeight();
   }
 
   // ---- leader line (rung 3 only now) --------------------------------------

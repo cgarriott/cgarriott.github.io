@@ -11,6 +11,15 @@
 
 #gfa-app * { box-sizing: border-box; }
 
+/* Reserve the scrollbar's width whether or not one is showing. A fully
+   drilled-down chart lands within a few pixels of the viewport height, so the
+   scrollbar was appearing and disappearing as the callout box at the bottom
+   changed size -- and each toggle moves the content edge ~15px, which
+   re-lays-out every segment in every bar horizontally. That put a different
+   segment under a stationary cursor, which rendered a different callout, which
+   did it again. scope_for_hugo.py strips this rule: the surrounding site owns
+   `html` there, and a scoped `#gfa-app html` would be silently dead. */
+
 #gfa-app {
   border-radius: 16px;
   background: var(--bg);
@@ -168,8 +177,15 @@
    dropped the first bar 23px because one blurb ran to three lines -- and at
    narrow widths any of them can gain a line. Reserving the space costs one
    blank line on a short blurb and keeps the bars still.
-   1.55 line-height x 2 lines = 3.1em. */
-#gfa-app #blurb-0 p, #gfa-app #blurb-1 p { min-height: 3.1em; }
+   1.55 line-height x 2 lines = 3.1em.
+   #blurb-2 was left out of this rule until 2026-09-21, so hovering rung 1 to
+   preview a sub-group still moved bar 2 and everything under it.
+   Note this is a FLOOR, not a cap -- on its own it only removes the
+   one-line/two-line case. Staying at two lines means keeping the copy itself
+   inside two lines at the narrowest host column (680px on the Hugo site, where
+   PaperMod's --main-width binds long before .wrap's 960px cap); see the
+   character budget recorded in presentation.py. */
+#gfa-app #blurb-0 p, #gfa-app #blurb-1 p, #gfa-app #blurb-2 p { min-height: 3.1em; }
 
 #gfa-app .bar-wrap {
   position: relative;
