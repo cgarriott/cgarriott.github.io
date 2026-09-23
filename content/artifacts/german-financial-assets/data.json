@@ -1,9 +1,9 @@
 {
-  "generated_at": "2026-09-21",
+  "generated_at": "2026-09-22",
   "top": [
     {
       "id": "bank-owned-am",
-      "basis": "sector",
+      "basis": "group",
       "label": "Bank-owned",
       "seg_label": "Bank-owned",
       "metric": "aum",
@@ -232,7 +232,7 @@
               "size_eur_m": 53000.0,
               "metric": "aum",
               "fiscal_year": 2024,
-              "parent": "Metzler Holding",
+              "parent": "Metzler Bank",
               "url": "https://www.northdata.de/METZLER%20ASSET%20MANAGEMENT%20GmbH",
               "url_label": "Companyregister ↗",
               "detail_lines": [
@@ -240,7 +240,7 @@
                 "Asset manager.",
                 "Equity €26m. Net income €0m.",
                 "164 employees.",
-                "Parent: Metzler Holding."
+                "Parent: Metzler Bank."
               ]
             }
           ]
@@ -278,11 +278,11 @@
     },
     {
       "id": "insurer-owned-am",
-      "basis": "sector",
+      "basis": "group",
       "label": "Insurer-owned",
       "seg_label": "Insurer-owned",
       "metric": "aum",
-      "size_eur_m": 3103106.0,
+      "size_eur_m": 3150320.36,
       "blurb": "A large share of what they run is the parent's own investment portfolio, which also appears on the balance-sheet view as that insurer's assets.",
       "sub": [
         {
@@ -411,6 +411,35 @@
           ]
         },
         {
+          "id": "am-signal-iduna-leben",
+          "label": "SIGNAL IDUNA (Leben)",
+          "metric": "aum",
+          "size_eur_m": 44100.0,
+          "observed_eur_m": 44100.0,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
+          "institutions": [
+            {
+              "short_name": "SIGNAL IDUNA Asset Management",
+              "seg_label": null,
+              "legal_name": "SIGNAL IDUNA Asset Management GmbH",
+              "size_eur_m": 44100.0,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "SIGNAL IDUNA",
+              "url": "https://si-am.de/signal-iduna-asset-management/geschaefts-und-offenlegungsbericht/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "SIGNAL IDUNA Asset Management GmbH — €44.1bn AUM (2025).",
+                "Asset manager.",
+                "Equity €9m. Net income €0m.",
+                "146 employees.",
+                "Parent: SIGNAL IDUNA."
+              ]
+            }
+          ]
+        },
+        {
           "id": "am-w-and-w",
           "label": "W&W",
           "metric": "aum",
@@ -438,12 +467,41 @@
               ]
             }
           ]
+        },
+        {
+          "id": "am-alh-alte-leipziger-leben",
+          "label": "Alte Leipziger",
+          "metric": "aum",
+          "size_eur_m": 3114.36,
+          "observed_eur_m": 3114.36,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
+          "institutions": [
+            {
+              "short_name": "ALH (Alte Leipziger Trust)",
+              "seg_label": null,
+              "legal_name": "Alte Leipziger Trust Investment-Gesellschaft mbH",
+              "size_eur_m": 3114.36,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "Alte Leipziger Holding",
+              "url": "https://www.alh.de/alh-gruppe/berichte",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Alte Leipziger Trust Investment-Gesellschaft mbH — €3.1bn AUM (2025).",
+                "Asset manager.",
+                "Equity €5m. Net income €2m.",
+                "20 employees.",
+                "Parent: Alte Leipziger Holding."
+              ]
+            }
+          ]
         }
       ]
     },
     {
       "id": "independent-am",
-      "basis": "sector",
+      "basis": "group",
       "label": "Independent",
       "seg_label": "Independent",
       "metric": "aum",
@@ -580,14 +638,15 @@
               "size_eur_m": 44801.0,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": null,
+              "parent": "BSK 1818 Holding",
               "url": "https://www.berliner-sparkasse.de/de/home/ihre-sparkasse/ihre-sparkasse-vor-ort/lightboxes/Berichte.html",
               "url_label": "Source ↗",
               "detail_lines": [
                 "BSK 1818 AG — €44.8bn assets (2025).",
                 "Bank · Sparkasse.",
                 "Equity €2.0bn. Net income €0m.",
-                "3,065 employees."
+                "3,065 employees.",
+                "Parent: BSK 1818 Holding."
               ]
             },
             {
@@ -717,14 +776,15 @@
               "size_eur_m": 16137.84,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": null,
+              "parent": "Sachsen-Finanzgruppe",
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
                 "Ostsächsische Sparkasse Dresden, Anstalt des öffentlichen Rechts — €16.1bn assets (2025).",
                 "Bank · Sparkasse.",
                 "Equity €0.6bn. Net income €31m.",
-                "1,451 employees."
+                "1,451 employees.",
+                "Parent: Sachsen-Finanzgruppe."
               ]
             },
             {
@@ -768,14 +828,15 @@
               "size_eur_m": 15145.66,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": null,
+              "parent": "Finanzholding Sparkasse Bremen",
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
                 "Die Sparkasse Bremen AG — €15.1bn assets (2025).",
                 "Bank · Sparkasse.",
                 "Equity €1.1bn. Net income €48m.",
-                "1,261 employees."
+                "1,261 employees.",
+                "Parent: Finanzholding Sparkasse Bremen."
               ]
             },
             {
@@ -2105,15 +2166,14 @@
               "size_eur_m": 3585.2,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "HASPA Finanzholding",
+              "parent": null,
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
                 "Sparkasse Mittelholstein AG, Rendsburg — €3.6bn assets (2025).",
                 "Bank · Sparkasse.",
                 "Equity €0.2bn. Net income €4m.",
-                "330 employees.",
-                "Parent: HASPA Finanzholding."
+                "330 employees."
               ]
             },
             {
@@ -2123,7 +2183,7 @@
               "size_eur_m": 3304.13,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "HASPA Finanzholding",
+              "parent": "Sparkassenstiftung Lübeck",
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
@@ -2131,7 +2191,7 @@
                 "Bank · Sparkasse.",
                 "Equity €0.2bn. Net income €8m.",
                 "412 employees.",
-                "Parent: HASPA Finanzholding."
+                "Parent: Sparkassenstiftung Lübeck."
               ]
             }
           ]
@@ -4110,14 +4170,15 @@
               "size_eur_m": 1290.43,
               "metric": "assets",
               "fiscal_year": 2024,
-              "parent": null,
+              "parent": "WFB Bremen",
               "url": "https://www.northdata.de/Bremer%20Aufbau-Bank%20GmbH",
               "url_label": "Companyregister ↗",
               "detail_lines": [
                 "Bremer Aufbau-Bank GmbH — €1.3bn assets (2024).",
                 "Bank · Promotional or central bank.",
                 "Equity €0.1bn. Net income €0m.",
-                "138 employees."
+                "138 employees.",
+                "Parent: WFB Bremen."
               ]
             }
           ]
@@ -4190,8 +4251,8 @@
           "label": "Regionalbanken",
           "metric": "assets",
           "size_eur_m": 1786347,
-          "observed_eur_m": 1539219.33,
-          "unobserved_eur_m": 247127.67,
+          "observed_eur_m": 1557421.17,
+          "unobserved_eur_m": 228925.83,
           "blurb": "Everyone else with a German banking license: foreign banks' subsidiaries, auto-finance banks, direct banks, and smaller private banks. 119 file annual accounts.",
           "institutions": [
             {
@@ -4309,7 +4370,7 @@
               "size_eur_m": 61502.3,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "UBS Group",
+              "parent": "UBS AG",
               "url": "https://www.lobbyregister.bundestag.de/media/2d/8c/837025/ubs-ese-financial-statements-2025-homepage.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
@@ -4317,7 +4378,7 @@
                 "Bank · Regional bank.",
                 "Equity €3.3bn. Net income €0.1bn.",
                 "2,649 employees.",
-                "Parent: UBS Group."
+                "Parent: UBS AG."
               ]
             },
             {
@@ -4501,6 +4562,24 @@
               ]
             },
             {
+              "short_name": "Hyundai Capital Bank Europe",
+              "seg_label": null,
+              "legal_name": "Hyundai Capital Bank Europe GmbH",
+              "size_eur_m": 8641.71,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Santander Germany",
+              "url": "https://www.hyundaicapitalbank.eu/ueber-uns/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Hyundai Capital Bank Europe GmbH — €8.6bn assets (2025).",
+                "Bank · Regional bank.",
+                "Equity €1.1bn. Net income €15m.",
+                "162 employees.",
+                "Parent: Santander Germany."
+              ]
+            },
+            {
               "short_name": "norisbank",
               "seg_label": null,
               "legal_name": "norisbank GmbH",
@@ -4516,6 +4595,41 @@
                 "Equity €0.4bn. Net income €0m.",
                 "58 employees.",
                 "Parent: DB Capital Markets (Deutschland)."
+              ]
+            },
+            {
+              "short_name": "Donner & Reuschel",
+              "seg_label": null,
+              "legal_name": "DONNER & REUSCHEL Aktiengesellschaft",
+              "size_eur_m": 5486.27,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "SIGNAL IDUNA (Leben)",
+              "url": "https://www.donner-reuschel.de/downloads/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "DONNER & REUSCHEL Aktiengesellschaft — €5.5bn assets (2025).",
+                "Bank · Regional bank.",
+                "Equity €0.3bn. Net income €8m.",
+                "626 employees.",
+                "Parent: SIGNAL IDUNA (Leben)."
+              ]
+            },
+            {
+              "short_name": "AKA Bank",
+              "seg_label": null,
+              "legal_name": "AKA Ausfuhrkredit-Gesellschaft mbH",
+              "size_eur_m": 4073.86,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.akabank.de/downloads",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "AKA Ausfuhrkredit-Gesellschaft mbH — €4.1bn assets (2025).",
+                "Bank · Regional bank.",
+                "Equity €0.3bn. Net income €16m.",
+                "180 employees."
               ]
             },
             {
@@ -4578,8 +4692,8 @@
           "label": "Realkreditinstitute",
           "metric": "assets",
           "size_eur_m": 175457,
-          "observed_eur_m": 131878.17,
-          "unobserved_eur_m": 43578.83,
+          "observed_eur_m": 132221.86,
+          "unobserved_eur_m": 43235.14,
           "blurb": "Mortgage banks. They fund long-term property loans, often through covered bonds (Pfandbriefe). A small, specialized group of 6.",
           "institutions": [
             {
@@ -4615,6 +4729,24 @@
                 "Bank · Mortgage bank.",
                 "Equity €1.8bn. Net income €0.1bn.",
                 "664 employees."
+              ]
+            },
+            {
+              "short_name": "RKI Stade",
+              "seg_label": null,
+              "legal_name": "Ritterschaftliches Kreditinstitut Stade Aktiengesellschaft",
+              "size_eur_m": 343.69,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Hannoversche Volksbank",
+              "url": "https://www.rki-stade.de/publikationen/geschaeftsberichte",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Ritterschaftliches Kreditinstitut Stade Aktiengesellschaft — €0.3bn assets (2025).",
+                "Bank · Mortgage bank.",
+                "Equity €20m. Net income €0m.",
+                "12 employees.",
+                "Parent: Hannoversche Volksbank."
               ]
             }
           ]
@@ -4869,16 +5001,16 @@
       "basis": "sector",
       "label": "Insurers",
       "metric": "assets",
-      "size_eur_m": 2629193,
-      "blurb": "They collect premiums and pay claims. Sized by total assets (Summe Aktiva), which the Bundesbank also uses for the sector aggregate.",
+      "size_eur_m": 2323251,
+      "blurb": "They collect premiums and pay claims. Sized by total assets at book value, the same measure BaFin's annual statistics use for the sector total.",
       "sub": [
         {
           "id": "reinsurers",
           "label": "Reinsurers",
           "metric": "assets",
-          "size_eur_m": 560354,
+          "size_eur_m": 407545,
           "observed_eur_m": 350473.64,
-          "unobserved_eur_m": 209880.36,
+          "unobserved_eur_m": 57071.36,
           "blurb": "Insurers of insurers. Munich Re and Hannover Re write policies for other insurance companies, not individuals or businesses. Germany is home to two of the world's largest.",
           "institutions": [
             {
@@ -5026,8 +5158,8 @@
           "id": "primary-insurers",
           "label": "Primary insurers",
           "metric": "assets",
-          "size_eur_m": 1626998.96,
-          "observed_eur_m": 1626998.96,
+          "size_eur_m": 1637136.17,
+          "observed_eur_m": 1637136.17,
           "unobserved_eur_m": 0.0,
           "blurb": "Life, health, and property/casualty insurers that sell directly to individuals and businesses. The bulk of the German insurance industry by company count.",
           "institutions": [
@@ -5299,14 +5431,14 @@
               "size_eur_m": 29567.7,
               "metric": "assets",
               "fiscal_year": 2024,
-              "parent": "Zurich Deutschland",
+              "parent": "Deutscher Herold",
               "url": "https://www.zurich.de/-/media/project/zwp/germany/br/documents/dokumente-formulare/geschaeftsbericht-zdhl_2023_05.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
                 "Zurich Deutscher Herold Lebensversicherung AG — €29.6bn assets (2024).",
                 "Insurer.",
                 "Equity €0.1bn. Net income €0m.",
-                "Parent: Zurich Deutschland."
+                "Parent: Deutscher Herold."
               ]
             },
             {
@@ -5955,6 +6087,24 @@
               ]
             },
             {
+              "short_name": "AXA (Deutsche Ärzteversicherung)",
+              "seg_label": null,
+              "legal_name": "Deutsche Ärzteversicherung AG",
+              "size_eur_m": 6350.23,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "AXA Deutschland",
+              "url": "https://www.axa.de/wir-ueber-uns/daten-und-publikationen",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Deutsche Ärzteversicherung AG — €6.4bn assets (2025).",
+                "Insurer.",
+                "Equity €0.1bn. Net income €0m.",
+                "149 employees.",
+                "Parent: AXA Deutschland."
+              ]
+            },
+            {
               "short_name": "DEVK Leben Verein",
               "seg_label": null,
               "legal_name": "DEVK Deutsche Eisenbahn Versicherung Lebensversicherungsverein a.G. Betriebliche Sozialeinrichtung der Deutschen Bahn",
@@ -6510,6 +6660,22 @@
               ]
             },
             {
+              "short_name": "BarmeniaGothaer (Gothaer Versicherungsbank)",
+              "seg_label": null,
+              "legal_name": "Gothaer Versicherungsbank VVaG",
+              "size_eur_m": 1268.56,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.barmeniagothaer.de/geschaeftsberichte/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Gothaer Versicherungsbank VVaG — €1.3bn assets (2025).",
+                "Insurer.",
+                "Equity €1.2bn. Net income €18m."
+              ]
+            },
+            {
               "short_name": "VRK (Kranken)",
               "seg_label": null,
               "legal_name": "Versicherer im Raum der Kirchen Krankenversicherung AG",
@@ -6597,6 +6763,24 @@
               ]
             },
             {
+              "short_name": "Provinzial (ÖRAG)",
+              "seg_label": null,
+              "legal_name": "ÖRAG Rechtsschutzversicherungs-Aktiengesellschaft",
+              "size_eur_m": 1028.15,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Next",
+              "url": "https://www.oerag.de/ueber-uns/geschaeftsberichte.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "ÖRAG Rechtsschutzversicherungs-Aktiengesellschaft — €1.0bn assets (2025).",
+                "Insurer.",
+                "Equity €98m. Net income €8m.",
+                "471 employees.",
+                "Parent: Provinzial Next."
+              ]
+            },
+            {
               "short_name": "Generali (Dialog Leben)",
               "seg_label": null,
               "legal_name": "Dialog Lebensversicherungs-AG",
@@ -6663,6 +6847,23 @@
                 "Insurer.",
                 "Equity €0.3bn. Net income €5m.",
                 "Parent: NordLB."
+              ]
+            },
+            {
+              "short_name": "Deutsche Leben",
+              "seg_label": null,
+              "legal_name": "Deutsche Lebensversicherungs-Aktiengesellschaft",
+              "size_eur_m": 963.86,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Allianz Deutschland",
+              "url": "https://dlvag.allianz.de/unternehmen.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Deutsche Lebensversicherungs-Aktiengesellschaft — €1.0bn assets (2025).",
+                "Insurer.",
+                "Equity €57m. Net income €2m.",
+                "Parent: Allianz Deutschland."
               ]
             },
             {
@@ -6882,14 +7083,14 @@
               "size_eur_m": 311.2,
               "metric": "assets",
               "fiscal_year": 2024,
-              "parent": "Zurich Deutschland",
+              "parent": "ZBAG",
               "url": "https://www.da-direkt.de/zurichinsur200c-zwpdadd1dc-prodf075-c74a/media/project/zurich-headless/dadirekt/website/dateien-pdf/unternehmen/da_direkt_geschaeftsbericht_2024.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
                 "DA Deutsche Allgemeine Versicherung AG — €0.3bn assets (2024).",
                 "Insurer.",
                 "Equity €47m. Net income €0m.",
-                "Parent: Zurich Deutschland."
+                "Parent: ZBAG."
               ]
             },
             {
@@ -6969,7 +7170,7 @@
               "size_eur_m": 239.82,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "Provinzial (Holding)",
+              "parent": "Provinzial (Versicherung)",
               "url": "https://www.provinzial-konzern.de/dam/jcr:15f44875-2f26-423c-8d91-7cdd02dc3138/GB%20LLB%202025%20finale%20Fassung_s.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
@@ -6977,7 +7178,25 @@
                 "Insurer.",
                 "Equity €52m. Net income €0m.",
                 "214 employees.",
-                "Parent: Provinzial (Holding)."
+                "Parent: Provinzial (Versicherung)."
+              ]
+            },
+            {
+              "short_name": "Provinzial (Sparkassen DirektVersicherung)",
+              "seg_label": null,
+              "legal_name": "Sparkassen DirektVersicherung AG",
+              "size_eur_m": 231.6,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Next",
+              "url": "https://www.provinzial-konzern.de/newsroom/downloadcenter.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Sparkassen DirektVersicherung AG — €0.2bn assets (2025).",
+                "Insurer.",
+                "Equity €15m. Net income €0m.",
+                "158 employees.",
+                "Parent: Provinzial Next."
               ]
             },
             {
@@ -6987,7 +7206,7 @@
               "size_eur_m": 222.75,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "Stuttgarter Leben",
+              "parent": "Stuttgarter Versicherung Holding",
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
@@ -6995,7 +7214,7 @@
                 "Insurer.",
                 "Equity €32m. Net income €1m.",
                 "79 employees.",
-                "Parent: Stuttgarter Leben."
+                "Parent: Stuttgarter Versicherung Holding."
               ]
             },
             {
@@ -7022,7 +7241,7 @@
               "size_eur_m": 210.76,
               "metric": "assets",
               "fiscal_year": 2024,
-              "parent": "BarmeniaGothaer",
+              "parent": "BarmeniaGothaer (Gothaer Allgemeine)",
               "url": "https://www.janitos.de/media/downloads/geschaeftsberichte/geschaeftsbericht_janitos_versicherung_ag_2024.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
@@ -7030,7 +7249,7 @@
                 "Insurer.",
                 "Equity €23m. Net income €0m.",
                 "185 employees.",
-                "Parent: BarmeniaGothaer."
+                "Parent: BarmeniaGothaer (Gothaer Allgemeine)."
               ]
             },
             {
@@ -7124,7 +7343,7 @@
               "size_eur_m": 152.63,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "Provinzial (Holding)",
+              "parent": "Provinzial (Versicherung)",
               "url": "https://www.provinzial-konzern.de/dam/jcr:73ac61e7-83fc-4e08-bafe-483398730a11/GB%20HFK%202025%20finale%20Fassung_s.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
@@ -7132,7 +7351,25 @@
                 "Insurer.",
                 "Equity €70m. Net income €4m.",
                 "188 employees.",
-                "Parent: Provinzial (Holding)."
+                "Parent: Provinzial (Versicherung)."
+              ]
+            },
+            {
+              "short_name": "Provinzial (ProTect)",
+              "seg_label": null,
+              "legal_name": "ProTect Versicherung Aktiengesellschaft",
+              "size_eur_m": 150.54,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Next",
+              "url": "https://www.provinzial-konzern.de/newsroom/downloadcenter.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "ProTect Versicherung Aktiengesellschaft — €0.2bn assets (2025).",
+                "Insurer.",
+                "Equity €20m. Net income €0m.",
+                "1 employees.",
+                "Parent: Provinzial Next."
               ]
             },
             {
@@ -7229,14 +7466,14 @@
               "size_eur_m": 65.77,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "HDI Deutschland Bancassurance GmbH",
+              "parent": "HDI Deutschland AG",
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
                 "Lifestyle Protection Lebensversicherung AG — €66m assets (2025).",
                 "Insurer.",
                 "Equity €10m. Net income €0m.",
-                "Parent: HDI Deutschland Bancassurance GmbH."
+                "Parent: HDI Deutschland AG."
               ]
             },
             {
@@ -7257,6 +7494,23 @@
               ]
             },
             {
+              "short_name": "ROLAND Schutzbrief",
+              "seg_label": null,
+              "legal_name": "ROLAND Schutzbrief-Versicherung AG",
+              "size_eur_m": 48.66,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "ROLAND Rechtsschutz",
+              "url": "https://www.roland-rechtsschutz.de/unternehmen/presse/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "ROLAND Schutzbrief-Versicherung AG — €49m assets (2025).",
+                "Insurer.",
+                "Equity €30m. Net income €6m.",
+                "Parent: ROLAND Rechtsschutz."
+              ]
+            },
+            {
               "short_name": "nexible",
               "seg_label": null,
               "legal_name": "nexible Versicherung AG",
@@ -7272,6 +7526,58 @@
                 "Equity €9m. Net income €0m.",
                 "Parent: ERGO."
               ]
+            },
+            {
+              "short_name": "Provinzial (Deutsche Assistance)",
+              "seg_label": null,
+              "legal_name": "Deutsche Assistance Versicherung AG",
+              "size_eur_m": 39.49,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial (ÖRAG)",
+              "url": "https://www.deutsche-assistance.de/berichte.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Deutsche Assistance Versicherung AG — €39m assets (2025).",
+                "Insurer.",
+                "Equity €26m. Net income €0m.",
+                "Parent: Provinzial (ÖRAG)."
+              ]
+            },
+            {
+              "short_name": "AXA (easy)",
+              "seg_label": null,
+              "legal_name": "AXA easy Versicherung AG",
+              "size_eur_m": 31.06,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "AXA Deutschland",
+              "url": "https://www.axa.de/wir-ueber-uns/daten-und-publikationen",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "AXA easy Versicherung AG — €31m assets (2025).",
+                "Insurer.",
+                "Equity €6m. Net income €0m.",
+                "Parent: AXA Deutschland."
+              ]
+            },
+            {
+              "short_name": "Provinzial (andsafe)",
+              "seg_label": null,
+              "legal_name": "andsafe Aktiengesellschaft",
+              "size_eur_m": 25.06,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Next",
+              "url": "https://www.provinzial-konzern.de/newsroom/downloadcenter.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "andsafe Aktiengesellschaft — €25m assets (2025).",
+                "Insurer.",
+                "Equity €14m. Net income €0m.",
+                "85 employees.",
+                "Parent: Provinzial Next."
+              ]
             }
           ]
         },
@@ -7279,9 +7585,9 @@
           "id": "other-not-sampled",
           "label": "Other companies (not sampled)",
           "metric": "assets",
-          "size_eur_m": 441840.04,
+          "size_eur_m": 278569.83,
           "observed_eur_m": 0,
-          "unobserved_eur_m": 441840.04,
+          "unobserved_eur_m": 278569.83,
           "blurb": "The rest of this category.",
           "institutions": []
         }
@@ -7299,9 +7605,9 @@
           "id": "versorgungswerke",
           "label": "Versorgungswerke",
           "metric": "assets",
-          "size_eur_m": 286172,
+          "size_eur_m": 297766,
           "observed_eur_m": 131430.35,
-          "unobserved_eur_m": 154741.65,
+          "unobserved_eur_m": 166335.65,
           "blurb": "Mandatory pension funds for one profession — doctors, lawyers, architects, and similar. Membership replaces state pension insurance for that profession. 91 exist nationally.",
           "institutions": [
             {
@@ -7478,9 +7784,9 @@
           "id": "pensionskassen",
           "label": "Pensionskassen",
           "metric": "assets",
-          "size_eur_m": 209268,
-          "observed_eur_m": 92066.18,
-          "unobserved_eur_m": 117201.82,
+          "size_eur_m": 215747,
+          "observed_eur_m": 92606.85,
+          "unobserved_eur_m": 123140.15,
           "blurb": "Employer-sponsored pension funds, regulated by BaFin. An employer or industry group sets one up to pay staff pensions. 124 exist nationally.",
           "institutions": [
             {
@@ -7737,6 +8043,22 @@
               ]
             },
             {
+              "short_name": "BHW Pensionskasse",
+              "seg_label": null,
+              "legal_name": "Pensionskasse der BHW Bausparkasse VVaG",
+              "size_eur_m": 321.97,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": "https://www.pensionskasse-bhw.de/infomaterial/geschaeftsberichte.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Pensionskasse der BHW Bausparkasse VVaG — €0.3bn assets (2024).",
+                "Pension institution · Pensionskasse.",
+                "Equity €30m. Net income €0m."
+              ]
+            },
+            {
               "short_name": "BVK (Schornsteinfeger)",
               "seg_label": null,
               "legal_name": "Pensionskasse des Schornsteinfegerhandwerks",
@@ -7767,6 +8089,22 @@
                 "Versorgungskasse der Volksfürsorge VVaG — €0.2bn assets (2025).",
                 "Pension institution · Pensionskasse.",
                 "Equity €5m. Net income €-0m."
+              ]
+            },
+            {
+              "short_name": "VHV (Pensionskasse)",
+              "seg_label": null,
+              "legal_name": "Pensionskasse der VHV-Versicherungen",
+              "size_eur_m": 218.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.vhv-gruppe.de/meta/pensionskasse",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Pensionskasse der VHV-Versicherungen — €0.2bn assets (2025).",
+                "Pension institution · Pensionskasse.",
+                "Equity €11m. Net income €0m."
               ]
             },
             {
@@ -8006,9 +8344,9 @@
           "id": "other-not-sampled",
           "label": "Other schemes (not sampled)",
           "metric": "assets",
-          "size_eur_m": 226034,
+          "size_eur_m": 207961,
           "observed_eur_m": 0,
-          "unobserved_eur_m": 226034,
+          "unobserved_eur_m": 207961,
           "blurb": "The rest of this category.",
           "institutions": []
         }
@@ -8019,7 +8357,7 @@
       "label": "Conglomerates",
       "basis": "group",
       "metric": "assets",
-      "size_eur_m": 2908619.39,
+      "size_eur_m": 2916641.51,
       "blurb": "Groups that run two or more of banking, insurance and pensions under one parent. Sized by the group's own consolidated accounts, so a subsidiary is counted once, inside its parent.",
       "sub": [
         {
@@ -8145,8 +8483,8 @@
           "id": "group-alh-alte-leipziger-leben",
           "label": "Alte Leipziger",
           "metric": "assets",
-          "size_eur_m": 38196.09,
-          "observed_eur_m": 38196.09,
+          "size_eur_m": 38210.27,
+          "observed_eur_m": 38210.27,
           "unobserved_eur_m": 0.0,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
@@ -8235,6 +8573,24 @@
                 "Pension institution · Pensionsfonds.",
                 "Equity €6m. Net income €0m.",
                 "Parent: ALH (Alte Leipziger Leben)."
+              ]
+            },
+            {
+              "short_name": "ALH (Alte Leipziger Trust)",
+              "seg_label": null,
+              "legal_name": "Alte Leipziger Trust Investment-Gesellschaft mbH",
+              "size_eur_m": 14.18,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Alte Leipziger Holding",
+              "url": "https://www.alh.de/alh-gruppe/berichte",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Alte Leipziger Trust Investment-Gesellschaft mbH — €14m assets (2025).",
+                "Asset manager.",
+                "Equity €5m. Net income €2m.",
+                "20 employees.",
+                "Parent: Alte Leipziger Holding."
               ]
             }
           ]
@@ -8379,7 +8735,7 @@
               "size_eur_m": 210.76,
               "metric": "assets",
               "fiscal_year": 2024,
-              "parent": "BarmeniaGothaer",
+              "parent": "BarmeniaGothaer (Gothaer Allgemeine)",
               "url": "https://www.janitos.de/media/downloads/geschaeftsberichte/geschaeftsbericht_janitos_versicherung_ag_2024.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
@@ -8387,7 +8743,7 @@
                 "Insurer.",
                 "Equity €23m. Net income €0m.",
                 "185 employees.",
-                "Parent: BarmeniaGothaer."
+                "Parent: BarmeniaGothaer (Gothaer Allgemeine)."
               ]
             }
           ],
@@ -8856,8 +9212,8 @@
           "label": "Allianz",
           "metric": "assets",
           "size_eur_m": 1024276.0,
-          "observed_eur_m": 541297.66,
-          "unobserved_eur_m": 482978.34,
+          "observed_eur_m": 542261.52,
+          "unobserved_eur_m": 482014.48,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
             {
@@ -9000,6 +9356,23 @@
                 "Equity €0.2bn. Net income €0m.",
                 "906 employees.",
                 "Parent: Allianz SE."
+              ]
+            },
+            {
+              "short_name": "Deutsche Leben",
+              "seg_label": null,
+              "legal_name": "Deutsche Lebensversicherungs-Aktiengesellschaft",
+              "size_eur_m": 963.86,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Allianz Deutschland",
+              "url": "https://dlvag.allianz.de/unternehmen.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Deutsche Lebensversicherungs-Aktiengesellschaft — €1.0bn assets (2025).",
+                "Insurer.",
+                "Equity €57m. Net income €2m.",
+                "Parent: Allianz Deutschland."
               ]
             },
             {
@@ -9378,14 +9751,14 @@
               "size_eur_m": 65.77,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "HDI Deutschland Bancassurance GmbH",
+              "parent": "HDI Deutschland AG",
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
                 "Lifestyle Protection Lebensversicherung AG — €66m assets (2025).",
                 "Insurer.",
                 "Equity €10m. Net income €0m.",
-                "Parent: HDI Deutschland Bancassurance GmbH."
+                "Parent: HDI Deutschland AG."
               ]
             },
             {
@@ -9695,9 +10068,9 @@
           "id": "group-signal-iduna-leben",
           "label": "SIGNAL IDUNA (Leben)",
           "metric": "assets",
-          "size_eur_m": 29514.11,
-          "observed_eur_m": 29514.11,
-          "unobserved_eur_m": 0.0,
+          "size_eur_m": 37522.05,
+          "observed_eur_m": 35059.02,
+          "unobserved_eur_m": 2463.03,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
             {
@@ -9714,6 +10087,24 @@
                 "SIGNAL IDUNA Lebensversicherung a. G. — €21.3bn assets (2025).",
                 "Insurer.",
                 "Equity €0.4bn. Net income €5m."
+              ]
+            },
+            {
+              "short_name": "Donner & Reuschel",
+              "seg_label": null,
+              "legal_name": "DONNER & REUSCHEL Aktiengesellschaft",
+              "size_eur_m": 5486.27,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "SIGNAL IDUNA (Leben)",
+              "url": "https://www.donner-reuschel.de/downloads/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "DONNER & REUSCHEL Aktiengesellschaft — €5.5bn assets (2025).",
+                "Bank · Regional bank.",
+                "Equity €0.3bn. Net income €8m.",
+                "626 employees.",
+                "Parent: SIGNAL IDUNA (Leben)."
               ]
             },
             {
@@ -9818,8 +10209,28 @@
                 "Equity €45m. Net income €4m.",
                 "Parent: SIGNAL IDUNA (Allgemeine)."
               ]
+            },
+            {
+              "short_name": "SIGNAL IDUNA Asset Management",
+              "seg_label": null,
+              "legal_name": "SIGNAL IDUNA Asset Management GmbH",
+              "size_eur_m": 58.64,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "SIGNAL IDUNA",
+              "url": "https://si-am.de/signal-iduna-asset-management/geschaefts-und-offenlegungsbericht/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "SIGNAL IDUNA Asset Management GmbH — €59m assets (2025).",
+                "Asset manager.",
+                "Equity €9m. Net income €0m.",
+                "146 employees.",
+                "Parent: SIGNAL IDUNA."
+              ]
             }
-          ]
+          ],
+          "unobserved_label": "Rest of group (mostly non-German)",
+          "unobserved_detail": "{amount} of SIGNAL IDUNA (Leben)'s consolidated balance sheet is not broken out above. Most of it is foreign subsidiaries, which are outside this dataset -- it covers German legal entities. The rest is the difference between consolidated and standalone accounting."
         },
         {
           "id": "group-devk-sach-huk",
@@ -10251,7 +10662,7 @@
       "label": "Monoline banks",
       "basis": "group",
       "metric": "assets",
-      "size_eur_m": 7459364.08,
+      "size_eur_m": 7514969.05,
       "blurb": "Groups whose regulated business is banking only. Owning an asset manager does not change that — the money it runs belongs to other people.",
       "sub": [
         {
@@ -10394,8 +10805,8 @@
           "id": "group-santander-germany",
           "label": "Santander Germany",
           "metric": "assets",
-          "size_eur_m": 49177.35,
-          "observed_eur_m": 49177.35,
+          "size_eur_m": 57819.06,
+          "observed_eur_m": 57819.06,
           "unobserved_eur_m": 0.0,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
@@ -10415,6 +10826,24 @@
                 "Equity €3.6bn. Net income €0m.",
                 "2,780 employees.",
                 "Parent: Santander Consumer Finance."
+              ]
+            },
+            {
+              "short_name": "Hyundai Capital Bank Europe",
+              "seg_label": null,
+              "legal_name": "Hyundai Capital Bank Europe GmbH",
+              "size_eur_m": 8641.71,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Santander Germany",
+              "url": "https://www.hyundaicapitalbank.eu/ueber-uns/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Hyundai Capital Bank Europe GmbH — €8.6bn assets (2025).",
+                "Bank · Regional bank.",
+                "Equity €1.1bn. Net income €15m.",
+                "162 employees.",
+                "Parent: Santander Germany."
               ]
             }
           ]
@@ -10483,8 +10912,8 @@
           "id": "group-kfw",
           "label": "KfW",
           "metric": "assets",
-          "size_eur_m": 613702.47,
-          "observed_eur_m": 613702.47,
+          "size_eur_m": 622594.51,
+          "observed_eur_m": 622594.51,
           "unobserved_eur_m": 0.0,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
@@ -10520,6 +10949,24 @@
                 "Equity €3.7bn. Net income €0m.",
                 "997 employees.",
                 "Parent: KfW Beteiligungsholding."
+              ]
+            },
+            {
+              "short_name": "DEG",
+              "seg_label": null,
+              "legal_name": "DEG – Deutsche Investitions- und Entwicklungsgesellschaft mbH",
+              "size_eur_m": 8892.04,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "KfW",
+              "url": "https://www.deginvest.de/Download-Center/Jahresberichte/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "DEG – Deutsche Investitions- und Entwicklungsgesellschaft mbH — €8.9bn assets (2025).",
+                "Bank · Promotional or central bank.",
+                "Equity €2.6bn. Net income €75m.",
+                "795 employees.",
+                "Parent: KfW."
               ]
             }
           ]
@@ -10780,6 +11227,35 @@
           ]
         },
         {
+          "id": "group-berliner-sparkasse",
+          "label": "Berliner Sparkasse",
+          "metric": "assets",
+          "size_eur_m": 44801.0,
+          "observed_eur_m": 44801.0,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
+          "institutions": [
+            {
+              "short_name": "Berliner Sparkasse",
+              "seg_label": null,
+              "legal_name": "BSK 1818 AG",
+              "size_eur_m": 44801.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "BSK 1818 Holding",
+              "url": "https://www.berliner-sparkasse.de/de/home/ihre-sparkasse/ihre-sparkasse-vor-ort/lightboxes/Berichte.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "BSK 1818 AG — €44.8bn assets (2025).",
+                "Bank · Sparkasse.",
+                "Equity €2.0bn. Net income €0m.",
+                "3,065 employees.",
+                "Parent: BSK 1818 Holding."
+              ]
+            }
+          ]
+        },
+        {
           "id": "group-hamburger-sparkasse",
           "label": "Hamburger Sparkasse",
           "metric": "assets",
@@ -10812,9 +11288,9 @@
           "id": "group-commerzbank",
           "label": "Commerzbank",
           "metric": "assets",
-          "size_eur_m": 590100.0,
+          "size_eur_m": 590092.0,
           "observed_eur_m": 544817.39,
-          "unobserved_eur_m": 45282.61,
+          "unobserved_eur_m": 45274.61,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
             {
@@ -10955,7 +11431,7 @@
               "size_eur_m": 61502.3,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "UBS Group",
+              "parent": "UBS AG",
               "url": "https://www.lobbyregister.bundestag.de/media/2d/8c/837025/ubs-ese-financial-statements-2025-homepage.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
@@ -10963,7 +11439,65 @@
                 "Bank · Regional bank.",
                 "Equity €3.3bn. Net income €0.1bn.",
                 "2,649 employees.",
-                "Parent: UBS Group."
+                "Parent: UBS AG."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "group-ostsaechsische-sparkasse-dresden",
+          "label": "Ostsächsische Sparkasse Dresden",
+          "metric": "assets",
+          "size_eur_m": 16137.84,
+          "observed_eur_m": 16137.84,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
+          "institutions": [
+            {
+              "short_name": "Ostsächsische Sparkasse Dresden",
+              "seg_label": null,
+              "legal_name": "Ostsächsische Sparkasse Dresden, Anstalt des öffentlichen Rechts",
+              "size_eur_m": 16137.84,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Sachsen-Finanzgruppe",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Ostsächsische Sparkasse Dresden, Anstalt des öffentlichen Rechts — €16.1bn assets (2025).",
+                "Bank · Sparkasse.",
+                "Equity €0.6bn. Net income €31m.",
+                "1,451 employees.",
+                "Parent: Sachsen-Finanzgruppe."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "group-sparkasse-bremen",
+          "label": "Sparkasse Bremen",
+          "metric": "assets",
+          "size_eur_m": 15145.66,
+          "observed_eur_m": 15145.66,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
+          "institutions": [
+            {
+              "short_name": "Sparkasse Bremen",
+              "seg_label": null,
+              "legal_name": "Die Sparkasse Bremen AG",
+              "size_eur_m": 15145.66,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Finanzholding Sparkasse Bremen",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Die Sparkasse Bremen AG — €15.1bn assets (2025).",
+                "Bank · Sparkasse.",
+                "Equity €1.1bn. Net income €48m.",
+                "1,261 employees.",
+                "Parent: Finanzholding Sparkasse Bremen."
               ]
             }
           ]
@@ -10972,9 +11506,9 @@
           "id": "group-volkswagen-bank",
           "label": "Volkswagen Bank",
           "metric": "assets",
-          "size_eur_m": 156541.0,
-          "observed_eur_m": 118679.0,
-          "unobserved_eur_m": 37862.0,
+          "size_eur_m": 183012.48,
+          "observed_eur_m": 183012.48,
+          "unobserved_eur_m": 0.0,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
             {
@@ -10994,10 +11528,26 @@
                 "3,028 employees.",
                 "Parent: Volkswagen Financial Services."
               ]
+            },
+            {
+              "short_name": "Volkswagen Leasing",
+              "seg_label": null,
+              "legal_name": "Volkswagen Leasing GmbH",
+              "size_eur_m": 64333.48,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Volkswagen Bank",
+              "url": "https://www.vwfs.com/de/investor-relations/volkswagen-leasing-gmbh.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Volkswagen Leasing GmbH — €64.3bn assets (2025).",
+                "Bank · Regional bank.",
+                "Equity €3.3bn. Net income €0m.",
+                "1,977 employees.",
+                "Parent: Volkswagen Bank."
+              ]
             }
-          ],
-          "unobserved_label": "Rest of group (mostly non-German)",
-          "unobserved_detail": "{amount} of Volkswagen Bank's consolidated balance sheet is not broken out above. Most of it is foreign subsidiaries, which are outside this dataset -- it covers German legal entities. The rest is the difference between consolidated and standalone accounting."
+          ]
         },
         {
           "id": "group-oldenburgische-landesbank",
@@ -11053,6 +11603,35 @@
                 "Equity €4.8bn. Net income €65m.",
                 "555 employees.",
                 "Parent: Citigroup Global Markets Ltd."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "group-bremer-aufbau-bank",
+          "label": "Bremer Aufbau-Bank",
+          "metric": "assets",
+          "size_eur_m": 1290.43,
+          "observed_eur_m": 1290.43,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
+          "institutions": [
+            {
+              "short_name": "Bremer Aufbau-Bank",
+              "seg_label": null,
+              "legal_name": "Bremer Aufbau-Bank GmbH",
+              "size_eur_m": 1290.43,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "WFB Bremen",
+              "url": "https://www.northdata.de/Bremer%20Aufbau-Bank%20GmbH",
+              "url_label": "Companyregister ↗",
+              "detail_lines": [
+                "Bremer Aufbau-Bank GmbH — €1.3bn assets (2024).",
+                "Bank · Promotional or central bank.",
+                "Equity €0.1bn. Net income €0m.",
+                "138 employees.",
+                "Parent: WFB Bremen."
               ]
             }
           ]
@@ -11205,6 +11784,52 @@
           "unobserved_detail": "{amount} of Toyota Kreditbank's consolidated balance sheet is not broken out above. Most of it is foreign subsidiaries, which are outside this dataset -- it covers German legal entities. The rest is the difference between consolidated and standalone accounting."
         },
         {
+          "id": "group-hannoversche-volksbank",
+          "label": "Hannoversche Volksbank",
+          "metric": "assets",
+          "size_eur_m": 9508.57,
+          "observed_eur_m": 9508.57,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
+          "institutions": [
+            {
+              "short_name": "Hannoversche Volksbank",
+              "seg_label": null,
+              "legal_name": "Hannoversche Volksbank eG",
+              "size_eur_m": 9164.88,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.northdata.de/Hannoversche%20Volksbank%20eG",
+              "url_label": "Companyregister ↗",
+              "detail_lines": [
+                "Hannoversche Volksbank eG — €9.2bn assets (2025).",
+                "Bank · Cooperative bank.",
+                "Equity €0.5bn. Net income €17m.",
+                "1,102 employees."
+              ]
+            },
+            {
+              "short_name": "RKI Stade",
+              "seg_label": null,
+              "legal_name": "Ritterschaftliches Kreditinstitut Stade Aktiengesellschaft",
+              "size_eur_m": 343.69,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Hannoversche Volksbank",
+              "url": "https://www.rki-stade.de/publikationen/geschaeftsberichte",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Ritterschaftliches Kreditinstitut Stade Aktiengesellschaft — €0.3bn assets (2025).",
+                "Bank · Mortgage bank.",
+                "Equity €20m. Net income €0m.",
+                "12 employees.",
+                "Parent: Hannoversche Volksbank."
+              ]
+            }
+          ]
+        },
+        {
           "id": "group-bkm-mainz",
           "label": "BKM Mainz",
           "metric": "assets",
@@ -11350,35 +11975,6 @@
           ]
         },
         {
-          "id": "group-sparkasse-mittelholstein",
-          "label": "Sparkasse Mittelholstein",
-          "metric": "assets",
-          "size_eur_m": 3585.2,
-          "observed_eur_m": 3585.2,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
-          "institutions": [
-            {
-              "short_name": "Sparkasse Mittelholstein",
-              "seg_label": null,
-              "legal_name": "Sparkasse Mittelholstein AG, Rendsburg",
-              "size_eur_m": 3585.2,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": "HASPA Finanzholding",
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Sparkasse Mittelholstein AG, Rendsburg — €3.6bn assets (2025).",
-                "Bank · Sparkasse.",
-                "Equity €0.2bn. Net income €4m.",
-                "330 employees.",
-                "Parent: HASPA Finanzholding."
-              ]
-            }
-          ]
-        },
-        {
           "id": "group-sparkasse-zu-luebeck",
           "label": "Sparkasse zu Lübeck",
           "metric": "assets",
@@ -11394,7 +11990,7 @@
               "size_eur_m": 3304.13,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "HASPA Finanzholding",
+              "parent": "Sparkassenstiftung Lübeck",
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
@@ -11402,7 +11998,7 @@
                 "Bank · Sparkasse.",
                 "Equity €0.2bn. Net income €8m.",
                 "412 employees.",
-                "Parent: HASPA Finanzholding."
+                "Parent: Sparkassenstiftung Lübeck."
               ]
             }
           ]
@@ -11411,8 +12007,8 @@
           "id": "monoline-banks-independent",
           "label": "Independent",
           "metric": "assets",
-          "size_eur_m": 2067241.07,
-          "observed_eur_m": 2067241.07,
+          "size_eur_m": 1995550.51,
+          "observed_eur_m": 1995550.51,
           "unobserved_eur_m": 0.0,
           "blurb": "Institutions that are nobody's subsidiary and own no one — a single legal entity that is its own group. Most savings and cooperative banks are here, sized on their own balance sheets.",
           "institutions": [
@@ -11502,23 +12098,6 @@
               ]
             },
             {
-              "short_name": "Berliner Sparkasse",
-              "seg_label": null,
-              "legal_name": "BSK 1818 AG",
-              "size_eur_m": 44801.0,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": null,
-              "url": "https://www.berliner-sparkasse.de/de/home/ihre-sparkasse/ihre-sparkasse-vor-ort/lightboxes/Berichte.html",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "BSK 1818 AG — €44.8bn assets (2025).",
-                "Bank · Sparkasse.",
-                "Equity €2.0bn. Net income €0m.",
-                "3,065 employees."
-              ]
-            },
-            {
               "short_name": "Kreissparkasse Köln",
               "seg_label": null,
               "legal_name": "Kreissparkasse Köln Mündelsichere Anstalt des öffentlichen Rechts",
@@ -11573,17 +12152,17 @@
               "short_name": "Stadtsparkasse München",
               "seg_label": null,
               "legal_name": "Stadtsparkasse München",
-              "size_eur_m": 24015.64,
+              "size_eur_m": 23978.32,
               "metric": "assets",
               "fiscal_year": 2025,
               "parent": null,
               "url": "https://www.sskm.de/content/dam/myif/sskm/work/dokumente/pdf/sskm/offenlegungsbericht-2024.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
-                "Stadtsparkasse München — €24.0bn assets (2025).",
+                "Stadtsparkasse München — €24.0bn group assets (2025).",
                 "Bank · Sparkasse.",
-                "Equity €1.5bn. Net income €49m.",
-                "2,065 employees."
+                "Equity €1.5bn. Net income €50m.",
+                "2,483 employees."
               ]
             },
             {
@@ -11624,17 +12203,17 @@
               "short_name": "Berliner Volksbank",
               "seg_label": null,
               "legal_name": "Berliner Volksbank eG",
-              "size_eur_m": 20080.68,
+              "size_eur_m": 20567.0,
               "metric": "assets",
               "fiscal_year": 2025,
               "parent": null,
               "url": "https://atruvia.scene7.com/is/content/atruvia/geschaeftsbericht-2025-berliner-volksbankpdf",
               "url_label": "Source ↗",
               "detail_lines": [
-                "Berliner Volksbank eG — €20.1bn assets (2025).",
+                "Berliner Volksbank eG — €20.6bn group assets (2025).",
                 "Bank · Cooperative bank.",
-                "Equity €2.0bn. Net income €40m.",
-                "1,983 employees."
+                "Equity €2.0bn. Net income €34m.",
+                "2,087 employees."
               ]
             },
             {
@@ -11658,17 +12237,34 @@
               "short_name": "Frankfurter Volksbank Rhein/Main",
               "seg_label": null,
               "legal_name": "Frankfurter Volksbank Rhein/Main eG",
-              "size_eur_m": 19331.86,
+              "size_eur_m": 19282.53,
               "metric": "assets",
               "fiscal_year": 2025,
               "parent": null,
               "url": "https://atruvia.scene7.com/is/content/atruvia/geschaeftsbericht-2025-mit-konzern-webpdf",
               "url_label": "Source ↗",
               "detail_lines": [
-                "Frankfurter Volksbank Rhein/Main eG — €19.3bn assets (2025).",
+                "Frankfurter Volksbank Rhein/Main eG — €19.3bn group assets (2025).",
                 "Bank · Cooperative bank.",
-                "Equity €1.0bn. Net income €17m.",
-                "1,854 employees."
+                "Equity €1.0bn. Net income €22m.",
+                "1,867 employees."
+              ]
+            },
+            {
+              "short_name": "Mittelbrandenburgische Sparkasse",
+              "seg_label": null,
+              "legal_name": "Mittelbrandenburgische Sparkasse in Potsdam",
+              "size_eur_m": 18904.37,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": "https://www.northdata.de/Mittelbrandenburgische%20Sparkasse%20in%20Potsdam",
+              "url_label": "Companyregister ↗",
+              "detail_lines": [
+                "Mittelbrandenburgische Sparkasse in Potsdam — €18.9bn group assets (2024).",
+                "Bank · Sparkasse.",
+                "Equity €0.7bn. Net income €16m.",
+                "1,516 employees."
               ]
             },
             {
@@ -11686,40 +12282,6 @@
                 "Bank · Sparkasse.",
                 "Equity €0.7bn. Net income €15m.",
                 "1,992 employees."
-              ]
-            },
-            {
-              "short_name": "Mittelbrandenburgische Sparkasse",
-              "seg_label": null,
-              "legal_name": "Mittelbrandenburgische Sparkasse in Potsdam",
-              "size_eur_m": 17184.46,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": null,
-              "url": "https://www.northdata.de/Mittelbrandenburgische%20Sparkasse%20in%20Potsdam",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "Mittelbrandenburgische Sparkasse in Potsdam — €17.2bn assets (2025).",
-                "Bank · Sparkasse.",
-                "Equity €0.7bn. Net income €16m.",
-                "1,303 employees."
-              ]
-            },
-            {
-              "short_name": "Ostsächsische Sparkasse Dresden",
-              "seg_label": null,
-              "legal_name": "Ostsächsische Sparkasse Dresden, Anstalt des öffentlichen Rechts",
-              "size_eur_m": 16137.84,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": null,
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Ostsächsische Sparkasse Dresden, Anstalt des öffentlichen Rechts — €16.1bn assets (2025).",
-                "Bank · Sparkasse.",
-                "Equity €0.6bn. Net income €31m.",
-                "1,451 employees."
               ]
             },
             {
@@ -11805,23 +12367,6 @@
                 "Bank · Sparkasse.",
                 "Equity €1.4bn. Net income €38m.",
                 "1,652 employees."
-              ]
-            },
-            {
-              "short_name": "Sparkasse Bremen",
-              "seg_label": null,
-              "legal_name": "Die Sparkasse Bremen AG",
-              "size_eur_m": 15145.66,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": null,
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Die Sparkasse Bremen AG — €15.1bn assets (2025).",
-                "Bank · Sparkasse.",
-                "Equity €1.1bn. Net income €48m.",
-                "1,261 employees."
               ]
             },
             {
@@ -12218,16 +12763,16 @@
               "short_name": "ISB Rheinland-Pfalz",
               "seg_label": null,
               "legal_name": "Investitions- und Strukturbank Rheinland-Pfalz",
-              "size_eur_m": 11348.87,
+              "size_eur_m": 11462.2,
               "metric": "assets",
               "fiscal_year": 2025,
               "parent": null,
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
-                "Investitions- und Strukturbank Rheinland-Pfalz — €11.3bn assets (2025).",
+                "Investitions- und Strukturbank Rheinland-Pfalz — €11.5bn group assets (2025).",
                 "Bank · Promotional or central bank.",
-                "Equity €0.3bn. Net income €0m.",
+                "Equity €0.3bn. Net income €2m.",
                 "430 employees."
               ]
             },
@@ -12466,23 +13011,6 @@
                 "Bank · Sparkasse.",
                 "Equity €0.4bn. Net income €10m.",
                 "1,140 employees."
-              ]
-            },
-            {
-              "short_name": "Hannoversche Volksbank",
-              "seg_label": null,
-              "legal_name": "Hannoversche Volksbank eG",
-              "size_eur_m": 9164.88,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": null,
-              "url": "https://www.northdata.de/Hannoversche%20Volksbank%20eG",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "Hannoversche Volksbank eG — €9.2bn assets (2025).",
-                "Bank · Cooperative bank.",
-                "Equity €0.5bn. Net income €17m.",
-                "1,102 employees."
               ]
             },
             {
@@ -13941,6 +14469,23 @@
               ]
             },
             {
+              "short_name": "Sparkasse Chemnitz",
+              "seg_label": null,
+              "legal_name": "Sparkasse Chemnitz",
+              "size_eur_m": 5169.38,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": "https://www.northdata.de/Sparkasse%20Chemnitz",
+              "url_label": "Companyregister ↗",
+              "detail_lines": [
+                "Sparkasse Chemnitz — €5.2bn group assets (2024).",
+                "Bank · Sparkasse.",
+                "Equity €0.2bn. Net income €1m.",
+                "862 employees."
+              ]
+            },
+            {
               "short_name": "Volksbank Westmünsterland",
               "seg_label": null,
               "legal_name": "Volksbank Westmünsterland eG",
@@ -14433,23 +14978,6 @@
               ]
             },
             {
-              "short_name": "Volksbank Freiburg",
-              "seg_label": null,
-              "legal_name": "Volksbank Freiburg eG",
-              "size_eur_m": 4110.8,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": null,
-              "url": "https://www.volksbank-freiburg.de/meine-bank/ueber-uns/zahlen-fakten.html",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Volksbank Freiburg eG — €4.1bn assets (2025).",
-                "Bank · Cooperative bank.",
-                "Equity €0.2bn. Net income €4m.",
-                "422 employees."
-              ]
-            },
-            {
               "short_name": "EDEKABANK",
               "seg_label": null,
               "legal_name": "EDEKABANK Aktiengesellschaft",
@@ -14464,6 +14992,23 @@
                 "Bank · Cooperative bank.",
                 "Equity €0.2bn. Net income €12m.",
                 "246 employees."
+              ]
+            },
+            {
+              "short_name": "AKA Bank",
+              "seg_label": null,
+              "legal_name": "AKA Ausfuhrkredit-Gesellschaft mbH",
+              "size_eur_m": 4073.86,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.akabank.de/downloads",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "AKA Ausfuhrkredit-Gesellschaft mbH — €4.1bn assets (2025).",
+                "Bank · Regional bank.",
+                "Equity €0.3bn. Net income €16m.",
+                "180 employees."
               ]
             },
             {
@@ -14498,6 +15043,23 @@
                 "Bank · Cooperative bank.",
                 "Equity €0.3bn. Net income €8m.",
                 "394 employees."
+              ]
+            },
+            {
+              "short_name": "Volksbank Freiburg",
+              "seg_label": null,
+              "legal_name": "Volksbank Freiburg eG",
+              "size_eur_m": 3898.7,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": "https://www.volksbank-freiburg.de/meine-bank/ueber-uns/zahlen-fakten.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Volksbank Freiburg eG — €3.9bn group assets (2024).",
+                "Bank · Cooperative bank.",
+                "Equity €0.2bn. Net income €3m.",
+                "404 employees."
               ]
             },
             {
@@ -14619,6 +15181,23 @@
               ]
             },
             {
+              "short_name": "Sparkasse Mittelholstein",
+              "seg_label": null,
+              "legal_name": "Sparkasse Mittelholstein AG, Rendsburg",
+              "size_eur_m": 3585.2,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Sparkasse Mittelholstein AG, Rendsburg — €3.6bn assets (2025).",
+                "Bank · Sparkasse.",
+                "Equity €0.2bn. Net income €4m.",
+                "330 employees."
+              ]
+            },
+            {
               "short_name": "Thüringer Aufbaubank",
               "seg_label": null,
               "legal_name": "Thüringer Aufbaubank -Anstalt des öffentlichen Rechts-",
@@ -14669,23 +15248,6 @@
               ]
             },
             {
-              "short_name": "Bremer Aufbau-Bank",
-              "seg_label": null,
-              "legal_name": "Bremer Aufbau-Bank GmbH",
-              "size_eur_m": 1290.43,
-              "metric": "assets",
-              "fiscal_year": 2024,
-              "parent": null,
-              "url": "https://www.northdata.de/Bremer%20Aufbau-Bank%20GmbH",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "Bremer Aufbau-Bank GmbH — €1.3bn assets (2024).",
-                "Bank · Promotional or central bank.",
-                "Equity €0.1bn. Net income €0m.",
-                "138 employees."
-              ]
-            },
-            {
               "short_name": "dwpbank",
               "seg_label": null,
               "legal_name": "Deutsche WertpapierService Bank AG",
@@ -14712,7 +15274,7 @@
       "label": "Monoline insurers",
       "basis": "group",
       "metric": "assets",
-      "size_eur_m": 425533.42,
+      "size_eur_m": 433231.93,
       "blurb": "Groups whose regulated business is insurance only, including the reinsurers.",
       "sub": [
         {
@@ -14731,14 +15293,14 @@
               "size_eur_m": 29567.7,
               "metric": "assets",
               "fiscal_year": 2024,
-              "parent": "Zurich Deutschland",
+              "parent": "Deutscher Herold",
               "url": "https://www.zurich.de/-/media/project/zwp/germany/br/documents/dokumente-formulare/geschaeftsbericht-zdhl_2023_05.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
                 "Zurich Deutscher Herold Lebensversicherung AG — €29.6bn assets (2024).",
                 "Insurer.",
                 "Equity €0.1bn. Net income €0m.",
-                "Parent: Zurich Deutschland."
+                "Parent: Deutscher Herold."
               ]
             },
             {
@@ -14766,14 +15328,14 @@
               "size_eur_m": 311.2,
               "metric": "assets",
               "fiscal_year": 2024,
-              "parent": "Zurich Deutschland",
+              "parent": "ZBAG",
               "url": "https://www.da-direkt.de/zurichinsur200c-zwpdadd1dc-prodf075-c74a/media/project/zurich-headless/dadirekt/website/dateien-pdf/unternehmen/da_direkt_geschaeftsbericht_2024.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
                 "DA Deutsche Allgemeine Versicherung AG — €0.3bn assets (2024).",
                 "Insurer.",
                 "Equity €47m. Net income €0m.",
-                "Parent: Zurich Deutschland."
+                "Parent: ZBAG."
               ]
             },
             {
@@ -14800,8 +15362,8 @@
           "id": "group-axa-deutschland",
           "label": "AXA Deutschland",
           "metric": "assets",
-          "size_eur_m": 81406.5,
-          "observed_eur_m": 81406.5,
+          "size_eur_m": 87836.45,
+          "observed_eur_m": 87836.45,
           "unobserved_eur_m": 0.0,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
@@ -14875,6 +15437,24 @@
               ]
             },
             {
+              "short_name": "AXA (Deutsche Ärzteversicherung)",
+              "seg_label": null,
+              "legal_name": "Deutsche Ärzteversicherung AG",
+              "size_eur_m": 6350.23,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "AXA Deutschland",
+              "url": "https://www.axa.de/wir-ueber-uns/daten-und-publikationen",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Deutsche Ärzteversicherung AG — €6.4bn assets (2025).",
+                "Insurer.",
+                "Equity €0.1bn. Net income €0m.",
+                "149 employees.",
+                "Parent: AXA Deutschland."
+              ]
+            },
+            {
               "short_name": "ROLAND Rechtsschutz",
               "seg_label": null,
               "legal_name": "ROLAND Rechtsschutz-Versicherungs-AG",
@@ -14889,6 +15469,40 @@
                 "Insurer.",
                 "Equity €0.1bn. Net income €46m.",
                 "799 employees.",
+                "Parent: AXA Deutschland."
+              ]
+            },
+            {
+              "short_name": "ROLAND Schutzbrief",
+              "seg_label": null,
+              "legal_name": "ROLAND Schutzbrief-Versicherung AG",
+              "size_eur_m": 48.66,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "ROLAND Rechtsschutz",
+              "url": "https://www.roland-rechtsschutz.de/unternehmen/presse/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "ROLAND Schutzbrief-Versicherung AG — €49m assets (2025).",
+                "Insurer.",
+                "Equity €30m. Net income €6m.",
+                "Parent: ROLAND Rechtsschutz."
+              ]
+            },
+            {
+              "short_name": "AXA (easy)",
+              "seg_label": null,
+              "legal_name": "AXA easy Versicherung AG",
+              "size_eur_m": 31.06,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "AXA Deutschland",
+              "url": "https://www.axa.de/wir-ueber-uns/daten-und-publikationen",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "AXA easy Versicherung AG — €31m assets (2025).",
+                "Insurer.",
+                "Equity €6m. Net income €0m.",
                 "Parent: AXA Deutschland."
               ]
             }
@@ -15122,8 +15736,8 @@
           "label": "Provinzial",
           "metric": "assets",
           "size_eur_m": 50170.43,
-          "observed_eur_m": 43883.91,
-          "unobserved_eur_m": 6286.52,
+          "observed_eur_m": 45319.26,
+          "unobserved_eur_m": 4851.17,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
             {
@@ -15181,13 +15795,31 @@
               ]
             },
             {
+              "short_name": "Provinzial (ÖRAG)",
+              "seg_label": null,
+              "legal_name": "ÖRAG Rechtsschutzversicherungs-Aktiengesellschaft",
+              "size_eur_m": 1028.15,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Next",
+              "url": "https://www.oerag.de/ueber-uns/geschaeftsberichte.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "ÖRAG Rechtsschutzversicherungs-Aktiengesellschaft — €1.0bn assets (2025).",
+                "Insurer.",
+                "Equity €98m. Net income €8m.",
+                "471 employees.",
+                "Parent: Provinzial Next."
+              ]
+            },
+            {
               "short_name": "Provinzial (Lippische Landesbrand)",
               "seg_label": null,
               "legal_name": "Lippische Landesbrandversicherung AG",
               "size_eur_m": 239.82,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "Provinzial (Holding)",
+              "parent": "Provinzial (Versicherung)",
               "url": "https://www.provinzial-konzern.de/dam/jcr:15f44875-2f26-423c-8d91-7cdd02dc3138/GB%20LLB%202025%20finale%20Fassung_s.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
@@ -15195,7 +15827,25 @@
                 "Insurer.",
                 "Equity €52m. Net income €0m.",
                 "214 employees.",
-                "Parent: Provinzial (Holding)."
+                "Parent: Provinzial (Versicherung)."
+              ]
+            },
+            {
+              "short_name": "Provinzial (Sparkassen DirektVersicherung)",
+              "seg_label": null,
+              "legal_name": "Sparkassen DirektVersicherung AG",
+              "size_eur_m": 231.6,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Next",
+              "url": "https://www.provinzial-konzern.de/newsroom/downloadcenter.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Sparkassen DirektVersicherung AG — €0.2bn assets (2025).",
+                "Insurer.",
+                "Equity €15m. Net income €0m.",
+                "158 employees.",
+                "Parent: Provinzial Next."
               ]
             },
             {
@@ -15205,7 +15855,7 @@
               "size_eur_m": 152.63,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "Provinzial (Holding)",
+              "parent": "Provinzial (Versicherung)",
               "url": "https://www.provinzial-konzern.de/dam/jcr:73ac61e7-83fc-4e08-bafe-483398730a11/GB%20HFK%202025%20finale%20Fassung_s.pdf",
               "url_label": "Source ↗",
               "detail_lines": [
@@ -15213,7 +15863,43 @@
                 "Insurer.",
                 "Equity €70m. Net income €4m.",
                 "188 employees.",
-                "Parent: Provinzial (Holding)."
+                "Parent: Provinzial (Versicherung)."
+              ]
+            },
+            {
+              "short_name": "Provinzial (ProTect)",
+              "seg_label": null,
+              "legal_name": "ProTect Versicherung Aktiengesellschaft",
+              "size_eur_m": 150.54,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Next",
+              "url": "https://www.provinzial-konzern.de/newsroom/downloadcenter.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "ProTect Versicherung Aktiengesellschaft — €0.2bn assets (2025).",
+                "Insurer.",
+                "Equity €20m. Net income €0m.",
+                "1 employees.",
+                "Parent: Provinzial Next."
+              ]
+            },
+            {
+              "short_name": "Provinzial (andsafe)",
+              "seg_label": null,
+              "legal_name": "andsafe Aktiengesellschaft",
+              "size_eur_m": 25.06,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Provinzial Next",
+              "url": "https://www.provinzial-konzern.de/newsroom/downloadcenter.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "andsafe Aktiengesellschaft — €25m assets (2025).",
+                "Insurer.",
+                "Equity €14m. Net income €0m.",
+                "85 employees.",
+                "Parent: Provinzial Next."
               ]
             }
           ],
@@ -15682,7 +16368,7 @@
               "size_eur_m": 222.75,
               "metric": "assets",
               "fiscal_year": 2025,
-              "parent": "Stuttgarter Leben",
+              "parent": "Stuttgarter Versicherung Holding",
               "url": null,
               "url_label": "Source ↗",
               "detail_lines": [
@@ -15690,7 +16376,7 @@
                 "Insurer.",
                 "Equity €32m. Net income €1m.",
                 "79 employees.",
-                "Parent: Stuttgarter Leben."
+                "Parent: Stuttgarter Versicherung Holding."
               ]
             }
           ]
@@ -15699,8 +16385,8 @@
           "id": "monoline-insurers-independent",
           "label": "Independent",
           "metric": "assets",
-          "size_eur_m": 54734.84,
-          "observed_eur_m": 54734.84,
+          "size_eur_m": 56003.4,
+          "observed_eur_m": 56003.4,
           "unobserved_eur_m": 0.0,
           "blurb": "Institutions that are nobody's subsidiary and own no one — a single legal entity that is its own group. Most savings and cooperative banks are here, sized on their own balance sheets.",
           "institutions": [
@@ -15789,6 +16475,22 @@
               ]
             },
             {
+              "short_name": "BarmeniaGothaer (Gothaer Versicherungsbank)",
+              "seg_label": null,
+              "legal_name": "Gothaer Versicherungsbank VVaG",
+              "size_eur_m": 1268.56,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.barmeniagothaer.de/geschaeftsberichte/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Gothaer Versicherungsbank VVaG — €1.3bn assets (2025).",
+                "Insurer.",
+                "Equity €1.2bn. Net income €18m."
+              ]
+            },
+            {
               "short_name": "SIGNAL IDUNA (Unfall)",
               "seg_label": null,
               "legal_name": "SIGNAL IDUNA Unfallversicherung a. G.",
@@ -15863,7 +16565,7 @@
       "label": "Monoline pensions",
       "basis": "group",
       "metric": "assets",
-      "size_eur_m": 185121.04,
+      "size_eur_m": 185661.71,
       "blurb": "Pension institutions — Versorgungswerke, Pensionskassen and Pensionsfonds. Almost none belongs to a wider group, so nearly all of this sits in Independent.",
       "sub": [
         {
@@ -16106,8 +16808,8 @@
           "id": "monoline-pensions-independent",
           "label": "Independent",
           "metric": "assets",
-          "size_eur_m": 77664.28,
-          "observed_eur_m": 77664.28,
+          "size_eur_m": 78204.95,
+          "observed_eur_m": 78204.95,
           "unobserved_eur_m": 0.0,
           "blurb": "Institutions that are nobody's subsidiary and own no one — a single legal entity that is its own group. Most savings and cooperative banks are here, sized on their own balance sheets.",
           "institutions": [
@@ -16227,6 +16929,22 @@
               ]
             },
             {
+              "short_name": "BHW Pensionskasse",
+              "seg_label": null,
+              "legal_name": "Pensionskasse der BHW Bausparkasse VVaG",
+              "size_eur_m": 321.97,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": "https://www.pensionskasse-bhw.de/infomaterial/geschaeftsberichte.html",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Pensionskasse der BHW Bausparkasse VVaG — €0.3bn assets (2024).",
+                "Pension institution · Pensionskasse.",
+                "Equity €30m. Net income €0m."
+              ]
+            },
+            {
               "short_name": "Versorgungskasse Volksfürsorge",
               "seg_label": null,
               "legal_name": "Versorgungskasse der Volksfürsorge VVaG",
@@ -16240,6 +16958,22 @@
                 "Versorgungskasse der Volksfürsorge VVaG — €0.2bn assets (2025).",
                 "Pension institution · Pensionskasse.",
                 "Equity €5m. Net income €-0m."
+              ]
+            },
+            {
+              "short_name": "VHV (Pensionskasse)",
+              "seg_label": null,
+              "legal_name": "Pensionskasse der VHV-Versicherungen",
+              "size_eur_m": 218.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.vhv-gruppe.de/meta/pensionskasse",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Pensionskasse der VHV-Versicherungen — €0.2bn assets (2025).",
+                "Pension institution · Pensionskasse.",
+                "Equity €11m. Net income €0m."
               ]
             },
             {
@@ -16262,506 +16996,6 @@
           "pin_last": true
         }
       ]
-    },
-    {
-      "id": "conglomerates-aum",
-      "label": "Conglomerates",
-      "basis": "group",
-      "metric": "aum",
-      "size_eur_m": 3668419.0,
-      "blurb": "Groups that run two or more of banking, insurance and pensions under one parent. Sized by the group's own consolidated accounts, so a subsidiary is counted once, inside its parent.",
-      "sub": [
-        {
-          "id": "group-w-and-w",
-          "label": "W&W",
-          "metric": "aum",
-          "size_eur_m": 35106.0,
-          "observed_eur_m": 35106.0,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "W&W (Asset Management)",
-              "seg_label": null,
-              "legal_name": "W&W Asset Management GmbH",
-              "size_eur_m": 35106.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "W&W",
-              "url": "https://www.ww-ag.com/media/dokumente/asset_management_1/offenlegungsbericht_am/Offenlegungsbericht_Asset_Management_GmbH_2025.pdf",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "W&W Asset Management GmbH — €35.1bn AUM (2025).",
-                "Asset manager.",
-                "Equity €11m. Net income €0m.",
-                "108 employees.",
-                "Parent: W&W."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "group-dz-bank",
-          "label": "DZ BANK",
-          "metric": "aum",
-          "size_eur_m": 565313.0,
-          "observed_eur_m": 534600.0,
-          "unobserved_eur_m": 30713.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "Union Investment",
-              "seg_label": "Union",
-              "legal_name": "Union Asset Management Holding AG",
-              "size_eur_m": 534600.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "DZ BANK",
-              "url": "https://unternehmen.union-investment.de/ueber-uns/geschaeftsbericht/berichte-vergangener-jahre",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Union Asset Management Holding AG — €534.6bn AUM (2025).",
-                "Asset manager.",
-                "Equity €2.6bn. Net income €0.7bn.",
-                "399 employees.",
-                "Parent: DZ BANK."
-              ]
-            }
-          ],
-          "unobserved_label": "DZ PRIVATBANK",
-          "unobserved_detail": "{amount} is private-banking money run by DZ PRIVATBANK, which sat in Strassen, Luxembourg through 2025 and becomes DZ PRIVATBANK AG in Frankfurt on 2 January 2026 -- so this will stop being foreign. It excludes a further EUR 181.3bn the bank holds as fund depositary, which is administration rather than management."
-        },
-        {
-          "id": "group-allianz-se",
-          "label": "Allianz",
-          "metric": "aum",
-          "size_eur_m": 2512000.0,
-          "observed_eur_m": 702096.0,
-          "unobserved_eur_m": 1809904.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "AllianzGI",
-              "seg_label": null,
-              "legal_name": "Allianz Global Investors GmbH",
-              "size_eur_m": 356000.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "Allianz Asset Management",
-              "url": "https://www.allianz.com/en/investor_relations/results-reports/annual-reports.html",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Allianz Global Investors GmbH — €356.0bn AUM (2025).",
-                "Asset manager.",
-                "Equity €0.4bn. Net income €0m.",
-                "1,508 employees.",
-                "Parent: Allianz Asset Management."
-              ]
-            },
-            {
-              "short_name": "PIMCO Europe",
-              "seg_label": null,
-              "legal_name": "PIMCO Europe GmbH",
-              "size_eur_m": 303996.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "Allianz Asset Management",
-              "url": "https://www.northdata.de/PIMCO%20Europe%20GmbH",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "PIMCO Europe GmbH — €304.0bn AUM (2025).",
-                "Asset manager.",
-                "Equity €68m. Net income €0m.",
-                "112 employees.",
-                "Parent: Allianz Asset Management."
-              ]
-            },
-            {
-              "short_name": "Allianz Capital Partners",
-              "seg_label": null,
-              "legal_name": "Allianz Capital Partners GmbH",
-              "size_eur_m": 42100.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "Allianz Asset Management",
-              "url": "https://www.northdata.de/Allianz%20Capital%20Partners%20GmbH",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "Allianz Capital Partners GmbH — €42.1bn AUM (2025).",
-                "Asset manager.",
-                "Equity €27m. Net income €0m.",
-                "167 employees.",
-                "Parent: Allianz Asset Management."
-              ]
-            }
-          ],
-          "unobserved_label": "PIMCO and AllianzGI outside Germany",
-          "unobserved_detail": "{amount} is run from outside Germany -- overwhelmingly PIMCO in Newport Beach, plus AllianzGI's own foreign arms. It is counted here because the whole of it is held through Allianz Asset Management GmbH in Munich, a German company. Of the group's EUR 2,512bn, EUR 1,990bn is third-party money and EUR 522bn is Allianz's own."
-        },
-        {
-          "id": "group-hdi",
-          "label": "HDI",
-          "metric": "aum",
-          "size_eur_m": 187500.0,
-          "observed_eur_m": 187500.0,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "Ampega",
-              "seg_label": null,
-              "legal_name": "Ampega Asset Management GmbH",
-              "size_eur_m": 187500.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "Talanx",
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Ampega Asset Management GmbH — €187.5bn AUM (2025).",
-                "Asset manager.",
-                "Parent: Talanx."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "group-munich-re",
-          "label": "Munich Re",
-          "metric": "aum",
-          "size_eur_m": 368500.0,
-          "observed_eur_m": 329100.0,
-          "unobserved_eur_m": 39400.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "MEAG",
-              "seg_label": null,
-              "legal_name": "MEAG MUNICH ERGO AssetManagement GmbH",
-              "size_eur_m": 329100.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "Munich Re",
-              "url": "https://www.munichre.com/en/company/investors/reports-and-presentations/results-reports.html",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "MEAG MUNICH ERGO AssetManagement GmbH — €329.1bn AUM (2025).",
-                "Asset manager.",
-                "Equity €0.1bn. Net income €75m.",
-                "659 employees.",
-                "Parent: Munich Re."
-              ]
-            }
-          ],
-          "unobserved_label": "MEAG outside Germany",
-          "unobserved_detail": "{amount} is run by MEAG Hong Kong and MEAG New York. Both are held directly by Munich Re AG rather than by MEAG in Munich, which is why they sit here rather than inside MEAG's own figure."
-        }
-      ]
-    },
-    {
-      "id": "monoline-banks-aum",
-      "label": "Monoline banks",
-      "basis": "group",
-      "metric": "aum",
-      "size_eur_m": 1485232.1,
-      "blurb": "Groups whose regulated business is banking only. Owning an asset manager does not change that — the money it runs belongs to other people.",
-      "sub": [
-        {
-          "id": "group-bayernlb",
-          "label": "BayernLB",
-          "metric": "aum",
-          "size_eur_m": 95093.0,
-          "observed_eur_m": 92127.0,
-          "unobserved_eur_m": 2966.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "BayernInvest",
-              "seg_label": null,
-              "legal_name": "BayernInvest Kapitalverwaltungsgesellschaft mbH",
-              "size_eur_m": 92127.0,
-              "metric": "aum",
-              "fiscal_year": 2024,
-              "parent": "BayernLB",
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "BayernInvest Kapitalverwaltungsgesellschaft mbH — €92.1bn AUM (2024).",
-                "Asset manager.",
-                "Equity €25m. Net income €0m.",
-                "206 employees.",
-                "Parent: BayernLB."
-              ]
-            }
-          ],
-          "unobserved_label": "Real I.S.",
-          "unobserved_detail": "{amount} is run by Real I.S., BayernLB's real-estate manager in Munich. It is not foreign money -- it is German money we hold no separate row for."
-        },
-        {
-          "id": "group-lbbw",
-          "label": "LBBW",
-          "metric": "aum",
-          "size_eur_m": 67309.1,
-          "observed_eur_m": 67309.1,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "LBBW Asset Management",
-              "seg_label": null,
-              "legal_name": "LBBW Asset Management Investmentgesellschaft mbH",
-              "size_eur_m": 67309.1,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "LBBW",
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "LBBW Asset Management Investmentgesellschaft mbH — €67.3bn AUM (2025).",
-                "Asset manager.",
-                "Equity €49m. Net income €17m.",
-                "302 employees.",
-                "Parent: LBBW."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "group-helaba",
-          "label": "Helaba",
-          "metric": "aum",
-          "size_eur_m": 183430.0,
-          "observed_eur_m": 183430.0,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "Helaba Invest",
-              "seg_label": null,
-              "legal_name": "Helaba Invest Kapitalanlagegesellschaft mbH",
-              "size_eur_m": 183430.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "Helaba",
-              "url": "https://www.northdata.de/Helaba%20Invest%20Kapitalanlagegesellschaft%20mbH",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "Helaba Invest Kapitalanlagegesellschaft mbH — €183.4bn AUM (2025).",
-                "Asset manager.",
-                "Equity €18m. Net income €0m.",
-                "420 employees.",
-                "Parent: Helaba."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "group-commerzbank",
-          "label": "Commerzbank",
-          "metric": "aum",
-          "size_eur_m": 54400.0,
-          "observed_eur_m": 54400.0,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "Commerz Real",
-              "seg_label": null,
-              "legal_name": "Commerz Real AG",
-              "size_eur_m": 54400.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "Commerzbank",
-              "url": "https://www.northdata.de/Commerz%20Real%20AG",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "Commerz Real AG — €54.4bn AUM (2025).",
-                "Asset manager.",
-                "Equity €0.8bn. Net income €0m.",
-                "533 employees.",
-                "Parent: Commerzbank."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "group-deutsche-bank",
-          "label": "Deutsche Bank",
-          "metric": "aum",
-          "size_eur_m": 1085000.0,
-          "observed_eur_m": 1085000.0,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "DWS",
-              "seg_label": null,
-              "legal_name": "DWS Group GmbH & Co. KGaA",
-              "size_eur_m": 1085000.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "Deutsche Bank",
-              "url": "https://www.northdata.de/DWS+Group+GmbH+%26+Co.+KGaA,+Frankfurt+am+Main/HRB+111128",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "DWS Group GmbH & Co. KGaA — €1,085.0bn AUM (2025).",
-                "Asset manager.",
-                "Equity €7.9bn. Net income €0.5bn.",
-                "Parent: Deutsche Bank."
-              ]
-            }
-          ]
-        }
-      ]
-    },
-    {
-      "id": "independent-managers",
-      "label": "Independent managers",
-      "basis": "group",
-      "metric": "aum",
-      "size_eur_m": 999571.0,
-      "blurb": "Asset managers that belong to no banking or insurance group — either independent firms or the sector's own shared houses. Sized by what they run for clients.",
-      "sub": [
-        {
-          "id": "independent-managers-all",
-          "label": "Independent",
-          "metric": "aum",
-          "size_eur_m": 999571.0,
-          "observed_eur_m": 999571.0,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Asset managers that belong to no banking or insurance group — either independent firms or the sector's own shared houses. Sized by what they run for clients.",
-          "institutions": [
-            {
-              "short_name": "Deka",
-              "seg_label": null,
-              "legal_name": "DekaBank Deutsche Girozentrale",
-              "size_eur_m": 431422.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "DSGV",
-              "url": "https://www.deka.de/site/dekade_deka-gruppe_site/get/params_E-1963519639/10215520/DekaBank_Jahresabschluss_2025_DE.pdf",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "DekaBank Deutsche Girozentrale — €431.4bn AUM (2025).",
-                "Asset manager.",
-                "Equity €1.0bn. Net income €0.4bn.",
-                "4,048 employees.",
-                "Parent: DSGV."
-              ]
-            },
-            {
-              "short_name": "Universal Investment",
-              "seg_label": null,
-              "legal_name": "Universal-Investment-Gesellschaft mbH",
-              "size_eur_m": 379700.0,
-              "metric": "aum",
-              "fiscal_year": "2024/2025",
-              "parent": "Universal Beteiligungs",
-              "url": "https://www.northdata.de/Universal-Investment-Gesellschaft%20mbH",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "Universal-Investment-Gesellschaft mbH — €379.7bn AUM (2024/2025).",
-                "Asset manager.",
-                "Equity €76m. Net income €0m.",
-                "976 employees.",
-                "Parent: Universal Beteiligungs."
-              ]
-            },
-            {
-              "short_name": "Flossbach von Storch",
-              "seg_label": null,
-              "legal_name": "Flossbach von Storch SE",
-              "size_eur_m": 72500.0,
-              "metric": "aum",
-              "fiscal_year": 2024,
-              "parent": null,
-              "url": "https://www.northdata.de/Flossbach%20von%20Storch%20SE",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "Flossbach von Storch SE — €72.5bn AUM (2024).",
-                "Asset manager.",
-                "Equity €1.4bn. Net income €0.5bn.",
-                "330 employees."
-              ]
-            },
-            {
-              "short_name": "PATRIZIA",
-              "seg_label": null,
-              "legal_name": "PATRIZIA SE",
-              "size_eur_m": 56200.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "First Capital Partner",
-              "url": "https://www.northdata.de/PATRIZIA%20SE",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "PATRIZIA SE — €56.2bn AUM (2025).",
-                "Asset manager.",
-                "Equity €0.4bn. Net income €18m.",
-                "217 employees.",
-                "Parent: First Capital Partner."
-              ]
-            },
-            {
-              "short_name": "Metzler Asset Management",
-              "seg_label": null,
-              "legal_name": "METZLER ASSET MANAGEMENT GmbH",
-              "size_eur_m": 53000.0,
-              "metric": "aum",
-              "fiscal_year": 2024,
-              "parent": "Metzler Holding",
-              "url": "https://www.northdata.de/METZLER%20ASSET%20MANAGEMENT%20GmbH",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "METZLER ASSET MANAGEMENT GmbH — €53.0bn AUM (2024).",
-                "Asset manager.",
-                "Equity €26m. Net income €0m.",
-                "164 employees.",
-                "Parent: Metzler Holding."
-              ]
-            },
-            {
-              "short_name": "Warburg Invest",
-              "seg_label": null,
-              "legal_name": "Warburg Invest Kapitalanlagegesellschaft mbH",
-              "size_eur_m": 6749.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "M.M.Warburg",
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Warburg Invest Kapitalanlagegesellschaft mbH — €6.7bn AUM (2025).",
-                "Asset manager.",
-                "Equity €21m. Net income €1m.",
-                "37 employees.",
-                "Parent: M.M.Warburg."
-              ]
-            }
-          ],
-          "pin_last": true
-        }
-      ]
-    }
-  ],
-  "measures": [
-    {
-      "id": "balance-sheet",
-      "label": "On balance sheet"
-    },
-    {
-      "id": "under-management",
-      "label": "Under management"
-    }
-  ],
-  "bases": [
-    {
-      "id": "sector",
-      "label": "By sector"
-    },
-    {
-      "id": "group",
-      "label": "By group"
     }
   ],
   "metric_labels": {
@@ -16770,35 +17004,22 @@
   },
   "views": [
     {
-      "id": "balance-sheet:sector",
-      "measure": "balance-sheet",
-      "basis": "sector",
+      "id": "assets:standalone",
+      "label": "Standalone assets",
+      "metric": "assets",
       "top_ids": [
         "banks",
         "insurers",
         "pension-institutions"
       ],
       "subtitle": "What financial institutions hold on their own balance sheets.",
-      "blurb_label": "Sectors",
-      "blurb": "Each bar is one regulated industry. Assets and AUM are standalone, which is how the official German statistics aggregate them. Grey is what we have not collected."
+      "blurb_label": "",
+      "blurb": "Standalone assets for a company do not incorporate assets of subsidiaries. Official German statistics use standalone figures. Compare these aggregates with official totals of €9.5tn for banks, €2.3tn for insurers and €0.8tn for pension institutions (BaFin, ABV, Bundesbank)."
     },
     {
-      "id": "under-management:sector",
-      "measure": "under-management",
-      "basis": "sector",
-      "top_ids": [
-        "bank-owned-am",
-        "insurer-owned-am",
-        "independent-am"
-      ],
-      "subtitle": "What asset managers manage (on others' balance sheets).",
-      "blurb_label": "Managers",
-      "blurb": "Grey is money a group runs through foreign subsidiaries. No official total is comparable: the industry figure counts money held for German investors, not money run by German companies."
-    },
-    {
-      "id": "balance-sheet:group",
-      "measure": "balance-sheet",
-      "basis": "group",
+      "id": "assets:consolidated",
+      "label": "Consolidated assets",
+      "metric": "assets",
       "top_ids": [
         "conglomerates",
         "monoline-banks",
@@ -16806,22 +17027,21 @@
         "monoline-pensions"
       ],
       "subtitle": "What corporate groups hold, counting each subsidiary once inside its parent.",
-      "blurb_label": "Groups",
-      "blurb": "Each bar is a whole corporate group, with every subsidiary counted once inside its parent. Munich Re is EUR 280bn here and EUR 111bn by sector, and both of those figures are right."
+      "blurb_label": "",
+      "blurb": "Consolidated assets for a company include those of every subsidiary. Assets of subsidiaries that lie outside of Germany are colored gray. Compare these figures to ECB official totals of €7.6tn for German-owned banking groups and €1.4tn for foreign-owned banks in Germany."
     },
     {
-      "id": "under-management:group",
-      "measure": "under-management",
-      "basis": "group",
+      "id": "aum:consolidated",
+      "label": "Consolidated assets under management",
+      "metric": "aum",
       "top_ids": [
-        "conglomerates-aum",
-        "monoline-banks-aum",
-        "monoline-insurers-aum",
-        "independent-managers"
+        "bank-owned-am",
+        "insurer-owned-am",
+        "independent-am"
       ],
-      "subtitle": "What each group's asset managers run, grouped by who owns them.",
-      "blurb_label": "Who runs the money",
-      "blurb": "The same money as the sector view, sorted by whoever owns the manager. Deutsche Bank leads here because it owns DWS, and the group holds none of it on its own books."
+      "subtitle": "What asset managers manage (on others' balance sheets), grouped by who owns them.",
+      "blurb_label": "",
+      "blurb": "Consolidated AUM for a company includes AUM of every subsidiary. AUM of subsidiaries that lie outside of Germany are colored gray. Compare these figures with official totals of €3.1tn in funds domiciled in Germany (Bundesbank) and a 2024 assessment of Allianz at €2.45tn (TAI)."
     }
   ]
 }

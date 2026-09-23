@@ -38,82 +38,35 @@
     window.matchMedia && window.matchMedia("(hover: hover) and (pointer: fine)").matches
   );
 
-  // ---- views: a measure x basis grid -------------------------------------
-  // TWO INDEPENDENT QUESTIONS, so two independent controls.
+  // ---- views: ONE toggle, three views (2026-09-22) ------------------------
+  // Standalone assets / Consolidated assets / Consolidated assets under
+  // management. Until 2026-09-22 there were two controls (measure x basis) and
+  // four views; AUM has no true standalone form, so the grid became a list.
   //
-  // MEASURE -- what is being counted. A bank's balance sheet is what it owns;
-  // an asset manager's AUM is what it runs for other people, much of which
-  // appears on the other measure as some insurer's own balance sheet. Adding
-  // them would be wrong and making them exclusive would be wrong too, because
-  // both statements are true.
+  // A balance sheet is what an institution owns; AUM is what it runs for other
+  // people, much of which appears on the balance-sheet views as some insurer's
+  // own assets. They are never added together, which is why they are separate
+  // views rather than one bar.
   //
-  // BASIS -- what a row IS. By sector, a row is one legal entity sized on its
-  // standalone accounts and filed under one sector. By group, a row is a
-  // corporate group sized on its CONSOLIDATED accounts, so a subsidiary is
-  // counted once, inside its parent. Munich Re is EUR 111,207m on one basis
-  // and EUR 279,934m on the other, and both are correct.
-  //
-  // Definitions and every label come from data.json, written by
-  // prepare_data.py, which asserts the views are a clean cross product AND
-  // partition the top-level categories. The literals below are only a fallback
-  // so this file still renders against a data.json too old to carry them.
-  //
-  // KEEP THE FALLBACK IN STEP WITH prepare_data.py's VIEWS. It went stale once
-  // and silently: it still named a single "asset-managers" top for months after
-  // Round 27 replaced that with three ownership classes, and it only ever
-  // covered 2 of the 4 views, so a stale-data.json render would have lost both
-  // By-group views AND drawn an empty under-management bar. Nothing catches
-  // this, because the fallback by definition only runs when the real data is
-  // absent.
-  const MEASURES_FALLBACK = [
-    { id: "balance-sheet", label: "On balance sheet" },
-    { id: "under-management", label: "Under management" },
-  ];
-  const BASES_FALLBACK = [
-    { id: "sector", label: "By sector" },
-    { id: "group", label: "By group" },
-  ];
+  // Definitions and every label come from data.json (viz/gfa/presentation.py
+  // VIEWS). The literals below are only a fallback so this file still renders
+  // against a data.json too old to carry them -- keep them in step with VIEWS.
   const VIEWS_FALLBACK = [
-    {
-      id: "balance-sheet:sector", measure: "balance-sheet", basis: "sector",
+    { id: "assets:standalone", label: "Standalone assets",
       top_ids: ["banks", "insurers", "pension-institutions"],
-      subtitle: "What financial institutions hold on their own balance sheets.",
-    },
-    {
-      id: "under-management:sector", measure: "under-management", basis: "sector",
+      subtitle: "What financial institutions hold on their own balance sheets." },
+    { id: "assets:consolidated", label: "Consolidated assets",
+      top_ids: ["conglomerates", "monoline-banks", "monoline-insurers", "monoline-pensions"],
+      subtitle: "What corporate groups hold, counting each subsidiary once inside its parent." },
+    { id: "aum:consolidated", label: "Consolidated assets under management",
       top_ids: ["bank-owned-am", "insurer-owned-am", "independent-am"],
-      subtitle: "What asset managers manage (on others' balance sheets).",
-    },
-    {
-      id: "balance-sheet:group", measure: "balance-sheet", basis: "group",
-      top_ids: ["conglomerates", "monoline-banks", "monoline-insurers",
-                "monoline-pensions"],
-      subtitle: "What corporate groups hold, counting each subsidiary once " +
-                "inside its parent.",
-    },
-    {
-      id: "under-management:group", measure: "under-management", basis: "group",
-      top_ids: ["conglomerates-aum", "monoline-banks-aum",
-                "monoline-insurers-aum", "independent-managers"],
-      subtitle: "What each group's asset managers run, grouped by who owns them.",
-    },
+      subtitle: "What asset managers manage (on others' balance sheets), grouped by who owns them." },
   ];
-  let MEASURES = MEASURES_FALLBACK;
-  let BASES = BASES_FALLBACK;
   let VIEWS = VIEWS_FALLBACK;
-  let measureId = MEASURES[0].id;
-  let basisId = BASES[0].id;
+  let viewId = VIEWS[0].id;
 
-  function findView(m, b) {
-    return VIEWS.find((v) => v.measure === m && v.basis === b) || null;
-  }
   function view() {
-    const v = findView(measureId, basisId);
-    if (v) return v;
-    // prepare_data.py makes a hole impossible in any data.json this repo
-    // emits; this only fires for an engine served against a stale one.
-    console.warn("no view for", measureId, basisId, "- falling back");
-    return VIEWS[0];
+    return VIEWS.find((v) => v.id === viewId) || VIEWS[0];
   }
   // The categories visible in the current view, in data order. Every index in
   // `topIndex` and `hover` is an index INTO THIS ARRAY, not into DATA.top.
@@ -147,10 +100,14 @@
     els.bar2 = q("#bar-2");
     els.blurb2 = q("#blurb-2");
     els.callouts = q("#callouts");
-    // Two controls. #view-toggle is the pre-2026-09-20 single-control id and is
-    // accepted as the measure toggle so an un-migrated host page still works.
-    els.measureToggle = q("#measure-toggle") || q("#view-toggle");
-    els.basisToggle = q("#basis-toggle");
+    // One control. The host pages still carry the old two-toggle markup
+    // (#measure-toggle + #basis-toggle); the first becomes the view toggle and
+    // the second is REMOVED, so neither index file needs editing. Not merely
+    // hidden: on the Hugo site the scoped `.view-toggle { display: flex }` beats
+    // the [hidden] attribute and it drew as an empty pill.
+    els.viewToggle = q("#measure-toggle") || q("#view-toggle");
+    const oldBasis = q("#basis-toggle");
+    if (oldBasis) oldBasis.remove();
     els.svg = q("#lines");
     els.stage2 = els.bar2.closest(".bar-wrap");
     els.hierarchy = q("#hierarchy");
@@ -173,14 +130,8 @@
       .then((r) => r.json())
       .then((d) => {
         DATA = d;
-        if (Array.isArray(d.measures) && d.measures.length) MEASURES = d.measures;
-        if (Array.isArray(d.bases) && d.bases.length) BASES = d.bases;
         if (Array.isArray(d.views) && d.views.length) VIEWS = d.views;
-        // Re-seed from the ADOPTED tables. Leaving the fallback ids in place
-        // would silently point at nothing if data.json ever renames a measure
-        // or a basis.
-        measureId = MEASURES[0].id;
-        basisId = BASES[0].id;
+        viewId = VIEWS[0].id;
         // Applies the one-category home rule before the first paint.
         resetSelection();
         renderAll();
@@ -340,8 +291,7 @@
   }
 
   function renderViewToggles() {
-    renderToggle(els.measureToggle, MEASURES, measureId, setMeasure);
-    renderToggle(els.basisToggle, BASES, basisId, setBasis);
+    renderToggle(els.viewToggle, VIEWS, viewId, setView);
     els.subtitle.textContent = view().subtitle;
   }
 
@@ -353,7 +303,7 @@
   function homeTopIndex() { return tops().length === 1 ? 0 : null; }
 
   // Everything that does not survive a change of view. Call it AFTER assigning
-  // the new measureId/basisId: it reads tops() through the NEW view.
+  // the new viewId: it reads tops() through the NEW view.
   function resetSelection() {
     topIndex = homeTopIndex();
     subIndex = null;
@@ -370,16 +320,9 @@
     if (els.hierarchy) els.hierarchy.style.minHeight = "";
   }
 
-  function setMeasure(m) {
-    if (m === measureId) return;
-    measureId = m;
-    resetSelection();
-    commitRender();
-  }
-
-  function setBasis(b) {
-    if (b === basisId) return;
-    basisId = b;
+  function setView(id) {
+    if (id === viewId) return;
+    viewId = id;
     resetSelection();
     commitRender();
   }
@@ -500,10 +443,15 @@
 
   function ancestorLine(label, blurb) {
     const p = document.createElement("p");
-    const strong = document.createElement("strong");
-    strong.textContent = label + ":";
-    p.appendChild(strong);
-    p.appendChild(document.createTextNode(" " + (blurb || "")));
+    // A view-level blurb has no label (user's wording, 2026-09-22): plain text,
+    // no bold "Label:" prefix and no leading space.
+    if (label) {
+      const strong = document.createElement("strong");
+      strong.textContent = label + ":";
+      p.appendChild(strong);
+      p.appendChild(document.createTextNode(" "));
+    }
+    p.appendChild(document.createTextNode(blurb || ""));
     return p;
   }
 

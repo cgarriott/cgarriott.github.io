@@ -187,6 +187,14 @@
    character budget recorded in presentation.py. */
 #gfa-app #blurb-0 p, #gfa-app #blurb-1 p, #gfa-app #blurb-2 p { min-height: 3.1em; }
 
+/* The view explanation (#blurb-0) carries its comparison sentence too, since
+   2026-09-22, so it runs to three lines -- worded by the user to fit exactly 3
+   at the Hugo site's 680px binding width (1.55 x 3 = 4.65em). Below that the
+   three views' texts can differ by a line, which would move the bars when
+   switching view, so narrower screens reserve the longest (media queries). */
+#gfa-app #blurb-0 p { min-height: 4.65em; }
+@media (max-width: 679px) { #gfa-app #blurb-0 p { min-height: 6.2em; } }
+
 #gfa-app .bar-wrap {
   position: relative;
 }
@@ -299,6 +307,14 @@
      wrap onto separate lines when they no longer fit side by side. */
   #gfa-app .header-row { align-items: stretch; gap: 14px; }
   #gfa-app .view-toggles { justify-content: flex-start; margin-bottom: 18px; }
+  /* Three options, one of them long ("Consolidated assets under management"):
+     on a phone one row overflows and scrolls the whole page sideways, so the
+     options stack, full width. */
+  #gfa-app .view-toggles, #gfa-app .view-toggle { width: 100%; box-sizing: border-box; }
+  #gfa-app .view-toggle { flex-direction: column; }
+  /* Phones: the longest explanation is 7 lines at 375px (1.55 x 7). */
+  #gfa-app #blurb-0 p { min-height: 10.85em; }
+  #gfa-app .view-tab { text-align: left; }
   #gfa-app .subtitle { margin-bottom: 14px; }
   #gfa-app .bar { height: 84px; }
   #gfa-app #callouts { flex-direction: column; margin-top: 20px; }
