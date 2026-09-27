@@ -87,6 +87,11 @@
   // a `funds` block (the Consolidated AUM view's managers) open it; everything
   // else keeps the old click-to-pin behaviour.
   let instOpen = null;     // key of the institution whose funds are shown in rung 3
+  // Hovering an institution that has funds PREVIEWS rung 3 (user, 2026-09-27): the
+  // same bar and detail a click shows, drawn dulled like every other preview, so a
+  // click changes nothing but the commitment. Only while rung 2 is focal, i.e. no
+  // rung 3 is committed -- a dulled ancestor never previews (see handleAncestorHover).
+  let instHover = null;
   let bar3Segs = [];
   let fundPinned = null;   // key of the fund pinned by a click in rung 3
 
@@ -291,17 +296,23 @@
     if (!instOpen || !b2 || b2.source !== "real") return null;
     return b2.sub.institutions.find((i) => `inst:${i.short_name}` === instOpen && i.funds) || null;
   }
+  function previewInst(b2) {
+    if (instOpen || !instHover || !b2 || b2.source !== "real") return null;
+    return b2.sub.institutions.find((i) => `inst:${i.short_name}` === instHover && i.funds) || null;
+  }
 
   function renderAll() {
     const b1 = resolveBar1();
     const b2 = resolveBar2(b1);
     const inst = openInst(b2);
     if (!inst) instOpen = null;
+    const preview = inst ? null : previewInst(b2);
+    if (!preview) instHover = null;
     renderViewToggles();
     renderRung0();
     renderRung1(b1);
     renderRung2(b2);
-    renderRung3(inst);
+    renderRung3(inst || preview, preview ? "preview" : "real");
     updateCrumbs();
     growMinHeight();
   }
@@ -346,6 +357,7 @@
     instPinned = null;
     bar2Segs = [];
     instOpen = null;
+    instHover = null;
     bar3Segs = [];
     fundPinned = null;
     if (els.callouts) els.callouts.innerHTML = "";
@@ -616,6 +628,7 @@
       detailLines: inst.detail_lines,
       url: inst.url,
       urlLabel: inst.url_label,
+      hasFunds: !!inst.funds,
       onClick: () => {
         const key = `inst:${inst.short_name}`;
         if (b2.source === "preview") {
@@ -627,10 +640,17 @@
         if (inst.funds) {
           // Opens (or closes) rung 3; the committed render re-pins the detail.
           instOpen = instOpen === key ? null : key;
+          instHover = null;
           instPinned = instOpen;
           fundPinned = null;
           commitRender();
           return;
+        }
+        if (instOpen) {
+          // A manager's funds are open; picking an institution without funds closes them.
+          instOpen = null;
+          instHover = null;
+          commitRender();
         }
         if (instPinned === key) {
           instPinned = null;
@@ -673,6 +693,7 @@
     const focal = b2.source === "real" && !instOpen;
     els.rung2.classList.toggle("focal", focal);
     els.rung2.classList.toggle("dulled", !focal);
+    if (instHover && !instOpen && b2.source === "real") highlightBar2(instHover);
     if (instOpen && b2.source === "real") {
       // Rung 3 is open: keep its institution lit here and its detail pinned.
       instPinned = instOpen;
@@ -687,7 +708,7 @@
   // marks "spezial" (Spezialfonds: sizes never published) and "unobserved" (the
   // rest of the manager's AUM). The callout box sits under whichever rung is the
   // deepest shown, so it is moved rather than duplicated.
-  function renderRung3(inst) {
+  function renderRung3(inst, source) {
     bar3Segs = [];
     if (!inst) {
       els.rung3.hidden = true;
@@ -726,8 +747,10 @@
     bar3Segs = segs;
     els.blurb3.innerHTML = "";
     els.blurb3.appendChild(ancestorLine(inst.short_name, f.blurb));
-    els.rung3.classList.add("focal");
-    if (fundPinned) { highlightBar3(fundPinned); showFundOrInst(); }
+    els.rung3.classList.toggle("focal", source === "real");
+    els.rung3.classList.toggle("dulled", source !== "real");
+    if (fundPinned && source === "real") { highlightBar3(fundPinned); showFundOrInst(); }
+    else showFundOrInst();
   }
   function highlightBar3(key) {
     [...els.bar3.children].forEach((el) => {
@@ -739,7 +762,7 @@
   function showFundOrInst() {
     const seg = fundPinned && bar3Segs.find((x) => x.key === fundPinned);
     if (seg) { renderInstDetail(seg.detailLines, null, null); return; }
-    const inst = bar2Segs.find((x) => x.key === instOpen);
+    const inst = bar2Segs.find((x) => x.key === (instOpen || instHover));
     if (inst) renderInstDetail(inst.detailLines, inst.url, inst.urlLabel);
     else clearInstDetail();
   }
@@ -808,17 +831,42 @@
   // Hovering always shows a live preview. Leaving reverts to whatever is
   // pinned (via click), or clears entirely if nothing is pinned -- there's
   // no more "shows the biggest by default."
+  let instLeaveTimer = null;
+  let instHoverFrame = null;
   function handleInstHover(e) {
     if (!supportsHoverPreview) return;
+    if (performance.now() < suppressHoverUntil) return;
     const el = e.target.closest(".segment");
     if (!el) return;
     const seg = bar2Segs.find((s) => s.key === el.dataset.key);
     if (!seg) return;
+    // A committed rung 3 makes this bar a dulled ancestor: no previews from it.
+    if (instOpen) return;
+    clearTimeout(instLeaveTimer);
+    if (seg.hasFunds) {
+      if (instHover === seg.key) return;          // rebuilt under a still cursor
+      instHover = seg.key;
+      // Deferred a frame, as for rungs 0/1: a click in this same tick must land
+      // on the element before the render replaces it.
+      if (instHoverFrame) cancelAnimationFrame(instHoverFrame);
+      instHoverFrame = requestAnimationFrame(() => { instHoverFrame = null; renderAll(); });
+      return;
+    }
+    if (instHover) { instHover = null; renderAll(); }   // moved off a previewed manager
     highlightBar2(seg.key);
     renderInstDetail(seg.detailLines, seg.url, seg.urlLabel);
     drawSingleLine(seg.key);
   }
   function handleInstLeave() {
+    if (instOpen) return;
+    if (instHover) {
+      // Debounced, so crossing a segment border doesn't flicker the preview off.
+      clearTimeout(instLeaveTimer);
+      instLeaveTimer = setTimeout(() => {
+        if (instHover) { instHover = null; renderAll(); }
+      }, 120);
+      return;
+    }
     if (instPinned) {
       const seg = bar2Segs.find((s) => s.key === instPinned);
       if (seg) {
