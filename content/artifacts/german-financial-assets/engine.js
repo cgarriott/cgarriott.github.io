@@ -1,5 +1,6 @@
 /* Drill-down bar engine, hover-to-preview model.
-   Three fixed rung slots (0/1/2) are always in the DOM. Each is resolved
+   Three fixed rung slots (0/1/2) are always in the DOM; a fourth (3), the funds
+   of one asset manager, is created here on first use (Round 40, 2026-09-27). Each is resolved
    independently every render: hovering a segment previews the next rung
    (dulled) without committing; clicking commits for real. Ancestor rungs
    stay visible (dulled) once you've drilled past them, and stay
@@ -82,6 +83,12 @@
   let hover = null;        // { depth: 0|1, index } -- ancestor hover-preview trigger
   let instPinned = null;   // key of the institution pinned open by a click, if any
   let bar2Segs = [];       // the segments currently built into bar-2, for hover lookups
+  // Rung 3 (Round 40): the funds of one institution. Only institutions that carry
+  // a `funds` block (the Consolidated AUM view's managers) open it; everything
+  // else keeps the old click-to-pin behaviour.
+  let instOpen = null;     // key of the institution whose funds are shown in rung 3
+  let bar3Segs = [];
+  let fundPinned = null;   // key of the fund pinned by a click in rung 3
 
   const els = {};
   function q(sel) { return document.querySelector(sel); }
@@ -100,6 +107,22 @@
     els.bar2 = q("#bar-2");
     els.blurb2 = q("#blurb-2");
     els.callouts = q("#callouts");
+    // Rung 3 is created here, not in the host pages: three pages host this engine
+    // and an element added to only some of them is a silent difference between
+    // them (same reasoning as #blurb-0).
+    els.rung3 = q("#rung-3");
+    if (!els.rung3) {
+      els.rung3 = document.createElement("div");
+      els.rung3.className = "rung-slot";
+      els.rung3.id = "rung-3";
+      els.rung3.hidden = true;
+      els.rung3.innerHTML =
+        '<p class="ancestor-line" id="blurb-3"></p>' +
+        '<div class="bar-wrap"><div class="bar" id="bar-3"></div></div>';
+      q("#rung-2").after(els.rung3);
+    }
+    els.bar3 = q("#bar-3");
+    els.blurb3 = q("#blurb-3");
     // One control. The host pages still carry the old two-toggle markup
     // (#measure-toggle + #basis-toggle); the first becomes the view toggle and
     // the second is REMOVED, so neither index file needs editing. Not merely
@@ -125,6 +148,8 @@
     els.bar1.addEventListener("mouseleave", () => handleAncestorLeave(1));
     els.bar2.addEventListener("mouseover", handleInstHover);
     els.bar2.addEventListener("mouseleave", handleInstLeave);
+    els.bar3.addEventListener("mouseover", handleFundHover);
+    els.bar3.addEventListener("mouseleave", handleFundLeave);
 
     fetch("data.json")
       .then((r) => r.json())
@@ -260,13 +285,23 @@
     renderAll();
   }
 
+  // The institution rung 3 is open for, or null. Only a REAL rung 2 can have one:
+  // any ancestor preview, or a rung 2 that no longer holds that institution, closes it.
+  function openInst(b2) {
+    if (!instOpen || !b2 || b2.source !== "real") return null;
+    return b2.sub.institutions.find((i) => `inst:${i.short_name}` === instOpen && i.funds) || null;
+  }
+
   function renderAll() {
     const b1 = resolveBar1();
     const b2 = resolveBar2(b1);
+    const inst = openInst(b2);
+    if (!inst) instOpen = null;
     renderViewToggles();
     renderRung0();
     renderRung1(b1);
     renderRung2(b2);
+    renderRung3(inst);
     updateCrumbs();
     growMinHeight();
   }
@@ -310,6 +345,9 @@
     hover = null;
     instPinned = null;
     bar2Segs = [];
+    instOpen = null;
+    bar3Segs = [];
+    fundPinned = null;
     if (els.callouts) els.callouts.innerHTML = "";
     if (els.svg) els.svg.innerHTML = "";
     // The min-height ratchet is per-view. Without this, switching from a deeper
@@ -586,6 +624,14 @@
           hover = null;
           commitRender(); // rebuilds bar-2 as real content and resets instPinned
         }
+        if (inst.funds) {
+          // Opens (or closes) rung 3; the committed render re-pins the detail.
+          instOpen = instOpen === key ? null : key;
+          instPinned = instOpen;
+          fundPinned = null;
+          commitRender();
+          return;
+        }
         if (instPinned === key) {
           instPinned = null;
           highlightBar2(null);
@@ -624,8 +670,91 @@
     els.svg.innerHTML = "";
     els.blurb2.innerHTML = "";
     els.blurb2.appendChild(ancestorLine(s.label, s.blurb));
-    els.rung2.classList.toggle("focal", b2.source === "real");
-    els.rung2.classList.toggle("dulled", b2.source !== "real");
+    const focal = b2.source === "real" && !instOpen;
+    els.rung2.classList.toggle("focal", focal);
+    els.rung2.classList.toggle("dulled", !focal);
+    if (instOpen && b2.source === "real") {
+      // Rung 3 is open: keep its institution lit here and its detail pinned.
+      instPinned = instOpen;
+      highlightBar2(instOpen);
+      const seg = segs.find((x) => x.key === instOpen);
+      if (seg) renderInstDetail(seg.detailLines, seg.url, seg.urlLabel);
+    }
+  }
+
+  // ---- rung 3: the funds of one institution (Round 40) ---------------------
+  // Named public funds in colour, largest first; then the grey blocks the data
+  // marks "spezial" (Spezialfonds: sizes never published) and "unobserved" (the
+  // rest of the manager's AUM). The callout box sits under whichever rung is the
+  // deepest shown, so it is moved rather than duplicated.
+  function renderRung3(inst) {
+    bar3Segs = [];
+    if (!inst) {
+      els.rung3.hidden = true;
+      fundPinned = null;
+      if (els.callouts.parentElement !== els.rung2) els.rung2.appendChild(els.callouts);
+      return;
+    }
+    els.rung3.hidden = false;
+    if (els.callouts.parentElement !== els.rung3) els.rung3.appendChild(els.callouts);
+    els.svg.innerHTML = "";           // no leader lines across a rung
+    const f = inst.funds;
+    const named = f.items.filter((x) => x.kind === "fund").length;
+    const total = f.items.reduce((a, x) => a + x.size_eur_m, 0) || 1;
+    const segs = f.items.map((it, rank) => {
+      const grey = it.kind === "spezial" || it.kind === "unobserved";
+      return {
+        key: `fund:${rank}`,
+        label: it.label,
+        sizeLabel: fmtEur(it.size_eur_m),
+        pct: (it.size_eur_m / total) * 100,
+        color: it.kind === "spezial" ? CFG.spezialColor || "hsl(220 8% 36%)"
+          : grey ? segmentColor("unobserved", {})
+          : it.kind === "fund-rest" ? "hsl(190 28% 42%)"
+          : `hsl(${(CFG.levelHueSeed[2] + 150 + rank * (320 / Math.max(1, named))) % 360} 50% 52%)`,
+        kind: it.kind === "unobserved" ? "unobserved" : "inst",
+        detailLines: it.detail_lines,
+        onClick: () => {
+          const key = `fund:${rank}`;
+          fundPinned = fundPinned === key ? null : key;
+          highlightBar3(fundPinned);
+          showFundOrInst();
+        },
+      };
+    });
+    buildBar(els.bar3, segs, null);
+    bar3Segs = segs;
+    els.blurb3.innerHTML = "";
+    els.blurb3.appendChild(ancestorLine(inst.short_name, f.blurb));
+    els.rung3.classList.add("focal");
+    if (fundPinned) { highlightBar3(fundPinned); showFundOrInst(); }
+  }
+  function highlightBar3(key) {
+    [...els.bar3.children].forEach((el) => {
+      el.classList.toggle("bright", key !== null && el.dataset.key === key);
+      el.classList.toggle("dim", key !== null && el.dataset.key !== key);
+    });
+  }
+  // The callout shows the pinned fund, else the open institution.
+  function showFundOrInst() {
+    const seg = fundPinned && bar3Segs.find((x) => x.key === fundPinned);
+    if (seg) { renderInstDetail(seg.detailLines, null, null); return; }
+    const inst = bar2Segs.find((x) => x.key === instOpen);
+    if (inst) renderInstDetail(inst.detailLines, inst.url, inst.urlLabel);
+    else clearInstDetail();
+  }
+  function handleFundHover(e) {
+    if (!supportsHoverPreview) return;
+    const el = e.target.closest(".segment");
+    if (!el) return;
+    const seg = bar3Segs.find((x) => x.key === el.dataset.key);
+    if (!seg) return;
+    highlightBar3(seg.key);
+    renderInstDetail(seg.detailLines, null, null);
+  }
+  function handleFundLeave() {
+    highlightBar3(fundPinned);
+    showFundOrInst();
   }
 
   // ---- ancestor (rung 0 / rung 1) hover-preview delegation ---------------
@@ -760,7 +889,7 @@
   function drawSingleLine(key) {
     const el = [...els.bar2.children].find((c) => c.dataset.key === key);
     els.svg.innerHTML = "";
-    if (!el || window.innerWidth < 560) return;
+    if (!el || window.innerWidth < 560 || !els.rung3.hidden) return;
     const rect = el.getBoundingClientRect();
     const stageRect = svgSetup();
     const x1 = rect.left + rect.width / 2 - stageRect.left;
@@ -786,6 +915,7 @@
     topIndex = home;
     subIndex = null;
     hover = null;
+    instOpen = null;
     commitRender();
   }
 
@@ -795,7 +925,9 @@
     const s = currentSub();
     const parts = [{ text: "GERMANY", onClick: goHome }];
     if (t) parts.push({ text: t.label, onClick: () => { subIndex = null; hover = null; commitRender(); } });
-    if (s) parts.push({ text: s.label, onClick: null });
+    if (s) parts.push({ text: s.label, onClick: () => { instOpen = null; hover = null; commitRender(); } });
+    const io = instOpen && bar2Segs.find((x) => x.key === instOpen);
+    if (io) parts.push({ text: io.label, onClick: null });
 
     parts.forEach((part, i) => {
       const isLast = i === parts.length - 1;

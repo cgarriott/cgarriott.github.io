@@ -45,6 +45,20 @@ disableAnchoredHeadings: false
   --toggle-active-text: var(--theme);
 }
 #gfa-app h1 { font-weight: 700; }
+/* Wider than the post column (2026-09-27, viz/DECISIONS.md Round 41). PaperMod
+   holds content to --main-width (720px), which cramped the bars once a fourth
+   one (each manager's funds) arrived. The chart alone breaks out, centred, up to
+   900px and never closer to the window edge than the theme's own --gap (24px
+   on desktop, 14px on a phone, so on a phone it lines up with the post text);
+   the post's title and text stay in the column. Margins, not a transform: the
+   leader lines measure segments with getBoundingClientRect and a transformed
+   ancestor is avoidable risk. */
+#gfa-app {
+  --gfa-width: min(900px, calc(100vw - 2 * var(--gap, 24px)));
+  width: var(--gfa-width);
+  margin-left: calc((100% - var(--gfa-width)) / 2);
+}
+#gfa-app .wrap { max-width: none; }
 </style>
 
 <div id="gfa-app">
