@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-27",
+  "generated_at": "2026-09-28",
   "top": [
     {
       "id": "bank-owned-am",
@@ -15402,8 +15402,8 @@
           "label": "Realkreditinstitute",
           "metric": "assets",
           "size_eur_m": 175457,
-          "observed_eur_m": 132221.86,
-          "unobserved_eur_m": 43235.14,
+          "observed_eur_m": 175457.54,
+          "unobserved_eur_m": 0,
           "blurb": "Mortgage banks. They fund long-term property loans, often through covered bonds (Pfandbriefe). A small, specialized group of 6.",
           "institutions": [
             {
@@ -15428,17 +15428,69 @@
               "short_name": "Münchener Hypothekenbank",
               "seg_label": null,
               "legal_name": "Münchener Hypothekenbank eG",
-              "size_eur_m": 54515.22,
+              "size_eur_m": 53478.42,
               "metric": "assets",
-              "fiscal_year": 2024,
+              "fiscal_year": 2025,
               "parent": null,
-              "url": "https://www.mhb.de/sites/default/files/2025-09/MHB_AR_2024_EN.pdf",
+              "url": "https://www.mhb.de/en/investors/reports-and-presentations",
               "url_label": "Source ↗",
               "detail_lines": [
-                "Münchener Hypothekenbank eG — €54.5bn assets (2024).",
+                "Münchener Hypothekenbank eG — €53.5bn assets (2025).",
                 "Bank · Mortgage bank.",
-                "Equity €1.8bn. Net income €0.1bn.",
-                "664 employees."
+                "Equity €1.9bn. Net income €0.1bn.",
+                "704 employees."
+              ]
+            },
+            {
+              "short_name": "pbb",
+              "seg_label": null,
+              "legal_name": "Deutsche Pfandbriefbank AG",
+              "size_eur_m": 39953.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.pfandbriefbank.com/investoren/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Deutsche Pfandbriefbank AG — €40.0bn assets (2025).",
+                "Bank · Mortgage bank.",
+                "Equity €2.5bn. Net income €-0.3bn.",
+                "826 employees."
+              ]
+            },
+            {
+              "short_name": "NATIXIS Pfandbriefbank",
+              "seg_label": null,
+              "legal_name": "NATIXIS Pfandbriefbank AG",
+              "size_eur_m": 3824.17,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "NATIXIS",
+              "url": "https://pfandbriefbank.cib.natixis.com/our-investor-center",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "NATIXIS Pfandbriefbank AG — €3.8bn assets (2025).",
+                "Bank · Mortgage bank.",
+                "Equity €0.1bn. Net income €0m.",
+                "54 employees.",
+                "Parent: NATIXIS."
+              ]
+            },
+            {
+              "short_name": "Calenberger Kreditverein",
+              "seg_label": null,
+              "legal_name": "Calenberger Kreditverein Calenberg-Göttingen-Grubenhagen-Hildesheim'scher ritterschaftlicher Kreditverein",
+              "size_eur_m": 495.31,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://calenberger.de/die-bank/#geschaeftsberichte",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Calenberger Kreditverein Calenberg-Göttingen-Grubenhagen-Hildesheim'scher ritterschaftlicher Kreditverein — €0.5bn assets (2025).",
+                "Bank · Mortgage bank.",
+                "Equity €24m. Net income €1m.",
+                "12 employees."
               ]
             },
             {
@@ -22624,7 +22676,7 @@
       "label": "Monoline banks",
       "basis": "group",
       "metric": "assets",
-      "size_eur_m": 7624662.23,
+      "size_eur_m": 7667825.91,
       "blurb": "Groups whose regulated business is banking only. Owning an asset manager does not change that — the money it runs belongs to other people.",
       "sub": [
         {
@@ -24497,11 +24549,40 @@
           "unobserved_detail": "{amount} of Metzler Bank's consolidated balance sheet is not broken out above. Most of it is foreign subsidiaries, which are outside this dataset -- it covers German legal entities. The rest is the difference between consolidated and standalone accounting."
         },
         {
+          "id": "group-natixis-pfandbriefbank",
+          "label": "NATIXIS Pfandbriefbank",
+          "metric": "assets",
+          "size_eur_m": 3824.17,
+          "observed_eur_m": 3824.17,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
+          "institutions": [
+            {
+              "short_name": "NATIXIS Pfandbriefbank",
+              "seg_label": null,
+              "legal_name": "NATIXIS Pfandbriefbank AG",
+              "size_eur_m": 3824.17,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "NATIXIS",
+              "url": "https://pfandbriefbank.cib.natixis.com/our-investor-center",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "NATIXIS Pfandbriefbank AG — €3.8bn assets (2025).",
+                "Bank · Mortgage bank.",
+                "Equity €0.1bn. Net income €0m.",
+                "54 employees.",
+                "Parent: NATIXIS."
+              ]
+            }
+          ]
+        },
+        {
           "id": "monoline-banks-independent",
           "label": "Independent",
           "metric": "assets",
-          "size_eur_m": 1870255.29,
-          "observed_eur_m": 1870255.29,
+          "size_eur_m": 1909594.8,
+          "observed_eur_m": 1909594.8,
           "unobserved_eur_m": 0.0,
           "blurb": "Institutions that are nobody's subsidiary and own no one — a single legal entity that is its own group. Most savings and cooperative banks are here, sized on their own balance sheets.",
           "institutions": [
@@ -24560,17 +24641,34 @@
               "short_name": "Münchener Hypothekenbank",
               "seg_label": null,
               "legal_name": "Münchener Hypothekenbank eG",
-              "size_eur_m": 54515.22,
+              "size_eur_m": 53478.42,
               "metric": "assets",
-              "fiscal_year": 2024,
+              "fiscal_year": 2025,
               "parent": null,
-              "url": "https://www.mhb.de/sites/default/files/2025-09/MHB_AR_2024_EN.pdf",
+              "url": "https://www.mhb.de/en/investors/reports-and-presentations",
               "url_label": "Source ↗",
               "detail_lines": [
-                "Münchener Hypothekenbank eG — €54.5bn assets (2024).",
+                "Münchener Hypothekenbank eG — €53.5bn assets (2025).",
                 "Bank · Mortgage bank.",
-                "Equity €1.8bn. Net income €0.1bn.",
-                "664 employees."
+                "Equity €1.9bn. Net income €0.1bn.",
+                "704 employees."
+              ]
+            },
+            {
+              "short_name": "pbb",
+              "seg_label": null,
+              "legal_name": "Deutsche Pfandbriefbank AG",
+              "size_eur_m": 39881.0,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://www.pfandbriefbank.com/investoren/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Deutsche Pfandbriefbank AG — €39.9bn group assets (2025).",
+                "Bank · Mortgage bank.",
+                "Equity €3.1bn. Net income €-0.3bn.",
+                "826 employees."
               ]
             },
             {
@@ -27654,6 +27752,23 @@
                 "Bank · Regional bank.",
                 "Equity €0.4bn. Net income €53m.",
                 "1,154 employees."
+              ]
+            },
+            {
+              "short_name": "Calenberger Kreditverein",
+              "seg_label": null,
+              "legal_name": "Calenberger Kreditverein Calenberg-Göttingen-Grubenhagen-Hildesheim'scher ritterschaftlicher Kreditverein",
+              "size_eur_m": 495.31,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": "https://calenberger.de/die-bank/#geschaeftsberichte",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Calenberger Kreditverein Calenberg-Göttingen-Grubenhagen-Hildesheim'scher ritterschaftlicher Kreditverein — €0.5bn assets (2025).",
+                "Bank · Mortgage bank.",
+                "Equity €24m. Net income €1m.",
+                "12 employees."
               ]
             }
           ],
