@@ -704,9 +704,10 @@
   }
 
   // ---- rung 3: the funds of one institution (Round 40) ---------------------
-  // Named public funds in colour, largest first; then the grey blocks the data
-  // marks "spezial" (Spezialfonds: sizes never published) and "unobserved" (the
-  // rest of the manager's AUM). The callout box sits under whichever rung is the
+  // Named public funds in colour, largest first; then the Spezialfonds their
+  // investors disclose (Round 44: exact sizes, then lower bounds, hatched); then
+  // the grey blocks the data marks "spezial" (the Spezialfonds not identified)
+  // and "unobserved" (the rest of the manager's AUM). The callout box sits under whichever rung is the
   // deepest shown, so it is moved rather than duplicated.
   function renderRung3(inst, source) {
     bar3Segs = [];
@@ -724,16 +725,21 @@
     const total = f.items.reduce((a, x) => a + x.size_eur_m, 0) || 1;
     const segs = f.items.map((it, rank) => {
       const grey = it.kind === "spezial" || it.kind === "unobserved";
+      // Spezialfonds sized from their investors (Round 44): one violet-grey family, adjacent
+      // slices alternating in lightness; a lower bound is hatched and its size reads "≥".
+      const spz = it.kind === "spezial-fund" || it.kind === "spezial-atleast";
       return {
         key: `fund:${rank}`,
         label: it.label,
-        sizeLabel: fmtEur(it.size_eur_m),
+        sizeLabel: (it.kind === "spezial-atleast" ? "≥ " : "") + fmtEur(it.size_eur_m),
         pct: (it.size_eur_m / total) * 100,
         color: it.kind === "spezial" ? CFG.spezialColor || "hsl(220 8% 36%)"
           : grey ? segmentColor("unobserved", {})
           : it.kind === "fund-rest" ? "hsl(190 28% 42%)"
+          : spz ? `hsl(262 26% ${rank % 2 ? 50 : 57}%)`
+          : it.kind === "spezial-rest" ? "hsl(262 16% 42%)"
           : `hsl(${(CFG.levelHueSeed[2] + 150 + rank * (320 / Math.max(1, named))) % 360} 50% 52%)`,
-        kind: it.kind === "unobserved" ? "unobserved" : "inst",
+        kind: it.kind === "unobserved" ? "unobserved" : it.kind === "spezial-atleast" ? "atleast" : "inst",
         detailLines: it.detail_lines,
         onClick: () => {
           const key = `fund:${rank}`;

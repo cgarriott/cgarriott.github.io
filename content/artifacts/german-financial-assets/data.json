@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-28",
+  "generated_at": "2026-09-29",
   "top": [
     {
       "id": "bank-owned-am",
@@ -349,12 +349,62 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 76011.6,
+                    "label": "OP-Fonds SKP",
+                    "size_eur_m": 144.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "OP-Fonds SKP — at least €144m.",
+                      "Spezialfonds managed by DWS Investment GmbH.",
+                      "LBBW discloses a holding of €144m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Global Real Estate Fund",
+                    "size_eur_m": 92.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Global Real Estate Fund — at least €92m.",
+                      "Spezialfonds managed by DWS Alternatives GmbH.",
+                      "Allianz (Leben) discloses a holding of €92m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Euro Core III",
+                    "size_eur_m": 77.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Euro Core III — at least €77m.",
+                      "Spezialfonds managed by DWS Alternatives GmbH.",
+                      "Allianz (Leben) discloses a holding of €77m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "DeAM-Fonds HAM 1",
+                    "size_eur_m": 65.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "DeAM-Fonds HAM 1 — at least €65m.",
+                      "Spezialfonds managed by DWS Investment GmbH.",
+                      "BHW Pensionskasse discloses a holding of €65m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Health Care I",
+                    "size_eur_m": 17.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Health Care I — at least €17m.",
+                      "Spezialfonds managed by DWS Alternatives GmbH.",
+                      "Swiss Life Lebensversicherung SE discloses a holding of €17m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 75615.9,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €76.0bn, in about 183 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here.",
+                      "Spezialfonds not identified — €75.6bn (of €76.0bn in about 183 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too.",
                       "For the Luxembourg and Irish companies, the block holds their restricted funds (SIF, RAIF) rather than German Spezialfonds."
                     ]
                   },
@@ -713,12 +763,221 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 43276.5,
+                    "label": "Volksbank Stuttgart eG Spezialfonds Nr. 1",
+                    "size_eur_m": 494.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Volksbank Stuttgart eG Spezialfonds Nr. 1 — €494m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Volksbank Stuttgart holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "DEVIF-Fonds Nr. 502",
+                    "size_eur_m": 298.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "DEVIF-Fonds Nr. 502 — €299m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Volksbank Rhein-Erft-Köln eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Rhein-Neckar Spezialfonds Nr. 1",
+                    "size_eur_m": 290.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Rhein-Neckar Spezialfonds Nr. 1 — €290m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: VR Bank Rhein-Neckar holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Volksbank Neckartal Spezialfonds Nr. 1",
+                    "size_eur_m": 228.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Volksbank Neckartal Spezialfonds Nr. 1 — €228m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Volksbank Heidelberg-Neckartal holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Rhein-Sieg-Invest Nr. 1",
+                    "size_eur_m": 190.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Rhein-Sieg-Invest Nr. 1 — €190m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: VR-Bank Bonn Rhein-Sieg holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds Vereinigte Volksbanken eG",
+                    "size_eur_m": 185.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Spezialfonds Vereinigte Volksbanken eG — €186m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Vereinigte Volksbanken holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "UIN-Fonds Nr. 991",
+                    "size_eur_m": 177.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "UIN-Fonds Nr. 991 — €178m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Volksbank Rhein-Erft-Köln eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Volksbank Heinsberg eG Spezialfonds 1",
+                    "size_eur_m": 161.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Volksbank Heinsberg eG Spezialfonds 1 — €161m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Volksbank Heinsberg eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Volksbank Euskirchen eG Spezialfonds Nr. 1",
+                    "size_eur_m": 160.0,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Volksbank Euskirchen eG Spezialfonds Nr. 1 — €160m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Volksbank Euskirchen eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "UIN-Fonds Nr. 836-Donau-Iller Bank eG",
+                    "size_eur_m": 150.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "UIN-Fonds Nr. 836-Donau-Iller Bank eG — €150m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Donau-Iller Bank eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "VR-Bank in Mittelbaden Dachfonds 1",
+                    "size_eur_m": 78.0,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "VR-Bank in Mittelbaden Dachfonds 1 — €78m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: VR-Bank in Mittelbaden eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Volksbank Gescher eG Spezialfonds Nr. 2",
+                    "size_eur_m": 69.6,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Volksbank Gescher eG Spezialfonds Nr. 2 — €70m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Volksbank Gescher eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Volksbank Heiden - Mein Fonds",
+                    "size_eur_m": 62.3,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Volksbank Heiden - Mein Fonds — €62m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Volksbank Heiden eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "UIN-Fonds Nr. 1094",
+                    "size_eur_m": 62.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "UIN-Fonds Nr. 1094 — €62m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: Volksbank Olpe-Wenden-Drolshagen eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Volksbank Dreieich Invest",
+                    "size_eur_m": 61.9,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Volksbank Dreieich Invest — €62m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Size from its investors' own audited accounts: VR Bank Dreieich - Offenbach eG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "APO 1 Union",
+                    "size_eur_m": 3038.2,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "APO 1 Union — at least €3.0bn.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "apoBank discloses a holding of €3.0bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "UIN-Fonds Nr. 723",
+                    "size_eur_m": 1553.9,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "UIN-Fonds Nr. 723 — at least €1.6bn.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Frankfurter Volksbank Rhein/Main discloses a holding of €1.6bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "UIN-Fonds Nr. 744",
+                    "size_eur_m": 1313.9,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "UIN-Fonds Nr. 744 — at least €1.3bn.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Volksbank Mittelhessen discloses a holding of €1.3bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "UIN-Fonds Nr. 1120",
+                    "size_eur_m": 587.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "UIN-Fonds Nr. 1120 — at least €587m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "Westerwald Bank discloses a holding of €587m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "APO 2 Union",
+                    "size_eur_m": 548.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "APO 2 Union — at least €548m.",
+                      "Spezialfonds managed by Union Investment Management GmbH.",
+                      "apoBank discloses a holding of €548m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "103 more Spezialfonds",
+                    "size_eur_m": 17536.4,
+                    "kind": "spezial-rest",
+                    "detail_lines": [
+                      "103 more Spezialfonds identified from their investors' accounts — €17.5bn together.",
+                      "€0.00m of it is exact sizes; €17.5bn is lower bounds (holdings above 10%, so each fund is at least that large)."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 16028.4,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €43.3bn, in about 474 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here.",
+                      "Spezialfonds not identified — €16.0bn (of €43.3bn in about 474 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too.",
                       "For the Luxembourg and Irish companies, the block holds their restricted funds (SIF, RAIF) rather than German Spezialfonds.",
                       "Understated: the audited total predates the 2026 merger that brought Union Investment Institutional's Spezialfonds into it."
                     ]
@@ -1080,12 +1339,221 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 134272.5,
+                    "label": "Masterfonds Kreissparkasse Heilbronn",
+                    "size_eur_m": 1669.6,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Masterfonds Kreissparkasse Heilbronn — €1.7bn.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Kreissparkasse Heilbronn holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Deka-Hochfranken-Master",
+                    "size_eur_m": 648.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Deka-Hochfranken-Master — €649m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Hochfranken holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "ÖRAG-FONDS",
+                    "size_eur_m": 439.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ÖRAG-FONDS — €439m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Provinzial (ÖRAG) holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "FundMaster Meißen",
+                    "size_eur_m": 396.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "FundMaster Meißen — €396m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Meißen holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HEGAU-BODENSEE FM 1",
+                    "size_eur_m": 291.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HEGAU-BODENSEE FM 1 — €292m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Hegau-Bodensee holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "MASTER-RWA",
+                    "size_eur_m": 282.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "MASTER-RWA — €283m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Kreissparkasse Rottweil holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Deka-StarkenburgFonds",
+                    "size_eur_m": 264.9,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Deka-StarkenburgFonds — €265m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Starkenburg holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "A-TAUBERFRANKEN 3-FONDS",
+                    "size_eur_m": 226.6,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "A-TAUBERFRANKEN 3-FONDS — €227m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Tauberfranken holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Uckermarkfonds",
+                    "size_eur_m": 205.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Uckermarkfonds — €206m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Uckermark holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Renditeportfolio Kinzigtal",
+                    "size_eur_m": 200.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Renditeportfolio Kinzigtal — €200m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Kinzigtal holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Sparkasse Gera-Greiz Fonds",
+                    "size_eur_m": 175.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Sparkasse Gera-Greiz Fonds — €175m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Gera-Greiz holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Ortenau Premium Masterfonds",
+                    "size_eur_m": 160.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Ortenau Premium Masterfonds — €160m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Offenburg/Ortenau holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "A-HAM-FONDS",
+                    "size_eur_m": 159.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "A-HAM-FONDS — €159m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Hamm holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "ULD-Masterfonds",
+                    "size_eur_m": 154.3,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ULD-Masterfonds — €154m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Uelzen Lüchow-Dannenberg holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Masterfonds der Sparkasse an der Lippe",
+                    "size_eur_m": 142.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Masterfonds der Sparkasse an der Lippe — €143m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse an der Lippe holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "ROLAND Masterfonds",
+                    "size_eur_m": 127.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ROLAND Masterfonds — €128m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: ROLAND Rechtsschutz holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "A-JENA-CORP-FONDS",
+                    "size_eur_m": 122.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "A-JENA-CORP-FONDS — €123m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Jena-Saale-Holzland holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "A-Wolfach-Fonds",
+                    "size_eur_m": 121.9,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "A-Wolfach-Fonds — €122m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Wolfach holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "KSK Tübingen Immobilien-Masterfonds",
+                    "size_eur_m": 119.0,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "KSK Tübingen Immobilien-Masterfonds — €119m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Kreissparkasse Tübingen holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "A-BAD HERSFELD-FONDS",
+                    "size_eur_m": 112.3,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "A-BAD HERSFELD-FONDS — €112m.",
+                      "Spezialfonds managed by Deka Investment GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Bad Hersfeld-Rotenburg holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "120 more Spezialfonds",
+                    "size_eur_m": 27346.5,
+                    "kind": "spezial-rest",
+                    "detail_lines": [
+                      "120 more Spezialfonds identified from their investors' accounts — €27.3bn together.",
+                      "€825m of it is exact sizes; €26.5bn is lower bounds (holdings above 10%, so each fund is at least that large)."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 100905.9,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €134.3bn, in about 511 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here.",
+                      "Spezialfonds not identified — €100.9bn (of €134.3bn in about 511 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too.",
                       "For the Luxembourg and Irish companies, the block holds their restricted funds (SIF, RAIF) rather than German Spezialfonds."
                     ]
                   },
@@ -1444,12 +1912,221 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 167853.6,
+                    "label": "HI-Credit-Short-Duration-Fonds",
+                    "size_eur_m": 683.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Credit-Short-Duration-Fonds — €684m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Provinzial (Holding) and Provinzial (Leben) and Provinzial (Versicherung) hold all of it, as one group."
+                    ]
+                  },
+                  {
+                    "label": "HI-Allgäu-Fonds",
+                    "size_eur_m": 502.3,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Allgäu-Fonds — €502m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Allgäu holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Harburg-Fonds",
+                    "size_eur_m": 270.6,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Harburg-Fonds — €271m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Harburg-Buxtehude holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Lemgo-Master-Fonds",
+                    "size_eur_m": 252.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Lemgo-Master-Fonds — €252m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Lemgo holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Sparkasse Nienburg HQLA-Fonds",
+                    "size_eur_m": 227.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Sparkasse Nienburg HQLA-Fonds — €228m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Nienburg holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Bad Hersfeld II-Fonds",
+                    "size_eur_m": 204.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Bad Hersfeld II-Fonds — €204m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Bad Hersfeld-Rotenburg holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Fulda-Immobilien-Fonds",
+                    "size_eur_m": 196.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Fulda-Immobilien-Fonds — €197m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Fulda holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Offenbach 2-Fonds",
+                    "size_eur_m": 186.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Offenbach 2-Fonds — €186m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Städtische Sparkasse Offenbach am Main holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Hameln-Weserbergland-Fonds",
+                    "size_eur_m": 160.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Hameln-Weserbergland-Fonds — €160m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Hameln-Weserbergland holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Allgäu-LCR-Fonds",
+                    "size_eur_m": 158.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Allgäu-LCR-Fonds — €159m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Allgäu holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Arnstadt-Ilmenau-Fonds",
+                    "size_eur_m": 135.0,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Arnstadt-Ilmenau-Fonds — €135m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Arnstadt-Ilmenau holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Sparkasse Nienburg Master-Fonds",
+                    "size_eur_m": 132.9,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Sparkasse Nienburg Master-Fonds — €133m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Nienburg holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Lübeck Strategie-Fonds",
+                    "size_eur_m": 129.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Lübeck Strategie-Fonds — €130m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse zu Lübeck holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Marburg MMI-Fonds",
+                    "size_eur_m": 98.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Marburg MMI-Fonds — €99m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Marburg-Biedenkopf holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Gelnhausen-Fonds",
+                    "size_eur_m": 84.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Gelnhausen-Fonds — €84m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Kreissparkasse Gelnhausen holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Giessen-Fonds",
+                    "size_eur_m": 78.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Giessen-Fonds — €78m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Gießen holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-NRS-Fonds",
+                    "size_eur_m": 77.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-NRS-Fonds — €77m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Niederrheinische Sparkasse RheinLippe holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Saalfeld-Fonds",
+                    "size_eur_m": 65.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Saalfeld-Fonds — €66m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Kreissparkasse Saalfeld-Rudolstadt holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Schlüchtern-Fonds",
+                    "size_eur_m": 49.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Schlüchtern-Fonds — €49m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Kreissparkasse Schlüchtern holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HI-Gelnhausen-LCR-Fonds",
+                    "size_eur_m": 39.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HI-Gelnhausen-LCR-Fonds — €39m.",
+                      "Spezialfonds managed by Helaba Invest Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Kreissparkasse Gelnhausen holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "69 more Spezialfonds",
+                    "size_eur_m": 27109.1,
+                    "kind": "spezial-rest",
+                    "detail_lines": [
+                      "69 more Spezialfonds identified from their investors' accounts — €27.1bn together.",
+                      "€33m of it is exact sizes; €27.1bn is lower bounds (holdings above 10%, so each fund is at least that large)."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 137011.7,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €167.9bn, in about 387 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here."
+                      "Spezialfonds not identified — €137.0bn (of €167.9bn in about 387 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   },
                   {
@@ -1708,12 +2385,172 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 75362.5,
+                    "label": "BayernInvest HIG-Fonds",
+                    "size_eur_m": 423.8,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest HIG-Fonds — at least €424m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Kreissparkasse Biberach discloses a holding of €424m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest KSKMSE-Fonds",
+                    "size_eur_m": 331.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest KSKMSE-Fonds — at least €331m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Kreissparkasse München Starnberg Ebersberg discloses a holding of €331m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest BISSKM-Fonds",
+                    "size_eur_m": 294.2,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest BISSKM-Fonds — at least €294m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Stadtsparkasse München discloses a holding of €294m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest BISI-Fonds",
+                    "size_eur_m": 283.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest BISI-Fonds — at least €283m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Ingolstadt Eichstätt discloses a holding of €283m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest MerWa-Fonds",
+                    "size_eur_m": 173.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest MerWa-Fonds — at least €173m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Merzig-Wadern discloses a holding of €173m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest GUBI-Fonds",
+                    "size_eur_m": 138.2,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest GUBI-Fonds — at least €138m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Schwaben-Bodensee discloses a holding of €138m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest MECO-Fonds",
+                    "size_eur_m": 136.9,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest MECO-Fonds — at least €137m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Schwaben-Bodensee discloses a holding of €137m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest A-Fontane-Aktien",
+                    "size_eur_m": 111.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest A-Fontane-Aktien — at least €112m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Ostprignitz-Ruppin discloses a holding of €112m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest ZUGSPITZ 1-Fonds",
+                    "size_eur_m": 104.9,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest ZUGSPITZ 1-Fonds — at least €105m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Oberland discloses a holding of €105m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest BIBO-Fonds",
+                    "size_eur_m": 76.8,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest BIBO-Fonds — at least €77m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Schwaben-Bodensee discloses a holding of €77m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest Thomas-Müntzer-Fonds",
+                    "size_eur_m": 71.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest Thomas-Müntzer-Fonds — at least €72m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Unstrut-Hainich discloses a holding of €72m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest VECO-Fonds",
+                    "size_eur_m": 70.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest VECO-Fonds — at least €71m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Coburg-Lichtenfels discloses a holding of €71m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest MEMI-Fonds",
+                    "size_eur_m": 52.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest MEMI-Fonds — at least €52m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Schwaben-Bodensee discloses a holding of €52m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest PAFI-Corp-Fonds",
+                    "size_eur_m": 37.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest PAFI-Corp-Fonds — at least €38m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Pfaffenhofen discloses a holding of €38m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "BayernInvest Kreuzberg-Fonds",
+                    "size_eur_m": 35.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BayernInvest Kreuzberg-Fonds — at least €35m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Bad Neustadt a.d. Saale discloses a holding of €35m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Bayerninvest REAL I.S. 3-Fonds",
+                    "size_eur_m": 18.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Bayerninvest REAL I.S. 3-Fonds — at least €18m.",
+                      "Spezialfonds managed by BayernInvest Kapitalverwaltungsgesellschaft mbH.",
+                      "Real I.S. discloses a holding of €18m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 73003.0,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €75.4bn, in about 147 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here.",
+                      "Spezialfonds not identified — €73.0bn (of €75.4bn in about 147 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too.",
                       "For the Luxembourg and Irish companies, the block holds their restricted funds (SIF, RAIF) rather than German Spezialfonds.",
                       "Part of it rests on 2024 accounts, the latest available."
                     ]
@@ -2091,12 +2928,221 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 42553.0,
+                    "label": "LBBW AM-US Municipals 2",
+                    "size_eur_m": 197.9,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LBBW AM-US Municipals 2 — €198m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: W&W and W&W (ARA Pensionskasse) and W&W (Kranken) and W&W (Versicherung) hold all of it, as one group."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-Hegau",
+                    "size_eur_m": 183.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LBBW AM-Hegau — €183m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Hegau-Bodensee holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-Schwarzes Tor",
+                    "size_eur_m": 143.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LBBW AM-Schwarzes Tor — €143m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Kreissparkasse Rottweil holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-SüdInvest HW EMB",
+                    "size_eur_m": 117.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LBBW AM-SüdInvest HW EMB — €117m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: W&W (ARA Pensionskasse) and W&W (Kranken) hold all of it, as one group."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-Bühl 2020",
+                    "size_eur_m": 106.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LBBW AM-Bühl 2020 — €107m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Bühl holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-Kraichgau Nr. 2 - LCR",
+                    "size_eur_m": 76.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LBBW AM-Kraichgau Nr. 2 - LCR — €76m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Kraichgau holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-Kraichgau Nr. 1",
+                    "size_eur_m": 74.0,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LBBW AM-Kraichgau Nr. 1 — €74m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Kraichgau holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-Bühl 2023 LCR",
+                    "size_eur_m": 40.3,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LBBW AM-Bühl 2023 LCR — €40m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Sparkasse Bühl holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-69",
+                    "size_eur_m": 1723.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-69 — at least €1.7bn.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "W&W (Leben) discloses a holding of €1.7bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-US Municipals 1",
+                    "size_eur_m": 734.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-US Municipals 1 — at least €734m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "W&W (Leben) discloses a holding of €734m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-IAW",
+                    "size_eur_m": 629.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-IAW — at least €629m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Kreissparkasse Biberach discloses a holding of €629m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-Südinvest 160",
+                    "size_eur_m": 600.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-Südinvest 160 — at least €600m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "W&W (Leben) discloses a holding of €600m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-EMB1",
+                    "size_eur_m": 546.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-EMB1 — at least €546m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "W&W (Leben) discloses a holding of €546m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-ASK",
+                    "size_eur_m": 447.1,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-ASK — at least €447m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Stadtsparkasse Augsburg discloses a holding of €447m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-WV Corp Bonds Fonds",
+                    "size_eur_m": 419.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-WV Corp Bonds Fonds — at least €420m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "W&W (Versicherung) discloses a holding of €420m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-76",
+                    "size_eur_m": 389.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-76 — at least €390m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "W&W discloses a holding of €390m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-Master Stocherkahn",
+                    "size_eur_m": 374.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-Master Stocherkahn — at least €375m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Kreissparkasse Tübingen discloses a holding of €375m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-LCR Staufen",
+                    "size_eur_m": 294.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-LCR Staufen — at least €295m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Kreissparkasse Göppingen discloses a holding of €295m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-LCR KUKC",
+                    "size_eur_m": 261.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-LCR KUKC — at least €262m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "Sparkasse Kulmbach-Kronach discloses a holding of €262m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "LBBW AM-AROS",
+                    "size_eur_m": 260.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LBBW AM-AROS — at least €260m.",
+                      "Spezialfonds managed by LBBW Asset Management Investmentgesellschaft mbH.",
+                      "W&W (Leben) discloses a holding of €260m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "22 more Spezialfonds",
+                    "size_eur_m": 2992.7,
+                    "kind": "spezial-rest",
+                    "detail_lines": [
+                      "22 more Spezialfonds identified from their investors' accounts — €3.0bn together.",
+                      "€0.00m of it is exact sizes; €3.0bn is lower bounds (holdings above 10%, so each fund is at least that large)."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 31939.2,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €42.6bn, in about 184 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here."
+                      "Spezialfonds not identified — €31.9bn (of €42.6bn in about 184 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   },
                   {
@@ -2270,12 +3316,32 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 1286.3,
+                    "label": "Commerz Real Institutional Smart Living Europe Fund",
+                    "size_eur_m": 83.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Commerz Real Institutional Smart Living Europe Fund — at least €83m.",
+                      "Spezialfonds managed by Commerz Real Kapitalverwaltungsgesellschaft mbH.",
+                      "Commerz Real discloses a holding of €83m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "ACTIF AQUILA CAPITAL TIMBER INVESTMENT FUND",
+                    "size_eur_m": 23.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "ACTIF AQUILA CAPITAL TIMBER INVESTMENT FUND — at least €24m.",
+                      "Spezialfonds managed by Aquila Capital Investmentgesellschaft mbH.",
+                      "VERKA VK Kirchliche Vorsorge VVaG discloses a holding of €24m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 1179.3,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €1.3bn, in about 14 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here."
+                      "Spezialfonds not identified — €1.2bn (of €1.3bn in about 14 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   },
                   {
@@ -2578,8 +3644,8 @@
                     "size_eur_m": 46697.6,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €46.7bn, in about 181 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here.",
+                      "Spezialfonds not identified — €46.7bn (of €46.7bn in about 181 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too.",
                       "Part of it rests on 2024 accounts, the latest available."
                     ]
                   },
@@ -3527,8 +4593,8 @@
                     "size_eur_m": 407.1,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €407m, in about 8 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here."
+                      "Spezialfonds not identified — €407m (of €407m in about 8 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   },
                   {
@@ -4389,12 +5455,221 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 300355.9,
+                    "label": "Allianz ADAC AV Fonds",
+                    "size_eur_m": 656.6,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Allianz ADAC AV Fonds — €657m.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Size from its investors' own audited accounts: ADAC Autoversicherung holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Allianz ALD Fonds",
+                    "size_eur_m": 90984.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz ALD Fonds — at least €91.0bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Leben) discloses a holding of €91.0bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz VK RentenDirekt Fonds",
+                    "size_eur_m": 16445.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz VK RentenDirekt Fonds — at least €16.4bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Private Kranken) discloses a holding of €16.4bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz VGL Fonds",
+                    "size_eur_m": 14051.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz VGL Fonds — at least €14.1bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Leben) discloses a holding of €14.1bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz APAV Fonds",
+                    "size_eur_m": 4820.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz APAV Fonds — at least €4.8bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz Pensionskasse discloses a holding of €4.8bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz RFG Fonds",
+                    "size_eur_m": 4111.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz RFG Fonds — at least €4.1bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Versicherung) discloses a holding of €4.1bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz VKA Fonds",
+                    "size_eur_m": 3449.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz VKA Fonds — at least €3.4bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Private Kranken) discloses a holding of €3.4bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz PV-RD Fonds",
+                    "size_eur_m": 2701.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz PV-RD Fonds — at least €2.7bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Leben) discloses a holding of €2.7bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz VGI 1 Fonds",
+                    "size_eur_m": 2701.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz VGI 1 Fonds — at least €2.7bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Versicherung) discloses a holding of €2.7bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz EEE Fonds",
+                    "size_eur_m": 2478.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz EEE Fonds — at least €2.5bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Leben) discloses a holding of €2.5bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz AADB Fonds",
+                    "size_eur_m": 1949.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz AADB Fonds — at least €1.9bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Versicherung) discloses a holding of €1.9bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz GLR Fonds",
+                    "size_eur_m": 1555.9,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz GLR Fonds — at least €1.6bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz Commercial discloses a holding of €1.6bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz Re Asia Fonds",
+                    "size_eur_m": 1503.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz Re Asia Fonds — at least €1.5bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz SE discloses a holding of €1.5bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz FAD Fonds",
+                    "size_eur_m": 1429.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz FAD Fonds — at least €1.4bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Versicherung) discloses a holding of €1.4bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz UGD 1 Fonds",
+                    "size_eur_m": 1077.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz UGD 1 Fonds — at least €1.1bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Versicherung) discloses a holding of €1.1bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz GLRS Fonds",
+                    "size_eur_m": 1038.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz GLRS Fonds — at least €1.0bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz Commercial discloses a holding of €1.0bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz SE-PD Fonds",
+                    "size_eur_m": 1038.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz SE-PD Fonds — at least €1.0bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz SE discloses a holding of €1.0bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz L-PD Fonds",
+                    "size_eur_m": 1037.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz L-PD Fonds — at least €1.0bn.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Leben) discloses a holding of €1.0bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Allianz PV-WS Fonds",
+                    "size_eur_m": 723.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Allianz PV-WS Fonds — at least €723m.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Leben) discloses a holding of €723m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "ALLIANZ SOA FONDS",
+                    "size_eur_m": 712.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "ALLIANZ SOA FONDS — at least €712m.",
+                      "Spezialfonds managed by Allianz Global Investors GmbH.",
+                      "Allianz (Leben) discloses a holding of €712m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "11 more Spezialfonds",
+                    "size_eur_m": 4134.2,
+                    "kind": "spezial-rest",
+                    "detail_lines": [
+                      "11 more Spezialfonds identified from their investors' accounts — €4.1bn together.",
+                      "€0.00m of it is exact sizes; €4.1bn is lower bounds (holdings above 10%, so each fund is at least that large)."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 141761.1,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €300.4bn, in about 278 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here."
+                      "Spezialfonds not identified — €141.8bn (of €300.4bn in about 278 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   }
                 ]
@@ -4444,8 +5719,8 @@
                     "size_eur_m": 6547.0,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €6.5bn, in about 8 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here."
+                      "Spezialfonds not identified — €6.5bn (of €6.5bn in about 8 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   },
                   {
@@ -4686,12 +5961,221 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 79112.4,
+                    "label": "MEAG European Prime Opportunities",
+                    "size_eur_m": 370.1,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "MEAG European Prime Opportunities — €370m.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: ERGO (DKV) and ERGO (Leben) and ERGO (Vorsorge Leben) hold all of it, as one group."
+                    ]
+                  },
+                  {
+                    "label": "Skandia Core",
+                    "size_eur_m": 259.9,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Skandia Core — €260m.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Skandia Lebensversicherung Aktiengesellschaft holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "PLE 10",
+                    "size_eur_m": 16368.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PLE 10 — at least €16.4bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "Proxalto Lebensversicherung Aktiengesellschaft c/o Viridium Group GmbH & Co. KG discloses a holding of €16.4bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG RenditePlus",
+                    "size_eur_m": 5558.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG RenditePlus — at least €5.6bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (DKV) discloses a holding of €5.6bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG Multi Life",
+                    "size_eur_m": 3546.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG Multi Life — at least €3.5bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (Leben) discloses a holding of €3.5bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG IREN",
+                    "size_eur_m": 3355.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG IREN — at least €3.4bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (DKV) discloses a holding of €3.4bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG Kapital 2",
+                    "size_eur_m": 3256.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG Kapital 2 — at least €3.3bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (Versicherung) discloses a holding of €3.3bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "PLE 5",
+                    "size_eur_m": 2950.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PLE 5 — at least €3.0bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "Proxalto Lebensversicherung Aktiengesellschaft c/o Viridium Group GmbH & Co. KG discloses a holding of €3.0bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG PREMIUM",
+                    "size_eur_m": 2927.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG PREMIUM — at least €2.9bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (DKV) discloses a holding of €2.9bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG HMR 1",
+                    "size_eur_m": 2796.1,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG HMR 1 — at least €2.8bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (Leben) discloses a holding of €2.8bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG HBG 1",
+                    "size_eur_m": 2549.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG HBG 1 — at least €2.5bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (DKV) discloses a holding of €2.5bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG ATLAS",
+                    "size_eur_m": 1384.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG ATLAS — at least €1.4bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (Leben) discloses a holding of €1.4bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG Ambition",
+                    "size_eur_m": 1301.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG Ambition — at least €1.3bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (DKV) discloses a holding of €1.3bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG Euro 2",
+                    "size_eur_m": 1007.1,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG Euro 2 — at least €1.0bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (Leben) discloses a holding of €1.0bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG Anglo Celtic Fund",
+                    "size_eur_m": 981.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG Anglo Celtic Fund — at least €981m.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (Leben) discloses a holding of €981m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG EDL CURRYGOV",
+                    "size_eur_m": 930.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG EDL CURRYGOV — at least €930m.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (Vorsorge Leben) discloses a holding of €930m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG Euro 1",
+                    "size_eur_m": 856.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG Euro 1 — at least €856m.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (Leben) discloses a holding of €856m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG Pensionskasse West",
+                    "size_eur_m": 783.2,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG Pensionskasse West — at least €783m.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO Pensionskasse discloses a holding of €783m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "MEAG VLA",
+                    "size_eur_m": 760.9,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "MEAG VLA — at least €761m.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "ERGO (Versicherung) discloses a holding of €761m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "HLE Core",
+                    "size_eur_m": 670.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "HLE Core — at least €671m.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "Heidelberger Lebensversicherung AG discloses a holding of €671m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "18 more Spezialfonds",
+                    "size_eur_m": 3855.6,
+                    "kind": "spezial-rest",
+                    "detail_lines": [
+                      "18 more Spezialfonds identified from their investors' accounts — €3.9bn together.",
+                      "€0.00m of it is exact sizes; €3.9bn is lower bounds (holdings above 10%, so each fund is at least that large)."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 22644.2,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €79.1bn, in about 66 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here."
+                      "Spezialfonds not identified — €22.6bn (of €79.1bn in about 66 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   },
                   {
@@ -5049,12 +6533,152 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 20049.8,
+                    "label": "HDI Globale Equities",
+                    "size_eur_m": 420.9,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HDI Globale Equities — €421m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "Size from its investors' own audited accounts: HDI Global holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Delvag Stability Fund",
+                    "size_eur_m": 106.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Delvag Stability Fund — €106m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "Size from its investors' own audited accounts: Delvag Versicherungs-AG holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Ampega Alpha-Fonds",
+                    "size_eur_m": 34.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Ampega Alpha-Fonds — €34m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "Size from its investors' own audited accounts: Neue Rechtsschutz holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "HDI Global SE Absolute Return",
+                    "size_eur_m": 0.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HDI Global SE Absolute Return — €0.50m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "Size from its investors' own audited accounts: HDI Global holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "EURO-RENT 3 Master",
+                    "size_eur_m": 1616.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "EURO-RENT 3 Master — at least €1.6bn.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "HDI Global discloses a holding of €1.6bn, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "PB P HAFS",
+                    "size_eur_m": 807.9,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PB P HAFS — at least €808m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "Pro bAV Pensionskasse AG discloses a holding of €808m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "PL HAFS",
+                    "size_eur_m": 538.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PL HAFS — at least €538m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "PRUDENTIA Pensionskasse AG discloses a holding of €538m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "FL HAFS",
+                    "size_eur_m": 504.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "FL HAFS — at least €504m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "Frankfurter Lebensversicherung AG discloses a holding of €504m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "FML HAFS",
+                    "size_eur_m": 503.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "FML HAFS — at least €504m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "Frankfurt Münchener Lebensversicherung AG discloses a holding of €504m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "PB W HAFS",
+                    "size_eur_m": 395.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PB W HAFS — at least €396m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "Pro bAV Pensionskasse AG discloses a holding of €396m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Talanx Deutschland Real Estate Value",
+                    "size_eur_m": 317.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Talanx Deutschland Real Estate Value — at least €318m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "LPV Leben discloses a holding of €318m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "PBL Alternative Investment Beteiligungen",
+                    "size_eur_m": 81.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PBL Alternative Investment Beteiligungen — at least €82m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "LPV Leben discloses a holding of €82m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "PB Leben offene Investment GmbH & Co KG 3",
+                    "size_eur_m": 41.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PB Leben offene Investment GmbH & Co KG 3 — at least €41m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "LPV Leben discloses a holding of €41m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "PB Leben offene Investment GmbH & Co KG 2",
+                    "size_eur_m": 17.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PB Leben offene Investment GmbH & Co KG 2 — at least €17m.",
+                      "Spezialfonds managed by Ampega Investment GmbH.",
+                      "LPV Leben discloses a holding of €17m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 14664.8,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €20.0bn, in about 95 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here."
+                      "Spezialfonds not identified — €14.7bn (of €20.0bn in about 95 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   },
                   {
@@ -5432,8 +7056,8 @@
                     "size_eur_m": 1998.5,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €2.0bn, in about 4 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here."
+                      "Spezialfonds not identified — €2.0bn (of €2.0bn in about 4 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   }
                 ]
@@ -5449,363 +7073,9 @@
       "label": "Independent",
       "seg_label": "Independent",
       "metric": "aum",
-      "size_eur_m": 691947.67,
+      "size_eur_m": 312247.67,
       "blurb": "Not owned by a bank or an insurer. Founder-owned, listed, or backed by outside investors.",
       "sub": [
-        {
-          "id": "am-universal-investment",
-          "label": "Universal Investment",
-          "metric": "aum",
-          "size_eur_m": 379700.0,
-          "observed_eur_m": 379700.0,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "Universal Investment",
-              "seg_label": null,
-              "legal_name": "Universal-Investment-Gesellschaft mbH",
-              "size_eur_m": 379700.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "Universal Beteiligungs",
-              "url": "https://www.northdata.de/Universal-Investment-Gesellschaft%20mbH",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "Universal-Investment-Gesellschaft mbH — €379.7bn AUM (2025).",
-                "Asset manager.",
-                "Equity €76m. Net income €0m.",
-                "976 employees.",
-                "Parent: Universal Beteiligungs."
-              ],
-              "funds": {
-                "size_eur_m": 514864.03,
-                "blurb": "592 public funds plus Spezialfonds, of €379.7bn AUM; each fund at its own year end. Funds total €514.9bn, above reported AUM.",
-                "items": [
-                  {
-                    "label": "Debeka-Aktien-Nordamerika-ESG",
-                    "size_eur_m": 2385.6,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Debeka-Aktien-Nordamerika-ESG — €2.4bn fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Debeka-Aktien-Europa-ESG",
-                    "size_eur_m": 1574.03,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Debeka-Aktien-Europa-ESG — €1.6bn fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Aquantum Active Range",
-                    "size_eur_m": 1387.22,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Aquantum Active Range — €1.4bn fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Debeka-Aktien-Asien-ESG",
-                    "size_eur_m": 1322.29,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Debeka-Aktien-Asien-ESG — €1.3bn fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "GANÉ Investment-AG mit Teilgesellschaftsvermögen - GANÉ Value Event Fund",
-                    "size_eur_m": 1307.21,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "GANÉ Investment-AG mit Teilgesellschaftsvermögen - GANÉ Value Event Fund — €1.3bn fund assets at 24.09.2026.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from a secondary source (factsheet or portal), not an audited report."
-                    ]
-                  },
-                  {
-                    "label": "apo VV Renten - Privat",
-                    "size_eur_m": 1008.2,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "apo VV Renten - Privat — €1.0bn fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "CARNEGIE CORPORATE BOND",
-                    "size_eur_m": 987.75,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "CARNEGIE FONDER PORTFOLIO – CARNEGIE CORPORATE BOND — €988m fund assets at 31.12.2025.",
-                      "Luxembourg retail fund (UCI Part I (UCITS)), managed by Universal-Investment-Luxembourg S.A..",
-                      "Size from a secondary source (factsheet or portal), not an audited report."
-                    ]
-                  },
-                  {
-                    "label": "Global Dividend Income Fund UI",
-                    "size_eur_m": 887.99,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Universal Investment Ireland UCITS Platform ICAV – Global Dividend Income Fund UI — €888m fund assets at 31.12.2025.",
-                      "Ireland retail fund (CBI UCITS), managed by Universal-Investment Ireland Fund Management Limited.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "AKTIA EM FRONTIER BOND+",
-                    "size_eur_m": 811.83,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "UI – AKTIA EM FRONTIER BOND+ — €812m fund assets at 30.09.2025.",
-                      "Luxembourg retail fund (UCI Part I (UCITS)), managed by Universal-Investment-Luxembourg S.A..",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "DEGUSSA BANK-UNIVERSAL-RENTENFONDS",
-                    "size_eur_m": 686.61,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "DEGUSSA BANK-UNIVERSAL-RENTENFONDS — €687m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Antecedo Defensive Growth",
-                    "size_eur_m": 672.95,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Antecedo Defensive Growth — €673m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "GLS Bank Aktienfonds",
-                    "size_eur_m": 671.03,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "GLS Bank Aktienfonds — €671m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "BASIS II",
-                    "size_eur_m": 657.95,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "XAIA CREDIT – BASIS II — €658m fund assets at 31.12.2025.",
-                      "Luxembourg retail fund (UCI Part I (UCITS)), managed by Universal-Investment-Luxembourg S.A..",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Bethmann Stiftungsfonds",
-                    "size_eur_m": 645.36,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Bethmann Stiftungsfonds — €645m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "MONTRUSCO BOLTON GLOBAL EQUITY FUND",
-                    "size_eur_m": 636.44,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "UI I – MONTRUSCO BOLTON GLOBAL EQUITY FUND — €636m fund assets at 31.12.2025.",
-                      "Luxembourg retail fund (UCI Part I (UCITS)), managed by Universal-Investment-Luxembourg S.A..",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Bethmann ESG Ausgewogen",
-                    "size_eur_m": 633.7,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Bethmann ESG Ausgewogen — €634m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Empureon Volatility One Fund",
-                    "size_eur_m": 632.64,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Empureon Volatility One Fund — €633m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Trojan Fund (Ireland)",
-                    "size_eur_m": 624.77,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Trojan Funds (Ireland) plc – Trojan Fund (Ireland) — €625m fund assets at 31.01.2026.",
-                      "Ireland retail fund (CBI UCITS), managed by Universal-Investment Ireland Fund Management Limited.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "finccam Volatility Premium",
-                    "size_eur_m": 609.9,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "finccam Volatility Premium — €610m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "MAJ INVEST GLOBAL VALUE EQUITIES",
-                    "size_eur_m": 597.75,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "MAJ INVEST FUNDS – MAJ INVEST GLOBAL VALUE EQUITIES — €598m fund assets at 31.12.2025.",
-                      "Luxembourg retail fund (UCI Part I (UCITS)), managed by Universal-Investment-Luxembourg S.A..",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "BERENBERG EUROPEAN SMALL CAP",
-                    "size_eur_m": 582.46,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "BERENBERG EUROPEAN SMALL CAP — €582m fund assets at 31.12.2025.",
-                      "Luxembourg retail fund (UCI Part I (UCITS)), managed by Universal-Investment-Luxembourg S.A..",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Trojan Global Equity Fund",
-                    "size_eur_m": 518.97,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Trojan Funds (Ireland) plc – Trojan Global Equity Fund — €519m fund assets at 31.01.2026.",
-                      "Ireland retail fund (CBI UCITS), managed by Universal-Investment Ireland Fund Management Limited.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "BKC Treuhand Portfolio",
-                    "size_eur_m": 504.59,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "BKC Treuhand Portfolio — €505m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "HVB Select Alpha",
-                    "size_eur_m": 496.27,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "HVB Select Alpha — €496m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "ProfitlichSchmidlin Fonds UI",
-                    "size_eur_m": 474.32,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "ProfitlichSchmidlin Fonds UI — €474m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "HMT Goldproduzenten",
-                    "size_eur_m": 472.35,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "HMT Goldproduzenten — €472m fund assets at 31.08.2026.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from a secondary source (factsheet or portal), not an audited report."
-                    ]
-                  },
-                  {
-                    "label": "Capitulum Sustainable Local Currency Bond Fonds UI",
-                    "size_eur_m": 470.98,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "Capitulum Sustainable Local Currency Bond Fonds UI — €471m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "CBK Euro Corporate Bond Selection",
-                    "size_eur_m": 452.82,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "CBK Euro Corporate Bond Selection — €453m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "CBK Global Quality Equity Selection",
-                    "size_eur_m": 431.7,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "CBK Global Quality Equity Selection — €432m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "CBK Stiftungsfonds Stabilität",
-                    "size_eur_m": 420.83,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "CBK Stiftungsfonds Stabilität — €421m fund assets.",
-                      "Public fund (OGAW), managed by Universal-Investment-Gesellschaft mit beschränkter Haftung.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "562 smaller funds",
-                    "size_eur_m": 42322.35,
-                    "kind": "fund-rest",
-                    "detail_lines": [
-                      "562 smaller public funds — €42.3bn together.",
-                      "Too small to show one by one; each is sized separately in the fund layer (funds/sizes/)."
-                    ]
-                  },
-                  {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 448975.2,
-                    "kind": "spezial",
-                    "detail_lines": [
-                      "Spezialfonds — €449.0bn, in about 773 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here.",
-                      "For the Luxembourg and Irish companies, the block holds their restricted funds (SIF, RAIF) rather than German Spezialfonds."
-                    ]
-                  }
-                ]
-              }
-            }
-          ]
-        },
         {
           "id": "am-flossbach-von-storch",
           "label": "Flossbach von Storch",
@@ -6060,8 +7330,8 @@
                     "size_eur_m": 150.7,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €151m, in about 12 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here.",
+                      "Spezialfonds not identified — €151m (of €151m in about 12 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too.",
                       "For the Luxembourg and Irish companies, the block holds their restricted funds (SIF, RAIF) rather than German Spezialfonds."
                     ]
                   },
@@ -6605,12 +7875,52 @@
                     ]
                   },
                   {
-                    "label": "Spezialfonds",
-                    "size_eur_m": 25904.3,
+                    "label": "Provinzial-Leben-Immofonds",
+                    "size_eur_m": 196.3,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Provinzial-Leben-Immofonds — €196m.",
+                      "Spezialfonds managed by PATRIZIA Frankfurt Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Provinzial (Leben) holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "OIK-Fonds Mediclin",
+                    "size_eur_m": 242.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "OIK-Fonds Mediclin — at least €242m.",
+                      "Spezialfonds managed by PATRIZIA Frankfurt Kapitalverwaltungsgesellschaft mbH.",
+                      "ERGO (DKV) discloses a holding of €242m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "PATRIZIA SN REGIO",
+                    "size_eur_m": 132.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PATRIZIA SN REGIO — at least €133m.",
+                      "Spezialfonds managed by PATRIZIA Augsburg Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Nürnberg discloses a holding of €133m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "PK PATRIZIA GRF II",
+                    "size_eur_m": 45.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "PK PATRIZIA GRF II — at least €45m.",
+                      "Spezialfonds managed by PATRIZIA Real Assets Kapitalverwaltungsgesellschaft mbH.",
+                      "Pensionskasse der HypoVereinsbank discloses a holding of €45m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
+                    ]
+                  },
+                  {
+                    "label": "Other Spezialfonds",
+                    "size_eur_m": 25288.0,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds — €25.9bn, in about 91 funds.",
-                      "Spezialfonds are funds for professional investors, often a single one. Their individual sizes are not directly published but can be inferred; for now they are shown as one block: the fund companies' audited totals minus the public funds shown here.",
+                      "Spezialfonds not identified — €25.3bn (of €25.9bn in about 91 Spezialfonds).",
+                      "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too.",
                       "For the Luxembourg and Irish companies, the block holds their restricted funds (SIF, RAIF) rather than German Spezialfonds.",
                       "Part of it rests on 2024 accounts, the latest available."
                     ]
@@ -29188,7 +30498,7 @@
       ],
       "subtitle": "What asset managers manage (on others' balance sheets), grouped by who owns them.",
       "blurb_label": "",
-      "blurb": "Consolidated AUM for a company includes AUM of every subsidiary. AUM of subsidiaries that lie outside of Germany are colored gray. Compare these figures with official totals of €3.1tn in funds domiciled in Germany (Bundesbank) and a 2024 assessment of Allianz at €2.45tn (TAI)."
+      "blurb": "Consolidated AUM for a company includes AUM of every subsidiary. AUM of subsidiaries that lie outside of Germany are colored gray. Groups can overlap where one manages another's funds. Compare these figures with official totals of €3.1tn in funds domiciled in Germany (Bundesbank) and a 2024 assessment of Allianz at €2.45tn (TAI)."
     }
   ]
 }
