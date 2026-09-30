@@ -5844,7 +5844,33 @@
                 "Equity €68m. Net income €0m.",
                 "112 employees.",
                 "Parent: Allianz Asset Management."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 303996.0,
+                "blurb": "562 mandates and no funds of its own, of €304.0bn AUM.",
+                "items": [
+                  {
+                    "label": "Mandates for Allianz group companies",
+                    "size_eur_m": 205306.0,
+                    "kind": "mandate",
+                    "detail_lines": [
+                      "Mandates for Allianz group companies — €205.3bn at 31.12.2025.",
+                      "246 portfolio-management and individual asset-management mandates, as the company's audited Lagebericht counts them.",
+                      "A mandate is not a fund: the client owns the portfolio and the company manages it. Where the client is a fund another fund company runs, that fund may also appear in the other company's bar."
+                    ]
+                  },
+                  {
+                    "label": "Mandates for outside clients",
+                    "size_eur_m": 98690.0,
+                    "kind": "mandate",
+                    "detail_lines": [
+                      "Mandates for outside clients — €98.7bn at 31.12.2025.",
+                      "316 portfolio-management and individual asset-management mandates, as the company's audited Lagebericht counts them.",
+                      "A mandate is not a fund: the client owns the portfolio and the company manages it. Where the client is a fund another fund company runs, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             },
             {
               "short_name": "Allianz Capital Partners",
@@ -41140,35 +41166,6 @@
           ]
         },
         {
-          "id": "group-hamburger-sparkasse",
-          "label": "Hamburger Sparkasse",
-          "metric": "assets",
-          "size_eur_m": 56913.7,
-          "observed_eur_m": 56913.7,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
-          "institutions": [
-            {
-              "short_name": "Hamburger Sparkasse",
-              "seg_label": null,
-              "legal_name": "Hamburger Sparkasse AG",
-              "size_eur_m": 56913.7,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": "HASPA Finanzholding",
-              "url": "https://www.haspa.de/content/dam/myif/haspa/work/pdf/Unternehmen/ueber_uns/geschaeftsberichte/haspa-annual-report-2025.pdf",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Hamburger Sparkasse AG — €56.9bn assets (2025).",
-                "Bank · Sparkasse.",
-                "Equity €3.2bn. Net income €0m.",
-                "3,731 employees.",
-                "Parent: HASPA Finanzholding."
-              ]
-            }
-          ]
-        },
-        {
           "id": "group-berliner-volksbank",
           "label": "Berliner Volksbank",
           "metric": "assets",
@@ -41509,35 +41506,6 @@
                 "Equity €0.6bn. Net income €31m.",
                 "1,451 employees.",
                 "Parent: Sachsen-Finanzgruppe."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "group-sparkasse-bremen",
-          "label": "Sparkasse Bremen",
-          "metric": "assets",
-          "size_eur_m": 15145.66,
-          "observed_eur_m": 15145.66,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
-          "institutions": [
-            {
-              "short_name": "Sparkasse Bremen",
-              "seg_label": null,
-              "legal_name": "Die Sparkasse Bremen AG",
-              "size_eur_m": 15145.66,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": "Finanzholding Sparkasse Bremen",
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Die Sparkasse Bremen AG — €15.1bn assets (2025).",
-                "Bank · Sparkasse.",
-                "Equity €1.1bn. Net income €48m.",
-                "1,261 employees.",
-                "Parent: Finanzholding Sparkasse Bremen."
               ]
             }
           ]
@@ -42159,35 +42127,6 @@
           ]
         },
         {
-          "id": "group-sparkasse-zu-luebeck",
-          "label": "Sparkasse zu Lübeck",
-          "metric": "assets",
-          "size_eur_m": 3304.13,
-          "observed_eur_m": 3304.13,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
-          "institutions": [
-            {
-              "short_name": "Sparkasse zu Lübeck",
-              "seg_label": null,
-              "legal_name": "Sparkasse zu Lübeck AG, Lübeck",
-              "size_eur_m": 3304.13,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": "Sparkassenstiftung Lübeck",
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Sparkasse zu Lübeck AG, Lübeck — €3.3bn assets (2025).",
-                "Bank · Sparkasse.",
-                "Equity €0.2bn. Net income €8m.",
-                "412 employees.",
-                "Parent: Sparkassenstiftung Lübeck."
-              ]
-            }
-          ]
-        },
-        {
           "id": "group-natixis-pfandbriefbank",
           "label": "NATIXIS Pfandbriefbank",
           "metric": "assets",
@@ -42212,35 +42151,6 @@
                 "Equity €0.1bn. Net income €0m.",
                 "54 employees.",
                 "Parent: NATIXIS."
-              ]
-            }
-          ]
-        },
-        {
-          "id": "group-bordesholmer-sparkasse",
-          "label": "Bordesholmer Sparkasse",
-          "metric": "assets",
-          "size_eur_m": 926.7,
-          "observed_eur_m": 926.7,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
-          "institutions": [
-            {
-              "short_name": "Bordesholmer Sparkasse",
-              "seg_label": null,
-              "legal_name": "Bordesholmer Sparkasse Aktiengesellschaft",
-              "size_eur_m": 926.7,
-              "metric": "assets",
-              "fiscal_year": 2025,
-              "parent": "Bordesholmer Sparkasse Finanzholding",
-              "url": null,
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "Bordesholmer Sparkasse Aktiengesellschaft — €0.9bn assets (2025).",
-                "Bank · Sparkasse.",
-                "Equity €59m. Net income €1m.",
-                "135 employees.",
-                "Parent: Bordesholmer Sparkasse Finanzholding."
               ]
             }
           ]
@@ -42278,8 +42188,8 @@
           "id": "monoline-banks-independent",
           "label": "Independent",
           "metric": "assets",
-          "size_eur_m": 2854728.27,
-          "observed_eur_m": 2854728.27,
+          "size_eur_m": 2931018.46,
+          "observed_eur_m": 2931018.46,
           "unobserved_eur_m": 0.0,
           "blurb": "Institutions that are nobody's subsidiary and own no one — a single legal entity that is its own group. Most savings and cooperative banks are here, sized on their own balance sheets.",
           "institutions": [
@@ -42332,6 +42242,24 @@
                 "Bank · Promotional or central bank.",
                 "Equity €5.0bn. Net income €39m.",
                 "492 employees."
+              ]
+            },
+            {
+              "short_name": "Hamburger Sparkasse",
+              "seg_label": null,
+              "legal_name": "Hamburger Sparkasse AG",
+              "size_eur_m": 56913.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "HASPA Finanzholding",
+              "url": "https://www.haspa.de/content/dam/myif/haspa/work/pdf/Unternehmen/ueber_uns/geschaeftsberichte/haspa-annual-report-2025.pdf",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Hamburger Sparkasse AG — €56.9bn assets (2025).",
+                "Bank · Sparkasse.",
+                "Equity €3.2bn. Net income €0m.",
+                "3,731 employees.",
+                "Parent: HASPA Finanzholding."
               ]
             },
             {
@@ -42604,6 +42532,24 @@
                 "Bank · Sparkasse.",
                 "Equity €1.4bn. Net income €38m.",
                 "1,652 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse Bremen",
+              "seg_label": null,
+              "legal_name": "Die Sparkasse Bremen AG",
+              "size_eur_m": 15145.66,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Finanzholding Sparkasse Bremen",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Die Sparkasse Bremen AG — €15.1bn assets (2025).",
+                "Bank · Sparkasse.",
+                "Equity €1.1bn. Net income €48m.",
+                "1,261 employees.",
+                "Parent: Finanzholding Sparkasse Bremen."
               ]
             },
             {
@@ -46487,6 +46433,24 @@
                 "Bank · Cooperative bank.",
                 "Equity €0.2bn. Net income €7m.",
                 "351 employees."
+              ]
+            },
+            {
+              "short_name": "Sparkasse zu Lübeck",
+              "seg_label": null,
+              "legal_name": "Sparkasse zu Lübeck AG, Lübeck",
+              "size_eur_m": 3304.13,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Sparkassenstiftung Lübeck",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Sparkasse zu Lübeck AG, Lübeck — €3.3bn assets (2025).",
+                "Bank · Sparkasse.",
+                "Equity €0.2bn. Net income €8m.",
+                "412 employees.",
+                "Parent: Sparkassenstiftung Lübeck."
               ]
             },
             {
@@ -51498,6 +51462,24 @@
                 "Bank · Regional bank.",
                 "Equity €0.4bn. Net income €53m.",
                 "1,154 employees."
+              ]
+            },
+            {
+              "short_name": "Bordesholmer Sparkasse",
+              "seg_label": null,
+              "legal_name": "Bordesholmer Sparkasse Aktiengesellschaft",
+              "size_eur_m": 926.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Bordesholmer Sparkasse Finanzholding",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Bordesholmer Sparkasse Aktiengesellschaft — €0.9bn assets (2025).",
+                "Bank · Sparkasse.",
+                "Equity €59m. Net income €1m.",
+                "135 employees.",
+                "Parent: Bordesholmer Sparkasse Finanzholding."
               ]
             },
             {

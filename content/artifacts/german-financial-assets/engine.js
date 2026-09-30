@@ -706,6 +706,7 @@
   // ---- rung 3: the funds of one institution (Round 40) ---------------------
   // Named public funds in colour, largest first; then the Spezialfonds their
   // investors disclose (Round 44: exact sizes, then lower bounds, hatched); then
+  // mandates, for a row that runs no funds (Round 46); then
   // the grey blocks the data marks "spezial" (the Spezialfonds not identified)
   // and "unobserved" (the rest of the manager's AUM). The callout box sits under whichever rung is the
   // deepest shown, so it is moved rather than duplicated.
@@ -736,6 +737,7 @@
         color: it.kind === "spezial" ? CFG.spezialColor || "hsl(220 8% 36%)"
           : grey ? segmentColor("unobserved", {})
           : it.kind === "fund-rest" ? "hsl(190 28% 42%)"
+          : it.kind === "mandate" ? `hsl(32 48% ${rank % 2 ? 46 : 55}%)`
           : spz ? `hsl(262 26% ${rank % 2 ? 50 : 57}%)`
           : it.kind === "spezial-rest" ? "hsl(262 16% 42%)"
           : `hsl(${(CFG.levelHueSeed[2] + 150 + rank * (320 / Math.max(1, named))) % 360} 50% 52%)`,
