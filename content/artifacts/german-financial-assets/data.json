@@ -987,7 +987,7 @@
                     "size_eur_m": 20996.9,
                     "kind": "spezial-rest",
                     "detail_lines": [
-                      "103 more Spezialfonds identified from their investors' accounts — €21.0bn together.",
+                      "103 more Spezialfonds sized from audited accounts — €21.0bn together.",
                       "€0.00m of it is exact sizes; €21.0bn is lower bounds (holdings above 10%, so each fund is at least that large)."
                     ]
                   },
@@ -1559,11 +1559,11 @@
                     ]
                   },
                   {
-                    "label": "121 more Spezialfonds",
+                    "label": "120 more Spezialfonds",
                     "size_eur_m": 25335.5,
                     "kind": "spezial-rest",
                     "detail_lines": [
-                      "121 more Spezialfonds identified from their investors' accounts — €25.3bn together.",
+                      "120 more Spezialfonds sized from audited accounts — €25.3bn together.",
                       "€2.0bn of it is exact sizes; €23.3bn is lower bounds (holdings above 10%, so each fund is at least that large)."
                     ]
                   },
@@ -2136,7 +2136,7 @@
                     "size_eur_m": 25768.7,
                     "kind": "spezial-rest",
                     "detail_lines": [
-                      "69 more Spezialfonds identified from their investors' accounts — €25.8bn together.",
+                      "69 more Spezialfonds sized from audited accounts — €25.8bn together.",
                       "€556m of it is exact sizes; €25.2bn is lower bounds (holdings above 10%, so each fund is at least that large)."
                     ]
                   },
@@ -2614,7 +2614,33 @@
                 "Equity €45m. Net income €0m.",
                 "237 employees.",
                 "Parent: BayernLB."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 8000.0,
+                "blurb": "Spezialfonds sized from audited accounts, of €8.0bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Real I.S. SCF I",
+                    "size_eur_m": 25.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Real I.S. SCF I — at least €25m.",
+                      "Spezialfonds managed by Real I.S. AG Gesellschaft für Immobilien Assetmanagement.",
+                      "Sparkasse Karlsruhe discloses a holding of €25m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 7974.6,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €8.0bn.",
+                      "The part of the €8.0bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -3162,7 +3188,7 @@
                     "size_eur_m": 2992.7,
                     "kind": "spezial-rest",
                     "detail_lines": [
-                      "22 more Spezialfonds identified from their investors' accounts — €3.0bn together.",
+                      "22 more Spezialfonds sized from audited accounts — €3.0bn together.",
                       "€0.00m of it is exact sizes; €3.0bn is lower bounds (holdings above 10%, so each fund is at least that large)."
                     ]
                   },
@@ -3218,7 +3244,7 @@
               ],
               "funds": {
                 "size_eur_m": 60010.0,
-                "blurb": "6 public funds, of €60.0bn AUM; each fund at its own year end.",
+                "blurb": "6 public funds plus Spezialfonds, of €60.0bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "AXA Chance Invest",
@@ -3281,11 +3307,21 @@
                     ]
                   },
                   {
+                    "label": "Roland Euro Aggregate",
+                    "size_eur_m": 159.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Roland Euro Aggregate — €159m.",
+                      "Spezialfonds managed by BNP PARIBAS ASSET MANAGEMENT Germany GmbH.",
+                      "Size from its investors' own audited accounts: ROLAND Rechtsschutz holds all of it."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 57105.01,
+                    "size_eur_m": 56945.61,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €57.1bn.",
+                      "Spezialfonds and other (not itemised) — €56.9bn.",
                       "The part of the €60.0bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -3722,7 +3758,7 @@
               ],
               "funds": {
                 "size_eur_m": 39700.0,
-                "blurb": "24 public funds, of €39.7bn AUM; each fund at its own year end.",
+                "blurb": "24 public funds plus Spezialfonds, of €39.7bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "ODDO BHF Money Market",
@@ -3965,11 +4001,81 @@
                     ]
                   },
                   {
+                    "label": "ISERLOHN I-FONDS",
+                    "size_eur_m": 86.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ISERLOHN I-FONDS — €86m.",
+                      "Spezialfonds managed by ODDO BHF Asset Management GmbH.",
+                      "Size from its investors' own audited accounts: Sparkasse der Stadt Iserlohn holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Glück Auf - Fonds",
+                    "size_eur_m": 73.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Glück Auf - Fonds — €73m.",
+                      "Spezialfonds managed by ODDO BHF Asset Management GmbH.",
+                      "Size from its investors' own audited accounts: Stadtsparkasse Oberhausen holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Prosper",
+                    "size_eur_m": 276.8,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Prosper — at least €277m.",
+                      "Spezialfonds managed by ODDO BHF Asset Management GmbH.",
+                      "Stadtsparkasse Bottrop discloses a holding of €277m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "WESTBURG-FONDS",
+                    "size_eur_m": 257.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "WESTBURG-FONDS — at least €257m.",
+                      "Spezialfonds managed by ODDO BHF Asset Management GmbH.",
+                      "Sparkasse Duisburg discloses a holding of €257m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "RENDITE 93-FONDS",
+                    "size_eur_m": 147.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "RENDITE 93-FONDS — at least €148m.",
+                      "Spezialfonds managed by ODDO BHF Asset Management GmbH.",
+                      "Sparkasse Wittgenstein discloses a holding of €148m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Bergischer - Fonds",
+                    "size_eur_m": 79.8,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Bergischer - Fonds — at least €80m.",
+                      "Spezialfonds managed by ODDO BHF Asset Management GmbH.",
+                      "Stadtsparkasse Wuppertal discloses a holding of €80m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "ST.GEORG-FONDS",
+                    "size_eur_m": 76.6,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "ST.GEORG-FONDS — at least €77m.",
+                      "Spezialfonds managed by ODDO BHF Asset Management GmbH.",
+                      "Sparkasse Hattingen discloses a holding of €77m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 30900.3,
+                    "size_eur_m": 29902.3,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €30.9bn.",
+                      "Spezialfonds and other (not itemised) — €29.9bn.",
                       "The part of the €39.7bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -4007,7 +4113,7 @@
               ],
               "funds": {
                 "size_eur_m": 38380.0,
-                "blurb": "17 public funds, of €38.4bn AUM; each fund at its own year end.",
+                "blurb": "17 public funds plus Spezialfonds, of €38.4bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "Private Banking Vermögensportfolio 70",
@@ -4180,11 +4286,21 @@
                     ]
                   },
                   {
+                    "label": "SLBMFONDS",
+                    "size_eur_m": 100.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "SLBMFONDS — at least €100m.",
+                      "Spezialfonds managed by Amundi Deutschland GmbH.",
+                      "Swiss Life Leben discloses a holding of €100m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 32936.86,
+                    "size_eur_m": 32836.36,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €32.9bn.",
+                      "Spezialfonds and other (not itemised) — €32.8bn.",
                       "The part of the €38.4bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -4219,7 +4335,232 @@
                 "Equity €18m. Net income €0m.",
                 "135 employees.",
                 "Parent: HIH KVG-Holding."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 24005.57,
+                "blurb": "Spezialfonds sized from audited accounts, of €24.0bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "ADN LV Master",
+                    "size_eur_m": 1462.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ADN LV Master — €1.5bn.",
+                      "Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size from its investors' own audited accounts: NÜRNBERGER Leben holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "NAEV-Immo GmbH & Co. Geschl. InvKG",
+                    "size_eur_m": 591.03,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "NAEV-Immo GmbH & Co. Geschl. InvKG — €591m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "ADN Immo-Direkt Core Invest GmbH & Co. Geschl. InvKG",
+                    "size_eur_m": 483.36,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ADN Immo-Direkt Core Invest GmbH & Co. Geschl. InvKG — €483m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "PK1 Immo GmbH & Co. Geschl. Investment-KG",
+                    "size_eur_m": 476.59,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "PK1 Immo GmbH & Co. Geschl. Investment-KG — €477m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Officium GmbH & Co. Geschl. Investment-KG",
+                    "size_eur_m": 475.12,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Officium GmbH & Co. Geschl. Investment-KG — €475m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "DPI Deutschland Plus Invest GmbH und Co. Geschl. InvKG",
+                    "size_eur_m": 463.78,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "DPI Deutschland Plus Invest GmbH und Co. Geschl. InvKG — €464m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "RA Rechtsanwaltsversorgungs VW-Rheinland-Pfalz GmbH & Co Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 353.52,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "RA Rechtsanwaltsversorgungs VW-Rheinland-Pfalz GmbH & Co Geschlossene Investmentkommanditgesellschaft — €354m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "VEMEDSH Zweite Grundbesitz GmbH & Co Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 303.34,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "VEMEDSH Zweite Grundbesitz GmbH & Co Geschlossene Investmentkommanditgesellschaft — €303m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "PKA Immo GmbH & Co. Geschl. Investment-KG",
+                    "size_eur_m": 241.16,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "PKA Immo GmbH & Co. Geschl. Investment-KG — €241m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "ADN Immo-Direkt GD Invest GmbH & Co. Geschl. InvKG.",
+                    "size_eur_m": 226.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ADN Immo-Direkt GD Invest GmbH & Co. Geschl. InvKG. — €226m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Grundbesitz Amsterdam PrinsenKeizer GmbH & Co Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 125.66,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Grundbesitz Amsterdam PrinsenKeizer GmbH & Co Geschlossene Investmentkommanditgesellschaft — €126m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "RVSH GmbH & Co. Geschl. InvKG",
+                    "size_eur_m": 125.6,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "RVSH GmbH & Co. Geschl. InvKG — €126m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "VEMEDSH Dritte Grundbesitz GmbH & Co Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 111.9,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "VEMEDSH Dritte Grundbesitz GmbH & Co Geschlossene Investmentkommanditgesellschaft — €112m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "ADN KV Master",
+                    "size_eur_m": 111.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ADN KV Master — €111m.",
+                      "Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size from its investors' own audited accounts: NÜRNBERGER Kranken holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "VALZK GmbH & Co. Geschl. InvKG",
+                    "size_eur_m": 108.14,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "VALZK GmbH & Co. Geschl. InvKG — €108m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "ADN AV Master",
+                    "size_eur_m": 107.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ADN AV Master — €108m.",
+                      "Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size from its investors' own audited accounts: NÜRNBERGER Allgemeine holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Messe City Köln 1 Beteiligungs GmbH & Co. Geschl. InvKG",
+                    "size_eur_m": 105.18,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Messe City Köln 1 Beteiligungs GmbH & Co. Geschl. InvKG — €105m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "DB Brick GmbH & Co. Geschl. InvKG",
+                    "size_eur_m": 100.43,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "DB Brick GmbH & Co. Geschl. InvKG — €100m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Zebra Frankfurt GmbH & Co. Geschl. InvKG",
+                    "size_eur_m": 95.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Zebra Frankfurt GmbH & Co. Geschl. InvKG — €95m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "CEFI II GmbH Co. Geschl. InvKG",
+                    "size_eur_m": 72.99,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "CEFI II GmbH Co. Geschl. InvKG — €73m.",
+                      "Closed-end Spezialfonds managed by HIH Invest Real Estate GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "32 more Spezialfonds",
+                    "size_eur_m": 2944.46,
+                    "kind": "spezial-rest",
+                    "detail_lines": [
+                      "32 more Spezialfonds sized from audited accounts — €2.9bn together.",
+                      "€609m of it is exact sizes; €2.3bn is lower bounds (holdings above 10%, so each fund is at least that large)."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 14919.72,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €14.9bn.",
+                      "The part of the €24.0bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -4728,7 +5069,7 @@
               ],
               "funds": {
                 "size_eur_m": 4457.92,
-                "blurb": "2 public funds, of €4.5bn AUM; each fund at its own year end.",
+                "blurb": "2 public funds plus Spezialfonds, of €4.5bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "INTER ImmoProfil",
@@ -4751,11 +5092,41 @@
                     ]
                   },
                   {
+                    "label": "Bayer Pensions Vehikel Fonds",
+                    "size_eur_m": 636.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Bayer Pensions Vehikel Fonds — €636m.",
+                      "Spezialfonds managed by BNP Paribas Real Estate Investment Management Germany GmbH.",
+                      "Size from its investors' own audited accounts: Bayer-Pensionskasse holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Real Value Fund",
+                    "size_eur_m": 30.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Real Value Fund — at least €30m.",
+                      "Spezialfonds managed by BNP Paribas Real Estate Investment Management Germany GmbH.",
+                      "Provinzial (Leben) discloses a holding of €30m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "German Real Estate Debt Fund",
+                    "size_eur_m": 6.2,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "German Real Estate Debt Fund — at least €6m.",
+                      "Spezialfonds managed by BNP Paribas Real Estate Investment Management Germany GmbH.",
+                      "AHV TÜV Pensionskasse discloses a holding of €6m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 4337.05,
+                    "size_eur_m": 3664.05,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €4.3bn.",
+                      "Spezialfonds and other (not itemised) — €3.7bn.",
                       "The part of the €4.5bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -5125,7 +5496,7 @@
               ],
               "funds": {
                 "size_eur_m": 713.82,
-                "blurb": "1 public fund, of €714m AUM; each fund at its own year end.",
+                "blurb": "1 public fund plus Spezialfonds, of €714m AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "UBS (D) Euroinvest Immobilien",
@@ -5138,11 +5509,21 @@
                     ]
                   },
                   {
+                    "label": "ERGO Trust Logistikfonds Nr. 1",
+                    "size_eur_m": 4.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "ERGO Trust Logistikfonds Nr. 1 — €4m.",
+                      "Spezialfonds managed by UBS Real Estate GmbH.",
+                      "Size from its investors' own audited accounts: ERGO (DKV) and ERGO (Leben) hold all of it, as one group."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 289.88,
+                    "size_eur_m": 285.48,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €290m.",
+                      "Spezialfonds and other (not itemised) — €285m.",
                       "The part of the €714m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -5812,7 +6193,7 @@
                     "size_eur_m": 6324.0,
                     "kind": "spezial-rest",
                     "detail_lines": [
-                      "14 more Spezialfonds identified from their investors' accounts — €6.3bn together.",
+                      "14 more Spezialfonds sized from audited accounts — €6.3bn together.",
                       "€0.00m of it is exact sizes; €6.3bn is lower bounds (holdings above 10%, so each fund is at least that large)."
                     ]
                   },
@@ -5891,7 +6272,7 @@
               ],
               "funds": {
                 "size_eur_m": 42100.0,
-                "blurb": "0 public funds plus Spezialfonds, of €42.1bn AUM; each fund at its own year end.",
+                "blurb": "Spezialfonds sized from audited accounts, of €42.1bn AUM; each at its own year end.",
                 "items": [
                   {
                     "label": "Spezialfonds",
@@ -6140,6 +6521,16 @@
                     ]
                   },
                   {
+                    "label": "V2 Proxalto GmbH & Co. offene Spezial-Investmentkommanditgesellschaft",
+                    "size_eur_m": 1631.44,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "V2 Proxalto GmbH & Co. offene Spezial-Investmentkommanditgesellschaft — €1.6bn.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of PROXALTO Lebensversicherung Aktiengesellschaft, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
                     "label": "MEAG European Prime Opportunities",
                     "size_eur_m": 370.1,
                     "kind": "spezial-fund",
@@ -6157,6 +6548,16 @@
                       "Skandia Core — €260m.",
                       "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
                       "Size from its investors' own audited accounts: Skandia Leben holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "V3 Proxalto GmbH & Co. offene Spezial-Investmentkommanditgesellschaft",
+                    "size_eur_m": 3.06,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "V3 Proxalto GmbH & Co. offene Spezial-Investmentkommanditgesellschaft — €3m.",
+                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of PROXALTO Lebensversicherung Aktiengesellschaft, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
                     ]
                   },
                   {
@@ -6320,40 +6721,20 @@
                     ]
                   },
                   {
-                    "label": "MEAG VLA",
-                    "size_eur_m": 760.9,
-                    "kind": "spezial-atleast",
-                    "detail_lines": [
-                      "MEAG VLA — at least €761m.",
-                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
-                      "ERGO (Versicherung) discloses a holding of €761m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
-                    ]
-                  },
-                  {
-                    "label": "HLE Core",
-                    "size_eur_m": 670.7,
-                    "kind": "spezial-atleast",
-                    "detail_lines": [
-                      "HLE Core — at least €671m.",
-                      "Spezialfonds managed by MEAG MUNICH ERGO Kapitalanlagegesellschaft mbH.",
-                      "Heidelberger Leben discloses a holding of €671m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding, and no more than the fund company's audited Spezialfonds total allows."
-                    ]
-                  },
-                  {
-                    "label": "18 more Spezialfonds",
-                    "size_eur_m": 3855.6,
+                    "label": "20 more Spezialfonds",
+                    "size_eur_m": 5287.2,
                     "kind": "spezial-rest",
                     "detail_lines": [
-                      "18 more Spezialfonds identified from their investors' accounts — €3.9bn together.",
-                      "€0.00m of it is exact sizes; €3.9bn is lower bounds (holdings above 10%, so each fund is at least that large)."
+                      "20 more Spezialfonds sized from audited accounts — €5.3bn together.",
+                      "€0.00m of it is exact sizes; €5.3bn is lower bounds (holdings above 10%, so each fund is at least that large)."
                     ]
                   },
                   {
                     "label": "Other Spezialfonds",
-                    "size_eur_m": 22644.2,
+                    "size_eur_m": 21009.7,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds not identified — €22.6bn (of €79.1bn in about 66 Spezialfonds).",
+                      "Spezialfonds not identified — €21.0bn (of €79.1bn in about 66 Spezialfonds).",
                       "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too."
                     ]
                   },
@@ -7140,7 +7521,7 @@
               ],
               "funds": {
                 "size_eur_m": 4251.69,
-                "blurb": "2 public funds, of €4.3bn AUM; each fund at its own year end.",
+                "blurb": "2 public funds plus Spezialfonds, of €4.3bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "Swiss Life REF (DE) European Living",
@@ -7163,11 +7544,51 @@
                     ]
                   },
                   {
+                    "label": "Swiss Life REF (DE) Major Premises",
+                    "size_eur_m": 23.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Swiss Life REF (DE) Major Premises — €24m.",
+                      "Spezialfonds managed by Swiss Life Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Swiss Life Leben holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Swiss Life Healthcare Immo I GmbH & Co. Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 12.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Swiss Life Healthcare Immo I GmbH & Co. Geschlossene Investmentkommanditgesellschaft — €13m.",
+                      "Spezialfonds managed by Swiss Life Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Swiss Life Leben holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Schwabengalerie GmbH & Co. Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 120.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Schwabengalerie GmbH & Co. Geschlossene Investmentkommanditgesellschaft — at least €121m.",
+                      "Spezialfonds managed by Swiss Life Kapitalverwaltungsgesellschaft mbH.",
+                      "Swiss Life Leben discloses a holding of €121m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "BEOS Berlin Prime Industrial  GmbH & Co. Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 81.2,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "BEOS Berlin Prime Industrial  GmbH & Co. Geschlossene Investmentkommanditgesellschaft — at least €81m.",
+                      "Spezialfonds managed by Swiss Life Kapitalverwaltungsgesellschaft mbH.",
+                      "Swiss Life Leben discloses a holding of €81m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 2367.66,
+                    "size_eur_m": 2129.26,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €2.4bn.",
+                      "Spezialfonds and other (not itemised) — €2.1bn.",
                       "The part of the €4.3bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -7354,7 +7775,53 @@
                 "Equity €4m. Net income €0m.",
                 "19 employees.",
                 "Parent: Principal Financial Group."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 868.58,
+                "blurb": "Spezialfonds sized from audited accounts, of €869m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "SH-IMMO",
+                    "size_eur_m": 12.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "SH-IMMO — €12m.",
+                      "Spezialfonds managed by Principal Real Estate Spezialfondsgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Pensionskasse der Caritas holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Principal European Office Fund",
+                    "size_eur_m": 43.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Principal European Office Fund — at least €44m.",
+                      "Spezialfonds managed by Principal Real Estate Spezialfondsgesellschaft mbH.",
+                      "Pensionskasse der Caritas and Swiss Life Leben discloses a holding of €44m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "EURO PROPERTY 1",
+                    "size_eur_m": 15.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "EURO PROPERTY 1 — at least €15m.",
+                      "Spezialfonds managed by Principal Real Estate Spezialfondsgesellschaft mbH.",
+                      "Pensionskasse der Caritas and Versorgungswerk LAK Hessen discloses a holding of €15m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 797.08,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €797m.",
+                      "The part of the €869m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         }
@@ -8168,6 +8635,16 @@
                     ]
                   },
                   {
+                    "label": "STORAG Etzel GmbH & Co. geschl. InvKG",
+                    "size_eur_m": 231.2,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "STORAG Etzel GmbH & Co. geschl. InvKG — €231m.",
+                      "Spezialfonds managed by PATRIZIA Frankfurt Kapitalverwaltungsgesellschaft mbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of Continentale Holding Aktiengesellschaft, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
                     "label": "Provinzial-Leben-Immofonds",
                     "size_eur_m": 196.3,
                     "kind": "spezial-fund",
@@ -8219,10 +8696,10 @@
                   },
                   {
                     "label": "Other Spezialfonds",
-                    "size_eur_m": 25227.7,
+                    "size_eur_m": 24996.5,
                     "kind": "spezial",
                     "detail_lines": [
-                      "Spezialfonds not identified — €25.2bn (of €25.9bn in about 91 Spezialfonds).",
+                      "Spezialfonds not identified — €25.0bn (of €25.9bn in about 91 Spezialfonds).",
                       "Spezialfonds are funds for professional investors, often a single one, and publish nothing. Those whose investors disclose them are shown to the left; this is the rest of the fund companies' audited totals, minus the public funds shown here. Where a fund shown 'at least' is in fact larger, the difference is in here too.",
                       "For the Luxembourg and Irish companies, the block holds their restricted funds (SIF, RAIF) rather than German Spezialfonds.",
                       "Part of it rests on 2024 accounts, the latest available."
@@ -8271,7 +8748,7 @@
               ],
               "funds": {
                 "size_eur_m": 22600.0,
-                "blurb": "15 public funds, of €22.6bn AUM; each fund at its own year end.",
+                "blurb": "15 public funds plus Spezialfonds, of €22.6bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "Siemens Balanced",
@@ -8424,11 +8901,31 @@
                     ]
                   },
                   {
+                    "label": "Siemens-Fonds S-7",
+                    "size_eur_m": 140.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Siemens-Fonds S-7 — €141m.",
+                      "Spezialfonds managed by Siemens Fonds Invest GmbH.",
+                      "Size from its investors' own audited accounts: RISICOM Rück holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Siemens-Fonds S-8",
+                    "size_eur_m": 140.3,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Siemens-Fonds S-8 — €140m.",
+                      "Spezialfonds managed by Siemens Fonds Invest GmbH.",
+                      "Size from its investors' own audited accounts: RISICOM Rück holds all of it."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 15683.32,
+                    "size_eur_m": 15402.32,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €15.7bn.",
+                      "Spezialfonds and other (not itemised) — €15.4bn.",
                       "The part of the €22.6bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -8466,7 +8963,7 @@
               ],
               "funds": {
                 "size_eur_m": 20800.0,
-                "blurb": "35 public funds, of €20.8bn AUM; each fund at its own year end.",
+                "blurb": "35 public funds plus Spezialfonds, of €20.8bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "BANTLEON TOP 35 Aktien",
@@ -8778,11 +9275,61 @@
                     ]
                   },
                   {
+                    "label": "Hegau-Bodensee LCR 2",
+                    "size_eur_m": 50.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Hegau-Bodensee LCR 2 — €51m.",
+                      "Spezialfonds managed by BANTLEON Invest Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Hegau-Bodensee holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "NORD/LB AM 14 SL",
+                    "size_eur_m": 385.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "NORD/LB AM 14 SL — at least €385m.",
+                      "Spezialfonds managed by BANTLEON Invest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Lüneburg discloses a holding of €385m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "NORD/LB AM Horizont 1",
+                    "size_eur_m": 55.9,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "NORD/LB AM Horizont 1 — at least €56m.",
+                      "Spezialfonds managed by BANTLEON Invest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Aurich-Norden in Ostfriesland discloses a holding of €56m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Altenburg-Fonds",
+                    "size_eur_m": 54.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Altenburg-Fonds — at least €55m.",
+                      "Spezialfonds managed by BANTLEON Invest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Altenburger Land discloses a holding of €55m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "HL-Zinsfonds",
+                    "size_eur_m": 49.8,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "HL-Zinsfonds — at least €50m.",
+                      "Spezialfonds managed by BANTLEON Invest Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse zu Lübeck discloses a holding of €50m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 18327.97,
+                    "size_eur_m": 17731.47,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €18.3bn.",
+                      "Spezialfonds and other (not itemised) — €17.7bn.",
                       "The part of the €20.8bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -8817,7 +9364,73 @@
                 "Equity €11m. Net income €0m.",
                 "2 employees.",
                 "Parent: 2IG."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 19253.58,
+                "blurb": "Spezialfonds sized from audited accounts, of €19.3bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "German Opportunities II GmbH & Co. Geschlossene Investmentkommanditgesellschaft KG",
+                    "size_eur_m": 227.58,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "German Opportunities II GmbH & Co. Geschlossene Investmentkommanditgesellschaft KG — €228m.",
+                      "Closed-end Spezialfonds managed by Institutional Investment-Partners GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Neastate Invest GmbH & Co. Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 159.81,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Neastate Invest GmbH & Co. Geschlossene Investmentkommanditgesellschaft — €160m.",
+                      "Closed-end Spezialfonds managed by Institutional Investment-Partners GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "German Opportunities IV GmbH & Co. Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 134.67,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "German Opportunities IV GmbH & Co. Geschlossene Investmentkommanditgesellschaft — €135m.",
+                      "Closed-end Spezialfonds managed by Institutional Investment-Partners GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "2IP Real GE 2017",
+                    "size_eur_m": 108.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "2IP Real GE 2017 — at least €109m.",
+                      "Spezialfonds managed by Institutional Investment-Partners GmbH.",
+                      "ADAC Versicherung discloses a holding of €109m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Catella European Student Housing Fund",
+                    "size_eur_m": 19.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Catella European Student Housing Fund — at least €19m.",
+                      "Spezialfonds managed by Institutional Investment-Partners GmbH.",
+                      "Sparkasse Hanau discloses a holding of €19m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 18603.81,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €18.6bn.",
+                      "The part of the €19.3bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -8849,7 +9462,7 @@
               ],
               "funds": {
                 "size_eur_m": 12200.0,
-                "blurb": "1 public fund, of €12.2bn AUM; each fund at its own year end.",
+                "blurb": "1 public fund plus Spezialfonds, of €12.2bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "Lazard High Quality Income Bond Fund",
@@ -8862,11 +9475,31 @@
                     ]
                   },
                   {
+                    "label": "Lazard-LZO 1-Fonds",
+                    "size_eur_m": 110.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Lazard-LZO 1-Fonds — at least €110m.",
+                      "Spezialfonds managed by Lazard Asset Management (Deutschland) GmbH.",
+                      "Landessparkasse zu Oldenburg discloses a holding of €110m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "A-Aller-Fonds",
+                    "size_eur_m": 67.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "A-Aller-Fonds — at least €67m.",
+                      "Spezialfonds managed by Lazard Asset Management (Deutschland) GmbH.",
+                      "Kreissparkasse Verden discloses a holding of €67m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 12182.38,
+                    "size_eur_m": 12005.08,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €12.2bn.",
+                      "Spezialfonds and other (not itemised) — €12.0bn.",
                       "The part of the €12.2bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -9077,7 +9710,7 @@
               ],
               "funds": {
                 "size_eur_m": 9908.0,
-                "blurb": "68 public funds, of €9.9bn AUM; each fund at its own year end.",
+                "blurb": "68 public funds plus Spezialfonds, of €9.9bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "Monega Dänische Covered Bonds LD",
@@ -9389,11 +10022,21 @@
                     ]
                   },
                   {
+                    "label": "RheinLand CLO- Fonds",
+                    "size_eur_m": 77.3,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "RheinLand CLO- Fonds — €77m.",
+                      "Spezialfonds managed by Monega Kapitalanlagegesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Credit Life and RheinLand Versicherung and Rhion Versicherung hold all of it, as one group."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 6476.19,
+                    "size_eur_m": 6398.89,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €6.5bn.",
+                      "Spezialfonds and other (not itemised) — €6.4bn.",
                       "The part of the €9.9bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -9573,7 +10216,53 @@
                 "Equity €29m. Net income €8m.",
                 "157 employees.",
                 "Parent: Aachener Siedlungs- und Wohnungsgesellschaft."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 6014.78,
+                "blurb": "3 public funds, of €6.0bn AUM; each fund at its own year end.",
+                "items": [
+                  {
+                    "label": "Aachener Grund-Fonds Nr.1",
+                    "size_eur_m": 1550.9,
+                    "kind": "fund",
+                    "detail_lines": [
+                      "Aachener Grund-Fonds Nr.1 — €1.6bn fund assets at 30.09.2025.",
+                      "Public fund (Immobilien-Sondervermögen), managed by Aachener Grundvermögen Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its audited annual report."
+                    ]
+                  },
+                  {
+                    "label": "Aachener Spar- und Stiftungs-Fonds",
+                    "size_eur_m": 194.61,
+                    "kind": "fund",
+                    "detail_lines": [
+                      "Aachener Spar- und Stiftungs-Fonds — €195m fund assets at 31.03.2026.",
+                      "Public fund (Immobilien-Sondervermögen), managed by Aachener Grundvermögen Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its audited annual report."
+                    ]
+                  },
+                  {
+                    "label": "Aachener Wohnimmo-Fonds",
+                    "size_eur_m": 51.82,
+                    "kind": "fund",
+                    "detail_lines": [
+                      "Aachener Wohnimmo-Fonds — €52m fund assets at 31.03.2026.",
+                      "Public fund (Immobilien-Sondervermögen), managed by Aachener Grundvermögen Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its audited annual report."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 4217.44,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €4.2bn.",
+                      "The part of the €6.0bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -9605,7 +10294,7 @@
               ],
               "funds": {
                 "size_eur_m": 5950.26,
-                "blurb": "5 public funds, of €6.0bn AUM; each fund at its own year end.",
+                "blurb": "5 public funds plus Spezialfonds, of €6.0bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "Catella Wohnen Europa",
@@ -9658,8 +10347,28 @@
                     ]
                   },
                   {
+                    "label": "Catella Parken Europa",
+                    "size_eur_m": 29.3,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Catella Parken Europa — at least €29m.",
+                      "Spezialfonds managed by Catella Real Estate AG.",
+                      "Swiss Life Leben discloses a holding of €29m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Catella Logistik Deutschland Plus",
+                    "size_eur_m": 28.8,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Catella Logistik Deutschland Plus — at least €29m.",
+                      "Spezialfonds managed by Catella Real Estate AG.",
+                      "Sparkasse Hanau discloses a holding of €29m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 2421.47,
+                    "size_eur_m": 2363.37,
                     "kind": "unobserved",
                     "detail_lines": [
                       "Spezialfonds and other (not itemised) — €2.4bn.",
@@ -9700,7 +10409,7 @@
               ],
               "funds": {
                 "size_eur_m": 5324.67,
-                "blurb": "1 public fund, of €5.3bn AUM; each fund at its own year end.",
+                "blurb": "1 public fund plus Spezialfonds, of €5.3bn AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "DEGI INTERNATIONAL",
@@ -9713,11 +10422,31 @@
                     ]
                   },
                   {
+                    "label": "Städte und Wohnen",
+                    "size_eur_m": 91.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Städte und Wohnen — at least €91m.",
+                      "Spezialfonds managed by abrdn Investments Deutschland AG.",
+                      "Allianz (Leben) discloses a holding of €91m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Wertfonds S",
+                    "size_eur_m": 53.1,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Wertfonds S — at least €53m.",
+                      "Spezialfonds managed by abrdn Investments Deutschland AG.",
+                      "Sparkasse Bad Kissingen discloses a holding of €53m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 5270.97,
+                    "size_eur_m": 5126.87,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €5.3bn.",
+                      "Spezialfonds and other (not itemised) — €5.1bn.",
                       "The part of the €5.3bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -9781,7 +10510,63 @@
                 "Equity €35m. Net income €12m.",
                 "156 employees.",
                 "Parent: KGAL."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 5017.12,
+                "blurb": "Spezialfonds sized from audited accounts, of €5.0bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "STADT MORGEN GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 2892.89,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "STADT MORGEN GmbH & Co. geschlossene Investment KG — €2.9bn.",
+                      "Spezialfonds managed by KGAL Investment Management GmbH & Co. KG.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of Debeka Lebensversicherungsverein a.G., which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "Austrian Retail Park Fund GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 377.94,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Austrian Retail Park Fund GmbH & Co. geschlossene Investment KG — €378m.",
+                      "Spezialfonds managed by KGAL Investment Management GmbH & Co. KG.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of Continentale Holding Aktiengesellschaft, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "KGAL APF 4 GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 123.78,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "KGAL APF 4 GmbH & Co. geschlossene Investment KG — €124m.",
+                      "Spezialfonds managed by KGAL Investment Management GmbH & Co. KG.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of Debeka Lebensversicherungsverein a.G., which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "TUGELA Renewable Energy Infrastructure Fund GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 36.14,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "TUGELA Renewable Energy Infrastructure Fund GmbH & Co. geschlossene Investment KG — €36m.",
+                      "Spezialfonds managed by KGAL Investment Management GmbH & Co. KG.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of Debeka Lebensversicherungsverein a.G., which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 1586.36,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €1.6bn.",
+                      "The part of the €5.0bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -9828,7 +10613,33 @@
                 "Equity €1m. Net income €0m.",
                 "7 employees.",
                 "Parent: Quantum Immobilien KVG."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 799.57,
+                "blurb": "Spezialfonds sized from audited accounts, of €800m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "GENTUM NR. 1",
+                    "size_eur_m": 661.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "GENTUM NR. 1 — €662m.",
+                      "Spezialfonds managed by Quantum Institutional Service Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Generali (Kranken) and Generali (Leben) and Generali (Versicherung) hold all of it, as one group."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 137.77,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €138m.",
+                      "The part of the €800m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10059,7 +10870,33 @@
                 "Equity €11m. Net income €1m.",
                 "16 employees.",
                 "Parent: Savills IM AB."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 2218.01,
+                "blurb": "Spezialfonds sized from audited accounts, of €2.2bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Savills IM Nordic Logistics Club Deal",
+                    "size_eur_m": 2.2,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Savills IM Nordic Logistics Club Deal — at least €2m.",
+                      "Spezialfonds managed by Savills Investment Management KVG GmbH.",
+                      "NÜRNBERGER Leben discloses a holding of €2m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 2215.81,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €2.2bn.",
+                      "The part of the €2.2bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10115,7 +10952,33 @@
                 "Asset manager.",
                 "Equity €9m. Net income €1m.",
                 "41 employees."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 2144.31,
+                "blurb": "Spezialfonds sized from audited accounts, of €2.1bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Deutsche Investment - Food Retail I",
+                    "size_eur_m": 19.8,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Deutsche Investment - Food Retail I — at least €20m.",
+                      "Spezialfonds managed by Deutsche Investment Kapitalverwaltung AG.",
+                      "Pensionskasse Hamburger Hochbahn discloses a holding of €20m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 2124.51,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €2.1bn.",
+                      "The part of the €2.1bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10144,7 +11007,103 @@
                 "Equity €13m. Net income €4m.",
                 "54 employees.",
                 "Parent: HV Capital Holding."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 1982.71,
+                "blurb": "Spezialfonds sized from audited accounts, of €2.0bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "HV Capital COCO Growth Fund GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 540.4,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HV Capital COCO Growth Fund GmbH & Co. geschlossene Investment KG — €540m.",
+                      "Spezialfonds managed by HV Capital Manager GmbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of HV Capital Manager GmbH, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "HV Holtzbrinck Ventures Fund VII GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 535.87,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HV Holtzbrinck Ventures Fund VII GmbH & Co. geschlossene Investment KG — €536m.",
+                      "Spezialfonds managed by HV Capital Manager GmbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of HV Capital Manager GmbH, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "HV Holtzbrinck Ventures Fund VIII GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 518.95,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HV Holtzbrinck Ventures Fund VIII GmbH & Co. geschlossene Investment KG — €519m.",
+                      "Spezialfonds managed by HV Capital Manager GmbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of HV Capital Manager GmbH, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "HV Capital Fund IX Ventures GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 192.36,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HV Capital Fund IX Ventures GmbH & Co. geschlossene Investment KG — €192m.",
+                      "Spezialfonds managed by HV Capital Manager GmbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of HV Capital Manager GmbH, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "HV Capital Fund IX Growth GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 157.91,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HV Capital Fund IX Growth GmbH & Co. geschlossene Investment KG — €158m.",
+                      "Spezialfonds managed by HV Capital Manager GmbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of HV Capital Manager GmbH, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "HV Capital Angels Feeder Fund VIII GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 21.21,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HV Capital Angels Feeder Fund VIII GmbH & Co. geschlossene Investment KG — €21m.",
+                      "Spezialfonds managed by HV Capital Manager GmbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of HV Capital Manager GmbH, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "HV Capital Fund 7 COIF GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 10.04,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HV Capital Fund 7 COIF GmbH & Co. geschlossene Investment KG — €10m.",
+                      "Spezialfonds managed by HV Capital Manager GmbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of HV Capital Manager GmbH, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "HV Capital Angel Entrepreneur IX Ventures GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 4.01,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HV Capital Angel Entrepreneur IX Ventures GmbH & Co. geschlossene Investment KG — €4m.",
+                      "Spezialfonds managed by HV Capital Manager GmbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of HV Capital Manager GmbH, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "HV Capital Angel Entrepreneur IX Growth GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 1.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HV Capital Angel Entrepreneur IX Growth GmbH & Co. geschlossene Investment KG — €2m.",
+                      "Spezialfonds managed by HV Capital Manager GmbH.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of HV Capital Manager GmbH, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10173,7 +11132,43 @@
                 "Equity €3m. Net income €0m.",
                 "13 employees.",
                 "Parent: VALUES. Group."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 1657.82,
+                "blurb": "Spezialfonds sized from audited accounts, of €1.7bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "VAL 1 GmbH & Co. geschlossene lnvestment KG",
+                    "size_eur_m": 64.0,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "VAL 1 GmbH & Co. geschlossene lnvestment KG — at least €64m.",
+                      "Spezialfonds managed by VALUES. Institutional Invest GmbH.",
+                      "ALH (Alte Leipziger Leben) discloses a holding of €64m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "VALUES Health Invest",
+                    "size_eur_m": 4.5,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "VALUES Health Invest — at least €4m.",
+                      "Spezialfonds managed by VALUES. Institutional Invest GmbH.",
+                      "Sparkasse Westholstein discloses a holding of €4m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 1589.32,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €1.6bn.",
+                      "The part of the €1.7bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10436,7 +11431,53 @@
                 "Asset manager.",
                 "Equity €6m. Net income €1m.",
                 "32 employees."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 1428.44,
+                "blurb": "Spezialfonds sized from audited accounts, of €1.4bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "LEA Mittelstandspartner III-A GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 239.08,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LEA Mittelstandspartner III-A GmbH & Co. geschlossene Investmentkommanditgesellschaft — €239m.",
+                      "Closed-end Spezialfonds managed by LEA Partners GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "LEA Strategic Opportunities Fund I GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 0.93,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LEA Strategic Opportunities Fund I GmbH & Co. geschlossene Investment KG — €0.93m.",
+                      "Closed-end Spezialfonds managed by LEA Partners GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "LEA Mittelstandspartner II-A GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 0.18,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LEA Mittelstandspartner II-A GmbH & Co. geschlossene Investmentkommanditgesellschaft — €0.18m.",
+                      "Closed-end Spezialfonds managed by LEA Partners GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 1188.25,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €1.2bn.",
+                      "The part of the €1.4bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10465,7 +11506,63 @@
                 "Equity €2m. Net income €0m.",
                 "37 employees.",
                 "Parent: capiton Holding."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 1310.78,
+                "blurb": "Spezialfonds sized from audited accounts, of €1.3bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "capiton VI Wundex Co-Investment GmbH & Co. geschlossene Investment-KG",
+                    "size_eur_m": 78.86,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "capiton VI Wundex Co-Investment GmbH & Co. geschlossene Investment-KG — €79m.",
+                      "Closed-end Spezialfonds managed by capiton AG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "capiton VI Axxence Co-Investment GmbH & Co. geschlossene Investment-KG",
+                    "size_eur_m": 31.38,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "capiton VI Axxence Co-Investment GmbH & Co. geschlossene Investment-KG — €31m.",
+                      "Closed-end Spezialfonds managed by capiton AG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "capiton VI Cedes Co-Investment GmbH & Co. geschlossene Investment-KG",
+                    "size_eur_m": 9.03,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "capiton VI Cedes Co-Investment GmbH & Co. geschlossene Investment-KG — €9m.",
+                      "Closed-end Spezialfonds managed by capiton AG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "capiton VI Healthcare & Diagnostik Co-Investment GmbH & Co. geschlossene Investment-KG",
+                    "size_eur_m": 4.28,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "capiton VI Healthcare & Diagnostik Co-Investment GmbH & Co. geschlossene Investment-KG — €4m.",
+                      "Closed-end Spezialfonds managed by capiton AG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 1187.23,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €1.2bn.",
+                      "The part of the €1.3bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10494,7 +11591,43 @@
                 "Equity €8m. Net income €1m.",
                 "14 employees.",
                 "Parent: KanAm."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 1170.61,
+                "blurb": "Spezialfonds sized from audited accounts, of €1.2bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "KanAm Grund European Cities HP",
+                    "size_eur_m": 432.8,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "KanAm Grund European Cities HP — €433m.",
+                      "Spezialfonds managed by KanAm Grund Institutional Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Hamburger Pensionskasse von 1905 holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Fokus Norddeutschland Fonds",
+                    "size_eur_m": 8.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Fokus Norddeutschland Fonds — at least €8m.",
+                      "Spezialfonds managed by KanAm Grund Institutional Kapitalverwaltungsgesellschaft mbH.",
+                      "Sparkasse Bayreuth discloses a holding of €8m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 729.41,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €729m.",
+                      "The part of the €1.2bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10522,7 +11655,33 @@
                 "Asset manager.",
                 "Equity €20m. Net income €5m.",
                 "Parent: AM alpha Holding."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 1164.83,
+                "blurb": "Spezialfonds sized from audited accounts, of €1.2bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "HP Real Opportunities",
+                    "size_eur_m": 164.5,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "HP Real Opportunities — €164m.",
+                      "Spezialfonds managed by AM alpha Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its investors' own audited accounts: Hamburger Pensionskasse von 1905 holds all of it."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 1000.33,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €1.0bn.",
+                      "The part of the €1.2bn of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10550,7 +11709,213 @@
                 "Asset manager.",
                 "Equity €5m. Net income €0m.",
                 "Parent: Armira GmbH & Co. KG."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 1162.71,
+                "blurb": "Spezialfonds sized from audited accounts, of €1.2bn AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Armira III GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 245.31,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira III GmbH & Co. geschlossene Investment KG — €245m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Parallel Pool (A) GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 216.3,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Parallel Pool (A) GmbH & Co. geschlossene Investment KG — €216m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "LuxCo Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 158.22,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "LuxCo Active Invest GmbH & Co. geschlossene Investment KG — €158m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Growth Fund I GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 75.47,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Growth Fund I GmbH & Co. geschlossene Investment KG — €75m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Parallel Pool (B) GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 57.78,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Parallel Pool (B) GmbH & Co. geschlossene Investment KG — €58m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Blue GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 52.28,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Blue GmbH & Co. geschlossene Investment KG — €52m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira III Pool GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 39.05,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira III Pool GmbH & Co. geschlossene Investment KG — €39m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira F&F 2019/20 GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 36.68,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira F&F 2019/20 GmbH & Co. geschlossene Investment KG — €37m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Strategy (R) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 34.77,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Strategy (R) Active Invest GmbH & Co. geschlossene Investment KG — €35m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Jebsen Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 33.44,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Jebsen Active Invest GmbH & Co. geschlossene Investment KG — €33m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Strategy (O) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 27.74,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Strategy (O) Active Invest GmbH & Co. geschlossene Investment KG — €28m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira (Strategy E) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 27.73,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira (Strategy E) Active Invest GmbH & Co. geschlossene Investment KG — €28m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira (Strategy J) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 27.66,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira (Strategy J) Active Invest GmbH & Co. geschlossene Investment KG — €28m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira (Strategy I) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 27.66,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira (Strategy I) Active Invest GmbH & Co. geschlossene Investment KG — €28m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Strategy (N) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 26.33,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Strategy (N) Active Invest GmbH & Co. geschlossene Investment KG — €26m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Strategy (P) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 20.78,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Strategy (P) Active Invest GmbH & Co. geschlossene Investment KG — €21m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "PE I Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 13.86,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "PE I Invest GmbH & Co. geschlossene Investment KG — €14m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira (Strategy C) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 13.86,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira (Strategy C) Active Invest GmbH & Co. geschlossene Investment KG — €14m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira (Strategy B) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 13.85,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira (Strategy B) Active Invest GmbH & Co. geschlossene Investment KG — €14m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Armira Strategy (Q) Active Invest GmbH & Co. geschlossene Investment KG",
+                    "size_eur_m": 13.83,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Armira Strategy (Q) Active Invest GmbH & Co. geschlossene Investment KG — €14m.",
+                      "Closed-end Spezialfonds managed by Armira Beteiligungen GmbH & Co. KG.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10636,7 +12001,33 @@
                 "Equity €6m. Net income €0m.",
                 "62 employees.",
                 "Parent: LHI Leasing."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 978.0,
+                "blurb": "Spezialfonds sized from audited accounts, of €978m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "LHI Immobilien Deutschland PK I GmbH & Co. geschlossene Investment-KG",
+                    "size_eur_m": 11.1,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "LHI Immobilien Deutschland PK I GmbH & Co. geschlossene Investment-KG — at least €11m.",
+                      "Spezialfonds managed by LHI Kapitalverwaltungsgesellschaft mbH.",
+                      "Pensionskasse Deutscher Genossenschaften discloses a holding of €11m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 966.9,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €967m.",
+                      "The part of the €978m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -10750,7 +12141,33 @@
                 "Equity €6m. Net income €0m.",
                 "21 employees.",
                 "Parent: Schroder Holdings (Deutschland)."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 950.78,
+                "blurb": "Spezialfonds sized from audited accounts, of €951m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Schroder Nordic Real Estate Fund",
+                    "size_eur_m": 124.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Schroder Nordic Real Estate Fund — at least €125m.",
+                      "Spezialfonds managed by Schroder Real Estate Kapitalverwaltungsgesellschaft mbH.",
+                      "Baloise Leben and Generali (Cosmos Leben) and Generali (Dialog Leben) and Generali (Kranken) and Generali (Leben) and Swiss Life Leben discloses a holding of €125m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 826.08,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €826m.",
+                      "The part of the €951m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -11330,7 +12747,7 @@
               ],
               "funds": {
                 "size_eur_m": 826.6,
-                "blurb": "22 public funds, of €827m AUM; each fund at its own year end.",
+                "blurb": "22 public funds plus Spezialfonds, of €827m AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "IMMAC Austria Sozialimmobilie XIV Renditefonds GmbH & Co. KG geschlossene Investmentkommaditgesellschaft",
@@ -11553,11 +12970,220 @@
                     ]
                   },
                   {
+                    "label": "DFV Infrastruktur I US Energie GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 12.31,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "DFV Infrastruktur I US Energie GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €12m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilie 72. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 9.79,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilie 72. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €10m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 81. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 8.14,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 81. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €8m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 75. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 7.43,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 75. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €7m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 79. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 7.21,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 79. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €7m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Irland Sozialimmobilien II Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 7.15,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Irland Sozialimmobilien II Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft — €7m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 85. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 6.16,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 85. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €6m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 87. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 6.08,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 87. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft — €6m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 126. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 5.95,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 126. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft — €6m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Austria Sozialimmobilie XIII Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 5.68,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Austria Sozialimmobilie XIII Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €6m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "DFV Hotel Deggendorf GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 5.43,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "DFV Hotel Deggendorf GmbH & Co. geschlossene Investmentkommanditgesellschaft — €5m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 82. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 5.28,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 82. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €5m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 110. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 5.0,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 110. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft — €5m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 89. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 4.72,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 89. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft — €5m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 86. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 4.7,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 86. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €5m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 105. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 4.68,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 105. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft — €5m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 97. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 4.63,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 97. Renditefonds GmbH & Co. KG geschlossene Investmentkommanditgesellschaft — €5m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 113. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 4.59,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 113. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft — €5m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 123. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 4.57,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 123. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft — €5m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "IMMAC Sozialimmobilien 129. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 4.47,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "IMMAC Sozialimmobilien 129. Renditefonds GmbH & Co. geschlossene Investmentkommanditgesellschaft — €4m.",
+                      "Closed-end Spezialfonds managed by HKA Hanseatische Kapitalverwaltung GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "18 more Spezialfonds",
+                    "size_eur_m": 52.65,
+                    "kind": "spezial-rest",
+                    "detail_lines": [
+                      "18 more Spezialfonds sized from audited accounts — €53m together.",
+                      "€53m of it is exact sizes; €0.00m is lower bounds (holdings above 10%, so each fund is at least that large)."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 522.85,
+                    "size_eur_m": 346.22,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €523m.",
+                      "Spezialfonds and other (not itemised) — €346m.",
                       "The part of the €827m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -11623,7 +13249,7 @@
               ],
               "funds": {
                 "size_eur_m": 728.29,
-                "blurb": "1 public fund, of €728m AUM; each fund at its own year end.",
+                "blurb": "1 public fund plus Spezialfonds, of €728m AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "HL Invest neustädter, Gießen GmbH & Co. geschlossene Investment-KG",
@@ -11636,11 +13262,21 @@
                     ]
                   },
                   {
+                    "label": "HL Residential Germany Fund III",
+                    "size_eur_m": 12.1,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "HL Residential Germany Fund III — at least €12m.",
+                      "Spezialfonds managed by HANNOVER LEASING Investment GmbH.",
+                      "Kasseler Sparkasse discloses a holding of €12m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 693.63,
+                    "size_eur_m": 681.53,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €694m.",
+                      "Spezialfonds and other (not itemised) — €682m.",
                       "The part of the €728m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -11704,7 +13340,33 @@
                 "Equity €3m. Net income €1m.",
                 "45 employees.",
                 "Parent: Kontora Family Office."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 618.97,
+                "blurb": "Spezialfonds sized from audited accounts, of €619m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Kontora 1. GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 0.15,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Kontora 1. GmbH & Co. geschlossene Investmentkommanditgesellschaft — €0.15m.",
+                      "Closed-end Spezialfonds managed by Kontora Kapitalverwaltungs GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 618.82,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €619m.",
+                      "The part of the €619m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -12266,7 +13928,33 @@
                 "Asset manager.",
                 "Equity €4m. Net income €2m.",
                 "31 employees."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 480.02,
+                "blurb": "Spezialfonds sized from audited accounts, of €480m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "mondial commercium Deutschland I",
+                    "size_eur_m": 56.4,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "mondial commercium Deutschland I — at least €56m.",
+                      "Spezialfonds managed by mondial kapitalverwaltungsgesellschaft mbH.",
+                      "Pensionskasse BARMER and Wuppertaler Pensionskasse discloses a holding of €56m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 423.62,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €424m.",
+                      "The part of the €480m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -12298,7 +13986,7 @@
               ],
               "funds": {
                 "size_eur_m": 470.24,
-                "blurb": "1 public fund, of €470m AUM; each fund at its own year end.",
+                "blurb": "1 public fund plus Spezialfonds, of €470m AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "Anspar FLEX Fonds 3 geschlossene Investment GmbH & Co. KG",
@@ -12311,11 +13999,31 @@
                     ]
                   },
                   {
+                    "label": "Deutschland Wohnen I PAIF",
+                    "size_eur_m": 13.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Deutschland Wohnen I PAIF — at least €14m.",
+                      "Spezialfonds managed by AIF Kapitalverwaltungs-AG.",
+                      "Provinzial (Leben) discloses a holding of €14m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "AIF Lebensquartiere I",
+                    "size_eur_m": 9.8,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "AIF Lebensquartiere I — at least €10m.",
+                      "Spezialfonds managed by AIF Kapitalverwaltungs-AG.",
+                      "Sparkasse Neuss discloses a holding of €10m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 427.25,
+                    "size_eur_m": 403.75,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €427m.",
+                      "Spezialfonds and other (not itemised) — €404m.",
                       "The part of the €470m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -12414,7 +14122,33 @@
                 "Equity €0m. Net income €-1m.",
                 "20 employees.",
                 "Parent: Terra Beteiligungs."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 409.82,
+                "blurb": "Spezialfonds sized from audited accounts, of €410m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Terra Immobilienfonds Haus-Welten I GmbH & Co. geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 80.15,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Terra Immobilienfonds Haus-Welten I GmbH & Co. geschlossene Investmentkommanditgesellschaft — €80m.",
+                      "Spezialfonds managed by Terra Kapitalverwaltung AG.",
+                      "Size: the fund's equity (its net assets) in the audited list of holdings of NÜRNBERGER Pensionskasse AG, which holds 20% or more of it (§ 285 Nr. 11 HGB)."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 329.67,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €330m.",
+                      "The part of the €410m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -12769,7 +14503,7 @@
               ],
               "funds": {
                 "size_eur_m": 296.3,
-                "blurb": "8 public funds, of €296m AUM; each fund at its own year end.",
+                "blurb": "8 public funds plus Spezialfonds, of €296m AUM; each fund at its own year end.",
                 "items": [
                   {
                     "label": "ÖKORENTA Erneuerbare Energien 14 geschlossene Investment GmbH & Co. KG",
@@ -12852,11 +14586,21 @@
                     ]
                   },
                   {
+                    "label": "ÖKORENTA ÖKOstabil 7 geschlossene Investment GmbH & Co. KG",
+                    "size_eur_m": 15.2,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "ÖKORENTA ÖKOstabil 7 geschlossene Investment GmbH & Co. KG — at least €15m.",
+                      "Spezialfonds managed by Auricher Werte GmbH.",
+                      "Sparkasse Aurich-Norden in Ostfriesland discloses a holding of €15m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
                     "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 85.33,
+                    "size_eur_m": 70.13,
                     "kind": "unobserved",
                     "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €85m.",
+                      "Spezialfonds and other (not itemised) — €70m.",
                       "The part of the €296m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
                       "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
                     ]
@@ -13004,7 +14748,33 @@
                 "Equity €1m. Net income €-0m.",
                 "4 employees.",
                 "Parent: Drees & Sommer."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 185.06,
+                "blurb": "Spezialfonds sized from audited accounts, of €185m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Real Blue Senior Living",
+                    "size_eur_m": 16.9,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "Real Blue Senior Living — at least €17m.",
+                      "Spezialfonds managed by Real Blue Kapitalverwaltungs-GmbH.",
+                      "W&W (Leben) discloses a holding of €17m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 168.16,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €168m.",
+                      "The part of the €185m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -13212,7 +14982,33 @@
                 "Equity €0m. Net income €-1m.",
                 "9 employees.",
                 "Parent: RAVW Niedersachsen."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 143.3,
+                "blurb": "Spezialfonds sized from audited accounts, of €143m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Deutsche Mittelstandsholding für Industriebeteiligungen III GmbH & Co. Geschlossene Investmentkommanditgesellschaft",
+                    "size_eur_m": 2.51,
+                    "kind": "spezial-fund",
+                    "detail_lines": [
+                      "Deutsche Mittelstandsholding für Industriebeteiligungen III GmbH & Co. Geschlossene Investmentkommanditgesellschaft — €3m.",
+                      "Closed-end Spezialfonds managed by NordVest GmbH.",
+                      "Size: the net asset value in the fund's own audited annual accounts."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 140.79,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €141m.",
+                      "The part of the €143m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -13241,7 +15037,23 @@
                 "Equity €1m. Net income €0m.",
                 "12 employees.",
                 "Parent: TSPD."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 136.8,
+                "blurb": "Spezialfonds sized from audited accounts, of €137m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 136.8,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €137m.",
+                      "The part of the €137m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         },
@@ -13612,7 +15424,33 @@
                 "Equity €0m. Net income €-0m.",
                 "3 employees.",
                 "Parent: 3CP Ventures."
-              ]
+              ],
+              "funds": {
+                "size_eur_m": 47.77,
+                "blurb": "Spezialfonds sized from audited accounts, of €48m AUM; each at its own year end.",
+                "items": [
+                  {
+                    "label": "5QRE Healthcare Infrastructure Deutschland 01",
+                    "size_eur_m": 12.7,
+                    "kind": "spezial-atleast",
+                    "detail_lines": [
+                      "5QRE Healthcare Infrastructure Deutschland 01 — at least €13m.",
+                      "Spezialfonds managed by Five Quarters Real Estate AG.",
+                      "Sparkasse Fürth discloses a holding of €13m, more than 10% of the fund, in its audited accounts. If it is the only investor, that is the fund's size; if not, the fund is larger: at most ten times the holding."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 35.07,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €35m.",
+                      "The part of the €48m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
             }
           ]
         }
