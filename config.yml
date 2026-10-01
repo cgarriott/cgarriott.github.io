@@ -80,8 +80,6 @@ params:
           url: /CV/coreyGarriottCV.pdf
         - name: Email
           url: mailto:garriott@gmail.com
-        - name: Location
-          url: location/
         - name: Google Scholar
           url: https://scholar.google.com/citations?user=RXh-y24AAAAJ&hl=en
         - name: GitHub
