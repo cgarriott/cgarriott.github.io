@@ -3,7 +3,7 @@ title: "Size of German financial assets by sector"
 date: 2026-09-13
 tags: ["Germany", "banks", "insurers", "asset managers", "pensions"]
 author: ["Corey Garriott"]
-description: "An interactive, drill-down look at the size of the German financial system by sector, sourced from audited annual reports and official sector statistics."
+description: "A drill-down of the size of the German financial system by sector, sourced from audited annual reports and official-sector statistics."
 summary: "Explore German banks, insurers, asset managers, and pension institutions by size -- click down from the whole system to a single company's own filing."
 cover:
     image: "cover.png"

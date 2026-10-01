@@ -7,8 +7,8 @@ enableRobotsTXT: true
 pagination:
   pagerSize: 20
 
-taxonomies:
-    tag: tags
+# No tag pages or tag pills; the tags front matter still drives the papers/media filters.
+disableKinds: ["taxonomy", "term"]
 
 menu:
     main:
