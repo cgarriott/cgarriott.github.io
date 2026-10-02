@@ -31,7 +31,7 @@ menu:
 params:
     description: "This website hosts Corey Garriott's research papers, codes, curriculum vitae, and contact information."
     author: Corey Garriott
-    # googleAnalyticsID: "G-XXXXX"
+    googleAnalyticsID: "G-CLH46C01N2"
     DateFormat: "2006-01-02"
     defaultTheme: dark
     disableThemeToggle: false
@@ -56,57 +56,4 @@ params:
           enabled: true
           title: Corey Garriott
           subtitle: >
-            I research <a href="https://en.wikipedia.org/wiki/Financial_market">financial markets</a> for the <a href="http://financialresearch.gov">Office of Financial Research</a> at <a href="http://treasury.gov">Treasury</a>.
-            My job is to manage the <a href="https://www.financialresearch.gov/data/collections/non-centrally-cleared-bilateral-repo-data/">collection of noncleared repo data</a>,
-              to arrange for its <a href="https://www.financialresearch.gov/short-term-funding-monitor/">cleaning and distribution to the financial industry and public</a>,
-              and to manage <a href="https://www.financialresearch.gov/research-staff/">other researchers who <a href="https://www.financialresearch.gov/publications/">publish using this data and other data on topics of national interest</a>.
-          imageUrl: "corey.png"
-          imageWidth: 160
-          imageHeight: 160
-          buttons:
-            - name: Papers
-              url: papers/
-            - name: Codes
-              url: codes/
-            - name: Media
-              url: media/
-            - name: Artifacts
-              url: artifacts/
-            - name: CV
-              url: cv/
-
-    socialIcons:
-        - name: CV
-          url: /CV/coreyGarriottCV.pdf
-        - name: Email
-          url: mailto:garriott@gmail.com
-        - name: Google Scholar
-          url: https://scholar.google.com/citations?user=RXh-y24AAAAJ&hl=en
-        - name: GitHub
-          url: https://github.com/cgarriott
-        - name: LinkedIn
-          url: https://www.linkedin.com/in/corey-garriott/          
-        - name: SSRN
-          url: https://papers.ssrn.com/sol3/cf_dev/AbsByAuth.cfm?per_id=1751574
-
-    assets:
-        disableScrollBarStyle: true
-    cover:
-        hiddenInList: false
-        hiddenInSingle: true
-    label:
-      text: "Corey Garriott"
-      icon: favicon.ico
-      iconHeight: 18
-
-markup:
-    goldmark:
-        renderer:
-            unsafe: true
-    highlight:
-        guessSyntax: true
-        style: autumn 
-    tableOfContents:
-        endLevel: 2
-        ordered: false
-        startLevel: 2
+            I research <a href="https://en.wikipedia.org/wiki/Financial_market">financial markets</a> for the <a href="http://financialresearch.gov">Office of Financial Research</a> at <a href="ht[...]"
