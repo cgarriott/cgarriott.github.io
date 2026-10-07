@@ -3731,8 +3731,8 @@
           ]
         },
         {
-          "id": "am-feri",
-          "label": "FERI",
+          "id": "am-mlp",
+          "label": "MLP",
           "metric": "aum",
           "size_eur_m": 50774.0,
           "observed_eur_m": 50774.0,
@@ -30146,8 +30146,8 @@
           "label": "Regionalbanken",
           "metric": "assets",
           "size_eur_m": 1786347,
-          "observed_eur_m": 1568655.93,
-          "unobserved_eur_m": 217691.07,
+          "observed_eur_m": 1572074.67,
+          "unobserved_eur_m": 214272.33,
           "blurb": "Everyone else with a German banking license: foreign banks' subsidiaries, auto-finance banks, direct banks, and smaller private banks. 119 file annual accounts.",
           "institutions": [
             {
@@ -30525,6 +30525,24 @@
                 "Bank · Regional bank.",
                 "Equity €0.3bn. Net income €16m.",
                 "180 employees."
+              ]
+            },
+            {
+              "short_name": "MLP Banking",
+              "seg_label": null,
+              "legal_name": "MLP Banking AG",
+              "size_eur_m": 3418.74,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "MLP",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "MLP Banking AG — €3.4bn assets (2024).",
+                "Bank · Regional bank.",
+                "Equity €0.1bn. Net income €0m.",
+                "238 employees.",
+                "Parent: MLP."
               ]
             },
             {
@@ -42500,7 +42518,7 @@
       "label": "Monoline banks",
       "basis": "group",
       "metric": "assets",
-      "size_eur_m": 8319125.29,
+      "size_eur_m": 8323394.71,
       "blurb": "Groups whose regulated business is banking only. Owning an asset manager does not change that — the money it runs belongs to other people.",
       "sub": [
         {
@@ -44216,6 +44234,72 @@
               ]
             }
           ]
+        },
+        {
+          "id": "group-mlp",
+          "label": "MLP",
+          "metric": "assets",
+          "size_eur_m": 4269.42,
+          "observed_eur_m": 3946.1,
+          "unobserved_eur_m": 323.32,
+          "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
+          "institutions": [
+            {
+              "short_name": "MLP Banking",
+              "seg_label": null,
+              "legal_name": "MLP Banking AG",
+              "size_eur_m": 3418.74,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "MLP",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "MLP Banking AG — €3.4bn assets (2024).",
+                "Bank · Regional bank.",
+                "Equity €0.1bn. Net income €0m.",
+                "238 employees.",
+                "Parent: MLP."
+              ]
+            },
+            {
+              "short_name": "MLP",
+              "seg_label": null,
+              "legal_name": "MLP SE",
+              "size_eur_m": 425.7,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": null,
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "MLP SE — €0.4bn assets (2025).",
+                "Financial holding.",
+                "Equity €0.4bn. Net income €30m.",
+                "149 employees."
+              ]
+            },
+            {
+              "short_name": "FERI",
+              "seg_label": null,
+              "legal_name": "FERI AG",
+              "size_eur_m": 101.66,
+              "metric": "assets",
+              "fiscal_year": 2024,
+              "parent": "MLP",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "FERI AG — €0.1bn assets (2024).",
+                "Asset manager.",
+                "Equity €22m. Net income €0m.",
+                "265 employees.",
+                "Parent: MLP."
+              ]
+            }
+          ],
+          "unobserved_label": "Rest of group (mostly non-German)",
+          "unobserved_detail": "{amount} of MLP's consolidated balance sheet is not broken out above. Most of it is foreign subsidiaries, which are outside this dataset -- it covers German legal entities. The rest is the difference between consolidated and standalone accounting."
         },
         {
           "id": "monoline-banks-independent",
