@@ -1,5 +1,5 @@
 {
-  "generated_at": "2026-09-30",
+  "generated_at": "2026-10-07",
   "top": [
     {
       "id": "bank-owned-am",
@@ -7,7 +7,7 @@
       "label": "Bank-owned",
       "seg_label": "Bank-owned",
       "metric": "aum",
-      "size_eur_m": 2737443.46,
+      "size_eur_m": 2788217.46,
       "blurb": "Much of what they run is outside client money, because a bank's own book is loans and deposits rather than a managed portfolio.",
       "sub": [
         {
@@ -3731,6 +3731,35 @@
           ]
         },
         {
+          "id": "am-feri",
+          "label": "FERI",
+          "metric": "aum",
+          "size_eur_m": 50774.0,
+          "observed_eur_m": 50774.0,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
+          "institutions": [
+            {
+              "short_name": "FERI",
+              "seg_label": null,
+              "legal_name": "FERI AG",
+              "size_eur_m": 50774.0,
+              "metric": "aum",
+              "fiscal_year": 2024,
+              "parent": "MLP",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "FERI AG — €50.8bn AUM (2024).",
+                "Asset manager.",
+                "Equity €22m. Net income €0m.",
+                "265 employees.",
+                "Parent: MLP."
+              ]
+            }
+          ]
+        },
+        {
           "id": "am-oddo-bhf-am-deutschland",
           "label": "ODDO BHF AM (Deutschland)",
           "metric": "aum",
@@ -5646,7 +5675,7 @@
       "label": "Insurer-owned",
       "seg_label": "Insurer-owned",
       "metric": "aum",
-      "size_eur_m": 3308763.38,
+      "size_eur_m": 3317409.38,
       "blurb": "A large share of what they run is the parent's own investment portfolio, which also appears on the balance-sheet view as that insurer's assets.",
       "sub": [
         {
@@ -7277,6 +7306,96 @@
           ]
         },
         {
+          "id": "am-signal-iduna-leben",
+          "label": "SIGNAL IDUNA (Leben)",
+          "metric": "aum",
+          "size_eur_m": 53036.75,
+          "observed_eur_m": 53036.75,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
+          "institutions": [
+            {
+              "short_name": "SIGNAL IDUNA Asset Management",
+              "seg_label": null,
+              "legal_name": "SIGNAL IDUNA Asset Management GmbH",
+              "size_eur_m": 44100.0,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "SIGNAL IDUNA",
+              "url": "https://si-am.de/signal-iduna-asset-management/geschaefts-und-offenlegungsbericht/",
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "SIGNAL IDUNA Asset Management GmbH — €44.1bn AUM (2025).",
+                "Asset manager.",
+                "Equity €9m. Net income €0m.",
+                "146 employees.",
+                "Parent: SIGNAL IDUNA."
+              ]
+            },
+            {
+              "short_name": "SICORE Real Assets",
+              "seg_label": null,
+              "legal_name": "SICORE Real Assets GmbH",
+              "size_eur_m": 8646.0,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "SIGNAL IDUNA (Leben)",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "SICORE Real Assets GmbH — €8.6bn AUM (2025).",
+                "Asset manager.",
+                "Equity €11m. Net income €4m.",
+                "119 employees.",
+                "Parent: SIGNAL IDUNA (Leben)."
+              ]
+            },
+            {
+              "short_name": "WohnSelect",
+              "seg_label": null,
+              "legal_name": "WohnSelect Kapitalverwaltungsgesellschaft mbH",
+              "size_eur_m": 290.75,
+              "metric": "aum",
+              "fiscal_year": 2025,
+              "parent": "HANSAINVEST Finance I",
+              "url": "https://www.northdata.de/WohnSelect%20Kapitalverwaltungsgesellschaft%20mbH",
+              "url_label": "Companyregister ↗",
+              "detail_lines": [
+                "WohnSelect Kapitalverwaltungsgesellschaft mbH — €0.3bn AUM (2025).",
+                "Asset manager.",
+                "Equity €2m. Net income €0m.",
+                "Parent: HANSAINVEST Finance I."
+              ],
+              "funds": {
+                "size_eur_m": 290.75,
+                "blurb": "1 public fund, of €291m AUM; each fund at its own year end.",
+                "items": [
+                  {
+                    "label": "WERTGRUND WohnSelect D",
+                    "size_eur_m": 288.48,
+                    "kind": "fund",
+                    "detail_lines": [
+                      "WERTGRUND WohnSelect D — €288m fund assets at 28.02.2026.",
+                      "Public fund (Immobilien-Sondervermögen), managed by WohnSelect Kapitalverwaltungsgesellschaft mbH.",
+                      "Size from its audited annual report."
+                    ]
+                  },
+                  {
+                    "label": "Spezialfonds and other (not itemised)",
+                    "size_eur_m": 2.27,
+                    "kind": "unobserved",
+                    "detail_lines": [
+                      "Spezialfonds and other (not itemised) — €2m.",
+                      "The part of the €291m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
+                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
+                    ]
+                  }
+                ]
+              }
+            }
+          ]
+        },
+        {
           "id": "am-barmeniagothaer",
           "label": "BarmeniaGothaer",
           "metric": "aum",
@@ -7331,78 +7450,6 @@
                 "119 employees.",
                 "Parent: Provinzial (Holding)."
               ]
-            }
-          ]
-        },
-        {
-          "id": "am-signal-iduna-leben",
-          "label": "SIGNAL IDUNA (Leben)",
-          "metric": "aum",
-          "size_eur_m": 44390.75,
-          "observed_eur_m": 44390.75,
-          "unobserved_eur_m": 0.0,
-          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
-          "institutions": [
-            {
-              "short_name": "SIGNAL IDUNA Asset Management",
-              "seg_label": null,
-              "legal_name": "SIGNAL IDUNA Asset Management GmbH",
-              "size_eur_m": 44100.0,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "SIGNAL IDUNA",
-              "url": "https://si-am.de/signal-iduna-asset-management/geschaefts-und-offenlegungsbericht/",
-              "url_label": "Source ↗",
-              "detail_lines": [
-                "SIGNAL IDUNA Asset Management GmbH — €44.1bn AUM (2025).",
-                "Asset manager.",
-                "Equity €9m. Net income €0m.",
-                "146 employees.",
-                "Parent: SIGNAL IDUNA."
-              ]
-            },
-            {
-              "short_name": "WohnSelect",
-              "seg_label": null,
-              "legal_name": "WohnSelect Kapitalverwaltungsgesellschaft mbH",
-              "size_eur_m": 290.75,
-              "metric": "aum",
-              "fiscal_year": 2025,
-              "parent": "HANSAINVEST Finance I",
-              "url": "https://www.northdata.de/WohnSelect%20Kapitalverwaltungsgesellschaft%20mbH",
-              "url_label": "Companyregister ↗",
-              "detail_lines": [
-                "WohnSelect Kapitalverwaltungsgesellschaft mbH — €0.3bn AUM (2025).",
-                "Asset manager.",
-                "Equity €2m. Net income €0m.",
-                "Parent: HANSAINVEST Finance I."
-              ],
-              "funds": {
-                "size_eur_m": 290.75,
-                "blurb": "1 public fund, of €291m AUM; each fund at its own year end.",
-                "items": [
-                  {
-                    "label": "WERTGRUND WohnSelect D",
-                    "size_eur_m": 288.48,
-                    "kind": "fund",
-                    "detail_lines": [
-                      "WERTGRUND WohnSelect D — €288m fund assets at 28.02.2026.",
-                      "Public fund (Immobilien-Sondervermögen), managed by WohnSelect Kapitalverwaltungsgesellschaft mbH.",
-                      "Size from its audited annual report."
-                    ]
-                  },
-                  {
-                    "label": "Spezialfonds and other (not itemised)",
-                    "size_eur_m": 2.27,
-                    "kind": "unobserved",
-                    "detail_lines": [
-                      "Spezialfonds and other (not itemised) — €2m.",
-                      "The part of the €291m of AUM the company reports that the public funds shown do not explain. It is not measured here directly.",
-                      "It holds Spezialfonds, whose sizes are never published, mandates and advisory, plus differences of date. Where this company manages the portfolio of a fund another fund company administers, that fund may also appear in the other company's bar."
-                    ]
-                  }
-                ]
-              }
             }
           ]
         },
@@ -7833,7 +7880,7 @@
       "label": "Independent",
       "seg_label": "Independent",
       "metric": "aum",
-      "size_eur_m": 374980.89,
+      "size_eur_m": 401464.41,
       "blurb": "Not owned by a bank or an insurer. Founder-owned, listed, or backed by outside investors.",
       "sub": [
         {
@@ -9435,6 +9482,34 @@
           ]
         },
         {
+          "id": "am-dje-kapital",
+          "label": "DJE Kapital",
+          "metric": "aum",
+          "size_eur_m": 16161.27,
+          "observed_eur_m": 16161.27,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
+          "institutions": [
+            {
+              "short_name": "DJE Kapital",
+              "seg_label": null,
+              "legal_name": "DJE Kapital AG",
+              "size_eur_m": 16161.27,
+              "metric": "aum",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "DJE Kapital AG — €16.2bn AUM (2024).",
+                "Asset manager.",
+                "Equity €88m. Net income €38m.",
+                "166 employees."
+              ]
+            }
+          ]
+        },
+        {
           "id": "am-lazard-am-deutschland",
           "label": "Lazard AM (Deutschland)",
           "metric": "aum",
@@ -10043,6 +10118,34 @@
                   }
                 ]
               }
+            }
+          ]
+        },
+        {
+          "id": "am-wellington-management-europe",
+          "label": "Wellington Management Europe",
+          "metric": "aum",
+          "size_eur_m": 7867.0,
+          "observed_eur_m": 7867.0,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
+          "institutions": [
+            {
+              "short_name": "Wellington Management Europe",
+              "seg_label": null,
+              "legal_name": "Wellington Management Europe GmbH",
+              "size_eur_m": 7867.0,
+              "metric": "aum",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Wellington Management Europe GmbH — €7.9bn AUM (2024).",
+                "Asset manager.",
+                "Equity €15m. Net income €7m.",
+                "35 employees."
+              ]
             }
           ]
         },
@@ -10841,6 +10944,34 @@
                 "Equity €5m. Net income €1m.",
                 "42 employees.",
                 "Parent: DPE Holding."
+              ]
+            }
+          ]
+        },
+        {
+          "id": "am-sauren-finanzdienstleistungen",
+          "label": "Sauren Finanzdienstleistungen",
+          "metric": "aum",
+          "size_eur_m": 2321.25,
+          "observed_eur_m": 2321.25,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
+          "institutions": [
+            {
+              "short_name": "Sauren Finanzdienstleistungen",
+              "seg_label": null,
+              "legal_name": "Sauren Finanzdienstleistungen GmbH & Co. KG",
+              "size_eur_m": 2321.25,
+              "metric": "aum",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Sauren Finanzdienstleistungen GmbH & Co. KG — €2.3bn AUM (2024).",
+                "Asset manager.",
+                "Equity €2m. Net income €9m.",
+                "9 employees."
               ]
             }
           ]
@@ -15054,6 +15185,34 @@
                   }
                 ]
               }
+            }
+          ]
+        },
+        {
+          "id": "am-fpm-frankfurt-performance",
+          "label": "FPM Frankfurt Performance",
+          "metric": "aum",
+          "size_eur_m": 134.0,
+          "observed_eur_m": 134.0,
+          "unobserved_eur_m": 0.0,
+          "blurb": "Each asset manager in the group, sized by what it runs for clients — grey, where shown, is the rest run abroad.",
+          "institutions": [
+            {
+              "short_name": "FPM Frankfurt Performance",
+              "seg_label": null,
+              "legal_name": "FPM Frankfurt Performance Management AG",
+              "size_eur_m": 134.0,
+              "metric": "aum",
+              "fiscal_year": 2024,
+              "parent": null,
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "FPM Frankfurt Performance Management AG — €0.1bn AUM (2024).",
+                "Asset manager.",
+                "Equity €5m. Net income €-1m.",
+                "5 employees."
+              ]
             }
           ]
         },
@@ -40883,8 +41042,8 @@
           "label": "Munich Re",
           "metric": "assets",
           "size_eur_m": 279934.0,
-          "observed_eur_m": 252584.12,
-          "unobserved_eur_m": 27349.88,
+          "observed_eur_m": 252593.08,
+          "unobserved_eur_m": 27340.92,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
             {
@@ -41111,6 +41270,24 @@
                 "Equity €9m. Net income €0m.",
                 "Parent: ERGO."
               ]
+            },
+            {
+              "short_name": "Munich Re Investment Partners",
+              "seg_label": null,
+              "legal_name": "Munich Re Investment Partners GmbH",
+              "size_eur_m": 8.96,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "Munich Re",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "Munich Re Investment Partners GmbH — €9m assets (2025).",
+                "Asset manager.",
+                "Equity €7m. Net income €0m.",
+                "19 employees.",
+                "Parent: Munich Re."
+              ]
             }
           ],
           "unobserved_label": "Rest of group (mostly non-German)",
@@ -41183,8 +41360,8 @@
           "label": "SIGNAL IDUNA (Leben)",
           "metric": "assets",
           "size_eur_m": 37522.05,
-          "observed_eur_m": 35745.36,
-          "unobserved_eur_m": 1776.69,
+          "observed_eur_m": 35770.31,
+          "unobserved_eur_m": 1751.74,
           "blurb": "Each segment is one company inside the group, sized on its own standalone figures — added up, they can fall short of the group's own consolidated total.",
           "institutions": [
             {
@@ -41376,6 +41553,24 @@
                 "Equity €9m. Net income €0m.",
                 "146 employees.",
                 "Parent: SIGNAL IDUNA."
+              ]
+            },
+            {
+              "short_name": "SICORE Real Assets",
+              "seg_label": null,
+              "legal_name": "SICORE Real Assets GmbH",
+              "size_eur_m": 24.95,
+              "metric": "assets",
+              "fiscal_year": 2025,
+              "parent": "SIGNAL IDUNA (Leben)",
+              "url": null,
+              "url_label": "Source ↗",
+              "detail_lines": [
+                "SICORE Real Assets GmbH — €25m assets (2025).",
+                "Asset manager.",
+                "Equity €11m. Net income €4m.",
+                "119 employees.",
+                "Parent: SIGNAL IDUNA (Leben)."
               ]
             },
             {
