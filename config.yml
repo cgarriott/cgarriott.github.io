@@ -31,7 +31,7 @@ menu:
 params:
     description: "This website hosts Corey Garriott's research papers, codes, curriculum vitae, and contact information."
     author: Corey Garriott
-    # googleAnalyticsID: "G-XXXXX"
+    googleAnalyticsID: "G-CLH46C01N2"
     DateFormat: "2006-01-02"
     defaultTheme: dark
     disableThemeToggle: false
