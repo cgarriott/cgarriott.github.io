@@ -56,10 +56,9 @@ params:
           enabled: true
           title: Corey Garriott
           subtitle: >
-            I research <a href="https://en.wikipedia.org/wiki/Financial_market">financial markets</a> for the <a href="http://financialresearch.gov">Office of Financial Research</a> at <a href="http://treasury.gov">Treasury</a>.
-            My job is to manage the <a href="https://www.financialresearch.gov/data/collections/non-centrally-cleared-bilateral-repo-data/">collection of noncleared repo data</a>,
-              to arrange for its <a href="https://www.financialresearch.gov/short-term-funding-monitor/">cleaning and distribution to the financial industry and public</a>,
-              and to manage <a href="https://www.financialresearch.gov/research-staff/">other researchers who <a href="https://www.financialresearch.gov/publications/">publish using this data and other data on topics of national interest</a>.
+            I am a senior financial sector analyst at the <a href="https://www.imf.org">IMF</a>.
+            My job is to fly to countries and stress test their financial systems, and my special emphasis is on systemwide liquidity.
+            I also provide technical assistance to countries and write about systemic risk.
           imageUrl: "corey.png"
           imageWidth: 160
           imageHeight: 160

@@ -17,9 +17,11 @@ Market structure and prudential regulation of repo, bond and derivatives markets
 
 #### Jobs
 
-**2024–now** — [Supervisor of research, Office of Financial Research, US Treasury](https://www.financialresearch.gov/research-staff/details/corey-garriott/)
+**2026–now** — [Senior financial sector expert, International Monetary Fund](https://www.imf.org)
 
-**2021–2024** — Head of product research, Montréal Exchange, TMX Group
+**2024–2026** — [Supervisor of research, Office of Financial Research, US Treasury](https://www.financialresearch.gov)
+
+**2021–2024** — [Head of product research, Montréal Exchange, TMX Group](https://www.m-x.ca)
 
 **2014–2020** — [Principal researcher, Bank of Canada](https://www.bankofcanada.ca/profile/corey-garriott/)
 
@@ -39,43 +41,49 @@ Market structure and prudential regulation of repo, bond and derivatives markets
 
 #### Academic publications
 
-[Garriott, C., and Riordan, R. (2026). The price impacts of informed investors. *Journal of Financial Markets*, 101058.](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4866008)
+[Garriott, C., and Riordan, R. (2026). The price impacts of informed investors. *Journal of Financial Markets*, 101058.](/papers/paper6/)
 
-[Garriott, C., van Kervel, V. and Zoican, M. (2025). Queuing and inventories in limit order markets. *Journal of Financial Markets*, 75, 100982.](https://www.sciencedirect.com/science/article/pii/S1386418125000229)
+[Garriott, C., van Kervel, V. and Zoican, M. (2025). Queuing and inventories in limit order markets. *Journal of Financial Markets*, 75, 100982.](/papers/paper2/)
 
-[Chen, M. and Garriott, C. (2020). High-frequency trading and institutional trading costs. *The Journal of Empirical Finance* 56, 74–93.](https://www.sciencedirect.com/science/article/pii/S0927539819301069/pdfft?md5=acc9a68e6a64edb6e7f2ecc0f1691498&pid=1-s2.0-S0927539819301069-main.pdf)
+[Chen, M. and Garriott, C. (2020). High-frequency trading and institutional trading costs. *The Journal of Empirical Finance* 56, 74–93.](/papers/paper7/)
 
-[Garriott, C., Lefebvre, S., Nolin, G., Rivadeneyra, F. and Walton, A. (2020). Alternative futures for Government of Canada debt management. *The Journal of Financial Economic Policy* 12(4), 659–685.](https://www.bankofcanada.ca/2018/12/staff-discussion-paper-2018-15/)
+[Garriott, C., Lefebvre, S., Nolin, G., Rivadeneyra, F. and Walton, A. (2020). Alternative futures for Government of Canada debt management. *The Journal of Financial Economic Policy* 12(4), 659–685.](/papers/paper13/)
 
-[Cimon, D. and Garriott, C. (2019). Banking regulation and market making. *The Journal of Banking and Finance* 109: 105653.](https://www.sciencedirect.com/science/article/pii/S0378426619302286/pdfft?md5=eb08ac3526a322089c054fb7a69b4559&pid=1-s2.0-S0378426619302286-main.pdf)
+[Cimon, D. and Garriott, C. (2019). Banking regulation and market making. *The Journal of Banking and Finance* 109: 105653.](/papers/paper3/)
 
-[Brogaard, J. and Garriott, C. (2019). High frequency trading competition. *The Journal of Financial and Quantitative Analysis*, 54(4), 1469–1497.](https://www.cambridge.org/core/services/aop-cambridge-core/content/view/C6F1849FCA91D1B52AABA10F2A952D7B/S0022109018001175a.pdf/highfrequency_trading_competition.pdf)
+[Brogaard, J. and Garriott, C. (2019). High frequency trading competition. *The Journal of Financial and Quantitative Analysis*, 54(4), 1469–1497.](/papers/paper1/)
 
-[Garriott, C. and Walton, A. (2018). Retail order flow segmentation. *The Journal of Trading* 13(3), 13–23.](https://www.bankofcanada.ca/2016/04/staff-working-paper-2016-20/)
+[Garriott, C. and Walton, A. (2018). Retail order flow segmentation. *The Journal of Trading* 13(3), 13–23.](/papers/paper8/)
 
-[Chin, F. and Garriott, C. (2017). Options decimalization. *The Journal of Derivatives* 25(1), 88–103.](https://www.bankofcanada.ca/2016/12/staff-working-paper-2016-57/)
+[Chin, F. and Garriott, C. (2017). Options decimalization. *The Journal of Derivatives* 25(1), 88–103.](/papers/paper16/)
 
 ---
 
 #### Policy articles
 
-[Cenicola, A. and Garriott, C. (2025). How the Treasury clearing rule might affect SOFR. *The OFR Blog* 25-01.](https://www.financialresearch.gov/the-ofr-blog/2025/04/22/how-the-treasury-clearing-rule-for-repo-might-affect-sofr/)
+[Cenicola, A. and Garriott, C. (2026). A closer look at the U.S. NCCBR market. *OFR Brief Series* 26-05.](/papers/paper19/)
 
-[Fontaine, J.S., Garriott, C., Johal, J., Lee, J., and Uthemann, A. (2021). COVID-19 Crisis: Lessons Learned for Future Policy Research. *Bank of Canada Staff Discussion Paper* 2021-2.](https://www.bankofcanada.ca/2021/02/staff-discussion-paper-2021-2/)
+[Friedrichs, M., Garriott, C. and Mann, R. (2026). Sizing the U.S. cross-border repo market. *The OFR Blog*.](/papers/paper20/)
 
-[Berger-Soucy, L., Garriott, C. and Usche, A. (2018). Government of Canada fixed-income market ecology. *Bank of Canada Staff Discussion Paper* 2018-10.](https://www.bankofcanada.ca/2018/09/staff-discussion-paper-2018-10/)
+[Cenicola, A. and Garriott, C. (2025). How the Treasury clearing rule might affect SOFR. *The OFR Blog* 25-01.](/papers/paper18/)
 
-[Garriott, C. and Johal, J. (2018). Customer liquidity provision in Canadian bond markets. *Bank of Canada Staff Analytical Notes* 2018-12.](https://www.bankofcanada.ca/2018/05/staff-analytical-note-2018-12/)
+[Fontaine, J.S., Garriott, C., Johal, J., Lee, J., and Uthemann, A. (2021). COVID-19 Crisis: Lessons Learned for Future Policy Research. *Bank of Canada Staff Discussion Paper* 2021-2.](/papers/paper4/)
 
-[Feunou, B., Garriott, C., Kyeong, J. and Leiderman, R. (2017). The impacts of monetary policy statements. *Bank of Canada Staff Analytical Notes* 2017-22.](https://www.bankofcanada.ca/2017/11/staff-analytical-note-2017-22/)
+[Arora, R., Fontaine, J.S., Garriott, C. and Ouellet Leblanc, G. (2020). Will exchange-traded funds shape the future of bond dealing? *Bank of Canada Staff Analytical Notes* 2020-16.](/papers/paper17/)
 
-[Garriott, C., Hyun, D. and Johal, J. (2017). Do Canadian broker-dealers act as agents or principals in bond trading? *Bank of Canada Staff Analytical Notes* 2017-11.](https://www.bankofcanada.ca/2017/09/staff-analytical-note-2017-11/)
+[Berger-Soucy, L., Garriott, C. and Usche, A. (2018). Government of Canada fixed-income market ecology. *Bank of Canada Staff Discussion Paper* 2018-10.](/papers/paper10/)
 
-[Fontaine, J.S., Garriott, C. and Gray, K. (2016). Securities financing and bond market liquidity. *Bank of Canada Financial System Review* June 2016.](https://www.bankofcanada.ca/wp-content/uploads/2016/06/fsr-june2016-fontaine.pdf)
+[Garriott, C. and Johal, J. (2018). Customer liquidity provision in Canadian bond markets. *Bank of Canada Staff Analytical Notes* 2018-12.](/papers/paper15/)
 
-[Garriott, C. and Gray, K. (2016). Canadian repo market ecology. *Bank of Canada Staff Discussion Paper* 2016-8.](https://www.bankofcanada.ca/2016/03/staff-discussion-paper-2016-8/)
+[Feunou, B., Garriott, C., Kyeong, J. and Leiderman, R. (2017). The impacts of monetary policy statements. *Bank of Canada Staff Analytical Notes* 2017-22.](/papers/paper11/)
 
-[Garriott, C., Pomeranets, A., Slive, J. and Thorn, T. (2013). Fragmentation in Canadian equity markets. *Bank of Canada Review* Autumn 2013.](https://www.bankofcanada.ca/wp-content/uploads/2013/11/boc-review-autumn13-garriott.pdf)
+[Garriott, C., Hyun, D. and Johal, J. (2017). Do Canadian broker-dealers act as agents or principals in bond trading? *Bank of Canada Staff Analytical Notes* 2017-11.](/papers/paper12/)
+
+[Fontaine, J.S., Garriott, C. and Gray, K. (2016). Securities financing and bond market liquidity. *Bank of Canada Financial System Review* June 2016.](/papers/paper9/)
+
+[Garriott, C. and Gray, K. (2016). Canadian repo market ecology. *Bank of Canada Staff Discussion Paper* 2016-8.](/papers/paper5/)
+
+[Garriott, C., Pomeranets, A., Slive, J. and Thorn, T. (2013). Fragmentation in Canadian equity markets. *Bank of Canada Review* Autumn 2013.](/papers/paper14/)
 
 ---
 
@@ -99,35 +107,37 @@ TMX Crossing Intents, co-hosted with Doug Clark.
 - 2026: *Financial Stability Oversight Council*, Washington, D.C.
 - 2025: *Securities and Exchange Commission*, Washington, D.C. *International Monetary Fund*, Washington, D.C. *Federal Reserve Board*, Washington, D.C. *Inter-Agency Working Group on Treasury Market Surveillance*, Washington, D.C. *FSOC Principals* (before Sec. Scott Bessent and Chairman Jerome Powell), Washington, D.C.
 
-**[Garriott, C., van Kervel, V. and Zoican, M. Queueing and inventories in limit-order markets.](https://www.sciencedirect.com/science/article/pii/S1386418125000229)**
-- 2022: *Paris December Finance*, Paris, France.\* *Northern Finance Association*, Banff, AB.\* *Western Finance Association*, Portland, OR.\* *The Microstructure Exchange*, online.\*
+**[Panel: Market conditions in US repo, *Finadium Rates & Repo North America*.](https://finadium.com/rates-repo-na-2024/market-conditions-in-us-repo/)** (2024, moderator)
 
 **[Fireside chat with Ian Pollick, *Canadian Annual Derivatives Conference*.](https://cadc.m-x.ca/2023/program/)** (2023)
 
-**[Garriott, C. and Riordan, R. The price impacts of informed investors.](https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4866008)**
+**[Garriott, C., van Kervel, V. and Zoican, M. Queueing and inventories in limit-order markets.](/papers/paper2/)**
+- 2022: *Paris December Finance*, Paris, France.\* *Northern Finance Association*, Banff, AB.\* *Western Finance Association*, Portland, OR.\* *The Microstructure Exchange*, online.\*
+
+**[Garriott, C. and Riordan, R. The price impacts of informed investors.](/papers/paper6/)**
 - 2020: *Paris December Finance*, online. *Northern Finance Association*, online. *Plato Market Innovator*, online. *Western Finance Association*, online.
 - 2019: Telfer School of Business, University of Ottawa. *15th Central Bank Conference on the Microstructure of Financial Markets*, Sveriges Riksbank, Stockholm, Sweden. *Third SAFE Market Microstructure Conference*, Frankfurt, Germany. University of Graz, Austria.\* HEC Montréal.\* Wilfrid Laurier University, Waterloo, ON.
 
-**Garriott, C., Lefebvre, S., Nolin, G., Rivadeneyra, F. and Walton, A. Alternative futures for Government of Canada debt management.**
+**[Garriott, C., Lefebvre, S., Nolin, G., Rivadeneyra, F. and Walton, A. Alternative futures for Government of Canada debt management.](/papers/paper13/)**
 - 2019: *Public Debt Management Conference*, OECD Headquarters, Paris, France.\*
 - 2018: Toronto Stock Exchange, Toronto. Vanguard Investments, Toronto.
 - 2017: Department of Finance, Ottawa.
 
-**Chen, M. and Garriott, C. High-frequency trading and institutional trading costs.**
+**[Chen, M. and Garriott, C. High-frequency trading and institutional trading costs.](/papers/paper7/)**
 - 2018: Telfer School of Business, University of Ottawa. *2nd European Capital Markets Conference*, Cass Business School, London, UK.
 - 2017: *Canadian Annual Derivatives Conference*, Montreal Exchange, Quebec City, QC. Ontario Securities Commission, Toronto, ON.
 
-**Cimon, D. and Garriott, C. Banking regulation and market making.**
+**[Cimon, D. and Garriott, C. Banking regulation and market making.](/papers/paper3/)**
 - 2017: *Paris December 2017 Finance Meeting*, Paris. *Canadian Economics Association*, St. Francis Xavier, Antigonish, NS. *SAFE Market Microstructure Conference*, Frankfurt, Germany.\* *Northern Finance Association*, Halifax, NS.\* *13th Central Bank Conference on the Microstructure of Financial Markets*, Bank of England, London, UK.\* *Bank of Canada – Banco de España Conference*, Ottawa.\* *Financial Management Association*, Boston, MA.\* Wilfrid Laurier University, Waterloo, ON.\*
 
-**Brogaard, J. and Garriott, C. High-frequency trading competition.**
+**[Brogaard, J. and Garriott, C. High-frequency trading competition.](/papers/paper1/)**
 - 2017: Vienna HFT: Curse or blessing, Vienna, Austria.\*
 - 2016: Stockholm Business School, Stockholm, Sweden.\*
 - 2015: Canadian Imperial Bank of Commerce, Toronto, ON.
 - 2014: *Western Finance Association*, Seattle, WA. *SFS Cavalcade*, Georgia Tech, Atlanta, GA. *8th Financial Risks International Forum*, Louis Bachelier Institute, Paris.
 - 2013: *Canadian Economics Association*, HEC Montreal. ITG Canada, Toronto. Ontario Securities Commission, Toronto.
 
-**Garriott, C. and Walton, A. Retail order flow segmentation.**
+**[Garriott, C. and Walton, A. Retail order flow segmentation.](/papers/paper8/)**
 - 2017: *10th Financial Risks International Forum*, Louis Bachelier Institute, Paris.
 - 2016: *SEC Conference on Financial Regulation*, Securities and Exchange Commission, Washington, DC.\* *Northern Finance Association*, Mont Tremblant, QC.\* *Fellowship and Learning Exchange*, Bank of Canada, Ottawa.
 - 2015: *Canadian Economics Association*, Ryerson University, Toronto.
@@ -146,7 +156,12 @@ TMX Crossing Intents, co-hosted with Doug Clark.
 
 #### Press coverage
 
+**2026**
+- ["Dealer revenues from rate spreads in US Treasury repo." Josh Galper, *Finadium*, 1 September 2026](https://finadium.com/dealer-revenues-from-rate-spreads-in-us-treasury-repo/)
+- ["OFR research finds half of all US non-cleared bilateral repo transactions are with cross-border counterparties." *Finadium*, 9 April 2026](https://finadium.com/ofr-research-finds-half-of-all-us-non-cleared-bilateral-repo-transactions-are-with-cross-border-counterparties/)
+
 **2025**
+- ["OFR blog post: How the Treasury Clearing Rule for Repo Might Affect SOFR." *Finadium*, 22 April 2025](https://finadium.com/ofr-blog-post-how-the-treasury-clearing-rule-for-repo-might-affect-sofr/)
 - ["Repo clearing rule could raise SOFR volatility..." Helen Bartholomew, *Risk.net*, 25 April 2025](https://www.risk.net/markets/7961435/repo-clearing-rule-could-raise-sofr-volatility-ofr-analysts)
 
 **2020**
