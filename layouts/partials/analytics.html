@@ -5,5 +5,17 @@
   function gtag(){dataLayer.push(arguments);}
   gtag('js', new Date());
 
+{{- if eq .Kind "404" }}
+  // Record which URL was missing and where the visitor came from.
+  var missing = location.pathname + location.search;
+  gtag('config', '{{ .Site.Params.GoogleAnalyticsID }}', {
+    page_title: '404 ' + missing
+  });
+  gtag('event', 'page_not_found', {
+    missing_url: missing,
+    referrer_url: document.referrer || '(none)'
+  });
+{{- else }}
   gtag('config', '{{ .Site.Params.GoogleAnalyticsID }}');
+{{- end }}
 </script>

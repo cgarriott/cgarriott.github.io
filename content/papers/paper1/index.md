@@ -22,7 +22,6 @@ editPost:
 ##### Download
 
 + [Paper](https://www.cambridge.org/core/journals/journal-of-financial-and-quantitative-analysis/article/highfrequency-trading-competition/C6F1849FCA91D1B52AABA10F2A952D7B)
-+ [Presentation](presentation)
 <!--
 + [Online appendix](appendix1.pdf)
 + [Code and data](https://github.com/pmichaillat/feru)
