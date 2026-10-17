@@ -1,5 +1,5 @@
 ---
-title: "Data"
-description: "Datasets on various philological topics."
+title: "Codes"
+description: "Codes on various philological topics."
 sectionHeading: "Publicly available codes"
 ---
